@@ -8,7 +8,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <signal.h>
+#include "parser.h"
 #include "server.h"
+#include "parsing.h"
 
 void usage(char *binary)
 {
@@ -23,13 +25,22 @@ void usage(char *binary)
 
 int main(int ac, char **av)
 {
-	server_t serv = {0};
+	server_t serv = {0, 0, 0, 0, (map_t){0, 0}, NULL, NULL};
+	argument_t manager[] = {
+		{"-p", &argument_port, true, false, 0},
+		{"-x", &argument_width, true, false, 0},
+		{"-y", &argument_height, true, false, 0},
+		{"-n", &argument_names, true, false, 0},
+		{"-c", &argument_clients_nb, true, false, 0},
+		{"-f", &argument_frequency, true, false, 0},
+		{NULL, NULL, true, 0}
+	};
 
-	// TODO faire une gestion d'erreur
 	if (ac < 13)
 		usage(av[0]);
 	else {
-		// TODO call parser
+		if (!parser(&serv, (argument_t *) manager, av))
+			return 1;
 		return server(&serv);
 	}
 	return 0;

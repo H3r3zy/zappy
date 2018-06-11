@@ -5,6 +5,7 @@
 ** Created by sahel.lucas-saoudi@epitech.eu,
 */
 
+#include <poll.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
@@ -33,35 +34,33 @@ static void server_accept(server_t *server)
 	debug_if(new->fd == SOCKET_ERROR, ERROR "accept error\n");
 }
 
-static int server_loop(server_t *server, fd_set *fds)
+static void server_loop(server_t *server)
 {
 	client_t *client = server->clients;
 	bool stop = false;
+	struct pollfd fds = {server->fd, POLLIN, 0};
 
-	if (FD_ISSET(server->fd, fds))
+	poll(&fds, 1, 10);
+	if (fds.revents == POLLIN)
 		server_accept(server);
+	if (!client)
+		return;
 	do {
-		/*
-		if (FD_ISSET(client->fd, fds))
-			stop = client_action(server, client);
-		if (stop)
-			break;*/
+		fds.fd = client->fd;
+		fds.revents = 0;
+		poll(&fds, 1, 10);
+		/*if (fds.revents == POLLIN || fds.revents == POLLPRI)
+			client_action(server, client);*/
+		if (fds.revents == POLLHUP || fds.revents == POLLNVAL
+			|| fds.revents == POLLERR)
+			disconnect(server, client);
 		client = client->next;
 	} while (client != server->clients);
-	return EXIT_SUCCESS;
-}
-
-static int server_select(fd_set *fds, server_t *server)
-{
-	int fd_max = init_select(fds, server);
-
-	return select_read(fd_max, fds, 100);
 }
 
 int server(server_t *serv)
 {
 	int end = EXIT_SUCCESS;
-	fd_set fds;
 
 	serv->fd = i_socket((uint16_t) serv->port);
 	if (serv->fd == SOCKET_ERROR) {
@@ -70,9 +69,7 @@ int server(server_t *serv)
 	}
 	debug(GINFO "Server started on 127.0.0.1:" CYAN "%i" RESET"\n", serv->port);
 	while (end == EXIT_SUCCESS) {
-		if (server_select(&fds, serv) == EXIT_FAILURE)
-			continue;
-		end = server_loop(serv, &fds);
+		server_loop(serv);
 	}
 	close(serv->fd);
 	return 0;

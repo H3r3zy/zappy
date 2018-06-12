@@ -21,12 +21,13 @@ void add_teams(server_t *server, char *name)
 	new->name = strdup(name);
 	if (!team) {
 		server->teams = new;
-		new->next = new;
-		new->prev = new;
+		new->next = NULL;
+		new->prev = NULL;
 		return;
 	}
 	new->next = team->next;
-	team->next->prev = new;
+	if (team->next)
+		team->next->prev = new;
 	team->next = new;
 	new->prev = team;
 }

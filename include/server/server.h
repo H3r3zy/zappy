@@ -47,10 +47,11 @@ typedef struct {
 
 typedef struct client_s client_t;
 typedef struct server_s server_t;
+typedef struct teams_s teams_t;
 
 typedef struct {
 	long long int started_time;
-	long long int resting_time;
+	long long int spending_time;
 	char *command;
 	void (*function)(server_t *server, client_t *invoker, char *command);
 } scheduler_t;
@@ -59,18 +60,19 @@ struct client_s {
 	socket_t fd;
 	user_t user;
 	scheduler_t *task[LIMIT_TASK_NUMBER];
+	teams_t *team;
 	char *queue[LIMIT_TASK_NUMBER + 1];
 	size_t queue_index;
 	struct client_s *prev;
 	struct client_s *next;
 };
 
-typedef struct teams_s {
+struct teams_s {
 	char *name;
 	client_t **clients;
 	struct teams_s *prev;
 	struct teams_s *next;
-} teams_t;
+};
 
 typedef struct {
 	pos_t size;
@@ -86,7 +88,7 @@ struct server_s {
 	map_t map;
 	teams_t *teams;
 	client_t *clients;
-	ssize_t client_nb;
+	size_t client_nb;
 };
 
 char *gnl(int fd, char *delim);

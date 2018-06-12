@@ -10,8 +10,13 @@
 
 #include <stdlib.h>
 #include "server.h"
+#include "command.h"
 
-void add_task_to_schedule(client_t *client, long long int resting_time, char *command, void (*function)(struct server_s *server, struct client_s *invoker, char *command));
+#define NTOMS 1000000
+
+#define STOMS 1000
+
+void add_task_to_schedule(client_t *client, long long int spending_time, char *command, void (*function)(struct server_s *server, struct client_s *invoker, char *command));
 void scheduler(server_t *server);
 
 #endif //PSU_ZAPPY_2017_SCHEDULER_H

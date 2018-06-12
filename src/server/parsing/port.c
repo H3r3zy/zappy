@@ -9,6 +9,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <server.h>
+#include <stdio.h>
 #include "parser.h"
 #include "server.h"
 
@@ -77,17 +78,17 @@ int argument_frequency(struct argument_s *manager, void *server, char **av, uint
 
 int argument_names(struct argument_s *manager, void *server, char **av, uint i)
 {
-	int j = i;
+	int j = i + 1;
 
 	if (!av[i + 1]) {
 		manager->error = true;
 		return 0;
 	}
-	while (av[j] && av[j][i] != '-') {
+	while (av[j] && av[j][0] != '-') {
 		add_teams(server, av[j]);
 		j++;
 	}
-	if (j - i == 0) {
+	if (j - i == 1) {
 		manager->error = true;
 		return 0;
 	}

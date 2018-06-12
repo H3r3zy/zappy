@@ -9,6 +9,12 @@
 #include <stdio.h>
 #include "parser.h"
 
+static const char *INVALID_ARGUMENT = "Invalid argument '%s' at %i place\n";
+
+static const char *ARGUMENT_REQUIRED = "The argument '%s' is required\n";
+
+static const char *ERROR = "An error appeared with argument '%s'\n";
+
 static bool check_arg(void *argument, argument_t *manager, char **av, uint *i)
 {
 	for (uint j = 0; manager[j].flag; j++) {
@@ -27,18 +33,17 @@ bool parser(void *argument, argument_t *manager, char **av)
 
 	for (uint i = 1; av[i]; i++) {
 		if (!check_arg(argument, manager, av, &i)) {
-			fprintf(stderr, "Invalid argument '%s' at %i place\n", av[i], i);
+			fprintf(stderr, INVALID_ARGUMENT, av[i], i);
 			return false;
 		}
 	}
 	for (uint i = 0; manager[i].flag; i++) {
 		if (manager[i].mandatory && !manager[i].call_number) {
-			fprintf(stderr, "The argument '%s' is required\n",
-				manager[i].flag);
+			fprintf(stderr, ARGUMENT_REQUIRED, manager[i].flag);
 			ret = false;
 		}
 		if (manager[i].error) {
-			fprintf(stderr, "An error appeared with argument '%s'\n", manager[i].flag);
+			fprintf(stderr, ERROR, manager[i].flag);
 			ret = false;
 		}
 	}

@@ -36,7 +36,7 @@ int main(int ac, char **av)
 		{NULL, NULL, true, 0}
 	};
 
-	if (ac < 13)
+	if (ac < 3)
 		usage(av[0]);
 	else {
 		if (!parser(&serv, (argument_t *) manager, av))

@@ -19,4 +19,4 @@ include_directories(include)
 
 add_definitions(-DDEBUG=1)
 
-add_executable(server ${SERVER_FILE} ${SERVER_HEADER})
+add_executable(zappy_server ${SERVER_FILE} ${SERVER_HEADER})

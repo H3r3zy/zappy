@@ -29,8 +29,8 @@ int argument_width(struct argument_s *manager, void *server, char **av, uint i)
 		manager->error = true;
 		return 0;
 	}
-	((server_t *) server)->map.width = (uint) atoi(av[i + 1]);
-	if (((server_t *) server)->map.width == 0) {
+	((server_t *) server)->map.size.x = (uint) atoi(av[i + 1]);
+	if (((server_t *) server)->map.size.x == 0) {
 		manager->error = true;
 	}
 	return 1;
@@ -42,8 +42,8 @@ int argument_height(struct argument_s *manager, void *server, char **av, uint i)
 		manager->error = true;
 		return 0;
 	}
-	((server_t *) server)->map.height = (uint) atoi(av[i + 1]);
-	if (((server_t *) server)->map.height == 0) {
+	((server_t *) server)->map.size.y = (uint) atoi(av[i + 1]);
+	if (((server_t *) server)->map.size.y == 0) {
 		manager->error = true;
 	}
 	return 1;

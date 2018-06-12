@@ -26,13 +26,7 @@ static void handle_new_client(server_t *server)
 	} else
 		new->next = NULL;
 	server->clients = new;
-	new->user = (user_t){0};
-	new->fd = i_socket_accept(server->fd);
-	if (new->fd != SOCKET_ERROR) {
-		debug(INFO "New client on fd %i\n", new->fd);
-		server->client_nb++;
-	}
-	debug_if(new->fd == SOCKET_ERROR, ERROR "accept error\n");
+	init_client(server, new);
 }
 
 struct pollfd *build_poll_fds(server_t *server)
@@ -58,7 +52,7 @@ static void handle_poll(struct pollfd *fds, server_t *server)
 	client_t *next = NULL;
 	int i = 0;
 
-	for (client_t *clt = server->clients; clt != NULL;) {
+	for (client_t *clt = server->clients; clt;) {
 		next = clt->next;
 		if (fds[i].revents == POLLIN || fds[i].revents == POLLPRI)
 			read_client(server, clt);

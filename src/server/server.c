@@ -14,9 +14,21 @@
 #include "debug.h"
 #include "server.h"
 
-void init_server(server_t *server)
+int init_server(server_t *serv)
 {
-	create_teams_clients(server);
+	serv->map.map = malloc(sizeof(entity_t *) * serv->map.size.y);
+	if (!serv->map.map) {
+		debug(ERROR "Map allocation failed\n");
+		return 1;
+	}
+	for (size_t y = 0; y < serv->map.size.y; y++) {
+		serv->map.map[y] = calloc(serv->map.size.x, sizeof(entity_t));
+		if (!serv->map.map[y]) {
+			debug(ERROR "Cannot allocate row %d in map\n", y);
+			return 1;
+		}
+	}
+	create_teams_clients(serv);
 }
 
 int server(server_t *server)

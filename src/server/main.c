@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <signal.h>
+#include <string.h>
 #include "parser.h"
 #include "server.h"
 #include "parsing.h"
@@ -28,7 +29,7 @@ void usage(char *binary)
 
 int main(int ac, char **av)
 {
-	server_t serv = {0, 0, 0, 0, (map_t){0, 0}, NULL, NULL, 0};
+	server_t serv;
 	argument_t manager[] = {
 		{"-p", &argument_port, true, false, 0},
 		{"-x", &argument_width, true, false, 0},
@@ -39,12 +40,14 @@ int main(int ac, char **av)
 		{NULL, NULL, true, 0}
 	};
 
+	memset(&serv, 0, sizeof(server_t));
 	if (ac < 13) {
 		usage(av[0]);
 		return 84;
 	}
 	if (!parser(&serv, (argument_t *) manager, av))
 		return 84;
-	init_server(&serv);
+	if (init_server(&serv) != 0)
+		return 84;
 	return server(&serv);
 }

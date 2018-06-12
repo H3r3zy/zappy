@@ -11,11 +11,8 @@ my_cat
 *.so
 [a-zA-Z0-9]
 toto
-bomberman
 CMakeCache.txt
 CMakeFiles
 cmake_install.cmake
 *.cbp
-Makefile
-.gui_*
-.save.indie
+client

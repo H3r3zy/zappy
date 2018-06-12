@@ -35,8 +35,10 @@ void disconnect(server_t *server, client_t *client)
 	if (server->clients == client)
 		server->clients = NULL;
 	else {
-		client->prev->next = client->next;
-		client->next->prev = client->prev;
+		if (client->prev)
+			client->prev->next = client->next;
+		if (client->next)
+			client->next->prev = client->prev;
 	}
 	if (server->teams)
 		disconnect_of_teams(server, client);

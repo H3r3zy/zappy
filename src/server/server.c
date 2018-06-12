@@ -43,9 +43,21 @@ int server(server_t *server)
 	}
 	debug(GINFO "Server started on 127.0.0.1:" CYAN "%i" RESET"\n",
 		server->port);
+	if (init_server(server) != 0)
+		return EXIT_FAILURE;
 	while (end == EXIT_SUCCESS) {
 		server_loop(server);
 	}
 	close(server->fd);
 	return 0;
+}
+
+void destroy_server(server_t *server)
+{
+	for (teams_t *team = server->teams; team;) {
+		teams_t *tmp = team;
+		team = team->next;
+		free(tmp->name);
+		free(tmp);
+	}
 }

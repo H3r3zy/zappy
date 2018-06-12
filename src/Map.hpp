@@ -9,7 +9,9 @@
 #include <iostream>
 #include <SFML/System.hpp>
 #include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Window/Event.hpp>
 #include "Grid.hpp"
+#include "WindowInfo.hpp"
 
 class Map {
 	public:
@@ -19,9 +21,12 @@ class Map {
 	void gameLoop();
 
 	private:
+	void getEvent();
 	sf::Vector2f _mapSize;
 	Grid _grid;
+	WindowInfo _windowInfo;
 	sf::RenderWindow _window;
+	sf::Event _event;
 };
 
 #endif //PSU_ZAPPY_2017_MAP_HPP

@@ -15,6 +15,23 @@ void Map::gameLoop()
 	while (_window.isOpen()) {
 		_window.clear(sf::Color::Black);
 		_grid.displayGrid(_window);
+		_window.draw(_windowInfo.getFPS());
+		//getEvent();
 		_window.display();
+	}
+}
+
+void Map::getEvent()
+{
+	if (_window.pollEvent(_event)) {
+		// Request for closing the window
+		if (_event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+			_window.close();
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+			std::cout << "jai appuye a droite" << std::endl;
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+			std::cout << "jai appuye a droite" << std::endl;
+		}
 	}
 }

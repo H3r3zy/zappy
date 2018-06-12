@@ -10,6 +10,7 @@ CC	=	g++
 RM	=	rm -rf
 
 SRC	=	src/main.cpp		\
+		src/WindowInfo.cpp	\
 		src/Grid.cpp		\
 		src/Cell.cpp		\
 		src/Map.cpp

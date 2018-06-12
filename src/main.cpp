@@ -102,11 +102,5 @@ int main(int ac, char **av)
 		window.display();
 		// Clear the whole window before rendering a new frame
 		window.clear();
-		fps++;
-		if (clock.getElapsedTime().asMilliseconds() >= 1000) {
-			std::cout << fps << std::endl;
-			sf::Time frameTime = clock.restart();
-			fps = 0;
-		}
 	}*/
 }

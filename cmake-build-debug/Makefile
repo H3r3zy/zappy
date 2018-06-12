@@ -204,6 +204,33 @@ src/Map.cpp.s:
 	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Map.cpp.s
 .PHONY : src/Map.cpp.s
 
+src/WindowInfo.o: src/WindowInfo.cpp.o
+
+.PHONY : src/WindowInfo.o
+
+# target to build an object file
+src/WindowInfo.cpp.o:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/WindowInfo.cpp.o
+.PHONY : src/WindowInfo.cpp.o
+
+src/WindowInfo.i: src/WindowInfo.cpp.i
+
+.PHONY : src/WindowInfo.i
+
+# target to preprocess a source file
+src/WindowInfo.cpp.i:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/WindowInfo.cpp.i
+.PHONY : src/WindowInfo.cpp.i
+
+src/WindowInfo.s: src/WindowInfo.cpp.s
+
+.PHONY : src/WindowInfo.s
+
+# target to generate assembly for a file
+src/WindowInfo.cpp.s:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/WindowInfo.cpp.s
+.PHONY : src/WindowInfo.cpp.s
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -249,6 +276,9 @@ help:
 	@echo "... src/Map.o"
 	@echo "... src/Map.i"
 	@echo "... src/Map.s"
+	@echo "... src/WindowInfo.o"
+	@echo "... src/WindowInfo.i"
+	@echo "... src/WindowInfo.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

@@ -25,6 +25,8 @@ namespace irc {
 		~SFML_monitor();
 
 		void loopWindow();
+		void closeWindow();
+
 		void addObjectToDraw(const std::string &name, IObjectSFML *object, int scene = 0, int layer = 1);
 		IObjectSFML *getObjectByName(std::string name, int scene = 0);
 		void deleteObjectByName(std::string name, int scene = 0);

@@ -188,8 +188,10 @@ void irc::Auth::tryToConnect(bool error)
 		std::string ret = irc::ManageServer::connectServer(_socketServer, _ip, _port);
 		if (!ret.empty())
 			modalError(ret);
-		else
-			std::cout << "This works well !" << std::endl;
+		else {
+			_base.closeWindow();
+			// Todo: Launch fork
+		}
 	}
 }
 

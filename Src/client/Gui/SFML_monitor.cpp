@@ -26,6 +26,11 @@ void irc::SFML_monitor::addObjectToDraw(const std::string &name, irc::IObjectSFM
 	this->_listObject[scene].insert({name, object});
 }
 
+void irc::SFML_monitor::closeWindow()
+{
+	this->_window.close();
+}
+
 void irc::SFML_monitor::manageEvent(sf::Event &event)
 {
 	bool ret = false;
@@ -47,7 +52,7 @@ void irc::SFML_monitor::manageEvent(sf::Event &event)
 		}
 	}
 	if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) || ret)
-		this->_window.close();
+		closeWindow();
 }
 
 void irc::SFML_monitor::drawObject()

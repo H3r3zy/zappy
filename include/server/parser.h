@@ -9,7 +9,7 @@
 #define PSU_ZAPPY_2017_PARSER_H
 
 #include <stdbool.h>
-#include "server.h"
+#include <stdlib.h>
 
 typedef struct argument_s {
 	char *flag;

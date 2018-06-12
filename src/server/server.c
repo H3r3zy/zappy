@@ -17,17 +17,22 @@
 static void server_accept(server_t *server)
 {
 	client_t *client = server->clients;
-	client_t *tmp = server->clients->next;
 	client_t *new = malloc(sizeof(client_t));
 
 	if (!new) {
 		debug(ERROR "can't create user (malloc failed)\n");
 		return;
 	}
-	client->next = new;
-	new->prev = client;
-	new->next = tmp;
-	new->next->prev = new;
+	if (client) {
+		new->next = client->next;
+		new->next->prev = new;
+		client->next = new;
+		new->prev = client;
+	} else {
+		server->clients = new;
+		new->next = new;
+		new->prev = new;
+	}
 	new->user = (user_t){0};
 	new->fd = i_socket_accept(server->fd);
 	debug_if(new->fd != SOCKET_ERROR, INFO "new user on fd %i\n", new->fd);
@@ -49,11 +54,13 @@ static void server_loop(server_t *server)
 		fds.fd = client->fd;
 		fds.revents = 0;
 		poll(&fds, 1, 10);
+		// TODO faire la deconnection dans le client_action :appeller disconnect(server, client);
 		/*if (fds.revents == POLLIN || fds.revents == POLLPRI)
 			client_action(server, client);*/
-		if (fds.revents == POLLHUP || fds.revents == POLLNVAL
+		// Les POLLHUP / POLLNVAL / POLLERR ne sont pas généré quand un socket est fermer d'un coter
+		/*if (fds.revents == POLLHUP || fds.revents == POLLNVAL
 			|| fds.revents == POLLERR)
-			disconnect(server, client);
+			disconnect(server, client);*/
 		client = client->next;
 	} while (client != server->clients);
 }
@@ -64,10 +71,12 @@ int server(server_t *serv)
 
 	serv->fd = i_socket((uint16_t) serv->port);
 	if (serv->fd == SOCKET_ERROR) {
-		fprintf(stderr, "Can't create server on port: %i\n", serv->port);
+		fprintf(stderr, "Can't create server on port: %i\n",
+			serv->port);
 		return EXIT_FAILURE;
 	}
-	debug(GINFO "Server started on 127.0.0.1:" CYAN "%i" RESET"\n", serv->port);
+	debug(GINFO "Server started on 127.0.0.1:" CYAN "%i" RESET"\n",
+		serv->port);
 	while (end == EXIT_SUCCESS) {
 		server_loop(serv);
 	}

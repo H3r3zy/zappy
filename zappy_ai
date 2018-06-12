@@ -1,0 +1,8 @@
+#!/usr/bin/python3
+
+from Ai import Ai
+
+AiModule = Ai
+toto = AiModule.Ai()
+
+toto.Think()

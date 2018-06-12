@@ -41,7 +41,7 @@ struct pollfd *build_poll_fds(server_t *server)
 		return (NULL);
 	}
 	for (client_t *clt = server->clients; clt; clt = clt->next) {
-		fds[i] = (struct pollfd){clt->fd, POLLIN | POLLOUT, 0};
+		fds[i] = (struct pollfd){clt->fd, POLLIN, 0};
 		++i;
 	}
 	fds[i] = (struct pollfd){server->fd, POLLIN, 0};
@@ -55,8 +55,9 @@ static void handle_poll(struct pollfd *fds, server_t *server)
 
 	for (client_t *clt = server->clients; clt;) {
 		next = clt->next;
-		if (fds[i].revents == POLLIN || fds[i].revents == POLLPRI)
+		if ((fds[i].revents & POLLIN)) {
 			read_client(server, clt);
+		}
 		++i;
 		clt = next;
 	}
@@ -65,11 +66,12 @@ static void handle_poll(struct pollfd *fds, server_t *server)
 void server_loop(server_t *server)
 {
 	struct pollfd *fds = build_poll_fds(server);
+	size_t clients_nb = server->client_nb;
 
-	if (!fds || poll(fds, server->client_nb + 1, 5000) == -1)
+	if (!fds || poll(fds, clients_nb + 1, 5000) == -1)
 		return;
-	if (fds[server->client_nb].revents == POLLIN)
-		handle_new_client(server);
 	handle_poll(fds, server);
+	if ((fds[clients_nb].revents & POLLIN))
+		handle_new_client(server);
 	free(fds);
 }

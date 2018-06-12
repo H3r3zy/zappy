@@ -32,11 +32,16 @@ static void disconnect_of_teams(server_t *server, client_t *client)
 void disconnect(server_t *server, client_t *client)
 {
 	debug(INFO "The client %d left the game\n", client->fd);
-	if (server->clients == client)
-		server->clients = NULL;
-	else {
-		client->prev->next = client->next;
-		client->next->prev = client->prev;
+	if (server->clients == client) {
+		if (client->next)
+			server->clients = client->next;
+		else
+			server->clients = NULL;
+	} else {
+		if (client->prev)
+			client->prev->next = client->next;
+		if (client->next)
+			client->next->prev = client->prev;
 	}
 	if (server->teams)
 		disconnect_of_teams(server, client);

@@ -91,6 +91,8 @@ char *gnl(int fd, char *delim);
 
 int init_server(server_t *serv);
 int server(server_t *serv);
+void destroy_server(server_t *serv);
+
 void server_loop(server_t *server);
 void disconnect(server_t *server, client_t *client);
 

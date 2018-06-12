@@ -39,6 +39,7 @@ int main(int ac, char **av)
 		{"-f", &argument_frequency, true, false, 0},
 		{NULL, NULL, true, 0}
 	};
+	int status = 0;
 
 	memset(&serv, 0, sizeof(server_t));
 	if (ac < 13) {
@@ -47,7 +48,7 @@ int main(int ac, char **av)
 	}
 	if (!parser(&serv, (argument_t *) manager, av))
 		return 84;
-	if (init_server(&serv) != 0)
-		return 84;
-	return server(&serv);
+	status = server(&serv);
+	destroy_server(&serv);
+	return status;
 }

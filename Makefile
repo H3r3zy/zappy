@@ -39,10 +39,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /home/velo6raptor/Téléchargements/clion-2017.3.1/bin/cmake/bin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E remove -f
+RM = /home/velo6raptor/Téléchargements/clion-2017.3.1/bin/cmake/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/velo6raptor/delivery/PSU/PSU_zappy_2017
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/home/velo6raptor/Téléchargements/clion-2017.3.1/bin/cmake/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/home/velo6raptor/Téléchargements/clion-2017.3.1/bin/cmake/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -176,6 +176,33 @@ Src/client/Auth.s: Src/client/Auth.cpp.s
 Src/client/Auth.cpp.s:
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/Auth.cpp.s
 .PHONY : Src/client/Auth.cpp.s
+
+Src/client/Gui.o: Src/client/Gui.cpp.o
+
+.PHONY : Src/client/Gui.o
+
+# target to build an object file
+Src/client/Gui.cpp.o:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/Gui.cpp.o
+.PHONY : Src/client/Gui.cpp.o
+
+Src/client/Gui.i: Src/client/Gui.cpp.i
+
+.PHONY : Src/client/Gui.i
+
+# target to preprocess a source file
+Src/client/Gui.cpp.i:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/Gui.cpp.i
+.PHONY : Src/client/Gui.cpp.i
+
+Src/client/Gui.s: Src/client/Gui.cpp.s
+
+.PHONY : Src/client/Gui.s
+
+# target to generate assembly for a file
+Src/client/Gui.cpp.s:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/Gui.cpp.s
+.PHONY : Src/client/Gui.cpp.s
 
 Src/client/Gui/Animation/Modal.o: Src/client/Gui/Animation/Modal.cpp.o
 
@@ -447,6 +474,33 @@ Src/client/ManageServer.cpp.s:
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/ManageServer.cpp.s
 .PHONY : Src/client/ManageServer.cpp.s
 
+Src/client/Map.o: Src/client/Map.cpp.o
+
+.PHONY : Src/client/Map.o
+
+# target to build an object file
+Src/client/Map.cpp.o:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/Map.cpp.o
+.PHONY : Src/client/Map.cpp.o
+
+Src/client/Map.i: Src/client/Map.cpp.i
+
+.PHONY : Src/client/Map.i
+
+# target to preprocess a source file
+Src/client/Map.cpp.i:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/Map.cpp.i
+.PHONY : Src/client/Map.cpp.i
+
+Src/client/Map.s: Src/client/Map.cpp.s
+
+.PHONY : Src/client/Map.s
+
+# target to generate assembly for a file
+Src/client/Map.cpp.s:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/Map.cpp.s
+.PHONY : Src/client/Map.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -454,14 +508,17 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... client"
 	@echo "... edit_cache"
+	@echo "... client"
 	@echo "... Src/Main.o"
 	@echo "... Src/Main.i"
 	@echo "... Src/Main.s"
 	@echo "... Src/client/Auth.o"
 	@echo "... Src/client/Auth.i"
 	@echo "... Src/client/Auth.s"
+	@echo "... Src/client/Gui.o"
+	@echo "... Src/client/Gui.i"
+	@echo "... Src/client/Gui.s"
 	@echo "... Src/client/Gui/Animation/Modal.o"
 	@echo "... Src/client/Gui/Animation/Modal.i"
 	@echo "... Src/client/Gui/Animation/Modal.s"
@@ -492,6 +549,9 @@ help:
 	@echo "... Src/client/ManageServer.o"
 	@echo "... Src/client/ManageServer.i"
 	@echo "... Src/client/ManageServer.s"
+	@echo "... Src/client/Map.o"
+	@echo "... Src/client/Map.i"
+	@echo "... Src/client/Map.s"
 .PHONY : help
 
 

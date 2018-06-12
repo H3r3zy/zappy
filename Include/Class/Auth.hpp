@@ -29,11 +29,15 @@ namespace irc {
 		void initPlaceHolder();
 		void initTextInput();
 		void initSubmit();
+
 		void inputTextWrite(IObjectSFML *placeholder, IObjectSFML *input, bool layer);
+		void GoToTheNextInput(IObjectSFML *from, IObjectSFML *to, int step);
 		void setLayer(IObjectSFML *placeholder, const std::size_t &layer);
+
 		void sendForm();
 		void tryToConnect(bool error);
-		void GoToTheNextInput(IObjectSFML *from, IObjectSFML *to, int step);
+		void createMapAndGui();
+
 
 		irc::SFML_monitor _base;
 		int _height = 800;

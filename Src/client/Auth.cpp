@@ -11,6 +11,9 @@
 #include <chrono>
 #include <regex>
 #include <Class/ManageServer.hpp>
+#include <wait.h>
+#include "Map.hpp"
+#include "Gui.hpp"
 #include "Auth.hpp"
 #include "IncludeGui.hpp"
 
@@ -190,9 +193,36 @@ void irc::Auth::tryToConnect(bool error)
 			modalError(ret);
 		else {
 			_base.closeWindow();
-			// Todo: Launch fork
+			createMapAndGui();
 		}
 	}
+}
+
+void irc::Auth::createMapAndGui()
+{
+	pid_t pid_map = fork();
+	switch (pid_map) {
+	case -1:
+		std::cout << "Can't fork, map" << std::endl;
+		exit(84);
+	case 0:
+		irc::Map manageMap;
+		manageMap.loopDisplay();
+		exit(0);
+	}
+
+	pid_t pid_gui = fork();
+	switch (pid_gui) {
+	case -1:
+		std::cout << "Can't fork, gui" << std::endl;
+		waitpid(-1, nullptr, 0);
+		exit(84);
+	case 0:
+		irc::Gui manageGui(pid_map);
+		manageGui.loopDisplay();
+		exit(0);
+	}
+	waitpid(-1, nullptr, 0);
 }
 
 void irc::Auth::GoToTheNextInput(irc::IObjectSFML *from, irc::IObjectSFML *to, int step)

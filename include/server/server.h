@@ -14,7 +14,6 @@
 typedef struct {
 	uint width;
 	uint height;
-
 } map_t;
 
 typedef struct {
@@ -45,11 +44,15 @@ typedef struct {
 	map_t	map;
 	teams_t *teams;
 	client_t *clients;
+	ssize_t client_nb;
 } server_t;
 
 int server(server_t *serv);
 void disconnect(server_t *server, client_t *client);
 
 void add_teams(server_t *server, char *name);
+void create_teams_clients(server_t *server);
+
+void read_client(server_t *server, client_t *client);
 
 #endif //PSU_ZAPPY_2017_SERVER_H

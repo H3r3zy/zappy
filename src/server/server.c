@@ -16,70 +16,88 @@
 
 static void server_accept(server_t *server)
 {
-	client_t *client = server->clients;
 	client_t *new = malloc(sizeof(client_t));
 
 	if (!new) {
 		debug(ERROR "can't create user (malloc failed)\n");
 		return;
 	}
-	if (client) {
-		new->next = client->next;
+	new->prev = NULL;
+	if (server->clients) {
+		new->next = server->clients;
 		new->next->prev = new;
-		client->next = new;
-		new->prev = client;
-	} else {
-		server->clients = new;
-		new->next = new;
-		new->prev = new;
-	}
+	} else
+		new->next = NULL;
+	server->clients = new;
 	new->user = (user_t){0};
 	new->fd = i_socket_accept(server->fd);
-	debug_if(new->fd != SOCKET_ERROR, INFO "new user on fd %i\n", new->fd);
+	if (new->fd != SOCKET_ERROR) {
+		debug(INFO "New client on fd %i\n", new->fd);
+		server->client_nb++;
+	}
 	debug_if(new->fd == SOCKET_ERROR, ERROR "accept error\n");
+}
+
+struct pollfd *build_poll_fds(server_t *server)
+{
+	struct pollfd *fds = malloc(sizeof(struct pollfd) *
+		(server->client_nb + 1));
+	size_t i = 0;
+
+	if (!fds) {
+		debug(ERROR "can't create pollfd struct\n");
+		return (NULL);
+	}
+	for (client_t *clt = server->clients; clt != NULL; clt = clt->next) {
+		fds[i] = (struct pollfd){clt->fd, POLLIN | POLLOUT, 0};
+		++i;
+	}
+	fds[i] = (struct pollfd){server->fd, POLLIN, 0};
+	return fds;
+}
+
+static void handle_poll(struct pollfd *fds, server_t *server)
+{
+	client_t *next = NULL;
+	int i = 0;
+
+	for (client_t *clt = server->clients; clt != NULL;) {
+		next = clt->next;
+		if (fds[i].revents == POLLIN || fds[i].revents == POLLPRI)
+			read_client(server, clt);
+		++i;
+		clt = next;
+	}
 }
 
 static void server_loop(server_t *server)
 {
-	client_t *client = server->clients;
-	bool stop = false;
-	struct pollfd fds = {server->fd, POLLIN, 0};
+	struct pollfd *fds = build_poll_fds(server);
 
-	poll(&fds, 1, 10);
-	if (fds.revents == POLLIN)
-		server_accept(server);
-	if (!client)
+	if (!fds || poll(fds, server->client_nb + 1, 5000) == -1)
 		return;
-	do {
-		fds.fd = client->fd;
-		fds.revents = 0;
-		poll(&fds, 1, 10);
-		// TODO faire la deconnection dans le client_action :appeller disconnect(server, client);
-		/*if (fds.revents == POLLIN || fds.revents == POLLPRI)
-			client_action(server, client);*/
-		// Les POLLHUP / POLLNVAL / POLLERR ne sont pas généré quand un socket est fermer d'un coter
-		/*if (fds.revents == POLLHUP || fds.revents == POLLNVAL
-			|| fds.revents == POLLERR)
-			disconnect(server, client);*/
-		client = client->next;
-	} while (client != server->clients);
+	if (fds[server->client_nb].revents == POLLIN)
+		server_accept(server);
+	handle_poll(fds, server);
+	free(fds);
 }
 
-int server(server_t *serv)
+int server(server_t *server)
 {
 	int end = EXIT_SUCCESS;
 
-	serv->fd = i_socket((uint16_t) serv->port);
-	if (serv->fd == SOCKET_ERROR) {
+	server->fd = i_socket((uint16_t) server->port);
+	if (server->fd == SOCKET_ERROR) {
 		fprintf(stderr, "Can't create server on port: %i\n",
-			serv->port);
+			server->port);
 		return EXIT_FAILURE;
 	}
 	debug(GINFO "Server started on 127.0.0.1:" CYAN "%i" RESET"\n",
-		serv->port);
+		server->port);
+	create_teams_clients(server);
 	while (end == EXIT_SUCCESS) {
-		server_loop(serv);
+		server_loop(server);
 	}
-	close(serv->fd);
+	close(server->fd);
 	return 0;
 }

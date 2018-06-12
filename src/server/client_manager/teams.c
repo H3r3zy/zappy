@@ -8,6 +8,8 @@
 #include <stdlib.h>
 #include <memory.h>
 #include "server.h"
+#include "debug.h"
+#include "server.h"
 
 void add_teams(server_t *server, char *name)
 {
@@ -17,7 +19,6 @@ void add_teams(server_t *server, char *name)
 	if (!new)
 		return;
 	new->name = strdup(name);
-	new->clients = NULL;
 	if (!team) {
 		server->teams = new;
 		new->next = new;
@@ -28,4 +29,16 @@ void add_teams(server_t *server, char *name)
 	team->next->prev = new;
 	team->next = new;
 	new->prev = team;
+}
+
+void create_teams_clients(server_t *server)
+{
+	teams_t *team = server->teams;
+
+	do {
+		team->clients = calloc(server->max_clients_per_teams,
+			sizeof(client_t *));
+		debug(GINFO "Team '%s' created\n", team->name);
+		team = team->next;
+	} while (team != server->teams);
 }

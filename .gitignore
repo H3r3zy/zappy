@@ -18,4 +18,5 @@ cmake_install.cmake
 *.cbp
 Makefile
 .gui_*
-.save.indie
+.save.indie./.ntmcs.filelist
+./.ntmcs.tmp

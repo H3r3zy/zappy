@@ -47,7 +47,9 @@ typedef struct {
 	ssize_t client_nb;
 } server_t;
 
+void init_server(server_t *server);
 int server(server_t *serv);
+void server_loop(server_t *server);
 void disconnect(server_t *server, client_t *client);
 
 void add_teams(server_t *server, char *name);

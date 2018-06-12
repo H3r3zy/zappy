@@ -25,12 +25,8 @@ static void disconnect_of_team(server_t *server, teams_t *team,
 
 static void disconnect_of_teams(server_t *server, client_t *client)
 {
-	teams_t *tmp = server->teams;
-
-	do {
-		disconnect_of_team(server, tmp, client);
-		tmp = tmp->next;
-	} while (tmp != server->teams);
+	for (teams_t *team = server->teams; team; team = team->next)
+		disconnect_of_team(server, team, client);
 }
 
 void disconnect(server_t *server, client_t *client)

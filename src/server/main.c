@@ -39,12 +39,12 @@ int main(int ac, char **av)
 		{NULL, NULL, true, 0}
 	};
 
-	if (ac < 3)
+	if (ac < 13) {
 		usage(av[0]);
-	else {
-		if (!parser(&serv, (argument_t *) manager, av))
-			return 1;
-		return server(&serv);
+		return 84;
 	}
-	return 0;
+	if (!parser(&serv, (argument_t *) manager, av))
+		return 84;
+	init_server(&serv);
+	return server(&serv);
 }

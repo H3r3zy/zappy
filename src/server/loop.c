@@ -8,6 +8,7 @@
 #include <poll.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <memory.h>
 #include "server.h"
 #include "debug.h"
 

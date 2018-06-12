@@ -13,6 +13,7 @@
 #include "socket.h"
 #include "debug.h"
 #include "server.h"
+#include "scheduler.h"
 
 int init_server(server_t *serv)
 {
@@ -45,6 +46,7 @@ int server(server_t *server)
 		server->port);
 	while (end == EXIT_SUCCESS) {
 		server_loop(server);
+		scheduler(server);
 	}
 	close(server->fd);
 	return 0;

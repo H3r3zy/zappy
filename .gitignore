@@ -20,3 +20,4 @@ Makefile
 .gui_*
 .save.indie./.ntmcs.filelist
 ./.ntmcs.tmp
+reference

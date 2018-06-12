@@ -23,6 +23,7 @@ void init_client(server_t *server, client_t *client)
 		client->user.level = 1;
 		client->user.vision = 1;
 		memset(client->user.bag, 0, sizeof(uint) * 7);
+		memset(client->task, 0, sizeof(scheduler_t *) * LIMIT_TASK_NUMBER);
 		debug(INFO "New client on fd %i\n", client->fd);
 		server->client_nb++;
 	}
@@ -36,7 +37,7 @@ void read_client(server_t *server, client_t *client)
 	if (!request)
 		disconnect(server, client);
 	else {
-		debug(INFO "Client request : %s\n", request);
+		debug(INFO "'%i' Client request : %s\n", client->fd, request);
 		free(request);
 	}
 }

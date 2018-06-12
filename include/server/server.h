@@ -24,6 +24,8 @@ typedef enum {
 	Client,
 } entity_type_t;
 
+#define LIMIT_TASK_NUMBER (10)
+
 typedef struct {
 	uint x;
 	uint y;
@@ -43,12 +45,23 @@ typedef struct {
 	uint bag[7];
 } user_t;
 
-typedef struct client_s {
+typedef struct client_s client_t;
+typedef struct server_s server_t;
+
+typedef struct {
+	long long int started_time;
+	long long int resting_time;
+	char *command;
+	void (*function)(server_t *server, client_t *invoker, char *command);
+} scheduler_t;
+
+struct client_s {
 	socket_t fd;
 	user_t user;
+	scheduler_t *task[LIMIT_TASK_NUMBER];
 	struct client_s *prev;
 	struct client_s *next;
-} client_t;
+};
 
 typedef struct teams_s {
 	char *name;
@@ -63,7 +76,7 @@ typedef struct {
 	entity_t **map;
 } map_t;
 
-typedef struct {
+struct server_s {
 	socket_t fd;
 	ushort port;
 	uint freq;
@@ -72,7 +85,7 @@ typedef struct {
 	teams_t *teams;
 	client_t *clients;
 	ssize_t client_nb;
-} server_t;
+};
 
 char *gnl(int fd, char *delim);
 

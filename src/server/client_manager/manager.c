@@ -89,6 +89,7 @@ void init_client(server_t *server, client_t *client)
 		debug(INFO "New client on fd %i (pos : %d;%d)\n", client->fd,
 			client->user.x, client->user.y);
 		server->client_nb++;
+		add_to_queue(client, strdup("WELCOME\n"));
 	}
 	debug_if(client->fd == SOCKET_ERROR, ERROR "Accept error\n");
 }

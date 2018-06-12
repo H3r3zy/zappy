@@ -31,10 +31,12 @@ typedef struct {
 	uint y;
 } pos_t;
 
-typedef struct {
+typedef struct entity_s {
 	ulong id;
 	entity_type_t type;
 	pos_t pos;
+	struct entity_s *prev;
+	struct entity_s *next;
 } entity_t;
 
 typedef struct {
@@ -63,6 +65,7 @@ struct client_s {
 	teams_t *team;
 	char *queue[LIMIT_TASK_NUMBER + 1];
 	size_t queue_index;
+	entity_t *entity;
 	struct client_s *prev;
 	struct client_s *next;
 };
@@ -77,7 +80,7 @@ struct teams_s {
 typedef struct {
 	pos_t size;
 	ulong max_id;
-	entity_t **map;
+	entity_t ***map;
 } map_t;
 
 struct server_s {
@@ -108,5 +111,7 @@ void init_client(server_t *server, client_t *client);
 void read_client(server_t *server, client_t *client);
 void add_to_queue(client_t *client, char *msg);
 void send_responses(client_t *client);
+
+void generate_map(map_t *map);
 
 #endif //PSU_ZAPPY_2017_SERVER_H

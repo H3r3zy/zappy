@@ -86,7 +86,8 @@ void init_client(server_t *server, client_t *client)
 		memset(client->user.bag, 0, sizeof(uint) * 7);
 		memset(client->task, 0,
 			sizeof(scheduler_t *) * LIMIT_TASK_NUMBER);
-		debug(INFO "New client on fd %i\n", client->fd);
+		debug(INFO "New client on fd %i (pos : %d;%d)\n", client->fd,
+			client->user.x, client->user.y);
 		server->client_nb++;
 	}
 	debug_if(client->fd == SOCKET_ERROR, ERROR "Accept error\n");

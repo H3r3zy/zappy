@@ -84,6 +84,24 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/wisenoa/PSU_zappy_2017/src/Cell.cpp">
+			<Option target="PSU_zappy_2017"/>
+		</Unit>
+		<Unit filename="/home/wisenoa/PSU_zappy_2017/src/Cell.hpp">
+			<Option target="PSU_zappy_2017"/>
+		</Unit>
+		<Unit filename="/home/wisenoa/PSU_zappy_2017/src/Grid.cpp">
+			<Option target="PSU_zappy_2017"/>
+		</Unit>
+		<Unit filename="/home/wisenoa/PSU_zappy_2017/src/Grid.hpp">
+			<Option target="PSU_zappy_2017"/>
+		</Unit>
+		<Unit filename="/home/wisenoa/PSU_zappy_2017/src/Map.cpp">
+			<Option target="PSU_zappy_2017"/>
+		</Unit>
+		<Unit filename="/home/wisenoa/PSU_zappy_2017/src/Map.hpp">
+			<Option target="PSU_zappy_2017"/>
+		</Unit>
 		<Unit filename="/home/wisenoa/PSU_zappy_2017/src/main.cpp">
 			<Option target="PSU_zappy_2017"/>
 		</Unit>

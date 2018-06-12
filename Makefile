@@ -10,12 +10,15 @@ CC	=	g++
 RM	=	rm -rf
 
 SRC	=	src/main.cpp		\
+		src/Grid.cpp		\
+		src/Cell.cpp		\
+		src/Map.cpp
 
 OBJ	=	$(SRC:.cpp=.o)
 
 NAME	=	client
 
-CXXFLAGS	=	-W -Wall -Wextra -Iinclude
+CXXFLAGS	=	-W -Wall -Wextra -Isrc -g
 
 all:	$(NAME)
 

@@ -4,4 +4,4 @@ project(PSU_zappy_2017)
 set(CMAKE_CXX_STANDARD 11)
 
 add_executable(PSU_zappy_2017
-        src/main.cpp)
+        src/main.cpp src/Map.cpp src/Map.hpp src/Cell.cpp src/Cell.hpp src/Grid.cpp src/Grid.hpp)

@@ -123,6 +123,87 @@ PSU_zappy_2017/fast:
 	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/build
 .PHONY : PSU_zappy_2017/fast
 
+src/Cell.o: src/Cell.cpp.o
+
+.PHONY : src/Cell.o
+
+# target to build an object file
+src/Cell.cpp.o:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Cell.cpp.o
+.PHONY : src/Cell.cpp.o
+
+src/Cell.i: src/Cell.cpp.i
+
+.PHONY : src/Cell.i
+
+# target to preprocess a source file
+src/Cell.cpp.i:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Cell.cpp.i
+.PHONY : src/Cell.cpp.i
+
+src/Cell.s: src/Cell.cpp.s
+
+.PHONY : src/Cell.s
+
+# target to generate assembly for a file
+src/Cell.cpp.s:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Cell.cpp.s
+.PHONY : src/Cell.cpp.s
+
+src/Grid.o: src/Grid.cpp.o
+
+.PHONY : src/Grid.o
+
+# target to build an object file
+src/Grid.cpp.o:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Grid.cpp.o
+.PHONY : src/Grid.cpp.o
+
+src/Grid.i: src/Grid.cpp.i
+
+.PHONY : src/Grid.i
+
+# target to preprocess a source file
+src/Grid.cpp.i:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Grid.cpp.i
+.PHONY : src/Grid.cpp.i
+
+src/Grid.s: src/Grid.cpp.s
+
+.PHONY : src/Grid.s
+
+# target to generate assembly for a file
+src/Grid.cpp.s:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Grid.cpp.s
+.PHONY : src/Grid.cpp.s
+
+src/Map.o: src/Map.cpp.o
+
+.PHONY : src/Map.o
+
+# target to build an object file
+src/Map.cpp.o:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Map.cpp.o
+.PHONY : src/Map.cpp.o
+
+src/Map.i: src/Map.cpp.i
+
+.PHONY : src/Map.i
+
+# target to preprocess a source file
+src/Map.cpp.i:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Map.cpp.i
+.PHONY : src/Map.cpp.i
+
+src/Map.s: src/Map.cpp.s
+
+.PHONY : src/Map.s
+
+# target to generate assembly for a file
+src/Map.cpp.s:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Map.cpp.s
+.PHONY : src/Map.cpp.s
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -159,6 +240,15 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... PSU_zappy_2017"
+	@echo "... src/Cell.o"
+	@echo "... src/Cell.i"
+	@echo "... src/Cell.s"
+	@echo "... src/Grid.o"
+	@echo "... src/Grid.i"
+	@echo "... src/Grid.s"
+	@echo "... src/Map.o"
+	@echo "... src/Map.i"
+	@echo "... src/Map.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

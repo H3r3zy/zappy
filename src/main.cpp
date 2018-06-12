@@ -28,30 +28,17 @@
 #endif
 #include <SFML/Window.hpp>
 #include <iostream>
+#include "Map.hpp"
 
-int main()
+int main(int ac, char **av)
 {
-	std::vector<sf::RectangleShape> map;
-
-	int i = 0;
-	int j = 0;
-	while (j < 500) {
-		sf::RectangleShape caca;
-		caca.setPosition(i, j);
-		caca.setSize(sf::Vector2f(9, 9));
-		caca.setFillColor(sf::Color::Red);
-		caca.setOutlineThickness(1);
-		caca.setOutlineColor(sf::Color::Blue);
-		map.push_back(caca);
-		i += 10;
-		if (i >= 500) {
-			i = 0;
-			j += 10;
-		}
-	}
 
 
-	sf::Texture texture;
+	Map map(std::stoi(av[1]));
+
+	map.gameLoop();
+	printf("cocou");
+/*	sf::Texture texture;
 	texture.loadFromFile("map.jpg");
 	sf::Sprite sprite;
 	sprite.setTexture(texture);
@@ -93,11 +80,11 @@ int main()
 		}
 		window.setView(view1);
 
-		/*sf::Vector2i pixelPos = sf::Mouse::getPosition(window);
+		sf::Vector2i pixelPos = sf::Mouse::getPosition(window);
 		std::cout << pixelPos.x << "  " << pixelPos.y << std::endl;
 
 		sf::Vector2f worldPos = window.mapPixelToCoords(pixelPos, view1);
-		std::cout << worldPos.x << "  " <<  worldPos.y << std::endl;*/
+		std::cout << worldPos.x << "  " <<  worldPos.y << std::endl;
 
 
 
@@ -105,13 +92,13 @@ int main()
 		for (const auto &it : map) {
 			window.draw(it);
 		}
-//		window.draw(sprite);
+		window.draw(sprite);
 		window.setView(minimapView);
 		for (const auto &it : map) {
 			window.draw(it);
 		}
 
-//		window.draw(sprite);
+		window.draw(sprite);
 		window.display();
 		// Clear the whole window before rendering a new frame
 		window.clear();
@@ -121,5 +108,5 @@ int main()
 			sf::Time frameTime = clock.restart();
 			fps = 0;
 		}
-	}
+	}*/
 }

@@ -59,6 +59,8 @@ struct client_s {
 	socket_t fd;
 	user_t user;
 	scheduler_t *task[LIMIT_TASK_NUMBER];
+	char *queue[LIMIT_TASK_NUMBER + 1];
+	size_t queue_index;
 	struct client_s *prev;
 	struct client_s *next;
 };
@@ -101,5 +103,7 @@ void create_teams_clients(server_t *server);
 
 void init_client(server_t *server, client_t *client);
 void read_client(server_t *server, client_t *client);
+void add_to_queue(client_t *client, char *msg);
+void send_responses(client_t *client);
 
 #endif //PSU_ZAPPY_2017_SERVER_H

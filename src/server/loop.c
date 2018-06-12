@@ -37,11 +37,13 @@ struct pollfd *build_poll_fds(server_t *server)
 	size_t i = 0;
 
 	if (!fds) {
-		debug(ERROR "can't create pollfd struct\n");
+		debug(ERROR "Can't allocate pollfd struct\n");
 		return (NULL);
 	}
 	for (client_t *clt = server->clients; clt; clt = clt->next) {
 		fds[i] = (struct pollfd){clt->fd, POLLIN, 0};
+		if (*clt->queue)
+			fds[i].events |= POLLOUT;
 		++i;
 	}
 	fds[i] = (struct pollfd){server->fd, POLLIN, 0};
@@ -55,9 +57,10 @@ static void handle_poll(struct pollfd *fds, server_t *server)
 
 	for (client_t *clt = server->clients; clt;) {
 		next = clt->next;
-		if ((fds[i].revents & POLLIN)) {
+		if (*clt->queue && (fds[i].revents & POLLOUT))
+			send_responses(clt);
+		if ((fds[i].revents & POLLIN))
 			read_client(server, clt);
-		}
 		++i;
 		clt = next;
 	}

@@ -9,6 +9,7 @@
 #include <server.h>
 #include <time.h>
 #include <string.h>
+#include <stdbool.h>
 #include "server.h"
 
 static void add_task_in_client(scheduler_t **client_task, char *command, long long int resting_time, void (*function)(struct server_s *server, struct client_s *invoker, char *command))
@@ -32,27 +33,38 @@ void add_task_to_schedule(client_t *client, long long int resting_time, char *co
 	}
 }
 
-static void check_task(server_t *server, client_t *client, scheduler_t **task)
+static bool check_task(server_t *server, client_t *client, scheduler_t *task)
 {
 	long long int now = time(NULL);
 
-	if (!(*task))
-		return;
-	(*task)->resting_time -= now - (*task)->started_time;
-	if ((*task)->resting_time <= 0) {
-		(*task)->function(server, client, (*task)->command);
-		free((*task)->command);
-		free(*task);
+	if (!task)
+		return false;
+	task->resting_time -= now - task->started_time;
+	if (task->resting_time <= 0) {
+		task->function(server, client, task->command);
+		free(task->command);
+		free(task);
 		*task = NULL;
+		return true;
 	}
+	return false;
 
+}
+
+static void shift_task(client_t *client)
+{
+	for (uint i = 0; i < LIMIT_TASK_NUMBER - 1; i++) {
+		client->task[i] = client->task[i + 1];
+	}
+	if (client->task[0])
+		client->task[0]->started_time = time(NULL);
+	client->task[LIMIT_TASK_NUMBER - 1] = NULL;
 }
 
 void scheduler(server_t *server)
 {
 	for (client_t *cl = server->clients; cl; cl = cl->next) {
-		for (uint i = 0; i < LIMIT_TASK_NUMBER; i++) {
-			check_task(server, cl, &(cl->task[i]));
-		}
+		if (check_task(server, cl, cl->task[0]))
+			shift_task(cl);
 	}
 }

@@ -20,7 +20,7 @@ static const command_t COMMAND[] = {
 	{name: "Right", function: NULL, verify: NULL, time_unit: 7, argument: false},
 	{name: "Left", function: NULL, verify: NULL, time_unit: 7, argument: false},
 	{name: "Look", function: NULL, verify: NULL, time_unit: 7, argument: false},
-	{name: "Inventory", function: NULL, verify: NULL, time_unit: 1, argument: false},
+	{name: "Inventory", function: &inventory, verify: NULL, time_unit: 1, argument: false},
 	{name: "Broadcast", function: NULL, verify: NULL, time_unit: 7, argument: true},
 	{name: "Connect_nbr", function: NULL, verify: NULL, time_unit: 0, argument: false},
 	{name: "Fork", function: NULL, verify: NULL, time_unit: 42, argument: false},
@@ -109,7 +109,7 @@ void read_client(server_t *server, client_t *client)
 void add_to_queue(client_t *client, char *msg)
 {
 	if (client->queue_index < LIMIT_TASK_NUMBER)
-		client->queue[client->queue_index++] = msg;
+		client->queue[client->queue_index++] = strdup(msg);
 	else
 		debug(ERROR "Response queue of client %d is full.\n",
 			client->fd);
@@ -141,6 +141,7 @@ void send_responses(client_t *client)
 			break;
 		for (uint i = 1; client->queue[i]; i++)
 			client->queue[i - 1] = client->queue[i];
+		free(*client->queue);
 		client->queue[client->queue_index - 1] = NULL;
 		--client->queue_index;
 	}

@@ -19,4 +19,6 @@ typedef struct {
 	bool argument;
 } command_t;
 
+void inventory(server_t *server, client_t *client, char *arg);
+
 #endif //PSU_ZAPPY_2017_COMMAND_H

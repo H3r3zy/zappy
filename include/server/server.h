@@ -72,6 +72,7 @@ struct client_s {
 
 struct teams_s {
 	char *name;
+	uint remaining_place;
 	client_t **clients;
 	struct teams_s *prev;
 	struct teams_s *next;

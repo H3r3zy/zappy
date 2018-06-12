@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <memory.h>
 #include <server.h>
+#include <stdio.h>
 #include "server.h"
 #include "debug.h"
 #include "server.h"
@@ -36,6 +37,7 @@ void add_teams(server_t *server, char *name)
 void create_teams_clients(server_t *server)
 {
 	for (teams_t *team = server->teams; team; team = team->next) {
+		team->remaining_place = server->max_clients_per_teams;
 		team->clients = calloc(server->max_clients_per_teams,
 			sizeof(client_t *));
 		debug(GINFO "Team '%s' created\n", team->name);
@@ -44,11 +46,16 @@ void create_teams_clients(server_t *server)
 
 static void add_client_to_team(client_t *client, teams_t *team, uint max_cl)
 {
+	char buffer[128] = "";
+
 	for (uint i = 0; i < max_cl; i++) {
 		if (team->clients[i] == NULL) {
-			add_to_queue(client, "ok\n");
 			team->clients[i] = client;
+			team->remaining_place--;
 			client->team = team;
+			/*sprintf(buffer, "%i\n%i %i\n", team->remaining_place,
+			client->entity->pos.x, client->entity->pos.y);
+			add_to_queue(client, buffer);*/
 			return;
 		}
 	}

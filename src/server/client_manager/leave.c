@@ -18,6 +18,7 @@ static void disconnect_of_team(server_t *server, teams_t *team,
 		if (team->clients[i] == client) {
 			debug(INFO "the client %d left the team '%s'\n",
 				client->fd, team->name);
+			team->remaining_place++;
 			team->clients[i] = NULL;
 		}
 	}

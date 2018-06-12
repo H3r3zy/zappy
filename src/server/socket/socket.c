@@ -37,6 +37,7 @@ static socket_t i_socket_bind(socket_t fd, uint16_t port)
 socket_t i_socket(uint16_t port)
 {
 	socket_t fd = socket(AF_INET, SOCK_STREAM, 0);
+	int optval = 1;
 
 	if (fd == SOCKET_ERROR) {
 		debug(ERROR "socket error\n");
@@ -44,6 +45,7 @@ socket_t i_socket(uint16_t port)
 	}
 	if (i_socket_bind(fd, port) == SOCKET_ERROR)
 		return SOCKET_ERROR;
+	setsockopt(fd, SOL_SOCKET, SO_REUSEPORT, &optval, sizeof(optval));
 	return i_socket_listen(fd);
 }
 

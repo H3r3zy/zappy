@@ -27,6 +27,7 @@ static void add_task_in_client(scheduler_t **client_task, char *command, long lo
 	task->spending_time = spending_time;
 	task->started_time = spec.tv_sec * STOMS + spec.tv_nsec / NTOMS;
 	task->command = command ? strdup(command) : NULL;
+	task->function = function;
 	*client_task = task;
 }
 

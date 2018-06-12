@@ -55,7 +55,7 @@ static void command_manager(server_t *server, client_t *client, char *command)
 	char *arg = NULL;
 
 	if (!client->team) {
-		debug(INFO "Try to join '%s' team\n", command);
+		debug(INFO "'%i' Try to join '%s' team\n", client->fd, command);
 		add_to_team(server, client, command);
 		return;
 	}

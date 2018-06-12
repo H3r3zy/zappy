@@ -54,11 +54,11 @@ static void command_manager(server_t *server, client_t *client, char *command)
 	char *name = strtok(command, " \t");
 	char *arg = NULL;
 
-	/*if (!client->team) {
+	if (!client->team) {
 		debug(INFO "Try to join '%s' team\n", command);
-		//add_to_team(server, client, command); TODO
+		add_to_team(server, client, command);
 		return;
-	}*/
+	}
 	if (tmp_len != strlen(name))
 		arg = &command[strlen(name) + 1];
 	for (uint i = 0; COMMAND[i].name; i++) {

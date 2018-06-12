@@ -101,6 +101,7 @@ void server_loop(server_t *server);
 void disconnect(server_t *server, client_t *client);
 
 void add_teams(server_t *server, char *name);
+void add_to_team(server_t *server, client_t *client, char *name);
 void create_teams_clients(server_t *server);
 
 void init_client(server_t *server, client_t *client);

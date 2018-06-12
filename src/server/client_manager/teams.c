@@ -41,3 +41,27 @@ void create_teams_clients(server_t *server)
 		debug(GINFO "Team '%s' created\n", team->name);
 	}
 }
+
+static void add_client_to_team(client_t *client, teams_t *team, uint max_cl)
+{
+	for (uint i = 0; i < max_cl; i++) {
+		if (team->clients[i] == NULL) {
+			add_to_queue(client, "ok\n");
+			team->clients[i] = client;
+			client->team = team;
+			return;
+		}
+	}
+	add_to_queue(client, "ko\n");
+}
+
+void add_to_team(server_t *server, client_t *client, char *name)
+{
+	for (teams_t *tm = server->teams; tm; tm = tm->next) {
+		if (strcmp(tm->name, name) == 0) {
+			add_client_to_team(client, tm, server->max_clients_per_teams);
+			return;
+		}
+	}
+	add_to_queue(client, "ko\n");
+}

@@ -18,9 +18,6 @@
 int init_server(server_t *serv)
 {
 	init_map(&serv->map);
-	#ifdef DEBUG
-	print_map(&serv->map);
-	#endif
 	create_teams_clients(serv);
 	return 0;
 }

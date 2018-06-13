@@ -23,12 +23,12 @@ static void init_client_data(server_t *server, client_t *client)
 	client->entity->id = ++server->map.max_id;
 	client->entity->type = Client;
 	client->user.level = 1;
-	client->user.vision = 1;
+	client->user.vision = 2;
 	memset(client->queue, 0,
 		sizeof(char *) * (LIMIT_TASK_NUMBER + 1));
 	client->queue_index = 0;
 	client->team = NULL;
-	client->user.orientation = (orientation_t)rand() % 4;
+	client->user.orientation = (orientation_t)(rand() % 4);
 }
 
 void init_client(server_t *server, client_t *client)
@@ -53,7 +53,6 @@ void init_client(server_t *server, client_t *client)
 		client->user.bag[Food] = STARTED_FOOD;
 		debug("%i\n", client->user.bag[Food]);
 		client->started_time = spec.tv_sec * STOMS + spec.tv_nsec / NTOMS;
-		//print_map(&server->map);
 	} else
 		debug(ERROR "Accept error\n");
 }

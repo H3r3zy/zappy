@@ -5,7 +5,8 @@ import socket
 import select
 from Client import CmdParser
 from collections import deque
-
+from Ai.ActionNode import *
+from Ai.Ai import *
 
 class ZappyException(Exception):
     pass
@@ -23,6 +24,19 @@ class Client:
         self.__topQueue = deque()
         self.__outQueue = deque(maxlen=10)
         self.__mapSize = (0, 0)
+        self.__currentNode = 0
+        self.__nodes = [
+            ActionNode(0, node_action0),
+            ActionNode(1, node_action0),
+            ActionNode(2, node_action0),
+            ActionNode(3, node_action0),
+            ActionNode(4, node_action0),
+            ActionNode(5, node_action0),
+            ActionNode(6, node_action0),
+            ActionNode(7, node_action0),
+            ActionNode(8, node_action0),
+            ActionNode(9, node_action0),
+        ]
 
     def connect(self) -> bool:
         try:
@@ -34,7 +48,7 @@ class Client:
             return False
         return True
 
-    def updateinbuff(self, con):
+    def update_inbuff(self, con):
         data = con.recv(1024)
         if len(data) == 0:
             raise socket.error('Connection lost')
@@ -44,32 +58,32 @@ class Client:
                 self.__inQueue.append(cmd)
         self.__inBuff = self.__inBuff.split("\n")[-1]
 
-    def udpateoutbuff(self, con, mode: bool = False):
+    def udpate_outbuff(self, con, mode: bool = False):
         if mode:
-            self.refreshqueue()
+            self.refresh_queue()
         sent = con.send(self.__outBuff.encode("ascii"))
         if sent == 0:
             raise socket.error('Connection lost')
         self.__outBuff = (self.__outBuff.encode("ascii"))[sent:].decode("ascii")
 
-    def refreshqueue(self):
+    def refresh_queue(self):
         while len(self.__outQueue) != self.__outQueue.maxlen and len(self.__topQueue) > 0:
             tup = self.__topQueue.popleft()
             self.__outBuff += tup[0] + (" " if len(tup[1]) > 0 else "") + '\n'
             self.__outQueue.append(tup[0])
 
-    def buildcommand(self, cmd: str, arg: str = ""):
+    def build_command(self, cmd: str, arg: str = ""):
         self.__topQueue.append((cmd, arg))
-        self.refreshqueue()
+        self.refresh_queue()
 
     def refresh(self, mode: bool = False):
         rcons, wcons, _ = select.select([self.__socket], [self.__socket] if len(self.__outBuff) > 0 else [], [], 0)
         for con in rcons:
-            self.updateinbuff(con)
+            self.update_inbuff(con)
         for con in wcons:
-            self.udpateoutbuff(con, mode)
+            self.udpate_outbuff(con, mode)
 
-    def getlastresponse(self):
+    def get_last_response(self):
         if len(self.__inQueue) > 0:
             return self.__inQueue.popleft()
         return None
@@ -82,7 +96,7 @@ class Client:
                 resp = self.__inQueue.popleft()
                 if resp != "WELCOME":
                     raise ZappyException('Unexpected response')
-                self.buildcommand(self.__name)
+                self.build_command(self.__name)
                 welcome = True
             if len(self.__inQueue) >= 2 and welcome is True:
                 try:
@@ -96,13 +110,14 @@ class Client:
     def run(self):
         self.auth()
         print("Authentication successful, map size of %d x %d" % (self.__mapSize[0], self.__mapSize[1]))
-        parser = CmdParser.CmdParser([], {}, self.__outQueue)
+        player = Ai(self.__mapSize[0], self.__mapSize[1])
+        parser = CmdParser.CmdParser(player, self.__outQueue)
         while True:
             self.refresh()
-            self.refreshqueue()
+            self.refresh_queue()
             for cmd in ["Look", "Inventory"]:
                 if len(self.__topQueue) < 100 or len(self.__outQueue) != self.__outQueue.maxlen:
-                    self.buildcommand(cmd)
+                    self.build_command(cmd)
             if len(self.__inQueue) > 0:
                 if not parser.parse(self.__inQueue.popleft()):
                     print("I died")

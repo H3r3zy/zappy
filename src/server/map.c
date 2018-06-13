@@ -48,7 +48,7 @@ void smooth_print(float percentage)
 
 void generate_map(map_t *map)
 {
-	float density = 0.667f;
+	float density = 0.1f;
 	uint cell_nb = map->size.x * map->size.y;
 	uint elements = (uint)(cell_nb * 6 * density);
 	float percentage = 0.0f;
@@ -67,3 +67,83 @@ void generate_map(map_t *map)
 	}
 	printf("\n");
 }
+
+void add_to_map(map_t *map, entity_t *entity)
+{
+	entity_t **front = &map->map[entity->pos.y][entity->pos.x];
+
+	entity->next = *front;
+	if (*front)
+		(*front)->prev = entity;
+	*front = entity;
+}
+
+void remove_from_map(map_t *map, entity_t *entity)
+{
+	entity_t **front = &map->map[entity->pos.y][entity->pos.x];
+
+	if (*front == entity) {
+		(*front)->prev = NULL;
+		*front = (*front)->next;
+	} else {
+		if ((*front)->prev)
+			(*front)->prev->next = (*front)->next;
+		if ((*front)->next)
+			(*front)->next->prev = (*front)->prev;
+	}
+}
+
+#ifdef DEBUG
+void print_da_letter(entity_t *entity)
+{
+	while (entity) {
+		switch (entity->type) {
+		case Linemate:
+			printf("L");
+			break;
+		case Deraumere:
+			printf("D");
+			break;
+		case Sibur:
+			printf("S");
+			break;
+		case Mendiane:
+			printf("M");
+			break;
+		case Phiras:
+			printf("P");
+			break;
+		case Thystame:
+			printf("T");
+			break;
+		case Food:
+			printf("F");
+			break;
+		case Client:
+			printf("O");
+			break;
+		}
+		entity = entity->next;
+	}
+}
+
+void print_map(map_t *map)
+{
+	for (size_t y = 0; y < map->size.y; y++) {
+		if (y || y < map->size.y - 1) {
+			for (size_t x = 0; x < map->size.x; x++)
+				printf("--");
+			printf("\n");
+		}
+		for (size_t x = 0; x < map->size.x; x++) {
+			if (x || x < map->size.x - 1)
+				printf("|");
+			if (map->map[y][x])
+				print_da_letter(map->map[y][x]);
+			else
+				printf(" ");
+		}
+		printf("\n");
+	}
+}
+#endif

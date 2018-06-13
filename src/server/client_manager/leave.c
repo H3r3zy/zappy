@@ -34,10 +34,7 @@ void disconnect(server_t *server, client_t *client)
 {
 	debug(INFO "The client %d left the game\n", client->fd);
 	if (server->clients == client) {
-		if (client->next)
-			server->clients = client->next;
-		else
-			server->clients = NULL;
+		server->clients = client->next;
 	} else {
 		if (client->prev)
 			client->prev->next = client->next;
@@ -46,7 +43,10 @@ void disconnect(server_t *server, client_t *client)
 	}
 	if (server->teams)
 		disconnect_of_teams(server, client);
+	remove_from_map(&server->map, client->entity);
 	close(client->fd);
+	free(client->entity);
 	free(client);
 	server->client_nb--;
+	print_map(&server->map);
 }

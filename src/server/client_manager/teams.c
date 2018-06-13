@@ -54,7 +54,7 @@ static void add_client_to_team(client_t *client, teams_t *team, uint max_cl)
 			team->remaining_place--;
 			client->team = team;
 			sprintf(buffer, "%i\n%i %i\n", team->remaining_place,
-			client->user.x, client->user.y);
+			client->entity->pos.x, client->entity->pos.y);
 			add_to_queue(client, strdup(buffer));
 			return;
 		}

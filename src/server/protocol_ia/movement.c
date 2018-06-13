@@ -20,7 +20,6 @@ void forward_cmd(server_t *server, client_t *client,
 	__attribute__((unused)) char *arg)
 {
 	remove_player_from_map(&server->map, client->entity);
-	client->user.orientation);
 	switch (client->user.orientation) {
 	case TOP:
 		client->entity->pos.y = (!client->entity->pos.y)

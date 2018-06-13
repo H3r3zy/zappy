@@ -23,7 +23,7 @@ static void init_client_data(server_t *server, client_t *client)
 	client->entity->id = ++server->map.max_id;
 	client->entity->type = Client;
 	client->user.level = 1;
-	client->user.vision = 2;
+	client->user.vision = 1;
 	memset(client->queue, 0,
 		sizeof(char *) * (LIMIT_TASK_NUMBER + 1));
 	client->queue_index = 0;

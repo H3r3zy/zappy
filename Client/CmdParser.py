@@ -12,7 +12,7 @@ class CmdParser:
         self.__queue = queue
         self.__patterns = {
             'Look': re.compile("\[(( \w+)*(,( \w+)*)* )?\]", re.ASCII),
-            'Inventory': re.compile("\[(( \w+ \d+)(, \w+ \d+)* )?\]", re.ASCII),
+            'Inventory': re.compile("\[(( \w+ \d+)(,( \w+ \d+)*)* )?\]", re.ASCII),
             'Connect_nbr': re.compile("%d+", re.ASCII),
             'Incantation': re.compile("(Elevation underway Current level: \d)|(ko)", re.ASCII),
             'Forward': re.compile("ok", re.ASCII),
@@ -26,10 +26,11 @@ class CmdParser:
         }
 
     def parse(self, cmd: str) -> bool:
-        if str == "dead":
+        if cmd == "dead":
             return False
         if self.__queue[0] in self.__patterns:
             match = self.__patterns[self.__queue.popleft()].match(cmd)
             print(match.group(0))
         else:
             raise Client.ZappyException('Unexpected response ' + cmd)
+        return True

@@ -90,6 +90,10 @@ class Client:
         parser = CmdParser.CmdParser([], {}, self.__outQueue)
         while True:
             self.refresh()
-            self.buildcommand("Look")
+            for cmd in ["Look", "Inventory"]:
+                if len(self.__outQueue) < 10:
+                    self.buildcommand(cmd)
             if len(self.__inQueue) > 0:
-                parser.parse(self.__inQueue.popleft())
+                if not parser.parse(self.__inQueue.popleft()):
+                    print("I died")
+                    return

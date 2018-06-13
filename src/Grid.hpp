@@ -25,6 +25,7 @@ class Grid {
 
 	private:
 	sf::Vector2f _mapSize;
+	std::vector<Cell *> _activeMap;
 	std::map<std::pair<uint, uint>, Cell *> _gameMap;
 };
 

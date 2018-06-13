@@ -13,6 +13,7 @@ Map::Map(int mapsize) : _mapSize(mapsize, mapsize), _gameWindow(sf::VideoMode(12
 	_playerPos.setPosition(_camera.first.getCenter());
 	_playerPos.setSize(sf::Vector2f(100, 100));
 	_playerPos.setFillColor(sf::Color::Red);
+	_grid.updateGrid3D(_camera.first);
 }
 
 void Map::gameLoop()
@@ -41,18 +42,22 @@ bool Map::getEvent()
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
 		_camera.first.move(2, 0);
 		_playerPos.setPosition(_camera.first.getCenter());
+		_grid.updateGrid3D(_camera.first);
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
 		_camera.first.move(-2, 0);
 		_playerPos.setPosition(_camera.first.getCenter());
+		_grid.updateGrid3D(_camera.first);
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
 		_camera.first.move(0, -2);
 		_playerPos.setPosition(_camera.first.getCenter());
+		_grid.updateGrid3D(_camera.first);
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
 		_camera.first.move(0, 2);
 		_playerPos.setPosition(_camera.first.getCenter());
+		_grid.updateGrid3D(_camera.first);
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
 		_gameWindow.close();

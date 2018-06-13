@@ -26,16 +26,8 @@ Grid::~Grid()
 
 void Grid::updateGrid3D(sf::View &view)
 {
-	sf::Vector2f cameraPos = view.getCenter();
-	std::cout << "Je rentre dans Update gridPos, ma cam est en X: " << cameraPos.x << cameraPos.y << std::endl;
-
-
-}
-
-void Grid::displayGlobalGrid(sf::RenderWindow &window, const sf::View &view)
-{
+	_activeMap.clear();
 	sf::Vector2f chunk;
-
 	chunk.x = (view.getCenter().x / 100) - 20;
 	chunk.y = (view.getCenter().y / 100) - 20;
 	sf::Vector2f to = chunk;
@@ -43,15 +35,22 @@ void Grid::displayGlobalGrid(sf::RenderWindow &window, const sf::View &view)
 	to.y += 40;
 	while (chunk.y < to.y) {
 		if (chunk.x >= 0 && chunk.y >= 0) {
-			if (_gameMap.find(
-				POSITION(static_cast<const uint &>(chunk.x), static_cast<const uint &>(chunk.y))) != _gameMap.end()) {
-				window.draw(_gameMap[POSITION(static_cast<const uint &>(chunk.x), static_cast<const uint &>(chunk.y))]->getCell());
+			if (_gameMap.find(POSITION(static_cast<const uint &>(chunk.x), static_cast<const uint &>(chunk.y))) != _gameMap.end()) {
+				_activeMap.push_back(_gameMap[POSITION(static_cast<const uint &>(chunk.x), static_cast<const uint &>(chunk.y))]);
 			}
 		}
 		chunk.x++;
 		if (chunk.x >= to.x) {
-			chunk.x = (view.getCenter().x / 100) - 40;
+			chunk.x = (view.getCenter().x / 100) - 20;
 			chunk.y++;
 		}
+	}
+
+}
+
+void Grid::displayGlobalGrid(sf::RenderWindow &window, const sf::View &view)
+{
+	for (const auto &it : _activeMap) {
+		window.draw(it->getCell());
 	}
 }

@@ -14,7 +14,7 @@
 
 class Grid {
 
-	typedef std::pair<uint, uint> 			POSITION;
+	typedef std::pair<uint, uint> 				POSITION;
 	typedef std::map<std::pair<uint, uint>, Cell *>  	GRID_MAP;
 
 	public:

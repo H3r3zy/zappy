@@ -123,6 +123,33 @@ PSU_zappy_2017/fast:
 	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/build
 .PHONY : PSU_zappy_2017/fast
 
+src/Cameras.o: src/Cameras.cpp.o
+
+.PHONY : src/Cameras.o
+
+# target to build an object file
+src/Cameras.cpp.o:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Cameras.cpp.o
+.PHONY : src/Cameras.cpp.o
+
+src/Cameras.i: src/Cameras.cpp.i
+
+.PHONY : src/Cameras.i
+
+# target to preprocess a source file
+src/Cameras.cpp.i:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Cameras.cpp.i
+.PHONY : src/Cameras.cpp.i
+
+src/Cameras.s: src/Cameras.cpp.s
+
+.PHONY : src/Cameras.s
+
+# target to generate assembly for a file
+src/Cameras.cpp.s:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Cameras.cpp.s
+.PHONY : src/Cameras.cpp.s
+
 src/Cell.o: src/Cell.cpp.o
 
 .PHONY : src/Cell.o
@@ -267,6 +294,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... PSU_zappy_2017"
+	@echo "... src/Cameras.o"
+	@echo "... src/Cameras.i"
+	@echo "... src/Cameras.s"
 	@echo "... src/Cell.o"
 	@echo "... src/Cell.i"
 	@echo "... src/Cell.s"

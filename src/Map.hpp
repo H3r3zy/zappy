@@ -23,10 +23,16 @@ class Map {
 	private:
 	void getEvent();
 	sf::Vector2f _mapSize;
+
+	/* Member Classes */
 	Grid _grid;
 	WindowInfo _windowInfo;
+
+	/* SFML */
 	sf::RenderWindow _window;
 	sf::Event _event;
+	/* std::pair<Global camera, Minimap camera >*/
+	std::pair<sf::View, sf::View> _camera;
 };
 
 #endif //PSU_ZAPPY_2017_MAP_HPP

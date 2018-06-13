@@ -103,7 +103,7 @@ void init_client(server_t *server, client_t *client)
 			client->entity->pos.x, client->entity->pos.y);
 		server->client_nb++;
 		add_to_queue(client, strdup("WELCOME\n"));
-		add_to_map(&server->map, client->entity);
+		add_player_to_map(&server->map, client->entity);
 		print_map(&server->map);
 	} else
 		debug(ERROR "Accept error\n");

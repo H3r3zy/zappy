@@ -32,14 +32,15 @@ static void handle_new_client(server_t *server)
 
 struct pollfd *build_poll_fds(server_t *server)
 {
-	struct pollfd *fds = malloc(sizeof(struct pollfd) *
-		(server->client_nb + 1));
-	size_t i = 0;
+	static struct pollfd *fds = NULL;
+	static size_t prev_clients_nb = 0;
 
-	if (!fds) {
-		debug(ERROR "Can't allocate pollfd struct\n");
-		return (NULL);
-	}
+	if (!fds)
+		fds = malloc(sizeof(struct pollfd) * (server->client_nb + 1));
+	else if (server->client_nb != prev_clients_nb)
+		fds = realloc(fds, sizeof(struct pollfd) *
+			(server->client_nb + 1));
+	size_t i = 0;
 	for (client_t *clt = server->clients; clt; clt = clt->next) {
 		fds[i] = (struct pollfd){clt->fd, POLLIN, 0};
 		if (*clt->queue)
@@ -47,6 +48,7 @@ struct pollfd *build_poll_fds(server_t *server)
 		++i;
 	}
 	fds[i] = (struct pollfd){server->fd, POLLIN, 0};
+	prev_clients_nb = server->client_nb;
 	return fds;
 }
 
@@ -76,5 +78,4 @@ void server_loop(server_t *server)
 	handle_poll(fds, server);
 	if ((fds[clients_nb].revents & POLLIN))
 		handle_new_client(server);
-	free(fds);
 }

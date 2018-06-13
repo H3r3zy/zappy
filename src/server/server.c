@@ -17,22 +17,12 @@
 
 int init_server(server_t *serv)
 {
-	serv->map.map = malloc(sizeof(entity_t *) * serv->map.size.y);
-	if (!serv->map.map) {
-		debug(ERROR "Map allocation failed\n");
-		return 1;
-	}
-	for (size_t y = 0; y < serv->map.size.y; y++) {
-		serv->map.map[y] = calloc(serv->map.size.x, sizeof(entity_t));
-		if (!serv->map.map[y]) {
-			debug(ERROR "Cannot allocate row %d in map\n", y);
-			return 1;
-		}
-	}
-	serv->map.max_id = 0;
-	generate_map(&serv->map);
+	init_map(&serv->map);
+	#ifdef DEBUG
 	print_map(&serv->map);
+	#endif
 	create_teams_clients(serv);
+	return 0;
 }
 
 int server(server_t *server)

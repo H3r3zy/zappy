@@ -22,7 +22,7 @@ void usage(char *binary)
 	printf("       width      is the width of the world\n");
 	printf("       height     is the height of the world\n");
 	printf("       nameX      is the name of the team X\n");
-	printf("       clientsNb  is the number of authorized clients per "
+	printf("       clientsNb  is the number of authorized players per "
 	"team\n");
 	printf("       freq       is the reciprocal of time unit for execution"
 	" of actions\n");

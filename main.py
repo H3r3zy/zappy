@@ -52,6 +52,7 @@ def main():
         run(port, name, machine)
     except (sockerror, ZappyException) as err:
         sys.stderr.write(str(err) + "\n")
+        exit(84)
 
 
 if __name__ == "__main__":

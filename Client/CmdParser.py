@@ -6,6 +6,7 @@ from Client import Client
 from Ai.Ai import *
 from collections import deque
 
+
 class CmdParser:
     def __init__(self, player: Ai, queue: deque):
         self.__player = player
@@ -75,10 +76,6 @@ class CmdParser:
                 if len(elem) > 0:
                     currentTile.getStones()[elem] += 1
             i += 1
-        for tile in tiles:
-            elem = tile.split(" ")
-
-
 
     def parse_inv(self, inv: str):
         inv = inv.replace("[", "").replace("]", "")
@@ -96,11 +93,13 @@ class CmdParser:
         if self.__queue[0] in self.__patterns:
             last = self.__queue.popleft()
             match = self.__patterns[last].match(cmd)
-            #print(match.group(0))
-            if last == "Look":
-                self.parse_map(match.group(0))
-            elif last == "Inventory":
-                self.parse_inv(match.group(0))
+            try:
+                if last == "Look":
+                    self.parse_map(match.group(0))
+                elif last == "Inventory":
+                    self.parse_inv(match.group(0))
+            except AttributeError:
+                print("Could not link '" + cmd + "' to '" + last + "'")
         else:
             raise Client.ZappyException('Unexpected response ' + cmd)
         return True

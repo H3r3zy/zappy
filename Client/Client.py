@@ -44,25 +44,30 @@ class Client:
                 self.__inQueue.append(cmd)
         self.__inBuff = self.__inBuff.split("\n")[-1]
 
-    def udpateoutbuff(self, con):
+    def udpateoutbuff(self, con, mode: bool = False):
+        if mode:
+            self.refreshqueue()
         sent = con.send(self.__outBuff.encode("ascii"))
         if sent == 0:
             raise socket.error('Connection lost')
         self.__outBuff = (self.__outBuff.encode("ascii"))[sent:].decode("ascii")
 
-    def buildcommand(self, cmd: str, arg: str = ""):
-        self.__topQueue.append((cmd, arg))
+    def refreshqueue(self):
         while len(self.__outQueue) != self.__outQueue.maxlen and len(self.__topQueue) > 0:
             tup = self.__topQueue.popleft()
             self.__outBuff += tup[0] + (" " if len(tup[1]) > 0 else "") + '\n'
             self.__outQueue.append(tup[0])
 
-    def refresh(self):
+    def buildcommand(self, cmd: str, arg: str = ""):
+        self.__topQueue.append((cmd, arg))
+        self.refreshqueue()
+
+    def refresh(self, mode: bool = False):
         rcons, wcons, _ = select.select([self.__socket], [self.__socket] if len(self.__outBuff) > 0 else [], [], 0)
         for con in rcons:
             self.updateinbuff(con)
         for con in wcons:
-            self.udpateoutbuff(con)
+            self.udpateoutbuff(con, mode)
 
     def getlastresponse(self):
         if len(self.__inQueue) > 0:
@@ -94,6 +99,7 @@ class Client:
         parser = CmdParser.CmdParser([], {}, self.__outQueue)
         while True:
             self.refresh()
+            self.refreshqueue()
             for cmd in ["Look", "Inventory"]:
                 if len(self.__topQueue) < 100 or len(self.__outQueue) != self.__outQueue.maxlen:
                     self.buildcommand(cmd)

@@ -121,6 +121,7 @@ void send_responses(client_t *client);
 
 void add_to_map(map_t *map, entity_t *entity);
 void remove_from_map(map_t *map, entity_t *entity);
+int create_entity_at(map_t *map, uint x, uint y, entity_type_t type);
 void generate_map(map_t *map);
 void print_map(map_t *map);
 

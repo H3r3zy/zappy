@@ -12,7 +12,7 @@
 #include "server.h"
 #include "debug.h"
 
-static int generate_resource_at(map_t *map, uint x, uint y)
+int create_entity_at(map_t *map, uint x, uint y, entity_type_t type)
 {
 	entity_t **entities = &map->map[y][x];
 	entity_t *entity = malloc(sizeof(entity_t));
@@ -20,7 +20,7 @@ static int generate_resource_at(map_t *map, uint x, uint y)
 	if (!entity)
 		return 1;
 	entity->id = map->max_id++;
-	entity->type = (entity_type_t)(rand() % 7);
+	entity->type = type;
 	entity->pos = (pos_t){x, y};
 	entity->prev = NULL;
 	entity->next = *entities;
@@ -28,6 +28,13 @@ static int generate_resource_at(map_t *map, uint x, uint y)
 		(*entities)->prev = entity;
 	*entities = entity;
 	return 0;
+}
+
+static int generate_resource_at(map_t *map, uint x, uint y)
+{
+	entity_type_t type = (entity_type_t)(rand() % 7);
+
+	return create_entity_at(map, x, y, type);
 }
 
 void smooth_print(float percentage)
@@ -72,6 +79,7 @@ void add_to_map(map_t *map, entity_t *entity)
 {
 	entity_t **front = &map->map[entity->pos.y][entity->pos.x];
 
+	entity->prev = NULL;
 	entity->next = *front;
 	if (*front)
 		(*front)->prev = entity;
@@ -86,11 +94,12 @@ void remove_from_map(map_t *map, entity_t *entity)
 		*front = (*front)->next;
 		if (*front)
 			(*front)->prev = NULL;
+		return;
 	} else {
-		if ((*front)->prev)
-			(*front)->prev->next = (*front)->next;
-		if ((*front)->next)
-			(*front)->next->prev = (*front)->prev;
+		if ((entity)->prev)
+			(entity)->prev->next = (entity)->next;
+		if ((entity)->next)
+			(entity)->next->prev = (entity)->prev;
 	}
 }
 

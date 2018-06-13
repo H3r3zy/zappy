@@ -27,7 +27,7 @@ static const command_t COMMAND[] = {
 	{name: "Fork", function: NULL, verify: NULL, time_unit: 42, argument: false},
 	{name: "Eject", function: NULL, verify: NULL, time_unit: 7, argument: false},
 	{name: "Take", function: &take_cmd, verify: NULL, time_unit: 7, argument: true},
-	{name: "Set", function: NULL, verify: NULL, time_unit: 7, argument: true},
+	{name: "Set", function: &set_cmd, verify: NULL, time_unit: 7, argument: true},
 	{name: "Incantation", function: NULL, verify: NULL, time_unit: 300, argument: false},
 #ifdef DEBUG
 	{name: "Pos", function: &pos, verify: NULL, time_unit: 1, argument: false},

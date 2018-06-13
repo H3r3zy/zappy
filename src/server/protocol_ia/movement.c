@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <server.h>
 #include "server.h"
+#include "debug.h"
 
 /**
 * Move up one tile
@@ -19,6 +20,7 @@ void forward_cmd(server_t *server, client_t *client,
 	__attribute__((unused)) char *arg)
 {
 	remove_player_from_map(&server->map, client->entity);
+	client->user.orientation);
 	switch (client->user.orientation) {
 	case TOP:
 		client->entity->pos.y = (!client->entity->pos.y)
@@ -34,7 +36,7 @@ void forward_cmd(server_t *server, client_t *client,
 		break;
 	case LEFT:
 		client->entity->pos.x = (!client->entity->pos.x)
-			? server->map.size.x + 1 : client->entity->pos.x - 1;
+			? server->map.size.x - 1 : client->entity->pos.x - 1;
 		break;
 	}
 	add_player_to_map(&server->map, client->entity);

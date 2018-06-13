@@ -47,7 +47,7 @@ static void check_command(server_t *server, client_t *client, uint i, char *arg)
 		add_to_queue(client, "ko\n");
 		return;
 	}
-	long long int spending_time = COMMAND[i].time_unit / (float) server->freq * 1000;
+	long long int spending_time = UNITTOMS(COMMAND[i].time_unit, server->freq);
 	debug(INFO "wait for %li ms to exec this command\n", spending_time);
 	add_task_to_schedule(client, spending_time, arg, COMMAND[i].function);
 }
@@ -58,6 +58,8 @@ static void command_manager(server_t *server, client_t *client, char *command)
 	char *name = strtok(command, " \t");
 	char *arg = NULL;
 
+	if (!name)
+		return;
 	if (!client->team) {
 		debug(INFO "'%i' Try to join '%s' team\n", client->fd, command);
 		add_to_team(server, client, command);
@@ -74,41 +76,6 @@ static void command_manager(server_t *server, client_t *client, char *command)
 	add_to_queue(client, "ko\n");
 }
 
-static void init_client_data(server_t *server, client_t *client)
-{
-	client->entity = malloc(sizeof(entity_t));
-	client->entity->pos.x = rand() % server->map.size.x;
-	client->entity->pos.y = rand() % server->map.size.y;
-	client->entity->id = ++server->map.max_id;
-	client->entity->type = Client;
-	client->user.level = 1;
-	client->user.vision = 1;
-	memset(client->queue, 0,
-		sizeof(char *) * (LIMIT_TASK_NUMBER + 1));
-	client->queue_index = 0;
-	client->team = NULL;
-	client->user.orientation = (orientation_t)rand() % 4;
-}
-
-void init_client(server_t *server, client_t *client)
-{
-	srand(time(NULL));
-	client->fd = i_socket_accept(server->fd);
-	if (client->fd != SOCKET_ERROR) {
-		init_client_data(server, client);
-		memset(client->user.bag, 0, sizeof(uint) * 7);
-		memset(client->task, 0,
-			sizeof(scheduler_t *) * LIMIT_TASK_NUMBER);
-		debug(INFO "New client on fd %i (pos : %d;%d)\n", client->fd,
-			client->entity->pos.x, client->entity->pos.y);
-		server->client_nb++;
-		add_to_queue(client, strdup("WELCOME\n"));
-		add_player_to_map(&server->map, client->entity);
-		print_map(&server->map);
-	} else
-		debug(ERROR "Accept error\n");
-}
-
 void read_client(server_t *server, client_t *client)
 {
 	char *request = gnl(client->fd, "\n");
@@ -119,46 +86,5 @@ void read_client(server_t *server, client_t *client)
 		debug(INFO "'%i' Client request : %s\n", client->fd, request);
 		command_manager(server, client, request);
 		free(request);
-	}
-}
-
-void add_to_queue(client_t *client, char *msg)
-{
-	if (client->queue_index < LIMIT_TASK_NUMBER)
-		client->queue[client->queue_index++] = strdup(msg);
-	else
-		debug(ERROR "Response queue of client %d is full.\n",
-			client->fd);
-}
-
-static int try_write(const int fd, char *msg)
-{
-	size_t len = strlen(msg);
-	size_t wrote = 0;
-	ssize_t status = 0;
-
-	while (wrote < len) {
-		status = write(fd, msg + wrote, len - wrote);
-		if (status < 1) {
-			debug(ERROR "Failed to wrote response to client %d\n",
-			fd);
-			return 1;
-		}
-		wrote += status;
-	}
-	debug(GINFO "Send to %i => %s", fd, msg);
-	return 0;
-}
-
-void send_responses(client_t *client)
-{
-	while (client->queue_index) {
-		if (try_write(client->fd, *client->queue) != 0)
-			break;
-		for (uint i = 1; client->queue[i]; i++)
-			client->queue[i - 1] = client->queue[i];
-		free(*client->queue);
-		client->queue[client->queue_index - 1] = NULL;
-		--client->queue_index;
 	}
 }

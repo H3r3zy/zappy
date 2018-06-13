@@ -16,6 +16,8 @@
 
 #define STOMS 1000
 
+#define UNITTOMS(unit, freq) (long long int) ((unit) / (float) (freq) * 1000)
+
 void add_task_to_schedule(client_t *client, long long int spending_time, char *command, void (*function)(struct server_s *server, struct client_s *invoker, char *command));
 void scheduler(server_t *server);
 

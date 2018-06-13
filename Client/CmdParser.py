@@ -2,8 +2,7 @@
 # coding: utf-8
 
 import re
-import Client
-import ast
+from Client import Client
 
 
 class CmdParser:

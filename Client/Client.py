@@ -3,7 +3,7 @@
 
 import socket
 import select
-import CmdParser
+from Client import CmdParser
 from collections import deque
 
 

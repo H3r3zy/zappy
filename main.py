@@ -3,7 +3,7 @@
 
 import sys
 from socket import error as sockerror
-from Client import Client, ZappyException
+from Client.Client import Client, ZappyException
 
 
 def usage(code=0):

@@ -12,16 +12,8 @@
 #include <debug.h>
 #include "server.h"
 
-static const char *TYPENAME[] = {
-	"Linemate",
-	"Deraumere",
-	"Sibur",
-	"Mendiane",
-	"Phiras",
-	"Thystame",
-	"Food",
-	NULL
-};
+static const char *TYPENAME[] = {"Linemate", "Deraumere", "Sibur", "Mendiane",
+	"Phiras", "Thystame", "Food", NULL};
 
 static bool is_of_type(entity_t *entity, char *type)
 {
@@ -34,18 +26,15 @@ static bool is_of_type(entity_t *entity, char *type)
 
 void take_cmd(server_t *server, client_t *client, char *arg)
 {
-	entity_t *entities = server->map.map[client->entity->pos.y][client->entity->pos.x];
-
 	debug(INFO "'%i' call Take '%s'\n", client->fd, arg);
-	while (entities) {
-		if (is_of_type(entities, arg)) {
-			client->user.bag[entities->type]++;
-			remove_from_map(&server->map, entities);
-			free(entities);
+	for (int i = 0; TYPENAME[i]; i++) {
+		if (!strcasecmp(TYPENAME[i], arg) && server->map.map[
+		client->entity->pos.y][client->entity->pos.x].items[i]) {
+			UPDATE_RESOURCE(&server->map, client->entity->pos,
+				i, -1);
 			add_to_queue(client, strdup("ok\n"));
 			return;
 		}
-		entities = entities->next;
 	}
 	add_to_queue(client, strdup("ko\n"));
 }

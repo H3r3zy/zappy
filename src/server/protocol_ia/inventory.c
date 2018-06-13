@@ -15,7 +15,7 @@ void inventory_cmd(server_t *server, client_t *client,
 	char response[106] = {0};
 
 	snprintf(response, 106, "[food %d, linemate %d, deraumere %d, sibur "
-			 "%d, mendiane %d, phiras %d, thystame %d]\n",
+			"%d, mendiane %d, phiras %d, thystame %d]\n",
 		client->user.bag[Food], client->user.bag[Linemate],
 		client->user.bag[Deraumere], client->user.bag[Sibur],
 		client->user.bag[Mendiane], client->user.bag[Phiras],

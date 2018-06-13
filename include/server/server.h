@@ -12,6 +12,9 @@
 #include "socket.h"
 
 #define READ_SIZE (16)
+#define LIMIT_TASK_NUMBER (10)
+#define RESOURCE_NB (7)
+#define ENTITY_NB ((RESOURCE_NB) + 1)
 
 typedef enum {
 	Linemate,
@@ -31,8 +34,6 @@ typedef enum orientation_s {
 	LEFT
 } orientation_t;
 
-#define LIMIT_TASK_NUMBER (10)
-
 typedef struct {
 	uint x;
 	uint y;
@@ -49,7 +50,7 @@ typedef struct entity_s {
 typedef struct {
 	uint level;
 	uint vision;
-	uint bag[7];
+	uint bag[RESOURCE_NB];
 	orientation_t orientation;
 } user_t;
 
@@ -84,11 +85,18 @@ struct teams_s {
 	struct teams_s *next;
 };
 
+typedef struct cell_s {
+	uint items[RESOURCE_NB];
+	entity_t *players;
+} cell_t;
+
 typedef struct {
 	pos_t size;
 	ulong max_id;
-	entity_t ***map;
+	cell_t **map;
 } map_t;
+
+#define UPDATE_RESOURCE(m, p, t, n) ((m)->map[(p).x][(p).y].items[(t)] += (n))
 
 struct server_s {
 	socket_t fd;
@@ -100,6 +108,8 @@ struct server_s {
 	client_t *clients;
 	size_t client_nb;
 };
+
+extern char *str_types[ENTITY_NB];
 
 char *gnl(int fd, char *delim);
 
@@ -120,7 +130,16 @@ void add_to_queue(client_t *client, char *msg);
 void send_responses(client_t *client);
 
 void add_to_map(map_t *map, entity_t *entity);
+
+// new map ===================================================
+void init_map(map_t *map);
+void add_player_to_map(map_t *map, entity_t *entity);
+void remove_player_from_map(map_t *map, entity_t *entity);
+// ===========================================================
+
 void remove_from_map(map_t *map, entity_t *entity);
+
+
 int create_entity_at(map_t *map, uint x, uint y, entity_type_t type);
 void generate_map(map_t *map);
 void print_map(map_t *map);

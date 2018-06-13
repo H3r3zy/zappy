@@ -19,6 +19,11 @@ typedef struct {
 	bool argument;
 } command_t;
 
+typedef struct look_opt_s {
+	uint vision;
+	int d;
+} look_opt_t;
+
 void inventory_cmd(server_t *server, client_t *client, char *arg);
 void forward_cmd(server_t *server, client_t *client, char *arg);
 void left_cmd(server_t *server, client_t *client, char *arg);

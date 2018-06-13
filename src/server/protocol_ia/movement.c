@@ -9,10 +9,16 @@
 #include <server.h>
 #include "server.h"
 
+/**
+* Move up one tile
+* @param server
+* @param client
+* @param arg
+*/
 void forward_cmd(server_t *server, client_t *client,
 	__attribute__((unused)) char *arg)
 {
-	remove_from_map(&server->map, client->entity);
+	remove_player_from_map(&server->map, client->entity);
 	switch (client->user.orientation) {
 	case TOP:
 		client->entity->pos.y = (!client->entity->pos.y)
@@ -31,10 +37,16 @@ void forward_cmd(server_t *server, client_t *client,
 			? server->map.size.x + 1 : client->entity->pos.x - 1;
 		break;
 	}
-	add_to_map(&server->map, client->entity);
+	add_player_to_map(&server->map, client->entity);
 	add_to_queue(client, "ok\n");
 }
 
+/**
+* Turn -90° the player (top -> left)
+* @param server
+* @param client
+* @param arg
+*/
 void left_cmd(server_t *server, client_t *client,
 	__attribute__((unused)) char *arg)
 {
@@ -45,6 +57,12 @@ void left_cmd(server_t *server, client_t *client,
 	add_to_queue(client, "ok\n");
 }
 
+/**
+* Turn 90° the player (top -> right)
+* @param server
+* @param client
+* @param arg
+*/
 void right_cmd(server_t *server, client_t *client,
 	__attribute__((unused)) char *arg)
 {
@@ -55,7 +73,6 @@ void right_cmd(server_t *server, client_t *client,
 	add_to_queue(client, "ok\n");
 }
 
-#ifdef DEBUG
 void pos(server_t *server, client_t *client,
 	__attribute__((unused)) char *arg)
 {
@@ -66,4 +83,3 @@ void pos(server_t *server, client_t *client,
 	client->user.orientation);
 	add_to_queue(client, response);
 }
-#endif

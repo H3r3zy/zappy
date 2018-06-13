@@ -10,12 +10,12 @@
 
 typedef struct elevation_s
 {
-        char players;
-        char linemate;
-        char deraumere;
-        char sibur;
-        char mendiane;
-        char phiras;
+	char players;
+	char linemate;
+	char deraumere;
+	char sibur;
+	char mendiane;
+	char phiras;
 	char thystame;
 } elevation_t;
 
@@ -32,8 +32,8 @@ elevation_t elevations[] = {
 	{6, 2, 2, 2, 2, 2, 1}
 };
 if (elevations[player_lvl - 1].players == ... &&
- 	elevations[lvl - 1].linemate == ...)
- 	lvlup();
+	elevations[lvl - 1].linemate == ...)
+	lvlup();
 */
 
 #endif /* ! ELEVATION_H_ */

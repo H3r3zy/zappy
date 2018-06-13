@@ -27,10 +27,12 @@ void set_cmd(server_t *server, client_t *client, char *arg)
 {
 	debug(INFO "'%i' call Set '%s'\n", client->fd, arg);
 	for (uint i = 0; TYPENAME[i]; i++) {
-		if (strcasecmp(TYPENAME[i], arg) == 0 && client->user.bag[i] > 0) {
-			create_entity_at(&server->map, client->entity->pos.x, client->entity->pos.y, (entity_type_t) i);
+		if (!strcasecmp(TYPENAME[i], arg) && client->user.bag[i]) {
+			UPDATE_RESOURCE(&server->map, client->entity->pos,
+				i, 1);
 			client->user.bag[i]--;
 			add_to_queue(client, strdup("ok\n"));
+			return;
 		}
 	}
 	add_to_queue(client, strdup("ko\n"));

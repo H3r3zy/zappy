@@ -15,7 +15,7 @@ WindowInfo::WindowInfo()
 	_clock.restart();
 }
 
-sf::Text &WindowInfo::getFPS()
+sf::Text &WindowInfo::getFPS(sf::View &camera)
 {
 	static int fps = 0;
 	++fps;
@@ -24,5 +24,6 @@ sf::Text &WindowInfo::getFPS()
 		sf::Time frameTime = _clock.restart();
 		fps = 0;
 	}
+	_text.setPosition(camera.getCenter().x - (camera.getSize().x / 2), camera.getCenter().y - (camera.getSize().y / 2));
 	return _text;
 }

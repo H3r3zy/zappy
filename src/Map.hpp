@@ -31,6 +31,7 @@ class Map {
 	/* SFML */
 	sf::RenderWindow _window;
 	sf::Event _event;
+	sf::RectangleShape _playerPos;
 	/* std::pair<Global camera, Minimap camera >*/
 	std::pair<sf::View, sf::View> _camera;
 };

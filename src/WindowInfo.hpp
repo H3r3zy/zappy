@@ -17,7 +17,7 @@ class WindowInfo {
 	WindowInfo();
 	~WindowInfo() = default;
 
-	sf::Text &getFPS();
+	sf::Text &getFPS(sf::View &camera);
 
 	private:
 	sf::Font _font;

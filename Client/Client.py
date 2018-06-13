@@ -20,7 +20,8 @@ class Client:
         self.__inBuff = ""
         self.__outBuff = ""
         self.__inQueue = deque()
-        self.__outQueue = deque()
+        self.__topQueue = deque()
+        self.__outQueue = deque(maxlen=10)
         self.__mapSize = (0, 0)
 
     def connect(self) -> bool:
@@ -49,9 +50,12 @@ class Client:
             raise socket.error('Connection lost')
         self.__outBuff = (self.__outBuff.encode("ascii"))[sent:].decode("ascii")
 
-    def buildcommand(self, cmd: str):
-        self.__outQueue.append(cmd)
-        self.__outBuff += cmd + '\n'
+    def buildcommand(self, cmd: str, arg: str = ""):
+        self.__topQueue.append((cmd, arg))
+        while len(self.__outQueue) != self.__outQueue.maxlen and len(self.__topQueue) > 0:
+            tup = self.__topQueue.popleft()
+            self.__outBuff += tup[0] + (" " if len(tup[1]) > 0 else "") + '\n'
+            self.__outQueue.append(tup[0])
 
     def refresh(self):
         rcons, wcons, _ = select.select([self.__socket], [self.__socket] if len(self.__outBuff) > 0 else [], [], 0)
@@ -91,7 +95,7 @@ class Client:
         while True:
             self.refresh()
             for cmd in ["Look", "Inventory"]:
-                if len(self.__outQueue) < 10:
+                if len(self.__topQueue) < 100 or len(self.__outQueue) != self.__outQueue.maxlen:
                     self.buildcommand(cmd)
             if len(self.__inQueue) > 0:
                 if not parser.parse(self.__inQueue.popleft()):

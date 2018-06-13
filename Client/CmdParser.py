@@ -11,18 +11,18 @@ class CmdParser:
         self.__inv = inv
         self.__queue = queue
         self.__patterns = {
-            'Look': re.compile("\[(( \w+)*(,( \w+)*)* )?\]", re.ASCII),
+            'Look': re.compile("\[( \w+)*(,( \w+)*)* \]", re.ASCII),
             'Inventory': re.compile("\[(( \w+ \d+)(,( \w+ \d+)*)* )?\]", re.ASCII),
             'Connect_nbr': re.compile("%d+", re.ASCII),
             'Incantation': re.compile("(Elevation underway Current level: \d)|(ko)", re.ASCII),
             'Forward': re.compile("ok", re.ASCII),
             'Right': re.compile("ok", re.ASCII),
             'Left': re.compile("ok", re.ASCII),
-            'Broadcast Text': re.compile("ok", re.ASCII),
+            'Broadcast': re.compile("ok", re.ASCII),
             'Fork': re.compile("ok", re.ASCII),
             'Eject': re.compile("(ok)|(ko)", re.ASCII),
-            'Take Object': re.compile("(ok)|(ko)", re.ASCII),
-            'Set Object': re.compile("(ok)|(ko)", re.ASCII)
+            'Take': re.compile("(ok)|(ko)", re.ASCII),
+            'Set': re.compile("(ok)|(ko)", re.ASCII)
         }
 
     def parse(self, cmd: str) -> bool:

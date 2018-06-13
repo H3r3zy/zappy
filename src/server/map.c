@@ -20,7 +20,7 @@
 */
 void init_map(map_t *map)
 {
-	float density = 0.1f;
+	float density = 1.0f;
 	uint elements = (uint)(map->size.x * map->size.y * density);
 	pos_t pos;
 

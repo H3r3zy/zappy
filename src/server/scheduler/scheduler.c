@@ -78,10 +78,23 @@ static void shift_task(client_t *client)
 
 void scheduler(server_t *server)
 {
+	struct timespec spec;
+	long long int now;
+
+	clock_gettime(CLOCK_REALTIME, &spec);
+	now = spec.tv_sec * STOMS + spec.tv_nsec / NTOMS;
 	for (client_t *cl = server->clients; cl; cl = cl->next) {
 		if (check_task(server, cl, cl->task[0])) {
 			cl->task[0] = NULL;
 			shift_task(cl);
+		}
+		if (cl->team && cl->started_time + UNITTOMS(126, server->freq) < now) {
+			cl->started_time = now;
+			if (cl->user.bag[Food] == 0) {
+				die(server, cl);
+				break;
+			}
+			cl->user.bag[Food]--;
 		}
 	}
 }

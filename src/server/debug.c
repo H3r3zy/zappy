@@ -18,11 +18,11 @@ void vdebug(char const *format, va_list ap)
 	#ifdef DEBUG
 	timet = localtime(&t);
 	if (timet && format[0] == '[') {
-		fprintf(stderr, "%02i:%02i:%02i ",
+		fprintf(stdout, "%02i:%02i:%02i ",
 			timet->tm_hour, timet->tm_min, timet->tm_sec);
 	}
-	vfprintf(stderr, format, ap);
-	fflush(stderr);
+	vfprintf(stdout, format, ap);
+	fflush(stdout);
 	#endif
 	(void) format;
 	(void) ap;

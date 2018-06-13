@@ -12,8 +12,16 @@
 #include <debug.h>
 #include "server.h"
 
-static const char *TYPENAME[] = {"Linemate", "Deraumere", "Sibur", "Mendiane",
-	"Phiras", "Thystame", "Food", NULL};
+static const char *TYPENAME[] = {
+	"Linemate",
+	"Deraumere",
+	"Sibur",
+	"Mendiane",
+	"Phiras",
+	"Thystame",
+	"Food",
+	NULL
+};
 
 static bool is_of_type(entity_t *entity, char *type)
 {

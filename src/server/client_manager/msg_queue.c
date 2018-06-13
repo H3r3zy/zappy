@@ -43,9 +43,10 @@ void send_responses(client_t *client)
 	while (client->queue_index) {
 		if (try_write(client->fd, *client->queue) != 0)
 			break;
-		for (uint i = 1; client->queue[i]; i++)
-			client->queue[i - 1] = client->queue[i];
 		free(*client->queue);
+		for (uint i = 1; client->queue[i]; i++) {
+			client->queue[i - 1] = client->queue[i];
+		}
 		client->queue[client->queue_index - 1] = NULL;
 		--client->queue_index;
 	}

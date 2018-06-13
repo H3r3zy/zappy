@@ -8,12 +8,16 @@
 #include <stdlib.h>
 #include <memory.h>
 #include <time.h>
+#include <scheduler.h>
+#include <server.h>
 #include "debug.h"
 #include "server.h"
 
 static void init_client_data(server_t *server, client_t *client)
 {
 	client->entity = malloc(sizeof(entity_t));
+	if (!client->entity)
+		return;
 	client->entity->pos.x = rand() % server->map.size.x;
 	client->entity->pos.y = rand() % server->map.size.y;
 	client->entity->id = ++server->map.max_id;
@@ -29,10 +33,14 @@ static void init_client_data(server_t *server, client_t *client)
 
 void init_client(server_t *server, client_t *client)
 {
+	struct timespec spec;
+
 	srand(time(NULL));
 	client->fd = i_socket_accept(server->fd);
 	if (client->fd != SOCKET_ERROR) {
 		init_client_data(server, client);
+		if (!client->entity)
+			return;
 		memset(client->user.bag, 0, sizeof(uint) * RESOURCE_NB);
 		memset(client->task, 0,
 			sizeof(scheduler_t *) * LIMIT_TASK_NUMBER);
@@ -41,6 +49,10 @@ void init_client(server_t *server, client_t *client)
 		server->client_nb++;
 		add_to_queue(client, strdup("WELCOME\n"));
 		add_player_to_map(&server->map, client->entity);
+		clock_gettime(CLOCK_REALTIME, &spec);
+		client->user.bag[Food] = STARTED_FOOD;
+		debug("%i\n", client->user.bag[Food]);
+		client->started_time = spec.tv_sec * STOMS + spec.tv_nsec / NTOMS;
 		//print_map(&server->map);
 	} else
 		debug(ERROR "Accept error\n");

@@ -9,6 +9,9 @@
 #include <memory.h>
 #include <server.h>
 #include <stdio.h>
+#include <bits/time.h>
+#include <scheduler.h>
+#include <time.h>
 #include "server.h"
 #include "debug.h"
 #include "server.h"
@@ -47,6 +50,7 @@ void create_teams_clients(server_t *server)
 static void add_client_to_team(server_t *server, client_t *client, teams_t *team)
 {
 	char buffer[128] = {0};
+	struct timespec spec;
 
 	for (uint i = 0; i < server->max_clients_per_teams; i++) {
 		if (team->clients[i] == NULL) {
@@ -55,6 +59,8 @@ static void add_client_to_team(server_t *server, client_t *client, teams_t *team
 			client->team = team;
 			sprintf(buffer, "%i\n%i %i\n", team->remaining_place,
 			server->map.size.x, server->map.size.y);
+			clock_gettime(CLOCK_REALTIME, &spec);
+			client->started_time = spec.tv_sec * STOMS + spec.tv_nsec / NTOMS;
 			add_to_queue(client, strdup(buffer));
 			return;
 		}

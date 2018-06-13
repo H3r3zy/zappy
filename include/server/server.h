@@ -15,6 +15,7 @@
 #define LIMIT_TASK_NUMBER (10)
 #define RESOURCE_NB (7)
 #define ENTITY_NB ((RESOURCE_NB) + 1)
+#define STARTED_FOOD (10)
 
 typedef enum {
 	Linemate,
@@ -73,6 +74,7 @@ struct client_s {
 	char *queue[LIMIT_TASK_NUMBER + 1];
 	size_t queue_index;
 	entity_t *entity;
+	long long int started_time;
 	struct client_s *prev;
 	struct client_s *next;
 };
@@ -107,7 +109,6 @@ struct server_s {
 	teams_t *teams;
 	client_t *clients;
 	size_t client_nb;
-	scheduler_t *task[LIMIT_TASK_NUMBER]
 };
 
 extern char *str_types[ENTITY_NB];
@@ -120,6 +121,7 @@ void destroy_server(server_t *serv);
 
 void server_loop(server_t *server);
 void disconnect(server_t *server, client_t *client);
+void die(server_t *server, client_t *client);
 
 void add_teams(server_t *server, char *name);
 void add_to_team(server_t *server, client_t *client, char *name);

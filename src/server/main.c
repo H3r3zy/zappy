@@ -42,6 +42,7 @@ int main(int ac, char **av)
 	};
 	int status = 0;
 
+	signal(SIGPIPE, SIG_IGN);
 	memset(&serv, 0, sizeof(server_t));
 	if (ac < 13) {
 		usage(av[0]);

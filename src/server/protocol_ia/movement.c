@@ -12,6 +12,7 @@
 void forward_cmd(server_t *server, client_t *client,
 	__attribute__((unused)) char *arg)
 {
+	remove_from_map(&server->map, client->entity);
 	switch (client->user.orientation) {
 	case TOP:
 		client->entity->pos.y = (!client->entity->pos.y)
@@ -30,6 +31,7 @@ void forward_cmd(server_t *server, client_t *client,
 			? server->map.size.x + 1 : client->entity->pos.x - 1;
 		break;
 	}
+	add_to_map(&server->map, client->entity);
 	add_to_queue(client, "ok\n");
 }
 

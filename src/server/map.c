@@ -83,8 +83,9 @@ void remove_from_map(map_t *map, entity_t *entity)
 	entity_t **front = &map->map[entity->pos.y][entity->pos.x];
 
 	if (*front == entity) {
-		(*front)->prev = NULL;
 		*front = (*front)->next;
+		if (*front)
+			(*front)->prev = NULL;
 	} else {
 		if ((*front)->prev)
 			(*front)->prev->next = (*front)->next;

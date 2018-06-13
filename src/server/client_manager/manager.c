@@ -23,10 +23,10 @@ static const command_t COMMAND[] = {
 	{name: "Look", function: &look_cmd, verify: NULL, time_unit: 7, argument: false},
 	{name: "Inventory", function: &inventory_cmd, verify: NULL, time_unit: 1, argument: false},
 	{name: "Broadcast", function: NULL, verify: NULL, time_unit: 7, argument: true},
-	{name: "Connect_nbr", function: NULL, verify: NULL, time_unit: 0, argument: false},
+	{name: "Connect_nbr", function: &connect_nbr_cmd, verify: NULL, time_unit: 0, argument: false},
 	{name: "Fork", function: NULL, verify: NULL, time_unit: 42, argument: false},
 	{name: "Eject", function: NULL, verify: NULL, time_unit: 7, argument: false},
-	{name: "Take", function: NULL, verify: NULL, time_unit: 7, argument: true},
+	{name: "Take", function: &take_cmd, verify: NULL, time_unit: 7, argument: true},
 	{name: "Set", function: NULL, verify: NULL, time_unit: 7, argument: true},
 	{name: "Incantation", function: NULL, verify: NULL, time_unit: 300, argument: false},
 #ifdef DEBUG

@@ -44,17 +44,17 @@ void create_teams_clients(server_t *server)
 	}
 }
 
-static void add_client_to_team(client_t *client, teams_t *team, uint max_cl)
+static void add_client_to_team(server_t *server, client_t *client, teams_t *team)
 {
 	char buffer[128] = {0};
 
-	for (uint i = 0; i < max_cl; i++) {
+	for (uint i = 0; i < server->max_clients_per_teams; i++) {
 		if (team->clients[i] == NULL) {
 			team->clients[i] = client;
 			team->remaining_place--;
 			client->team = team;
 			sprintf(buffer, "%i\n%i %i\n", team->remaining_place,
-			client->entity->pos.x, client->entity->pos.y);
+			server->map.size.x, server->map.size.y);
 			add_to_queue(client, strdup(buffer));
 			return;
 		}
@@ -66,7 +66,7 @@ void add_to_team(server_t *server, client_t *client, char *name)
 {
 	for (teams_t *tm = server->teams; tm; tm = tm->next) {
 		if (strcmp(tm->name, name) == 0) {
-			add_client_to_team(client, tm, server->max_clients_per_teams);
+			add_client_to_team(server, client, tm);
 			return;
 		}
 	}

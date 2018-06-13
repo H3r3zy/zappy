@@ -7,3 +7,6 @@
 *.txt
 cmake-build-debug/*
 .idea/fileTemplates/*
+# PYCHARM STUFF #
+__pycache__
+venv

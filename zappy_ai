@@ -3,6 +3,6 @@
 from Ai import Ai
 
 AiModule = Ai
-toto = AiModule.Ai()
+toto = AiModule.Ai(10, 10)
 
-toto.Think()
+toto.think()

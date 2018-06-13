@@ -15,7 +15,21 @@ class PathFinding:
             range = coord - player_coord
         return range, nearest_dir
 
-    def nbOfActions(self, player_coords, x, y):
+    def goToTile(self, player_coords, to):
+        nearest_direction = Ai.Direction.NORTH
+        range = 0
+        if player_coords[0] == to[0] and player_coords[1] != to[1]:  # Je suis en ligne droite Y
+            print("Je vais avancer sur les y")
+            range, nearest_direction = self.dist(player_coords[1], to[1])
+
+        elif player_coords[1] == to[1] and player_coords[1] != to[0]:  # Je suis en ligne droite X
+            range, nearest_direction = self.dist(player_coords[0], to[0])
+            nearest_direction = Ai.Direction.WEST if nearest_direction == Ai.Direction.NORTH else Ai.Direction.EAST
+        print(nearest_direction)
+        print("Range : %d" % range)
+
+
+'''    def nbOfActions(self, player_coords, x, y):
         action_number = 0
         nearest_direction = Ai.Direction.NORTH
         range = 0
@@ -28,3 +42,4 @@ class PathFinding:
         print(nearest_direction)
         print("Range : %d" % range)
         return action_number
+'''

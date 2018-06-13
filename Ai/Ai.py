@@ -33,7 +33,7 @@ class Ai:
         print(self.__inventory)
         toto = PathFinding.PathFinding()
 
-        toto.nbOfActions(self.__coord, 8, 0)
+        toto.goToTile(self.__coord, [8, 0])
 
     def getMap(self):
         return self.__map

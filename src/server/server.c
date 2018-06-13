@@ -31,6 +31,7 @@ int init_server(server_t *serv)
 	}
 	serv->map.max_id = 0;
 	generate_map(&serv->map);
+	print_map(&serv->map);
 	create_teams_clients(serv);
 }
 

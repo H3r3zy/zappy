@@ -24,6 +24,13 @@ typedef enum {
 	Client,
 } entity_type_t;
 
+typedef enum orientation_s {
+	TOP,
+	RIGHT,
+	BOTTOM,
+	LEFT
+} orientation_t;
+
 #define LIMIT_TASK_NUMBER (10)
 
 typedef struct {
@@ -40,11 +47,10 @@ typedef struct entity_s {
 } entity_t;
 
 typedef struct {
-	uint x;
-	uint y;
 	uint level;
 	uint vision;
 	uint bag[7];
+	orientation_t orientation;
 } user_t;
 
 typedef struct client_s client_t;
@@ -113,6 +119,9 @@ void read_client(server_t *server, client_t *client);
 void add_to_queue(client_t *client, char *msg);
 void send_responses(client_t *client);
 
+void add_to_map(map_t *map, entity_t *entity);
+void remove_from_map(map_t *map, entity_t *entity);
 void generate_map(map_t *map);
+void print_map(map_t *map);
 
 #endif //PSU_ZAPPY_2017_SERVER_H

@@ -19,6 +19,14 @@ typedef struct {
 	bool argument;
 } command_t;
 
-void inventory(server_t *server, client_t *client, char *arg);
+void inventory_cmd(server_t *server, client_t *client, char *arg);
+void forward_cmd(server_t *server, client_t *client, char *arg);
+void left_cmd(server_t *server, client_t *client, char *arg);
+void right_cmd(server_t *server, client_t *client, char *arg);
+void look_cmd(server_t *server, client_t *client, char *arg);
+
+#ifdef DEBUG
+void pos(server_t *server, client_t *client, char *arg);
+#endif
 
 #endif //PSU_ZAPPY_2017_COMMAND_H

@@ -23,9 +23,8 @@ class Ai:
         self.__inventory = {"food": 10, "linemate": 0, "deraumere": 0, "sibur": 0, "mendiane": 0, "phiras": 0,
                             "thystame": 0}
         self.__map = [[Tile.Tile() for _ in range(x)] for _ in range(y)]
-        self.__coord = [9, 0]
+        self.__coord = (9, 0)
         self.__dir = Direction.SOUTH
-        print(self.__map)
 
     def think(self):
         for key in self.__inventory:
@@ -38,8 +37,11 @@ class Ai:
     def getMap(self):
         return self.__map
 
-    def getCoord(self):
+    def getCoord(self) -> tuple:
         return self.__coord
 
-    def getInentory(self):
+    def getInventory(self):
         return self.__inventory
+
+    def getDir(self):
+        return self.__dir

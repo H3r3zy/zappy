@@ -21,11 +21,37 @@ Grid::Grid(const sf::Vector2f &mapSize) : _mapSize(mapSize)
 
 Grid::~Grid()
 {
+	// TODO delete map
 }
 
-void Grid::displayGrid(sf::RenderWindow &window)
+void Grid::updateGrid3D(sf::View &view)
 {
-	for (const auto &it : _gameMap) {
-		window.draw(it.second->getCell());
+	sf::Vector2f cameraPos = view.getCenter();
+	std::cout << "Je rentre dans Update gridPos, ma cam est en X: " << cameraPos.x << cameraPos.y << std::endl;
+
+
+}
+
+void Grid::displayGlobalGrid(sf::RenderWindow &window, const sf::View &view)
+{
+	sf::Vector2f chunk;
+
+	chunk.x = (view.getCenter().x / 100) - 20;
+	chunk.y = (view.getCenter().y / 100) - 20;
+	sf::Vector2f to = chunk;
+	to.x += 40;
+	to.y += 40;
+	while (chunk.y < to.y) {
+		if (chunk.x >= 0 && chunk.y >= 0) {
+			if (_gameMap.find(
+				POSITION(static_cast<const uint &>(chunk.x), static_cast<const uint &>(chunk.y))) != _gameMap.end()) {
+				window.draw(_gameMap[POSITION(static_cast<const uint &>(chunk.x), static_cast<const uint &>(chunk.y))]->getCell());
+			}
+		}
+		chunk.x++;
+		if (chunk.x >= to.x) {
+			chunk.x = (view.getCenter().x / 100) - 40;
+			chunk.y++;
+		}
 	}
 }

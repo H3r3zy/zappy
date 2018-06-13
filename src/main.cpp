@@ -37,7 +37,6 @@ int main(int ac, char **av)
 	Map map(std::stoi(av[1]));
 
 	map.gameLoop();
-	printf("cocou");
 /*	sf::Texture texture;
 	texture.loadFromFile("map.jpg");
 	sf::Sprite sprite;

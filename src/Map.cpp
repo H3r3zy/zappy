@@ -5,10 +5,9 @@
 
 #include "Map.hpp"
 
-Map::Map(int mapsize) : _mapSize(mapsize, mapsize), _grid(_mapSize)
+Map::Map(int mapsize) : _mapSize(mapsize, mapsize), _gameWindow(sf::VideoMode(1200, 800), "Oh voyage voyage, plus loiiiiin que la nuit et le jour"), _grid(_mapSize)
 {
-	_window.create(sf::VideoMode(1200, 800), "Oh voyage voyage, plus loiiiiin que la nuit et le jour");
-	//_window.setFramerateLimit(60);
+	//_gameWindow.setFramerateLimit(60);
 	_camera.first.reset(sf::FloatRect(0, 0, 1200, 800));
 	_camera.second.setViewport(sf::FloatRect(0.75f, 0, 0.25f, 0.25f));
 	_playerPos.setPosition(_camera.first.getCenter());
@@ -18,27 +17,26 @@ Map::Map(int mapsize) : _mapSize(mapsize, mapsize), _grid(_mapSize)
 
 void Map::gameLoop()
 {
-	while (_window.isOpen()) {
-
+	while (getEvent()) {
+		std::cout << "window" << std::endl;
 		/* Global Display */
-		_window.setView(_camera.first);
-		_grid.displayGrid(_window);
-		_window.draw(_windowInfo.getFPS(_camera.first));
+		_gameWindow.setView(_camera.first);
+		_grid.displayGlobalGrid(_gameWindow, _camera.first);
+		_gameWindow.draw(_windowInfo.getFPS(_camera.first));
 
 		/* Minimap Display*/
-		_window.setView(_camera.second);
-		_grid.displayGrid(_window);
-		_window.draw(_playerPos);
+		_gameWindow.setView(_camera.second);
+		_grid.displayGlobalGrid(_gameWindow, _camera.first);
+		_gameWindow.draw(_playerPos);
 		/* Display and Reset */
-		_window.display();
-		_window.clear(sf::Color::Black);
+		_gameWindow.display();
+		_gameWindow.clear(sf::Color::Black);
 
 		/* Get Events */
-		getEvent();
+		//getEvent();
 	}
 }
-
-void Map::getEvent()
+bool Map::getEvent()
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
 		_camera.first.move(2, 0);
@@ -56,8 +54,9 @@ void Map::getEvent()
 		_camera.first.move(0, 2);
 		_playerPos.setPosition(_camera.first.getCenter());
 	}
-	else if (_event.type == sf::Event::Closed) {
-		std::cout << "j'ai voulu quitter" << std::endl;
-		_window.close();
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
+		_gameWindow.close();
+		return false;
 	}
+	return true;
 }

@@ -21,7 +21,7 @@ class Map {
 	void gameLoop();
 
 	private:
-	void getEvent();
+	bool getEvent();
 	sf::Vector2f _mapSize;
 
 	/* Member Classes */
@@ -29,11 +29,11 @@ class Map {
 	WindowInfo _windowInfo;
 
 	/* SFML */
-	sf::RenderWindow _window;
 	sf::Event _event;
 	sf::RectangleShape _playerPos;
 	/* std::pair<Global camera, Minimap camera >*/
 	std::pair<sf::View, sf::View> _camera;
+	sf::RenderWindow _gameWindow;
 };
 
 #endif //PSU_ZAPPY_2017_MAP_HPP

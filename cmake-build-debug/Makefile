@@ -123,33 +123,6 @@ PSU_zappy_2017/fast:
 	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/build
 .PHONY : PSU_zappy_2017/fast
 
-src/Cameras.o: src/Cameras.cpp.o
-
-.PHONY : src/Cameras.o
-
-# target to build an object file
-src/Cameras.cpp.o:
-	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Cameras.cpp.o
-.PHONY : src/Cameras.cpp.o
-
-src/Cameras.i: src/Cameras.cpp.i
-
-.PHONY : src/Cameras.i
-
-# target to preprocess a source file
-src/Cameras.cpp.i:
-	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Cameras.cpp.i
-.PHONY : src/Cameras.cpp.i
-
-src/Cameras.s: src/Cameras.cpp.s
-
-.PHONY : src/Cameras.s
-
-# target to generate assembly for a file
-src/Cameras.cpp.s:
-	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Cameras.cpp.s
-.PHONY : src/Cameras.cpp.s
-
 src/Cell.o: src/Cell.cpp.o
 
 .PHONY : src/Cell.o
@@ -231,6 +204,33 @@ src/Map.cpp.s:
 	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Map.cpp.s
 .PHONY : src/Map.cpp.s
 
+src/Window.o: src/Window.cpp.o
+
+.PHONY : src/Window.o
+
+# target to build an object file
+src/Window.cpp.o:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Window.cpp.o
+.PHONY : src/Window.cpp.o
+
+src/Window.i: src/Window.cpp.i
+
+.PHONY : src/Window.i
+
+# target to preprocess a source file
+src/Window.cpp.i:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Window.cpp.i
+.PHONY : src/Window.cpp.i
+
+src/Window.s: src/Window.cpp.s
+
+.PHONY : src/Window.s
+
+# target to generate assembly for a file
+src/Window.cpp.s:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Window.cpp.s
+.PHONY : src/Window.cpp.s
+
 src/WindowInfo.o: src/WindowInfo.cpp.o
 
 .PHONY : src/WindowInfo.o
@@ -294,9 +294,6 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... PSU_zappy_2017"
-	@echo "... src/Cameras.o"
-	@echo "... src/Cameras.i"
-	@echo "... src/Cameras.s"
 	@echo "... src/Cell.o"
 	@echo "... src/Cell.i"
 	@echo "... src/Cell.s"
@@ -306,6 +303,9 @@ help:
 	@echo "... src/Map.o"
 	@echo "... src/Map.i"
 	@echo "... src/Map.s"
+	@echo "... src/Window.o"
+	@echo "... src/Window.i"
+	@echo "... src/Window.s"
 	@echo "... src/WindowInfo.o"
 	@echo "... src/WindowInfo.i"
 	@echo "... src/WindowInfo.s"

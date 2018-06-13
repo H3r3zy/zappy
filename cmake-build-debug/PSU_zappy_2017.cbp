@@ -84,12 +84,6 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/wisenoa/PSU_zappy_2017/src/Cameras.cpp">
-			<Option target="PSU_zappy_2017"/>
-		</Unit>
-		<Unit filename="/home/wisenoa/PSU_zappy_2017/src/Cameras.hpp">
-			<Option target="PSU_zappy_2017"/>
-		</Unit>
 		<Unit filename="/home/wisenoa/PSU_zappy_2017/src/Cell.cpp">
 			<Option target="PSU_zappy_2017"/>
 		</Unit>
@@ -106,6 +100,12 @@
 			<Option target="PSU_zappy_2017"/>
 		</Unit>
 		<Unit filename="/home/wisenoa/PSU_zappy_2017/src/Map.hpp">
+			<Option target="PSU_zappy_2017"/>
+		</Unit>
+		<Unit filename="/home/wisenoa/PSU_zappy_2017/src/Window.cpp">
+			<Option target="PSU_zappy_2017"/>
+		</Unit>
+		<Unit filename="/home/wisenoa/PSU_zappy_2017/src/Window.hpp">
 			<Option target="PSU_zappy_2017"/>
 		</Unit>
 		<Unit filename="/home/wisenoa/PSU_zappy_2017/src/WindowInfo.cpp">

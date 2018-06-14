@@ -8,11 +8,14 @@
 #ifndef CLIENT_MAP_HPP
 # define CLIENT_MAP_HPP
 
+# include <string>
+# include <vector>
+
 namespace irc {
 
 	class Map {
 		public:
-		Map();
+		Map(int socket, std::vector<int> &listId, bool &displayGui, bool &endClient);
 		~Map() = default;
 
 		void loopDisplay();
@@ -20,7 +23,13 @@ namespace irc {
 		protected:
 
 		private:
-		int _socket = 0;
+
+		int _socketServer = 0;
+
+		std::vector<int> &_listId; // List id to check on GUI
+		bool &_displayGui; // Check if the gui is displayed
+		bool &_endClient;
+
 	};
 }
 

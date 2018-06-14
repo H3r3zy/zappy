@@ -150,6 +150,33 @@ Src/Main.cpp.s:
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/Main.cpp.s
 .PHONY : Src/Main.cpp.s
 
+Src/Tools/Thread.o: Src/Tools/Thread.cpp.o
+
+.PHONY : Src/Tools/Thread.o
+
+# target to build an object file
+Src/Tools/Thread.cpp.o:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/Tools/Thread.cpp.o
+.PHONY : Src/Tools/Thread.cpp.o
+
+Src/Tools/Thread.i: Src/Tools/Thread.cpp.i
+
+.PHONY : Src/Tools/Thread.i
+
+# target to preprocess a source file
+Src/Tools/Thread.cpp.i:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/Tools/Thread.cpp.i
+.PHONY : Src/Tools/Thread.cpp.i
+
+Src/Tools/Thread.s: Src/Tools/Thread.cpp.s
+
+.PHONY : Src/Tools/Thread.s
+
+# target to generate assembly for a file
+Src/Tools/Thread.cpp.s:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/Tools/Thread.cpp.s
+.PHONY : Src/Tools/Thread.cpp.s
+
 Src/client/Auth.o: Src/client/Auth.cpp.o
 
 .PHONY : Src/client/Auth.o
@@ -447,6 +474,33 @@ Src/client/Gui/SFML_monitor.cpp.s:
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/Gui/SFML_monitor.cpp.s
 .PHONY : Src/client/Gui/SFML_monitor.cpp.s
 
+Src/client/ManageDisplay.o: Src/client/ManageDisplay.cpp.o
+
+.PHONY : Src/client/ManageDisplay.o
+
+# target to build an object file
+Src/client/ManageDisplay.cpp.o:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/ManageDisplay.cpp.o
+.PHONY : Src/client/ManageDisplay.cpp.o
+
+Src/client/ManageDisplay.i: Src/client/ManageDisplay.cpp.i
+
+.PHONY : Src/client/ManageDisplay.i
+
+# target to preprocess a source file
+Src/client/ManageDisplay.cpp.i:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/ManageDisplay.cpp.i
+.PHONY : Src/client/ManageDisplay.cpp.i
+
+Src/client/ManageDisplay.s: Src/client/ManageDisplay.cpp.s
+
+.PHONY : Src/client/ManageDisplay.s
+
+# target to generate assembly for a file
+Src/client/ManageDisplay.cpp.s:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/ManageDisplay.cpp.s
+.PHONY : Src/client/ManageDisplay.cpp.s
+
 Src/client/ManageServer.o: Src/client/ManageServer.cpp.o
 
 .PHONY : Src/client/ManageServer.o
@@ -513,6 +567,9 @@ help:
 	@echo "... Src/Main.o"
 	@echo "... Src/Main.i"
 	@echo "... Src/Main.s"
+	@echo "... Src/Tools/Thread.o"
+	@echo "... Src/Tools/Thread.i"
+	@echo "... Src/Tools/Thread.s"
 	@echo "... Src/client/Auth.o"
 	@echo "... Src/client/Auth.i"
 	@echo "... Src/client/Auth.s"
@@ -546,6 +603,9 @@ help:
 	@echo "... Src/client/Gui/SFML_monitor.o"
 	@echo "... Src/client/Gui/SFML_monitor.i"
 	@echo "... Src/client/Gui/SFML_monitor.s"
+	@echo "... Src/client/ManageDisplay.o"
+	@echo "... Src/client/ManageDisplay.i"
+	@echo "... Src/client/ManageDisplay.s"
 	@echo "... Src/client/ManageServer.o"
 	@echo "... Src/client/ManageServer.i"
 	@echo "... Src/client/ManageServer.s"

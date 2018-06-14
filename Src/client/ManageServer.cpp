@@ -5,6 +5,7 @@
 ** Created by martin.januario@epitech.eu,
 */
 
+#include <iostream>
 #include "ManageServer.hpp"
 
 std::string irc::ManageServer::readServer(int socket, bool blockRead, bool first)

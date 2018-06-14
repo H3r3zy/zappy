@@ -7,19 +7,30 @@
 #ifndef CLIENT_GUI_HPP
 #define CLIENT_GUI_HPP
 
+# include <vector>
+# include <mutex>
+
 namespace irc {
 
 	class Gui {
 		public:
-		Gui(const pid_t &);
+		Gui(int socket, std::vector<int> &listId, bool &displayGui, bool &endClient);
 		~Gui() = default;
 
+		int initDisplayGui();
 		void loopDisplay();
 
 		protected:
 
 		private:
-		pid_t _pidMap;
+		std::mutex _mutex;
+
+		int _socketServer = 0;
+
+		std::vector<int> &_listId; // List id to check on GUI
+		bool &_displayGui; // Check if the gui is displayed
+		bool &_endClient;
+
 	};
 }
 

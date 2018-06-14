@@ -10,10 +10,9 @@
 #include <ctime>
 #include <chrono>
 #include <regex>
-#include <Class/ManageServer.hpp>
 #include <wait.h>
-#include "Map.hpp"
-#include "Gui.hpp"
+#include "ManageServer.hpp"
+#include "ManageDisplay.hpp"
 #include "Auth.hpp"
 #include "IncludeGui.hpp"
 
@@ -183,46 +182,22 @@ void irc::Auth::tryToConnect(bool error)
 	if (error)
 		modalError("One or more inputs are wrong or missing");
 	else {
-		_socketServer = irc::ManageServer::getFileDescriptorSocket();
-		if (_socketServer < 0) {
+		_socketServerMap = irc::ManageServer::getFileDescriptorSocket();
+		_socketServerGui = irc::ManageServer::getFileDescriptorSocket();
+		if (_socketServerGui < 0 || _socketServerMap < 0) {
 			modalError("Can't create the socket");
 			return;
 		}
-		std::string ret = irc::ManageServer::connectServer(_socketServer, _ip, _port);
-		if (!ret.empty())
+		std::string ret = irc::ManageServer::connectServer(_socketServerMap, _ip, _port);
+		std::string ret2 = irc::ManageServer::connectServer(_socketServerGui, _ip, _port);
+		if (!ret.empty() || !ret2.empty())
 			modalError(ret);
 		else {
+			// TODO: Check with protocol if he return the good answer
 			_base.closeWindow();
-			createMapAndGui();
+			ManageDisplay(_socketServerMap, _socketServerGui);
 		}
 	}
-}
-
-void irc::Auth::createMapAndGui()
-{
-	pid_t pid_map = fork();
-	switch (pid_map) {
-	case -1:
-		std::cout << "Can't fork, map" << std::endl;
-		exit(84);
-	case 0:
-		irc::Map manageMap;
-		manageMap.loopDisplay();
-		exit(0);
-	}
-
-	pid_t pid_gui = fork();
-	switch (pid_gui) {
-	case -1:
-		std::cout << "Can't fork, gui" << std::endl;
-		waitpid(-1, nullptr, 0);
-		exit(84);
-	case 0:
-		irc::Gui manageGui(pid_map);
-		manageGui.loopDisplay();
-		exit(0);
-	}
-	waitpid(-1, nullptr, 0);
 }
 
 void irc::Auth::GoToTheNextInput(irc::IObjectSFML *from, irc::IObjectSFML *to, int step)

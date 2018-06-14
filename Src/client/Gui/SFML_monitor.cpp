@@ -51,7 +51,7 @@ void irc::SFML_monitor::manageEvent(sf::Event &event)
 				break;
 		}
 	}
-	if (event.type == sf::Event::Closed || sf::Keyboard::isKeyPressed(sf::Keyboard::Escape) || ret)
+	if (event.type == sf::Event::Closed || ret)
 		closeWindow();
 }
 

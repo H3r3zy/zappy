@@ -75,11 +75,13 @@ bool Map::getEvent()
 		while (sf::Keyboard::isKeyPressed(sf::Keyboard::Z));
 			std::cout << " jai appuyé sur Z"<< std::endl;
 			_camera[MAP].zoom(0.8f);
+		_windowInfo->updateZoom(0.8);
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
 		while (sf::Keyboard::isKeyPressed(sf::Keyboard::A));
 		std::cout << " jai appuyé sur Z"<< std::endl;
 		_camera[MAP].zoom(1.2f);
+		_windowInfo->updateZoom(1.2);
 	}
 
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {

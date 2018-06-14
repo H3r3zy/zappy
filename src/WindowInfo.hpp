@@ -13,19 +13,25 @@
 #include <SFML/Graphics/Text.hpp>
 
 class WindowInfo {
+	enum {
+		FPS,
+		ENTITY,
+		ZOOM
+	};
 	public:
 	WindowInfo();
 	~WindowInfo() = default;
 
 	void updateInfo(uint nbEntity, sf::View &camera);
+	void updateZoom(float zoom);
 	void drawInfo(sf::RenderWindow &window);
 	sf::Text &getFPS();
 
 	private:
 	sf::Font _font;
-	sf::Text _text;
-	sf::Text _textEntity;
+	std::vector<sf::Text> _text;
 	sf::Clock _clock;
+	float _zoom;
 };
 
 #endif //PSU_ZAPPY_2017_WINDOWINFO_HPP

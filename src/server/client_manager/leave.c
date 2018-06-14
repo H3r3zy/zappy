@@ -43,9 +43,10 @@ void disconnect(server_t *server, client_t *client)
 		if (client->next)
 			client->next->prev = client->prev;
 	}
-	if (server->teams)
+	if (server->teams && client->team) {
 		disconnect_of_teams(server, client);
-	remove_player_from_map(&server->map, client->entity);
+		remove_player_from_map(&server->map, client->entity);
+	}
 	close(client->fd);
 	free(client->entity);
 	free(client);

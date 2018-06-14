@@ -82,11 +82,11 @@ static void add_client_to_team(server_t *server, client_t *client,
 			add_player_to_map(&server->map, client->entity);
 			sprintf(buffer, "%i\n%i %i\n", team->remaining_place,
 				server->map.size.x, server->map.size.y);
-			add_to_queue(client, strdup(buffer));
+			add_to_queue(client, buffer);
 			return;
 		}
 	}
-	add_to_queue(client, strdup("ko\n"));
+	add_to_queue(client, "ko\n");
 }
 
 void add_to_team(server_t *server, client_t *client, char *name)
@@ -97,5 +97,5 @@ void add_to_team(server_t *server, client_t *client, char *name)
 			return;
 		}
 	}
-	add_to_queue(client, strdup("ko\n"));
+	add_to_queue(client, "ko\n");
 }

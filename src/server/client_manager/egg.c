@@ -9,10 +9,10 @@
 #include "server.h"
 
 /**
- * Get the egg of the client (client)
- * @param client
- * @return
- */
+* Get the egg of the client (client)
+* @param client
+* @return
+*/
 egg_t *get_egg_of(client_t *client)
 {
 	for (egg_t *egg = client->team->eggs; egg; egg = egg->next) {
@@ -24,9 +24,9 @@ egg_t *get_egg_of(client_t *client)
 }
 
 /**
- * remove the egg in argument and free him
- * @param egg
- */
+* remove the egg in argument and free him
+* @param egg
+*/
 void remove_egg(egg_t *egg)
 {
 	if (egg->prev)

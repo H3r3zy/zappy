@@ -11,10 +11,10 @@
 #include "debug.h"
 
 /**
- * Fill data in client
- * @param server
- * @param client
- */
+* Fill data in client
+* @param server
+* @param client
+*/
 static void init_client_data(server_t *server, client_t *client)
 {
 	client->entity->pos.x = 0;
@@ -32,10 +32,10 @@ static void init_client_data(server_t *server, client_t *client)
 }
 
 /**
- * Malloc and memset all resources used in a client
- * @param client
- * @return
- */
+* Malloc and memset all resources used in a client
+* @param client
+* @return
+*/
 static bool malloc_client_data(client_t *client)
 {
 	client->entity = malloc(sizeof(entity_t));
@@ -51,10 +51,10 @@ static bool malloc_client_data(client_t *client)
 }
 
 /**
- * Accept a client in the server, initialise it and add it in the map
- * @param server
- * @param client
- */
+* Accept a client in the server, initialise it and add it in the map
+* @param server
+* @param client
+*/
 void init_client(server_t *server, client_t *client)
 {
 	client->fd = i_socket_accept(server->fd);
@@ -67,15 +67,16 @@ void init_client(server_t *server, client_t *client)
 		return;
 	init_client_data(server, client);
 	server->client_nb++;
-	add_to_queue(client, strdup("WELCOME\n"));
-	debug(INFO "New client on fd %i (pos : %d;%d)\n", client->fd,
+	add_to_queue(client, "WELCOME\n");
+	debug(INFO "New client on fd %i : id %d (pos : %d;%d)\n", client->fd,
+		client->entity->id,
 		client->entity->pos.x, client->entity->pos.y);
 }
 
 /**
- * Handle a connexion (create new client_t)
- * @param server
- */
+* Handle a connexion (create new client_t)
+* @param server
+*/
 void handle_new_client(server_t *server)
 {
 	client_t *new = malloc(sizeof(client_t));

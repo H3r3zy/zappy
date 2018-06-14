@@ -17,11 +17,14 @@ class WindowInfo {
 	WindowInfo();
 	~WindowInfo() = default;
 
-	sf::Text &getFPS(sf::View &camera);
+	void updateInfo(uint nbEntity, sf::View &camera);
+	void drawInfo(sf::RenderWindow &window);
+	sf::Text &getFPS();
 
 	private:
 	sf::Font _font;
 	sf::Text _text;
+	sf::Text _textEntity;
 	sf::Clock _clock;
 };
 

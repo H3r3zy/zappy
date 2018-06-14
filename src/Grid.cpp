@@ -5,7 +5,7 @@
 
 #include "Grid.hpp"
 
-Grid::Grid(const sf::Vector2f &mapSize) : _mapSize(mapSize)
+Grid::Grid(const sf::Vector2f &mapSize) : _mapSize(mapSize), _nbActive(0)
 {
 	std::pair<sf::Vector2f, sf::Vector2f> dimension;
 	dimension.second.x = 100;
@@ -32,16 +32,16 @@ void Grid::updateGrid3D(sf::View &view)
 {
 	_activeMap.clear();
 	sf::Vector2f chunk;
-	chunk.x = (view.getCenter().x) / 100 - 7 >= 0? (view.getCenter().x) / 100 - 7 : 0;
-	chunk.y = ((view.getCenter().y * -1) / 100) - 10 > 0 ? (view.getCenter().y * -1) / 100 - 10 : 0;
+	chunk.x = (view.getCenter().x) / 100 - 7 >= 0? (view.getCenter().x) / 100 - 7 : -1;
+	chunk.y = ((view.getCenter().y * -1) / 100) - 10 > 0 ? (view.getCenter().y * -1) / 100 - 10 : -1;
 /*	std::cout << "Je suis en [" << view.getCenter().x << "][" << view.getCenter().y << "]" << std::endl;
 	std::cout << "Mon chunk est en [" << chunk.x << "][" << chunk.y << "]" << std::endl;
 	std::cout << "L calcul que je fais X:" << (view.getCenter().x) / 100 - 10 << std::endl;
 	std::cout << "L calcul que je fais Y:" << (view.getCenter().y * - 1) / 100 - 10 << std::endl;*/
+	// TODO dont push entities when left or e dessous
 	sf::Vector2f to = chunk;
 	to.x += 17;
 	to.y += 17;
-	std::cout << chunk.y << std::endl;
 	while (chunk.y < to.y) {
 		if (chunk.x >= 0 && chunk.y >= 0) {
 			if (_gameMap.find(POSITION(static_cast<const uint &>(chunk.x), static_cast<const uint &>(chunk.y))) != _gameMap.end()) {
@@ -60,26 +60,17 @@ void Grid::updateGrid3D(sf::View &view)
 
 void Grid::displayGlobalGrid(sf::RenderWindow &window, const sf::View &view)
 {
-	int i = 0;
-	float tmpX = 0;
-	float tmpY = 0;
-
-	float tmpXX = 0;
-	float tmpYY = 0;
-
-
+	_nbActive = 0;
 	for (const auto &it : _activeMap) {
 		window.draw(it->drawCell());
 		_text.setPosition(it->getPos());
 		_text.setString(it->getStringPos());
 		window.draw(_text);
-		i++;
+		++_nbActive;
 	}
-	std::cout << "X " << tmpXX << " " << tmpX << " Y " << tmpYY << " " << tmpY << std::endl;
-	std::cout << "jai affiché :" << i << "elements" << std::endl;
 }
 
-sf::Text &Grid::getcaca()
+uint Grid::getNbActive() const
 {
-	return _text;
+	return _nbActive;
 }

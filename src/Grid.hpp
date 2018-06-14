@@ -22,7 +22,7 @@ class Grid {
 	Grid(const sf::Vector2f &mapSize);
 	void displayGlobalGrid(sf::RenderWindow &window, const sf::View &view);
 	void updateGrid3D(sf::View &view);
-	sf::Text &getcaca();
+	uint getNbActive() const;
 	~Grid();
 
 	private:
@@ -30,6 +30,7 @@ class Grid {
 	std::vector<Cell *> _activeMap;
 	sf::Font _font;
 	sf::Text _text;
+	uint _nbActive;
 	std::map<std::pair<uint, uint>, Cell *> _gameMap;
 };
 

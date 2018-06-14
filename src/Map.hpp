@@ -14,6 +14,12 @@
 #include "WindowInfo.hpp"
 
 class Map {
+	enum {
+		MAP,
+		MINIMAP,
+		HUD
+	};
+
 	public:
 	Map(int mapSize);
 	~Map() = default;
@@ -28,7 +34,7 @@ class Map {
 	sf::Event _event;
 	sf::RectangleShape _playerPos;
 	/* std::pair<Global camera, Minimap camera > */
-	std::pair<sf::View, sf::View> _camera;
+	std::vector<sf::View> _camera;
 	sf::RenderWindow _gameWindow;
 
 	/* Member Classes */

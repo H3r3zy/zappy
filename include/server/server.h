@@ -109,6 +109,7 @@ struct server_s {
 	teams_t *teams;
 	client_t *clients;
 	size_t client_nb;
+	scheduler_t *task[LIMIT_TASK_NUMBER];
 };
 
 extern char *str_types[ENTITY_NB];

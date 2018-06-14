@@ -24,6 +24,13 @@ typedef struct look_opt_s {
 	int d;
 } look_opt_t;
 
+typedef struct look_type_s {
+	char *name;
+	size_t len;
+} look_type_t;
+
+extern look_type_t ENTITY_NAMES[ENTITY_NB];
+
 void inventory_cmd(server_t *server, client_t *client, char *arg);
 void forward_cmd(server_t *server, client_t *client, char *arg);
 void left_cmd(server_t *server, client_t *client, char *arg);

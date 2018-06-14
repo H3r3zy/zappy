@@ -78,21 +78,21 @@ int print_da_letter(uint *items, entity_t *entities)
 {
 	int ok = 1;
 	if (items[Linemate])
-		printf("L");
+		fprintf(stderr, "L");
 	else if (items[Deraumere])
-		printf("D");
+		fprintf(stderr, "D");
 	else if (items[Sibur])
-		printf("S");
+		fprintf(stderr, "S");
 	else if (items[Mendiane])
-		printf("M");
+		fprintf(stderr, "M");
 	else if (items[Phiras])
-		printf("P");
+		fprintf(stderr, "P");
 	else if (items[Thystame])
-		printf("T");
+		fprintf(stderr, "T");
 	else if (items[Food])
-		printf("F");
+		fprintf(stderr, "F");
 	else if (entities)
-		printf("0");
+		fprintf(stderr, "0");
 	else
 		ok = 0;
 	return ok;
@@ -104,15 +104,15 @@ void print_map(map_t *map)
 	for (size_t y = 0; y < map->size.y; y++) {
 		if (y || y < map->size.y - 1) {
 			for (size_t x = 0; x < map->size.x; x++)
-				printf("--");
-			printf("\n");
+				fprintf(stderr, "--");
+			fprintf(stderr, "\n");
 		}
 		for (size_t x = 0; x < map->size.x; x++) {
 			if (x || x < map->size.x - 1)
-				printf("|");
+				fprintf(stderr, "|");
 			if (!print_da_letter(map->map[y][x].items, map->map[y][x].players))
-				printf(" ");
+				fprintf(stderr, " ");
 		}
-		printf("\n");
+		fprintf(stderr, "\n");
 	}
 }

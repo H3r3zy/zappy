@@ -9,11 +9,12 @@ from Enum.Direction import *
 
 
 class CmdParser:
-    def __init__(self, player: Ai, queue: deque):
+    def __init__(self, player: Ai, queue: deque, msgQueue: deque):
         self.__player = player
         self.__map = player.getMap()
         self.__inv = player.getInventory()
         self.__queue = queue
+        self.__msgQueue = msgQueue
         self.__patterns = {
             'Look': re.compile("\[( \w+)*(,( \w+)*)* \]", re.ASCII),
             'Inventory': re.compile("\[(( \w+ \d+)(,( \w+ \d+)*)* )?\]", re.ASCII),
@@ -33,6 +34,10 @@ class CmdParser:
             Direction.NORTH: CmdParser.viewNorth,
             Direction.EAST: CmdParser.viewEast,
             Direction.WEST: CmdParser.viewWest,
+        }
+        self.__actions = {
+            'Look': self.parse_map,
+            'Inventory': self.parse_inv
         }
 
     @staticmethod
@@ -97,11 +102,15 @@ class CmdParser:
             last = self.__queue.popleft()
             match = self.__patterns[last].match(cmd)
             try:
-                if last == "Look":
-                    self.parse_map(match.group(0))
-                elif last == "Inventory":
-                    self.parse_inv(match.group(0))
+                if last in self.__actions.keys():
+                    self.__actions[last](match.group(0))
+                else:
+                    match = re.match("message \d, (.+)", cmd)
+                    if match:
+                        self.__msgQueue.append(match.group(1))
             except AttributeError:
+                if cmd == "ko":
+                    self.__player.egg = True
                 print("Could not link '" + cmd + "' to '" + last + "'")
         else:
             raise Client.ZappyException('Unexpected response ' + cmd)

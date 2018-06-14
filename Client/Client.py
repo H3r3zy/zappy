@@ -27,6 +27,7 @@ class Client:
         self.__mapSize = (0, 0)
         self.wait = 0
         self.__currentNode = 0
+        self.__msgQueue = deque()
         self.__nodes = [
             ActionNode(0, look),
             ActionNode(1, node_action0),
@@ -116,15 +117,16 @@ class Client:
 
     def run(self):
         self.auth()
+        ordinal = lambda n: "%d%s" % (n, "tsnrhtdd"[(n / 10 % 10 != 1) * (n % 10 < 4) * n % 10::4])
         print("Authentication successful, map size of %d x %d" % (self.__mapSize[0], self.__mapSize[1]))
         player = Ai(self.__mapSize[0], self.__mapSize[1])
-        parser = CmdParser.CmdParser(player, self.__outQueue)
+        parser = CmdParser.CmdParser(player, self.__outQueue, self.__msgQueue)
         while True:
             self.refresh()
             self.refresh_queue()
             if len(self.__inQueue) > 0:
                 if not parser.parse(self.__inQueue.popleft()):
-                    print("I died")
+                    print("I died being at the %s level" % ordinal(player.getLevel()))
                     return
             self.__currentNode = self.__nodes[self.__currentNode].action(self,
                                                                                       self.__args[self.__currentNode])

@@ -20,6 +20,7 @@ class Ai:
         self.__dir = Direction.SOUTH
         self.__pathFind = PathFinding.PathFinding(x, y)
         self.__level = 1
+        self.egg = False
 
     def think(self):
         self.__pathFind.goToTile(self.__coord, (3, 0), self.__dir)

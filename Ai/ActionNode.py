@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-from Client.Client import *
+from Client import Client
 
 
 def look(client: Client, args):

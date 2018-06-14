@@ -8,6 +8,7 @@ from collections import deque
 from Ai.ActionNode import *
 from Ai.Ai import *
 
+
 class ZappyException(Exception):
     pass
 

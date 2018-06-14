@@ -25,6 +25,8 @@ void init_map(map_t *map)
 	pos_t pos;
 
 	map->map = malloc(sizeof(cell_t *) * map->size.y);
+	if (!map->map)
+		return;
 	for (size_t y = 0; y < map->size.y; y++)
 		map->map[y] = calloc(map->size.x, sizeof(cell_t));
 	map->max_id = 0;

@@ -10,6 +10,13 @@
 #include <stdio.h>
 #include "debug.h"
 
+/**
+ * Debug function who can take va_list in arg
+ * Print what is send only if DEBUG is define
+ * If the first character of the format string, this function print the hour
+ * @param format
+ * @param ap
+ */
 void vdebug(char const *format, va_list ap)
 {
 	struct tm *timet;
@@ -28,6 +35,12 @@ void vdebug(char const *format, va_list ap)
 	(void) ap;
 }
 
+/**
+ * Call vdebug only if status is verified
+ * @param status
+ * @param format
+ * @param ap
+ */
 void vdebug_if(bool status, char const *format, va_list ap)
 {
 	if (status) {
@@ -35,6 +48,12 @@ void vdebug_if(bool status, char const *format, va_list ap)
 	}
 }
 
+/**
+ * Standard debug function
+ * create a va_list and send it to vdebug
+ * @param format
+ * @param ...
+ */
 void debug(char *format, ...)
 {
 	va_list ap;
@@ -44,6 +63,12 @@ void debug(char *format, ...)
 	va_end(ap);
 }
 
+/**
+ * Create a va_list and send_it to vdebug_if
+ * @param status
+ * @param format
+ * @param ...
+ */
 void debug_if(bool status, char *format, ...)
 {
 	va_list ap;

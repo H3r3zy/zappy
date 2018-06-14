@@ -115,7 +115,6 @@ extern char *str_types[ENTITY_NB];
 
 char *gnl(int fd, char *delim);
 
-int init_server(server_t *serv);
 int server(server_t *serv);
 void destroy_server(server_t *serv);
 
@@ -127,7 +126,7 @@ void add_teams(server_t *server, char *name);
 void add_to_team(server_t *server, client_t *client, char *name);
 void create_teams_clients(server_t *server);
 
-void init_client(server_t *server, client_t *client);
+void handle_new_client(server_t *server);
 void read_client(server_t *server, client_t *client);
 void add_to_queue(client_t *client, char *msg);
 void send_responses(client_t *client);

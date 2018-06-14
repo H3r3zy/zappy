@@ -23,15 +23,6 @@ static const char *TYPENAME[] = {
 	NULL
 };
 
-static bool is_of_type(entity_t *entity, char *type)
-{
-	if (entity->type == Client)
-		return false;
-	if (strcasecmp(TYPENAME[entity->type], type) == 0)
-		return true;
-	return false;
-}
-
 void take_cmd(server_t *server, client_t *client, char *arg)
 {
 	debug(INFO "'%i' call Take '%s'\n", client->fd, arg);
@@ -40,6 +31,7 @@ void take_cmd(server_t *server, client_t *client, char *arg)
 		client->entity->pos.y][client->entity->pos.x].items[i]) {
 			UPDATE_RESOURCE(&server->map, client->entity->pos,
 				i, -1);
+			client->user.bag[i]++;
 			add_to_queue(client, strdup("ok\n"));
 			return;
 		}

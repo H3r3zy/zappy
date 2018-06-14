@@ -21,6 +21,8 @@
 #define CYAN "\033[36m"
 #define GREY "\033[37m"
 
+#define CLR(color, str) color str RESET
+
 #define ERROR 	  "[" RED    "ERROR"   RESET "] "
 #define WARNING   "[" YELLOW "WARNING" RESET "] "
 #define INFO      "[" CYAN   "Info"    RESET "] "

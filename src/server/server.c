@@ -15,9 +15,11 @@
 #include "server.h"
 #include "scheduler.h"
 
-int init_server(server_t *serv)
+static int init_server(server_t *serv)
 {
 	init_map(&serv->map);
+	if (!serv->map.map)
+		return 1;
 	create_teams_clients(serv);
 	return 0;
 }

@@ -10,6 +10,7 @@
 #include <signal.h>
 #include <string.h>
 #include <debug.h>
+#include <time.h>
 #include "parser.h"
 #include "server.h"
 #include "parsing.h"
@@ -43,6 +44,7 @@ int main(int ac, char **av)
 	int status = 0;
 
 	signal(SIGPIPE, SIG_IGN);
+	srand((uint) time(NULL) * getpid());
 	memset(&serv, 0, sizeof(server_t));
 	if (ac < 13) {
 		usage(av[0]);

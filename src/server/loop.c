@@ -12,24 +12,6 @@
 #include "server.h"
 #include "debug.h"
 
-static void handle_new_client(server_t *server)
-{
-	client_t *new = malloc(sizeof(client_t));
-
-	if (!new) {
-		debug(ERROR "can't create user (malloc failed)\n");
-		return;
-	}
-	new->prev = NULL;
-	if (server->clients) {
-		new->next = server->clients;
-		new->next->prev = new;
-	} else
-		new->next = NULL;
-	server->clients = new;
-	init_client(server, new);
-}
-
 struct pollfd *build_poll_fds(server_t *server)
 {
 	static struct pollfd *fds = NULL;

@@ -6,52 +6,26 @@
 */
 
 #include <stdlib.h>
-#include <server.h>
 #include <time.h>
-#include <string.h>
 #include <stdbool.h>
-#include <sys/time.h>
-#include <debug.h>
 #include "server.h"
+#include "debug.h"
 #include "scheduler.h"
 
-static void add_task_in_client(scheduler_t **client_task, char *command, long long int spending_time, void (*function)(struct server_s *server, struct client_s *invoker, char *command))
+/**
+ * Check if a client as a task and if the time is done execute this task
+ * @param server
+ * @param client
+ * @param task
+ * @return
+ */
+static bool check_task(server_t *server, client_t *client, task_t *task,
+	ms_t now
+)
 {
-	scheduler_t *task = malloc(sizeof(scheduler_t));
-	struct timespec spec;
-
-	if (!task) {
-		return;
-	}
-	clock_gettime(CLOCK_REALTIME, &spec);
-	task->spending_time = spending_time;
-	task->started_time = spec.tv_sec * STOMS + spec.tv_nsec / NTOMS;
-	task->command = command ? strdup(command) : NULL;
-	task->function = function;
-	*client_task = task;
-}
-
-void add_task_to_schedule(client_t *client, long long int spending_time, char *command, void (*function)(struct server_s *server, struct client_s *invoker, char *command))
-{
-	for (uint i = 0; i < LIMIT_TASK_NUMBER; i++) {
-		if (client->task[i] == NULL) {
-			add_task_in_client(&(client->task[i]), command, spending_time, function);
-			break;
-		}
-	}
-}
-
-static bool check_task(server_t *server, client_t *client, scheduler_t *task)
-{
-	long long int now_ms = 0;
-	struct timespec spec;
-
-	if (!task) {
+	if (!task)
 		return false;
-	}
-	clock_gettime(CLOCK_REALTIME, &spec);
-	now_ms = spec.tv_sec * STOMS + spec.tv_nsec / NTOMS;
-	if (task->spending_time <= now_ms - task->started_time) {
+	if (task->spending_time <= now - task->started_time) {
 		debug("Execute command of %i\n", client->fd);
 		if (task->function)
 			task->function(server, client, task->command);
@@ -60,41 +34,62 @@ static bool check_task(server_t *server, client_t *client, scheduler_t *task)
 		return true;
 	}
 	return false;
-
 }
 
-static void shift_task(client_t *client)
+/**
+ * Shift task (task[1] become task[0])
+ * And timer to the new first task start
+ * @param client
+ */
+static void shift_task(client_t *client, ms_t now)
 {
-	struct timespec spec;
-
-	clock_gettime(CLOCK_REALTIME, &spec);
 	for (uint i = 0; i < LIMIT_TASK_NUMBER - 1; i++) {
 		client->task[i] = client->task[i + 1];
 	}
 	if (client->task[0])
-		client->task[0]->started_time = spec.tv_sec * STOMS + spec.tv_nsec / NTOMS;
+		client->task[0]->started_time = now;
 	client->task[LIMIT_TASK_NUMBER - 1] = NULL;
 }
 
+/**
+ * Execute first task for a given client when the time is done
+ * @param server
+ * @param client
+ * @param now
+ */
+static void client_scheduler(server_t *server, client_t *client, ms_t now)
+{
+	if (check_task(server, client, client->task[0], now)) {
+		client->task[0] = NULL;
+		shift_task(client, now);
+	}
+	if (client->team &&
+		client->started_time + UNITTOMS(126, server->freq) < now) {
+		client->started_time = now;
+		if (client->user.bag[Food] == 0) {
+			die(server, client);
+			return;
+		}
+		client->user.bag[Food]--;
+	}
+}
+
+/**
+ * For each client in the server, call the client_scheduler
+ * @param server
+ */
 void scheduler(server_t *server)
 {
 	struct timespec spec;
-	long long int now;
+	client_t *client = server->clients;
+	client_t *tmp;
+	ms_t now;
 
 	clock_gettime(CLOCK_REALTIME, &spec);
 	now = spec.tv_sec * STOMS + spec.tv_nsec / NTOMS;
-	for (client_t *cl = server->clients; cl; cl = cl->next) {
-		if (check_task(server, cl, cl->task[0])) {
-			cl->task[0] = NULL;
-			shift_task(cl);
-		}
-		if (cl->team && cl->started_time + UNITTOMS(126, server->freq) < now) {
-			cl->started_time = now;
-			if (cl->user.bag[Food] == 0) {
-				die(server, cl);
-				break;
-			}
-			cl->user.bag[Food]--;
-		}
+	while (client) {
+		tmp = client->next;
+		client_scheduler(server, client, now);
+		client = tmp;
 	}
 }

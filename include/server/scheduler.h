@@ -18,7 +18,10 @@
 
 #define UNITTOMS(unit, freq) (long long int) ((unit) / (float) (freq) * 1000)
 
-void add_task_to_schedule(client_t *client, long long int spending_time, char *command, void (*function)(struct server_s *server, struct client_s *invoker, char *command));
+typedef long long int ms_t;
+typedef void (*task_function_t)(server_t *server, client_t *invoker, char *command);
+
+void add_task_to_schedule(client_t *client, long long int spending_time, char *command, task_function_t function);
 void scheduler(server_t *server);
 
 #endif //PSU_ZAPPY_2017_SCHEDULER_H

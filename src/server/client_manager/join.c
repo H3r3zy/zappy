@@ -43,7 +43,7 @@ void init_client(server_t *server, client_t *client)
 			return;
 		memset(client->user.bag, 0, sizeof(uint) * RESOURCE_NB);
 		memset(client->task, 0,
-			sizeof(scheduler_t *) * LIMIT_TASK_NUMBER);
+			sizeof(task_t *) * LIMIT_TASK_NUMBER);
 		debug(INFO "New client on fd %i (pos : %d;%d)\n", client->fd,
 			client->entity->pos.x, client->entity->pos.y);
 		server->client_nb++;

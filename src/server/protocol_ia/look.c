@@ -53,8 +53,30 @@ static char *add_objects(char *response, cell_t *cell)
 	return response;
 }
 
-static void look_horizontal(map_t *map, uint vision, pos_t pos, int dx)
+static char *look_horizontal(map_t *map, pos_t pos, look_opt_t opt, uint currv)
 {
+	char *response = strdup("");
+	pos_t start = (pos_t){pos.x, pos.y};
+
+	start.x = (opt.d < 0 && !pos.x) ? map->size.x - 1 : pos.x + opt.d;
+	start.y = (opt.d > 0 && !pos.y) ? map->size.y - 1 : pos.y - opt.d;
+	pos = start;
+	for (int i = 0; i < currv * 2 + 1; i++) {
+		debug(INFO "test on %d;%d\n", pos.x, pos.y);
+		if (pos.y > map->size.y - 1)
+			pos.y = 0;
+		response = add_objects(response, &map->map[pos.y][pos.x]);
+		if (i < currv * 2) {
+			response = concat(response, ",");
+		}
+		pos.y += opt.d;
+	}
+	if (currv < opt.vision) {
+		return concat(response,
+			look_horizontal(map, start, opt, currv + 1));
+	}
+	return response;
+
 }
 
 /**
@@ -74,6 +96,8 @@ static char *look_vertical(map_t *map, pos_t pos, look_opt_t opt, uint currv)
 	start.y = (opt.d < 0 && !pos.y) ? map->size.y - 1 : pos.y + opt.d;
 	pos = start;
 	for (int i = 0; i < currv * 2 + 1; i++) {
+		if (pos.x > map->size.x - 1)
+			pos.x = 0;
 		response = add_objects(response, &map->map[pos.y][pos.x]);
 		if (i < currv * 2) {
 			response = concat(response, ",");
@@ -98,7 +122,7 @@ void look_cmd(server_t *server, client_t *client,
 {
 	char *response = strdup("[");
 	int dx = (client->user.orientation % 2 != 0) ?
-		- (client->user.orientation - 2) : 0;
+		-(client->user.orientation - 2) : 0;
 	int dy = (client->user.orientation % 2 == 0) ?
 		client->user.orientation - 1 : 0;
 	look_opt_t opt = {client->user.vision, 0};
@@ -108,8 +132,8 @@ void look_cmd(server_t *server, client_t *client,
 	response = concat(response, ",");
 	if (dx) {
 		opt.d = dx;
-		look_horizontal(&server->map, client->user.vision,
-			client->entity->pos, dx);
+		response = concat(response, look_horizontal(&server->map,
+			client->entity->pos, opt, 1));
 	} else if (dy) {
 		opt.d = dy;
 		response = concat(response, look_vertical(&server->map,

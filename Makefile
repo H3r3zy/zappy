@@ -474,6 +474,33 @@ Src/client/Gui/SFML_monitor.cpp.s:
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/Gui/SFML_monitor.cpp.s
 .PHONY : Src/client/Gui/SFML_monitor.cpp.s
 
+Src/client/GuiTexture.o: Src/client/GuiTexture.cpp.o
+
+.PHONY : Src/client/GuiTexture.o
+
+# target to build an object file
+Src/client/GuiTexture.cpp.o:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/GuiTexture.cpp.o
+.PHONY : Src/client/GuiTexture.cpp.o
+
+Src/client/GuiTexture.i: Src/client/GuiTexture.cpp.i
+
+.PHONY : Src/client/GuiTexture.i
+
+# target to preprocess a source file
+Src/client/GuiTexture.cpp.i:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/GuiTexture.cpp.i
+.PHONY : Src/client/GuiTexture.cpp.i
+
+Src/client/GuiTexture.s: Src/client/GuiTexture.cpp.s
+
+.PHONY : Src/client/GuiTexture.s
+
+# target to generate assembly for a file
+Src/client/GuiTexture.cpp.s:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/GuiTexture.cpp.s
+.PHONY : Src/client/GuiTexture.cpp.s
+
 Src/client/ManageDisplay.o: Src/client/ManageDisplay.cpp.o
 
 .PHONY : Src/client/ManageDisplay.o
@@ -603,6 +630,9 @@ help:
 	@echo "... Src/client/Gui/SFML_monitor.o"
 	@echo "... Src/client/Gui/SFML_monitor.i"
 	@echo "... Src/client/Gui/SFML_monitor.s"
+	@echo "... Src/client/GuiTexture.o"
+	@echo "... Src/client/GuiTexture.i"
+	@echo "... Src/client/GuiTexture.s"
 	@echo "... Src/client/ManageDisplay.o"
 	@echo "... Src/client/ManageDisplay.i"
 	@echo "... Src/client/ManageDisplay.s"

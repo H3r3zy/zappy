@@ -116,6 +116,10 @@ void irc::Auth::initTextInput()
 	port_input->setPrompt("8888");
 	port_input->setBoolUsed(false);
 
+	// Todo: delete this
+	ip_input->setPrompt("0.0.0.0");
+	nick_input->setPrompt("PipiCacaPopo");
+
 	nick_input->addFuncKeyEvent(sf::Keyboard::Tab, &irc::Auth::GoToTheNextInput, this, nick_input, ip_input, 0);
 	ip_input->addFuncKeyEvent(sf::Keyboard::Tab, &irc::Auth::GoToTheNextInput, this, ip_input, port_input, 1);
 	port_input->addFuncKeyEvent(sf::Keyboard::Tab, &irc::Auth::GoToTheNextInput, this, port_input, nick_input, 2);

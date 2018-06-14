@@ -4,6 +4,7 @@ project(client)
 set(CMAKE_CXX_STANDARD 11)
 
 include_directories(
+		Src
 		Include/
 		Include/Tools/
 		Include/Abstract

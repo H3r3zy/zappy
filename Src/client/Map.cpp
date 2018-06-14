@@ -14,6 +14,7 @@ irc::Map::Map(int socket, std::vector<int> &listId, bool &displayGui, bool &endC
 
 void irc::Map::loopDisplay()
 {
+	_displayGui = true;
 	while (1) {
 		std::cout << "MAP" << std::endl;
 	}

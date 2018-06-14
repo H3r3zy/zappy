@@ -14,7 +14,6 @@ irc::ManageDisplay::ManageDisplay(int socketServerMap, int socketServerGui) : _s
 		if (!_gui.initDisplayGui())
 			_gui.loopDisplay();
 	});
-	_displayGui = false;
 	_map.loopDisplay();
 }
 

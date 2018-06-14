@@ -9,13 +9,14 @@
 
 # include <vector>
 # include <mutex>
+# include "GuiTexture.hpp"
 
 namespace irc {
 
-	class Gui {
+	class Gui : public irc::GuiTexture {
 		public:
 		Gui(int socket, std::vector<int> &listId, bool &displayGui, bool &endClient);
-		~Gui() = default;
+		~Gui();
 
 		int initDisplayGui();
 		void loopDisplay();
@@ -31,6 +32,7 @@ namespace irc {
 		bool &_displayGui; // Check if the gui is displayed
 		bool &_endClient;
 
+		bool _currentlyGuiDisplay = true;
 	};
 }
 

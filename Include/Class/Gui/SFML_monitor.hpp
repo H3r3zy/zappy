@@ -33,6 +33,7 @@ namespace irc {
 		void deleteObjectByScene(int scene);
 
 		void setNameWindow(std::string name);
+		bool isWindowOpen();
 
 		void setScene(int scene);
 		int getCurrentScene() const;

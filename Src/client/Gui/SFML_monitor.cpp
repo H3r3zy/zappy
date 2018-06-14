@@ -151,3 +151,8 @@ void irc::SFML_monitor::deleteObjectByScene(int scene)
 	}
 	_listObject[scene].clear();
 }
+
+bool irc::SFML_monitor::isWindowOpen()
+{
+	return this->_window.isOpen();
+}

@@ -74,3 +74,10 @@ uint Grid::getNbActive() const
 {
 	return _nbActive;
 }
+
+void Grid::displayMiniGrid(sf::RenderWindow &window, const sf::View &view)
+{
+	for (const auto &it : _activeMap) {
+		window.draw(it->drawCell());
+	}
+}

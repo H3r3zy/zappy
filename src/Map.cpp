@@ -28,7 +28,8 @@ void Map::gameLoop()
 		_windowInfo->drawInfo(_gameWindow);
 		/* Minimap Display*/
 		_gameWindow.setView(_camera.second);
-		//_grid.displayGlobalGrid(_gameWindow, _camera.first);
+		_grid.displayMiniGrid(_gameWindow, _camera.first);
+		_gameWindow.draw(_playerPos);
 		_gameWindow.draw(_playerPos);
 		/* Display and Reset */
 		_gameWindow.display();
@@ -63,6 +64,17 @@ bool Map::getEvent()
 		_grid.updateGrid3D(_camera.first);
 		_windowInfo->updateInfo(_grid.getNbActive(), _camera.first);
 	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
+		while (sf::Keyboard::isKeyPressed(sf::Keyboard::Z));
+			std::cout << " jai appuyé sur Z"<< std::endl;
+			_camera.first.zoom(0.8f);
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+		while (sf::Keyboard::isKeyPressed(sf::Keyboard::A));
+		std::cout << " jai appuyé sur Z"<< std::endl;
+		_camera.first.zoom(1.2f);
+	}
+
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
 		_gameWindow.close();
 		return false;

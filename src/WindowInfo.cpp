@@ -14,7 +14,7 @@ WindowInfo::WindowInfo()
 	_text.setCharacterSize(30);
 
 	_textEntity.setFont(_font);
-	_textEntity.setString("FPS:");
+	_textEntity.setString("Nb. Entity :");
 	_textEntity.setCharacterSize(30);
 
 	_clock.restart();
@@ -40,7 +40,6 @@ void WindowInfo::drawInfo(sf::RenderWindow &window)
 
 void WindowInfo::updateInfo(uint nbEntity, sf::View &camera)
 {
-	std::cout << nbEntity << std::endl;
 	_text.setPosition(camera.getCenter().x - (camera.getSize().x / 2), camera.getCenter().y - (camera.getSize().y / 2));
 	_textEntity.setPosition(camera.getCenter().x - (camera.getSize().x / 2), camera.getCenter().y - (camera.getSize().y / 2) + 40);
 	_textEntity.setString("Nb. Entity :" + std::to_string(nbEntity));

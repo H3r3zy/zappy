@@ -12,12 +12,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9051acba-181e-40a9-8a2c-9be30e0274f1" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/client" afterPath="$PROJECT_DIR$/client" />
       <change beforePath="$PROJECT_DIR$/src/Grid.cpp" afterPath="$PROJECT_DIR$/src/Grid.cpp" />
       <change beforePath="$PROJECT_DIR$/src/Grid.hpp" afterPath="$PROJECT_DIR$/src/Grid.hpp" />
       <change beforePath="$PROJECT_DIR$/src/Map.cpp" afterPath="$PROJECT_DIR$/src/Map.cpp" />
-      <change beforePath="$PROJECT_DIR$/src/Map.hpp" afterPath="$PROJECT_DIR$/src/Map.hpp" />
       <change beforePath="$PROJECT_DIR$/src/WindowInfo.cpp" afterPath="$PROJECT_DIR$/src/WindowInfo.cpp" />
-      <change beforePath="$PROJECT_DIR$/src/WindowInfo.hpp" afterPath="$PROJECT_DIR$/src/WindowInfo.hpp" />
+      <change beforePath="$PROJECT_DIR$/src/main.cpp" afterPath="$PROJECT_DIR$/src/main.cpp" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -50,11 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Map.cpp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Map.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Map.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1071">
-              <caret line="63" column="76" lean-forward="false" selection-start-line="63" selection-start-column="76" selection-end-line="63" selection-end-column="76" />
+            <state relative-caret-position="727">
+              <caret line="69" column="46" lean-forward="false" selection-start-line="69" selection-start-column="46" selection-end-line="69" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -73,22 +73,22 @@
       <file leaf-file-name="main.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+            <state relative-caret-position="51">
+              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding>
-                <element signature="e#573#601#0" expanded="true" />
-                <element signature="e#673#703#0" expanded="true" />
-                <element signature="e#711#737#0" expanded="true" />
+                <element signature="e#73#101#0" expanded="true" />
+                <element signature="e#173#203#0" expanded="true" />
+                <element signature="e#211#237#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Grid.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Grid.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Grid.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="537">
-              <caret line="40" column="57" lean-forward="false" selection-start-line="40" selection-start-column="57" selection-end-line="40" selection-end-column="57" />
+            <state relative-caret-position="724">
+              <caret line="80" column="27" lean-forward="false" selection-start-line="80" selection-start-column="27" selection-end-line="80" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -97,8 +97,8 @@
       <file leaf-file-name="Grid.hpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Grid.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="24" column="23" lean-forward="false" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
+            <state relative-caret-position="306">
+              <caret line="23" column="24" lean-forward="false" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -117,8 +117,8 @@
       <file leaf-file-name="WindowInfo.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/WindowInfo.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="42" column="43" lean-forward="false" selection-start-line="42" selection-start-column="43" selection-end-line="42" selection-end-column="43" />
+            <state relative-caret-position="272">
+              <caret line="16" column="43" lean-forward="false" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
               <folding>
                 <element signature="e#43#62#0" expanded="true" />
               </folding>
@@ -154,13 +154,13 @@
         <option value="$PROJECT_DIR$/src/Cameras.hpp" />
         <option value="$PROJECT_DIR$/src/Window.cpp" />
         <option value="$PROJECT_DIR$/src/Window.hpp" />
-        <option value="$PROJECT_DIR$/src/main.cpp" />
         <option value="$PROJECT_DIR$/src/Map.hpp" />
-        <option value="$PROJECT_DIR$/src/Grid.hpp" />
         <option value="$PROJECT_DIR$/src/WindowInfo.hpp" />
-        <option value="$PROJECT_DIR$/src/Map.cpp" />
+        <option value="$PROJECT_DIR$/src/main.cpp" />
         <option value="$PROJECT_DIR$/src/WindowInfo.cpp" />
+        <option value="$PROJECT_DIR$/src/Grid.hpp" />
         <option value="$PROJECT_DIR$/src/Grid.cpp" />
+        <option value="$PROJECT_DIR$/src/Map.cpp" />
       </list>
     </option>
   </component>
@@ -170,10 +170,10 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-438" />
-    <option name="width" value="1920" />
-    <option name="height" value="1044" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-4" />
+    <option name="width" value="964" />
+    <option name="height" value="1048" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -260,10 +260,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34417000" />
+    <option name="totallyTimeSpent" value="36164000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-4" y="0" width="1928" height="1048" extended-state="6" />
+    <frame x="-4" y="0" width="964" height="1048" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.396348" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -370,9 +370,9 @@
         <state relative-caret-position="1139">
           <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
           <folding>
-            <element signature="e#573#601#0" expanded="true" />
-            <element signature="e#673#703#0" expanded="true" />
-            <element signature="e#711#737#0" expanded="true" />
+            <element signature="e#73#101#0" expanded="true" />
+            <element signature="e#173#203#0" expanded="true" />
+            <element signature="e#211#237#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -447,9 +447,9 @@
         <state relative-caret-position="1462">
           <caret line="86" column="61" lean-forward="true" selection-start-line="86" selection-start-column="61" selection-end-line="86" selection-end-column="61" />
           <folding>
-            <element signature="e#573#601#0" expanded="true" />
-            <element signature="e#673#703#0" expanded="true" />
-            <element signature="e#711#737#0" expanded="true" />
+            <element signature="e#73#101#0" expanded="true" />
+            <element signature="e#173#203#0" expanded="true" />
+            <element signature="e#211#237#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -473,9 +473,9 @@
         <state relative-caret-position="1938">
           <caret line="114" column="25" lean-forward="true" selection-start-line="114" selection-start-column="25" selection-end-line="114" selection-end-column="25" />
           <folding>
-            <element signature="e#573#601#0" expanded="true" />
-            <element signature="e#673#703#0" expanded="true" />
-            <element signature="e#711#737#0" expanded="true" />
+            <element signature="e#73#101#0" expanded="true" />
+            <element signature="e#173#203#0" expanded="true" />
+            <element signature="e#211#237#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -499,9 +499,9 @@
         <state relative-caret-position="843">
           <caret line="80" column="0" lean-forward="true" selection-start-line="61" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
           <folding>
-            <element signature="e#573#601#0" expanded="true" />
-            <element signature="e#673#703#0" expanded="true" />
-            <element signature="e#711#737#0" expanded="true" />
+            <element signature="e#73#101#0" expanded="true" />
+            <element signature="e#173#203#0" expanded="true" />
+            <element signature="e#211#237#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -567,9 +567,9 @@
         <state relative-caret-position="1462">
           <caret line="86" column="61" lean-forward="true" selection-start-line="86" selection-start-column="61" selection-end-line="86" selection-end-column="61" />
           <folding>
-            <element signature="e#573#601#0" expanded="true" />
-            <element signature="e#673#703#0" expanded="true" />
-            <element signature="e#711#737#0" expanded="true" />
+            <element signature="e#73#101#0" expanded="true" />
+            <element signature="e#173#203#0" expanded="true" />
+            <element signature="e#211#237#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -593,9 +593,9 @@
         <state relative-caret-position="1938">
           <caret line="114" column="25" lean-forward="true" selection-start-line="114" selection-start-column="25" selection-end-line="114" selection-end-column="25" />
           <folding>
-            <element signature="e#573#601#0" expanded="true" />
-            <element signature="e#673#703#0" expanded="true" />
-            <element signature="e#711#737#0" expanded="true" />
+            <element signature="e#73#101#0" expanded="true" />
+            <element signature="e#173#203#0" expanded="true" />
+            <element signature="e#211#237#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -618,24 +618,6 @@
     <entry file="file://$PROJECT_DIR$/src/Cameras.hpp" />
     <entry file="file://$PROJECT_DIR$/src/Window.cpp" />
     <entry file="file://$PROJECT_DIR$/src/Window.hpp" />
-    <entry file="file://$PROJECT_DIR$/src/WindowInfo.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="21" column="25" lean-forward="false" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/WindowInfo.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="42" column="43" lean-forward="false" selection-start-line="42" selection-start-column="43" selection-end-line="42" selection-end-column="43" />
-          <folding>
-            <element signature="e#43#62#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Cell.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -644,18 +626,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cell.hpp">
+    <entry file="file://$PROJECT_DIR$/src/WindowInfo.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="24" column="49" lean-forward="false" selection-start-line="24" selection-start-column="49" selection-end-line="24" selection-end-column="49" />
+        <state relative-caret-position="272">
+          <caret line="16" column="43" lean-forward="false" selection-start-line="16" selection-start-column="43" selection-end-line="16" selection-end-column="43" />
+          <folding>
+            <element signature="e#43#62#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/WindowInfo.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="21" column="25" lean-forward="false" selection-start-line="21" selection-start-column="25" selection-end-line="21" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Map.cpp">
+    <entry file="file://$PROJECT_DIR$/src/Grid.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1071">
-          <caret line="63" column="76" lean-forward="false" selection-start-line="63" selection-start-column="76" selection-end-line="63" selection-end-column="76" />
+        <state relative-caret-position="306">
+          <caret line="23" column="24" lean-forward="false" selection-start-line="23" selection-start-column="24" selection-end-line="23" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Grid.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="724">
+          <caret line="80" column="27" lean-forward="false" selection-start-line="80" selection-start-column="27" selection-end-line="80" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <element signature="e#73#101#0" expanded="true" />
+            <element signature="e#173#203#0" expanded="true" />
+            <element signature="e#211#237#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Cell.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="24" column="49" lean-forward="false" selection-start-line="24" selection-start-column="49" selection-end-line="24" selection-end-column="49" />
           <folding />
         </state>
       </provider>
@@ -668,30 +688,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.cpp">
+    <entry file="file://$PROJECT_DIR$/src/Map.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding>
-            <element signature="e#573#601#0" expanded="true" />
-            <element signature="e#673#703#0" expanded="true" />
-            <element signature="e#711#737#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Grid.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="24" column="23" lean-forward="false" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Grid.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
-          <caret line="40" column="57" lean-forward="false" selection-start-line="40" selection-start-column="57" selection-end-line="40" selection-end-column="57" />
+        <state relative-caret-position="727">
+          <caret line="69" column="46" lean-forward="false" selection-start-line="69" selection-start-column="46" selection-end-line="69" selection-end-column="46" />
           <folding />
         </state>
       </provider>

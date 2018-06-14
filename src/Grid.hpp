@@ -21,6 +21,7 @@ class Grid {
 	public:
 	Grid(const sf::Vector2f &mapSize);
 	void displayGlobalGrid(sf::RenderWindow &window, const sf::View &view);
+	void displayMiniGrid(sf::RenderWindow &window, const sf::View &view);
 	void updateGrid3D(sf::View &view);
 	uint getNbActive() const;
 	~Grid();

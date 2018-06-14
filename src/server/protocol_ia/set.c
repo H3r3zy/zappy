@@ -23,6 +23,12 @@ static const char *TYPENAME[] = {
 	NULL
 };
 
+/**
+ * Try to set an object (arg) on the cell where the client is
+ * @param server
+ * @param client
+ * @param arg
+ */
 void set_cmd(server_t *server, client_t *client, char *arg)
 {
 	debug(INFO "'%i' call Set '%s'\n", client->fd, arg);

@@ -17,6 +17,9 @@
 #define ENTITY_NB ((RESOURCE_NB) + 1)
 #define STARTED_FOOD (10)
 
+#define FOOD_UNIT_TIME (126)
+#define EGG_UNIT_TIME (600)
+
 typedef enum {
 	Linemate,
 	Deraumere,
@@ -34,6 +37,12 @@ typedef enum orientation_s {
 	BOTTOM,
 	LEFT
 } orientation_t;
+
+typedef enum status_e {
+	NORMAL,
+	INCANTATION,
+	EGG
+} status_t;
 
 typedef struct {
 	uint x;
@@ -66,6 +75,15 @@ typedef struct task_s {
 	void (*function)(server_t *server, client_t *invoker, char *command);
 } task_t;
 
+typedef struct egg_s {
+	long long int started_time;
+	teams_t *team;
+	client_t *client;
+	pos_t pos;
+	struct egg_s *prev;
+	struct egg_s *next;
+} egg_t;
+
 struct client_s {
 	socket_t fd;
 	user_t user;
@@ -75,6 +93,7 @@ struct client_s {
 	size_t queue_index;
 	entity_t *entity;
 	long long int started_time;
+	status_t status;
 	struct client_s *prev;
 	struct client_s *next;
 };
@@ -83,6 +102,7 @@ struct teams_s {
 	char *name;
 	uint remaining_place;
 	client_t **clients;
+	egg_t *eggs;
 	struct teams_s *prev;
 	struct teams_s *next;
 };

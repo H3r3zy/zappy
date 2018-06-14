@@ -7,9 +7,9 @@
 
 #include <unistd.h>
 #include <stdlib.h>
-#include <server.h>
 #include "server.h"
 #include "debug.h"
+#include "egg.h"
 
 static void disconnect_of_team(server_t *server, teams_t *team,
 	client_t *client)
@@ -33,6 +33,8 @@ static void disconnect_of_teams(server_t *server, client_t *client)
 void disconnect(server_t *server, client_t *client)
 {
 	debug(INFO "The client %d left the game\n", client->fd);
+	if (client->status == EGG)
+		remove_egg(get_egg_of(client));
 	if (server->clients == client) {
 		server->clients = client->next;
 	} else {

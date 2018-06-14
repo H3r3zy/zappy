@@ -8,8 +8,9 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdbool.h>
-#include "server.h"
+#include <server.h>
 #include "debug.h"
+#include "egg.h"
 #include "scheduler.h"
 
 /**
@@ -64,13 +65,33 @@ static void client_scheduler(server_t *server, client_t *client, ms_t now)
 		shift_task(client, now);
 	}
 	if (client->team &&
-		client->started_time + UNITTOMS(126, server->freq) < now) {
+		client->started_time + UNITTOMS(FOOD_UNIT_TIME, server->freq) <
+			now) {
 		client->started_time = now;
 		if (client->user.bag[Food] == 0) {
 			die(server, client);
 			return;
 		}
 		client->user.bag[Food]--;
+	}
+}
+
+/**
+ * Schedule if a player is in an egg and if time is done break the egg
+ * @param server
+ * @param client
+ * @param now
+ */
+static void schedule_egg(server_t *server, client_t *client, ms_t now)
+{
+	egg_t *egg = get_egg_of(client);
+
+	if (now > egg->started_time + UNITTOMS(EGG_UNIT_TIME, server->freq)) {
+		debug(GINFO "'%i' hatched (%i,%i:%i)\n", client->fd,
+			client->entity->pos.x, client->entity->pos.y,
+			client->user.orientation);
+		remove_egg(egg);
+		client->status = NORMAL;
 	}
 }
 
@@ -88,6 +109,9 @@ void scheduler(server_t *server)
 	clock_gettime(CLOCK_REALTIME, &spec);
 	now = spec.tv_sec * STOMS + spec.tv_nsec / NTOMS;
 	while (client) {
+		if (client->status == EGG) {
+			schedule_egg(server, client, now);
+		}
 		tmp = client->next;
 		client_scheduler(server, client, now);
 		client = tmp;

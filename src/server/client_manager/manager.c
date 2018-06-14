@@ -24,7 +24,7 @@ static const command_t COMMAND[] = {
 	{name: "Inventory", function: &inventory_cmd, verify: NULL, time_unit: 1, argument: false},
 	{name: "Broadcast", function: NULL, verify: NULL, time_unit: 7, argument: true},
 	{name: "Connect_nbr", function: &connect_nbr_cmd, verify: NULL, time_unit: 0, argument: false},
-	{name: "Fork", function: NULL, verify: NULL, time_unit: 42, argument: false},
+	{name: "Fork", function: &fork_cmd, verify: NULL, time_unit: 42, argument: false},
 	{name: "Eject", function: NULL, verify: NULL, time_unit: 7, argument: false},
 	{name: "Take", function: &take_cmd, verify: NULL, time_unit: 7, argument: true},
 	{name: "Set", function: &set_cmd, verify: NULL, time_unit: 7, argument: true},
@@ -37,6 +37,10 @@ static const command_t COMMAND[] = {
 
 static void check_command(server_t *server, client_t *client, uint i, char *arg)
 {
+	if (client->status == EGG) {
+		add_to_queue(client, "ko\n");
+		return;
+	}
 	if (COMMAND[i].argument && !arg) {
 		debug(INFO "%s need argument\n", COMMAND[i].name);
 		add_to_queue(client, "ko\n");

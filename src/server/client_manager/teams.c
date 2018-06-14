@@ -12,9 +12,7 @@
 #include <bits/time.h>
 #include <scheduler.h>
 #include <time.h>
-#include "server.h"
 #include "debug.h"
-#include "server.h"
 
 void add_teams(server_t *server, char *name)
 {
@@ -23,6 +21,7 @@ void add_teams(server_t *server, char *name)
 
 	if (!new)
 		return;
+	new->eggs = NULL;
 	new->name = strdup(name);
 	if (!team) {
 		server->teams = new;
@@ -47,7 +46,26 @@ void create_teams_clients(server_t *server)
 	}
 }
 
-static void add_client_to_team(server_t *server, client_t *client, teams_t *team)
+static void spawn(server_t *server, client_t *client, teams_t *team)
+{
+	for (egg_t *egg = team->eggs; egg; egg = egg->next) {
+		if (egg->client == NULL) {
+			debug(INFO "Pop in an egg (%i,%i)\n", egg->pos.x,
+				egg->pos.y);
+			egg->client = client;
+			client->entity->pos.x = egg->pos.x;
+			client->entity->pos.y = egg->pos.y;
+			client->status = EGG;
+			return;
+		}
+	}
+	client->entity->pos.x = rand() % server->map.size.x;
+	client->entity->pos.y = rand() % server->map.size.y;
+}
+
+static void add_client_to_team(server_t *server, client_t *client,
+	teams_t *team
+)
 {
 	char buffer[128] = {0};
 	struct timespec spec;
@@ -57,10 +75,13 @@ static void add_client_to_team(server_t *server, client_t *client, teams_t *team
 			team->clients[i] = client;
 			team->remaining_place--;
 			client->team = team;
-			sprintf(buffer, "%i\n%i %i\n", team->remaining_place,
-			server->map.size.x, server->map.size.y);
+			spawn(server, client, team);
 			clock_gettime(CLOCK_REALTIME, &spec);
-			client->started_time = spec.tv_sec * STOMS + spec.tv_nsec / NTOMS;
+			client->started_time =
+				spec.tv_sec * STOMS + spec.tv_nsec / NTOMS;
+			add_player_to_map(&server->map, client->entity);
+			sprintf(buffer, "%i\n%i %i\n", team->remaining_place,
+				server->map.size.x, server->map.size.y);
 			add_to_queue(client, strdup(buffer));
 			return;
 		}

@@ -17,8 +17,8 @@
  */
 static void init_client_data(server_t *server, client_t *client)
 {
-	client->entity->pos.x = rand() % server->map.size.x;
-	client->entity->pos.y = rand() % server->map.size.y;
+	client->entity->pos.x = 0;
+	client->entity->pos.y = 0;
 	client->entity->id = ++server->map.max_id;
 	client->entity->type = Client;
 	client->user.level = 1;
@@ -28,6 +28,7 @@ static void init_client_data(server_t *server, client_t *client)
 	client->user.bag[Food] = STARTED_FOOD;
 	client->user.orientation = (orientation_t)(rand() % 4);
 	client->started_time = 0;
+	client->status = NORMAL;
 }
 
 /**
@@ -66,7 +67,6 @@ void init_client(server_t *server, client_t *client)
 		return;
 	init_client_data(server, client);
 	server->client_nb++;
-	add_player_to_map(&server->map, client->entity);
 	add_to_queue(client, strdup("WELCOME\n"));
 	debug(INFO "New client on fd %i (pos : %d;%d)\n", client->fd,
 		client->entity->pos.x, client->entity->pos.y);

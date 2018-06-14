@@ -31,8 +31,7 @@ class Ai:
         for key in self.__inventory:
             print("Key : %s --> value %d" % (key, self.__inventory[key]))
         print(self.__inventory)
-        self.__pathFind.goToTile(self.__coord, (2, 9), self.__dir)
-
+        self.__pathFind.goToTile(self.__coord, (3, 1), self.__dir)
 
     def getMap(self):
         return self.__map

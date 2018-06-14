@@ -4,7 +4,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/PSU_zappy_2017.dir/src/Cell.cpp.o"
   "CMakeFiles/PSU_zappy_2017.dir/src/Grid.cpp.o"
   "CMakeFiles/PSU_zappy_2017.dir/src/WindowInfo.cpp.o"
-  "CMakeFiles/PSU_zappy_2017.dir/src/Window.cpp.o"
   "PSU_zappy_2017.pdb"
   "PSU_zappy_2017"
 )

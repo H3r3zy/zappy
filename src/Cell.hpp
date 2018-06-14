@@ -11,13 +11,16 @@
 #include <SFML/System.hpp>
 #include <SFML/Graphics/Rect.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
+#include <SFML/Graphics/Text.hpp>
 
 class Cell {
 	public:
 	Cell();
 	Cell(std::pair<sf::Vector2f, sf::Vector2f> squareDimension);
 	~Cell();
-	sf::RectangleShape &getCell();
+	sf::RectangleShape &drawCell();
+	sf::Vector2f &getPos();
+	std::string &getStringPos();
 	void setRessources(unsigned int resourceName, unsigned int number);
 	void addRessources(unsigned int resourceName);
 
@@ -25,6 +28,7 @@ class Cell {
 	sf::Vector2f _position;
 	sf::Vector2f _size;
 	sf::RectangleShape _cell;
+	std::string _stringPos;
 	std::map<unsigned int, unsigned int> _ressources;
 };
 

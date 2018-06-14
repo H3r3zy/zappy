@@ -3,13 +3,14 @@
 //
 
 
+#include <SFML/Graphics/RenderWindow.hpp>
 #include "Cell.hpp"
 
 Cell::Cell()
 {
 }
 
-Cell::Cell(std::pair<sf::Vector2f, sf::Vector2f> squareDimension) : _position(squareDimension.first.x, squareDimension.first.y), _size(squareDimension.second.x, squareDimension.second.y)
+Cell::Cell(std::pair<sf::Vector2f, sf::Vector2f> squareDimension) : _position(squareDimension.first.x, squareDimension.first.y * - 1), _size(squareDimension.second.x, squareDimension.second.y)
 {
 	std::cout << "Je suis une Cell, en [" << _position.x << "," << _position.y << "] et de taille [" << _size.x << "," << _size.y << "]" << std::endl;
 	_cell.setPosition(_position);
@@ -17,13 +18,14 @@ Cell::Cell(std::pair<sf::Vector2f, sf::Vector2f> squareDimension) : _position(sq
 	_cell.setFillColor(sf::Color::Green);
 	_cell.setOutlineThickness(1);
 	_cell.setOutlineColor(sf::Color::White);
+	_stringPos = "[" + std::to_string(static_cast<int>(_position.x)) + ", " + std::to_string(static_cast<int>(_position.y)) + "]";
 }
 
 Cell::~Cell()
 {
 }
 
-sf::RectangleShape &Cell::getCell()
+sf::RectangleShape &Cell::drawCell()
 {
 	return _cell;
 }
@@ -46,4 +48,14 @@ void Cell::addRessources(unsigned int resourceName)
 			break;
 		}
 	}
+}
+
+sf::Vector2f &Cell::getPos()
+{
+	return _position;
+}
+
+std::string &Cell::getStringPos()
+{
+	return _stringPos;
 }

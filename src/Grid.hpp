@@ -10,6 +10,7 @@
 #include <map>
 #include <iostream>
 #include <SFML/Graphics/RenderWindow.hpp>
+#include <SFML/Graphics/Text.hpp>
 #include "Cell.hpp"
 
 class Grid {
@@ -21,11 +22,14 @@ class Grid {
 	Grid(const sf::Vector2f &mapSize);
 	void displayGlobalGrid(sf::RenderWindow &window, const sf::View &view);
 	void updateGrid3D(sf::View &view);
+	sf::Text &getcaca();
 	~Grid();
 
 	private:
 	sf::Vector2f _mapSize;
 	std::vector<Cell *> _activeMap;
+	sf::Font _font;
+	sf::Text _text;
 	std::map<std::pair<uint, uint>, Cell *> _gameMap;
 };
 

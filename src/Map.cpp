@@ -19,24 +19,22 @@ Map::Map(int mapsize) : _mapSize(mapsize, mapsize), _gameWindow(sf::VideoMode(12
 void Map::gameLoop()
 {
 	while (getEvent()) {
-		std::cout << "window" << std::endl;
 		/* Global Display */
 		_gameWindow.setView(_camera.first);
+
 		_grid.displayGlobalGrid(_gameWindow, _camera.first);
 		_gameWindow.draw(_windowInfo.getFPS(_camera.first));
 
 		/* Minimap Display*/
 		_gameWindow.setView(_camera.second);
-		_grid.displayGlobalGrid(_gameWindow, _camera.first);
+		//_grid.displayGlobalGrid(_gameWindow, _camera.first);
 		_gameWindow.draw(_playerPos);
 		/* Display and Reset */
 		_gameWindow.display();
 		_gameWindow.clear(sf::Color::Black);
-
-		/* Get Events */
-		//getEvent();
 	}
 }
+
 bool Map::getEvent()
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {

@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # coding: utf-8
 
 import socket
@@ -25,9 +25,10 @@ class Client:
         self.__topQueue = deque()
         self.__outQueue = deque(maxlen=10)
         self.__mapSize = (0, 0)
+        self.wait = 0
         self.__currentNode = 0
         self.__nodes = [
-            ActionNode(0, node_action0),
+            ActionNode(0, look),
             ActionNode(1, node_action0),
             ActionNode(2, node_action0),
             ActionNode(3, node_action0),
@@ -38,6 +39,10 @@ class Client:
             ActionNode(8, node_action0),
             ActionNode(9, node_action0),
         ]
+        self.__args = {
+            0: [],
+            1: [1, 2]
+        }
 
     def connect(self) -> bool:
         try:
@@ -48,6 +53,7 @@ class Client:
             print("Connection on port %d failed" % self.__port)
             return False
         return True
+
 
     def update_inbuff(self, con):
         data = con.recv(1024)
@@ -116,10 +122,9 @@ class Client:
         while True:
             self.refresh()
             self.refresh_queue()
-            for cmd in ["Look", "Inventory"]:
-                if len(self.__topQueue) < 100 or len(self.__outQueue) != self.__outQueue.maxlen:
-                    self.build_command(cmd)
             if len(self.__inQueue) > 0:
                 if not parser.parse(self.__inQueue.popleft()):
                     print("I died")
                     return
+            self.__currentNode = self.__nodes[self.__currentNode].action(self,
+                                                                                      self.__args[self.__currentNode])

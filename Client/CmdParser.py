@@ -5,6 +5,7 @@ import re
 from Client import Client
 from Ai.Ai import *
 from collections import deque
+from Enum.Direction import *
 
 
 class CmdParser:
@@ -66,7 +67,9 @@ class CmdParser:
         map = map.replace("[", "").replace("]", "")
         tiles = map.split(",")
         i = 0
-        for x, y in self.__dirs[self.__player.getDir()](self.__player.getCoord()[0], self.__player.getCoord()[1], 1):
+        for x, y in self.__dirs[self.__player.getDir()](self.__player.getCoord()[0],
+                                                        self.__player.getCoord()[1],
+                                                        self.__player.getLevel()):
             currentTile = self.__map[y][y]
             currentTile.reset()
             for elem in tiles[i].split(" "):

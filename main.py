@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # coding: utf-8
 
 import sys
@@ -18,7 +18,7 @@ def run(port: int, name: str, machine: str):
     print("Running in team '%s' on port %d as machine '%s'" % (name, port, machine))
     client = Client(port, name, machine)
     if client.connect():
-        client.run();
+        client.run()
     else:
         return
 

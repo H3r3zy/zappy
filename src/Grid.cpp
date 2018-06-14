@@ -25,7 +25,7 @@ Grid::Grid(const sf::Vector2f &mapSize) : _mapSize(mapSize)
 
 Grid::~Grid()
 {
-	// TODO delete map
+	//_activeMap.erase(_activeMap.begin(), _activeMap.end());
 }
 
 void Grid::updateGrid3D(sf::View &view)

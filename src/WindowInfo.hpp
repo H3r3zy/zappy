@@ -15,7 +15,7 @@
 class WindowInfo {
 	public:
 	WindowInfo();
-	~WindowInfo();
+	~WindowInfo() = default;
 
 	sf::Text &getFPS(sf::View &camera);
 

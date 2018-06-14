@@ -15,10 +15,6 @@ WindowInfo::WindowInfo()
 	_clock.restart();
 }
 
-WindowInfo::~WindowInfo()
-{
-}
-
 sf::Text &WindowInfo::getFPS(sf::View &camera)
 {
 	static int fps = 0;

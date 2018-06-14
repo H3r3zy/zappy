@@ -21,7 +21,6 @@ void Map::gameLoop()
 	while (getEvent()) {
 		/* Global Display */
 		_gameWindow.setView(_camera.first);
-
 		_grid.displayGlobalGrid(_gameWindow, _camera.first);
 		_gameWindow.draw(_windowInfo.getFPS(_camera.first));
 

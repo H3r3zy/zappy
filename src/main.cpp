@@ -34,9 +34,9 @@ int main(int ac, char **av)
 {
 
 
-	Map map(std::stoi(av[1]));
+	Map *map = new Map(std::stoi(av[1]));
 
-	map.gameLoop();
+	map->gameLoop();
 /*	sf::Texture texture;
 	texture.loadFromFile("map.jpg");
 	sf::Sprite sprite;

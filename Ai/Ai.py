@@ -23,16 +23,16 @@ class Ai:
         self.__inventory = {"food": 10, "linemate": 0, "deraumere": 0, "sibur": 0, "mendiane": 0, "phiras": 0,
                             "thystame": 0}
         self.__map = [[Tile.Tile() for _ in range(x)] for _ in range(y)]
-        self.__coord = (9, 0)
-        self.__dir = Direction.SOUTH
+        self.__coord = (1, 7)
+        self.__dir = Direction.EAST
+        self.__pathFind = PathFinding.PathFinding(x, y)
 
     def think(self):
         for key in self.__inventory:
             print("Key : %s --> value %d" % (key, self.__inventory[key]))
         print(self.__inventory)
-        toto = PathFinding.PathFinding()
+        self.__pathFind.goToTile(self.__coord, (8, 7), self.__dir)
 
-        toto.goToTile(self.__coord, [8, 0])
 
     def getMap(self):
         return self.__map

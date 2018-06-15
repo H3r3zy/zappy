@@ -2,6 +2,8 @@
 # coding: utf-8
 
 import re
+from os import system
+from sys import argv
 from Client import Client
 from Ai.Ai import *
 from collections import deque
@@ -9,7 +11,8 @@ from Enum.Direction import *
 
 
 class CmdParser:
-    def __init__(self, player: Ai, queue: deque, msgQueue: deque):
+    def __init__(self, player: Ai, queue: deque, msgQueue: deque, info):
+        self.__info = info
         self.__player = player
         self.__map = player.getMap()
         self.__inv = player.getInventory()
@@ -37,8 +40,12 @@ class CmdParser:
         }
         self.__actions = {
             'Look': self.parse_map,
-            'Inventory': self.parse_inv
+            'Inventory': self.parse_inv,
+            'Fork': self.fork
         }
+
+    def fork(self):
+        system(argv[0] + " -p " + str(self.__info[0]) + " -n " + self.__info[1] + " -h " + self.__info[2])
 
     @staticmethod
     def viewSouth(x, y, end) -> tuple:
@@ -75,7 +82,7 @@ class CmdParser:
         for x, y in self.__dirs[self.__player.getDir()](self.__player.getCoord()[0],
                                                         self.__player.getCoord()[1],
                                                         self.__player.getLevel()):
-            currentTile = self.__map[y][y]
+            currentTile = self.__map[y % len(self.__player.getMap())][x % len(self.__player.getMap()[0])]
             currentTile.reset()
             for elem in tiles[i].split(" "):
                 if elem == "player":

@@ -120,7 +120,7 @@ class Client:
         ordinal = lambda n: "%d%s" % (n, "tsnrhtdd"[(n / 10 % 10 != 1) * (n % 10 < 4) * n % 10::4])
         print("Authentication successful, map size of %d x %d" % (self.__mapSize[0], self.__mapSize[1]))
         player = Ai(self.__mapSize[0], self.__mapSize[1])
-        parser = CmdParser.CmdParser(player, self.__outQueue, self.__msgQueue)
+        parser = CmdParser.CmdParser(player, self.__outQueue, self.__msgQueue, (self.__port, self.__name, self.__machine))
         while True:
             self.refresh()
             self.refresh_queue()

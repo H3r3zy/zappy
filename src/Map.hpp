@@ -12,6 +12,7 @@
 #include <SFML/Window/Event.hpp>
 #include "Grid.hpp"
 #include "WindowInfo.hpp"
+#include "Character.hpp"
 
 class Map {
 	enum {
@@ -40,6 +41,7 @@ class Map {
 	/* Member Classes */
 	Grid _grid;
 	WindowInfo *_windowInfo;
+	std::vector<Character> _character;
 };
 
 #endif //PSU_ZAPPY_2017_MAP_HPP

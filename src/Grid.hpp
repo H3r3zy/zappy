@@ -23,6 +23,12 @@ class Grid {
 		GRASS3,
 		GRASS4
 	};
+	enum {
+		WALK_DOWN,
+		WALK_UP,
+		WALK_LEFT,
+		WALK_REIGHT
+	};
 
 	typedef std::pair<uint, uint> 				POSITION;
 	typedef std::map<std::pair<uint, uint>, Cell *>  	GRID_MAP;
@@ -34,6 +40,7 @@ class Grid {
 	void updateGrid3D(sf::View &view);
 	uint getNbActive() const;
 	bool checkvalid(int x, int y);
+	std::map<char, std::vector<sf::Texture>> &getTextureCharacter();
 	Cell *&getCell(int x, int y);
 	~Grid();
 
@@ -42,12 +49,13 @@ class Grid {
 	void loadMap();
 
 	/* TOOLS */
+	uint _nbActive;
 	sf::Vector2f _mapSize;
 	std::vector<Cell *> _activeMap;
-	uint _nbActive;
 	std::map<std::pair<uint, uint>, Cell *> _gameMap;
 
 	/*  SFML */
+	std::map<char, std::vector<sf::Texture>> _textureCharacterPack;
 	std::vector<sf::Texture *> _texturePack;
 };
 

@@ -2,6 +2,7 @@
 // Created by wisenoa on 12/06/18.
 //
 
+#include <thread>
 #include "Map.hpp"
 
 Map::Map(int mapsize) : _mapSize(mapsize, mapsize), _gameWindow(sf::VideoMode(1200, 800), "Oh voyage voyage, plus loiiiiin que la nuit et le jour"), _grid(_mapSize)
@@ -18,18 +19,29 @@ Map::Map(int mapsize) : _mapSize(mapsize, mapsize), _gameWindow(sf::VideoMode(12
 	_playerPos.setSize(sf::Vector2f(100, 100));
 	_playerPos.setFillColor(sf::Color::Red);
 
+
 	/* Faking first movement */
 	_grid.updateGrid3D(_camera[MAP]);
 	_windowInfo->updateInfo(_grid.getNbActive(), _camera[MAP]);
+
+	/* Coucou je crer un thread */
+	_character.push_back(Character(_grid.getTextureCharacter()));
+
+	/* */
+
 }
 
 void Map::gameLoop()
 {
+	//std::thread caca(_character[0].playerLoop, _gameWindow);
+
+
 	while (getEvent()) {
+
 		/* Global Display */
 		_gameWindow.setView(_camera[MAP]);
 		_grid.displayGlobalGrid(_gameWindow, _camera[MAP]);
-
+		_gameWindow.draw(_character[0].getCharacter());
 		/* Minimap Display*/
 	//	_gameWindow.setView(_camera[MINIMAP]);
 	//	_grid.displayMiniGrid(_gameWindow, _camera[MAP]);
@@ -43,6 +55,8 @@ void Map::gameLoop()
 		_gameWindow.display();
 		_gameWindow.clear(sf::Color::Black);
 	}
+	//caca.detach();
+	//caca.std::thread::~thread(); MAYBE
 }
 
 bool Map::getEvent()
@@ -112,7 +126,6 @@ bool Map::getEvent()
 
 			std::cout << "=-=-=-==-=-=-==-=-=--=-==-=-" << std::endl;
 			std::cout << "Je regarde si la cellule X: " << (static_cast<int>(worldPos.x / 100)) << " Y: " << static_cast<int>((worldPos.y + 100)* -1 / 100) << "est valide" << std::endl;
-			std::cout << "La cellule est en X: " << _grid.getCell(static_cast<int>(worldPos.x) / 100, static_cast<int>(worldPos.y * -1 / 100))->getPos().x << " Y: "<< _grid.getCell(static_cast<int>(worldPos.x) / 100, static_cast<int>(worldPos.y * -1 / 100))->getPos().y  << std::endl;
 			std::cout << "=-=-=-==-=-=-==-=-=--=-==-=-" << std::endl;
 
 

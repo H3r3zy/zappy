@@ -10,6 +10,7 @@ CC	=	g++
 RM	=	rm -rf
 
 SRC	=	src/main.cpp		\
+		src/Character.cpp	\
 		src/WindowInfo.cpp	\
 		src/Grid.cpp		\
 		src/Cell.cpp		\
@@ -24,7 +25,7 @@ CXXFLAGS	=	-W -Wall -Wextra -Isrc -g
 all:	$(NAME)
 
 $(NAME):	$(OBJ)
-		$(CC) -o $(NAME) $(OBJ) -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -lglut -lGLU -lGL
+		$(CC) -o $(NAME) $(OBJ) -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -lpthread
 
 clean:
 		$(RM) $(OBJ)

@@ -3,6 +3,7 @@
 //
 
 
+#include <SFML/Graphics/Sprite.hpp>
 #include "Grid.hpp"
 
 Grid::Grid(const sf::Vector2f &mapSize) : _mapSize(mapSize), _nbActive(0)
@@ -37,13 +38,21 @@ void Grid::loadMap()
 
 bool Grid::loadTextures()
 {
-	for (int i = 0; i < 5; i++) {
+	for (int i = 0; i < 6; i++) {
 		_texturePack.emplace_back(new sf::Texture());
 	}
 	for (int i = 0; i < 5; i++) {
 		if (!_texturePack[i]->loadFromFile("Grass" + std::to_string(i) + ".png")) {
 			return false;
 		}
+	}
+
+	for (int i = 0; i < 9; i++) {
+		_textureCharacterPack[WALK_LEFT].emplace_back(sf::Texture());
+	}
+
+	for (int i = 0; i < 9; i++) {
+		  _textureCharacterPack[WALK_LEFT][i].loadFromFile("Character.png", sf::IntRect(i * 64, 576, 64, 64));
 	}
 	return true;
 }
@@ -53,7 +62,7 @@ void Grid::updateGrid3D(sf::View &view)
 	_activeMap.clear();
 	sf::Vector2f chunk;
 	chunk.x = (view.getCenter().x) / 100 - 7 >= 0? (view.getCenter().x) / 100 - 7 : -1;
-	chunk.y = ((view.getCenter().y * -1) / 100) - 10 > 0 ? (view.getCenter().y * -1) / 100 - 10 : -1;
+	chunk.y = ((view.getCenter().y * -1) / 100) - 10;
 /*	std::cout << "Je suis en [" << view.getCenter().x << "][" << view.getCenter().y << "]" << std::endl;
 	std::cout << "Mon chunk est en [" << chunk.x << "][" << chunk.y << "]" << std::endl;
 	std::cout << "L calcul que je fais X:" << (view.getCenter().x) / 100 - 10 << std::endl;
@@ -70,7 +79,7 @@ void Grid::updateGrid3D(sf::View &view)
 		}
 		chunk.x++;
 		if (chunk.x >= to.x) {
-			chunk.x = (view.getCenter().x) / 100 - 7 >= 0? (view.getCenter().x) / 100 - 7 : 0;
+			chunk.x = (view.getCenter().x) / 100 - 7;
 			chunk.y++;
 			//std::cout << "mnt mon chunk vaut :" << chunk.y << " de haut et doit pas depasser " << to.y << std::endl;
 		}
@@ -107,5 +116,13 @@ Cell *&Grid::getCell(int x, int y)
 
 bool Grid::checkvalid(int x, int y)
 {
+	std::cout << "je recoit" << x << " " << y << std::endl;
+	if (x < 0 || y < 0)
+		return false;
 	return _gameMap.find(POSITION(static_cast<const uint &>(x), static_cast<const uint &>(y))) != _gameMap.end();
+}
+
+std::map<char, std::vector<sf::Texture>> &Grid::getTextureCharacter()
+{
+	return _textureCharacterPack;
 }

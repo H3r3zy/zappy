@@ -90,6 +90,12 @@
 		<Unit filename="/home/wisenoa/PSU_zappy_2017/src/Cell.hpp">
 			<Option target="PSU_zappy_2017"/>
 		</Unit>
+		<Unit filename="/home/wisenoa/PSU_zappy_2017/src/Character.cpp">
+			<Option target="PSU_zappy_2017"/>
+		</Unit>
+		<Unit filename="/home/wisenoa/PSU_zappy_2017/src/Character.hpp">
+			<Option target="PSU_zappy_2017"/>
+		</Unit>
 		<Unit filename="/home/wisenoa/PSU_zappy_2017/src/Grid.cpp">
 			<Option target="PSU_zappy_2017"/>
 		</Unit>

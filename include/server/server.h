@@ -70,7 +70,7 @@ typedef struct teams_s teams_t;
 
 typedef struct task_s {
 	long long int started_time;
-	long long int spending_time;
+	uint time_unit;
 	char *command;
 	void (*function)(server_t *server, client_t *invoker, char *command);
 } task_t;
@@ -118,7 +118,7 @@ typedef struct {
 	cell_t **map;
 } map_t;
 
-#define UPDATE_RESOURCE(m, p, t, n) ((m)->map[(p).x][(p).y].items[(t)] += (n))
+#define UPDATE_RESOURCE(m, p, t, n) ((m)->map[(p).y][(p).x].items[(t)] += (n))
 
 struct server_s {
 	socket_t fd;

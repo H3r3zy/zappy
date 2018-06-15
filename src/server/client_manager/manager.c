@@ -38,6 +38,7 @@ static const command_t COMMAND[] = {
 static void check_command(server_t *server, client_t *client, uint i, char *arg)
 {
 	if (client->status == EGG) {
+		debug(INFO "'%i' is an EGG, can't do action\n", client->fd);
 		add_to_queue(client, "ko\n");
 		return;
 	}
@@ -51,9 +52,7 @@ static void check_command(server_t *server, client_t *client, uint i, char *arg)
 		add_to_queue(client, "ko\n");
 		return;
 	}
-	long long int spending_time = UNITTOMS(COMMAND[i].time_unit, server->freq);
-	debug(INFO "wait for %li ms to exec this command\n", spending_time);
-	add_task_to_schedule(client, spending_time, arg, COMMAND[i].function);
+	add_task_to_schedule(client, COMMAND[i].time_unit, arg, COMMAND[i].function);
 }
 
 static void command_manager(server_t *server, client_t *client, char *command)

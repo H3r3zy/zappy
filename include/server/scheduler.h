@@ -21,7 +21,7 @@
 typedef long long int ms_t;
 typedef void (*task_function_t)(server_t *server, client_t *invoker, char *command);
 
-void add_task_to_schedule(client_t *client, long long int spending_time, char *command, task_function_t function);
+void add_task_to_schedule(client_t *client, uint time_unit, char *command, task_function_t function);
 void scheduler(server_t *server);
 
 #endif //PSU_ZAPPY_2017_SCHEDULER_H

@@ -38,7 +38,7 @@ int main(int ac, char **av)
 		{"-y", &argument_height, true, false, 0},
 		{"-n", &argument_names, true, false, 0},
 		{"-c", &argument_clients_nb, true, false, 0},
-		{"-f", &argument_frequency, true, false, 0},
+		{"-f", &argument_frequency, false, false, 0},
 		{NULL, NULL, true, false, 0}
 	};
 	int status = 0;
@@ -46,6 +46,7 @@ int main(int ac, char **av)
 	signal(SIGPIPE, SIG_IGN);
 	srand((uint) time(NULL) * getpid());
 	memset(&serv, 0, sizeof(server_t));
+	serv.freq = 100;
 	if (ac < 13) {
 		usage(av[0]);
 		return 84;

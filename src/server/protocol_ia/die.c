@@ -11,6 +11,6 @@
 void die(server_t *server, client_t *client)
 {
 	debug(GINFO "'%i' die\n", client->fd);
-	add_to_queue(client, "dead\n");
+	write(client->fd, "dead\n", 5);
 	disconnect(server, client);
 }

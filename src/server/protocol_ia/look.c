@@ -55,10 +55,11 @@ static char *add_objects(char *response, cell_t *cell)
 static char *look_horizontal(map_t *map, pos_t pos, look_opt_t opt, uint currv)
 {
 	char *response = strdup("");
+	char *tmp = NULL;
 	pos_t start = (pos_t){pos.x, pos.y};
 
 	start.x = (opt.d < 0 && !pos.x) ? map->size.x - 1 : pos.x + opt.d;
-	start.y = (opt.d < 0 && !pos.y) ? map->size.y - 1 : pos.y + opt.d;
+	start.y = (opt.d > 0 && !pos.y) ? map->size.y - 1 : pos.y - opt.d;
 	pos = start;
 	for (uint i = 0; i < currv * 2 + 1; i++) {
 		pos.y = (pos.y > map->size.y - 1) ? 0 : pos.y;
@@ -70,8 +71,9 @@ static char *look_horizontal(map_t *map, pos_t pos, look_opt_t opt, uint currv)
 		pos.y += opt.d;
 	}
 	if (currv < opt.vision) {
-		return concat(response,
-			look_horizontal(map, start, opt, currv + 1));
+		tmp = look_horizontal(map, start, opt, currv + 1);
+		response = concat(response, tmp);
+		free(tmp);
 	}
 	return response;
 
@@ -88,6 +90,7 @@ static char *look_horizontal(map_t *map, pos_t pos, look_opt_t opt, uint currv)
 static char *look_vertical(map_t *map, pos_t pos, look_opt_t opt, uint currv)
 {
 	char *response = strdup("");
+	char *tmp = NULL;
 	pos_t start = (pos_t){pos.x, pos.y};
 
 	start.x = (opt.d < 0 && !pos.x) ? map->size.x - 1 : pos.x + opt.d;
@@ -103,8 +106,9 @@ static char *look_vertical(map_t *map, pos_t pos, look_opt_t opt, uint currv)
 		pos.x -= opt.d;
 	}
 	if (currv < opt.vision) {
-		return concat(response,
-			look_vertical(map, start, opt, currv + 1));
+		tmp = look_vertical(map, start, opt, currv + 1);
+		response = concat(response, tmp);
+		free(tmp);
 	}
 	return response;
 }
@@ -119,6 +123,7 @@ void look_cmd(server_t *server, client_t *client,
 	__attribute__((unused)) char *arg)
 {
 	char *response = strdup("[");
+	char *tmp = NULL;
 	int dx = (client->user.orientation % 2 != 0) ?
 		-(client->user.orientation - 2) : 0;
 	int dy = (client->user.orientation % 2 == 0) ?
@@ -130,13 +135,14 @@ void look_cmd(server_t *server, client_t *client,
 	response = concat(response, ",");
 	if (dx) {
 		opt.d = dx;
-		response = concat(response, look_horizontal(&server->map,
-			client->entity->pos, opt, 1));
+		tmp = look_horizontal(&server->map, client->entity->pos, opt, 1);
 	} else if (dy) {
 		opt.d = dy;
-		response = concat(response, look_vertical(&server->map,
-			client->entity->pos, opt, 1));
+		tmp = look_vertical(&server->map, client->entity->pos, opt, 1);
 	}
+	response = concat(response, tmp);
+	free(tmp);
 	response = concat(response, " ]\n");
 	add_to_queue(client, response);
+	free(response);
 }

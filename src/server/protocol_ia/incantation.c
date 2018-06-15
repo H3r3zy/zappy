@@ -63,15 +63,14 @@ bool incantation_verify(server_t *server, client_t *client,
 	bool st = can_do_incantation(client, cell);
 	client_t *tmp;
 
+	debug(GINFO "'%i' %s Incantation\n", client->fd,
+		(st) ? ("Start") : ("Fail"));
 	for (entity_t *cl = cell->players; cl && st; cl = cl->next) {
 		tmp = ((client_t *)cl->ptr);
 		tmp->status = INCANTATION;
+		debug(INFO "\t'%i' participated\n", tmp->fd);
+		add_to_queue(tmp, "Elevation underway\n");
 	}
-	if (st) {
-		add_to_queue(client, strdup("Elevation underway\n"));
-	}
-	debug(INFO "'%i' %s Incantation\n", client->fd,
-		(st) ? ("Start") : ("Fail"));
 	return (st);
 }
 
@@ -91,11 +90,9 @@ void incantation_cmd(server_t *server, client_t *client,
 	}
 	lvlup(cell);
 	remove_stones(&server->map, &client->entity->pos, client->user.level);
+	snprintf(buffer, 126, "Current level: %i\n", client->user.level);
 	for (entity_t *cl = cell->players; cl; cl = cl->next) {
 		((client_t *)cl->ptr)->status = NORMAL;
+		add_to_queue(cl->ptr, buffer);
 	}
-	client->status = NORMAL;
-	snprintf(buffer, 126, "Current level: %i\n", client->user.level);
-	add_to_queue(client, strdup(buffer));
 }
-

@@ -9,10 +9,10 @@
 #include <stdlib.h>
 #include <signal.h>
 #include <string.h>
-#include <debug.h>
 #include <time.h>
 #include "parser.h"
 #include "server.h"
+#include "debug.h"
 #include "parsing.h"
 
 void usage(char *binary)

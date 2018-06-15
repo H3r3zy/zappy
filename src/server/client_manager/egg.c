@@ -34,6 +34,6 @@ void remove_egg(egg_t *egg)
 	if (egg->next)
 		egg->next->prev = egg->prev;
 	if (egg->team->eggs == egg)
-		egg->team->eggs = NULL;
+		egg->team->eggs = egg->next;
 	free(egg);
 }

@@ -37,12 +37,11 @@ void disconnect(server_t *server, client_t *client)
 		remove_egg(get_egg_of(client));
 	if (server->clients == client) {
 		server->clients = client->next;
-	} else {
-		if (client->prev)
-			client->prev->next = client->next;
-		if (client->next)
-			client->next->prev = client->prev;
 	}
+	if (client->prev)
+		client->prev->next = client->next;
+	if (client->next)
+		client->next->prev = client->prev;
 	if (server->teams && client->team) {
 		disconnect_of_teams(server, client);
 		remove_player_from_map(&server->map, client->entity);

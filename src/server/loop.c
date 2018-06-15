@@ -42,13 +42,18 @@ static void handle_poll(struct pollfd *fds, server_t *server)
 {
 	client_t *next = NULL;
 	int i = 0;
+	int status;
 
 	for (client_t *clt = server->clients; clt;) {
+		status = 0;
 		next = clt->next;
 		if (*clt->queue && (fds[i].revents & POLLOUT))
-			send_responses(clt);
+			status = send_responses(clt);
 		if ((fds[i].revents & POLLIN))
-			read_client(server, clt);
+			status += read_client(server, clt);
+		if (status) {
+			disconnect(server, clt);
+		}
 		++i;
 		clt = next;
 	}

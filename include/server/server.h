@@ -147,9 +147,9 @@ void add_to_team(server_t *server, client_t *client, char *name);
 void create_teams_clients(server_t *server);
 
 void handle_new_client(server_t *server);
-void read_client(server_t *server, client_t *client);
+int read_client(server_t *server, client_t *client);
 void add_to_queue(client_t *client, char *msg);
-void send_responses(client_t *client);
+int send_responses(client_t *client);
 
 void add_to_map(map_t *map, entity_t *entity);
 

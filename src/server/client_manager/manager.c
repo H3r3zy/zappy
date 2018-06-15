@@ -79,15 +79,14 @@ static void command_manager(server_t *server, client_t *client, char *command)
 	add_to_queue(client, "ko\n");
 }
 
-void read_client(server_t *server, client_t *client)
+int read_client(server_t *server, client_t *client)
 {
 	char *request = gnl(client->fd, "\n");
 
 	if (!request)
-		disconnect(server, client);
-	else {
-		debug(INFO "'%i' Client request : %s\n", client->fd, request);
-		command_manager(server, client, request);
-		free(request);
-	}
+		return 1;
+	debug(INFO "'%i' Client request : %s\n", client->fd, request);
+	command_manager(server, client, request);
+	free(request);
+	return 0;
 }

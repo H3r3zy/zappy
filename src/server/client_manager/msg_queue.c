@@ -38,11 +38,12 @@ static int try_write(const int fd, char *msg)
 	return 0;
 }
 
-void send_responses(client_t *client)
+int send_responses(client_t *client)
 {
 	while (client->queue_index) {
-		if (try_write(client->fd, *client->queue) != 0)
-			break;
+		if (try_write(client->fd, *client->queue) != 0) {
+			return 1;
+		}
 		free(*client->queue);
 		for (uint i = 1; client->queue[i]; i++) {
 			client->queue[i - 1] = client->queue[i];
@@ -50,4 +51,5 @@ void send_responses(client_t *client)
 		client->queue[client->queue_index - 1] = NULL;
 		--client->queue_index;
 	}
+	return 0;
 }

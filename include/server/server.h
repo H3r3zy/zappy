@@ -52,6 +52,7 @@ typedef struct {
 typedef struct entity_s {
 	ulong id;
 	entity_type_t type;
+	void *ptr;
 	pos_t pos;
 	struct entity_s *prev;
 	struct entity_s *next;

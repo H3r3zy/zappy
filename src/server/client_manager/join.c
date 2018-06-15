@@ -40,6 +40,7 @@ static void init_client_data(server_t *server, client_t *client)
 	client->entity->pos.y = 0;
 	client->entity->id = ++server->map.max_id;
 	client->entity->type = Client;
+	client->entity->ptr = client;
 	client->user.level = 1;
 	client->user.vision = 1;
 	client->queue_index = 0;

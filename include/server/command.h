@@ -40,6 +40,10 @@ void connect_nbr_cmd(server_t *server, client_t *client, char *arg);
 void take_cmd(server_t *server, client_t *client, char *arg);
 void set_cmd(server_t *server, client_t *client, char *arg);
 void fork_cmd(server_t *server, client_t *client, char *arg);
+void incantation_cmd(server_t *server, client_t *client, char *arg);
+
+bool incantation_verify(server_t *server, client_t *client, char *arg);
+
 
 #ifdef DEBUG
 void pos(server_t *server, client_t *client, char *arg);

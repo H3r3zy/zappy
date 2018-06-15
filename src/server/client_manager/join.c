@@ -11,6 +11,25 @@
 #include "debug.h"
 
 /**
+* Malloc and memset all resources used in a client
+* @param client
+* @return
+*/
+static bool malloc_client_data(client_t *client)
+{
+	client->entity = malloc(sizeof(entity_t));
+	if (!client->entity) {
+		debug(ERROR "Can't create user (" CLR(RED,
+			"Malloc error") ")\n");
+		return false;
+	}
+	memset(client->queue, 0, sizeof(char *) * (LIMIT_TASK_NUMBER + 1));
+	memset(client->user.bag, 0, sizeof(uint) * RESOURCE_NB);
+	memset(client->task, 0, sizeof(task_t *) * LIMIT_TASK_NUMBER);
+	return true;
+}
+
+/**
 * Fill data in client
 * @param server
 * @param client
@@ -32,37 +51,12 @@ static void init_client_data(server_t *server, client_t *client)
 }
 
 /**
-* Malloc and memset all resources used in a client
-* @param client
-* @return
-*/
-static bool malloc_client_data(client_t *client)
-{
-	client->entity = malloc(sizeof(entity_t));
-	if (!client->entity) {
-		debug(ERROR "Can't create user (" CLR(RED,
-			"Malloc error") ")\n");
-		return false;
-	}
-	memset(client->queue, 0, sizeof(char *) * (LIMIT_TASK_NUMBER + 1));
-	memset(client->user.bag, 0, sizeof(uint) * RESOURCE_NB);
-	memset(client->task, 0, sizeof(task_t *) * LIMIT_TASK_NUMBER);
-	return true;
-}
-
-/**
 * Accept a client in the server, initialise it and add it in the map
 * @param server
 * @param client
 */
 void init_client(server_t *server, client_t *client)
 {
-	client->fd = i_socket_accept(server->fd);
-	if (client->fd == SOCKET_ERROR) {
-		debug(ERROR "Can't create user (" CLR(RED,
-			"Accept error") ")\n");
-		return;
-	}
 	if (!malloc_client_data(client))
 		return;
 	init_client_data(server, client);
@@ -79,12 +73,20 @@ void init_client(server_t *server, client_t *client)
 */
 void handle_new_client(server_t *server)
 {
-	client_t *new = malloc(sizeof(client_t));
+	int fd = i_socket_accept(server->fd);
+	client_t *new;
 
+	if (fd == SOCKET_ERROR) {
+		debug(ERROR "Can't create user (" CLR(RED,
+			"Accept error") ")\n");
+		return;
+	}
+	new = malloc(sizeof(client_t));
 	if (!new) {
 		debug(ERROR "can't create user (malloc failed)\n");
 		return;
 	}
+	new->fd = fd;
 	new->prev = NULL;
 	new->next = server->clients;
 	if (new->next)

@@ -8,12 +8,21 @@
 
 #include <SFML/System.hpp>
 #include <map>
+#include <random>
 #include <iostream>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/Text.hpp>
 #include "Cell.hpp"
 
 class Grid {
+
+	enum {
+		GRASS,
+		GRASS1,
+		GRASS2,
+		GRASS3,
+		GRASS4
+	};
 
 	typedef std::pair<uint, uint> 				POSITION;
 	typedef std::map<std::pair<uint, uint>, Cell *>  	GRID_MAP;
@@ -27,12 +36,19 @@ class Grid {
 	~Grid();
 
 	private:
+	bool loadTextures();
+	void loadMap();
+
+	/* TOOLS */
 	sf::Vector2f _mapSize;
 	std::vector<Cell *> _activeMap;
-	sf::Font _font;
-	sf::Text _text;
 	uint _nbActive;
 	std::map<std::pair<uint, uint>, Cell *> _gameMap;
+
+	/*  SFML */
+	sf::Font _font;
+	sf::Text _text;
+	std::vector<sf::Texture *> _texturePack;
 };
 
 #endif //PSU_ZAPPY_2017_GRID_HPP

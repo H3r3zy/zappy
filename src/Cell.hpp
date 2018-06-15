@@ -16,7 +16,7 @@
 class Cell {
 	public:
 	Cell();
-	Cell(std::pair<sf::Vector2f, sf::Vector2f> squareDimension);
+	Cell(std::pair<sf::Vector2f, sf::Vector2f> squareDimension, sf::Texture *&texture);
 	~Cell();
 	sf::RectangleShape &drawCell();
 	sf::Vector2f &getPos();
@@ -29,6 +29,7 @@ class Cell {
 	sf::Vector2f _size;
 	sf::RectangleShape _cell;
 	std::string _stringPos;
+	ulong _textureNumber;
 	std::map<unsigned int, unsigned int> _ressources;
 };
 

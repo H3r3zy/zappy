@@ -31,9 +31,9 @@ void Map::gameLoop()
 		_grid.displayGlobalGrid(_gameWindow, _camera[MAP]);
 
 		/* Minimap Display*/
-		_gameWindow.setView(_camera[MINIMAP]);
-		_grid.displayMiniGrid(_gameWindow, _camera[MAP]);
-		_gameWindow.draw(_playerPos);
+	//	_gameWindow.setView(_camera[MINIMAP]);
+	//	_grid.displayMiniGrid(_gameWindow, _camera[MAP]);
+	//	_gameWindow.draw(_playerPos);
 
 		/* HUD DISPLAY */
 		_gameWindow.setView(_camera[HUD]);

@@ -7,16 +7,8 @@
 
 Grid::Grid(const sf::Vector2f &mapSize) : _mapSize(mapSize), _nbActive(0)
 {
-	std::pair<sf::Vector2f, sf::Vector2f> dimension;
-	dimension.second.x = 100;
-	dimension.second.y = 100;
-	for (uint j = 0; j < _mapSize.y; j++) {
-		for (uint i = 0; i < _mapSize.x; i++) {
-			dimension.first.x = i * 100;
-			dimension.first.y = j * 100;
-			_gameMap.insert(GRID_MAP::value_type(POSITION(i, j), new Cell(dimension)));
-		}
-	}
+	loadTextures();
+	loadMap();
 	_font.loadFromFile("arial.ttf");
 	_text.setFont(_font);
 	_text.setFillColor(sf::Color::Red);
@@ -25,7 +17,27 @@ Grid::Grid(const sf::Vector2f &mapSize) : _mapSize(mapSize), _nbActive(0)
 
 Grid::~Grid()
 {
-	//_activeMap.erase(_activeMap.begin(), _activeMap.end());
+	// TODO DELETE
+}
+
+
+void Grid::loadMap()
+{
+	std::mt19937 rng;
+	rng.seed(std::random_device()());
+	std::uniform_int_distribution<std::mt19937::result_type> dist6(0, 4);
+	std::pair<sf::Vector2f, sf::Vector2f> dimension;
+
+	dimension.second.x = 100;
+	dimension.second.y = 100;
+	srand(static_cast<unsigned int>(time(0)));
+	for (uint j = 0; j < _mapSize.y; j++) {
+		for (uint i = 0; i < _mapSize.x; i++) {
+			dimension.first.x = i * 100;
+			dimension.first.y = j * 100;
+			_gameMap.insert(GRID_MAP::value_type(POSITION(i, j), new Cell(dimension, _texturePack[dist6(rng)])));
+		}
+	}
 }
 
 void Grid::updateGrid3D(sf::View &view)
@@ -80,4 +92,20 @@ void Grid::displayMiniGrid(sf::RenderWindow &window, const sf::View &view)
 	for (const auto &it : _activeMap) {
 		window.draw(it->drawCell());
 	}
+}
+
+bool Grid::loadTextures()
+{
+	_texturePack.emplace_back(new sf::Texture());
+	_texturePack.emplace_back(new sf::Texture());
+	_texturePack.emplace_back(new sf::Texture());
+	_texturePack.emplace_back(new sf::Texture());
+	_texturePack.emplace_back(new sf::Texture());
+
+	for (int i = 0; i < 5; i++) {
+		if (!_texturePack[i]->loadFromFile("Grass" + std::to_string(i) + ".png")) {
+			return false;
+		}
+	}
+	return true;
 }

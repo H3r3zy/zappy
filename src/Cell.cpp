@@ -10,14 +10,14 @@ Cell::Cell()
 {
 }
 
-Cell::Cell(std::pair<sf::Vector2f, sf::Vector2f> squareDimension) : _position(squareDimension.first.x, squareDimension.first.y * - 1), _size(squareDimension.second.x, squareDimension.second.y)
+Cell::Cell(std::pair<sf::Vector2f, sf::Vector2f> squareDimension, sf::Texture *&texture) : _position(squareDimension.first.x, squareDimension.first.y * - 1), _size(squareDimension.second.x, squareDimension.second.y)
 {
 	std::cout << "Je suis une Cell, en [" << _position.x << "," << _position.y << "] et de taille [" << _size.x << "," << _size.y << "]" << std::endl;
 	_cell.setPosition(_position);
 	_cell.setSize(_size);
-	_cell.setFillColor(sf::Color::Green);
 	_cell.setOutlineThickness(1);
-	_cell.setOutlineColor(sf::Color::White);
+	_cell.setOutlineColor(sf::Color::Black);
+	_cell.setTexture(texture);
 	_stringPos = "[" + std::to_string(static_cast<int>(_position.x)) + ", " + std::to_string(static_cast<int>(_position.y)) + "]";
 }
 

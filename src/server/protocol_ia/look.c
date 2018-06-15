@@ -58,12 +58,11 @@ static char *look_horizontal(map_t *map, pos_t pos, look_opt_t opt, uint currv)
 	pos_t start = (pos_t){pos.x, pos.y};
 
 	start.x = (opt.d < 0 && !pos.x) ? map->size.x - 1 : pos.x + opt.d;
-	start.y = (opt.d > 0 && !pos.y) ? map->size.y - 1 : pos.y - opt.d;
+	start.y = (opt.d < 0 && !pos.y) ? map->size.y - 1 : pos.y + opt.d;
 	pos = start;
 	for (uint i = 0; i < currv * 2 + 1; i++) {
-		debug(INFO "test on %d;%d\n", pos.x, pos.y);
-		if (pos.y > map->size.y - 1)
-			pos.y = 0;
+		pos.y = (pos.y > map->size.y - 1) ? 0 : pos.y;
+		pos.x = (pos.x > map->size.x - 1) ? 0 : pos.x;
 		response = add_objects(response, &map->map[pos.y][pos.x]);
 		if (i < currv * 2) {
 			response = concat(response, ",");
@@ -95,8 +94,8 @@ static char *look_vertical(map_t *map, pos_t pos, look_opt_t opt, uint currv)
 	start.y = (opt.d < 0 && !pos.y) ? map->size.y - 1 : pos.y + opt.d;
 	pos = start;
 	for (size_t i = 0; i < currv * 2 + 1; i++) {
-		if (pos.x > map->size.x - 1)
-			pos.x = 0;
+		pos.y = (pos.y > map->size.y - 1) ? 0 : pos.y;
+		pos.x = (pos.x > map->size.x - 1) ? 0 : pos.x;
 		response = add_objects(response, &map->map[pos.y][pos.x]);
 		if (i < currv * 2) {
 			response = concat(response, ",");

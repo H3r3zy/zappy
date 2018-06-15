@@ -47,31 +47,91 @@ void Map::gameLoop()
 
 bool Map::getEvent()
 {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-		_camera[MAP].move(2, 0);
-		_playerPos.setPosition(_camera[MAP].getCenter());
-		_grid.updateGrid3D(_camera[MAP]);
-		_windowInfo->updateInfo(_grid.getNbActive(), _camera[HUD]);
+	sf::Event event{};
+
+	// while there are pending events...
+	while (_gameWindow.pollEvent(event))
+	{
+		// check the type of the event...
+		switch (event.type)
+		{
+			// window closed
+		case sf::Event::Closed:
+			_gameWindow.close();
+			return false;
+			// key pressed
+		case sf::Event::KeyPressed:
+			switch (event.key.code) {
+			case sf::Keyboard::Right:
+				_camera[MAP].move(10, 0);
+				_playerPos.setPosition(_camera[MAP].getCenter());
+				_grid.updateGrid3D(_camera[MAP]);
+				_windowInfo->updateInfo(_grid.getNbActive(), _camera[HUD]);
+				break;
+			case sf::Keyboard::Left:
+				_camera[MAP].move(-10, 0);
+				_playerPos.setPosition(_camera[MAP].getCenter());
+				_grid.updateGrid3D(_camera[MAP]);
+				_windowInfo->updateInfo(_grid.getNbActive(), _camera[HUD]);
+				break;
+			case sf::Keyboard::Up:
+
+				_camera[MAP].move(0, -10);
+				_playerPos.setPosition(_camera[MAP].getCenter());
+				_grid.updateGrid3D(_camera[MAP]);
+				_windowInfo->updateInfo(_grid.getNbActive(), _camera[HUD]);
+				break;
+			case sf::Keyboard::Down:
+				_camera[MAP].move(0, 10);
+				_playerPos.setPosition(_camera[MAP].getCenter());
+				_grid.updateGrid3D(_camera[MAP]);
+				_windowInfo->updateInfo(_grid.getNbActive(), _camera[HUD]);
+				break;
+			case sf::Keyboard::Escape:
+				_gameWindow.close();
+				return false;
+			default:
+				break;
+			}
+			break;
+		case sf::Event::MouseButtonReleased:
+				std::cout << "the right button was pressed" << std::endl;
+
+
+			sf::Vector2i pixelPos = sf::Vector2i(sf::Mouse::getPosition(_gameWindow));
+
+			// convert it to world coordinates
+			sf::Vector2f worldPos = _gameWindow.mapPixelToCoords(pixelPos, _camera[MAP]);
+
+			std::cout << "mouse x: " << event.mouseButton.x << std::endl;
+			std::cout << "mouse y: " << event.mouseButton.y << std::endl;
+
+			std::cout << "position map" << worldPos.x << " " << worldPos.y << std::endl;
+
+
+
+			std::cout << "=-=-=-==-=-=-==-=-=--=-==-=-" << std::endl;
+			std::cout << "Je regarde si la cellule X: " << (static_cast<int>(worldPos.x / 100)) << " Y: " << static_cast<int>((worldPos.y + 100)* -1 / 100) << "est valide" << std::endl;
+			std::cout << "La cellule est en X: " << _grid.getCell(static_cast<int>(worldPos.x) / 100, static_cast<int>(worldPos.y * -1 / 100))->getPos().x << " Y: "<< _grid.getCell(static_cast<int>(worldPos.x) / 100, static_cast<int>(worldPos.y * -1 / 100))->getPos().y  << std::endl;
+			std::cout << "=-=-=-==-=-=-==-=-=--=-==-=-" << std::endl;
+
+
+			if (_grid.checkvalid(static_cast<int>(worldPos.x / 100), static_cast<int>((worldPos.y - 100) * -1 / 100))) {
+				_grid.getCell(static_cast<int>(worldPos.x / 100), static_cast<int>((worldPos.y - 100) * -1 / 100))->makeTarget();
+				std::cout << "jai reussit" << std::endl;
+			}
+
+			break;
+
+		}
+		return true;
+
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-		_camera[MAP].move(-2, 0);
-		_playerPos.setPosition(_camera[MAP].getCenter());
-		_grid.updateGrid3D(_camera[MAP]);
-		_windowInfo->updateInfo(_grid.getNbActive(), _camera[HUD]);
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-		_camera[MAP].move(0, -2);
-		_playerPos.setPosition(_camera[MAP].getCenter());
-		_grid.updateGrid3D(_camera[MAP]);
-		_windowInfo->updateInfo(_grid.getNbActive(), _camera[HUD]);
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-		_camera[MAP].move(0, 2);
-		_playerPos.setPosition(_camera[MAP].getCenter());
-		_grid.updateGrid3D(_camera[MAP]);
-		_windowInfo->updateInfo(_grid.getNbActive(), _camera[HUD]);
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
+	return true;
+
+
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
 		while (sf::Keyboard::isKeyPressed(sf::Keyboard::Z));
 			std::cout << " jai appuyé sur Z"<< std::endl;
 			_camera[MAP].zoom(0.8f);
@@ -82,11 +142,6 @@ bool Map::getEvent()
 		std::cout << " jai appuyé sur Z"<< std::endl;
 		_camera[MAP].zoom(1.2f);
 		_windowInfo->updateZoom(1.2);
-	}
-
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) {
-		_gameWindow.close();
-		return false;
 	}
 	return true;
 }

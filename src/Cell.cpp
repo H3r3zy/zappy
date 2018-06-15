@@ -18,7 +18,12 @@ Cell::Cell(std::pair<sf::Vector2f, sf::Vector2f> squareDimension, sf::Texture *&
 	_cell.setOutlineThickness(1);
 	_cell.setOutlineColor(sf::Color::Black);
 	_cell.setTexture(texture);
-	_stringPos = "[" + std::to_string(static_cast<int>(_position.x)) + ", " + std::to_string(static_cast<int>(_position.y)) + "]";
+	_font.loadFromFile("arial.ttf");
+	_cellPos.setFont(_font);
+	_cellPos.setFillColor(sf::Color::White);
+	_cellPos.setCharacterSize(16);
+	_cellPos.setString("[" + std::to_string(static_cast<int>(_position.x)) + ", " + std::to_string(static_cast<int>(_position.y)) + "]");
+	_cellPos.setPosition(_position);
 }
 
 Cell::~Cell()
@@ -55,7 +60,12 @@ sf::Vector2f &Cell::getPos()
 	return _position;
 }
 
-std::string &Cell::getStringPos()
+sf::Text &Cell::getCellPos()
 {
-	return _stringPos;
+	return _cellPos;
+}
+
+void Cell::makeTarget()
+{
+	_cell.setFillColor(sf::Color::Red);
 }

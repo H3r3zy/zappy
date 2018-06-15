@@ -20,15 +20,17 @@ class Cell {
 	~Cell();
 	sf::RectangleShape &drawCell();
 	sf::Vector2f &getPos();
-	std::string &getStringPos();
+	sf::Text &getCellPos();
 	void setRessources(unsigned int resourceName, unsigned int number);
 	void addRessources(unsigned int resourceName);
+	void makeTarget();
 
 	private:
 	sf::Vector2f _position;
 	sf::Vector2f _size;
 	sf::RectangleShape _cell;
-	std::string _stringPos;
+	sf::Text _cellPos;
+	sf::Font _font;
 	ulong _textureNumber;
 	std::map<unsigned int, unsigned int> _ressources;
 };

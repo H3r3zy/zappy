@@ -33,6 +33,8 @@ class Grid {
 	void displayMiniGrid(sf::RenderWindow &window, const sf::View &view);
 	void updateGrid3D(sf::View &view);
 	uint getNbActive() const;
+	bool checkvalid(int x, int y);
+	Cell *&getCell(int x, int y);
 	~Grid();
 
 	private:
@@ -46,8 +48,6 @@ class Grid {
 	std::map<std::pair<uint, uint>, Cell *> _gameMap;
 
 	/*  SFML */
-	sf::Font _font;
-	sf::Text _text;
 	std::vector<sf::Texture *> _texturePack;
 };
 

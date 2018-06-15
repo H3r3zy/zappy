@@ -9,17 +9,12 @@ Grid::Grid(const sf::Vector2f &mapSize) : _mapSize(mapSize), _nbActive(0)
 {
 	loadTextures();
 	loadMap();
-	_font.loadFromFile("arial.ttf");
-	_text.setFont(_font);
-	_text.setFillColor(sf::Color::Red);
-	_text.setCharacterSize(16);
 }
 
 Grid::~Grid()
 {
 	// TODO DELETE
 }
-
 
 void Grid::loadMap()
 {
@@ -38,6 +33,19 @@ void Grid::loadMap()
 			_gameMap.insert(GRID_MAP::value_type(POSITION(i, j), new Cell(dimension, _texturePack[dist6(rng)])));
 		}
 	}
+}
+
+bool Grid::loadTextures()
+{
+	for (int i = 0; i < 5; i++) {
+		_texturePack.emplace_back(new sf::Texture());
+	}
+	for (int i = 0; i < 5; i++) {
+		if (!_texturePack[i]->loadFromFile("Grass" + std::to_string(i) + ".png")) {
+			return false;
+		}
+	}
+	return true;
 }
 
 void Grid::updateGrid3D(sf::View &view)
@@ -75,9 +83,7 @@ void Grid::displayGlobalGrid(sf::RenderWindow &window, const sf::View &view)
 	_nbActive = 0;
 	for (const auto &it : _activeMap) {
 		window.draw(it->drawCell());
-		_text.setPosition(it->getPos());
-		_text.setString(it->getStringPos());
-		window.draw(_text);
+		window.draw(it->getCellPos());
 		++_nbActive;
 	}
 }
@@ -94,18 +100,12 @@ void Grid::displayMiniGrid(sf::RenderWindow &window, const sf::View &view)
 	}
 }
 
-bool Grid::loadTextures()
+Cell *&Grid::getCell(int x, int y)
 {
-	_texturePack.emplace_back(new sf::Texture());
-	_texturePack.emplace_back(new sf::Texture());
-	_texturePack.emplace_back(new sf::Texture());
-	_texturePack.emplace_back(new sf::Texture());
-	_texturePack.emplace_back(new sf::Texture());
+	return _gameMap[POSITION(x, y)];
+}
 
-	for (int i = 0; i < 5; i++) {
-		if (!_texturePack[i]->loadFromFile("Grass" + std::to_string(i) + ".png")) {
-			return false;
-		}
-	}
-	return true;
+bool Grid::checkvalid(int x, int y)
+{
+	return _gameMap.find(POSITION(static_cast<const uint &>(x), static_cast<const uint &>(y))) != _gameMap.end();
 }

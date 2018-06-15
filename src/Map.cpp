@@ -26,10 +26,10 @@ Map::Map(int mapsize) : _mapSize(mapsize, mapsize), _gameWindow(sf::VideoMode(12
 
 	/* Coucou je crer un thread */
 	sf::Vector2f tmp = {1000, 0};
-	_character.push_back(Character(_grid.getTextureCharacter(), tmp));
+	_character.emplace_back(_grid.getTextureCharacter(), tmp);
 	tmp.x -= 500;
 	tmp.y -= 1000;
-	_character.push_back(Character(_grid.getTextureCharacter(), tmp));
+	_character.emplace_back(_grid.getTextureCharacter(), tmp);
 
 	/* */
 
@@ -45,8 +45,9 @@ void Map::gameLoop()
 		/* Global Display */
 		_gameWindow.setView(_camera[MAP]);
 		_grid.displayGlobalGrid(_gameWindow, _camera[MAP]);
-		_gameWindow.draw(_character[0].getCharacter());
-		_gameWindow.draw(_character[1].getCharacter());
+		for (auto &it : _character) {
+			_gameWindow.draw(it.getCharacter());
+		}
 		/* Minimap Display*/
 	//	_gameWindow.setView(_camera[MINIMAP]);
 	//	_grid.displayMiniGrid(_gameWindow, _camera[MAP]);
@@ -136,6 +137,10 @@ bool Map::getEvent()
 
 			if (_grid.checkvalid(static_cast<int>(worldPos.x / 100), static_cast<int>((worldPos.y - 100) * -1 / 100))) {
 				_grid.getCell(static_cast<int>(worldPos.x / 100), static_cast<int>((worldPos.y - 100) * -1 / 100))->makeTarget();
+
+				std::cout << "je creer un perso en" << worldPos.x << " " << worldPos.y << std::endl;
+				_character.emplace_back(_grid.getTextureCharacter(), worldPos);
+
 				std::cout << "jai reussit" << std::endl;
 			}
 

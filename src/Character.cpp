@@ -31,7 +31,7 @@ sf::Sprite &Character::getCharacter()
 	// 0 => 100 => 7 sec
 
 	if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - _beginTime).count() > 100) {
-		std::cout << "il c passé une dixieme de seconde" << std::endl;
+	//	std::cout << "il c passé une dixieme de seconde" << std::endl;
 		_beginTime = std::chrono::system_clock::now();
 		_sprite[_randomDirection][_actualSprite].setPosition(_position.x, _position.y);
 
@@ -58,7 +58,7 @@ sf::Sprite &Character::getCharacter()
 		_randomDirection = rand() % 4;
 	}
 
-	std::cout << "il est en "<< _position.x << " " <<  _position.y << std::endl;
+//	std::cout << "il est en "<< _position.x << " " <<  _position.y << std::endl;
 
 	_sprite[_randomDirection][_actualSprite].setPosition(_position.x, _position.y);
 	static int j = 0;

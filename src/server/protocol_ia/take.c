@@ -24,11 +24,11 @@ static const char *TYPENAME[] = {
 };
 
 /**
- * Try to take an object (arg) on the cell where the client is
- * @param server
- * @param client
- * @param arg
- */
+* Try to take an object (arg) on the cell where the client is
+* @param server
+* @param client
+* @param arg
+*/
 void take_cmd(server_t *server, client_t *client, char *arg)
 {
 	debug(INFO "'%i' call Take '%s'\n", client->fd, arg);
@@ -38,9 +38,9 @@ void take_cmd(server_t *server, client_t *client, char *arg)
 			UPDATE_RESOURCE(&server->map, client->entity->pos,
 				i, -1);
 			client->user.bag[i]++;
-			add_to_queue(client, strdup("ok\n"));
+			add_to_queue(client, "ok\n");
 			return;
 		}
 	}
-	add_to_queue(client, strdup("ko\n"));
+	add_to_queue(client, "ko\n");
 }

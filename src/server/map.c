@@ -46,11 +46,18 @@ void add_player_to_map(map_t *map, entity_t *entity)
 {
 	entity_t **front = &map->map[entity->pos.y][entity->pos.x].players;
 
+	debug(INFO "Add entity id %d on map\n", entity->id);
 	entity->prev = NULL;
 	entity->next = *front;
 	if (*front)
-		(*front)->prev = entity;
+		entity->next->prev = entity;
 	*front = entity;
+
+	/*new->prev = NULL;
+	new->next = server->clients;
+	if (new->next)
+		new->next->prev = new;
+	server->clients = new;*/
 }
 
 /**
@@ -62,14 +69,16 @@ void remove_player_from_map(map_t *map, entity_t *entity)
 {
 	entity_t **front = &map->map[entity->pos.y][entity->pos.x].players;
 
+	debug(INFO "Remove entity : id = %d\n", entity->id);
 	if (*front == entity) {
 		*front = (*front)->next;
 		if (*front)
 			(*front)->prev = NULL;
-		return;
 	} else {
+		debug(INFO "entity->prev : %p\n", entity->prev);
 		if ((entity)->prev)
 			(entity)->prev->next = (entity)->next;
+		debug(INFO "entity->next : %p\n", entity->next);
 		if ((entity)->next)
 			(entity)->next->prev = (entity)->prev;
 	}

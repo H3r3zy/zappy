@@ -41,12 +41,11 @@ static char *concat(char *s1, char *s2)
 
 static char *add_objects(char *response, cell_t *cell)
 {
-	cell->players;
 	for (entity_t *entity = cell->players; entity; entity = entity->next) {
 		response = concat(response, " player");
 	}
 	for (int i = 0; i < RESOURCE_NB; i++) {
-		for (int n = 0; n < cell->items[i]; n++) {
+		for (uint n = 0; n < cell->items[i]; n++) {
 			response = concat(response, ENTITY_TYPES[i].name);
 		}
 	}
@@ -61,7 +60,7 @@ static char *look_horizontal(map_t *map, pos_t pos, look_opt_t opt, uint currv)
 	start.x = (opt.d < 0 && !pos.x) ? map->size.x - 1 : pos.x + opt.d;
 	start.y = (opt.d > 0 && !pos.y) ? map->size.y - 1 : pos.y - opt.d;
 	pos = start;
-	for (int i = 0; i < currv * 2 + 1; i++) {
+	for (uint i = 0; i < currv * 2 + 1; i++) {
 		debug(INFO "test on %d;%d\n", pos.x, pos.y);
 		if (pos.y > map->size.y - 1)
 			pos.y = 0;
@@ -80,13 +79,13 @@ static char *look_horizontal(map_t *map, pos_t pos, look_opt_t opt, uint currv)
 }
 
 /**
- * Perform a vertical 'look'
- * @param map
- * @param pos
- * @param opt
- * @param currv
- * @return
- */
+* Perform a vertical 'look'
+* @param map
+* @param pos
+* @param opt
+* @param currv
+* @return
+*/
 static char *look_vertical(map_t *map, pos_t pos, look_opt_t opt, uint currv)
 {
 	char *response = strdup("");
@@ -95,7 +94,7 @@ static char *look_vertical(map_t *map, pos_t pos, look_opt_t opt, uint currv)
 	start.x = (opt.d < 0 && !pos.x) ? map->size.x - 1 : pos.x + opt.d;
 	start.y = (opt.d < 0 && !pos.y) ? map->size.y - 1 : pos.y + opt.d;
 	pos = start;
-	for (int i = 0; i < currv * 2 + 1; i++) {
+	for (size_t i = 0; i < currv * 2 + 1; i++) {
 		if (pos.x > map->size.x - 1)
 			pos.x = 0;
 		response = add_objects(response, &map->map[pos.y][pos.x]);

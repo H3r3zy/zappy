@@ -14,12 +14,12 @@
 #include "scheduler.h"
 
 /**
- * Check if a client as a task and if the time is done execute this task
- * @param server
- * @param client
- * @param task
- * @return
- */
+* Check if a client as a task and if the time is done execute this task
+* @param server
+* @param client
+* @param task
+* @return
+*/
 static bool check_task(server_t *server, client_t *client, task_t *task,
 	ms_t now
 )
@@ -38,10 +38,10 @@ static bool check_task(server_t *server, client_t *client, task_t *task,
 }
 
 /**
- * Shift task (task[1] become task[0])
- * And timer to the new first task start
- * @param client
- */
+* Shift task (task[1] become task[0])
+* And timer to the new first task start
+* @param client
+*/
 static void shift_task(client_t *client, ms_t now)
 {
 	for (uint i = 0; i < LIMIT_TASK_NUMBER - 1; i++) {
@@ -53,11 +53,11 @@ static void shift_task(client_t *client, ms_t now)
 }
 
 /**
- * Execute first task for a given client when the time is done
- * @param server
- * @param client
- * @param now
- */
+* Execute first task for a given client when the time is done
+* @param server
+* @param client
+* @param now
+*/
 static void client_scheduler(server_t *server, client_t *client, ms_t now)
 {
 	if (check_task(server, client, client->task[0], now)) {
@@ -77,11 +77,11 @@ static void client_scheduler(server_t *server, client_t *client, ms_t now)
 }
 
 /**
- * Schedule if a player is in an egg and if time is done break the egg
- * @param server
- * @param client
- * @param now
- */
+* Schedule if a player is in an egg and if time is done break the egg
+* @param server
+* @param client
+* @param now
+*/
 static void schedule_egg(server_t *server, client_t *client, ms_t now)
 {
 	egg_t *egg = get_egg_of(client);
@@ -96,9 +96,9 @@ static void schedule_egg(server_t *server, client_t *client, ms_t now)
 }
 
 /**
- * For each client in the server, call the client_scheduler
- * @param server
- */
+* For each client in the server, call the client_scheduler
+* @param server
+*/
 void scheduler(server_t *server)
 {
 	struct timespec spec;

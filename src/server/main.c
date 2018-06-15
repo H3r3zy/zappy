@@ -39,7 +39,7 @@ int main(int ac, char **av)
 		{"-n", &argument_names, true, false, 0},
 		{"-c", &argument_clients_nb, true, false, 0},
 		{"-f", &argument_frequency, true, false, 0},
-		{NULL, NULL, true, 0}
+		{NULL, NULL, true, false, 0}
 	};
 	int status = 0;
 

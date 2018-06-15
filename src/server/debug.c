@@ -11,18 +11,18 @@
 #include "debug.h"
 
 /**
- * Debug function who can take va_list in arg
- * Print what is send only if DEBUG is define
- * If the first character of the format string, this function print the hour
- * @param format
- * @param ap
- */
+* Debug function who can take va_list in arg
+* Print what is send only if DEBUG is define
+* If the first character of the format string, this function print the hour
+* @param format
+* @param ap
+*/
 void vdebug(char const *format, va_list ap)
 {
+	#ifdef DEBUG
 	struct tm *timet;
 	time_t t = time(NULL);
 
-	#ifdef DEBUG
 	timet = localtime(&t);
 	if (timet && format[0] == '[') {
 		fprintf(stdout, "%02i:%02i:%02i ",
@@ -36,11 +36,11 @@ void vdebug(char const *format, va_list ap)
 }
 
 /**
- * Call vdebug only if status is verified
- * @param status
- * @param format
- * @param ap
- */
+* Call vdebug only if status is verified
+* @param status
+* @param format
+* @param ap
+*/
 void vdebug_if(bool status, char const *format, va_list ap)
 {
 	if (status) {
@@ -49,11 +49,11 @@ void vdebug_if(bool status, char const *format, va_list ap)
 }
 
 /**
- * Standard debug function
- * create a va_list and send it to vdebug
- * @param format
- * @param ...
- */
+* Standard debug function
+* create a va_list and send it to vdebug
+* @param format
+* @param ...
+*/
 void debug(char *format, ...)
 {
 	va_list ap;
@@ -64,11 +64,11 @@ void debug(char *format, ...)
 }
 
 /**
- * Create a va_list and send_it to vdebug_if
- * @param status
- * @param format
- * @param ...
- */
+* Create a va_list and send_it to vdebug_if
+* @param status
+* @param format
+* @param ...
+*/
 void debug_if(bool status, char *format, ...)
 {
 	va_list ap;

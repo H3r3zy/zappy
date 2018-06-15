@@ -12,25 +12,29 @@
 #include "server.h"
 #include "debug.h"
 
+
 struct pollfd *build_poll_fds(server_t *server)
 {
 	static struct pollfd *fds = NULL;
-	static size_t prev_clients_nb = 0;
+	static size_t plt = 0;
+	struct pollfd poll_struct = (struct pollfd){0, POLLIN, 0};
 
-	if (!fds)
-		fds = malloc(sizeof(struct pollfd) * (server->client_nb + 1));
-	else if (server->client_nb != prev_clients_nb)
-		fds = realloc(fds, sizeof(struct pollfd) *
-			(server->client_nb + 1));
+	if (!fds || server->client_nb >= plt) {
+		plt += 8;
+		fds = realloc(fds, sizeof(struct pollfd) * plt);
+	} else if (plt - 8 > server->client_nb) {
+		plt -= 8;
+		fds = realloc(fds, sizeof(struct pollfd) * plt);
+	}
 	size_t i = 0;
 	for (client_t *clt = server->clients; clt; clt = clt->next) {
-		fds[i] = (struct pollfd){clt->fd, POLLIN, 0};
+		poll_struct.fd = clt->fd;
+		fds[i] = poll_struct;
 		if (*clt->queue)
 			fds[i].events |= POLLOUT;
 		++i;
 	}
 	fds[i] = (struct pollfd){server->fd, POLLIN, 0};
-	prev_clients_nb = server->client_nb;
 	return fds;
 }
 

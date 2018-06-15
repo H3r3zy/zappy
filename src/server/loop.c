@@ -64,7 +64,7 @@ void server_loop(server_t *server)
 	struct pollfd *fds = build_poll_fds(server);
 	size_t clients_nb = server->client_nb;
 
-	if (!fds || poll(fds, clients_nb + 1, 100) == -1)
+	if (!fds || poll(fds, clients_nb + 1, (clients_nb) ? 100 : 5000) == -1)
 		return;
 	handle_poll(fds, server);
 	if ((fds[clients_nb].revents & POLLIN))

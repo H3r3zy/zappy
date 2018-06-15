@@ -13,14 +13,15 @@
 #include <SFML/Graphics/Sprite.hpp>
 
 class Character {
+	typedef std::chrono::time_point<std::chrono::system_clock> chrono_t;
 	enum {
 		WALK_DOWN,
 		WALK_UP,
 		WALK_LEFT,
-		WALK_REIGHT
+		WALK_RIGHT
 	};
 	public:
-	Character(std::map<char, std::vector<sf::Texture>> &_texturePack);
+	Character(std::map<char, std::vector<sf::Texture>> &_texturePack, sf::Vector2f &position);
 	static bool playerLoop(sf::RenderWindow &window);
 
 	sf::Sprite &getCharacter();
@@ -28,9 +29,15 @@ class Character {
 
 	private:
 	std::map<char, std::vector<sf::Sprite>> _sprite;
+	chrono_t _beginTime;
 	uint _actualSprite;
 	sf::Vector2f _position;
 	char _action;
+
+
+	// TODO LE DEGAGER
+	int _testTmp = 0;
+	int _randomDirection = 2;
 };
 
 #endif //PSU_ZAPPY_2017_CHARACTER_HPP

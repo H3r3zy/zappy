@@ -49,10 +49,16 @@ bool Grid::loadTextures()
 
 	for (int i = 0; i < 9; i++) {
 		_textureCharacterPack[WALK_LEFT].emplace_back(sf::Texture());
+		_textureCharacterPack[WALK_RIGHT].emplace_back(sf::Texture());
+		_textureCharacterPack[WALK_UP].emplace_back(sf::Texture());
+		_textureCharacterPack[WALK_DOWN].emplace_back(sf::Texture());
 	}
 
 	for (int i = 0; i < 9; i++) {
-		  _textureCharacterPack[WALK_LEFT][i].loadFromFile("Character.png", sf::IntRect(i * 64, 576, 64, 64));
+		_textureCharacterPack[WALK_UP][i].loadFromFile("Character.png", sf::IntRect(i * 64, 512, 64, 64));
+		_textureCharacterPack[WALK_LEFT][i].loadFromFile("Character.png", sf::IntRect(i * 64, 576, 64, 64));
+		_textureCharacterPack[WALK_DOWN][i].loadFromFile("Character.png", sf::IntRect(i * 64, 640, 64, 64));
+		_textureCharacterPack[WALK_RIGHT][i].loadFromFile("Character.png", sf::IntRect(i * 64, 704, 64, 64));
 	}
 	return true;
 }

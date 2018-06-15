@@ -25,7 +25,11 @@ Map::Map(int mapsize) : _mapSize(mapsize, mapsize), _gameWindow(sf::VideoMode(12
 	_windowInfo->updateInfo(_grid.getNbActive(), _camera[MAP]);
 
 	/* Coucou je crer un thread */
-	_character.push_back(Character(_grid.getTextureCharacter()));
+	sf::Vector2f tmp = {1000, 0};
+	_character.push_back(Character(_grid.getTextureCharacter(), tmp));
+	tmp.x -= 500;
+	tmp.y -= 1000;
+	_character.push_back(Character(_grid.getTextureCharacter(), tmp));
 
 	/* */
 
@@ -42,6 +46,7 @@ void Map::gameLoop()
 		_gameWindow.setView(_camera[MAP]);
 		_grid.displayGlobalGrid(_gameWindow, _camera[MAP]);
 		_gameWindow.draw(_character[0].getCharacter());
+		_gameWindow.draw(_character[1].getCharacter());
 		/* Minimap Display*/
 	//	_gameWindow.setView(_camera[MINIMAP]);
 	//	_grid.displayMiniGrid(_gameWindow, _camera[MAP]);

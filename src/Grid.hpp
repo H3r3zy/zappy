@@ -27,7 +27,7 @@ class Grid {
 		WALK_DOWN,
 		WALK_UP,
 		WALK_LEFT,
-		WALK_REIGHT
+		WALK_RIGHT
 	};
 
 	typedef std::pair<uint, uint> 				POSITION;

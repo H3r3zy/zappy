@@ -46,8 +46,6 @@ sf::Sprite &Character::getCharacter()
 		else if (_randomDirection == WALK_DOWN)
 			_position.y += 1.4;
 
-
-
 		_actualSprite++;
 		_testTmp++;
 
@@ -59,15 +57,10 @@ sf::Sprite &Character::getCharacter()
 	}
 
 //	std::cout << "il est en "<< _position.x << " " <<  _position.y << std::endl;
-
-	_sprite[_randomDirection][_actualSprite].setPosition(_position.x, _position.y);
-	static int j = 0;
-	j++;
-	if (j == 50) {
-		j = 0;
-	}
 	if (_actualSprite == 8)
 		_actualSprite = 0;
+
+	_sprite[_randomDirection][_actualSprite].setPosition(_position.x, _position.y);
 	return _sprite[_randomDirection][_actualSprite];
 }
 

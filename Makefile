@@ -447,6 +447,33 @@ Src/client/Gui/ObjectSFML/TextInput.cpp.s:
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/TextInput.cpp.s
 .PHONY : Src/client/Gui/ObjectSFML/TextInput.cpp.s
 
+Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.o: Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.cpp.o
+
+.PHONY : Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.o
+
+# target to build an object file
+Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.cpp.o:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.cpp.o
+.PHONY : Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.cpp.o
+
+Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.i: Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.cpp.i
+
+.PHONY : Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.i
+
+# target to preprocess a source file
+Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.cpp.i:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.cpp.i
+.PHONY : Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.cpp.i
+
+Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.s: Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.cpp.s
+
+.PHONY : Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.s
+
+# target to generate assembly for a file
+Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.cpp.s:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.cpp.s
+.PHONY : Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.cpp.s
+
 Src/client/Gui/SFML_monitor.o: Src/client/Gui/SFML_monitor.cpp.o
 
 .PHONY : Src/client/Gui/SFML_monitor.o
@@ -627,6 +654,9 @@ help:
 	@echo "... Src/client/Gui/ObjectSFML/TextInput.o"
 	@echo "... Src/client/Gui/ObjectSFML/TextInput.i"
 	@echo "... Src/client/Gui/ObjectSFML/TextInput.s"
+	@echo "... Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.o"
+	@echo "... Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.i"
+	@echo "... Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.s"
 	@echo "... Src/client/Gui/SFML_monitor.o"
 	@echo "... Src/client/Gui/SFML_monitor.i"
 	@echo "... Src/client/Gui/SFML_monitor.s"

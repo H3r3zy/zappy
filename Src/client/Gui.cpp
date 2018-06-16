@@ -8,8 +8,11 @@
 #include <iostream>
 #include "Gui.hpp"
 
-irc::Gui::Gui(int socket, std::vector<int> &listId, bool &displayGui, bool &endClient) : GuiTexture(),_socketServer(socket), _listId(listId), _displayGui(displayGui), _endClient(endClient)
+irc::Gui::Gui(int socket, const std::string &nick, const std::string &ip, std::vector<int> &listId, bool &displayGui, bool &endClient) : GuiTexture(), _listId(listId), _displayGui(displayGui), _endClient(endClient)
 {
+	_nick = nick;
+	_ip = ip;
+	_socketServer = socket;
 }
 
 irc::Gui::~Gui()
@@ -36,7 +39,7 @@ int irc::Gui::initDisplayGui()
 
 void irc::Gui::loopDisplay()
 {
-	while (!_endClient) {
+	while (!_endClient /* TODO: delete the second condition */ && _monitor->isWindowOpen()) {
 		std::cout << "val: " << _displayGui << ", " << _currentlyGuiDisplay << std::endl;
 		if (_displayGui && !_currentlyGuiDisplay) {
 			if (!_monitor && initDisplayGui())

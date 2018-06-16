@@ -15,7 +15,7 @@ namespace irc {
 
 	class Gui : public irc::GuiTexture {
 		public:
-		Gui(int socket, std::vector<int> &listId, bool &displayGui, bool &endClient);
+		Gui(int socket, const std::string &nick, const std::string &ip, std::vector<int> &listId, bool &displayGui, bool &endClient);
 		~Gui();
 
 		int initDisplayGui();
@@ -25,8 +25,6 @@ namespace irc {
 
 		private:
 		std::mutex _mutex;
-
-		int _socketServer = 0;
 
 		std::vector<int> &_listId; // List id to check on GUI
 		bool &_displayGui; // Check if the gui is displayed

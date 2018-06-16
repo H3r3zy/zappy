@@ -17,7 +17,7 @@ namespace irc {
 
 	class ManageDisplay {
 		public:
-		ManageDisplay(int socketServerMap, int socketServerGui);
+		ManageDisplay(int socketServerMap, int socketServerGui, const std::string &nick = "Unknown", const std::string &ip = "0.0.0.0");
 		~ManageDisplay();
 
 		protected:
@@ -33,6 +33,7 @@ namespace irc {
 		irc::Gui _gui;
 
 		my::Thread *_thread = nullptr;
+		std::string _nick;
 	};
 
 }

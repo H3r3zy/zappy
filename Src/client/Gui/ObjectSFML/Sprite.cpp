@@ -8,12 +8,12 @@
 #include <iostream>
 #include "Class/Gui/ObjectSFML/Sprite.hpp"
 
-irc::Sprite::Sprite(const std::string &filePath,
-	sf::IntRect pos
-) : AbstractObjectSFML(pos), _object()
+irc::Sprite::Sprite(const std::string &filePath, sf::IntRect pos, const sf::IntRect &rect) : AbstractObjectSFML(pos), _object()
 {
 	if (this->_texture.loadFromFile(filePath)) {
 		this->_object.setTexture(this->_texture);
+		if (rect != sf::IntRect(0, 0, 0, 0))
+			this->_object.setTextureRect(rect);
 
 		sf::FloatRect size = this->_object.getGlobalBounds();
 		this->_object.setScale(sf::Vector2f(this->_pos.width / size.width, this->_pos.height / size.height));

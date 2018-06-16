@@ -30,6 +30,8 @@ irc::Auth::Auth(int width, int height) : _base("Authentication", width, height),
 void irc::Auth::initBck()
 {
 	irc::Square *background = new irc::Square(sf::IntRect(0, 0, _width, _height));
+	background->addFuncKeyEvent(sf::Keyboard::Escape, &irc::SFML_monitor::closeWindow, std::ref(_base));
+
 	background->setColor(sf::Color(66, 66, 66, 255));
 
 	irc::Square *bck_input_nick_border = new irc::Square(sf::IntRect(400, 250, 400, 60));
@@ -173,7 +175,7 @@ void irc::Auth::sendForm()
 		_base.getObjectByName("bck_input_port_border")->setColor(sf::Color(222, 170, 170));
 	} else
 		_base.getObjectByName("bck_input_port_border")->setColor(sf::Color::White);
-	if (_nick.empty() || _nick.find(" ") != std::string::npos) {
+	if (_nick.empty() || _nick.find(" ") != std::string::npos || _nick.size() > 20) {
 		error = true;
 		_base.getObjectByName("bck_input_nick_border")->setColor(sf::Color(222, 170, 170));
 	} else
@@ -197,9 +199,8 @@ void irc::Auth::tryToConnect(bool error)
 		if (!ret.empty() || !ret2.empty())
 			modalError(ret);
 		else {
-			// TODO: Check with protocol if he return the good answer
 			_base.closeWindow();
-			ManageDisplay(_socketServerMap, _socketServerGui);
+			ManageDisplay(_socketServerMap, _socketServerGui, _nick, _ip);
 		}
 	}
 }

@@ -5,12 +5,14 @@ set(CMAKE_CXX_STANDARD 11)
 
 include_directories(
 		Src
+		Src
 		Include/
 		Include/Tools/
 		Include/Abstract
 		Include/Interface
 		Include/Class
 		Include/Class/Gui
+		Include/Class/Gui/PersonalizedObject
 		Include/Class/Gui/Animation
 		Include/Class/Gui/ObjectSFML
 )

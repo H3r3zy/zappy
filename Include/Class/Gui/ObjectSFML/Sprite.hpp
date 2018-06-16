@@ -14,7 +14,7 @@
 namespace irc {
 	class Sprite : public AbstractObjectSFML {
 		public:
-		Sprite(const std::string &filePath, sf::IntRect pos);
+		Sprite(const std::string &filePath, sf::IntRect pos, const sf::IntRect &rect = {0, 0, 0, 0});
 		~Sprite() = default;
 
 		bool drawObject(sf::RenderWindow &window);

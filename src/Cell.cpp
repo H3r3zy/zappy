@@ -21,9 +21,9 @@ Cell::Cell(std::pair<sf::Vector2f, sf::Vector2f> squareDimension, sf::Texture *&
 	_font.loadFromFile("arial.ttf");
 	_cellPos.setFont(_font);
 	_cellPos.setFillColor(sf::Color::White);
-	_cellPos.setCharacterSize(16);
+	_cellPos.setCharacterSize(12);
 	_cellPos.setString("[" + std::to_string(static_cast<int>(_position.x)) + ", " + std::to_string(static_cast<int>(_position.y)) + "]");
-	_cellPos.setPosition(_position);
+	_cellPos.setPosition(_position.x, _position.y + _size.y - _cellPos.getCharacterSize() - 5);
 }
 
 Cell::~Cell()

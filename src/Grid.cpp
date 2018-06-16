@@ -96,11 +96,16 @@ void Grid::updateGrid3D(sf::View &view)
 void Grid::displayGlobalGrid(sf::RenderWindow &window, const sf::View &view)
 {
 	_nbActive = 0;
+	sf::RectangleShape tmpRect;
+	tmpRect.setSize(sf::Vector2f(10, 10));
+	tmpRect.setPosition(view.getCenter());
 	for (const auto &it : _activeMap) {
 		window.draw(it->drawCell());
 		window.draw(it->getCellPos());
 		++_nbActive;
 	}
+	tmpRect.setFillColor(sf::Color::Cyan);
+	window.draw(tmpRect);
 }
 
 uint Grid::getNbActive() const
@@ -108,10 +113,20 @@ uint Grid::getNbActive() const
 	return _nbActive;
 }
 
-void Grid::displayMiniGrid(sf::RenderWindow &window, const sf::View &view)
+void Grid::displayMiniGrid(sf::RenderWindow &window, const sf::View &view, std::vector<Character> &character)
 {
-	for (const auto &it : _activeMap) {
-		window.draw(it->drawCell());
+	sf::RectangleShape tmpRect;
+	tmpRect.setSize(sf::Vector2f(10, 10));
+	sf:: RectangleShape Grey;
+	Grey.setPosition(view.getCenter() - view.getSize());
+	Grey.setSize(sf::Vector2f(view.getSize().x * 2, view.getSize().y * 2));
+	Grey.setFillColor(sf::Color(0, 0, 0, 127));
+
+	window.draw(Grey);
+	std::cout << "je dessine mon fond en "<< Grey.getPosition().x<< " " << Grey.getPosition().y<< " " << Grey.getSize().x << " " << Grey.getSize().y << std::endl;
+	for (const auto &it : character) {
+		tmpRect.setPosition(sf::Vector2f(it.getPosition()));
+		window.draw(tmpRect);
 	}
 }
 

@@ -9,12 +9,7 @@ Map::Map(int mapsize) : _mapSize(mapsize, mapsize), _gameWindow(sf::VideoMode(12
 {
 	//_gameWindow.setFramerateLimit(60);
 	_windowInfo = new WindowInfo();
-	_camera.emplace_back();
-	_camera.emplace_back();
-	_camera.emplace_back();
-	_camera[MAP].reset(sf::FloatRect(0, 0, 1200, 800));
-	_camera[HUD].reset(sf::FloatRect(0, 0, 1200, 800));
-	_camera[MINIMAP].setViewport(sf::FloatRect(0.75f, 0, 0.25f, 0.25f));
+	initCamera();
 	_playerPos.setPosition(_camera[MAP].getCenter());
 	_playerPos.setSize(sf::Vector2f(100, 100));
 	_playerPos.setFillColor(sf::Color::Red);
@@ -35,6 +30,21 @@ Map::Map(int mapsize) : _mapSize(mapsize, mapsize), _gameWindow(sf::VideoMode(12
 
 }
 
+
+void Map::initCamera()
+{
+	_camera.emplace_back();
+	_camera.emplace_back();
+	_camera.emplace_back();
+	_camera[MAP].reset(sf::FloatRect(0, 0, 1200, 800));
+	_camera[HUD].reset(sf::FloatRect(0, 0, 1200, 800));
+	_camera[MINIMAP].reset(sf::FloatRect(0, 0, 1200, 800));
+	_camera[MINIMAP].setViewport(sf::FloatRect(0.66f, 0, 0.25f, 0.25f));
+	_camera[MINIMAP].zoom(1.2f);
+	_camera[MINIMAP].setCenter(600, -400);
+	_camera[MAP].setCenter(600, -400);
+}
+
 void Map::gameLoop()
 {
 	//std::thread caca(_character[0].playerLoop, _gameWindow);
@@ -49,9 +59,9 @@ void Map::gameLoop()
 			_gameWindow.draw(it.getCharacter());
 		}
 		/* Minimap Display*/
-	//	_gameWindow.setView(_camera[MINIMAP]);
-	//	_grid.displayMiniGrid(_gameWindow, _camera[MAP]);
-	//	_gameWindow.draw(_playerPos);
+		_gameWindow.setView(_camera[MINIMAP]);
+		_grid.displayMiniGrid(_gameWindow, _camera[MAP], _character);
+		_gameWindow.draw(_playerPos);
 
 		/* HUD DISPLAY */
 		_gameWindow.setView(_camera[HUD]);
@@ -84,12 +94,14 @@ bool Map::getEvent()
 			switch (event.key.code) {
 			case sf::Keyboard::Right:
 				_camera[MAP].move(10, 0);
+				_camera[MINIMAP].move(10, 0);
 				_playerPos.setPosition(_camera[MAP].getCenter());
 				_grid.updateGrid3D(_camera[MAP]);
 				_windowInfo->updateInfo(_grid.getNbActive(), _camera[HUD]);
 				break;
 			case sf::Keyboard::Left:
 				_camera[MAP].move(-10, 0);
+				_camera[MINIMAP].move(-10, 0);
 				_playerPos.setPosition(_camera[MAP].getCenter());
 				_grid.updateGrid3D(_camera[MAP]);
 				_windowInfo->updateInfo(_grid.getNbActive(), _camera[HUD]);
@@ -97,12 +109,14 @@ bool Map::getEvent()
 			case sf::Keyboard::Up:
 
 				_camera[MAP].move(0, -10);
+				_camera[MINIMAP].move(0, -10);
 				_playerPos.setPosition(_camera[MAP].getCenter());
 				_grid.updateGrid3D(_camera[MAP]);
 				_windowInfo->updateInfo(_grid.getNbActive(), _camera[HUD]);
 				break;
 			case sf::Keyboard::Down:
 				_camera[MAP].move(0, 10);
+				_camera[MINIMAP].move(0, 10);
 				_playerPos.setPosition(_camera[MAP].getCenter());
 				_grid.updateGrid3D(_camera[MAP]);
 				_windowInfo->updateInfo(_grid.getNbActive(), _camera[HUD]);

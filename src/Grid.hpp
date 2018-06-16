@@ -13,6 +13,7 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/Text.hpp>
 #include "Cell.hpp"
+#include "Character.hpp"
 
 class Grid {
 
@@ -36,7 +37,7 @@ class Grid {
 	public:
 	Grid(const sf::Vector2f &mapSize);
 	void displayGlobalGrid(sf::RenderWindow &window, const sf::View &view);
-	void displayMiniGrid(sf::RenderWindow &window, const sf::View &view);
+	void displayMiniGrid(sf::RenderWindow &window, const sf::View &view, std::vector<Character> &character);
 	void updateGrid3D(sf::View &view);
 	uint getNbActive() const;
 	bool checkvalid(int x, int y);

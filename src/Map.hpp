@@ -29,6 +29,7 @@ class Map {
 
 	private:
 	bool getEvent();
+	void initCamera();
 	sf::Vector2f _mapSize;
 
 	/* SFML */

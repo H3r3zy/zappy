@@ -22,7 +22,10 @@ class Character {
 	};
 	public:
 	Character(std::map<char, std::vector<sf::Texture>> &_texturePack, sf::Vector2f &position);
+	void setPosition(sf::Vector2f &position);
+	void setPosition(float x, float y);
 	static bool playerLoop(sf::RenderWindow &window);
+	const sf::Vector2f &getPosition() const;
 
 	sf::Sprite &getCharacter();
 	~Character();

@@ -14,13 +14,11 @@ Character::Character(std::map<char, std::vector<sf::Texture>> &_texturePack, sf:
 		_sprite[WALK_UP].emplace_back(sf::Sprite());
 		_sprite[WALK_DOWN].emplace_back(sf::Sprite());
 	}
-	int i = 0;
-	while (i < 9) {
+	for (int i = 0; i < 9; i++) {
 		_sprite[WALK_LEFT][i].setTexture(_texturePack[WALK_LEFT][i]);
 		_sprite[WALK_RIGHT][i].setTexture(_texturePack[WALK_RIGHT][i]);
 		_sprite[WALK_UP][i].setTexture(_texturePack[WALK_UP][i]);
 		_sprite[WALK_DOWN][i].setTexture(_texturePack[WALK_DOWN][i]);
-		i++;
 	}
 	srand(time(NULL));
 //	_sprite[WALK_LEFT][0]->setTexture(_texturePack[WALK_LEFT][0]);
@@ -57,7 +55,7 @@ sf::Sprite &Character::getCharacter()
 	}
 
 //	std::cout << "il est en "<< _position.x << " " <<  _position.y << std::endl;
-	if (_actualSprite == 8)
+	if (_actualSprite == 9)
 		_actualSprite = 0;
 
 	_sprite[_randomDirection][_actualSprite].setPosition(_position.x, _position.y);
@@ -79,4 +77,20 @@ bool Character::playerLoop(sf::RenderWindow &window)
 //			window.draw(_sprite[WALK_LEFT][_actualSprite]);
 		}
 	}
+}
+
+void Character::setPosition(sf::Vector2f &position)
+{
+	_position = position;
+}
+
+void Character::setPosition(float x, float y)
+{
+	_position.x = x;
+	_position.y = y;
+}
+
+const sf::Vector2f &Character::getPosition() const
+{
+	return _position;
 }

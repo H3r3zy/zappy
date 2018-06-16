@@ -96,8 +96,7 @@ class CmdParser:
         inv = inv.replace("[", "").replace("]", "")
         elems = inv.split(",")
         for x in range(0, len(elems)):
-            elems[x] = elems[x].lstrip(" ")
-            elems[x] = elems[x].rstrip(" ")
+            elems[x] = elems[x].lstrip(" ").rstrip(" ")
         for elem in elems:
             arr = tuple(elem.split(" ", 2))
             self.__inv[arr[0]] = int(arr[1])

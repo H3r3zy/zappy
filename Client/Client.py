@@ -55,7 +55,6 @@ class Client:
             return False
         return True
 
-
     def update_inbuff(self, con):
         data = con.recv(1024)
         if len(data) == 0:
@@ -120,7 +119,8 @@ class Client:
         ordinal = lambda n: "%d%s" % (n, "tsnrhtdd"[(n / 10 % 10 != 1) * (n % 10 < 4) * n % 10::4])
         print("Authentication successful, map size of %d x %d" % (self.__mapSize[0], self.__mapSize[1]))
         player = Ai(self.__mapSize[0], self.__mapSize[1])
-        parser = CmdParser.CmdParser(player, self.__outQueue, self.__msgQueue, (self.__port, self.__name, self.__machine))
+        parser = CmdParser.CmdParser(player, self.__outQueue, self.__msgQueue,
+                                     (self.__port, self.__name, self.__machine))
         while True:
             self.refresh()
             self.refresh_queue()
@@ -129,4 +129,4 @@ class Client:
                     print("I died being at the %s level" % ordinal(player.getLevel()))
                     return
             self.__currentNode = self.__nodes[self.__currentNode].action(self,
-                                                                                      self.__args[self.__currentNode])
+                                                                         self.__args[self.__currentNode])

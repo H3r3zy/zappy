@@ -14,6 +14,8 @@ SRC	=	src/main.cpp		\
 		src/Entity/AMotionShape.cpp	\
 		src/Entity/Cell.cpp		\
 		src/Entity/Character.cpp	\
+		src/Text/AText.cpp		\
+		src/Text/GameText.cpp		\
 		src/WindowInfo.cpp	\
 		src/Grid.cpp		\
 		src/Map.cpp
@@ -22,7 +24,7 @@ OBJ	=	$(SRC:.cpp=.o)
 
 NAME	=	client
 
-CXXFLAGS	=	-W -Wall -Wextra -IInclude -IInclude/Entity -g
+CXXFLAGS	=	-W -Wall -Wextra -IInclude -IInclude/Entity -IInclude/Text -g
 
 all:	$(NAME)
 

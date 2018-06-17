@@ -109,6 +109,12 @@
 		<Unit filename="/home/wisenoa/PSU_zappy_2017/Include/Map.hpp">
 			<Option target="PSU_zappy_2017"/>
 		</Unit>
+		<Unit filename="/home/wisenoa/PSU_zappy_2017/Include/Text/AText.hpp">
+			<Option target="PSU_zappy_2017"/>
+		</Unit>
+		<Unit filename="/home/wisenoa/PSU_zappy_2017/Include/Text/GameText.hpp">
+			<Option target="PSU_zappy_2017"/>
+		</Unit>
 		<Unit filename="/home/wisenoa/PSU_zappy_2017/Include/WindowInfo.hpp">
 			<Option target="PSU_zappy_2017"/>
 		</Unit>
@@ -128,6 +134,12 @@
 			<Option target="PSU_zappy_2017"/>
 		</Unit>
 		<Unit filename="/home/wisenoa/PSU_zappy_2017/src/Map.cpp">
+			<Option target="PSU_zappy_2017"/>
+		</Unit>
+		<Unit filename="/home/wisenoa/PSU_zappy_2017/src/Text/AText.cpp">
+			<Option target="PSU_zappy_2017"/>
+		</Unit>
+		<Unit filename="/home/wisenoa/PSU_zappy_2017/src/Text/GameText.cpp">
 			<Option target="PSU_zappy_2017"/>
 		</Unit>
 		<Unit filename="/home/wisenoa/PSU_zappy_2017/src/WindowInfo.cpp">

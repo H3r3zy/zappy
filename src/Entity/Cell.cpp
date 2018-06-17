@@ -5,18 +5,13 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include "Cell.hpp"
 
-Cell::Cell(std::pair<sf::Vector2f, sf::Vector2f> squareDimension, sf::Texture *&texture) : ARectangleShape(squareDimension.first, squareDimension.second)
+Cell::Cell(std::pair<sf::Vector2f, sf::Vector2f> squareDimension, sf::Texture *&texture, sf::Font &font) : ARectangleShape(squareDimension.first, squareDimension.second), _cellPos(font)
 {
 	std::cout << "Je suis une Cell, en [" << _position.x << "," << _position.y << "] et de taille [" << _size.x << "," << _size.y << "]" << std::endl;
 	_rectangle.setOutlineThickness(1);
 	_rectangle.setOutlineColor(sf::Color::Black);
 	_rectangle.setTexture(texture);
-	_font.loadFromFile("arial.ttf");
-	_cellPos.setFont(_font);
-	_cellPos.setFillColor(sf::Color::White);
-	_cellPos.setCharacterSize(12);
-	_cellPos.setString("[" + std::to_string(static_cast<int>(_position.x)) + ", " + std::to_string(static_cast<int>(_position.y)) + "]");
-	_cellPos.setPosition(_position.x, _position.y + _size.y - _cellPos.getCharacterSize() - 5);
+	_cellPos.setPosition(_position.x, _position.y + _size.y - _cellPos.getText().getCharacterSize() - 5);
 }
 
 Cell::~Cell()
@@ -46,10 +41,17 @@ void Cell::addRessources(unsigned int resourceName)
 sf::Text &Cell::getCellPos()
 {
 //	std::cout << "Ma cll est en :" << _cellPos.getPosition().x << " " << _cellPos.getPosition().y << std::endl;
-	return _cellPos;
+	return const_cast<sf::Text &>(_cellPos.getText());
 }
 
 void Cell::makeTarget()
 {
 	_rectangle.setFillColor(sf::Color::Red);
+}
+
+sf::Font Cell::createFont()
+{
+	sf::Font font;
+	font.loadFromFile("arial.ttf");
+	return font;
 }

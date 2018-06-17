@@ -12,11 +12,12 @@
 #include <SFML/Graphics/Rect.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/Text.hpp>
+#include <Text/GameText.hpp>
 #include "ARectangleShape.hpp"
 
 class Cell : public ARectangleShape {
 	public:
-	Cell(std::pair<sf::Vector2f, sf::Vector2f> squareDimension, sf::Texture *&texture);
+	Cell(std::pair<sf::Vector2f, sf::Vector2f> squareDimension, sf::Texture *&texture, sf::Font &font);
 	~Cell();
 
 	sf::Text &getCellPos();
@@ -25,8 +26,10 @@ class Cell : public ARectangleShape {
 	void makeTarget();
 
 	private:
-	sf::Text _cellPos;
-	sf::Font _font;
+	sf::Font createFont();
+	GameText _cellPos;
+
+
 	ulong _textureNumber;
 	std::map<unsigned int, unsigned int> _ressources;
 };

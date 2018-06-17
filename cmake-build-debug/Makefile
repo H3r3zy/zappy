@@ -285,6 +285,60 @@ src/Map.cpp.s:
 	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Map.cpp.s
 .PHONY : src/Map.cpp.s
 
+src/Text/AText.o: src/Text/AText.cpp.o
+
+.PHONY : src/Text/AText.o
+
+# target to build an object file
+src/Text/AText.cpp.o:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Text/AText.cpp.o
+.PHONY : src/Text/AText.cpp.o
+
+src/Text/AText.i: src/Text/AText.cpp.i
+
+.PHONY : src/Text/AText.i
+
+# target to preprocess a source file
+src/Text/AText.cpp.i:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Text/AText.cpp.i
+.PHONY : src/Text/AText.cpp.i
+
+src/Text/AText.s: src/Text/AText.cpp.s
+
+.PHONY : src/Text/AText.s
+
+# target to generate assembly for a file
+src/Text/AText.cpp.s:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Text/AText.cpp.s
+.PHONY : src/Text/AText.cpp.s
+
+src/Text/GameText.o: src/Text/GameText.cpp.o
+
+.PHONY : src/Text/GameText.o
+
+# target to build an object file
+src/Text/GameText.cpp.o:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Text/GameText.cpp.o
+.PHONY : src/Text/GameText.cpp.o
+
+src/Text/GameText.i: src/Text/GameText.cpp.i
+
+.PHONY : src/Text/GameText.i
+
+# target to preprocess a source file
+src/Text/GameText.cpp.i:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Text/GameText.cpp.i
+.PHONY : src/Text/GameText.cpp.i
+
+src/Text/GameText.s: src/Text/GameText.cpp.s
+
+.PHONY : src/Text/GameText.s
+
+# target to generate assembly for a file
+src/Text/GameText.cpp.s:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Text/GameText.cpp.s
+.PHONY : src/Text/GameText.cpp.s
+
 src/WindowInfo.o: src/WindowInfo.cpp.o
 
 .PHONY : src/WindowInfo.o
@@ -366,6 +420,12 @@ help:
 	@echo "... src/Map.o"
 	@echo "... src/Map.i"
 	@echo "... src/Map.s"
+	@echo "... src/Text/AText.o"
+	@echo "... src/Text/AText.i"
+	@echo "... src/Text/AText.s"
+	@echo "... src/Text/GameText.o"
+	@echo "... src/Text/GameText.i"
+	@echo "... src/Text/GameText.s"
 	@echo "... src/WindowInfo.o"
 	@echo "... src/WindowInfo.i"
 	@echo "... src/WindowInfo.s"

@@ -10,6 +10,8 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/wisenoa/PSU_zappy_2017/src/Entity/Character.cpp" "/home/wisenoa/PSU_zappy_2017/cmake-build-debug/CMakeFiles/PSU_zappy_2017.dir/src/Entity/Character.cpp.o"
   "/home/wisenoa/PSU_zappy_2017/src/Grid.cpp" "/home/wisenoa/PSU_zappy_2017/cmake-build-debug/CMakeFiles/PSU_zappy_2017.dir/src/Grid.cpp.o"
   "/home/wisenoa/PSU_zappy_2017/src/Map.cpp" "/home/wisenoa/PSU_zappy_2017/cmake-build-debug/CMakeFiles/PSU_zappy_2017.dir/src/Map.cpp.o"
+  "/home/wisenoa/PSU_zappy_2017/src/Text/AText.cpp" "/home/wisenoa/PSU_zappy_2017/cmake-build-debug/CMakeFiles/PSU_zappy_2017.dir/src/Text/AText.cpp.o"
+  "/home/wisenoa/PSU_zappy_2017/src/Text/GameText.cpp" "/home/wisenoa/PSU_zappy_2017/cmake-build-debug/CMakeFiles/PSU_zappy_2017.dir/src/Text/GameText.cpp.o"
   "/home/wisenoa/PSU_zappy_2017/src/WindowInfo.cpp" "/home/wisenoa/PSU_zappy_2017/cmake-build-debug/CMakeFiles/PSU_zappy_2017.dir/src/WindowInfo.cpp.o"
   "/home/wisenoa/PSU_zappy_2017/src/main.cpp" "/home/wisenoa/PSU_zappy_2017/cmake-build-debug/CMakeFiles/PSU_zappy_2017.dir/src/main.cpp.o"
   )

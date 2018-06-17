@@ -8,6 +8,7 @@
 
 Grid::Grid(const sf::Vector2f &mapSize) : _mapSize(mapSize), _nbActive(0)
 {
+	_font.loadFromFile("arial.ttf");
 	loadTextures();
 	loadMap();
 }
@@ -32,7 +33,7 @@ void Grid::loadMap()
 			dimension.first.x = i * 100;
 			dimension.first.y = ((j) * 100);
 			dimension.first.y *= -1;
-			_gameMap.insert(GRID_MAP::value_type(POSITION(i, j), new Cell(dimension, _texturePack[dist6(rng)])));
+			_gameMap.insert(GRID_MAP::value_type(POSITION(i, j), new Cell(dimension, _texturePack[dist6(rng)], _font)));
 		}
 	}
 }

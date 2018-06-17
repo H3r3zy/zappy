@@ -249,6 +249,54 @@ CMakeFiles/PSU_zappy_2017.dir/src/Entity/AMotionShape.cpp.o.provides: CMakeFiles
 CMakeFiles/PSU_zappy_2017.dir/src/Entity/AMotionShape.cpp.o.provides.build: CMakeFiles/PSU_zappy_2017.dir/src/Entity/AMotionShape.cpp.o
 
 
+CMakeFiles/PSU_zappy_2017.dir/src/Text/AText.cpp.o: CMakeFiles/PSU_zappy_2017.dir/flags.make
+CMakeFiles/PSU_zappy_2017.dir/src/Text/AText.cpp.o: ../src/Text/AText.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/PSU_zappy_2017/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/PSU_zappy_2017.dir/src/Text/AText.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PSU_zappy_2017.dir/src/Text/AText.cpp.o -c /home/wisenoa/PSU_zappy_2017/src/Text/AText.cpp
+
+CMakeFiles/PSU_zappy_2017.dir/src/Text/AText.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PSU_zappy_2017.dir/src/Text/AText.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wisenoa/PSU_zappy_2017/src/Text/AText.cpp > CMakeFiles/PSU_zappy_2017.dir/src/Text/AText.cpp.i
+
+CMakeFiles/PSU_zappy_2017.dir/src/Text/AText.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PSU_zappy_2017.dir/src/Text/AText.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wisenoa/PSU_zappy_2017/src/Text/AText.cpp -o CMakeFiles/PSU_zappy_2017.dir/src/Text/AText.cpp.s
+
+CMakeFiles/PSU_zappy_2017.dir/src/Text/AText.cpp.o.requires:
+
+.PHONY : CMakeFiles/PSU_zappy_2017.dir/src/Text/AText.cpp.o.requires
+
+CMakeFiles/PSU_zappy_2017.dir/src/Text/AText.cpp.o.provides: CMakeFiles/PSU_zappy_2017.dir/src/Text/AText.cpp.o.requires
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Text/AText.cpp.o.provides.build
+.PHONY : CMakeFiles/PSU_zappy_2017.dir/src/Text/AText.cpp.o.provides
+
+CMakeFiles/PSU_zappy_2017.dir/src/Text/AText.cpp.o.provides.build: CMakeFiles/PSU_zappy_2017.dir/src/Text/AText.cpp.o
+
+
+CMakeFiles/PSU_zappy_2017.dir/src/Text/GameText.cpp.o: CMakeFiles/PSU_zappy_2017.dir/flags.make
+CMakeFiles/PSU_zappy_2017.dir/src/Text/GameText.cpp.o: ../src/Text/GameText.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/PSU_zappy_2017/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/PSU_zappy_2017.dir/src/Text/GameText.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PSU_zappy_2017.dir/src/Text/GameText.cpp.o -c /home/wisenoa/PSU_zappy_2017/src/Text/GameText.cpp
+
+CMakeFiles/PSU_zappy_2017.dir/src/Text/GameText.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PSU_zappy_2017.dir/src/Text/GameText.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wisenoa/PSU_zappy_2017/src/Text/GameText.cpp > CMakeFiles/PSU_zappy_2017.dir/src/Text/GameText.cpp.i
+
+CMakeFiles/PSU_zappy_2017.dir/src/Text/GameText.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PSU_zappy_2017.dir/src/Text/GameText.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wisenoa/PSU_zappy_2017/src/Text/GameText.cpp -o CMakeFiles/PSU_zappy_2017.dir/src/Text/GameText.cpp.s
+
+CMakeFiles/PSU_zappy_2017.dir/src/Text/GameText.cpp.o.requires:
+
+.PHONY : CMakeFiles/PSU_zappy_2017.dir/src/Text/GameText.cpp.o.requires
+
+CMakeFiles/PSU_zappy_2017.dir/src/Text/GameText.cpp.o.provides: CMakeFiles/PSU_zappy_2017.dir/src/Text/GameText.cpp.o.requires
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Text/GameText.cpp.o.provides.build
+.PHONY : CMakeFiles/PSU_zappy_2017.dir/src/Text/GameText.cpp.o.provides
+
+CMakeFiles/PSU_zappy_2017.dir/src/Text/GameText.cpp.o.provides.build: CMakeFiles/PSU_zappy_2017.dir/src/Text/GameText.cpp.o
+
+
 # Object files for target PSU_zappy_2017
 PSU_zappy_2017_OBJECTS = \
 "CMakeFiles/PSU_zappy_2017.dir/src/main.cpp.o" \
@@ -258,7 +306,9 @@ PSU_zappy_2017_OBJECTS = \
 "CMakeFiles/PSU_zappy_2017.dir/src/WindowInfo.cpp.o" \
 "CMakeFiles/PSU_zappy_2017.dir/src/Entity/Character.cpp.o" \
 "CMakeFiles/PSU_zappy_2017.dir/src/Entity/ARectangleShape.cpp.o" \
-"CMakeFiles/PSU_zappy_2017.dir/src/Entity/AMotionShape.cpp.o"
+"CMakeFiles/PSU_zappy_2017.dir/src/Entity/AMotionShape.cpp.o" \
+"CMakeFiles/PSU_zappy_2017.dir/src/Text/AText.cpp.o" \
+"CMakeFiles/PSU_zappy_2017.dir/src/Text/GameText.cpp.o"
 
 # External object files for target PSU_zappy_2017
 PSU_zappy_2017_EXTERNAL_OBJECTS =
@@ -271,9 +321,11 @@ PSU_zappy_2017: CMakeFiles/PSU_zappy_2017.dir/src/WindowInfo.cpp.o
 PSU_zappy_2017: CMakeFiles/PSU_zappy_2017.dir/src/Entity/Character.cpp.o
 PSU_zappy_2017: CMakeFiles/PSU_zappy_2017.dir/src/Entity/ARectangleShape.cpp.o
 PSU_zappy_2017: CMakeFiles/PSU_zappy_2017.dir/src/Entity/AMotionShape.cpp.o
+PSU_zappy_2017: CMakeFiles/PSU_zappy_2017.dir/src/Text/AText.cpp.o
+PSU_zappy_2017: CMakeFiles/PSU_zappy_2017.dir/src/Text/GameText.cpp.o
 PSU_zappy_2017: CMakeFiles/PSU_zappy_2017.dir/build.make
 PSU_zappy_2017: CMakeFiles/PSU_zappy_2017.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/wisenoa/PSU_zappy_2017/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable PSU_zappy_2017"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/wisenoa/PSU_zappy_2017/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable PSU_zappy_2017"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/PSU_zappy_2017.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -289,6 +341,8 @@ CMakeFiles/PSU_zappy_2017.dir/requires: CMakeFiles/PSU_zappy_2017.dir/src/Window
 CMakeFiles/PSU_zappy_2017.dir/requires: CMakeFiles/PSU_zappy_2017.dir/src/Entity/Character.cpp.o.requires
 CMakeFiles/PSU_zappy_2017.dir/requires: CMakeFiles/PSU_zappy_2017.dir/src/Entity/ARectangleShape.cpp.o.requires
 CMakeFiles/PSU_zappy_2017.dir/requires: CMakeFiles/PSU_zappy_2017.dir/src/Entity/AMotionShape.cpp.o.requires
+CMakeFiles/PSU_zappy_2017.dir/requires: CMakeFiles/PSU_zappy_2017.dir/src/Text/AText.cpp.o.requires
+CMakeFiles/PSU_zappy_2017.dir/requires: CMakeFiles/PSU_zappy_2017.dir/src/Text/GameText.cpp.o.requires
 
 .PHONY : CMakeFiles/PSU_zappy_2017.dir/requires
 

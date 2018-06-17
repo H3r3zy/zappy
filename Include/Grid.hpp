@@ -58,6 +58,7 @@ class Grid {
 	/*  SFML */
 	std::map<char, std::vector<sf::Texture>> _textureCharacterPack;
 	std::vector<sf::Texture *> _texturePack;
+	sf::Font _font;
 };
 
 #endif //PSU_ZAPPY_2017_GRID_HPP

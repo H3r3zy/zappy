@@ -30,7 +30,8 @@ void Grid::loadMap()
 	for (uint j = 0; j < _mapSize.y; j++) {
 		for (uint i = 0; i < _mapSize.x; i++) {
 			dimension.first.x = i * 100;
-			dimension.first.y = j * 100;
+			dimension.first.y = ((j) * 100);
+			dimension.first.y *= -1;
 			_gameMap.insert(GRID_MAP::value_type(POSITION(i, j), new Cell(dimension, _texturePack[dist6(rng)])));
 		}
 	}
@@ -100,7 +101,7 @@ void Grid::displayGlobalGrid(sf::RenderWindow &window, const sf::View &view)
 	tmpRect.setSize(sf::Vector2f(10, 10));
 	tmpRect.setPosition(view.getCenter());
 	for (const auto &it : _activeMap) {
-		window.draw(it->drawCell());
+		window.draw(it->getCell());
 		window.draw(it->getCellPos());
 		++_nbActive;
 	}
@@ -123,7 +124,6 @@ void Grid::displayMiniGrid(sf::RenderWindow &window, const sf::View &view, std::
 	Grey.setFillColor(sf::Color(0, 0, 0, 127));
 
 	window.draw(Grey);
-	std::cout << "je dessine mon fond en "<< Grey.getPosition().x<< " " << Grey.getPosition().y<< " " << Grey.getSize().x << " " << Grey.getSize().y << std::endl;
 	for (const auto &it : character) {
 		tmpRect.setPosition(sf::Vector2f(it.getPosition()));
 		window.draw(tmpRect);

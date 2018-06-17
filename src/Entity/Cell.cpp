@@ -2,22 +2,15 @@
 // Created by wisenoa on 12/06/18.
 //
 
-
 #include <SFML/Graphics/RenderWindow.hpp>
-#include "Cell.hpp"
+#include "../../Include/Entity/Cell.hpp"
 
-Cell::Cell()
-{
-}
-
-Cell::Cell(std::pair<sf::Vector2f, sf::Vector2f> squareDimension, sf::Texture *&texture) : _position(squareDimension.first.x, squareDimension.first.y * - 1), _size(squareDimension.second.x, squareDimension.second.y)
+Cell::Cell(std::pair<sf::Vector2f, sf::Vector2f> squareDimension, sf::Texture *&texture) : ARectangleShape(squareDimension.first, squareDimension.second)
 {
 	std::cout << "Je suis une Cell, en [" << _position.x << "," << _position.y << "] et de taille [" << _size.x << "," << _size.y << "]" << std::endl;
-	_cell.setPosition(_position);
-	_cell.setSize(_size);
-	_cell.setOutlineThickness(1);
-	_cell.setOutlineColor(sf::Color::Black);
-	_cell.setTexture(texture);
+	_rectangle.setOutlineThickness(1);
+	_rectangle.setOutlineColor(sf::Color::Black);
+	_rectangle.setTexture(texture);
 	_font.loadFromFile("arial.ttf");
 	_cellPos.setFont(_font);
 	_cellPos.setFillColor(sf::Color::White);
@@ -28,11 +21,6 @@ Cell::Cell(std::pair<sf::Vector2f, sf::Vector2f> squareDimension, sf::Texture *&
 
 Cell::~Cell()
 {
-}
-
-sf::RectangleShape &Cell::drawCell()
-{
-	return _cell;
 }
 
 void Cell::setRessources(unsigned int resourceName, unsigned int number)
@@ -55,17 +43,13 @@ void Cell::addRessources(unsigned int resourceName)
 	}
 }
 
-sf::Vector2f &Cell::getPos()
-{
-	return _position;
-}
-
 sf::Text &Cell::getCellPos()
 {
+//	std::cout << "Ma cll est en :" << _cellPos.getPosition().x << " " << _cellPos.getPosition().y << std::endl;
 	return _cellPos;
 }
 
 void Cell::makeTarget()
 {
-	_cell.setFillColor(sf::Color::Red);
+	_rectangle.setFillColor(sf::Color::Red);
 }

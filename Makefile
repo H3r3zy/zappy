@@ -10,10 +10,11 @@ CC	=	g++
 RM	=	rm -rf
 
 SRC	=	src/main.cpp		\
+		src/Entity/ARectangleShape.cpp	\
+		src/Entity/Cell.cpp		\
 		src/Character.cpp	\
 		src/WindowInfo.cpp	\
 		src/Grid.cpp		\
-		src/Cell.cpp		\
 		src/Map.cpp
 
 OBJ	=	$(SRC:.cpp=.o)

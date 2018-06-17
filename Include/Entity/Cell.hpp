@@ -12,23 +12,19 @@
 #include <SFML/Graphics/Rect.hpp>
 #include <SFML/Graphics/RectangleShape.hpp>
 #include <SFML/Graphics/Text.hpp>
+#include "ARectangleShape.hpp"
 
-class Cell {
+class Cell : public ARectangleShape {
 	public:
-	Cell();
 	Cell(std::pair<sf::Vector2f, sf::Vector2f> squareDimension, sf::Texture *&texture);
 	~Cell();
-	sf::RectangleShape &drawCell();
-	sf::Vector2f &getPos();
+
 	sf::Text &getCellPos();
 	void setRessources(unsigned int resourceName, unsigned int number);
 	void addRessources(unsigned int resourceName);
 	void makeTarget();
 
 	private:
-	sf::Vector2f _position;
-	sf::Vector2f _size;
-	sf::RectangleShape _cell;
 	sf::Text _cellPos;
 	sf::Font _font;
 	ulong _textureNumber;

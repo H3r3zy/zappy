@@ -12,7 +12,7 @@
 #include <iostream>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/Text.hpp>
-#include "Cell.hpp"
+#include "../Include/Entity/Cell.hpp"
 #include "Character.hpp"
 
 class Grid {
@@ -50,8 +50,8 @@ class Grid {
 	void loadMap();
 
 	/* TOOLS */
-	uint _nbActive;
 	sf::Vector2f _mapSize;
+	uint _nbActive;
 	std::vector<Cell *> _activeMap;
 	std::map<std::pair<uint, uint>, Cell *> _gameMap;
 

@@ -11,6 +11,7 @@
 
 class ARectangleShape : public IEntity {
 	public:
+	ARectangleShape();
 	ARectangleShape(sf::Vector2f &position, sf::Vector2f &size);
 	~ARectangleShape() override;
 	void setPosition(sf::Vector2f &position) override;

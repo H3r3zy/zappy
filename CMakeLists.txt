@@ -4,4 +4,4 @@ project(PSU_zappy_2017)
 set(CMAKE_CXX_STANDARD 11)
 
 add_executable(PSU_zappy_2017
-        src/main.cpp src/Map.cpp src/Map.hpp src/Cell.cpp src/Cell.hpp src/Grid.cpp src/Grid.hpp src/WindowInfo.cpp src/WindowInfo.hpp src/Character.cpp src/Character.hpp src/IEntity.hpp src/ARectangleShape.cpp src/ARectangleShape.hpp)
+        src/main.cpp src/Map.cpp src/Map.hpp src/Entity/Cell.cpp Include/Entity/Cell.hpp src/Grid.cpp src/Grid.hpp src/WindowInfo.cpp src/WindowInfo.hpp src/Character.cpp src/Character.hpp Include/Entity/IEntity.hpp src/Entity/ARectangleShape.cpp Include/Entity/ARectangleShape.hpp)

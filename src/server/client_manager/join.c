@@ -6,8 +6,10 @@
 */
 
 #include <stdlib.h>
-#include <memory.h>
-#include <scheduler.h>
+#include <string.h>
+#include <limits.h>
+#include "scheduler.h"
+#include "server.h"
 #include "debug.h"
 
 /**
@@ -46,6 +48,9 @@ static void init_client_data(server_t *server, client_t *client)
 	client->queue_index = 0;
 	client->team = NULL;
 	client->user.bag[Food] = STARTED_FOOD;
+	#ifdef DEBUG
+	client->user.bag[Food] = 999999;
+	#endif
 	client->user.orientation = (orientation_t)(rand() % 4);
 	client->started_time = 0;
 	client->status = NORMAL;

@@ -6,6 +6,8 @@
 */
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <server.h>
 #include "server.h"
 #include "debug.h"
@@ -83,4 +85,15 @@ void pos(server_t *server, client_t *client,
 		client->entity->pos.y,
 	client->user.orientation);
 	add_to_queue(client, response);
+}
+
+void setpos_cmd(server_t *server, client_t *client, char *arg)
+{
+	uint dx = atoi(arg);
+	uint dy = atoi(strchr(arg, ';') + 1);
+
+	remove_player_from_map(&server->map, client->entity);
+	client->entity->pos.x = dx;
+	client->entity->pos.y = dy;
+	add_player_to_map(&server->map, client->entity);
 }

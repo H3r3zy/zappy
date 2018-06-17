@@ -22,7 +22,7 @@ static const command_t COMMAND[] = {
 	{name: "Left", function: &left_cmd, verify: NULL, time_unit: 7, argument: false},
 	{name: "Look", function: &look_cmd, verify: NULL, time_unit: 7, argument: false},
 	{name: "Inventory", function: &inventory_cmd, verify: NULL, time_unit: 1, argument: false},
-	{name: "Broadcast", function: NULL, verify: NULL, time_unit: 7, argument: true},
+	{name: "Broadcast", function: &broadcast_cmd, verify: NULL, time_unit: 7, argument: true},
 	{name: "Connect_nbr", function: &connect_nbr_cmd, verify: NULL, time_unit: 0, argument: false},
 	{name: "Fork", function: &fork_cmd, verify: NULL, time_unit: 42, argument: false},
 	{name: "Eject", function: &eject_cmd, verify: NULL, time_unit: 7, argument: false},
@@ -31,6 +31,7 @@ static const command_t COMMAND[] = {
 	{name: "Incantation", function: &incantation_cmd, verify: &incantation_verify, time_unit: 300, argument: false},
 #ifdef DEBUG
 	{name: "Pos", function: &pos, verify: NULL, time_unit: 1, argument: false},
+	{name: "Setpos", function: &setpos_cmd, verify: NULL, time_unit: 1, argument: false},
 #endif
 	{name: NULL, function: NULL, verify: NULL, time_unit: 0, argument: false}
 };

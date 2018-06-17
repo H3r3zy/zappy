@@ -27,7 +27,7 @@ void init_map(map_t *map)
 	map->map = malloc(sizeof(cell_t *) * map->size.y);
 	if (!map->map)
 		return;
-	for (size_t y = 0; y < map->size.y; y++)
+	for (int y = 0; y < map->size.y; y++)
 		map->map[y] = calloc(map->size.x, sizeof(cell_t));
 	map->max_id = 0;
 	srand(time(NULL));
@@ -84,6 +84,20 @@ void remove_player_from_map(map_t *map, entity_t *entity)
 	}
 }
 
+/**
+ * Move a player from the cell at the pos of the entity to the pos in arg
+ * @param map
+ * @param entity
+ * @param pos
+ */
+void move_player_to(map_t *map, entity_t *entity, pos_t *pos)
+{
+	remove_player_from_map(map, entity);
+	entity->pos.x = pos->x;
+	entity->pos.y = pos->y;
+	add_player_to_map(map, entity);
+}
+
 // TODO Remove this shit
 int print_da_letter(uint *items, entity_t *entities)
 {
@@ -112,13 +126,13 @@ int print_da_letter(uint *items, entity_t *entities)
 // TODO Also remove this shit
 void print_map(map_t *map)
 {
-	for (size_t y = 0; y < map->size.y; y++) {
+	for (int y = 0; y < map->size.y; y++) {
 		if (y || y < map->size.y - 1) {
-			for (size_t x = 0; x < map->size.x; x++)
+			for (int x = 0; x < map->size.x; x++)
 				fprintf(stderr, "--");
 			fprintf(stderr, "\n");
 		}
-		for (size_t x = 0; x < map->size.x; x++) {
+		for (int x = 0; x < map->size.x; x++) {
 			if (x || x < map->size.x - 1)
 				fprintf(stderr, "|");
 			if (!print_da_letter(map->map[y][x].items, map->map[y][x].players))

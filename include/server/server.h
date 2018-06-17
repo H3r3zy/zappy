@@ -45,8 +45,8 @@ typedef enum status_e {
 } status_t;
 
 typedef struct {
-	uint x;
-	uint y;
+	int x;
+	int y;
 } pos_t;
 
 typedef struct entity_s {
@@ -158,13 +158,16 @@ void add_to_map(map_t *map, entity_t *entity);
 void init_map(map_t *map);
 void add_player_to_map(map_t *map, entity_t *entity);
 void remove_player_from_map(map_t *map, entity_t *entity);
+void move_player_to(map_t *map, entity_t *entity, pos_t *pos);
 // ===========================================================
 
-void remove_from_map(map_t *map, entity_t *entity);
-
-
-int create_entity_at(map_t *map, uint x, uint y, entity_type_t type);
-void generate_map(map_t *map);
 void print_map(map_t *map);
+
+int get_o_w_dlt(pos_t *delta, orientation_t orientation);
+void fill_delta(pos_t *size, pos_t *pos1, pos_t *pos2, pos_t *delta);
+
+
+#define POS(c) (c)->entity->pos
+#define OR(c) (c)->user.orientation
 
 #endif //PSU_ZAPPY_2017_SERVER_H

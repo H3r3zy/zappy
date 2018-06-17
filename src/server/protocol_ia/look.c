@@ -59,16 +59,17 @@ static char *look_horizontal(map_t *map, pos_t pos, look_opt_t opt, uint currv)
 	pos_t start = (pos_t){pos.x, pos.y};
 
 	start.x = (opt.d < 0 && !pos.x) ? map->size.x - 1 : pos.x + opt.d;
-	start.y = (opt.d > 0 && !pos.y) ? map->size.y - 1 : pos.y - opt.d;
+	start.y = (opt.d < 0 && !pos.y) ? map->size.y - 1 : pos.y + opt.d;
 	pos = start;
 	for (uint i = 0; i < currv * 2 + 1; i++) {
 		pos.y = (pos.y > map->size.y - 1) ? 0 : pos.y;
 		pos.x = (pos.x > map->size.x - 1) ? 0 : pos.x;
+		debug(WARNING "Look in %i;%i\n", pos.x, pos.y);
 		response = add_objects(response, &map->map[pos.y][pos.x]);
 		if (i < currv * 2) {
 			response = concat(response, ",");
 		}
-		pos.y += opt.d;
+		pos.y = opt.d < 0 && !pos.y ? map->size.y - 1 : pos.y + opt.d;
 	}
 	if (currv < opt.vision) {
 		tmp = look_horizontal(map, start, opt, currv + 1);
@@ -103,7 +104,7 @@ static char *look_vertical(map_t *map, pos_t pos, look_opt_t opt, uint currv)
 		if (i < currv * 2) {
 			response = concat(response, ",");
 		}
-		pos.x -= opt.d;
+		pos.x = opt.d < 0 && !pos.x ? map->size.x - 1 : pos.x + opt.d;
 	}
 	if (currv < opt.vision) {
 		tmp = look_vertical(map, start, opt, currv + 1);

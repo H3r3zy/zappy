@@ -23,3 +23,5 @@ include_directories(include/server)
 include_directories(include)
 
 add_executable(zappy_server ${SERVER_FILE} ${SERVER_HEADER})
+
+target_link_libraries(zappy_server m)

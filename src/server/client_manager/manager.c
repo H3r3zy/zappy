@@ -25,7 +25,7 @@ static const command_t COMMAND[] = {
 	{name: "Broadcast", function: NULL, verify: NULL, time_unit: 7, argument: true},
 	{name: "Connect_nbr", function: &connect_nbr_cmd, verify: NULL, time_unit: 0, argument: false},
 	{name: "Fork", function: &fork_cmd, verify: NULL, time_unit: 42, argument: false},
-	{name: "Eject", function: NULL, verify: NULL, time_unit: 7, argument: false},
+	{name: "Eject", function: &eject_cmd, verify: NULL, time_unit: 7, argument: false},
 	{name: "Take", function: &take_cmd, verify: NULL, time_unit: 7, argument: true},
 	{name: "Set", function: &set_cmd, verify: NULL, time_unit: 7, argument: true},
 	{name: "Incantation", function: &incantation_cmd, verify: &incantation_verify, time_unit: 300, argument: false},

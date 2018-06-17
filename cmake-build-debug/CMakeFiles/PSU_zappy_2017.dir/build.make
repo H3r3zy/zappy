@@ -105,28 +105,28 @@ CMakeFiles/PSU_zappy_2017.dir/src/Map.cpp.o.provides: CMakeFiles/PSU_zappy_2017.
 CMakeFiles/PSU_zappy_2017.dir/src/Map.cpp.o.provides.build: CMakeFiles/PSU_zappy_2017.dir/src/Map.cpp.o
 
 
-CMakeFiles/PSU_zappy_2017.dir/src/Cell.cpp.o: CMakeFiles/PSU_zappy_2017.dir/flags.make
-CMakeFiles/PSU_zappy_2017.dir/src/Cell.cpp.o: ../src/Cell.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/PSU_zappy_2017/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/PSU_zappy_2017.dir/src/Cell.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PSU_zappy_2017.dir/src/Cell.cpp.o -c /home/wisenoa/PSU_zappy_2017/src/Cell.cpp
+CMakeFiles/PSU_zappy_2017.dir/src/Entity/Cell.cpp.o: CMakeFiles/PSU_zappy_2017.dir/flags.make
+CMakeFiles/PSU_zappy_2017.dir/src/Entity/Cell.cpp.o: ../src/Entity/Cell.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/PSU_zappy_2017/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/PSU_zappy_2017.dir/src/Entity/Cell.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PSU_zappy_2017.dir/src/Entity/Cell.cpp.o -c /home/wisenoa/PSU_zappy_2017/src/Entity/Cell.cpp
 
-CMakeFiles/PSU_zappy_2017.dir/src/Cell.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PSU_zappy_2017.dir/src/Cell.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wisenoa/PSU_zappy_2017/src/Cell.cpp > CMakeFiles/PSU_zappy_2017.dir/src/Cell.cpp.i
+CMakeFiles/PSU_zappy_2017.dir/src/Entity/Cell.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PSU_zappy_2017.dir/src/Entity/Cell.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wisenoa/PSU_zappy_2017/src/Entity/Cell.cpp > CMakeFiles/PSU_zappy_2017.dir/src/Entity/Cell.cpp.i
 
-CMakeFiles/PSU_zappy_2017.dir/src/Cell.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PSU_zappy_2017.dir/src/Cell.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wisenoa/PSU_zappy_2017/src/Cell.cpp -o CMakeFiles/PSU_zappy_2017.dir/src/Cell.cpp.s
+CMakeFiles/PSU_zappy_2017.dir/src/Entity/Cell.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PSU_zappy_2017.dir/src/Entity/Cell.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wisenoa/PSU_zappy_2017/src/Entity/Cell.cpp -o CMakeFiles/PSU_zappy_2017.dir/src/Entity/Cell.cpp.s
 
-CMakeFiles/PSU_zappy_2017.dir/src/Cell.cpp.o.requires:
+CMakeFiles/PSU_zappy_2017.dir/src/Entity/Cell.cpp.o.requires:
 
-.PHONY : CMakeFiles/PSU_zappy_2017.dir/src/Cell.cpp.o.requires
+.PHONY : CMakeFiles/PSU_zappy_2017.dir/src/Entity/Cell.cpp.o.requires
 
-CMakeFiles/PSU_zappy_2017.dir/src/Cell.cpp.o.provides: CMakeFiles/PSU_zappy_2017.dir/src/Cell.cpp.o.requires
-	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Cell.cpp.o.provides.build
-.PHONY : CMakeFiles/PSU_zappy_2017.dir/src/Cell.cpp.o.provides
+CMakeFiles/PSU_zappy_2017.dir/src/Entity/Cell.cpp.o.provides: CMakeFiles/PSU_zappy_2017.dir/src/Entity/Cell.cpp.o.requires
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Entity/Cell.cpp.o.provides.build
+.PHONY : CMakeFiles/PSU_zappy_2017.dir/src/Entity/Cell.cpp.o.provides
 
-CMakeFiles/PSU_zappy_2017.dir/src/Cell.cpp.o.provides.build: CMakeFiles/PSU_zappy_2017.dir/src/Cell.cpp.o
+CMakeFiles/PSU_zappy_2017.dir/src/Entity/Cell.cpp.o.provides.build: CMakeFiles/PSU_zappy_2017.dir/src/Entity/Cell.cpp.o
 
 
 CMakeFiles/PSU_zappy_2017.dir/src/Grid.cpp.o: CMakeFiles/PSU_zappy_2017.dir/flags.make
@@ -177,77 +177,103 @@ CMakeFiles/PSU_zappy_2017.dir/src/WindowInfo.cpp.o.provides: CMakeFiles/PSU_zapp
 CMakeFiles/PSU_zappy_2017.dir/src/WindowInfo.cpp.o.provides.build: CMakeFiles/PSU_zappy_2017.dir/src/WindowInfo.cpp.o
 
 
-CMakeFiles/PSU_zappy_2017.dir/src/Character.cpp.o: CMakeFiles/PSU_zappy_2017.dir/flags.make
-CMakeFiles/PSU_zappy_2017.dir/src/Character.cpp.o: ../src/Character.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/PSU_zappy_2017/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/PSU_zappy_2017.dir/src/Character.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PSU_zappy_2017.dir/src/Character.cpp.o -c /home/wisenoa/PSU_zappy_2017/src/Character.cpp
+CMakeFiles/PSU_zappy_2017.dir/src/Entity/Character.cpp.o: CMakeFiles/PSU_zappy_2017.dir/flags.make
+CMakeFiles/PSU_zappy_2017.dir/src/Entity/Character.cpp.o: ../src/Entity/Character.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/PSU_zappy_2017/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/PSU_zappy_2017.dir/src/Entity/Character.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PSU_zappy_2017.dir/src/Entity/Character.cpp.o -c /home/wisenoa/PSU_zappy_2017/src/Entity/Character.cpp
 
-CMakeFiles/PSU_zappy_2017.dir/src/Character.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PSU_zappy_2017.dir/src/Character.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wisenoa/PSU_zappy_2017/src/Character.cpp > CMakeFiles/PSU_zappy_2017.dir/src/Character.cpp.i
+CMakeFiles/PSU_zappy_2017.dir/src/Entity/Character.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PSU_zappy_2017.dir/src/Entity/Character.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wisenoa/PSU_zappy_2017/src/Entity/Character.cpp > CMakeFiles/PSU_zappy_2017.dir/src/Entity/Character.cpp.i
 
-CMakeFiles/PSU_zappy_2017.dir/src/Character.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PSU_zappy_2017.dir/src/Character.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wisenoa/PSU_zappy_2017/src/Character.cpp -o CMakeFiles/PSU_zappy_2017.dir/src/Character.cpp.s
+CMakeFiles/PSU_zappy_2017.dir/src/Entity/Character.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PSU_zappy_2017.dir/src/Entity/Character.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wisenoa/PSU_zappy_2017/src/Entity/Character.cpp -o CMakeFiles/PSU_zappy_2017.dir/src/Entity/Character.cpp.s
 
-CMakeFiles/PSU_zappy_2017.dir/src/Character.cpp.o.requires:
+CMakeFiles/PSU_zappy_2017.dir/src/Entity/Character.cpp.o.requires:
 
-.PHONY : CMakeFiles/PSU_zappy_2017.dir/src/Character.cpp.o.requires
+.PHONY : CMakeFiles/PSU_zappy_2017.dir/src/Entity/Character.cpp.o.requires
 
-CMakeFiles/PSU_zappy_2017.dir/src/Character.cpp.o.provides: CMakeFiles/PSU_zappy_2017.dir/src/Character.cpp.o.requires
-	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Character.cpp.o.provides.build
-.PHONY : CMakeFiles/PSU_zappy_2017.dir/src/Character.cpp.o.provides
+CMakeFiles/PSU_zappy_2017.dir/src/Entity/Character.cpp.o.provides: CMakeFiles/PSU_zappy_2017.dir/src/Entity/Character.cpp.o.requires
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Entity/Character.cpp.o.provides.build
+.PHONY : CMakeFiles/PSU_zappy_2017.dir/src/Entity/Character.cpp.o.provides
 
-CMakeFiles/PSU_zappy_2017.dir/src/Character.cpp.o.provides.build: CMakeFiles/PSU_zappy_2017.dir/src/Character.cpp.o
+CMakeFiles/PSU_zappy_2017.dir/src/Entity/Character.cpp.o.provides.build: CMakeFiles/PSU_zappy_2017.dir/src/Entity/Character.cpp.o
 
 
-CMakeFiles/PSU_zappy_2017.dir/src/ARectangleShape.cpp.o: CMakeFiles/PSU_zappy_2017.dir/flags.make
-CMakeFiles/PSU_zappy_2017.dir/src/ARectangleShape.cpp.o: ../src/ARectangleShape.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/PSU_zappy_2017/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/PSU_zappy_2017.dir/src/ARectangleShape.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PSU_zappy_2017.dir/src/ARectangleShape.cpp.o -c /home/wisenoa/PSU_zappy_2017/src/ARectangleShape.cpp
+CMakeFiles/PSU_zappy_2017.dir/src/Entity/ARectangleShape.cpp.o: CMakeFiles/PSU_zappy_2017.dir/flags.make
+CMakeFiles/PSU_zappy_2017.dir/src/Entity/ARectangleShape.cpp.o: ../src/Entity/ARectangleShape.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/PSU_zappy_2017/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/PSU_zappy_2017.dir/src/Entity/ARectangleShape.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PSU_zappy_2017.dir/src/Entity/ARectangleShape.cpp.o -c /home/wisenoa/PSU_zappy_2017/src/Entity/ARectangleShape.cpp
 
-CMakeFiles/PSU_zappy_2017.dir/src/ARectangleShape.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PSU_zappy_2017.dir/src/ARectangleShape.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wisenoa/PSU_zappy_2017/src/ARectangleShape.cpp > CMakeFiles/PSU_zappy_2017.dir/src/ARectangleShape.cpp.i
+CMakeFiles/PSU_zappy_2017.dir/src/Entity/ARectangleShape.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PSU_zappy_2017.dir/src/Entity/ARectangleShape.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wisenoa/PSU_zappy_2017/src/Entity/ARectangleShape.cpp > CMakeFiles/PSU_zappy_2017.dir/src/Entity/ARectangleShape.cpp.i
 
-CMakeFiles/PSU_zappy_2017.dir/src/ARectangleShape.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PSU_zappy_2017.dir/src/ARectangleShape.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wisenoa/PSU_zappy_2017/src/ARectangleShape.cpp -o CMakeFiles/PSU_zappy_2017.dir/src/ARectangleShape.cpp.s
+CMakeFiles/PSU_zappy_2017.dir/src/Entity/ARectangleShape.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PSU_zappy_2017.dir/src/Entity/ARectangleShape.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wisenoa/PSU_zappy_2017/src/Entity/ARectangleShape.cpp -o CMakeFiles/PSU_zappy_2017.dir/src/Entity/ARectangleShape.cpp.s
 
-CMakeFiles/PSU_zappy_2017.dir/src/ARectangleShape.cpp.o.requires:
+CMakeFiles/PSU_zappy_2017.dir/src/Entity/ARectangleShape.cpp.o.requires:
 
-.PHONY : CMakeFiles/PSU_zappy_2017.dir/src/ARectangleShape.cpp.o.requires
+.PHONY : CMakeFiles/PSU_zappy_2017.dir/src/Entity/ARectangleShape.cpp.o.requires
 
-CMakeFiles/PSU_zappy_2017.dir/src/ARectangleShape.cpp.o.provides: CMakeFiles/PSU_zappy_2017.dir/src/ARectangleShape.cpp.o.requires
-	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/ARectangleShape.cpp.o.provides.build
-.PHONY : CMakeFiles/PSU_zappy_2017.dir/src/ARectangleShape.cpp.o.provides
+CMakeFiles/PSU_zappy_2017.dir/src/Entity/ARectangleShape.cpp.o.provides: CMakeFiles/PSU_zappy_2017.dir/src/Entity/ARectangleShape.cpp.o.requires
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Entity/ARectangleShape.cpp.o.provides.build
+.PHONY : CMakeFiles/PSU_zappy_2017.dir/src/Entity/ARectangleShape.cpp.o.provides
 
-CMakeFiles/PSU_zappy_2017.dir/src/ARectangleShape.cpp.o.provides.build: CMakeFiles/PSU_zappy_2017.dir/src/ARectangleShape.cpp.o
+CMakeFiles/PSU_zappy_2017.dir/src/Entity/ARectangleShape.cpp.o.provides.build: CMakeFiles/PSU_zappy_2017.dir/src/Entity/ARectangleShape.cpp.o
+
+
+CMakeFiles/PSU_zappy_2017.dir/src/Entity/AMotionShape.cpp.o: CMakeFiles/PSU_zappy_2017.dir/flags.make
+CMakeFiles/PSU_zappy_2017.dir/src/Entity/AMotionShape.cpp.o: ../src/Entity/AMotionShape.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/PSU_zappy_2017/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/PSU_zappy_2017.dir/src/Entity/AMotionShape.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/PSU_zappy_2017.dir/src/Entity/AMotionShape.cpp.o -c /home/wisenoa/PSU_zappy_2017/src/Entity/AMotionShape.cpp
+
+CMakeFiles/PSU_zappy_2017.dir/src/Entity/AMotionShape.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/PSU_zappy_2017.dir/src/Entity/AMotionShape.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wisenoa/PSU_zappy_2017/src/Entity/AMotionShape.cpp > CMakeFiles/PSU_zappy_2017.dir/src/Entity/AMotionShape.cpp.i
+
+CMakeFiles/PSU_zappy_2017.dir/src/Entity/AMotionShape.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/PSU_zappy_2017.dir/src/Entity/AMotionShape.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wisenoa/PSU_zappy_2017/src/Entity/AMotionShape.cpp -o CMakeFiles/PSU_zappy_2017.dir/src/Entity/AMotionShape.cpp.s
+
+CMakeFiles/PSU_zappy_2017.dir/src/Entity/AMotionShape.cpp.o.requires:
+
+.PHONY : CMakeFiles/PSU_zappy_2017.dir/src/Entity/AMotionShape.cpp.o.requires
+
+CMakeFiles/PSU_zappy_2017.dir/src/Entity/AMotionShape.cpp.o.provides: CMakeFiles/PSU_zappy_2017.dir/src/Entity/AMotionShape.cpp.o.requires
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Entity/AMotionShape.cpp.o.provides.build
+.PHONY : CMakeFiles/PSU_zappy_2017.dir/src/Entity/AMotionShape.cpp.o.provides
+
+CMakeFiles/PSU_zappy_2017.dir/src/Entity/AMotionShape.cpp.o.provides.build: CMakeFiles/PSU_zappy_2017.dir/src/Entity/AMotionShape.cpp.o
 
 
 # Object files for target PSU_zappy_2017
 PSU_zappy_2017_OBJECTS = \
 "CMakeFiles/PSU_zappy_2017.dir/src/main.cpp.o" \
 "CMakeFiles/PSU_zappy_2017.dir/src/Map.cpp.o" \
-"CMakeFiles/PSU_zappy_2017.dir/src/Cell.cpp.o" \
+"CMakeFiles/PSU_zappy_2017.dir/src/Entity/Cell.cpp.o" \
 "CMakeFiles/PSU_zappy_2017.dir/src/Grid.cpp.o" \
 "CMakeFiles/PSU_zappy_2017.dir/src/WindowInfo.cpp.o" \
-"CMakeFiles/PSU_zappy_2017.dir/src/Character.cpp.o" \
-"CMakeFiles/PSU_zappy_2017.dir/src/ARectangleShape.cpp.o"
+"CMakeFiles/PSU_zappy_2017.dir/src/Entity/Character.cpp.o" \
+"CMakeFiles/PSU_zappy_2017.dir/src/Entity/ARectangleShape.cpp.o" \
+"CMakeFiles/PSU_zappy_2017.dir/src/Entity/AMotionShape.cpp.o"
 
 # External object files for target PSU_zappy_2017
 PSU_zappy_2017_EXTERNAL_OBJECTS =
 
 PSU_zappy_2017: CMakeFiles/PSU_zappy_2017.dir/src/main.cpp.o
 PSU_zappy_2017: CMakeFiles/PSU_zappy_2017.dir/src/Map.cpp.o
-PSU_zappy_2017: CMakeFiles/PSU_zappy_2017.dir/src/Cell.cpp.o
+PSU_zappy_2017: CMakeFiles/PSU_zappy_2017.dir/src/Entity/Cell.cpp.o
 PSU_zappy_2017: CMakeFiles/PSU_zappy_2017.dir/src/Grid.cpp.o
 PSU_zappy_2017: CMakeFiles/PSU_zappy_2017.dir/src/WindowInfo.cpp.o
-PSU_zappy_2017: CMakeFiles/PSU_zappy_2017.dir/src/Character.cpp.o
-PSU_zappy_2017: CMakeFiles/PSU_zappy_2017.dir/src/ARectangleShape.cpp.o
+PSU_zappy_2017: CMakeFiles/PSU_zappy_2017.dir/src/Entity/Character.cpp.o
+PSU_zappy_2017: CMakeFiles/PSU_zappy_2017.dir/src/Entity/ARectangleShape.cpp.o
+PSU_zappy_2017: CMakeFiles/PSU_zappy_2017.dir/src/Entity/AMotionShape.cpp.o
 PSU_zappy_2017: CMakeFiles/PSU_zappy_2017.dir/build.make
 PSU_zappy_2017: CMakeFiles/PSU_zappy_2017.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/wisenoa/PSU_zappy_2017/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable PSU_zappy_2017"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/wisenoa/PSU_zappy_2017/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable PSU_zappy_2017"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/PSU_zappy_2017.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -257,11 +283,12 @@ CMakeFiles/PSU_zappy_2017.dir/build: PSU_zappy_2017
 
 CMakeFiles/PSU_zappy_2017.dir/requires: CMakeFiles/PSU_zappy_2017.dir/src/main.cpp.o.requires
 CMakeFiles/PSU_zappy_2017.dir/requires: CMakeFiles/PSU_zappy_2017.dir/src/Map.cpp.o.requires
-CMakeFiles/PSU_zappy_2017.dir/requires: CMakeFiles/PSU_zappy_2017.dir/src/Cell.cpp.o.requires
+CMakeFiles/PSU_zappy_2017.dir/requires: CMakeFiles/PSU_zappy_2017.dir/src/Entity/Cell.cpp.o.requires
 CMakeFiles/PSU_zappy_2017.dir/requires: CMakeFiles/PSU_zappy_2017.dir/src/Grid.cpp.o.requires
 CMakeFiles/PSU_zappy_2017.dir/requires: CMakeFiles/PSU_zappy_2017.dir/src/WindowInfo.cpp.o.requires
-CMakeFiles/PSU_zappy_2017.dir/requires: CMakeFiles/PSU_zappy_2017.dir/src/Character.cpp.o.requires
-CMakeFiles/PSU_zappy_2017.dir/requires: CMakeFiles/PSU_zappy_2017.dir/src/ARectangleShape.cpp.o.requires
+CMakeFiles/PSU_zappy_2017.dir/requires: CMakeFiles/PSU_zappy_2017.dir/src/Entity/Character.cpp.o.requires
+CMakeFiles/PSU_zappy_2017.dir/requires: CMakeFiles/PSU_zappy_2017.dir/src/Entity/ARectangleShape.cpp.o.requires
+CMakeFiles/PSU_zappy_2017.dir/requires: CMakeFiles/PSU_zappy_2017.dir/src/Entity/AMotionShape.cpp.o.requires
 
 .PHONY : CMakeFiles/PSU_zappy_2017.dir/requires
 

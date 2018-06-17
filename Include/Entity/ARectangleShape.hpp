@@ -14,11 +14,12 @@ class ARectangleShape : public IEntity {
 	ARectangleShape();
 	ARectangleShape(sf::Vector2f &position, sf::Vector2f &size);
 	~ARectangleShape() override;
+
 	void setPosition(sf::Vector2f &position) override;
 	void setPosition(float x, float y) override;
 	const sf::Vector2f &getPosition() const override;
 
-	sf::RectangleShape &getCell();
+	const sf::RectangleShape &getCell() const;
 
 	protected:
 	sf::RectangleShape _rectangle;

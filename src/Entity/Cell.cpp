@@ -3,7 +3,7 @@
 //
 
 #include <SFML/Graphics/RenderWindow.hpp>
-#include "../../Include/Entity/Cell.hpp"
+#include "Cell.hpp"
 
 Cell::Cell(std::pair<sf::Vector2f, sf::Vector2f> squareDimension, sf::Texture *&texture) : ARectangleShape(squareDimension.first, squareDimension.second)
 {

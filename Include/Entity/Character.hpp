@@ -11,8 +11,9 @@
 #include <chrono>
 #include <SFML/Graphics/Texture.hpp>
 #include <SFML/Graphics/Sprite.hpp>
+#include <Entity/AMotionShape.hpp>
 
-class Character {
+class Character : public AMotionShape {
 	typedef std::chrono::time_point<std::chrono::system_clock> chrono_t;
 	enum {
 		WALK_DOWN,
@@ -22,19 +23,14 @@ class Character {
 	};
 	public:
 	Character(std::map<char, std::vector<sf::Texture>> &_texturePack, sf::Vector2f &position);
-	void setPosition(sf::Vector2f &position);
-	void setPosition(float x, float y);
 	static bool playerLoop(sf::RenderWindow &window);
-	const sf::Vector2f &getPosition() const;
 
 	sf::Sprite &getCharacter();
+
 	~Character();
 
 	private:
-	std::map<char, std::vector<sf::Sprite>> _sprite;
 	chrono_t _beginTime;
-	uint _actualSprite;
-	sf::Vector2f _position;
 	char _action;
 
 

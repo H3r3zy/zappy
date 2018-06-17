@@ -11,8 +11,9 @@ RM	=	rm -rf
 
 SRC	=	src/main.cpp		\
 		src/Entity/ARectangleShape.cpp	\
+		src/Entity/AMotionShape.cpp	\
 		src/Entity/Cell.cpp		\
-		src/Character.cpp	\
+		src/Entity/Character.cpp	\
 		src/WindowInfo.cpp	\
 		src/Grid.cpp		\
 		src/Map.cpp
@@ -21,7 +22,7 @@ OBJ	=	$(SRC:.cpp=.o)
 
 NAME	=	client
 
-CXXFLAGS	=	-W -Wall -Wextra -Isrc -g
+CXXFLAGS	=	-W -Wall -Wextra -IInclude -IInclude/Entity -g
 
 all:	$(NAME)
 

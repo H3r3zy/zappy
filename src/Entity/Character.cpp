@@ -5,10 +5,10 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include "Character.hpp"
 
-Character::Character(std::map<char, std::vector<sf::Texture>> &_texturePack, sf::Vector2f &position) :_actualSprite(0), _position(position)
+Character::Character(std::map<char, std::vector<sf::Texture>> &_texturePack, sf::Vector2f &position) : AMotionShape(position)
 {
 	 _beginTime = std::chrono::system_clock::now();
-	for (int i = 0; i < 9; i++) {
+	for (int i = 0; i < _texturePack[WALK_LEFT].size(); i++) {
 		_sprite[WALK_LEFT].emplace_back(sf::Sprite());
 		_sprite[WALK_RIGHT].emplace_back(sf::Sprite());
 		_sprite[WALK_UP].emplace_back(sf::Sprite());
@@ -24,6 +24,10 @@ Character::Character(std::map<char, std::vector<sf::Texture>> &_texturePack, sf:
 //	_sprite[WALK_LEFT][0]->setTexture(_texturePack[WALK_LEFT][0]);
 }
 
+Character::~Character()
+{
+}
+
 sf::Sprite &Character::getCharacter()
 {
 	// 0 => 100 => 7 sec
@@ -34,7 +38,7 @@ sf::Sprite &Character::getCharacter()
 		_sprite[_randomDirection][_actualSprite].setPosition(_position.x, _position.y);
 
 
-		// TOODO A DEGAGER
+		// TODO A DEGAGER
 		if (_randomDirection == WALK_LEFT)
 			_position.x -= 1.4;
 		else if (_randomDirection == WALK_RIGHT)
@@ -61,10 +65,6 @@ sf::Sprite &Character::getCharacter()
 	return _sprite[_randomDirection][_actualSprite];
 }
 
-Character::~Character()
-{
-}
-
 bool Character::playerLoop(sf::RenderWindow &window)
 {
 	std::cout << "coucou" << std::endl;
@@ -76,20 +76,4 @@ bool Character::playerLoop(sf::RenderWindow &window)
 //			window.draw(_sprite[WALK_LEFT][_actualSprite]);
 		}
 	}
-}
-
-void Character::setPosition(sf::Vector2f &position)
-{
-	_position = position;
-}
-
-void Character::setPosition(float x, float y)
-{
-	_position.x = x;
-	_position.y = y;
-}
-
-const sf::Vector2f &Character::getPosition() const
-{
-	return _position;
 }

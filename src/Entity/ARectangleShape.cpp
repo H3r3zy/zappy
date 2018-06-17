@@ -3,7 +3,11 @@
 //
 
 
-#include "../../Include/Entity/ARectangleShape.hpp"
+#include "ARectangleShape.hpp"
+
+ARectangleShape::ARectangleShape()
+{
+}
 
 ARectangleShape::ARectangleShape(sf::Vector2f &position, sf::Vector2f &size) : _position(position), _size(size)
 {
@@ -31,11 +35,7 @@ const sf::Vector2f &ARectangleShape::getPosition() const
 	return _position;
 }
 
-sf::RectangleShape &ARectangleShape::getCell()
+const sf::RectangleShape &ARectangleShape::getCell() const
 {
 	return _rectangle;
-}
-
-ARectangleShape::ARectangleShape()
-{
 }

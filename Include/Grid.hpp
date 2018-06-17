@@ -12,7 +12,7 @@
 #include <iostream>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/Text.hpp>
-#include "../Include/Entity/Cell.hpp"
+#include "Entity/Cell.hpp"
 #include "Character.hpp"
 
 class Grid {

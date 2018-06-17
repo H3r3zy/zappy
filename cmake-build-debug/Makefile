@@ -123,86 +123,113 @@ PSU_zappy_2017/fast:
 	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/build
 .PHONY : PSU_zappy_2017/fast
 
-src/ARectangleShape.o: src/ARectangleShape.cpp.o
+src/Entity/AMotionShape.o: src/Entity/AMotionShape.cpp.o
 
-.PHONY : src/ARectangleShape.o
-
-# target to build an object file
-src/ARectangleShape.cpp.o:
-	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/ARectangleShape.cpp.o
-.PHONY : src/ARectangleShape.cpp.o
-
-src/ARectangleShape.i: src/ARectangleShape.cpp.i
-
-.PHONY : src/ARectangleShape.i
-
-# target to preprocess a source file
-src/ARectangleShape.cpp.i:
-	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/ARectangleShape.cpp.i
-.PHONY : src/ARectangleShape.cpp.i
-
-src/ARectangleShape.s: src/ARectangleShape.cpp.s
-
-.PHONY : src/ARectangleShape.s
-
-# target to generate assembly for a file
-src/ARectangleShape.cpp.s:
-	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/ARectangleShape.cpp.s
-.PHONY : src/ARectangleShape.cpp.s
-
-src/Cell.o: src/Cell.cpp.o
-
-.PHONY : src/Cell.o
+.PHONY : src/Entity/AMotionShape.o
 
 # target to build an object file
-src/Cell.cpp.o:
-	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Cell.cpp.o
-.PHONY : src/Cell.cpp.o
+src/Entity/AMotionShape.cpp.o:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Entity/AMotionShape.cpp.o
+.PHONY : src/Entity/AMotionShape.cpp.o
 
-src/Cell.i: src/Cell.cpp.i
+src/Entity/AMotionShape.i: src/Entity/AMotionShape.cpp.i
 
-.PHONY : src/Cell.i
+.PHONY : src/Entity/AMotionShape.i
 
 # target to preprocess a source file
-src/Cell.cpp.i:
-	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Cell.cpp.i
-.PHONY : src/Cell.cpp.i
+src/Entity/AMotionShape.cpp.i:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Entity/AMotionShape.cpp.i
+.PHONY : src/Entity/AMotionShape.cpp.i
 
-src/Cell.s: src/Cell.cpp.s
+src/Entity/AMotionShape.s: src/Entity/AMotionShape.cpp.s
 
-.PHONY : src/Cell.s
+.PHONY : src/Entity/AMotionShape.s
 
 # target to generate assembly for a file
-src/Cell.cpp.s:
-	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Cell.cpp.s
-.PHONY : src/Cell.cpp.s
+src/Entity/AMotionShape.cpp.s:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Entity/AMotionShape.cpp.s
+.PHONY : src/Entity/AMotionShape.cpp.s
 
-src/Character.o: src/Character.cpp.o
+src/Entity/ARectangleShape.o: src/Entity/ARectangleShape.cpp.o
 
-.PHONY : src/Character.o
+.PHONY : src/Entity/ARectangleShape.o
 
 # target to build an object file
-src/Character.cpp.o:
-	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Character.cpp.o
-.PHONY : src/Character.cpp.o
+src/Entity/ARectangleShape.cpp.o:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Entity/ARectangleShape.cpp.o
+.PHONY : src/Entity/ARectangleShape.cpp.o
 
-src/Character.i: src/Character.cpp.i
+src/Entity/ARectangleShape.i: src/Entity/ARectangleShape.cpp.i
 
-.PHONY : src/Character.i
+.PHONY : src/Entity/ARectangleShape.i
 
 # target to preprocess a source file
-src/Character.cpp.i:
-	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Character.cpp.i
-.PHONY : src/Character.cpp.i
+src/Entity/ARectangleShape.cpp.i:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Entity/ARectangleShape.cpp.i
+.PHONY : src/Entity/ARectangleShape.cpp.i
 
-src/Character.s: src/Character.cpp.s
+src/Entity/ARectangleShape.s: src/Entity/ARectangleShape.cpp.s
 
-.PHONY : src/Character.s
+.PHONY : src/Entity/ARectangleShape.s
 
 # target to generate assembly for a file
-src/Character.cpp.s:
-	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Character.cpp.s
-.PHONY : src/Character.cpp.s
+src/Entity/ARectangleShape.cpp.s:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Entity/ARectangleShape.cpp.s
+.PHONY : src/Entity/ARectangleShape.cpp.s
+
+src/Entity/Cell.o: src/Entity/Cell.cpp.o
+
+.PHONY : src/Entity/Cell.o
+
+# target to build an object file
+src/Entity/Cell.cpp.o:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Entity/Cell.cpp.o
+.PHONY : src/Entity/Cell.cpp.o
+
+src/Entity/Cell.i: src/Entity/Cell.cpp.i
+
+.PHONY : src/Entity/Cell.i
+
+# target to preprocess a source file
+src/Entity/Cell.cpp.i:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Entity/Cell.cpp.i
+.PHONY : src/Entity/Cell.cpp.i
+
+src/Entity/Cell.s: src/Entity/Cell.cpp.s
+
+.PHONY : src/Entity/Cell.s
+
+# target to generate assembly for a file
+src/Entity/Cell.cpp.s:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Entity/Cell.cpp.s
+.PHONY : src/Entity/Cell.cpp.s
+
+src/Entity/Character.o: src/Entity/Character.cpp.o
+
+.PHONY : src/Entity/Character.o
+
+# target to build an object file
+src/Entity/Character.cpp.o:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Entity/Character.cpp.o
+.PHONY : src/Entity/Character.cpp.o
+
+src/Entity/Character.i: src/Entity/Character.cpp.i
+
+.PHONY : src/Entity/Character.i
+
+# target to preprocess a source file
+src/Entity/Character.cpp.i:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Entity/Character.cpp.i
+.PHONY : src/Entity/Character.cpp.i
+
+src/Entity/Character.s: src/Entity/Character.cpp.s
+
+.PHONY : src/Entity/Character.s
+
+# target to generate assembly for a file
+src/Entity/Character.cpp.s:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Entity/Character.cpp.s
+.PHONY : src/Entity/Character.cpp.s
 
 src/Grid.o: src/Grid.cpp.o
 
@@ -321,15 +348,18 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... PSU_zappy_2017"
-	@echo "... src/ARectangleShape.o"
-	@echo "... src/ARectangleShape.i"
-	@echo "... src/ARectangleShape.s"
-	@echo "... src/Cell.o"
-	@echo "... src/Cell.i"
-	@echo "... src/Cell.s"
-	@echo "... src/Character.o"
-	@echo "... src/Character.i"
-	@echo "... src/Character.s"
+	@echo "... src/Entity/AMotionShape.o"
+	@echo "... src/Entity/AMotionShape.i"
+	@echo "... src/Entity/AMotionShape.s"
+	@echo "... src/Entity/ARectangleShape.o"
+	@echo "... src/Entity/ARectangleShape.i"
+	@echo "... src/Entity/ARectangleShape.s"
+	@echo "... src/Entity/Cell.o"
+	@echo "... src/Entity/Cell.i"
+	@echo "... src/Entity/Cell.s"
+	@echo "... src/Entity/Character.o"
+	@echo "... src/Entity/Character.i"
+	@echo "... src/Entity/Character.s"
 	@echo "... src/Grid.o"
 	@echo "... src/Grid.i"
 	@echo "... src/Grid.s"

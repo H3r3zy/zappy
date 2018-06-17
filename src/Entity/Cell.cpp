@@ -3,9 +3,10 @@
 //
 
 #include <SFML/Graphics/RenderWindow.hpp>
+#include <SfmlTool.hpp>
 #include "Cell.hpp"
 
-Cell::Cell(std::pair<sf::Vector2f, sf::Vector2f> squareDimension, sf::Texture *&texture, sf::Font &font) : ARectangleShape(squareDimension.first, squareDimension.second), _cellPos(font)
+Cell::Cell(std::pair<sf::Vector2f, sf::Vector2f> squareDimension, sf::Texture *&texture) : ARectangleShape(squareDimension.first, squareDimension.second), _cellPos(SfmlTool::getArialFont())
 {
 	std::cout << "Je suis une Cell, en [" << _position.x << "," << _position.y << "] et de taille [" << _size.x << "," << _size.y << "]" << std::endl;
 	_rectangle.setOutlineThickness(1);
@@ -47,11 +48,4 @@ sf::Text &Cell::getCellPos()
 void Cell::makeTarget()
 {
 	_rectangle.setFillColor(sf::Color::Red);
-}
-
-sf::Font Cell::createFont()
-{
-	sf::Font font;
-	font.loadFromFile("arial.ttf");
-	return font;
 }

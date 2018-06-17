@@ -10,7 +10,7 @@
 
 class GameText : public AText {
 	public:
-	GameText(sf::Font &font);
+	GameText(const sf::Font &font);
 	~GameText() = default;
 
 	void setColor(const sf::Color &color);

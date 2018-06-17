@@ -11,6 +11,7 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/Font.hpp>
 #include <SFML/Graphics/Text.hpp>
+#include <SfmlTool.hpp>
 
 class WindowInfo {
 	enum {
@@ -28,7 +29,6 @@ class WindowInfo {
 	sf::Text &getFPS();
 
 	private:
-	sf::Font _font;
 	std::vector<sf::Text> _text;
 	sf::Clock _clock;
 	float _zoom;

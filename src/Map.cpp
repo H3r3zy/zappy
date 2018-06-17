@@ -3,10 +3,12 @@
 //
 
 #include <thread>
+#include <SfmlTool.hpp>
 #include "Map.hpp"
 
 Map::Map(int mapsize) : _mapSize(mapsize, mapsize), _gameWindow(sf::VideoMode(1200, 800), "Oh voyage voyage, plus loiiiiin que la nuit et le jour"), _grid(_mapSize)
 {
+	SfmlTool::InitAllFont();
 	//_gameWindow.setFramerateLimit(60);
 	_windowInfo = new WindowInfo();
 	initCamera();

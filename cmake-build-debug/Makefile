@@ -285,6 +285,33 @@ src/Map.cpp.s:
 	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/Map.cpp.s
 .PHONY : src/Map.cpp.s
 
+src/SfmlTool.o: src/SfmlTool.cpp.o
+
+.PHONY : src/SfmlTool.o
+
+# target to build an object file
+src/SfmlTool.cpp.o:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/SfmlTool.cpp.o
+.PHONY : src/SfmlTool.cpp.o
+
+src/SfmlTool.i: src/SfmlTool.cpp.i
+
+.PHONY : src/SfmlTool.i
+
+# target to preprocess a source file
+src/SfmlTool.cpp.i:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/SfmlTool.cpp.i
+.PHONY : src/SfmlTool.cpp.i
+
+src/SfmlTool.s: src/SfmlTool.cpp.s
+
+.PHONY : src/SfmlTool.s
+
+# target to generate assembly for a file
+src/SfmlTool.cpp.s:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/SfmlTool.cpp.s
+.PHONY : src/SfmlTool.cpp.s
+
 src/Text/AText.o: src/Text/AText.cpp.o
 
 .PHONY : src/Text/AText.o
@@ -420,6 +447,9 @@ help:
 	@echo "... src/Map.o"
 	@echo "... src/Map.i"
 	@echo "... src/Map.s"
+	@echo "... src/SfmlTool.o"
+	@echo "... src/SfmlTool.i"
+	@echo "... src/SfmlTool.s"
 	@echo "... src/Text/AText.o"
 	@echo "... src/Text/AText.i"
 	@echo "... src/Text/AText.s"

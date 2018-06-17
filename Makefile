@@ -18,6 +18,7 @@ SRC	=	src/main.cpp		\
 		src/Text/GameText.cpp		\
 		src/WindowInfo.cpp	\
 		src/Grid.cpp		\
+		src/SfmlTool.cpp	\
 		src/Map.cpp
 
 OBJ	=	$(SRC:.cpp=.o)

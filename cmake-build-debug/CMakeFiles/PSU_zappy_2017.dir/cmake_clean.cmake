@@ -9,6 +9,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/PSU_zappy_2017.dir/src/Entity/AMotionShape.cpp.o"
   "CMakeFiles/PSU_zappy_2017.dir/src/Text/AText.cpp.o"
   "CMakeFiles/PSU_zappy_2017.dir/src/Text/GameText.cpp.o"
+  "CMakeFiles/PSU_zappy_2017.dir/src/SfmlTool.cpp.o"
   "PSU_zappy_2017.pdb"
   "PSU_zappy_2017"
 )

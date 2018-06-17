@@ -10,7 +10,7 @@
 
 class AText {
 	public:
-	explicit AText(sf::Font &font, uint characterSize = 16);
+	explicit AText(const sf::Font &font, uint characterSize = 16);
 
 	AText();
 

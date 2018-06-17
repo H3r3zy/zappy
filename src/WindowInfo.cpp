@@ -11,16 +11,15 @@ WindowInfo::WindowInfo() : _zoom(1)
 	_text.emplace_back(sf::Text());	_text.emplace_back(sf::Text());	_text.emplace_back(sf::Text());
 
 
-	_font.loadFromFile("arial.ttf");
-	_text[FPS].setFont(_font);
+	_text[FPS].setFont(SfmlTool::getArialFont());
 	_text[FPS].setString("FPS:");
 	_text[FPS].setCharacterSize(30);
 
-	_text[ENTITY].setFont(_font);
+	_text[ENTITY].setFont(SfmlTool::getArialFont());
 	_text[ENTITY].setString("Nb. Entity :");
 	_text[ENTITY].setCharacterSize(30);
 
-	_text[ZOOM].setFont(_font);
+	_text[ZOOM].setFont(SfmlTool::getArialFont());
 	_text[ZOOM].setString("Zoom x1");
 	_text[ZOOM].setCharacterSize(30);
 

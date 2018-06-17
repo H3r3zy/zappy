@@ -17,7 +17,7 @@
 
 class Cell : public ARectangleShape {
 	public:
-	Cell(std::pair<sf::Vector2f, sf::Vector2f> squareDimension, sf::Texture *&texture, sf::Font &font);
+	Cell(std::pair<sf::Vector2f, sf::Vector2f> squareDimension, sf::Texture *&texture);
 	~Cell();
 
 	sf::Text &getCellPos();
@@ -26,9 +26,7 @@ class Cell : public ARectangleShape {
 	void makeTarget();
 
 	private:
-	sf::Font createFont();
 	GameText _cellPos;
-
 
 	ulong _textureNumber;
 	std::map<unsigned int, unsigned int> _ressources;

@@ -109,6 +109,9 @@
 		<Unit filename="/home/wisenoa/PSU_zappy_2017/Include/Map.hpp">
 			<Option target="PSU_zappy_2017"/>
 		</Unit>
+		<Unit filename="/home/wisenoa/PSU_zappy_2017/Include/SfmlTool.hpp">
+			<Option target="PSU_zappy_2017"/>
+		</Unit>
 		<Unit filename="/home/wisenoa/PSU_zappy_2017/Include/Text/AText.hpp">
 			<Option target="PSU_zappy_2017"/>
 		</Unit>
@@ -134,6 +137,9 @@
 			<Option target="PSU_zappy_2017"/>
 		</Unit>
 		<Unit filename="/home/wisenoa/PSU_zappy_2017/src/Map.cpp">
+			<Option target="PSU_zappy_2017"/>
+		</Unit>
+		<Unit filename="/home/wisenoa/PSU_zappy_2017/src/SfmlTool.cpp">
 			<Option target="PSU_zappy_2017"/>
 		</Unit>
 		<Unit filename="/home/wisenoa/PSU_zappy_2017/src/Text/AText.cpp">

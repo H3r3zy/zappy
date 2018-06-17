@@ -10,8 +10,8 @@ Map::Map(int mapsize) : _mapSize(mapsize, mapsize), _gameWindow(sf::VideoMode(12
 	//_gameWindow.setFramerateLimit(60);
 	_windowInfo = new WindowInfo();
 	initCamera();
-	_playerPos.setPosition(_camera[MAP].getCenter());
-	_playerPos.setSize(sf::Vector2f(100, 100));
+	_playerPos.setPosition(_camera[MAP].getCenter() -_camera[MAP].getSize());
+	_playerPos.setSize(sf::Vector2f(20, 20));
 	_playerPos.setFillColor(sf::Color::Red);
 
 
@@ -27,7 +27,6 @@ Map::Map(int mapsize) : _mapSize(mapsize, mapsize), _gameWindow(sf::VideoMode(12
 	_character.emplace_back(_grid.getTextureCharacter(), tmp);
 
 	/* */
-
 }
 
 
@@ -40,7 +39,7 @@ void Map::initCamera()
 	_camera[HUD].reset(sf::FloatRect(0, 0, 1200, 800));
 	_camera[MINIMAP].reset(sf::FloatRect(0, 0, 1200, 800));
 	_camera[MINIMAP].setViewport(sf::FloatRect(0.66f, 0, 0.25f, 0.25f));
-	_camera[MINIMAP].zoom(1.2f);
+	_camera[MINIMAP].zoom(1.3f);
 	_camera[MINIMAP].setCenter(600, -400);
 	_camera[MAP].setCenter(600, -400);
 }
@@ -58,14 +57,17 @@ void Map::gameLoop()
 		for (auto &it : _character) {
 			_gameWindow.draw(it.getCharacter());
 		}
+
+		/* HUD DISPLAY */
+		_gameWindow.setView(_camera[HUD]);
+		_windowInfo->drawInfo(_gameWindow);
+
+
 		/* Minimap Display*/
 		_gameWindow.setView(_camera[MINIMAP]);
 		_grid.displayMiniGrid(_gameWindow, _camera[MAP], _character);
 		_gameWindow.draw(_playerPos);
 
-		/* HUD DISPLAY */
-		_gameWindow.setView(_camera[HUD]);
-		_windowInfo->drawInfo(_gameWindow);
 
 		/* Display and Reset */
 		_gameWindow.display();
@@ -121,6 +123,14 @@ bool Map::getEvent()
 				_grid.updateGrid3D(_camera[MAP]);
 				_windowInfo->updateInfo(_grid.getNbActive(), _camera[HUD]);
 				break;
+			case sf::Keyboard::Z:
+				_camera[MAP].zoom(0.8f);
+				_windowInfo->updateZoom(0.8);
+				break;
+			case sf::Keyboard::A:
+				_camera[MAP].zoom(1.2f);
+				_windowInfo->updateZoom(1.2);
+				break;
 			case sf::Keyboard::Escape:
 				_gameWindow.close();
 				return false;
@@ -171,8 +181,7 @@ bool Map::getEvent()
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
 		while (sf::Keyboard::isKeyPressed(sf::Keyboard::Z));
 			std::cout << " jai appuyé sur Z"<< std::endl;
-			_camera[MAP].zoom(0.8f);
-		_windowInfo->updateZoom(0.8);
+
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
 		while (sf::Keyboard::isKeyPressed(sf::Keyboard::A));

@@ -48,7 +48,6 @@ sf::Sprite &Character::getCharacter()
 		_testTmp++;
 
 	}
-
 	if (_testTmp == 70) {
 		_testTmp = 0;
 		_randomDirection = rand() % 4;

@@ -41,6 +41,9 @@ class Character {
 	// TODO LE DEGAGER
 	int _testTmp = 0;
 	int _randomDirection = 2;
+	bool oneTime = true;
+
+
 };
 
 #endif //PSU_ZAPPY_2017_CHARACTER_HPP

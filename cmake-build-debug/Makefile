@@ -123,6 +123,33 @@ PSU_zappy_2017/fast:
 	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/build
 .PHONY : PSU_zappy_2017/fast
 
+src/ARectangleShape.o: src/ARectangleShape.cpp.o
+
+.PHONY : src/ARectangleShape.o
+
+# target to build an object file
+src/ARectangleShape.cpp.o:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/ARectangleShape.cpp.o
+.PHONY : src/ARectangleShape.cpp.o
+
+src/ARectangleShape.i: src/ARectangleShape.cpp.i
+
+.PHONY : src/ARectangleShape.i
+
+# target to preprocess a source file
+src/ARectangleShape.cpp.i:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/ARectangleShape.cpp.i
+.PHONY : src/ARectangleShape.cpp.i
+
+src/ARectangleShape.s: src/ARectangleShape.cpp.s
+
+.PHONY : src/ARectangleShape.s
+
+# target to generate assembly for a file
+src/ARectangleShape.cpp.s:
+	$(MAKE) -f CMakeFiles/PSU_zappy_2017.dir/build.make CMakeFiles/PSU_zappy_2017.dir/src/ARectangleShape.cpp.s
+.PHONY : src/ARectangleShape.cpp.s
+
 src/Cell.o: src/Cell.cpp.o
 
 .PHONY : src/Cell.o
@@ -294,6 +321,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... PSU_zappy_2017"
+	@echo "... src/ARectangleShape.o"
+	@echo "... src/ARectangleShape.i"
+	@echo "... src/ARectangleShape.s"
 	@echo "... src/Cell.o"
 	@echo "... src/Cell.i"
 	@echo "... src/Cell.s"

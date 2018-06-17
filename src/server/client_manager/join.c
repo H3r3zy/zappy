@@ -47,7 +47,7 @@ static void init_client_data(server_t *server, client_t *client)
 	client->user.vision = 1;
 	client->queue_index = 0;
 	client->team = NULL;
-	client->user.bag[Food] = STARTED_FOOD;
+	client->user.bag[Food] = START_FOOD;
 	#ifdef DEBUG
 	client->user.bag[Food] = 999999;
 	#endif

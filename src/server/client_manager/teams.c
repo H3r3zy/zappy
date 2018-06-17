@@ -26,14 +26,10 @@ void add_teams(server_t *server, char *name)
 	if (!team) {
 		server->teams = new;
 		new->next = NULL;
-		new->prev = NULL;
 		return;
 	}
 	new->next = team->next;
-	if (team->next)
-		team->next->prev = new;
 	team->next = new;
-	new->prev = team;
 }
 
 void create_teams_clients(server_t *server)
@@ -64,8 +60,7 @@ static void spawn(server_t *server, client_t *client, teams_t *team)
 }
 
 static void add_client_to_team(server_t *server, client_t *client,
-	teams_t *team
-)
+	teams_t *team)
 {
 	char buffer[128] = {0};
 	struct timespec spec;

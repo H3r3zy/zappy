@@ -19,7 +19,7 @@ void add_to_queue(client_t *client, char *msg)
 		client->fd);
 }
 
-static int try_write(const int fd, char *msg)
+int try_write(const int fd, char *msg)
 {
 	size_t len = strlen(msg);
 	size_t wrote = 0;

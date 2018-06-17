@@ -15,12 +15,14 @@
 #include "server.h"
 #include "scheduler.h"
 
-static int init_server(server_t *serv)
+static int init_server(server_t *server)
 {
-	init_map(&serv->map);
-	if (!serv->map.map)
+	init_map(&server->map);
+	if (!server->map.map)
 		return 1;
-	create_teams_clients(serv);
+	create_teams_clients(server);
+	server->gui.queue = calloc(GUI_QUEUE_SIZE, 1);
+	server->gui.size = GUI_QUEUE_SIZE;
 	return 0;
 }
 

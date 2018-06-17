@@ -36,9 +36,8 @@ void disconnect(server_t *server, client_t *client)
 	debug(INFO "The client %d left the game\n", client->fd);
 	if (client->status == EGG)
 		remove_egg(get_egg_of(client));
-	if (server->clients == client) {
+	if (server->clients == client)
 		server->clients = client->next;
-	}
 	if (client->prev)
 		client->prev->next = client->next;
 	if (client->next)

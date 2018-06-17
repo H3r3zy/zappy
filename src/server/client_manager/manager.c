@@ -56,6 +56,22 @@ static void check_command(server_t *server, client_t *client, uint i, char *arg)
 	add_task_to_schedule(client, COMMAND[i].time_unit, arg, COMMAND[i].function);
 }
 
+static void add_gui_client(server_t *server, client_t *client)
+{
+	client_t **list = &server->clients;
+
+	debug(GINFO "GUI Client connected\n");
+	if (client->next)
+		client->next->prev = client->prev;
+	if (client->prev)
+		client->prev->next = client->next;
+	if (*list == client)
+		*list = client->next;
+	--server->client_nb;
+	server->gui.fd = client->fd;
+	server->gui.logged = 1;
+}
+
 static void command_manager(server_t *server, client_t *client, char *command)
 {
 	size_t tmp_len = strlen(command);
@@ -65,8 +81,13 @@ static void command_manager(server_t *server, client_t *client, char *command)
 	if (!name)
 		return;
 	if (!client->team) {
-		debug(INFO "'%i' Try to join '%s' team\n", client->fd, command);
-		add_to_team(server, client, command);
+		if (!strcmp(command, "gui"))
+			add_gui_client(server, client);
+		else {
+			debug(INFO "'%i' Try to join '%s' team\n", client->fd,
+				command);
+			add_to_team(server, client, command);
+		}
 		return;
 	}
 	if (tmp_len != strlen(name))

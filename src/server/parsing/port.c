@@ -8,8 +8,8 @@
 #include <unistd.h>
 #include <stdbool.h>
 #include <stdlib.h>
-#include <server.h>
 #include <stdio.h>
+#include <string.h>
 #include "parser.h"
 #include "server.h"
 
@@ -85,6 +85,10 @@ int argument_names(struct argument_s *manager, void *server, char **av, uint i)
 		return 0;
 	}
 	while (av[j] && av[j][0] != '-') {
+		if (!strcmp(av[j], "gui")) {
+			manager->error = true;
+			return 0;
+		}
 		add_teams(server, av[j]);
 		j++;
 	}

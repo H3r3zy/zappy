@@ -9,16 +9,22 @@
 #define PSU_ZAPPY_2017_SERVER_H
 
 #include <unistd.h>
+#include <poll.h>
 #include "socket.h"
 
 #define READ_SIZE (16)
 #define LIMIT_TASK_NUMBER (10)
+
 #define RESOURCE_NB (7)
 #define ENTITY_NB ((RESOURCE_NB) + 1)
-#define STARTED_FOOD (10)
+#define START_FOOD (10)
 
 #define FOOD_UNIT_TIME (126)
 #define EGG_UNIT_TIME (600)
+
+#define GUI_QUEUE_SIZE (1024)
+
+#define UPDATE_RESOURCE(m, p, t, n) ((m)->map[(p).y][(p).x].items[(t)] += (n))
 
 typedef enum {
 	Linemate,
@@ -104,7 +110,6 @@ struct teams_s {
 	uint remaining_place;
 	client_t **clients;
 	egg_t *eggs;
-	struct teams_s *prev;
 	struct teams_s *next;
 };
 
@@ -119,7 +124,13 @@ typedef struct {
 	cell_t **map;
 } map_t;
 
-#define UPDATE_RESOURCE(m, p, t, n) ((m)->map[(p).y][(p).x].items[(t)] += (n))
+typedef struct gui_s {
+	char *queue;
+	size_t size;
+	size_t len;
+	int fd;
+	char logged;
+} gui_t;
 
 struct server_s {
 	socket_t fd;
@@ -130,9 +141,9 @@ struct server_s {
 	teams_t *teams;
 	client_t *clients;
 	size_t client_nb;
+	gui_t gui;
 };
 
-extern char *str_types[ENTITY_NB];
 
 char *gnl(int fd, char *delim);
 
@@ -152,20 +163,18 @@ int read_client(server_t *server, client_t *client);
 void add_to_queue(client_t *client, char *msg);
 int send_responses(client_t *client);
 
-void add_to_map(map_t *map, entity_t *entity);
+int try_write(int fd, char *msg);
 
-// new map ===================================================
+int read_gui(server_t *server);
+void add_to_gui_queue(gui_t *gui, char *str);
+
 void init_map(map_t *map);
 void add_player_to_map(map_t *map, entity_t *entity);
 void remove_player_from_map(map_t *map, entity_t *entity);
 void move_player_to(map_t *map, entity_t *entity, pos_t *pos);
-// ===========================================================
-
-void print_map(map_t *map);
 
 int get_o_w_dlt(pos_t *delta, orientation_t orientation);
 void fill_delta(pos_t *size, pos_t *pos1, pos_t *pos2, pos_t *delta);
-
 
 #define POS(c) (c)->entity->pos
 #define OR(c) (c)->user.orientation

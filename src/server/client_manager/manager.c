@@ -9,10 +9,9 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
-#include <command.h>
-#include <server.h>
-#include "command.h"
 #include "server.h"
+#include "command.h"
+#include "gui_command.h"
 #include "debug.h"
 #include "scheduler.h"
 
@@ -70,6 +69,8 @@ static void add_gui_client(server_t *server, client_t *client)
 	--server->client_nb;
 	server->gui.fd = client->fd;
 	server->gui.logged = 1;
+	for (client_t *clt = server->clients; clt; clt = clt->next)
+		gui_pnw(server, clt);
 }
 
 static void command_manager(server_t *server, client_t *client, char *command)

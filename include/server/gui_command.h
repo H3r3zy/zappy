@@ -5,8 +5,8 @@
 ** Created by sahel.lucas-saoudi@epitech.eu,
 */
 
-#ifndef PSU_ZAPPY_2017_COMMAND_H
-#define PSU_ZAPPY_2017_COMMAND_H
+#ifndef PSU_ZAPPY_2017_GUI_COMMAND_H
+#define PSU_ZAPPY_2017_GUI_COMMAND_H
 
 #include <stdbool.h>
 #include "server.h"
@@ -18,5 +18,9 @@ typedef struct {
 } gui_command_t;
 
 void gui_msz(server_t *server, char *arg);
+void gui_pnw(server_t *server, client_t *client);
+void gui_ppo(server_t *server, char *arg);
+void gui_plv(server_t *server, char *arg);
+void gui_pin(server_t *server, char *arg);
 
-#endif //PSU_ZAPPY_2017_COMMAND_H
+#endif //PSU_ZAPPY_2017_GUI_COMMAND_H

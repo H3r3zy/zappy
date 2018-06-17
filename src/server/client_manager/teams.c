@@ -6,12 +6,12 @@
 */
 
 #include <stdlib.h>
-#include <memory.h>
-#include <server.h>
+#include <string.h>
 #include <stdio.h>
-#include <bits/time.h>
-#include <scheduler.h>
 #include <time.h>
+#include "server.h"
+#include "scheduler.h"
+#include "gui_command.h"
 #include "debug.h"
 
 void add_teams(server_t *server, char *name)
@@ -87,10 +87,12 @@ static void add_client_to_team(server_t *server, client_t *client,
 void add_to_team(server_t *server, client_t *client, char *name)
 {
 	for (teams_t *tm = server->teams; tm; tm = tm->next) {
-		if (strcmp(tm->name, name) == 0) {
-			add_client_to_team(server, client, tm);
-			return;
-		}
+		if (strcmp(tm->name, name) != 0)
+			continue;
+		add_client_to_team(server, client, tm);
+		if (server->gui.logged)
+			gui_pnw(server, client);
+		return;
 	}
 	add_to_queue(client, "ko\n");
 }

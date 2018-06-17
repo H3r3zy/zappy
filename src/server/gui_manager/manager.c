@@ -13,7 +13,10 @@
 #include "server.h"
 
 static const gui_command_t COMMAND[] = {
-	{"msz", &gui_msz, false}
+	{"msz", &gui_msz, false},
+	{"ppo", &gui_ppo, true},
+	{"plv", &gui_plv, true},
+	{"pin", &gui_pin, true}
 };
 
 void add_to_gui_queue(gui_t *gui, char *str)

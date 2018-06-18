@@ -24,7 +24,7 @@ void gui_pnw(server_t *server, client_t *client)
 {
 	char buff[281] = {0};
 
-	snprintf(buff, 281, "pnw %lu %u %u %d %u %s\n",
+	snprintf(buff, 281, "pnw %u %u %u %d %u %s\n",
 		client->entity->id, POS(client).x, POS(client).y,
 		client->user.orientation + 1, client->user.level,
 		(client->team) ? client->team->name : "");

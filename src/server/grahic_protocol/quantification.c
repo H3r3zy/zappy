@@ -53,10 +53,9 @@ void gui_nbt(server_t *server, __attribute__((unused)) char *arg)
 void gui_nbr(server_t *server, __attribute__((unused)) char *arg)
 {
 	static char buff[55] = "nbr line dera sibu mend phir thys food eggs\n";
-	size_t i = 0;
 
-	for (; i < RESOURCE_NB + 1; i++) {
-		memcpy(buff + 14 + i * (sizeof(uint) + 1),
+	for (size_t i = 0; i < RESOURCE_NB + 1; i++) {
+		memcpy(buff + 4 + i * (sizeof(uint) + 1),
 			&server->map.stock[i], sizeof(uint));
 
 	}

@@ -10,7 +10,6 @@ WindowInfo::WindowInfo() : _zoom(1)
 {
 	_text.emplace_back(sf::Text());	_text.emplace_back(sf::Text());	_text.emplace_back(sf::Text());
 
-
 	_text[FPS].setFont(SfmlTool::getArialFont());
 	_text[FPS].setString("FPS:");
 	_text[FPS].setCharacterSize(30);

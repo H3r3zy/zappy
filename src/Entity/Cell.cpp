@@ -6,7 +6,7 @@
 #include <SfmlTool.hpp>
 #include "Cell.hpp"
 
-Cell::Cell(std::pair<sf::Vector2f, sf::Vector2f> squareDimension, sf::Texture *&texture) : ARectangleShape(squareDimension.first, squareDimension.second), _cellPos(SfmlTool::getArialFont())
+Cell::Cell(std::pair<sf::Vector2f, sf::Vector2f> squareDimension, sf::Texture *&texture) : ARectangleShape(squareDimension.first, squareDimension.second), _cellPos(SfmlTool::getArialFont(), _position)
 {
 	std::cout << "Je suis une Cell, en [" << _position.x << "," << _position.y << "] et de taille [" << _size.x << "," << _size.y << "]" << std::endl;
 	_rectangle.setOutlineThickness(1);

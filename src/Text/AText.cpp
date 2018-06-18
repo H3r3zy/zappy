@@ -5,7 +5,7 @@
 
 #include "Text/AText.hpp"
 
-AText::AText(const sf::Font &font, uint characterSize)
+AText::AText(const sf::Font &font, sf::Vector2f &position, uint characterSize) : _position(position)
 {
 	_text.setFont(font);
 	_text.setCharacterSize(characterSize);

@@ -56,18 +56,17 @@ typedef struct {
 } pos_t;
 
 typedef struct entity_s {
-	ulong id;
-	entity_type_t type;
-	void *ptr;
-	pos_t pos;
 	struct entity_s *prev;
 	struct entity_s *next;
+	pos_t pos;
+	uint id;
+	void *ptr;
 } entity_t;
 
 typedef struct {
+	uint bag[RESOURCE_NB];
 	uint level;
 	uint vision;
-	uint bag[RESOURCE_NB];
 	orientation_t orientation;
 } user_t;
 
@@ -84,45 +83,45 @@ typedef struct task_s {
 
 typedef struct egg_s {
 	long long int started_time;
-	teams_t *team;
-	client_t *client;
 	pos_t pos;
 	struct egg_s *prev;
 	struct egg_s *next;
+	client_t *client;
+	teams_t *team;
 } egg_t;
 
 struct client_s {
 	socket_t fd;
+	long long int started_time;
 	user_t user;
 	task_t *task[LIMIT_TASK_NUMBER];
 	teams_t *team;
 	char *queue[LIMIT_TASK_NUMBER + 1];
-	size_t queue_index;
 	entity_t *entity;
-	long long int started_time;
-	status_t status;
 	struct client_s *prev;
 	struct client_s *next;
+	status_t status;
+	char queue_index;
 };
 
 struct teams_s {
+	client_t **clients;
+	struct teams_s *next;
+	egg_t *eggs;
 	char *name;
 	uint remaining_place;
-	client_t **clients;
-	egg_t *eggs;
-	struct teams_s *next;
 };
 
 typedef struct cell_s {
-	uint items[RESOURCE_NB];
 	entity_t *players;
+	uint items[RESOURCE_NB];
 } cell_t;
 
 typedef struct {
 	pos_t size;
-	ulong max_id;
 	cell_t **map;
 	uint stock[RESOURCE_NB + 1];
+	uint max_id;
 } map_t;
 
 typedef struct gui_s {

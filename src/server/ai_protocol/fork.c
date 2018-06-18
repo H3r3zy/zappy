@@ -16,6 +16,7 @@ void fork_cmd(server_t *__attribute__((unused))server, client_t *client, char *_
 {
 	struct timespec spec;
 	egg_t *egg = malloc(sizeof(egg_t));
+	static ulong id = 2;
 
 	debug(GINFO "'%i' place an egg in (%i;%i)\n", client->fd, client->entity->pos.y, client->entity->pos.x);
 	if (!egg) {
@@ -33,6 +34,8 @@ void fork_cmd(server_t *__attribute__((unused))server, client_t *client, char *_
 	if (egg->next)
 		egg->next->prev = egg;
 	egg->prev = NULL;
+	egg->id = id;
 	client->team->eggs = egg;
 	add_to_queue(client, "ok\n");
+	id++;
 }

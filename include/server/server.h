@@ -87,6 +87,7 @@ typedef struct egg_s {
 	teams_t *team;
 	client_t *client;
 	pos_t pos;
+	ulong id;
 	struct egg_s *prev;
 	struct egg_s *next;
 } egg_t;

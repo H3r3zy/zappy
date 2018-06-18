@@ -25,6 +25,7 @@ static const gui_command_t COMMAND[] = {
 	{"sgt", &gui_sgt, false},
 	{"sst", &gui_sst, true},
 	{"tna", &gui_tna, false},
+	{NULL, NULL, false}
 };
 
 /**

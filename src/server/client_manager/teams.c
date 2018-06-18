@@ -9,6 +9,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <time.h>
+#include <server.h>
 #include "server.h"
 #include "scheduler.h"
 #include "gui_command.h"

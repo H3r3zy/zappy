@@ -36,6 +36,11 @@ void gui_pnw(server_t *server, client_t *client);
 void gui_ppo(server_t *server, char *arg);
 void gui_plv(server_t *server, char *arg);
 void gui_pin(server_t *server, char *arg);
+void gui_pex(server_t *server, client_t *client);
+void gui_pbc(server_t *server, client_t *client, char *arg);
+void gui_pic(server_t *server, client_t *client, entity_t *entity);
+void gui_pfk(server_t *server, client_t *client);
+void gui_pie(server_t *server, client_t *client);
 
 /**
  * GUI Server requests

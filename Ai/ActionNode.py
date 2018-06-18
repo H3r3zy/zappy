@@ -14,25 +14,29 @@ class Actions(IntEnum):
 
 
 def look(client: Client, player: Ai, args):
-    client.build_command("Look")
+    if look.id == -1:
+        look.id = client.build_command("Look")
+    if look.id != client.last:
+        return Actions.LOOK
+    look.id = -1
     return Actions.CHECK_FOOD
+
+
+look.id = -1
 
 
 def CheckingFood(client: Client, player: Ai, args):
     client.build_command("Inventory")
-    print("Il me reste : %d bouffe" % player.getInventory()["food"])
     if player.getInventory()["food"] < 5:
         return Actions.FIND_FOOD
     return Actions.FIND_CRYSTALS
 
 
 def FindFood(client: Client, player: Ai, args):
-    print("Je dois vite chercher de la food !!")
     return Actions.LOOK
 
 
 def FindCrystals(client: Client, player: Ai, args):
-    print("Je suis large en nouriture alors go chercher de quoi pex ;)")
     return Actions.LOOK
 
 

@@ -2,21 +2,38 @@
 # coding: utf-8
 
 from Client import Client
+from Ai.Ai import Ai
+from enum import IntEnum
 
 
-def look(client: Client, args):
+class Actions(IntEnum):
+    LOOK = 0,
+    CHECK_FOOD = 1,  # type: Actions
+    FIND_FOOD = 2,
+    FIND_CRYSTALS = 3,
+
+
+def look(client: Client, player: Ai, args):
     client.build_command("Look")
-    print("je vais look")
-    return 1
+    return Actions.CHECK_FOOD
 
 
-def CheckingFood():
-    pass
+def CheckingFood(client: Client, player: Ai, args):
+    client.build_command("Inventory")
+    print("Il me reste : %d bouffe" % player.getInventory()["food"])
+    if player.getInventory()["food"] < 5:
+        return Actions.FIND_FOOD
+    return Actions.FIND_CRYSTALS
 
 
-def node_action0(client: Client, args):
-    print("Je suis l'action d'id %d" % args[0])
-    return 0
+def FindFood(client: Client, player: Ai, args):
+    print("Je dois vite chercher de la food !!")
+    return Actions.LOOK
+
+
+def FindCrystals(client: Client, player: Ai, args):
+    print("Je suis large en nouriture alors go chercher de quoi pex ;)")
+    return Actions.LOOK
 
 
 class ActionNode:
@@ -24,5 +41,5 @@ class ActionNode:
         self.id = node_id
         self.func = func
 
-    def action(self, client: Client, args) -> int:
-        return self.func(client, args)
+    def action(self, client: Client, player: Ai, args) -> int:
+        return self.func(client, player, args)

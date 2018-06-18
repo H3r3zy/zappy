@@ -85,6 +85,9 @@ class PathFinding:
         nb_actions = 0
         actions = []
 
+        if player_coords[0] == to[0] and player_coords[1] == to[1]:
+            print("J'ai pas bougé wesh")
+            return
         if player_coords[0] != to[0] and player_coords[1] != to[1]:  # Diagonales
             if player_dir == Direction.NORTH or player_dir == Direction.SOUTH:
                 actions, player_dir = self.moveUpOrDown(player_coords, (player_coords[0], to[1]), player_dir)

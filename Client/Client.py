@@ -26,23 +26,27 @@ class Client:
         self.__outQueue = deque(maxlen=10)
         self.__mapSize = (0, 0)
         self.wait = 0
-        self.__currentNode = 0
+        self.__currentNode = Actions.LOOK
         self.__msgQueue = deque()
         self.__nodes = [
-            ActionNode(0, look),
-            ActionNode(1, node_action0),
-            ActionNode(2, node_action0),
+            ActionNode(Actions.LOOK, look),
+            ActionNode(Actions.CHECK_FOOD, CheckingFood),
+            ActionNode(Actions.FIND_FOOD, FindFood),
+            ActionNode(Actions.FIND_CRYSTALS, FindCrystals),
+            '''ActionNode(2, node_action0),
             ActionNode(3, node_action0),
             ActionNode(4, node_action0),
             ActionNode(5, node_action0),
             ActionNode(6, node_action0),
             ActionNode(7, node_action0),
             ActionNode(8, node_action0),
-            ActionNode(9, node_action0),
+            ActionNode(9, node_action0),'''
         ]
         self.__args = {
-            0: [],
-            1: [1, 2]
+            Actions.LOOK: [],
+            Actions.CHECK_FOOD: [1, 2],
+            Actions.FIND_FOOD: [1, 2],
+            Actions.FIND_CRYSTALS: [1, 2],
         }
 
     def connect(self) -> bool:
@@ -128,5 +132,5 @@ class Client:
                 if not parser.parse(self.__inQueue.popleft()):
                     print("I died being at the %s level" % ordinal(player.getLevel()))
                     return
-            self.__currentNode = self.__nodes[self.__currentNode].action(self,
+            self.__currentNode = self.__nodes[self.__currentNode].action(self, player,
                                                                          self.__args[self.__currentNode])

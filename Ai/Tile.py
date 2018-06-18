@@ -20,3 +20,9 @@ class Tile:
 
     def setPlayer(self, player: int):
         self.__player = player
+
+    def __str__(self):
+        return "resources : " + str(self.__stones) + " players :" + str(self.__player)
+
+    def __repr__(self):
+        return "resources : " + str(self.__stones) + " players :" + str(self.__player)

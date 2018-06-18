@@ -42,6 +42,8 @@ void gui_pin(server_t *server, char *arg);
  */
 void gui_nbu(server_t *server, char *arg);
 void gui_nbt(server_t *server, char *arg);
+void gui_nbr(server_t *server, char *arg);
+
 void gui_sgt(server_t *server, char *arg);
 void gui_sst(server_t *server, char *arg);
 void gui_tna(server_t *server, char *arg);

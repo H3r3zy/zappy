@@ -19,12 +19,12 @@
 #define ENTITY_NB ((RESOURCE_NB) + 1)
 #define START_FOOD (10)
 
+#define EGG_ID ((RESOURCE_NB) + 1)
+
 #define FOOD_UNIT_TIME (126)
 #define EGG_UNIT_TIME (600)
 
 #define GUI_QUEUE_SIZE (1 << 12)
-
-#define UPDATE_RESOURCE(m, p, t, n) ((m)->map[(p).y][(p).x].items[(t)] += (n))
 
 typedef enum {
 	Linemate,
@@ -122,6 +122,7 @@ typedef struct {
 	pos_t size;
 	ulong max_id;
 	cell_t **map;
+	uint stock[RESOURCE_NB + 1];
 } map_t;
 
 typedef struct gui_s {
@@ -140,7 +141,7 @@ struct server_s {
 	map_t map;
 	teams_t *teams;
 	client_t *clients;
-	size_t client_nb;
+	uint client_nb;
 	gui_t gui;
 };
 
@@ -175,6 +176,8 @@ void move_player_to(map_t *map, entity_t *entity, pos_t *pos);
 
 int get_o_w_dlt(pos_t *delta, orientation_t orientation);
 void fill_delta(pos_t *size, pos_t *pos1, pos_t *pos2, pos_t *delta);
+
+void update_resource(map_t *map, pos_t pos, entity_type_t t, int n);
 
 #define POS(c) (c)->entity->pos
 #define OR(c) (c)->user.orientation

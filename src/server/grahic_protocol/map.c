@@ -12,6 +12,11 @@
 #include <debug.h>
 #include "server.h"
 
+/**
+ * GUI command : get map size
+ * @param server
+ * @param arg
+ */
 void gui_msz(server_t *server, __attribute__((unused)) char *arg)
 {
 	char buff[16] = {0};
@@ -21,18 +26,32 @@ void gui_msz(server_t *server, __attribute__((unused)) char *arg)
 	add_to_gui_queue(&server->gui, buff);
 }
 
-static void print_map_cell(server_t *server, size_t x, size_t y)
+/**
+ * Print the content of a cell into a buffer
+ * @param server
+ * @param x
+ * @param y
+ */
+static void print_map_cell(server_t *server, uint x, uint y)
 {
-	char buff[50] = {0};
+	static char buff[50] = "bct xpos ypos food line dera sibu mend phir thys\n";
 	uint *items = server->map.map[y][x].items;
 
-	snprintf(buff, 55, "bct %zu %zu %u %u %u %u %u %u %u\n", x, y,
-		items[Food], items[Linemate], items[Deraumere],
-		items[Sibur], items[Mendiane], items[Phiras],
-		items[Thystame]);
+	memcpy(buff + 4, &x, sizeof(uint));
+	memcpy(buff + 9, &y, sizeof(uint));
+	for (size_t i = 0; i < RESOURCE_NB; i++) {
+		memcpy(buff + 14 + i * (sizeof(uint) + 1), &items[i],
+			sizeof(uint));
+
+	}
 	add_to_gui_queue(&server->gui, buff);
 }
 
+/**
+ * GUI command : get cell content at pos X Y
+ * @param server
+ * @param arg
+ */
 void gui_bct(server_t *server, char *arg)
 {
 	long x = strtol(arg, NULL, 10);
@@ -42,9 +61,14 @@ void gui_bct(server_t *server, char *arg)
 		y >= server->map.size.y)
 		add_to_gui_queue(&server->gui, "ko\n");
 	else
-		print_map_cell(server, (size_t)x, (size_t)y);
+		print_map_cell(server, x, y);
 }
 
+/**
+ * GUI command : get full map content
+ * @param server
+ * @param arg
+ */
 void gui_mct(server_t *server, __attribute__((unused)) char *arg)
 {
 	for (int y = 0; y < server->map.size.y; y++)

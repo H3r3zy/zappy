@@ -35,7 +35,7 @@ void take_cmd(server_t *server, client_t *client, char *arg)
 	for (int i = 0; TYPENAME[i]; i++) {
 		if (!strcasecmp(TYPENAME[i], arg) && server->map.map[
 		client->entity->pos.y][client->entity->pos.x].items[i]) {
-			UPDATE_RESOURCE(&server->map, client->entity->pos,
+			update_resource(&server->map, client->entity->pos,
 				i, -1);
 			client->user.bag[i]++;
 			add_to_queue(client, "ok\n");

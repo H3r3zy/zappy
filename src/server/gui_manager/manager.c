@@ -21,14 +21,20 @@ static const gui_command_t COMMAND[] = {
 	{"mct", &gui_mct, false},
 	{"nbu", &gui_nbu, false},
 	{"nbt", &gui_nbt, false},
+	{"nbr", &gui_nbt, false},
 	{"sgt", &gui_sgt, false},
 	{"sst", &gui_sst, true},
-	{"tna", &gui_tna, true},
+	{"tna", &gui_tna, false},
 };
 
+/**
+ * Add a string to the GUI Queue
+ * @param gui
+ * @param str
+ */
 void add_to_gui_queue(gui_t *gui, char *str)
 {
-	size_t len = strlen(str);
+	uint len = strlen(str);
 
 	if (gui->len + len >= gui->size) {
 		gui->size += GUI_QUEUE_SIZE;

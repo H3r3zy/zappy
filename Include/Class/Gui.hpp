@@ -32,8 +32,6 @@ namespace irc {
 		std::vector<int> &_listId; // List id to check on GUI
 		bool &_displayGui; // Check if the gui is displayed
 		bool &_endClient;
-
-		bool _currentlyGuiDisplay = true;
 	};
 }
 

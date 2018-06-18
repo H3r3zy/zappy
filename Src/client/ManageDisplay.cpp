@@ -14,11 +14,11 @@ irc::ManageDisplay::ManageDisplay(int socketServer, const std::string &nick, con
 		_comm.loopRead();
 	});
 
-//	_thread = new my::Thread([&]() {
-		if (!_gui.initDisplayGui())
-			_gui.loopDisplay();
-//	});
-//	_map.loopDisplay();
+	_thread = new my::Thread([&]() {
+		_gui.loopDisplay();
+	});
+	_map.loopDisplay();
+	_thread->join();
 }
 
 irc::ManageDisplay::~ManageDisplay()

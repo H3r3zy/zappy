@@ -37,6 +37,9 @@ namespace irc {
 		void lockMap();
 		void unlockMap();
 
+		void lockDisplay();
+		void unlockDisplay();
+
 		protected:
 		void addMsgToQueue(const std::string &msg);
 
@@ -46,6 +49,7 @@ namespace irc {
 
 		std::mutex _write;
 
+		std::mutex _display;
 		std::mutex _mutexGui;
 		std::mutex _mutexMap;
 

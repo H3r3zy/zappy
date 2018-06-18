@@ -10,9 +10,22 @@
 
 # include <string>
 # include <vector>
+# include <iostream>
+# include <SFML/System.hpp>
+# include <SFML/Graphics/RenderWindow.hpp>
+# include <SFML/Window/Event.hpp>
+# include "Grid.hpp"
+# include "WindowInfo.hpp"
+# include "Character.hpp"
 # include "Communication.hpp"
 
 namespace irc {
+
+	enum {
+		MAP,
+		MINIMAP,
+		HUD
+	};
 
 	class Map {
 		public:
@@ -21,15 +34,29 @@ namespace irc {
 
 		void loopDisplay();
 
-		protected:
 
 		private:
-
 		irc::Communication &_comm;
 
 		std::vector<int> &_listId; // List id to check on GUI
 		bool &_displayGui; // Check if the gui is displayed
 		bool &_endClient;
+
+		bool getEvent();
+		void initCamera();
+		sf::Vector2f _mapSize = {50, 50};
+
+		/* SFML */
+		sf::Event _event;
+		sf::RectangleShape _playerPos;
+		/* std::pair<Global camera, Minimap camera > */
+		std::vector<sf::View> _camera;
+		sf::RenderWindow _gameWindow;
+
+		/* Member Classes */
+		Grid _grid;
+		WindowInfo *_windowInfo;
+		std::vector<Character> _character;
 
 	};
 }

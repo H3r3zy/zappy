@@ -13,6 +13,7 @@
 # include <map>
 # include <SFML/Graphics.hpp>
 # include <functional>
+# include "Communication.hpp"
 
 namespace irc {
 
@@ -24,7 +25,7 @@ namespace irc {
 		SFML_monitor(const std::string &window_name, std::size_t width, std::size_t height);
 		~SFML_monitor();
 
-		void loopWindow();
+		void loopWindow(irc::Communication *comm);
 		void closeWindow();
 
 		void addObjectToDraw(const std::string &name, IObjectSFML *object, int scene = 0, int layer = 1);
@@ -32,6 +33,7 @@ namespace irc {
 		void deleteObjectByName(std::string name, int scene = 0);
 		void deleteObjectByScene(int scene);
 
+		void setPostionWindow(const sf::Vector2i &pos);
 		void setNameWindow(std::string name);
 		bool isWindowOpen();
 

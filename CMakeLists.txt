@@ -2,15 +2,18 @@ cmake_minimum_required(VERSION 3.7.2)
 project(client)
 
 include_directories(
+		Src
 		Include/
+		Include/Text/
+		Include/Entity/
 		Include/Tools/
-		Include/Abstract
-		Include/Interface
-		Include/Class
-		Include/Class/Gui
-		Include/Class/Gui/PersonalizedObject
-		Include/Class/Gui/Animation
-		Include/Class/Gui/ObjectSFML
+		Include/Abstract/
+		Include/Interface/
+		Include/Class/
+		Include/Class/Gui/
+		Include/Class/Gui/PersonalizedObject/
+		Include/Class/Gui/Animation/
+		Include/Class/Gui/ObjectSFML/
 )
 
 file(GLOB_RECURSE FILE Src/*.cpp Include/Interface/*.hpp Include/*.hpp)

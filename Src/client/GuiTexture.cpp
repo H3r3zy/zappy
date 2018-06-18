@@ -146,6 +146,5 @@ void irc::GuiTexture::initBck()
 {
 	auto bck = new irc::Square(sf::IntRect(0, 0, WIDTH, HEIGHT));
 	bck->setColor(sf::Color(240, 240, 240, 255));
-	bck->addFuncKeyEvent(sf::Keyboard::Escape, &irc::SFML_monitor::closeWindow, _monitor);
 	_monitor->addObjectToDraw("background", bck);
 }

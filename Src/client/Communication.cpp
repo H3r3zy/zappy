@@ -90,3 +90,13 @@ void irc::Communication::unlockMap()
 {
 	_mutexMap.unlock();
 }
+
+void irc::Communication::lockDisplay()
+{
+	_display.lock();
+}
+
+void irc::Communication::unlockDisplay()
+{
+	_display.unlock();
+}

@@ -136,6 +136,141 @@ client/fast:
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/build
 .PHONY : client/fast
 
+Src/Entity/AMotionShape.o: Src/Entity/AMotionShape.cpp.o
+
+.PHONY : Src/Entity/AMotionShape.o
+
+# target to build an object file
+Src/Entity/AMotionShape.cpp.o:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/Entity/AMotionShape.cpp.o
+.PHONY : Src/Entity/AMotionShape.cpp.o
+
+Src/Entity/AMotionShape.i: Src/Entity/AMotionShape.cpp.i
+
+.PHONY : Src/Entity/AMotionShape.i
+
+# target to preprocess a source file
+Src/Entity/AMotionShape.cpp.i:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/Entity/AMotionShape.cpp.i
+.PHONY : Src/Entity/AMotionShape.cpp.i
+
+Src/Entity/AMotionShape.s: Src/Entity/AMotionShape.cpp.s
+
+.PHONY : Src/Entity/AMotionShape.s
+
+# target to generate assembly for a file
+Src/Entity/AMotionShape.cpp.s:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/Entity/AMotionShape.cpp.s
+.PHONY : Src/Entity/AMotionShape.cpp.s
+
+Src/Entity/ARectangleShape.o: Src/Entity/ARectangleShape.cpp.o
+
+.PHONY : Src/Entity/ARectangleShape.o
+
+# target to build an object file
+Src/Entity/ARectangleShape.cpp.o:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/Entity/ARectangleShape.cpp.o
+.PHONY : Src/Entity/ARectangleShape.cpp.o
+
+Src/Entity/ARectangleShape.i: Src/Entity/ARectangleShape.cpp.i
+
+.PHONY : Src/Entity/ARectangleShape.i
+
+# target to preprocess a source file
+Src/Entity/ARectangleShape.cpp.i:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/Entity/ARectangleShape.cpp.i
+.PHONY : Src/Entity/ARectangleShape.cpp.i
+
+Src/Entity/ARectangleShape.s: Src/Entity/ARectangleShape.cpp.s
+
+.PHONY : Src/Entity/ARectangleShape.s
+
+# target to generate assembly for a file
+Src/Entity/ARectangleShape.cpp.s:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/Entity/ARectangleShape.cpp.s
+.PHONY : Src/Entity/ARectangleShape.cpp.s
+
+Src/Entity/Cell.o: Src/Entity/Cell.cpp.o
+
+.PHONY : Src/Entity/Cell.o
+
+# target to build an object file
+Src/Entity/Cell.cpp.o:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/Entity/Cell.cpp.o
+.PHONY : Src/Entity/Cell.cpp.o
+
+Src/Entity/Cell.i: Src/Entity/Cell.cpp.i
+
+.PHONY : Src/Entity/Cell.i
+
+# target to preprocess a source file
+Src/Entity/Cell.cpp.i:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/Entity/Cell.cpp.i
+.PHONY : Src/Entity/Cell.cpp.i
+
+Src/Entity/Cell.s: Src/Entity/Cell.cpp.s
+
+.PHONY : Src/Entity/Cell.s
+
+# target to generate assembly for a file
+Src/Entity/Cell.cpp.s:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/Entity/Cell.cpp.s
+.PHONY : Src/Entity/Cell.cpp.s
+
+Src/Entity/Character.o: Src/Entity/Character.cpp.o
+
+.PHONY : Src/Entity/Character.o
+
+# target to build an object file
+Src/Entity/Character.cpp.o:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/Entity/Character.cpp.o
+.PHONY : Src/Entity/Character.cpp.o
+
+Src/Entity/Character.i: Src/Entity/Character.cpp.i
+
+.PHONY : Src/Entity/Character.i
+
+# target to preprocess a source file
+Src/Entity/Character.cpp.i:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/Entity/Character.cpp.i
+.PHONY : Src/Entity/Character.cpp.i
+
+Src/Entity/Character.s: Src/Entity/Character.cpp.s
+
+.PHONY : Src/Entity/Character.s
+
+# target to generate assembly for a file
+Src/Entity/Character.cpp.s:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/Entity/Character.cpp.s
+.PHONY : Src/Entity/Character.cpp.s
+
+Src/Grid.o: Src/Grid.cpp.o
+
+.PHONY : Src/Grid.o
+
+# target to build an object file
+Src/Grid.cpp.o:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/Grid.cpp.o
+.PHONY : Src/Grid.cpp.o
+
+Src/Grid.i: Src/Grid.cpp.i
+
+.PHONY : Src/Grid.i
+
+# target to preprocess a source file
+Src/Grid.cpp.i:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/Grid.cpp.i
+.PHONY : Src/Grid.cpp.i
+
+Src/Grid.s: Src/Grid.cpp.s
+
+.PHONY : Src/Grid.s
+
+# target to generate assembly for a file
+Src/Grid.cpp.s:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/Grid.cpp.s
+.PHONY : Src/Grid.cpp.s
+
 Src/Main.o: Src/Main.cpp.o
 
 .PHONY : Src/Main.o
@@ -163,6 +298,87 @@ Src/Main.cpp.s:
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/Main.cpp.s
 .PHONY : Src/Main.cpp.s
 
+Src/SfmlTool.o: Src/SfmlTool.cpp.o
+
+.PHONY : Src/SfmlTool.o
+
+# target to build an object file
+Src/SfmlTool.cpp.o:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/SfmlTool.cpp.o
+.PHONY : Src/SfmlTool.cpp.o
+
+Src/SfmlTool.i: Src/SfmlTool.cpp.i
+
+.PHONY : Src/SfmlTool.i
+
+# target to preprocess a source file
+Src/SfmlTool.cpp.i:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/SfmlTool.cpp.i
+.PHONY : Src/SfmlTool.cpp.i
+
+Src/SfmlTool.s: Src/SfmlTool.cpp.s
+
+.PHONY : Src/SfmlTool.s
+
+# target to generate assembly for a file
+Src/SfmlTool.cpp.s:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/SfmlTool.cpp.s
+.PHONY : Src/SfmlTool.cpp.s
+
+Src/Text/AText.o: Src/Text/AText.cpp.o
+
+.PHONY : Src/Text/AText.o
+
+# target to build an object file
+Src/Text/AText.cpp.o:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/Text/AText.cpp.o
+.PHONY : Src/Text/AText.cpp.o
+
+Src/Text/AText.i: Src/Text/AText.cpp.i
+
+.PHONY : Src/Text/AText.i
+
+# target to preprocess a source file
+Src/Text/AText.cpp.i:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/Text/AText.cpp.i
+.PHONY : Src/Text/AText.cpp.i
+
+Src/Text/AText.s: Src/Text/AText.cpp.s
+
+.PHONY : Src/Text/AText.s
+
+# target to generate assembly for a file
+Src/Text/AText.cpp.s:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/Text/AText.cpp.s
+.PHONY : Src/Text/AText.cpp.s
+
+Src/Text/GameText.o: Src/Text/GameText.cpp.o
+
+.PHONY : Src/Text/GameText.o
+
+# target to build an object file
+Src/Text/GameText.cpp.o:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/Text/GameText.cpp.o
+.PHONY : Src/Text/GameText.cpp.o
+
+Src/Text/GameText.i: Src/Text/GameText.cpp.i
+
+.PHONY : Src/Text/GameText.i
+
+# target to preprocess a source file
+Src/Text/GameText.cpp.i:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/Text/GameText.cpp.i
+.PHONY : Src/Text/GameText.cpp.i
+
+Src/Text/GameText.s: Src/Text/GameText.cpp.s
+
+.PHONY : Src/Text/GameText.s
+
+# target to generate assembly for a file
+Src/Text/GameText.cpp.s:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/Text/GameText.cpp.s
+.PHONY : Src/Text/GameText.cpp.s
+
 Src/Tools/Thread.o: Src/Tools/Thread.cpp.o
 
 .PHONY : Src/Tools/Thread.o
@@ -189,6 +405,33 @@ Src/Tools/Thread.s: Src/Tools/Thread.cpp.s
 Src/Tools/Thread.cpp.s:
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/Tools/Thread.cpp.s
 .PHONY : Src/Tools/Thread.cpp.s
+
+Src/WindowInfo.o: Src/WindowInfo.cpp.o
+
+.PHONY : Src/WindowInfo.o
+
+# target to build an object file
+Src/WindowInfo.cpp.o:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/WindowInfo.cpp.o
+.PHONY : Src/WindowInfo.cpp.o
+
+Src/WindowInfo.i: Src/WindowInfo.cpp.i
+
+.PHONY : Src/WindowInfo.i
+
+# target to preprocess a source file
+Src/WindowInfo.cpp.i:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/WindowInfo.cpp.i
+.PHONY : Src/WindowInfo.cpp.i
+
+Src/WindowInfo.s: Src/WindowInfo.cpp.s
+
+.PHONY : Src/WindowInfo.s
+
+# target to generate assembly for a file
+Src/WindowInfo.cpp.s:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/WindowInfo.cpp.s
+.PHONY : Src/WindowInfo.cpp.s
 
 Src/client/Auth.o: Src/client/Auth.cpp.o
 
@@ -1550,12 +1793,39 @@ help:
 	@echo "... edit_cache"
 	@echo "... zappy_server"
 	@echo "... client"
+	@echo "... Src/Entity/AMotionShape.o"
+	@echo "... Src/Entity/AMotionShape.i"
+	@echo "... Src/Entity/AMotionShape.s"
+	@echo "... Src/Entity/ARectangleShape.o"
+	@echo "... Src/Entity/ARectangleShape.i"
+	@echo "... Src/Entity/ARectangleShape.s"
+	@echo "... Src/Entity/Cell.o"
+	@echo "... Src/Entity/Cell.i"
+	@echo "... Src/Entity/Cell.s"
+	@echo "... Src/Entity/Character.o"
+	@echo "... Src/Entity/Character.i"
+	@echo "... Src/Entity/Character.s"
+	@echo "... Src/Grid.o"
+	@echo "... Src/Grid.i"
+	@echo "... Src/Grid.s"
 	@echo "... Src/Main.o"
 	@echo "... Src/Main.i"
 	@echo "... Src/Main.s"
+	@echo "... Src/SfmlTool.o"
+	@echo "... Src/SfmlTool.i"
+	@echo "... Src/SfmlTool.s"
+	@echo "... Src/Text/AText.o"
+	@echo "... Src/Text/AText.i"
+	@echo "... Src/Text/AText.s"
+	@echo "... Src/Text/GameText.o"
+	@echo "... Src/Text/GameText.i"
+	@echo "... Src/Text/GameText.s"
 	@echo "... Src/Tools/Thread.o"
 	@echo "... Src/Tools/Thread.i"
 	@echo "... Src/Tools/Thread.s"
+	@echo "... Src/WindowInfo.o"
+	@echo "... Src/WindowInfo.i"
+	@echo "... Src/WindowInfo.s"
 	@echo "... Src/client/Auth.o"
 	@echo "... Src/client/Auth.i"
 	@echo "... Src/client/Auth.s"

@@ -6,6 +6,7 @@
 */
 
 #include <iostream>
+#include <thread>
 #include "SFML_monitor.hpp"
 #include "IObjectSFML.hpp"
 
@@ -78,18 +79,25 @@ void irc::SFML_monitor::callFuncLoop()
 	}
 }
 
-void irc::SFML_monitor::loopWindow()
+void irc::SFML_monitor::loopWindow(irc::Communication *comm)
 {
 	sf::Event event;
 
-	while (this->_window.isOpen())
-	{
+	while (this->_window.isOpen()) {
+		if (comm)
+			comm->lockDisplay();
 		while (this->_window.pollEvent(event))
 			this->manageEvent(event);
 		this->_window.clear();
 		callFuncLoop();
-		drawObject();
-		this->_window.display();
+		if (_window.isOpen()) {
+			drawObject();
+			this->_window.display();
+		}
+		if (comm) {
+			comm->unlockDisplay();
+			std::this_thread::sleep_for(std::chrono::milliseconds(2));
+		}
 	}
 }
 
@@ -155,4 +163,9 @@ void irc::SFML_monitor::deleteObjectByScene(int scene)
 bool irc::SFML_monitor::isWindowOpen()
 {
 	return this->_window.isOpen();
+}
+
+void irc::SFML_monitor::setPostionWindow(const sf::Vector2i &pos)
+{
+	_window.setPosition(pos);
 }

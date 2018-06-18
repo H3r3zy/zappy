@@ -24,7 +24,7 @@ irc::Auth::Auth(int width, int height) : _base("Authentication", width, height),
 	initPlaceHolder();
 	_base.addFuncLoop(0, &irc::Auth::loopErrorDisplay, this);
 
-	_base.loopWindow();
+	_base.loopWindow(nullptr);
 }
 
 void irc::Auth::initBck()

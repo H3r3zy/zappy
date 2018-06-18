@@ -8,7 +8,7 @@
 #include <iostream>
 #include "Map.hpp"
 
-irc::Map::Map(int socket, std::vector<int> &listId, bool &displayGui, bool &endClient) : _socketServer(socket), _listId(listId), _displayGui(displayGui), _endClient(endClient)
+irc::Map::Map(irc::Communication &comm, std::vector<int> &listId, bool &displayGui, bool &endClient) : _comm(comm), _listId(listId), _displayGui(displayGui), _endClient(endClient)
 {
 }
 

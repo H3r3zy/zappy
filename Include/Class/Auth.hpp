@@ -36,6 +36,7 @@ namespace irc {
 
 		void sendForm();
 		void tryToConnect(bool error);
+		bool checkConnection();
 
 
 		irc::SFML_monitor _base;
@@ -47,8 +48,7 @@ namespace irc {
 		std::string _port;
 
 		std::vector<std::string> _listError;
-		int _socketServerMap = 0;
-		int _socketServerGui = 0;
+		int _socketServer = 0;
 	};
 }
 

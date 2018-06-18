@@ -10,12 +10,13 @@
 # include <vector>
 # include <mutex>
 # include "GuiTexture.hpp"
+# include "Communication.hpp"
 
 namespace irc {
 
 	class Gui : public irc::GuiTexture {
 		public:
-		Gui(int socket, const std::string &nick, const std::string &ip, std::vector<int> &listId, bool &displayGui, bool &endClient);
+		Gui(irc::Communication &comm, const std::string &nick, const std::string &ip, std::vector<int> &listId, bool &displayGui, bool &endClient);
 		~Gui();
 
 		int initDisplayGui();
@@ -25,6 +26,8 @@ namespace irc {
 
 		private:
 		std::mutex _mutex;
+
+		irc::Communication &_comm;
 
 		std::vector<int> &_listId; // List id to check on GUI
 		bool &_displayGui; // Check if the gui is displayed

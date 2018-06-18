@@ -39,10 +39,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /usr/bin/cmake
+CMAKE_COMMAND = /home/velo6raptor/Téléchargements/clion-2017.3.1/bin/cmake/bin/cmake
 
 # The command to remove a file.
-RM = /usr/bin/cmake -E remove -f
+RM = /home/velo6raptor/Téléchargements/clion-2017.3.1/bin/cmake/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/velo6raptor/delivery/PSU/PSU_zappy_2017
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/home/velo6raptor/Téléchargements/clion-2017.3.1/bin/cmake/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/home/velo6raptor/Téléchargements/clion-2017.3.1/bin/cmake/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -111,19 +111,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named client
-
-# Build rule for target.
-client: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 client
-.PHONY : client
-
-# fast build rule for target.
-client/fast:
-	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/build
-.PHONY : client/fast
-
-#=============================================================================
 # Target rules for targets named zappy_server
 
 # Build rule for target.
@@ -135,6 +122,19 @@ zappy_server: cmake_check_build_system
 zappy_server/fast:
 	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/build
 .PHONY : zappy_server/fast
+
+#=============================================================================
+# Target rules for targets named client
+
+# Build rule for target.
+client: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 client
+.PHONY : client
+
+# fast build rule for target.
+client/fast:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/build
+.PHONY : client/fast
 
 Src/Main.o: Src/Main.cpp.o
 
@@ -216,6 +216,33 @@ Src/client/Auth.s: Src/client/Auth.cpp.s
 Src/client/Auth.cpp.s:
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/Auth.cpp.s
 .PHONY : Src/client/Auth.cpp.s
+
+Src/client/Communication.o: Src/client/Communication.cpp.o
+
+.PHONY : Src/client/Communication.o
+
+# target to build an object file
+Src/client/Communication.cpp.o:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/Communication.cpp.o
+.PHONY : Src/client/Communication.cpp.o
+
+Src/client/Communication.i: Src/client/Communication.cpp.i
+
+.PHONY : Src/client/Communication.i
+
+# target to preprocess a source file
+Src/client/Communication.cpp.i:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/Communication.cpp.i
+.PHONY : Src/client/Communication.cpp.i
+
+Src/client/Communication.s: Src/client/Communication.cpp.s
+
+.PHONY : Src/client/Communication.s
+
+# target to generate assembly for a file
+Src/client/Communication.cpp.s:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/Communication.cpp.s
+.PHONY : Src/client/Communication.cpp.s
 
 Src/client/Gui.o: Src/client/Gui.cpp.o
 
@@ -1521,8 +1548,8 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... client"
 	@echo "... zappy_server"
+	@echo "... client"
 	@echo "... Src/Main.o"
 	@echo "... Src/Main.i"
 	@echo "... Src/Main.s"
@@ -1532,6 +1559,9 @@ help:
 	@echo "... Src/client/Auth.o"
 	@echo "... Src/client/Auth.i"
 	@echo "... Src/client/Auth.s"
+	@echo "... Src/client/Communication.o"
+	@echo "... Src/client/Communication.i"
+	@echo "... Src/client/Communication.s"
 	@echo "... Src/client/Gui.o"
 	@echo "... Src/client/Gui.i"
 	@echo "... Src/client/Gui.s"

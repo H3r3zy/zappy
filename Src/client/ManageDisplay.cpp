@@ -8,8 +8,12 @@
 #include <unistd.h>
 #include "ManageDisplay.hpp"
 
-irc::ManageDisplay::ManageDisplay(int socketServerMap, int socketServerGui, const std::string &nick, const std::string &ip) : _socketServerMap(socketServerMap), _socketServerGui(socketServerGui), _map(socketServerMap, _listId, _displayGui, _endClient), _gui(socketServerGui, nick, ip, _listId, _displayGui, _endClient), _nick(nick)
+irc::ManageDisplay::ManageDisplay(int socketServer, const std::string &nick, const std::string &ip) : _socketServer(socketServer), _comm(socketServer, _endClient), _map(_comm, _listId, _displayGui, _endClient), _gui(_comm, nick, ip, _listId, _displayGui, _endClient), _nick(nick)
 {
+	_threadRead = new my::Thread([&]() {
+		_comm.loopRead();
+	});
+
 //	_thread = new my::Thread([&]() {
 		if (!_gui.initDisplayGui())
 			_gui.loopDisplay();
@@ -19,6 +23,5 @@ irc::ManageDisplay::ManageDisplay(int socketServerMap, int socketServerGui, cons
 
 irc::ManageDisplay::~ManageDisplay()
 {
-	close(_socketServerGui);
-	close(_socketServerMap);
+	close(_socketServer);
 }

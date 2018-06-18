@@ -26,7 +26,7 @@ namespace irc {
 		static std::string connectServer(int socket, std::string ip, std::string port);
 		static int getFileDescriptorSocket();
 
-		static std::string readServer(int socket, bool = false, bool = false);
+		static std::string readServer(int socket, bool = false);
 		static int writeOnServer(int socket, std::string msg);
 
 		protected:

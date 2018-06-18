@@ -183,25 +183,38 @@ void irc::Auth::sendForm()
 	tryToConnect(error);
 }
 
+bool irc::Auth::checkConnection()
+{
+	_socketServer = irc::ManageServer::getFileDescriptorSocket();
+	if (_socketServer < 0) {
+		modalError("Can't create the socket");
+		return true;
+	}
+	if (!irc::ManageServer::connectServer(_socketServer, _ip, _port).empty()) {
+		modalError("Can't connect to the server");
+		return true;
+	}
+	if (irc::ManageServer::readServer(_socketServer, true) != "WELCOME") {
+		modalError("Not a zappy server");
+		return true;
+	}
+	if (irc::ManageServer::writeOnServer(_socketServer, "gui\n") == -1) {
+		modalError("Can't write on server");
+		return true;
+	}
+	if (irc::ManageServer::readServer(_socketServer, true) != "ok") {
+		modalError("Can't login");
+	}
+	return false;
+}
+
 void irc::Auth::tryToConnect(bool error)
 {
 	if (error)
 		modalError("One or more inputs are wrong or missing");
-	else {
-		_socketServerMap = irc::ManageServer::getFileDescriptorSocket();
-		_socketServerGui = irc::ManageServer::getFileDescriptorSocket();
-		if (_socketServerGui < 0 || _socketServerMap < 0) {
-			modalError("Can't create the socket");
-			return;
-		}
-		std::string ret = irc::ManageServer::connectServer(_socketServerMap, _ip, _port);
-		std::string ret2 = irc::ManageServer::connectServer(_socketServerGui, _ip, _port);
-		if (!ret.empty() || !ret2.empty())
-			modalError(ret);
-		else {
-			_base.closeWindow();
-			ManageDisplay(_socketServerMap, _socketServerGui, _nick, _ip);
-		}
+	else if (!checkConnection()) {
+		_base.closeWindow();
+		ManageDisplay(_socketServer, _nick, _ip);
 	}
 }
 

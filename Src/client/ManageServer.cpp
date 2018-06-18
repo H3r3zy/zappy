@@ -6,35 +6,33 @@
 */
 
 #include <iostream>
+#include <cstring>
 #include "ManageServer.hpp"
 
-std::string irc::ManageServer::readServer(int socket, bool blockRead, bool first)
+std::string irc::ManageServer::readServer(int socket, bool blockRead)
 {
-	static std::string result = "";
+	std::string result;
 	fd_set readfds;
 	struct timeval t = {0, 1000};
 
-	if (!first)
-		result = "";
 	FD_ZERO(&readfds);
 	FD_SET(socket, &readfds);
-	if (result.size() >= 2 && result.substr(result.size() - 2, result.size()) == "\r\n") {
-		result.erase(result.size() - 2, 2);
-		std::string tmp = result;
-		result = "";
-		return tmp;
-	}
 	if (select(socket + 1, &readfds, NULL, NULL, (!blockRead) ? &t : NULL) == -1)
-		result = "select error";
+		result = "select error\n";
 	else if (FD_ISSET(socket, &readfds)) {
-		char buffer[2];
-		int len = (int)read(socket, buffer, 1);
-		if (len <= 0)
-			throw std::exception();
-		buffer[len] = '\0';
-		result += buffer;
-		return readServer(blockRead, true);
+		char buffer[4096];
+		int len = 0;
+		do {
+			len = (int)read(socket, buffer, 4095);
+			if (len <= 0)
+				throw std::exception();
+			buffer[len] = '\0';
+			result += buffer;
+		} while (strlen(buffer) == 4096);
+		if (result.size() > 1 && result[result.size() - 1] == '\n')
+			result.erase(result.size() - 1, 1);
 	}
+	std::cout << "result: " << result << std::endl;
 	return result;
 }
 

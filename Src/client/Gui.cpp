@@ -8,11 +8,10 @@
 #include <iostream>
 #include "Gui.hpp"
 
-irc::Gui::Gui(int socket, const std::string &nick, const std::string &ip, std::vector<int> &listId, bool &displayGui, bool &endClient) : GuiTexture(), _listId(listId), _displayGui(displayGui), _endClient(endClient)
+irc::Gui::Gui(irc::Communication &comm, const std::string &nick, const std::string &ip, std::vector<int> &listId, bool &displayGui, bool &endClient) : GuiTexture(), _comm(comm), _listId(listId), _displayGui(displayGui), _endClient(endClient)
 {
 	_nick = nick;
 	_ip = ip;
-	_socketServer = socket;
 }
 
 irc::Gui::~Gui()
@@ -33,6 +32,7 @@ int irc::Gui::initDisplayGui()
 			_monitor = nullptr;
 		}
 	});
+
 	initTexture();
 	return 0;
 }

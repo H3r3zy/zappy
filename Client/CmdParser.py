@@ -43,6 +43,7 @@ class CmdParser:
             'Inventory': self.parse_inv,
             'Fork': self.fork
         }
+        self.__handledId = 0
 
     def fork(self):
         system(argv[0] + " -p " + str(self.__info[0]) + " -n " + self.__info[1] + " -h " + self.__info[2])
@@ -101,23 +102,28 @@ class CmdParser:
             arr = tuple(elem.split(" ", 2))
             self.__inv[arr[0]] = int(arr[1])
 
+    def get_last(self):
+        return self.__handledId
+
     def parse(self, cmd: str) -> bool:
         if cmd == "dead":
             return False
-        if self.__queue[0] in self.__patterns:
-            last = self.__queue.popleft()
-            match = self.__patterns[last].match(cmd)
-            try:
-                if last in self.__actions.keys():
-                    self.__actions[last](match.group(0))
+        last = self.__queue.popleft()
+        match = self.__patterns[last].match(cmd)
+        try:
+            if last in self.__actions.keys():
+                self.__handledId += 1
+                self.__actions[last](match.group(0))
+            else:
+                match = re.match("message \d, (.+)", cmd)
+                if match:
+                    self.__handledId += 1
+                    self.__msgQueue.append(match.group(1))
                 else:
-                    match = re.match("message \d, (.+)", cmd)
-                    if match:
-                        self.__msgQueue.append(match.group(1))
-            except AttributeError:
-                if cmd == "ko":
-                    self.__player.egg = True
+                    print("Could not link '" + cmd + "' to '" + last + "'")
+        except AttributeError:
+            if cmd == "ko":
+                self.__player.egg = True
+            else:
                 print("Could not link '" + cmd + "' to '" + last + "'")
-        else:
-            raise Client.ZappyException('Unexpected response ' + cmd)
         return True

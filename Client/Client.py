@@ -44,6 +44,8 @@ class Client:
             0: [],
             1: [1, 2]
         }
+        self.__outId = 0
+        self.last = 0
 
     def connect(self) -> bool:
         try:
@@ -79,9 +81,11 @@ class Client:
             self.__outBuff += tup[0] + (" " if len(tup[1]) > 0 else "") + '\n'
             self.__outQueue.append(tup[0])
 
-    def build_command(self, cmd: str, arg: str = ""):
-        self.__topQueue.append((cmd, arg))
+    def build_command(self, cmd: str, arg: str = "") -> int:
+        self.__topQueue.append((cmd, arg, self.__outId))
+        self.__outId += 1
         self.refresh_queue()
+        return self.__outId - 1
 
     def refresh(self, mode: bool = False):
         rcons, wcons, _ = select.select([self.__socket], [self.__socket] if len(self.__outBuff) > 0 else [], [], 0)
@@ -105,7 +109,7 @@ class Client:
                     raise ZappyException('Unexpected response')
                 self.build_command(self.__name)
                 welcome = True
-            if len(self.__inQueue) >= 2 and welcome is True:
+            if len(self.__inQueue) == 2 and welcome is True:
                 try:
                     int(self.__inQueue.popleft())
                     self.__mapSize = tuple(map(int, self.__inQueue.popleft().split(" ")))
@@ -113,6 +117,7 @@ class Client:
                     raise ZappyException('Unexpected response')
                 break
         self.__outQueue.clear()
+        self.__outId = 0
 
     def run(self):
         self.auth()
@@ -128,5 +133,6 @@ class Client:
                 if not parser.parse(self.__inQueue.popleft()):
                     print("I died being at the %s level" % ordinal(player.getLevel()))
                     return
+            self.last = parser.get_last()
             self.__currentNode = self.__nodes[self.__currentNode].action(self,
                                                                          self.__args[self.__currentNode])

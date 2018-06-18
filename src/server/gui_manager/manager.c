@@ -16,7 +16,13 @@ static const gui_command_t COMMAND[] = {
 	{"msz", &gui_msz, false},
 	{"ppo", &gui_ppo, true},
 	{"plv", &gui_plv, true},
-	{"pin", &gui_pin, true}
+	{"pin", &gui_pin, true},
+	{"bct", &gui_bct, true},
+	{"mct", &gui_mct, false},
+	{"nbu", &gui_nbu, false},
+	{"nbt", &gui_nbt, false},
+	{"sgt", &gui_sgt, false},
+	{"sst", &gui_sst, true},
 };
 
 void add_to_gui_queue(gui_t *gui, char *str)
@@ -27,7 +33,7 @@ void add_to_gui_queue(gui_t *gui, char *str)
 		gui->size += GUI_QUEUE_SIZE;
 		gui->queue = realloc(gui->queue, gui->size);
 	}
-	strcat(gui->queue, str);
+	strcat(gui->queue + gui->len, str);
 	gui->len += len;
 }
 

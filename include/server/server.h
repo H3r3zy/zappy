@@ -22,7 +22,7 @@
 #define FOOD_UNIT_TIME (126)
 #define EGG_UNIT_TIME (600)
 
-#define GUI_QUEUE_SIZE (1024)
+#define GUI_QUEUE_SIZE (1 << 12)
 
 #define UPDATE_RESOURCE(m, p, t, n) ((m)->map[(p).y][(p).x].items[(t)] += (n))
 

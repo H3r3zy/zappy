@@ -29,7 +29,7 @@ void init_map(map_t *map)
 		return;
 	for (int y = 0; y < map->size.y; y++)
 		map->map[y] = calloc(map->size.x, sizeof(cell_t));
-	map->max_id = 0;
+	map->max_id = 1;
 	srand(time(NULL));
 	while (elements--) {
 		pos = (pos_t){rand() % map->size.x, rand() % map->size.y};

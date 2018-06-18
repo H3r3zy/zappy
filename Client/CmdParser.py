@@ -19,8 +19,8 @@ class CmdParser:
         self.__queue = queue
         self.__msgQueue = msgQueue
         self.__patterns = {
-            'Look': re.compile("\[( \w+)*(,( \w+)*)* \]", re.ASCII),
-            'Inventory': re.compile("\[(( \w+ \d+)(,( \w+ \d+)*)* )?\]", re.ASCII),
+            'Look': re.compile("\[( ?\w+)*(,( \w+)*)* ?\]", re.ASCII),
+            'Inventory': re.compile("\[( ?(\w+ \d+)(,( \w+ \d+)?)* ?)\]", re.ASCII),
             'Connect_nbr': re.compile("%d+", re.ASCII),
             'Incantation': re.compile("(Elevation underway Current level: \d)|(ko)", re.ASCII),
             'Forward': re.compile("ok", re.ASCII),
@@ -76,7 +76,7 @@ class CmdParser:
             for ny in range(y - level, y + level + 1):
                 yield (nx, ny)
 
-    def parse_map(self, map: str):
+    def parse_map(self, map: str, _):
         map = map.replace("[", "").replace("]", "")
         tiles = map.split(",")
         i = 0
@@ -93,7 +93,7 @@ class CmdParser:
                     currentTile.getStones()[elem] += 1
             i += 1
 
-    def parse_inv(self, inv: str):
+    def parse_inv(self, inv: str, _):
         inv = inv.replace("[", "").replace("]", "")
         elems = inv.split(",")
         for x in range(0, len(elems)):
@@ -109,21 +109,19 @@ class CmdParser:
         if cmd == "dead":
             return False
         last = self.__queue.popleft()
-        match = self.__patterns[last].match(cmd)
+        match = self.__patterns[last[0]].match(cmd)
         try:
-            if last in self.__actions.keys():
+            if last[0] in self.__actions.keys():
                 self.__handledId += 1
-                self.__actions[last](match.group(0))
+                self.__actions[last[0]](match.group(0), last[1])
             else:
                 match = re.match("message \d, (.+)", cmd)
                 if match:
                     self.__handledId += 1
                     self.__msgQueue.append(match.group(1))
-                else:
-                    print("Could not link '" + cmd + "' to '" + last + "'")
         except AttributeError:
             if cmd == "ko":
                 self.__player.egg = True
             else:
-                print("Could not link '" + cmd + "' to '" + last + "'")
+                print("Could not link '" + cmd + "' to '" + last[0] + "'")
         return True

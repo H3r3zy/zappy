@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include "server.h"
 
-void gui_nbu(server_t *server, char *arg)
+void gui_nbu(server_t *server, __attribute__((unused)) char *arg)
 {
 	char buff[10] = {0};
 
@@ -17,7 +17,7 @@ void gui_nbu(server_t *server, char *arg)
 	add_to_gui_queue(&server->gui, buff);
 }
 
-void gui_nbt(server_t *server, char *arg)
+void gui_nbt(server_t *server, __attribute__((unused)) char *arg)
 {
 	char buff[10] = {0};
 	size_t n = 0;
@@ -42,4 +42,15 @@ void gui_sst(server_t *server, char *arg)
 
 	server->freq = (uint)freq;
 	add_to_gui_queue(&server->gui, "ok\n");
+}
+
+void gui_tna(server_t *server, __attribute__((unused)) char *arg)
+{
+	char buff[262] = {0};
+
+	for (teams_t *team = server->teams; team; team = team->next) {
+		snprintf(buff, 262, "tna %s\n", team->name);
+		add_to_gui_queue(&server->gui, buff);
+	}
+	add_to_gui_queue(&server->gui, "endtna\n");
 }

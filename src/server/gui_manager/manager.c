@@ -23,6 +23,7 @@ static const gui_command_t COMMAND[] = {
 	{"nbt", &gui_nbt, false},
 	{"sgt", &gui_sgt, false},
 	{"sst", &gui_sst, true},
+	{"tna", &gui_tna, true},
 };
 
 void add_to_gui_queue(gui_t *gui, char *str)

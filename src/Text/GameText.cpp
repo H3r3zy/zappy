@@ -2,7 +2,6 @@
 // Created by wisenoa on 17/06/18.
 //
 
-
 #include <iostream>
 #include "Text/GameText.hpp"
 

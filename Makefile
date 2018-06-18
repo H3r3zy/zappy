@@ -39,10 +39,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/velo6raptor/Téléchargements/clion-2017.3.1/bin/cmake/bin/cmake
+CMAKE_COMMAND = /usr/bin/cmake
 
 # The command to remove a file.
-RM = /home/velo6raptor/Téléchargements/clion-2017.3.1/bin/cmake/bin/cmake -E remove -f
+RM = /usr/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/velo6raptor/delivery/PSU/PSU_zappy_2017
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/home/velo6raptor/Téléchargements/clion-2017.3.1/bin/cmake/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/home/velo6raptor/Téléchargements/clion-2017.3.1/bin/cmake/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -122,6 +122,19 @@ client: cmake_check_build_system
 client/fast:
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/build
 .PHONY : client/fast
+
+#=============================================================================
+# Target rules for targets named zappy_server
+
+# Build rule for target.
+zappy_server: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 zappy_server
+.PHONY : zappy_server
+
+# fast build rule for target.
+zappy_server/fast:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/build
+.PHONY : zappy_server/fast
 
 Src/Main.o: Src/Main.cpp.o
 
@@ -609,6 +622,897 @@ Src/client/Map.cpp.s:
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/Map.cpp.s
 .PHONY : Src/client/Map.cpp.s
 
+src/server/ai_protocol/broadcast.o: src/server/ai_protocol/broadcast.c.o
+
+.PHONY : src/server/ai_protocol/broadcast.o
+
+# target to build an object file
+src/server/ai_protocol/broadcast.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/ai_protocol/broadcast.c.o
+.PHONY : src/server/ai_protocol/broadcast.c.o
+
+src/server/ai_protocol/broadcast.i: src/server/ai_protocol/broadcast.c.i
+
+.PHONY : src/server/ai_protocol/broadcast.i
+
+# target to preprocess a source file
+src/server/ai_protocol/broadcast.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/ai_protocol/broadcast.c.i
+.PHONY : src/server/ai_protocol/broadcast.c.i
+
+src/server/ai_protocol/broadcast.s: src/server/ai_protocol/broadcast.c.s
+
+.PHONY : src/server/ai_protocol/broadcast.s
+
+# target to generate assembly for a file
+src/server/ai_protocol/broadcast.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/ai_protocol/broadcast.c.s
+.PHONY : src/server/ai_protocol/broadcast.c.s
+
+src/server/ai_protocol/connect_nbr.o: src/server/ai_protocol/connect_nbr.c.o
+
+.PHONY : src/server/ai_protocol/connect_nbr.o
+
+# target to build an object file
+src/server/ai_protocol/connect_nbr.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/ai_protocol/connect_nbr.c.o
+.PHONY : src/server/ai_protocol/connect_nbr.c.o
+
+src/server/ai_protocol/connect_nbr.i: src/server/ai_protocol/connect_nbr.c.i
+
+.PHONY : src/server/ai_protocol/connect_nbr.i
+
+# target to preprocess a source file
+src/server/ai_protocol/connect_nbr.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/ai_protocol/connect_nbr.c.i
+.PHONY : src/server/ai_protocol/connect_nbr.c.i
+
+src/server/ai_protocol/connect_nbr.s: src/server/ai_protocol/connect_nbr.c.s
+
+.PHONY : src/server/ai_protocol/connect_nbr.s
+
+# target to generate assembly for a file
+src/server/ai_protocol/connect_nbr.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/ai_protocol/connect_nbr.c.s
+.PHONY : src/server/ai_protocol/connect_nbr.c.s
+
+src/server/ai_protocol/die.o: src/server/ai_protocol/die.c.o
+
+.PHONY : src/server/ai_protocol/die.o
+
+# target to build an object file
+src/server/ai_protocol/die.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/ai_protocol/die.c.o
+.PHONY : src/server/ai_protocol/die.c.o
+
+src/server/ai_protocol/die.i: src/server/ai_protocol/die.c.i
+
+.PHONY : src/server/ai_protocol/die.i
+
+# target to preprocess a source file
+src/server/ai_protocol/die.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/ai_protocol/die.c.i
+.PHONY : src/server/ai_protocol/die.c.i
+
+src/server/ai_protocol/die.s: src/server/ai_protocol/die.c.s
+
+.PHONY : src/server/ai_protocol/die.s
+
+# target to generate assembly for a file
+src/server/ai_protocol/die.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/ai_protocol/die.c.s
+.PHONY : src/server/ai_protocol/die.c.s
+
+src/server/ai_protocol/eject.o: src/server/ai_protocol/eject.c.o
+
+.PHONY : src/server/ai_protocol/eject.o
+
+# target to build an object file
+src/server/ai_protocol/eject.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/ai_protocol/eject.c.o
+.PHONY : src/server/ai_protocol/eject.c.o
+
+src/server/ai_protocol/eject.i: src/server/ai_protocol/eject.c.i
+
+.PHONY : src/server/ai_protocol/eject.i
+
+# target to preprocess a source file
+src/server/ai_protocol/eject.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/ai_protocol/eject.c.i
+.PHONY : src/server/ai_protocol/eject.c.i
+
+src/server/ai_protocol/eject.s: src/server/ai_protocol/eject.c.s
+
+.PHONY : src/server/ai_protocol/eject.s
+
+# target to generate assembly for a file
+src/server/ai_protocol/eject.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/ai_protocol/eject.c.s
+.PHONY : src/server/ai_protocol/eject.c.s
+
+src/server/ai_protocol/fork.o: src/server/ai_protocol/fork.c.o
+
+.PHONY : src/server/ai_protocol/fork.o
+
+# target to build an object file
+src/server/ai_protocol/fork.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/ai_protocol/fork.c.o
+.PHONY : src/server/ai_protocol/fork.c.o
+
+src/server/ai_protocol/fork.i: src/server/ai_protocol/fork.c.i
+
+.PHONY : src/server/ai_protocol/fork.i
+
+# target to preprocess a source file
+src/server/ai_protocol/fork.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/ai_protocol/fork.c.i
+.PHONY : src/server/ai_protocol/fork.c.i
+
+src/server/ai_protocol/fork.s: src/server/ai_protocol/fork.c.s
+
+.PHONY : src/server/ai_protocol/fork.s
+
+# target to generate assembly for a file
+src/server/ai_protocol/fork.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/ai_protocol/fork.c.s
+.PHONY : src/server/ai_protocol/fork.c.s
+
+src/server/ai_protocol/incantation.o: src/server/ai_protocol/incantation.c.o
+
+.PHONY : src/server/ai_protocol/incantation.o
+
+# target to build an object file
+src/server/ai_protocol/incantation.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/ai_protocol/incantation.c.o
+.PHONY : src/server/ai_protocol/incantation.c.o
+
+src/server/ai_protocol/incantation.i: src/server/ai_protocol/incantation.c.i
+
+.PHONY : src/server/ai_protocol/incantation.i
+
+# target to preprocess a source file
+src/server/ai_protocol/incantation.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/ai_protocol/incantation.c.i
+.PHONY : src/server/ai_protocol/incantation.c.i
+
+src/server/ai_protocol/incantation.s: src/server/ai_protocol/incantation.c.s
+
+.PHONY : src/server/ai_protocol/incantation.s
+
+# target to generate assembly for a file
+src/server/ai_protocol/incantation.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/ai_protocol/incantation.c.s
+.PHONY : src/server/ai_protocol/incantation.c.s
+
+src/server/ai_protocol/inventory.o: src/server/ai_protocol/inventory.c.o
+
+.PHONY : src/server/ai_protocol/inventory.o
+
+# target to build an object file
+src/server/ai_protocol/inventory.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/ai_protocol/inventory.c.o
+.PHONY : src/server/ai_protocol/inventory.c.o
+
+src/server/ai_protocol/inventory.i: src/server/ai_protocol/inventory.c.i
+
+.PHONY : src/server/ai_protocol/inventory.i
+
+# target to preprocess a source file
+src/server/ai_protocol/inventory.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/ai_protocol/inventory.c.i
+.PHONY : src/server/ai_protocol/inventory.c.i
+
+src/server/ai_protocol/inventory.s: src/server/ai_protocol/inventory.c.s
+
+.PHONY : src/server/ai_protocol/inventory.s
+
+# target to generate assembly for a file
+src/server/ai_protocol/inventory.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/ai_protocol/inventory.c.s
+.PHONY : src/server/ai_protocol/inventory.c.s
+
+src/server/ai_protocol/look.o: src/server/ai_protocol/look.c.o
+
+.PHONY : src/server/ai_protocol/look.o
+
+# target to build an object file
+src/server/ai_protocol/look.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/ai_protocol/look.c.o
+.PHONY : src/server/ai_protocol/look.c.o
+
+src/server/ai_protocol/look.i: src/server/ai_protocol/look.c.i
+
+.PHONY : src/server/ai_protocol/look.i
+
+# target to preprocess a source file
+src/server/ai_protocol/look.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/ai_protocol/look.c.i
+.PHONY : src/server/ai_protocol/look.c.i
+
+src/server/ai_protocol/look.s: src/server/ai_protocol/look.c.s
+
+.PHONY : src/server/ai_protocol/look.s
+
+# target to generate assembly for a file
+src/server/ai_protocol/look.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/ai_protocol/look.c.s
+.PHONY : src/server/ai_protocol/look.c.s
+
+src/server/ai_protocol/movement.o: src/server/ai_protocol/movement.c.o
+
+.PHONY : src/server/ai_protocol/movement.o
+
+# target to build an object file
+src/server/ai_protocol/movement.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/ai_protocol/movement.c.o
+.PHONY : src/server/ai_protocol/movement.c.o
+
+src/server/ai_protocol/movement.i: src/server/ai_protocol/movement.c.i
+
+.PHONY : src/server/ai_protocol/movement.i
+
+# target to preprocess a source file
+src/server/ai_protocol/movement.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/ai_protocol/movement.c.i
+.PHONY : src/server/ai_protocol/movement.c.i
+
+src/server/ai_protocol/movement.s: src/server/ai_protocol/movement.c.s
+
+.PHONY : src/server/ai_protocol/movement.s
+
+# target to generate assembly for a file
+src/server/ai_protocol/movement.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/ai_protocol/movement.c.s
+.PHONY : src/server/ai_protocol/movement.c.s
+
+src/server/ai_protocol/set.o: src/server/ai_protocol/set.c.o
+
+.PHONY : src/server/ai_protocol/set.o
+
+# target to build an object file
+src/server/ai_protocol/set.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/ai_protocol/set.c.o
+.PHONY : src/server/ai_protocol/set.c.o
+
+src/server/ai_protocol/set.i: src/server/ai_protocol/set.c.i
+
+.PHONY : src/server/ai_protocol/set.i
+
+# target to preprocess a source file
+src/server/ai_protocol/set.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/ai_protocol/set.c.i
+.PHONY : src/server/ai_protocol/set.c.i
+
+src/server/ai_protocol/set.s: src/server/ai_protocol/set.c.s
+
+.PHONY : src/server/ai_protocol/set.s
+
+# target to generate assembly for a file
+src/server/ai_protocol/set.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/ai_protocol/set.c.s
+.PHONY : src/server/ai_protocol/set.c.s
+
+src/server/ai_protocol/take.o: src/server/ai_protocol/take.c.o
+
+.PHONY : src/server/ai_protocol/take.o
+
+# target to build an object file
+src/server/ai_protocol/take.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/ai_protocol/take.c.o
+.PHONY : src/server/ai_protocol/take.c.o
+
+src/server/ai_protocol/take.i: src/server/ai_protocol/take.c.i
+
+.PHONY : src/server/ai_protocol/take.i
+
+# target to preprocess a source file
+src/server/ai_protocol/take.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/ai_protocol/take.c.i
+.PHONY : src/server/ai_protocol/take.c.i
+
+src/server/ai_protocol/take.s: src/server/ai_protocol/take.c.s
+
+.PHONY : src/server/ai_protocol/take.s
+
+# target to generate assembly for a file
+src/server/ai_protocol/take.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/ai_protocol/take.c.s
+.PHONY : src/server/ai_protocol/take.c.s
+
+src/server/client_manager/egg.o: src/server/client_manager/egg.c.o
+
+.PHONY : src/server/client_manager/egg.o
+
+# target to build an object file
+src/server/client_manager/egg.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/client_manager/egg.c.o
+.PHONY : src/server/client_manager/egg.c.o
+
+src/server/client_manager/egg.i: src/server/client_manager/egg.c.i
+
+.PHONY : src/server/client_manager/egg.i
+
+# target to preprocess a source file
+src/server/client_manager/egg.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/client_manager/egg.c.i
+.PHONY : src/server/client_manager/egg.c.i
+
+src/server/client_manager/egg.s: src/server/client_manager/egg.c.s
+
+.PHONY : src/server/client_manager/egg.s
+
+# target to generate assembly for a file
+src/server/client_manager/egg.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/client_manager/egg.c.s
+.PHONY : src/server/client_manager/egg.c.s
+
+src/server/client_manager/join.o: src/server/client_manager/join.c.o
+
+.PHONY : src/server/client_manager/join.o
+
+# target to build an object file
+src/server/client_manager/join.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/client_manager/join.c.o
+.PHONY : src/server/client_manager/join.c.o
+
+src/server/client_manager/join.i: src/server/client_manager/join.c.i
+
+.PHONY : src/server/client_manager/join.i
+
+# target to preprocess a source file
+src/server/client_manager/join.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/client_manager/join.c.i
+.PHONY : src/server/client_manager/join.c.i
+
+src/server/client_manager/join.s: src/server/client_manager/join.c.s
+
+.PHONY : src/server/client_manager/join.s
+
+# target to generate assembly for a file
+src/server/client_manager/join.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/client_manager/join.c.s
+.PHONY : src/server/client_manager/join.c.s
+
+src/server/client_manager/leave.o: src/server/client_manager/leave.c.o
+
+.PHONY : src/server/client_manager/leave.o
+
+# target to build an object file
+src/server/client_manager/leave.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/client_manager/leave.c.o
+.PHONY : src/server/client_manager/leave.c.o
+
+src/server/client_manager/leave.i: src/server/client_manager/leave.c.i
+
+.PHONY : src/server/client_manager/leave.i
+
+# target to preprocess a source file
+src/server/client_manager/leave.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/client_manager/leave.c.i
+.PHONY : src/server/client_manager/leave.c.i
+
+src/server/client_manager/leave.s: src/server/client_manager/leave.c.s
+
+.PHONY : src/server/client_manager/leave.s
+
+# target to generate assembly for a file
+src/server/client_manager/leave.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/client_manager/leave.c.s
+.PHONY : src/server/client_manager/leave.c.s
+
+src/server/client_manager/manager.o: src/server/client_manager/manager.c.o
+
+.PHONY : src/server/client_manager/manager.o
+
+# target to build an object file
+src/server/client_manager/manager.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/client_manager/manager.c.o
+.PHONY : src/server/client_manager/manager.c.o
+
+src/server/client_manager/manager.i: src/server/client_manager/manager.c.i
+
+.PHONY : src/server/client_manager/manager.i
+
+# target to preprocess a source file
+src/server/client_manager/manager.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/client_manager/manager.c.i
+.PHONY : src/server/client_manager/manager.c.i
+
+src/server/client_manager/manager.s: src/server/client_manager/manager.c.s
+
+.PHONY : src/server/client_manager/manager.s
+
+# target to generate assembly for a file
+src/server/client_manager/manager.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/client_manager/manager.c.s
+.PHONY : src/server/client_manager/manager.c.s
+
+src/server/client_manager/msg_queue.o: src/server/client_manager/msg_queue.c.o
+
+.PHONY : src/server/client_manager/msg_queue.o
+
+# target to build an object file
+src/server/client_manager/msg_queue.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/client_manager/msg_queue.c.o
+.PHONY : src/server/client_manager/msg_queue.c.o
+
+src/server/client_manager/msg_queue.i: src/server/client_manager/msg_queue.c.i
+
+.PHONY : src/server/client_manager/msg_queue.i
+
+# target to preprocess a source file
+src/server/client_manager/msg_queue.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/client_manager/msg_queue.c.i
+.PHONY : src/server/client_manager/msg_queue.c.i
+
+src/server/client_manager/msg_queue.s: src/server/client_manager/msg_queue.c.s
+
+.PHONY : src/server/client_manager/msg_queue.s
+
+# target to generate assembly for a file
+src/server/client_manager/msg_queue.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/client_manager/msg_queue.c.s
+.PHONY : src/server/client_manager/msg_queue.c.s
+
+src/server/client_manager/orientation.o: src/server/client_manager/orientation.c.o
+
+.PHONY : src/server/client_manager/orientation.o
+
+# target to build an object file
+src/server/client_manager/orientation.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/client_manager/orientation.c.o
+.PHONY : src/server/client_manager/orientation.c.o
+
+src/server/client_manager/orientation.i: src/server/client_manager/orientation.c.i
+
+.PHONY : src/server/client_manager/orientation.i
+
+# target to preprocess a source file
+src/server/client_manager/orientation.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/client_manager/orientation.c.i
+.PHONY : src/server/client_manager/orientation.c.i
+
+src/server/client_manager/orientation.s: src/server/client_manager/orientation.c.s
+
+.PHONY : src/server/client_manager/orientation.s
+
+# target to generate assembly for a file
+src/server/client_manager/orientation.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/client_manager/orientation.c.s
+.PHONY : src/server/client_manager/orientation.c.s
+
+src/server/client_manager/teams.o: src/server/client_manager/teams.c.o
+
+.PHONY : src/server/client_manager/teams.o
+
+# target to build an object file
+src/server/client_manager/teams.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/client_manager/teams.c.o
+.PHONY : src/server/client_manager/teams.c.o
+
+src/server/client_manager/teams.i: src/server/client_manager/teams.c.i
+
+.PHONY : src/server/client_manager/teams.i
+
+# target to preprocess a source file
+src/server/client_manager/teams.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/client_manager/teams.c.i
+.PHONY : src/server/client_manager/teams.c.i
+
+src/server/client_manager/teams.s: src/server/client_manager/teams.c.s
+
+.PHONY : src/server/client_manager/teams.s
+
+# target to generate assembly for a file
+src/server/client_manager/teams.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/client_manager/teams.c.s
+.PHONY : src/server/client_manager/teams.c.s
+
+src/server/debug.o: src/server/debug.c.o
+
+.PHONY : src/server/debug.o
+
+# target to build an object file
+src/server/debug.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/debug.c.o
+.PHONY : src/server/debug.c.o
+
+src/server/debug.i: src/server/debug.c.i
+
+.PHONY : src/server/debug.i
+
+# target to preprocess a source file
+src/server/debug.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/debug.c.i
+.PHONY : src/server/debug.c.i
+
+src/server/debug.s: src/server/debug.c.s
+
+.PHONY : src/server/debug.s
+
+# target to generate assembly for a file
+src/server/debug.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/debug.c.s
+.PHONY : src/server/debug.c.s
+
+src/server/grahic_protocol/map.o: src/server/grahic_protocol/map.c.o
+
+.PHONY : src/server/grahic_protocol/map.o
+
+# target to build an object file
+src/server/grahic_protocol/map.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/map.c.o
+.PHONY : src/server/grahic_protocol/map.c.o
+
+src/server/grahic_protocol/map.i: src/server/grahic_protocol/map.c.i
+
+.PHONY : src/server/grahic_protocol/map.i
+
+# target to preprocess a source file
+src/server/grahic_protocol/map.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/map.c.i
+.PHONY : src/server/grahic_protocol/map.c.i
+
+src/server/grahic_protocol/map.s: src/server/grahic_protocol/map.c.s
+
+.PHONY : src/server/grahic_protocol/map.s
+
+# target to generate assembly for a file
+src/server/grahic_protocol/map.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/map.c.s
+.PHONY : src/server/grahic_protocol/map.c.s
+
+src/server/grahic_protocol/player.o: src/server/grahic_protocol/player.c.o
+
+.PHONY : src/server/grahic_protocol/player.o
+
+# target to build an object file
+src/server/grahic_protocol/player.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/player.c.o
+.PHONY : src/server/grahic_protocol/player.c.o
+
+src/server/grahic_protocol/player.i: src/server/grahic_protocol/player.c.i
+
+.PHONY : src/server/grahic_protocol/player.i
+
+# target to preprocess a source file
+src/server/grahic_protocol/player.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/player.c.i
+.PHONY : src/server/grahic_protocol/player.c.i
+
+src/server/grahic_protocol/player.s: src/server/grahic_protocol/player.c.s
+
+.PHONY : src/server/grahic_protocol/player.s
+
+# target to generate assembly for a file
+src/server/grahic_protocol/player.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/player.c.s
+.PHONY : src/server/grahic_protocol/player.c.s
+
+src/server/grahic_protocol/server.o: src/server/grahic_protocol/server.c.o
+
+.PHONY : src/server/grahic_protocol/server.o
+
+# target to build an object file
+src/server/grahic_protocol/server.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/server.c.o
+.PHONY : src/server/grahic_protocol/server.c.o
+
+src/server/grahic_protocol/server.i: src/server/grahic_protocol/server.c.i
+
+.PHONY : src/server/grahic_protocol/server.i
+
+# target to preprocess a source file
+src/server/grahic_protocol/server.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/server.c.i
+.PHONY : src/server/grahic_protocol/server.c.i
+
+src/server/grahic_protocol/server.s: src/server/grahic_protocol/server.c.s
+
+.PHONY : src/server/grahic_protocol/server.s
+
+# target to generate assembly for a file
+src/server/grahic_protocol/server.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/server.c.s
+.PHONY : src/server/grahic_protocol/server.c.s
+
+src/server/gui_manager/manager.o: src/server/gui_manager/manager.c.o
+
+.PHONY : src/server/gui_manager/manager.o
+
+# target to build an object file
+src/server/gui_manager/manager.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/gui_manager/manager.c.o
+.PHONY : src/server/gui_manager/manager.c.o
+
+src/server/gui_manager/manager.i: src/server/gui_manager/manager.c.i
+
+.PHONY : src/server/gui_manager/manager.i
+
+# target to preprocess a source file
+src/server/gui_manager/manager.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/gui_manager/manager.c.i
+.PHONY : src/server/gui_manager/manager.c.i
+
+src/server/gui_manager/manager.s: src/server/gui_manager/manager.c.s
+
+.PHONY : src/server/gui_manager/manager.s
+
+# target to generate assembly for a file
+src/server/gui_manager/manager.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/gui_manager/manager.c.s
+.PHONY : src/server/gui_manager/manager.c.s
+
+src/server/loop.o: src/server/loop.c.o
+
+.PHONY : src/server/loop.o
+
+# target to build an object file
+src/server/loop.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/loop.c.o
+.PHONY : src/server/loop.c.o
+
+src/server/loop.i: src/server/loop.c.i
+
+.PHONY : src/server/loop.i
+
+# target to preprocess a source file
+src/server/loop.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/loop.c.i
+.PHONY : src/server/loop.c.i
+
+src/server/loop.s: src/server/loop.c.s
+
+.PHONY : src/server/loop.s
+
+# target to generate assembly for a file
+src/server/loop.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/loop.c.s
+.PHONY : src/server/loop.c.s
+
+src/server/main.o: src/server/main.c.o
+
+.PHONY : src/server/main.o
+
+# target to build an object file
+src/server/main.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/main.c.o
+.PHONY : src/server/main.c.o
+
+src/server/main.i: src/server/main.c.i
+
+.PHONY : src/server/main.i
+
+# target to preprocess a source file
+src/server/main.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/main.c.i
+.PHONY : src/server/main.c.i
+
+src/server/main.s: src/server/main.c.s
+
+.PHONY : src/server/main.s
+
+# target to generate assembly for a file
+src/server/main.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/main.c.s
+.PHONY : src/server/main.c.s
+
+src/server/map.o: src/server/map.c.o
+
+.PHONY : src/server/map.o
+
+# target to build an object file
+src/server/map.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/map.c.o
+.PHONY : src/server/map.c.o
+
+src/server/map.i: src/server/map.c.i
+
+.PHONY : src/server/map.i
+
+# target to preprocess a source file
+src/server/map.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/map.c.i
+.PHONY : src/server/map.c.i
+
+src/server/map.s: src/server/map.c.s
+
+.PHONY : src/server/map.s
+
+# target to generate assembly for a file
+src/server/map.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/map.c.s
+.PHONY : src/server/map.c.s
+
+src/server/parsing/gnl.o: src/server/parsing/gnl.c.o
+
+.PHONY : src/server/parsing/gnl.o
+
+# target to build an object file
+src/server/parsing/gnl.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/parsing/gnl.c.o
+.PHONY : src/server/parsing/gnl.c.o
+
+src/server/parsing/gnl.i: src/server/parsing/gnl.c.i
+
+.PHONY : src/server/parsing/gnl.i
+
+# target to preprocess a source file
+src/server/parsing/gnl.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/parsing/gnl.c.i
+.PHONY : src/server/parsing/gnl.c.i
+
+src/server/parsing/gnl.s: src/server/parsing/gnl.c.s
+
+.PHONY : src/server/parsing/gnl.s
+
+# target to generate assembly for a file
+src/server/parsing/gnl.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/parsing/gnl.c.s
+.PHONY : src/server/parsing/gnl.c.s
+
+src/server/parsing/parser.o: src/server/parsing/parser.c.o
+
+.PHONY : src/server/parsing/parser.o
+
+# target to build an object file
+src/server/parsing/parser.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/parsing/parser.c.o
+.PHONY : src/server/parsing/parser.c.o
+
+src/server/parsing/parser.i: src/server/parsing/parser.c.i
+
+.PHONY : src/server/parsing/parser.i
+
+# target to preprocess a source file
+src/server/parsing/parser.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/parsing/parser.c.i
+.PHONY : src/server/parsing/parser.c.i
+
+src/server/parsing/parser.s: src/server/parsing/parser.c.s
+
+.PHONY : src/server/parsing/parser.s
+
+# target to generate assembly for a file
+src/server/parsing/parser.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/parsing/parser.c.s
+.PHONY : src/server/parsing/parser.c.s
+
+src/server/parsing/port.o: src/server/parsing/port.c.o
+
+.PHONY : src/server/parsing/port.o
+
+# target to build an object file
+src/server/parsing/port.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/parsing/port.c.o
+.PHONY : src/server/parsing/port.c.o
+
+src/server/parsing/port.i: src/server/parsing/port.c.i
+
+.PHONY : src/server/parsing/port.i
+
+# target to preprocess a source file
+src/server/parsing/port.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/parsing/port.c.i
+.PHONY : src/server/parsing/port.c.i
+
+src/server/parsing/port.s: src/server/parsing/port.c.s
+
+.PHONY : src/server/parsing/port.s
+
+# target to generate assembly for a file
+src/server/parsing/port.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/parsing/port.c.s
+.PHONY : src/server/parsing/port.c.s
+
+src/server/scheduler/add.o: src/server/scheduler/add.c.o
+
+.PHONY : src/server/scheduler/add.o
+
+# target to build an object file
+src/server/scheduler/add.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/scheduler/add.c.o
+.PHONY : src/server/scheduler/add.c.o
+
+src/server/scheduler/add.i: src/server/scheduler/add.c.i
+
+.PHONY : src/server/scheduler/add.i
+
+# target to preprocess a source file
+src/server/scheduler/add.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/scheduler/add.c.i
+.PHONY : src/server/scheduler/add.c.i
+
+src/server/scheduler/add.s: src/server/scheduler/add.c.s
+
+.PHONY : src/server/scheduler/add.s
+
+# target to generate assembly for a file
+src/server/scheduler/add.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/scheduler/add.c.s
+.PHONY : src/server/scheduler/add.c.s
+
+src/server/scheduler/scheduler.o: src/server/scheduler/scheduler.c.o
+
+.PHONY : src/server/scheduler/scheduler.o
+
+# target to build an object file
+src/server/scheduler/scheduler.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/scheduler/scheduler.c.o
+.PHONY : src/server/scheduler/scheduler.c.o
+
+src/server/scheduler/scheduler.i: src/server/scheduler/scheduler.c.i
+
+.PHONY : src/server/scheduler/scheduler.i
+
+# target to preprocess a source file
+src/server/scheduler/scheduler.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/scheduler/scheduler.c.i
+.PHONY : src/server/scheduler/scheduler.c.i
+
+src/server/scheduler/scheduler.s: src/server/scheduler/scheduler.c.s
+
+.PHONY : src/server/scheduler/scheduler.s
+
+# target to generate assembly for a file
+src/server/scheduler/scheduler.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/scheduler/scheduler.c.s
+.PHONY : src/server/scheduler/scheduler.c.s
+
+src/server/server.o: src/server/server.c.o
+
+.PHONY : src/server/server.o
+
+# target to build an object file
+src/server/server.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/server.c.o
+.PHONY : src/server/server.c.o
+
+src/server/server.i: src/server/server.c.i
+
+.PHONY : src/server/server.i
+
+# target to preprocess a source file
+src/server/server.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/server.c.i
+.PHONY : src/server/server.c.i
+
+src/server/server.s: src/server/server.c.s
+
+.PHONY : src/server/server.s
+
+# target to generate assembly for a file
+src/server/server.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/server.c.s
+.PHONY : src/server/server.c.s
+
+src/server/socket/socket.o: src/server/socket/socket.c.o
+
+.PHONY : src/server/socket/socket.o
+
+# target to build an object file
+src/server/socket/socket.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/socket/socket.c.o
+.PHONY : src/server/socket/socket.c.o
+
+src/server/socket/socket.i: src/server/socket/socket.c.i
+
+.PHONY : src/server/socket/socket.i
+
+# target to preprocess a source file
+src/server/socket/socket.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/socket/socket.c.i
+.PHONY : src/server/socket/socket.c.i
+
+src/server/socket/socket.s: src/server/socket/socket.c.s
+
+.PHONY : src/server/socket/socket.s
+
+# target to generate assembly for a file
+src/server/socket/socket.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/socket/socket.c.s
+.PHONY : src/server/socket/socket.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -618,6 +1522,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... client"
+	@echo "... zappy_server"
 	@echo "... Src/Main.o"
 	@echo "... Src/Main.i"
 	@echo "... Src/Main.s"
@@ -672,6 +1577,105 @@ help:
 	@echo "... Src/client/Map.o"
 	@echo "... Src/client/Map.i"
 	@echo "... Src/client/Map.s"
+	@echo "... src/server/ai_protocol/broadcast.o"
+	@echo "... src/server/ai_protocol/broadcast.i"
+	@echo "... src/server/ai_protocol/broadcast.s"
+	@echo "... src/server/ai_protocol/connect_nbr.o"
+	@echo "... src/server/ai_protocol/connect_nbr.i"
+	@echo "... src/server/ai_protocol/connect_nbr.s"
+	@echo "... src/server/ai_protocol/die.o"
+	@echo "... src/server/ai_protocol/die.i"
+	@echo "... src/server/ai_protocol/die.s"
+	@echo "... src/server/ai_protocol/eject.o"
+	@echo "... src/server/ai_protocol/eject.i"
+	@echo "... src/server/ai_protocol/eject.s"
+	@echo "... src/server/ai_protocol/fork.o"
+	@echo "... src/server/ai_protocol/fork.i"
+	@echo "... src/server/ai_protocol/fork.s"
+	@echo "... src/server/ai_protocol/incantation.o"
+	@echo "... src/server/ai_protocol/incantation.i"
+	@echo "... src/server/ai_protocol/incantation.s"
+	@echo "... src/server/ai_protocol/inventory.o"
+	@echo "... src/server/ai_protocol/inventory.i"
+	@echo "... src/server/ai_protocol/inventory.s"
+	@echo "... src/server/ai_protocol/look.o"
+	@echo "... src/server/ai_protocol/look.i"
+	@echo "... src/server/ai_protocol/look.s"
+	@echo "... src/server/ai_protocol/movement.o"
+	@echo "... src/server/ai_protocol/movement.i"
+	@echo "... src/server/ai_protocol/movement.s"
+	@echo "... src/server/ai_protocol/set.o"
+	@echo "... src/server/ai_protocol/set.i"
+	@echo "... src/server/ai_protocol/set.s"
+	@echo "... src/server/ai_protocol/take.o"
+	@echo "... src/server/ai_protocol/take.i"
+	@echo "... src/server/ai_protocol/take.s"
+	@echo "... src/server/client_manager/egg.o"
+	@echo "... src/server/client_manager/egg.i"
+	@echo "... src/server/client_manager/egg.s"
+	@echo "... src/server/client_manager/join.o"
+	@echo "... src/server/client_manager/join.i"
+	@echo "... src/server/client_manager/join.s"
+	@echo "... src/server/client_manager/leave.o"
+	@echo "... src/server/client_manager/leave.i"
+	@echo "... src/server/client_manager/leave.s"
+	@echo "... src/server/client_manager/manager.o"
+	@echo "... src/server/client_manager/manager.i"
+	@echo "... src/server/client_manager/manager.s"
+	@echo "... src/server/client_manager/msg_queue.o"
+	@echo "... src/server/client_manager/msg_queue.i"
+	@echo "... src/server/client_manager/msg_queue.s"
+	@echo "... src/server/client_manager/orientation.o"
+	@echo "... src/server/client_manager/orientation.i"
+	@echo "... src/server/client_manager/orientation.s"
+	@echo "... src/server/client_manager/teams.o"
+	@echo "... src/server/client_manager/teams.i"
+	@echo "... src/server/client_manager/teams.s"
+	@echo "... src/server/debug.o"
+	@echo "... src/server/debug.i"
+	@echo "... src/server/debug.s"
+	@echo "... src/server/grahic_protocol/map.o"
+	@echo "... src/server/grahic_protocol/map.i"
+	@echo "... src/server/grahic_protocol/map.s"
+	@echo "... src/server/grahic_protocol/player.o"
+	@echo "... src/server/grahic_protocol/player.i"
+	@echo "... src/server/grahic_protocol/player.s"
+	@echo "... src/server/grahic_protocol/server.o"
+	@echo "... src/server/grahic_protocol/server.i"
+	@echo "... src/server/grahic_protocol/server.s"
+	@echo "... src/server/gui_manager/manager.o"
+	@echo "... src/server/gui_manager/manager.i"
+	@echo "... src/server/gui_manager/manager.s"
+	@echo "... src/server/loop.o"
+	@echo "... src/server/loop.i"
+	@echo "... src/server/loop.s"
+	@echo "... src/server/main.o"
+	@echo "... src/server/main.i"
+	@echo "... src/server/main.s"
+	@echo "... src/server/map.o"
+	@echo "... src/server/map.i"
+	@echo "... src/server/map.s"
+	@echo "... src/server/parsing/gnl.o"
+	@echo "... src/server/parsing/gnl.i"
+	@echo "... src/server/parsing/gnl.s"
+	@echo "... src/server/parsing/parser.o"
+	@echo "... src/server/parsing/parser.i"
+	@echo "... src/server/parsing/parser.s"
+	@echo "... src/server/parsing/port.o"
+	@echo "... src/server/parsing/port.i"
+	@echo "... src/server/parsing/port.s"
+	@echo "... src/server/scheduler/add.o"
+	@echo "... src/server/scheduler/add.i"
+	@echo "... src/server/scheduler/add.s"
+	@echo "... src/server/scheduler/scheduler.o"
+	@echo "... src/server/scheduler/scheduler.i"
+	@echo "... src/server/scheduler/scheduler.s"
+	@echo "... src/server/server.o"
+	@echo "... src/server/server.i"
+	@echo "... src/server/server.s"
+	@echo "... src/server/socket/socket.o"
+	@echo "... src/server/socket/socket.i"
+	@echo "... src/server/socket/socket.s"
 .PHONY : help
 
 

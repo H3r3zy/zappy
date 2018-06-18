@@ -21,7 +21,7 @@ static const gui_command_t COMMAND[] = {
 	{"mct", &gui_mct, false},
 	{"nbu", &gui_nbu, false},
 	{"nbt", &gui_nbt, false},
-	{"nbr", &gui_nbt, false},
+	{"nbr", &gui_nbr, false},
 	{"sgt", &gui_sgt, false},
 	{"sst", &gui_sst, true},
 	{"tna", &gui_tna, false},

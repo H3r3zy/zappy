@@ -16,12 +16,14 @@
  * GUI command : get map size
  * @param server
  * @param arg
+ *
+ * @response msz sizeX:4 sizeY:4
  */
 void gui_msz(server_t *server, __attribute__((unused)) char *arg)
 {
 	char buff[16] = {0};
 
-	snprintf(buff, 16, "msz %u;%u\n", server->map.size.x,
+	snprintf(buff, 16, "msz %u %u\n", server->map.size.x,
 		server->map.size.y);
 	add_to_gui_queue(&server->gui, buff);
 }
@@ -34,7 +36,8 @@ void gui_msz(server_t *server, __attribute__((unused)) char *arg)
  */
 static void print_map_cell(server_t *server, uint x, uint y)
 {
-	static char buff[50] = "bct xpos ypos food line dera sibu mend phir thys\n";
+	static char buff[50] = "bct xpos ypos food line dera "
+				"sibu mend phir thys\n";
 	uint *items = server->map.map[y][x].items;
 
 	memcpy(buff + 4, &x, sizeof(uint));
@@ -51,6 +54,8 @@ static void print_map_cell(server_t *server, uint x, uint y)
  * GUI command : get cell content at pos X Y
  * @param server
  * @param arg
+ *
+ * @response bct xpos:4 ypos:4 line:4 dera:4 sibu:4 mend:4 phir:4 thys:4 food:4
  */
 void gui_bct(server_t *server, char *arg)
 {
@@ -68,6 +73,9 @@ void gui_bct(server_t *server, char *arg)
  * GUI command : get full map content
  * @param server
  * @param arg
+ *
+ * @response bct xpos:4 ypos:4 line:4 dera:4 sibu:4 mend:4 phir:4 thys:4 food:4
+ * for each cell
  */
 void gui_mct(server_t *server, __attribute__((unused)) char *arg)
 {

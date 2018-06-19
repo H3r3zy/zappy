@@ -34,6 +34,15 @@ gui_command_t *get_commands()
 	return commands;
 }
 
+uint32_t my_strlen_backn(char *str)
+{
+	uint32_t i = 0;
+
+	while (str && str[i] != '\n')
+		i++;
+	return i;
+}
+
 /**
 * Add a string to the GUI Queue
 * @param gui
@@ -41,9 +50,9 @@ gui_command_t *get_commands()
 */
 void add_to_gui_queue(gui_t *gui, char *str)
 {
-	char *pos = strchr(str, '\n');
-	size_t len = (pos) ? pos - str : 0;
+	uint32_t len = my_strlen_backn(str);
 
+	debug(ERROR "%i => %s\n", len, str);
 	if (!gui->logged)
 		return;
 	if (gui->len + len >= gui->size) {

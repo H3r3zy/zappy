@@ -48,3 +48,7 @@ class Ai:
 
     def getLevel(self):
         return self.__level
+
+    def setCoord(self, x: int, y: int):
+        self.__coord[0] = x
+        self.__coord[1] = y

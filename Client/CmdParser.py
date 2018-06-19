@@ -19,8 +19,8 @@ class CmdParser:
         self.__queue = queue
         self.__msgQueue = msgQueue
         self.__patterns = {
-            'Look': re.compile("\[( \w+)*(,( \w+)*)* \]", re.ASCII),
-            'Inventory': re.compile("\[(( \w+ \d+)(,( \w+ \d+)*)* )?\]", re.ASCII),
+            'Look': re.compile("\[( ?\w+)*(,( \w+)*)* ?\]", re.ASCII),
+            'Inventory': re.compile("\[( ?(\w+ \d+)(,( \w+ \d+)?)* ?)\]", re.ASCII),
             'Connect_nbr': re.compile("%d+", re.ASCII),
             'Incantation': re.compile("(Elevation underway Current level: \d)|(ko)", re.ASCII),
             'Forward': re.compile("ok", re.ASCII),
@@ -41,12 +41,35 @@ class CmdParser:
         self.__actions = {
             'Look': self.parse_map,
             'Inventory': self.parse_inv,
-            'Fork': self.fork
+            'Fork': self.fork,
+            'Take': self.take
         }
         self.__handledId = 0
+        self.__deltas = {
+            1: (0, -1),
+            2: (1, -1),
+            3: (1, 0),
+            4: (1, 1),
+            5: (0, 1),
+            6: (-1, 1),
+            7: (-1, 0),
+            8: (-1, -1)
+        }
+
+    def take(self, ans: str, obj: str):
+        if ans == "ok":
+            print("J'ai take !!!!!!!!!")
+            self.__player.getInventory()[obj] += 1
+        else:
+            print(ans)
 
     def fork(self):
         system(argv[0] + " -p " + str(self.__info[0]) + " -n " + self.__info[1] + " -h " + self.__info[2])
+
+    def eject(self, key: int):
+        delta = self.__deltas[key]
+        pos = self.__player.getCoord()
+        self.__player.setCoord(pos[0] + delta[0], pos[1] + delta[1])
 
     @staticmethod
     def viewSouth(x, y, end) -> tuple:
@@ -76,7 +99,7 @@ class CmdParser:
             for ny in range(y - level, y + level + 1):
                 yield (nx, ny)
 
-    def parse_map(self, map: str):
+    def parse_map(self, map: str, _):
         map = map.replace("[", "").replace("]", "")
         tiles = map.split(",")
         i = 0
@@ -93,7 +116,7 @@ class CmdParser:
                     currentTile.getStones()[elem] += 1
             i += 1
 
-    def parse_inv(self, inv: str):
+    def parse_inv(self, inv: str, _):
         inv = inv.replace("[", "").replace("]", "")
         elems = inv.split(",")
         for x in range(0, len(elems)):
@@ -109,19 +132,22 @@ class CmdParser:
         if cmd == "dead":
             return False
         last = self.__queue.popleft()
-        match = self.__patterns[last].match(cmd)
+        match = self.__patterns[last[0]].match(cmd)
+        self.__handledId += 1
         try:
-            if last in self.__actions.keys():
-                self.__handledId += 1
-                self.__actions[last](match.group(0))
+            if last[0] in self.__actions.keys():
+                self.__actions[last[0]](match.group(0), last[1])
             else:
-                match = re.match("message \d, (.+)", cmd)
+                match = re.match("message (\d), (.+)", cmd)
+                match1 = re.match("eject: (\d)", cmd)
                 if match:
-                    self.__handledId += 1
-                    self.__msgQueue.append(match.group(1))
+                    self.__msgQueue.append(match.group(2))
+                elif match1:
+                    self.eject(int(match1.group(1)))
+
         except AttributeError:
             if cmd == "ko":
                 self.__player.egg = True
             else:
-                print("Could not link '" + cmd + "' to '" + last + "'")
+                print("Could not link '" + cmd + "' to '" + last[0] + "'")
         return True

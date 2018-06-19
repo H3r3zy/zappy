@@ -10,16 +10,16 @@ class PathFinding:
     @staticmethod
     def radar(x: int, y: int, rng: int = 0):
         if rng == 0:
-            yield (x, y)
+            yield [x, y]
         for l in range(1, rng + 1):
             for a in range(x - l, x + l):
-                yield (a, y - l)
+                yield [a, y - l]
             for a in range(y - l, y + l):
-                yield (x + l, a)
+                yield [x + l, a]
             for a in range(x + l, x - l, -1):
-                yield (a, y + l)
+                yield [a, y + l]
             for a in range(y + l, y - l, -1):
-                yield (x - l, a)
+                yield [x - l, a]
 
     def dist(self, player_coord, coord):
         range = 0

@@ -5,8 +5,6 @@
 ** player.c
 */
 
-// ppo n X Y O\n ppo #n\n player’s position
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <server.h>

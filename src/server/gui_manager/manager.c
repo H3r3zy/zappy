@@ -26,7 +26,7 @@ static const gui_command_t COMMAND[] = {
 	{"sgt", &gui_sgt, has_arg: false, status: false, NULL},
 	{"sst", &gui_sst, has_arg: true, status: false, NULL},
 	{"tna", &gui_tna, has_arg: false, status: false, NULL},
-	{NULL, NULL, false}
+	{NULL, NULL, false, false, NULL}
 };
 
 /**
@@ -51,12 +51,14 @@ void add_to_gui_queue(gui_t *gui, char *str)
 
 static void check_gui_command(server_t *server, uint32_t i, char *arg)
 {
+	bool st = true;
+
 	if (COMMAND[i].has_arg && !arg) {
 		debug(INFO "%s need argument\n", COMMAND[i].name);
 		add_to_gui_queue(&server->gui, "ko\n");
 		return;
 	}
-	(*COMMAND[i].function)(server, arg);
+	(*COMMAND[i].function)(server, arg, &st);
 }
 
 static void gui_command_manager(server_t *server, char *command)

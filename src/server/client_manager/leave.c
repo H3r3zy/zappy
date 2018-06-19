@@ -14,7 +14,7 @@
 static void disconnect_of_team(server_t *server, teams_t *team,
 	client_t *client)
 {
-	for (uint32_t i = 0; i < server->max_clients_per_teams; i++) {
+	for (uint32_t i = 0; i < team->client_max; i++) {
 		if (team->clients[i] == client) {
 			debug(INFO "the client %d left the team '%s'\n",
 				client->fd, team->name);

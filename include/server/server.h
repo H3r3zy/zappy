@@ -112,6 +112,7 @@ struct teams_s {
 	egg_t *eggs;
 	char *name;
 	uint32_t remaining_place;
+	uint32_t client_max;
 };
 
 typedef struct cell_s {
@@ -159,6 +160,7 @@ void die(server_t *server, client_t *client);
 void add_teams(server_t *server, char *name);
 void add_to_team(server_t *server, client_t *client, char *name);
 void create_teams_clients(server_t *server);
+void add_slot_in_team(teams_t *teams);
 
 void handle_new_client(server_t *server);
 int read_client(server_t *server, client_t *client);

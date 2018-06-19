@@ -1,15 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/PSU_zappy_2017.dir/src/main.cpp.o"
-  "CMakeFiles/PSU_zappy_2017.dir/src/Map.cpp.o"
-  "CMakeFiles/PSU_zappy_2017.dir/src/Entity/Cell.cpp.o"
-  "CMakeFiles/PSU_zappy_2017.dir/src/Grid.cpp.o"
-  "CMakeFiles/PSU_zappy_2017.dir/src/WindowInfo.cpp.o"
-  "CMakeFiles/PSU_zappy_2017.dir/src/Entity/Character.cpp.o"
-  "CMakeFiles/PSU_zappy_2017.dir/src/Entity/ARectangleShape.cpp.o"
-  "CMakeFiles/PSU_zappy_2017.dir/src/Entity/AMotionShape.cpp.o"
-  "CMakeFiles/PSU_zappy_2017.dir/src/Text/AText.cpp.o"
-  "CMakeFiles/PSU_zappy_2017.dir/src/Text/GameText.cpp.o"
-  "CMakeFiles/PSU_zappy_2017.dir/src/SfmlTool.cpp.o"
+  "CMakeFiles/PSU_zappy_2017.dir/main.cpp.o"
   "PSU_zappy_2017.pdb"
   "PSU_zappy_2017"
 )

@@ -1,4 +1,4 @@
-/home/wisenoa/Téléchargements/clion-2017.3.1/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/wisenoa/PSU_zappy_2017
+/home/wisenoa/Téléchargements/clion-2017.3.1/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/wisenoa/mergeZappy/PSU_zappy_2017
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/wisenoa/PSU_zappy_2017/cmake-build-debug
+-- Build files have been written to: /home/wisenoa/mergeZappy/PSU_zappy_2017

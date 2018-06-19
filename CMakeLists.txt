@@ -1,9 +1,50 @@
-cmake_minimum_required(VERSION 3.9)
-project(PSU_zappy_2017)
+cmake_minimum_required(VERSION 3.7.2)
+project(client)
+
+include_directories(
+		Src
+		Include/
+		Include/Text/
+		Include/Entity/
+		Include/Tools/
+		Include/Abstract/
+		Include/Interface/
+		Include/Class/
+		Include/Class/Gui/
+		Include/Class/Gui/PersonalizedObject/
+		Include/Class/Gui/Animation/
+		Include/Class/Gui/ObjectSFML/
+)
+
+file(GLOB_RECURSE FILE Src/*.cpp Include/Interface/*.hpp Include/*.hpp)
 
 set(CMAKE_CXX_STANDARD 11)
+add_executable(client ${FILE} Src/Entity/Water.cpp Include/Entity/Water.hpp)
+target_compile_options(client PRIVATE -std=c++11 -W -Wall -Wextra -ggdb3 -w)
+target_link_libraries(client pthread -lsfml-graphics -lsfml-window -lsfml-system)
 
-include_directories(Include Include/Entity)
 
-add_executable(PSU_zappy_2017
-        src/main.cpp src/Map.cpp Include/Map.hpp src/Entity/Cell.cpp Include/Entity/Cell.hpp src/Grid.cpp Include/Grid.hpp src/WindowInfo.cpp Include/WindowInfo.hpp src/Entity/Character.cpp Include/Entity/Character.hpp Include/Entity/IEntity.hpp src/Entity/ARectangleShape.cpp Include/Entity/ARectangleShape.hpp src/Entity/AMotionShape.cpp Include/Entity/AMotionShape.hpp src/Text/AText.cpp Include/Text/AText.hpp src/Text/GameText.cpp Include/Text/GameText.hpp src/SfmlTool.cpp Include/SfmlTool.hpp)
+set(CMAKE_C_STANDARD 11)
+
+set(CMAKE_C_FLAGS_DEBUG
+        "-W -Wall -Wextra -g -Wno-unused-parameter -DDEBUG=1")
+set(CMAKE_C_FLAGS_RELEASE
+        "-W -Wall -Wextra -O3 -Wno-unused-parameter")
+
+file(GLOB_RECURSE SERVER_FILE
+        src
+        src/*.c
+        src/server/debug.c
+        )
+
+file(GLOB SERVER_HEADER
+        include/*.h
+        include
+        )
+
+include_directories(include/server)
+include_directories(include)
+
+add_executable(zappy_server ${SERVER_FILE} ${SERVER_HEADER})
+
+target_link_libraries(zappy_server m)

@@ -8,44 +8,42 @@
 		<Option virtualFolders="CMake Files\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/wisenoa/PSU_zappy_2017/cmake-build-debug"/>
+				<Option working_dir="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/wisenoa/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/wisenoa/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/wisenoa/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/wisenoa/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/wisenoa/PSU_zappy_2017/cmake-build-debug"/>
+				<Option working_dir="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/wisenoa/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/wisenoa/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/wisenoa/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/wisenoa/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/wisenoa/PSU_zappy_2017/cmake-build-debug"/>
+				<Option working_dir="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/cmake-build-debug"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/wisenoa/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/wisenoa/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/wisenoa/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/wisenoa/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="PSU_zappy_2017">
-				<Option output="/home/wisenoa/PSU_zappy_2017/cmake-build-debug/PSU_zappy_2017" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/wisenoa/PSU_zappy_2017/cmake-build-debug"/>
+				<Option output="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/cmake-build-debug/PSU_zappy_2017" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/wisenoa/PSU_zappy_2017/Include"/>
-					<Add directory="/home/wisenoa/PSU_zappy_2017/Include/Entity"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>
@@ -56,21 +54,19 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/wisenoa/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 PSU_zappy_2017"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/wisenoa/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/wisenoa/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/wisenoa/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 PSU_zappy_2017"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="PSU_zappy_2017/fast">
-				<Option output="/home/wisenoa/PSU_zappy_2017/cmake-build-debug/PSU_zappy_2017" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/wisenoa/PSU_zappy_2017/cmake-build-debug"/>
+				<Option output="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/cmake-build-debug/PSU_zappy_2017" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/cmake-build-debug"/>
 				<Option object_output="./"/>
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/wisenoa/PSU_zappy_2017/Include"/>
-					<Add directory="/home/wisenoa/PSU_zappy_2017/Include/Entity"/>
 					<Add directory="/usr/include/c++/7"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
 					<Add directory="/usr/include/c++/7/backward"/>
@@ -81,80 +77,17 @@
 					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -j4 -f &quot;/home/wisenoa/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 PSU_zappy_2017/fast"/>
-					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/wisenoa/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -j4 -f &quot;/home/wisenoa/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -j4 -f &quot;/home/wisenoa/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 PSU_zappy_2017/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/wisenoa/PSU_zappy_2017/Include/Entity/AMotionShape.hpp">
+		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/main.cpp">
 			<Option target="PSU_zappy_2017"/>
 		</Unit>
-		<Unit filename="/home/wisenoa/PSU_zappy_2017/Include/Entity/ARectangleShape.hpp">
-			<Option target="PSU_zappy_2017"/>
-		</Unit>
-		<Unit filename="/home/wisenoa/PSU_zappy_2017/Include/Entity/Cell.hpp">
-			<Option target="PSU_zappy_2017"/>
-		</Unit>
-		<Unit filename="/home/wisenoa/PSU_zappy_2017/Include/Entity/Character.hpp">
-			<Option target="PSU_zappy_2017"/>
-		</Unit>
-		<Unit filename="/home/wisenoa/PSU_zappy_2017/Include/Entity/IEntity.hpp">
-			<Option target="PSU_zappy_2017"/>
-		</Unit>
-		<Unit filename="/home/wisenoa/PSU_zappy_2017/Include/Grid.hpp">
-			<Option target="PSU_zappy_2017"/>
-		</Unit>
-		<Unit filename="/home/wisenoa/PSU_zappy_2017/Include/Map.hpp">
-			<Option target="PSU_zappy_2017"/>
-		</Unit>
-		<Unit filename="/home/wisenoa/PSU_zappy_2017/Include/SfmlTool.hpp">
-			<Option target="PSU_zappy_2017"/>
-		</Unit>
-		<Unit filename="/home/wisenoa/PSU_zappy_2017/Include/Text/AText.hpp">
-			<Option target="PSU_zappy_2017"/>
-		</Unit>
-		<Unit filename="/home/wisenoa/PSU_zappy_2017/Include/Text/GameText.hpp">
-			<Option target="PSU_zappy_2017"/>
-		</Unit>
-		<Unit filename="/home/wisenoa/PSU_zappy_2017/Include/WindowInfo.hpp">
-			<Option target="PSU_zappy_2017"/>
-		</Unit>
-		<Unit filename="/home/wisenoa/PSU_zappy_2017/src/Entity/AMotionShape.cpp">
-			<Option target="PSU_zappy_2017"/>
-		</Unit>
-		<Unit filename="/home/wisenoa/PSU_zappy_2017/src/Entity/ARectangleShape.cpp">
-			<Option target="PSU_zappy_2017"/>
-		</Unit>
-		<Unit filename="/home/wisenoa/PSU_zappy_2017/src/Entity/Cell.cpp">
-			<Option target="PSU_zappy_2017"/>
-		</Unit>
-		<Unit filename="/home/wisenoa/PSU_zappy_2017/src/Entity/Character.cpp">
-			<Option target="PSU_zappy_2017"/>
-		</Unit>
-		<Unit filename="/home/wisenoa/PSU_zappy_2017/src/Grid.cpp">
-			<Option target="PSU_zappy_2017"/>
-		</Unit>
-		<Unit filename="/home/wisenoa/PSU_zappy_2017/src/Map.cpp">
-			<Option target="PSU_zappy_2017"/>
-		</Unit>
-		<Unit filename="/home/wisenoa/PSU_zappy_2017/src/SfmlTool.cpp">
-			<Option target="PSU_zappy_2017"/>
-		</Unit>
-		<Unit filename="/home/wisenoa/PSU_zappy_2017/src/Text/AText.cpp">
-			<Option target="PSU_zappy_2017"/>
-		</Unit>
-		<Unit filename="/home/wisenoa/PSU_zappy_2017/src/Text/GameText.cpp">
-			<Option target="PSU_zappy_2017"/>
-		</Unit>
-		<Unit filename="/home/wisenoa/PSU_zappy_2017/src/WindowInfo.cpp">
-			<Option target="PSU_zappy_2017"/>
-		</Unit>
-		<Unit filename="/home/wisenoa/PSU_zappy_2017/src/main.cpp">
-			<Option target="PSU_zappy_2017"/>
-		</Unit>
-		<Unit filename="/home/wisenoa/PSU_zappy_2017/CMakeLists.txt">
+		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
 	</Project>

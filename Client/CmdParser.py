@@ -44,9 +44,24 @@ class CmdParser:
             'Fork': self.fork
         }
         self.__handledId = 0
+        self.__deltas = {
+            1: (0, -1),
+            2: (1, -1),
+            3: (1, 0),
+            4: (1, 1),
+            5: (0, 1),
+            6: (-1, 1),
+            7: (-1, 0),
+            8: (-1, -1)
+        }
 
     def fork(self):
         system(argv[0] + " -p " + str(self.__info[0]) + " -n " + self.__info[1] + " -h " + self.__info[2])
+
+    def eject(self, key: int):
+        delta = self.__deltas[key]
+        pos = self.__player.getCoord()
+        self.__player.setCoord(pos[0] + delta[0], pos[1] + delta[1])
 
     @staticmethod
     def viewSouth(x, y, end) -> tuple:
@@ -115,10 +130,15 @@ class CmdParser:
                 self.__handledId += 1
                 self.__actions[last[0]](match.group(0), last[1])
             else:
-                match = re.match("message \d, (.+)", cmd)
+                match = re.match("message (\d), (.+)", cmd)
+                match1 = re.match("eject: (\d)")
                 if match:
                     self.__handledId += 1
-                    self.__msgQueue.append(match.group(1))
+                    self.__msgQueue.append(match.group(2))
+                elif match1:
+                    self.__handledId += 1
+                    self.eject(int(match1.group(1)))
+
         except AttributeError:
             if cmd == "ko":
                 self.__player.egg = True

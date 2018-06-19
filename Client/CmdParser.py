@@ -56,9 +56,10 @@ class CmdParser:
             8: (-1, -1)
         }
 
-    def take(self, ans: str, obj: str):
+    def take(self, ans: str, obj: str, pos: tuple):
         if ans == "ok":
             self.__player.getInventory()[obj] += 1
+            self.__map[pos[1]][pos[0]].getStones()[obj] -= 1
 
     def fork(self):
         system(argv[0] + " -p " + str(self.__info[0]) + " -n " + self.__info[1] + " -h " + self.__info[2])
@@ -96,12 +97,12 @@ class CmdParser:
             for ny in range(y - level, y + level + 1):
                 yield (nx, ny)
 
-    def parse_map(self, map: str, _):
+    def parse_map(self, map: str, _, pos: tuple):
         map = map.replace("[", "").replace("]", "")
         tiles = map.split(",")
         i = 0
-        for x, y in self.__dirs[self.__player.getDir()](self.__player.getCoord()[0],
-                                                        self.__player.getCoord()[1],
+        for x, y in self.__dirs[self.__player.getDir()](pos[0],
+                                                        pos[1],
                                                         self.__player.getLevel()):
             currentTile = self.__map[y % len(self.__player.getMap())][x % len(self.__player.getMap()[0])]
             currentTile.reset()
@@ -113,7 +114,7 @@ class CmdParser:
                     currentTile.getStones()[elem] += 1
             i += 1
 
-    def parse_inv(self, inv: str, _):
+    def parse_inv(self, inv: str, _, _):
         inv = inv.replace("[", "").replace("]", "")
         elems = inv.split(",")
         for x in range(0, len(elems)):
@@ -133,7 +134,7 @@ class CmdParser:
         self.__handledId += 1
         try:
             if last[0] in self.__actions.keys():
-                self.__actions[last[0]](match.group(0), last[1])
+                self.__actions[last[0]](match.group(0), last[1], last[2])
             else:
                 match = re.match("message (\d), (.+)", cmd)
                 match1 = re.match("eject: (\d)")

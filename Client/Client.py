@@ -85,8 +85,8 @@ class Client:
             self.__outBuff += tup[0] + (" " if len(tup[1]) > 0 else "") + '\n'
             self.__outQueue.append(tup)
 
-    def build_command(self, cmd: str, arg: str = "") -> int:
-        self.__topQueue.append((cmd, arg))
+    def build_command(self, cmd: str, arg: str = "", pos: tuple = (0, 0)) -> int:
+        self.__topQueue.append((cmd, arg, pos))
         self.__outId += 1
         self.refresh_queue()
         return self.__outId - 1

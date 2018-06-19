@@ -1,6 +1,7 @@
 from Ai import Tile
 from Ai import PathFinding
 from Enum.Direction import *
+from time import *
 
 
 class Target(Enum):
@@ -17,7 +18,7 @@ class Ai:
                             "thystame": 0}
         self.__map = [[Tile.Tile() for _ in range(x)] for _ in range(y)]
         self.__coord = [0, 0]
-        self.__dir = Direction.SOUTH
+        self.dir = Direction.SOUTH
         self.__pathFind = PathFinding.PathFinding(x, y)
         self.__level = 1
 
@@ -32,7 +33,13 @@ class Ai:
         self.egg = False
 
     def think(self):
-        self.__pathFind.goToTile(self.__coord, (3, 0), self.__dir)
+        toto, self.dir = self.__pathFind.goToTile(self.__coord, (1, 1), self.dir)
+        print(self.dir)
+        print(toto)
+        print(self.__coord)
+        toto, self.dir = self.__pathFind.goToTile(self.__coord, (2, 2), self.dir)
+        print(self.dir)
+        print(toto)
 
     def getMap(self):
         return self.__map
@@ -44,7 +51,7 @@ class Ai:
         return self.__inventory
 
     def getDir(self):
-        return self.__dir
+        return self.dir
 
     def getLevel(self):
         return self.__level

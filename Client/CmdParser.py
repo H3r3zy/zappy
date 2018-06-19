@@ -62,7 +62,7 @@ class CmdParser:
             self.__player.getInventory()[obj] += 1
             self.__map[pos[1]][pos[0]].getStones()[obj] -= 1
         else:
-            print(ans)
+            self.__map[pos[1]][pos[0]].getStones()[obj] = 0
 
     def fork(self):
         system(argv[0] + " -p " + str(self.__info[0]) + " -n " + self.__info[1] + " -h " + self.__info[2])
@@ -100,7 +100,7 @@ class CmdParser:
             for ny in range(y - level, y + level + 1):
                 yield (nx, ny)
 
-    def parse_map(self, map: str, _, pos: tuple):
+    def parse_map(self, map: str, arg, pos):
         map = map.replace("[", "").replace("]", "")
         tiles = map.split(",")
         i = 0
@@ -117,7 +117,7 @@ class CmdParser:
                     currentTile.getStones()[elem] += 1
             i += 1
 
-    def parse_inv(self, inv: str, _, _):
+    def parse_inv(self, inv: str, _1, _2):
         inv = inv.replace("[", "").replace("]", "")
         elems = inv.split(",")
         for x in range(0, len(elems)):

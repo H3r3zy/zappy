@@ -24,7 +24,6 @@ class PathFinding:
     def dist(self, player_coord, coord):
         range = 0
         nearest_dir = Direction.NORTH
-        print("coord_player : %d && coord : %d" % (player_coord, coord))
         if player_coord > coord:
             range = player_coord - coord
         elif coord > player_coord:
@@ -41,11 +40,9 @@ class PathFinding:
             for i in range(0, normal_range[0]):
                 actions.append("Forward")
         elif normal_range[0] <= opposite_range[0]:
-            print("normal range : %d" % normal_range[0])
             for i in range(normal_range[0]):
                 actions.append("Forward")
         else:
-            print("opposite range : %d" % opposite_range[0])
             if opposite_range[1] != player_dir:
                 actions.append("Right")
                 actions.append("Right")
@@ -95,33 +92,30 @@ class PathFinding:
         actions += tmp
         return actions, player_dir
 
-    def goToTile(self, player_coords, to, player_dir) ->list :
+    def goToTile(self, player_coords, to, player_dir):
         nb_actions = 0
         actions = []
 
         if player_coords[0] == to[0] and player_coords[1] == to[1]:
-            print("J'ai pas bougé wesh")
             return actions
         if player_coords[0] != to[0] and player_coords[1] != to[1]:  # Diagonales
+            print("Je diagonale")
             if player_dir == Direction.NORTH or player_dir == Direction.SOUTH:
                 actions, player_dir = self.moveUpOrDown(player_coords, (player_coords[0], to[1]), player_dir)
                 player_coords[1] = to[1]
                 tmp, player_dir = self.moveLeftOrRight(player_coords, to, player_dir)
                 player_coords[0] = to[0]
                 actions += tmp
-                print(actions)
             else:
-                actions, player_dir = self.moveUpOrDown(player_coords, (to[0], player_coords[1]), player_dir)
+                print("coucou c'est david")
+                actions, player_dir = self.moveLeftOrRight(player_coords, (to[0], player_coords[1]), player_dir)
                 player_coords[0] = to[0]
-                tmp, player_dir = self.moveLeftOrRight(player_coords, to, player_dir)
+                tmp, player_dir = self.moveUpOrDown(player_coords, to, player_dir)
                 player_coords[1] = to[1]
                 actions += tmp
-                print(actions)
         else:
             if player_coords[0] == to[0]:  # Je suis en ligne droite Y
                 actions, player_dir = self.moveUpOrDown(player_coords, to, player_dir)
-                print(actions)
             elif player_coords[1] == to[1]:  # Je suis en ligne droite X
                 actions, player_dir = self.moveLeftOrRight(player_coords, to, player_dir)
-                print(actions)
-        return actions
+        return actions, player_dir

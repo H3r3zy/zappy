@@ -23,13 +23,13 @@ static client_t *get_client_by_id(server_t *server, size_t id)
 }
 
 /**
- *
- * @param server
- * @param client
- *
- * @response pnw clientID<uint32_t> posX<uint32_t> posY<uint32_t>
- * 	orientation<uint32_t> team<string>
- */
+*
+* @param server
+* @param client
+*
+* @response pnw clientID<uint32_t> posX<uint32_t> posY<uint32_t>
+* 	orientation<uint32_t> team<string>
+*/
 void gui_pnw(server_t *server, client_t *client)
 {
 	static char buff[281] = "pnw clID POSX POSY CLOR CLVL \n";
@@ -52,12 +52,12 @@ void gui_pnw(server_t *server, client_t *client)
 }
 
 /**
- *
- * @param server
- * @param arg
- *
- * @response ppo clientID<uint32_t> posX<uint32_t> posY<uint32_t>
- */
+*
+* @param server
+* @param arg
+*
+* @response ppo clientID<uint32_t> posX<uint32_t> posY<uint32_t>
+*/
 void gui_ppo(server_t *server, char *arg)
 {
 	uint32_t id = atoi(arg);
@@ -77,12 +77,12 @@ void gui_ppo(server_t *server, char *arg)
 }
 
 /**
- *
- * @param server
- * @param arg
- *
- * @ersponse plv clientID<uint32_t> level<uint32_t>
- */
+*
+* @param server
+* @param arg
+*
+* @ersponse plv clientID<uint32_t> level<uint32_t>
+*/
 void gui_plv(server_t *server, char *arg)
 {
 	uint32_t id = atoi(arg);
@@ -100,19 +100,19 @@ void gui_plv(server_t *server, char *arg)
 }
 
 /**
- *
- * @param server
- * @param arg
- *
- * @response pin clientID<uint32_t> posX<uint32_t> posY<uint32_t>
- * 	food<uint32_t> linemate<uint32_t> deraumere<uint32_t> sibur<uint32_t>
- * 	mendiane<uint32_t> phiras<uint32_t> thystame<uint32_t>
- */
+*
+* @param server
+* @param arg
+*
+* @response pin clientID<uint32_t> posX<uint32_t> posY<uint32_t>
+* 	food<uint32_t> linemate<uint32_t> deraumere<uint32_t> sibur<uint32_t>
+* 	mendiane<uint32_t> phiras<uint32_t> thystame<uint32_t>
+*/
 void gui_pin(server_t *server, char *arg)
 {
 	uint32_t id = atoi(arg);
 	static char buff[55] = "pin clid posx posy food line dera sibu mend "
-		 "phir thys\n";
+		"phir thys\n";
 	int idx = 4;
 	client_t *clt = get_client_by_id(server, id);
 
@@ -135,12 +135,12 @@ void gui_pin(server_t *server, char *arg)
 }
 
 /**
- * Response to GUI when a expulsion is call
- * @param server
- * @param client
- *
- * @response pex clientID\n
- */
+* Response to GUI when a expulsion is call
+* @param server
+* @param client
+*
+* @response pex clientID\n
+*/
 void gui_pex(server_t *server, client_t *client)
 {
 	static char buffer[124] = "pex clId\n";
@@ -151,13 +151,13 @@ void gui_pex(server_t *server, client_t *client)
 }
 
 /**
- * Response to GUI when a broadcast is call
- * @param server
- * @param client
- * @param arg
- *
- * @response pbc clientID<uint32_t> message<string>\n
- */
+* Response to GUI when a broadcast is call
+* @param server
+* @param client
+* @param arg
+*
+* @response pbc clientID<uint32_t> message<string>\n
+*/
 void gui_pbc(server_t *server, client_t *client, char *arg)
 {
 	char *buffer = malloc(sizeof(char) * (strlen(arg) + 26));
@@ -176,13 +176,13 @@ void gui_pbc(server_t *server, client_t *client, char *arg)
 }
 
 /**
- * Response to GUI when Incantation is launch
- * @param server
- * @param client
- * @param entity
- *
- * @response pic clientX clientY [all clientID in incantation]\n
- */
+* Response to GUI when Incantation is launch
+* @param server
+* @param client
+* @param entity
+*
+* @response pic clientX clientY [all clientID in incantation]\n
+*/
 void gui_pic(server_t *server, client_t *client, entity_t *entity)
 {
 	static char buffer[1024] = "pic posX posY ";
@@ -201,12 +201,12 @@ void gui_pic(server_t *server, client_t *client, entity_t *entity)
 }
 
 /**
- * Response to GUI when an Incantation is done
- * @param server
- * @param client
- *
- * @response pie clientX clientY IncantationResponse
- */
+* Response to GUI when an Incantation is done
+* @param server
+* @param client
+*
+* @response pie clientX clientY IncantationResponse
+*/
 void gui_pie(server_t *server, client_t *client)
 {
 	static char buffer[1024] = "pie posX posY clvl\n";
@@ -221,12 +221,12 @@ void gui_pie(server_t *server, client_t *client)
 }
 
 /**
- * Response to GUI when an egg is laying
- * @param server
- * @param client
- *
- * @response pfk clientID
- */
+* Response to GUI when an egg is laying
+* @param server
+* @param client
+*
+* @response pfk clientID
+*/
 void gui_pfk(server_t *server, client_t *client)
 {
 	static char buffer[1024] = "pfk clID\n";
@@ -237,13 +237,13 @@ void gui_pfk(server_t *server, client_t *client)
 }
 
 /**
- * Response to GUI when a resource is dropped
- * @param server
- * @param client
- * @param type
- *
- * @response pdr clientID resourceID
- */
+* Response to GUI when a resource is dropped
+* @param server
+* @param client
+* @param type
+*
+* @response pdr clientID resourceID
+*/
 void gui_pdr(server_t *server, client_t *client, entity_type_t type)
 {
 	static char buffer[1024] = "pdr clID enTp\n";
@@ -256,13 +256,13 @@ void gui_pdr(server_t *server, client_t *client, entity_type_t type)
 }
 
 /**
- * Response to GUI when a resource is taken
- * @param server
- * @param client
- * @param type
- *
- * @response pdt clientID resourceType
- */
+* Response to GUI when a resource is taken
+* @param server
+* @param client
+* @param type
+*
+* @response pdt clientID resourceType
+*/
 void gui_pgt(server_t *server, client_t *client, entity_type_t type)
 {
 	static char buffer[1024] = "pgt clID enTy\n";
@@ -275,12 +275,12 @@ void gui_pgt(server_t *server, client_t *client, entity_type_t type)
 }
 
 /**
- * Response to GUI when a player die
- * @param server
- * @param client
- *
- * @response pdi clientID
- */
+* Response to GUI when a player die
+* @param server
+* @param client
+*
+* @response pdi clientID
+*/
 void gui_pdi(server_t *server, client_t *client)
 {
 	static char buffer[1024] = "pdi clID\n";
@@ -291,13 +291,13 @@ void gui_pdi(server_t *server, client_t *client)
 }
 
 /**
- * Response to GUI when a player drop an egg
- * @param server
- * @param egg
- * @param client
- *
- * @response enw eggID clientID clientX clientY
- */
+* Response to GUI when a player drop an egg
+* @param server
+* @param egg
+* @param client
+*
+* @response enw eggID clientID clientX clientY
+*/
 void gui_enw(server_t *server, egg_t *egg, client_t *client)
 {
 	static char buffer[1024] = "enw egID clID posX posY\n";
@@ -315,12 +315,12 @@ void gui_enw(server_t *server, egg_t *egg, client_t *client)
 }
 
 /**
- * Response to GUI when an egg is hatching
- * @param server
- * @param egg
- *
- * @response eht eggID
- */
+* Response to GUI when an egg is hatching
+* @param server
+* @param egg
+*
+* @response eht eggID
+*/
 void gui_eht(server_t *server, egg_t *egg)
 {
 	static char buffer[1024] = "eht egID\n";
@@ -331,12 +331,12 @@ void gui_eht(server_t *server, egg_t *egg)
 }
 
 /**
- * Response to GUI when a player is spawning in an egg
- * @param server
- * @param egg
- *
- * @response ebo eggID
- */
+* Response to GUI when a player is spawning in an egg
+* @param server
+* @param egg
+*
+* @response ebo eggID
+*/
 void gui_ebo(server_t *server, egg_t *egg)
 {
 	char buffer[1024] = "ebo egID\n";
@@ -347,12 +347,12 @@ void gui_ebo(server_t *server, egg_t *egg)
 }
 
 /**
- * Response to GUI when an egg is destroyed
- * @param server
- * @param egg
- *
- * @response edi eggID<uint32_t>
- */
+* Response to GUI when an egg is destroyed
+* @param server
+* @param egg
+*
+* @response edi eggID<uint32_t>
+*/
 void gui_edi(server_t *server, egg_t *egg)
 {
 	char buffer[10] = "edi egID\n";

@@ -13,12 +13,12 @@
 #include "server.h"
 
 /**
- * GUI command : get map size
- * @param server
- * @param arg
- *
- * @response msz sizeX:4 sizeY:4
- */
+* GUI command : get map size
+* @param server
+* @param arg
+*
+* @response msz sizeX:4 sizeY:4
+*/
 void gui_msz(server_t *server, __attribute__((unused)) char *arg)
 {
 	static char buff[16] = "msz mapX mapY\n";
@@ -32,11 +32,11 @@ void gui_msz(server_t *server, __attribute__((unused)) char *arg)
 }
 
 /**
- * Print the content of a cell into a buffer
- * @param server
- * @param x
- * @param y
- */
+* Print the content of a cell into a buffer
+* @param server
+* @param x
+* @param y
+*/
 static void print_map_cell(server_t *server, uint32_t x, uint32_t y)
 {
 	static char buff[50] = "bct xpos ypos food line dera "
@@ -54,12 +54,12 @@ static void print_map_cell(server_t *server, uint32_t x, uint32_t y)
 }
 
 /**
- * GUI command : get cell content at pos X Y
- * @param server
- * @param arg
- *
- * @response bct xpos:4 ypos:4 line:4 dera:4 sibu:4 mend:4 phir:4 thys:4 food:4
- */
+* GUI command : get cell content at pos X Y
+* @param server
+* @param arg
+*
+* @response bct xpos:4 ypos:4 line:4 dera:4 sibu:4 mend:4 phir:4 thys:4 food:4
+*/
 void gui_bct(server_t *server, char *arg)
 {
 	long x = strtol(arg, NULL, 10);
@@ -73,13 +73,13 @@ void gui_bct(server_t *server, char *arg)
 }
 
 /**
- * GUI command : get full map content
- * @param server
- * @param arg
- *
- * @response bct xpos:4 ypos:4 line:4 dera:4 sibu:4 mend:4 phir:4 thys:4 food:4
- * for each cell
- */
+* GUI command : get full map content
+* @param server
+* @param arg
+*
+* @response bct xpos:4 ypos:4 line:4 dera:4 sibu:4 mend:4 phir:4 thys:4 food:4
+* for each cell
+*/
 void gui_mct(server_t *server, __attribute__((unused)) char *arg)
 {
 	for (int y = 0; y < server->map.size.y; y++)

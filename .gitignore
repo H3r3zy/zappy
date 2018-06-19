@@ -24,3 +24,7 @@ reference
 test?
 test
 build/
+ia.sh
+sh.sh
+callgrind*
+file

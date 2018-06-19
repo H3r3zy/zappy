@@ -168,6 +168,7 @@ int send_responses(client_t *client);
 int try_write(int fd, char *msg);
 
 int read_gui(server_t *server);
+void gui_continue_commands(server_t *);
 void add_to_gui_queue(gui_t *gui, char *str);
 
 void init_map(map_t *map);

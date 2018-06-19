@@ -8,31 +8,32 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include <gui_command.h>
 #include "gui_command.h"
 #include "debug.h"
 #include "server.h"
 
 static const gui_command_t COMMAND[] = {
-	{"msz", &gui_msz, false},
-	{"ppo", &gui_ppo, true},
-	{"plv", &gui_plv, true},
-	{"pin", &gui_pin, true},
-	{"bct", &gui_bct, true},
-	{"mct", &gui_mct, false},
-	{"nbu", &gui_nbu, false},
-	{"nbt", &gui_nbt, false},
-	{"nbr", &gui_nbr, false},
-	{"sgt", &gui_sgt, false},
-	{"sst", &gui_sst, true},
-	{"tna", &gui_tna, false},
+	{"msz", &gui_msz, has_arg: false, status: false, NULL},
+	{"bct", &gui_bct, has_arg: true, status: false, NULL},
+	{"mct", &gui_mct, has_arg: false, status: false, NULL},
+	{"ppo", &gui_ppo, has_arg: true, status: false, NULL},
+	{"plv", &gui_plv, has_arg: true, status: false, NULL},
+	{"pin", &gui_pin, has_arg: true, status: false, NULL},
+	{"nbu", &gui_nbu, has_arg: false, status: false, NULL},
+	{"nbt", &gui_nbt, has_arg: false, status: false, NULL},
+	{"nbr", &gui_nbr, has_arg: false, status: false, NULL},
+	{"sgt", &gui_sgt, has_arg: false, status: false, NULL},
+	{"sst", &gui_sst, has_arg: true, status: false, NULL},
+	{"tna", &gui_tna, has_arg: false, status: false, NULL},
 	{NULL, NULL, false}
 };
 
 /**
- * Add a string to the GUI Queue
- * @param gui
- * @param str
- */
+* Add a string to the GUI Queue
+* @param gui
+* @param str
+*/
 void add_to_gui_queue(gui_t *gui, char *str)
 {
 	uint32_t len = strlen(str);
@@ -50,7 +51,7 @@ void add_to_gui_queue(gui_t *gui, char *str)
 
 static void check_gui_command(server_t *server, uint32_t i, char *arg)
 {
-	if (COMMAND[i].argument && !arg) {
+	if (COMMAND[i].has_arg && !arg) {
 		debug(INFO "%s need argument\n", COMMAND[i].name);
 		add_to_gui_queue(&server->gui, "ko\n");
 		return;
@@ -87,4 +88,12 @@ int read_gui(server_t *server)
 	gui_command_manager(server, request);
 	free(request);
 	return 0;
+}
+
+void gui_continue_commands(server_t *server)
+{
+	/*for (const gui_command_t *cmd = COMMAND; cmd->name; cmd++) {
+		if (cmd->status)
+			(*cmd->function)(server, cmd->arg);
+	}*/
 }

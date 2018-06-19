@@ -13,12 +13,12 @@
 #include "debug.h"
 
 /**
- * Update resource 't' at pos 'pos' by and add 'n'
- * @param map
- * @param pos
- * @param t
- * @param n
- */
+* Update resource 't' at pos 'pos' by and add 'n'
+* @param map
+* @param pos
+* @param t
+* @param n
+*/
 void update_resource(map_t *map, pos_t pos, entity_type_t t, int n)
 {
 	map->map[pos.y][pos.x].items[t] += n;
@@ -97,11 +97,11 @@ void remove_player_from_map(map_t *map, entity_t *entity)
 }
 
 /**
- * Move a player from the cell at the pos of the entity to the pos in arg
- * @param map
- * @param entity
- * @param pos
- */
+* Move a player from the cell at the pos of the entity to the pos in arg
+* @param map
+* @param entity
+* @param pos
+*/
 void move_player_to(map_t *map, entity_t *entity, pos_t *pos)
 {
 	remove_player_from_map(map, entity);

@@ -10,12 +10,12 @@
 #include "server.h"
 
 /**
- * GUI command : get time unit
- * @param server
- * @param arg
- *
- * @response sgt srvFreq<uint32_t>
- */
+* GUI command : get time unit
+* @param server
+* @param arg
+*
+* @response sgt srvFreq<uint32_t>
+*/
 void gui_sgt(server_t *server, __attribute__((unused)) char *arg)
 {
 	char buff[11] = "sgt freq\n";
@@ -26,10 +26,10 @@ void gui_sgt(server_t *server, __attribute__((unused)) char *arg)
 }
 
 /**
- * GUI command : set time unit
- * @param server
- * @param arg
- */
+* GUI command : set time unit
+* @param server
+* @param arg
+*/
 void gui_sst(server_t *server, char *arg)
 {
 	long freq = strtol(arg, NULL, 10);
@@ -39,10 +39,10 @@ void gui_sst(server_t *server, char *arg)
 }
 
 /**
- * GUI command : get all team names
- * @param server
- * @param arg
- */
+* GUI command : get all team names
+* @param server
+* @param arg
+*/
 void gui_tna(server_t *server, __attribute__((unused)) char *arg)
 {
 	char buff[262] = {0};

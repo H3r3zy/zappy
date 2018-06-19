@@ -11,12 +11,12 @@
 #include "server.h"
 
 /**
- * GUI command : get number of clients
- * @param server
- * @param arg
- *
- * @response nbu nbclients:4
- */
+* GUI command : get number of clients
+* @param server
+* @param arg
+*
+* @response nbu nbclients:4
+*/
 void gui_nbu(server_t *server, __attribute__((unused)) char *arg)
 {
 	static char buff[10] = "nbu nbus\n";
@@ -27,12 +27,12 @@ void gui_nbu(server_t *server, __attribute__((unused)) char *arg)
 }
 
 /**
- * GUI command : get the number of teams
- * @param server
- * @param arg
- *
- * @response nbt nbteam:4
- */
+* GUI command : get the number of teams
+* @param server
+* @param arg
+*
+* @response nbt nbteam:4
+*/
 void gui_nbt(server_t *server, __attribute__((unused)) char *arg)
 {
 	static char buff[10] = "nbt nbte\n";
@@ -46,12 +46,12 @@ void gui_nbt(server_t *server, __attribute__((unused)) char *arg)
 }
 
 /**
- * GUI command : get the number of resources
- * @param server
- * @param arg
- *
- * @response nbr line:4 dera:4 sibu:4 mend:4 phir:4 thys:4 food:4 eggs:4
- */
+* GUI command : get the number of resources
+* @param server
+* @param arg
+*
+* @response nbr line:4 dera:4 sibu:4 mend:4 phir:4 thys:4 food:4 eggs:4
+*/
 void gui_nbr(server_t *server, __attribute__((unused)) char *arg)
 {
 	static char buff[55] = "nbr line dera sibu mend phir thys food eggs\n";

@@ -16,10 +16,19 @@ class Ai:
         self.__inventory = {"food": 10, "linemate": 0, "deraumere": 0, "sibur": 0, "mendiane": 0, "phiras": 0,
                             "thystame": 0}
         self.__map = [[Tile.Tile() for _ in range(x)] for _ in range(y)]
-        self.__coord = [3, 0]
+        self.__coord = [0, 0]
         self.__dir = Direction.SOUTH
         self.__pathFind = PathFinding.PathFinding(x, y)
         self.__level = 1
+
+        self.elevation_array = {1: ["linemate"],
+                                2: ["linemate", "deraumere", "sibur"],
+                                3: ["linemate", "sibur", "phiras"],
+                                4: ["linemate", "deraumere", "sibur", "phiras"],
+                                5: ["linemate", "deraumere", "sibur", "mendiane"],
+                                6: ["linemate", "deraumere", "sibur", "phiras"],
+                                7: ["linemate", "deraumere", "sibur", "mendiane", "phyras", "thystame"]}
+
         self.egg = False
 
     def think(self):

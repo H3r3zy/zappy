@@ -119,8 +119,6 @@ class CmdParser:
                 if match:
                     self.__handledId += 1
                     self.__msgQueue.append(match.group(1))
-                else:
-                    print("Could not link '" + cmd + "' to '" + last + "'")
         except AttributeError:
             if cmd == "ko":
                 self.__player.egg = True

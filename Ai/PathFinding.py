@@ -95,24 +95,26 @@ class PathFinding:
         actions += tmp
         return actions, player_dir
 
-    def goToTile(self, player_coords, to, player_dir):
+    def goToTile(self, player_coords, to, player_dir) ->list :
         nb_actions = 0
         actions = []
 
         if player_coords[0] == to[0] and player_coords[1] == to[1]:
             print("J'ai pas bougé wesh")
-            return
+            return actions
         if player_coords[0] != to[0] and player_coords[1] != to[1]:  # Diagonales
             if player_dir == Direction.NORTH or player_dir == Direction.SOUTH:
                 actions, player_dir = self.moveUpOrDown(player_coords, (player_coords[0], to[1]), player_dir)
                 player_coords[1] = to[1]
                 tmp, player_dir = self.moveLeftOrRight(player_coords, to, player_dir)
+                player_coords[0] = to[0]
                 actions += tmp
                 print(actions)
             else:
                 actions, player_dir = self.moveUpOrDown(player_coords, (to[0], player_coords[1]), player_dir)
                 player_coords[0] = to[0]
                 tmp, player_dir = self.moveLeftOrRight(player_coords, to, player_dir)
+                player_coords[1] = to[1]
                 actions += tmp
                 print(actions)
         else:
@@ -122,3 +124,4 @@ class PathFinding:
             elif player_coords[1] == to[1]:  # Je suis en ligne droite X
                 actions, player_dir = self.moveLeftOrRight(player_coords, to, player_dir)
                 print(actions)
+        return actions

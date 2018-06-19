@@ -4,6 +4,7 @@
 from Client import Client
 from Ai.Ai import Ai
 from enum import IntEnum
+from Ai.PathFinding import PathFinding
 
 
 class Actions(IntEnum):
@@ -27,16 +28,48 @@ look.id = -1
 
 def CheckingFood(client: Client, player: Ai, args):
     client.build_command("Inventory")
+    print(player.getInventory())
     if player.getInventory()["food"] < 5:
         return Actions.FIND_FOOD
     return Actions.FIND_CRYSTALS
 
 
 def FindFood(client: Client, player: Ai, args):
+    print("Je cherche de la food")
+    radar = PathFinding.radar(player.getCoord()[0], player.getCoord()[1], 9)
+    finding_path = PathFinding(client.mapSize[1], client.mapSize[0])
+    map = player.getMap()
+    needed_stones = player.elevation_array[player.getLevel()]
+
+    for coord in radar:
+        if map[coord[1]][coord[0]].getStones()["food"] != 0:
+            print("toto")
+            actions = finding_path.goToTile(player.getCoord(), coord, player.getDir())
+            for move in actions:
+                client.build_command(move)
+            client.build_command("Take", "food")
+            print("Je fini de me deplacer")
+            return Actions.LOOK
     return Actions.LOOK
 
 
 def FindCrystals(client: Client, player: Ai, args):
+    print("Je cherche des cristaux")
+    radar = PathFinding.radar(player.getCoord()[0], player.getCoord()[1], 9)
+    finding_path = PathFinding(client.mapSize[1], client.mapSize[0])
+    map = player.getMap()
+    needed_stones = player.elevation_array[player.getLevel()]
+
+    for coord in radar:
+        for stone in needed_stones:
+            if map[coord[1]][coord[0]].getStones()[stone] != 0:
+                print("titi")
+                actions = finding_path.goToTile(player.getCoord(), coord, player.getDir())
+                for move in actions:
+                    client.build_command(move)
+                client.build_command("Take", stone)
+                print("Je fini de me deplacer")
+                return Actions.LOOK
     return Actions.LOOK
 
 

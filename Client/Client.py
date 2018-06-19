@@ -58,6 +58,8 @@ class Client:
         if len(data) == 0:
             raise socket.error('Connection lost')
         self.__inBuff += data.decode("ascii")
+        if self.__inBuff.find("\n") == -1:
+            return
         for cmd in self.__inBuff.split("\n"):
             if len(cmd) != 0:
                 self.__inQueue.append(cmd)

@@ -13,7 +13,7 @@
 
 typedef struct {
 	char *name;
-	void (*function)(server_t *server, char *arg);
+	void (*function)(server_t *server, char *arg, bool *status);
 	bool has_arg;
 	bool status;
 	char *arg;

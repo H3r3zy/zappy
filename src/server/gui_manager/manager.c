@@ -13,21 +13,26 @@
 #include "debug.h"
 #include "server.h"
 
-static const gui_command_t COMMAND[] = {
-	{"msz", &gui_msz, has_arg: false, status: false, NULL},
-	{"bct", &gui_bct, has_arg: true, status: false, NULL},
-	{"mct", &gui_mct, has_arg: false, status: false, NULL},
-	{"ppo", &gui_ppo, has_arg: true, status: false, NULL},
-	{"plv", &gui_plv, has_arg: true, status: false, NULL},
-	{"pin", &gui_pin, has_arg: true, status: false, NULL},
-	{"nbu", &gui_nbu, has_arg: false, status: false, NULL},
-	{"nbt", &gui_nbt, has_arg: false, status: false, NULL},
-	{"nbr", &gui_nbr, has_arg: false, status: false, NULL},
-	{"sgt", &gui_sgt, has_arg: false, status: false, NULL},
-	{"sst", &gui_sst, has_arg: true, status: false, NULL},
-	{"tna", &gui_tna, has_arg: false, status: false, NULL},
-	{NULL, NULL, false}
-};
+gui_command_t *get_commands()
+{
+	static gui_command_t commands[] = {
+		{"msz", &gui_msz, has_arg: false, status: false, arg: NULL},
+		{"bct", &gui_bct, has_arg: true, status: false, arg: NULL},
+		{"mct", &gui_mct, has_arg: false, status: false, arg: NULL},
+		{"ppo", &gui_ppo, has_arg: true, status: false, arg: NULL},
+		{"plv", &gui_plv, has_arg: true, status: false, arg: NULL},
+		{"pin", &gui_pin, has_arg: true, status: false, arg: NULL},
+		{"nbu", &gui_nbu, has_arg: false, status: false, arg: NULL},
+		{"nbt", &gui_nbt, has_arg: false, status: false, arg: NULL},
+		{"nbr", &gui_nbr, has_arg: false, status: false, arg: NULL},
+		{"sgt", &gui_sgt, has_arg: false, status: false, arg: NULL},
+		{"sst", &gui_sst, has_arg: true, status: false, arg: NULL},
+		{"tna", &gui_tna, has_arg: false, status: false, arg: NULL},
+		{NULL, NULL, false, false, NULL}
+	};
+
+	return commands;
+}
 
 /**
 * Add a string to the GUI Queue
@@ -36,11 +41,11 @@ static const gui_command_t COMMAND[] = {
 */
 void add_to_gui_queue(gui_t *gui, char *str)
 {
-	uint32_t len = strlen(str);
+	char *pos = strchr(str, '\n');
+	size_t len = (pos) ? pos - str : 0;
 
 	if (!gui->logged)
 		return;
-	printf("str: %s\n", str);
 	if (gui->len + len >= gui->size) {
 		gui->size += GUI_QUEUE_SIZE;
 		gui->queue = realloc(gui->queue, gui->size);
@@ -49,14 +54,15 @@ void add_to_gui_queue(gui_t *gui, char *str)
 	gui->len += len;
 }
 
-static void check_gui_command(server_t *server, uint32_t i, char *arg)
+static void check_gui_command(server_t *server, gui_command_t *command,
+	char *arg)
 {
-	if (COMMAND[i].has_arg && !arg) {
-		debug(INFO "%s need argument\n", COMMAND[i].name);
+	if (command->has_arg && !arg) {
+		debug(INFO "%s need argument\n", command->name);
 		add_to_gui_queue(&server->gui, "ko\n");
 		return;
 	}
-	(*COMMAND[i].function)(server, arg);
+	(*command->function)(server, arg, &command->status);
 }
 
 static void gui_command_manager(server_t *server, char *command)
@@ -69,9 +75,9 @@ static void gui_command_manager(server_t *server, char *command)
 		return;
 	if (tmp_len != strlen(name))
 		arg = &command[strlen(name) + 1];
-	for (uint32_t i = 0; COMMAND[i].name; i++) {
-		if (strcmp(name, COMMAND[i].name) == 0) {
-			check_gui_command(server, i, arg);
+	for (gui_command_t *cmd = get_commands(); cmd->name; cmd++) {
+		if (strcmp(name, cmd->name) == 0) {
+			check_gui_command(server, cmd, arg);
 			return;
 		}
 	}
@@ -92,8 +98,8 @@ int read_gui(server_t *server)
 
 void gui_continue_commands(server_t *server)
 {
-	/*for (const gui_command_t *cmd = COMMAND; cmd->name; cmd++) {
+	for (gui_command_t *cmd = get_commands(); cmd->name; cmd++) {
 		if (cmd->status)
-			(*cmd->function)(server, cmd->arg);
-	}*/
+			(*cmd->function)(server, cmd->arg, &cmd->status);
+	}
 }

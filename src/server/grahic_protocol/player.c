@@ -5,8 +5,6 @@
 ** player.c
 */
 
-// ppo n X Y O\n ppo #n\n player’s position
-
 #include <stdlib.h>
 #include <stdio.h>
 #include <server.h>
@@ -58,7 +56,7 @@ void gui_pnw(server_t *server, client_t *client)
 *
 * @response ppo clientID<uint32_t> posX<uint32_t> posY<uint32_t>
 */
-void gui_ppo(server_t *server, char *arg)
+void gui_ppo(server_t *server, char *arg, __attribute__((unused)) bool *status)
 {
 	uint32_t id = atoi(arg);
 	static char buff[22] = "ppo clID posX posY\n";
@@ -83,7 +81,7 @@ void gui_ppo(server_t *server, char *arg)
 *
 * @ersponse plv clientID<uint32_t> level<uint32_t>
 */
-void gui_plv(server_t *server, char *arg)
+void gui_plv(server_t *server, char *arg, __attribute__((unused)) bool *status)
 {
 	uint32_t id = atoi(arg);
 	static char buff[16] = "plv clID plvl\n";
@@ -108,7 +106,7 @@ void gui_plv(server_t *server, char *arg)
 * 	food<uint32_t> linemate<uint32_t> deraumere<uint32_t> sibur<uint32_t>
 * 	mendiane<uint32_t> phiras<uint32_t> thystame<uint32_t>
 */
-void gui_pin(server_t *server, char *arg)
+void gui_pin(server_t *server, char *arg, __attribute__((unused)) bool *status)
 {
 	uint32_t id = atoi(arg);
 	static char buff[55] = "pin clid posx posy food line dera sibu mend "

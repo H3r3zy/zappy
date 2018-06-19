@@ -34,6 +34,7 @@ class Client:
             ActionNode(Actions.FIND_FOOD, FindFood),
             ActionNode(Actions.FIND_CRYSTALS, FindCrystals),
             ActionNode(Actions.FORWARD, Forward),
+            ActionNode(Actions.CHECK_LVL_UP, CheckLvlUp),
         ]
         self.__args = {
             Actions.LOOK: [],
@@ -41,6 +42,7 @@ class Client:
             Actions.FIND_FOOD: [1, 2],
             Actions.FIND_CRYSTALS: [1, 2],
             Actions.FORWARD: [1, 2],
+            Actions.CHECK_LVL_UP: [],
         }
         self.__outId = 0
         self.last = 0

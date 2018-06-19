@@ -22,14 +22,15 @@ class Ai:
         self.__pathFind = PathFinding.PathFinding(x, y)
         self.__level = 1
 
-        self.elevation_array = {1: ["linemate"],
-                                2: ["linemate", "deraumere", "sibur"],
-                                3: ["linemate", "sibur", "phiras"],
-                                4: ["linemate", "deraumere", "sibur", "phiras"],
-                                5: ["linemate", "deraumere", "sibur", "mendiane"],
-                                6: ["linemate", "deraumere", "sibur", "phiras"],
-                                7: ["linemate", "deraumere", "sibur", "mendiane", "phyras", "thystame"]}
-
+        self.elevation_array = {1: [("linemate", 1)],
+                                2: [("linemate", 1), ("deraumere", 1), ("sibur", 1)],
+                                3: [("linemate", 2), ("sibur", 1), ("phiras", 2)],
+                                4: [("linemate", 1), ("deraumere", 1), ("sibur", 2), ("phiras", 1)],
+                                5: [("linemate", 1), ("deraumere", 2), ("sibur", 1), ("mendiane", 3)],
+                                6: [("linemate", 1), ("deraumere", 2), ("sibur", 3), ("phiras", 1)],
+                                7: [("linemate", 2), ("deraumere", 2), ("sibur", 2), ("mendiane", 2), ("phyras", 2),
+                                    ("thystame", 1)]}
+        self.elevation_player = [0, 1, 2, 2, 4, 4, 6, 6]
         self.egg = False
 
     def think(self):

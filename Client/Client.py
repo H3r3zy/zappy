@@ -24,7 +24,7 @@ class Client:
         self.__inQueue = deque()
         self.__topQueue = deque()
         self.__outQueue = deque(maxlen=10)
-        self.__mapSize = (0, 0)
+        self.mapSize = (0, 0)
         self.wait = 0
         self.__currentNode = Actions.LOOK
         self.__msgQueue = deque()
@@ -33,14 +33,6 @@ class Client:
             ActionNode(Actions.CHECK_FOOD, CheckingFood),
             ActionNode(Actions.FIND_FOOD, FindFood),
             ActionNode(Actions.FIND_CRYSTALS, FindCrystals),
-            '''ActionNode(2, node_action0),
-            ActionNode(3, node_action0),
-            ActionNode(4, node_action0),
-            ActionNode(5, node_action0),
-            ActionNode(6, node_action0),
-            ActionNode(7, node_action0),
-            ActionNode(8, node_action0),
-            ActionNode(9, node_action0),'''
         ]
         self.__args = {
             Actions.LOOK: [],
@@ -116,7 +108,7 @@ class Client:
             if len(self.__inQueue) == 2 and welcome is True:
                 try:
                     int(self.__inQueue.popleft())
-                    self.__mapSize = tuple(map(int, self.__inQueue.popleft().split(" ")))
+                    self.mapSize = tuple(map(int, self.__inQueue.popleft().split(" ")))
                 except ValueError:
                     raise ZappyException('Unexpected response')
                 break
@@ -126,8 +118,8 @@ class Client:
     def run(self):
         self.auth()
         ordinal = lambda n: "%d%s" % (n, "tsnrhtdd"[(n / 10 % 10 != 1) * (n % 10 < 4) * n % 10::4])
-        print("Authentication successful, map size of %d x %d" % (self.__mapSize[0], self.__mapSize[1]))
-        player = Ai(self.__mapSize[0], self.__mapSize[1])
+        print("Authentication successful, map size of %d x %d" % (self.mapSize[0], self.mapSize[1]))
+        player = Ai(self.mapSize[1], self.mapSize[0])
         parser = CmdParser.CmdParser(player, self.__outQueue, self.__msgQueue,
                                      (self.__port, self.__name, self.__machine))
         while True:

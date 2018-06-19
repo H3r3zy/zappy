@@ -58,8 +58,11 @@ class CmdParser:
 
     def take(self, ans: str, obj: str, pos: tuple):
         if ans == "ok":
+            print("J'ai take !!!!!!!!!")
             self.__player.getInventory()[obj] += 1
             self.__map[pos[1]][pos[0]].getStones()[obj] -= 1
+        else:
+            print(ans)
 
     def fork(self):
         system(argv[0] + " -p " + str(self.__info[0]) + " -n " + self.__info[1] + " -h " + self.__info[2])
@@ -137,7 +140,7 @@ class CmdParser:
                 self.__actions[last[0]](match.group(0), last[1], last[2])
             else:
                 match = re.match("message (\d), (.+)", cmd)
-                match1 = re.match("eject: (\d)")
+                match1 = re.match("eject: (\d)", cmd)
                 if match:
                     self.__msgQueue.append(match.group(2))
                 elif match1:

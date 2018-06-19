@@ -19,6 +19,9 @@ typedef struct {
 	char *arg;
 } gui_command_t;
 
+gui_command_t *get_commands();
+void gui_command_manager(server_t *server, char *command);
+
 /**
  * GUI Map requests
  */

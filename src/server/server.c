@@ -15,6 +15,17 @@
 #include "server.h"
 #include "scheduler.h"
 
+void create_teams_clients(server_t *server)
+{
+	for (teams_t *team = server->teams; team; team = team->next) {
+		team->remaining_place = server->max_clients_per_teams;
+		team->client_max = server->max_clients_per_teams;
+		team->clients = calloc(server->max_clients_per_teams,
+			sizeof(client_t *));
+		debug(GINFO "Team '%s' created\n", team->name);
+	}
+}
+
 static int init_server(server_t *server)
 {
 	init_map(&server->map);

@@ -10,6 +10,7 @@
 
 #include <unistd.h>
 #include <poll.h>
+#include <inttypes.h>
 #include "socket.h"
 
 #define READ_SIZE (16)
@@ -59,14 +60,14 @@ typedef struct entity_s {
 	struct entity_s *prev;
 	struct entity_s *next;
 	pos_t pos;
-	uint id;
+	uint32_t id;
 	void *ptr;
 } entity_t;
 
 typedef struct {
-	uint bag[RESOURCE_NB];
-	uint level;
-	uint vision;
+	uint32_t bag[RESOURCE_NB];
+	uint32_t level;
+	uint32_t vision;
 	orientation_t orientation;
 } user_t;
 
@@ -76,7 +77,7 @@ typedef struct teams_s teams_t;
 
 typedef struct task_s {
 	long long int started_time;
-	uint time_unit;
+	uint32_t time_unit;
 	char *command;
 	void (*function)(server_t *server, client_t *invoker, char *command);
 } task_t;
@@ -84,7 +85,7 @@ typedef struct task_s {
 typedef struct egg_s {
 	long long int started_time;
 	pos_t pos;
-	ulong id;
+	uint32_t id;
 	struct egg_s *prev;
 	struct egg_s *next;
 	client_t *client;
@@ -110,19 +111,19 @@ struct teams_s {
 	struct teams_s *next;
 	egg_t *eggs;
 	char *name;
-	uint remaining_place;
+	uint32_t remaining_place;
 };
 
 typedef struct cell_s {
 	entity_t *players;
-	uint items[RESOURCE_NB];
+	uint32_t items[RESOURCE_NB];
 } cell_t;
 
 typedef struct {
 	pos_t size;
 	cell_t **map;
-	uint stock[RESOURCE_NB + 1];
-	uint max_id;
+	uint32_t stock[RESOURCE_NB + 1];
+	uint32_t max_id;
 } map_t;
 
 typedef struct gui_s {
@@ -136,12 +137,12 @@ typedef struct gui_s {
 struct server_s {
 	socket_t fd;
 	ushort port;
-	uint freq;
-	uint max_clients_per_teams;
+	uint32_t freq;
+	uint32_t max_clients_per_teams;
 	map_t map;
 	teams_t *teams;
 	client_t *clients;
-	uint client_nb;
+	uint32_t client_nb;
 	gui_t gui;
 };
 
@@ -178,6 +179,9 @@ int get_o_w_dlt(pos_t *delta, orientation_t orientation);
 void fill_delta(pos_t *size, pos_t *pos1, pos_t *pos2, pos_t *delta);
 
 void update_resource(map_t *map, pos_t pos, entity_type_t t, int n);
+
+void write_uint32(char *buffer, int *idx, uint32_t nb);
+uint32_t read_uint32(char *buffer, int *idx);
 
 #define POS(c) (c)->entity->pos
 #define OR(c) (c)->user.orientation

@@ -10,6 +10,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <debug.h>
+#include <gui_command.h>
 #include "server.h"
 
 static const char *TYPENAME[] = {
@@ -32,11 +33,12 @@ static const char *TYPENAME[] = {
 void set_cmd(server_t *server, client_t *client, char *arg)
 {
 	debug(INFO "'%i' call Set '%s'\n", client->fd, arg);
-	for (uint i = 0; TYPENAME[i]; i++) {
+	for (uint32_t i = 0; TYPENAME[i]; i++) {
 		if (!strcasecmp(TYPENAME[i], arg) && client->user.bag[i]) {
 			update_resource(&server->map, client->entity->pos,
 				i, 1);
 			client->user.bag[i]--;
+			gui_pdr(server, client, i);
 			add_to_queue(client, "ok\n");
 			return;
 		}

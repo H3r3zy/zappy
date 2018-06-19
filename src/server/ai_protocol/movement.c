@@ -89,8 +89,8 @@ void pos(server_t *server, client_t *client,
 
 void setpos_cmd(server_t *server, client_t *client, char *arg)
 {
-	uint dx = atoi(arg);
-	uint dy = atoi(strchr(arg, ';') + 1);
+	uint32_t dx = atoi(arg);
+	uint32_t dy = atoi(strchr(arg, ';') + 1);
 
 	remove_player_from_map(&server->map, client->entity);
 	client->entity->pos.x = dx;

@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <server.h>
 #include <memory.h>
+#include <gui_command.h>
 #include "elevation.h"
 #include "debug.h"
 
@@ -19,9 +20,9 @@ const elevation_t ELEVATIONS[] = {{1, 0, 0, 0, 0, 0, 0, 1},
 
 static bool can_do_incantation(client_t *client, cell_t *cell)
 {
-	uint nb = 0;
+	uint32_t nb = 0;
 
-	for (uint i = 0; i < RESOURCE_NB; i++) {
+	for (uint32_t i = 0; i < RESOURCE_NB; i++) {
 		if (cell->items[i] != ELEVATIONS[client->user.level - 1][i]) {
 			debug(INFO "%i failed: %i instead of %i\n", i, cell->items[i], ELEVATIONS[client->user.level - 1][i]);
 			return false;
@@ -47,9 +48,9 @@ static void lvlup(cell_t *cell)
 	}
 }
 
-static void remove_stones(map_t *map, pos_t *pos, uint level)
+static void remove_stones(map_t *map, pos_t *pos, uint32_t level)
 {
-	for (uint i = 0; i < RESOURCE_NB; i++) {
+	for (uint32_t i = 0; i < RESOURCE_NB; i++) {
 		update_resource(map, *pos, i, ELEVATIONS[level - 1][i] * -1);
 	}
 }
@@ -65,13 +66,16 @@ bool incantation_verify(server_t *server, client_t *client,
 
 	debug(GINFO "'%i' %s Incantation\n", client->fd,
 		(st) ? ("Start") : ("Fail"));
-	for (entity_t *cl = cell->players; cl && st; cl = cl->next) {
+	if (!st)
+		return st;
+	gui_pic(server, client, cell->players);
+	for (entity_t *cl = cell->players; cl; cl = cl->next) {
 		tmp = ((client_t *)cl->ptr);
 		tmp->status = INCANTATION;
 		debug(INFO "\t'%i' participated\n", tmp->fd);
 		add_to_queue(tmp, "Elevation underway\n");
 	}
-	return (st);
+	return st;
 }
 
 void incantation_cmd(server_t *server, client_t *client,
@@ -88,11 +92,12 @@ void incantation_cmd(server_t *server, client_t *client,
 		debug(GINFO "Incantation failed\n");
 		return;
 	}
-	lvlup(cell);
 	remove_stones(&server->map, &client->entity->pos, client->user.level);
+	lvlup(cell);
 	snprintf(buffer, 126, "Current level: %i\n", client->user.level);
 	for (entity_t *cl = cell->players; cl; cl = cl->next) {
 		((client_t *)cl->ptr)->status = NORMAL;
 		add_to_queue(cl->ptr, buffer);
+		gui_pie(server, cl->ptr);
 	}
 }

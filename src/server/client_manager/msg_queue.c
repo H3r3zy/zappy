@@ -45,7 +45,7 @@ int send_responses(client_t *client)
 			return 1;
 		}
 		free(*client->queue);
-		for (uint i = 1; client->queue[i]; i++) {
+		for (uint32_t i = 1; client->queue[i]; i++) {
 			client->queue[i - 1] = client->queue[i];
 		}
 		client->queue[client->queue_index - 1] = NULL;

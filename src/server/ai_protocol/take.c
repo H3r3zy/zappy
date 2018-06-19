@@ -10,6 +10,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <debug.h>
+#include <gui_command.h>
 #include "server.h"
 
 static const char *TYPENAME[] = {
@@ -39,6 +40,7 @@ void take_cmd(server_t *server, client_t *client, char *arg)
 				i, -1);
 			client->user.bag[i]++;
 			add_to_queue(client, "ok\n");
+			gui_pgt(server, client, i);
 			return;
 		}
 	}

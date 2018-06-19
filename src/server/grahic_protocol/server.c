@@ -13,12 +13,15 @@
  * GUI command : get time unit
  * @param server
  * @param arg
+ *
+ * @response sgt srvFreq<uint32_t>
  */
 void gui_sgt(server_t *server, __attribute__((unused)) char *arg)
 {
-	char buff[11] = {0};
+	char buff[11] = "sgt freq\n";
+	int idx = 4;
 
-	snprintf(buff, 11, "sgt %u\n", server->freq);
+	write_uint32(buff, &idx, server->freq);
 	add_to_gui_queue(&server->gui, buff);
 }
 
@@ -31,7 +34,7 @@ void gui_sst(server_t *server, char *arg)
 {
 	long freq = strtol(arg, NULL, 10);
 
-	server->freq = (uint)freq;
+	server->freq = (uint32_t)freq;
 	add_to_gui_queue(&server->gui, "ok\n");
 }
 

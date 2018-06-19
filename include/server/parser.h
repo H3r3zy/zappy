@@ -9,11 +9,12 @@
 #define PSU_ZAPPY_2017_PARSER_H
 
 #include <stdbool.h>
+#include <stdint.h>
 #include <stdlib.h>
 
 typedef struct argument_s {
 	char *flag;
-	int (*func)(struct argument_s *, void *server, char **av, uint i);
+	int (*func)(struct argument_s *, void *server, char **av, uint32_t i);
 	bool mandatory;
 	bool error;
 	int call_number;

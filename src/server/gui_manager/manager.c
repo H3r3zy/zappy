@@ -35,8 +35,11 @@ static const gui_command_t COMMAND[] = {
  */
 void add_to_gui_queue(gui_t *gui, char *str)
 {
-	uint len = strlen(str);
+	uint32_t len = strlen(str);
 
+	if (!gui->logged)
+		return;
+	printf("str: %s\n", str);
 	if (gui->len + len >= gui->size) {
 		gui->size += GUI_QUEUE_SIZE;
 		gui->queue = realloc(gui->queue, gui->size);
@@ -45,7 +48,7 @@ void add_to_gui_queue(gui_t *gui, char *str)
 	gui->len += len;
 }
 
-static void check_gui_command(server_t *server, uint i, char *arg)
+static void check_gui_command(server_t *server, uint32_t i, char *arg)
 {
 	if (COMMAND[i].argument && !arg) {
 		debug(INFO "%s need argument\n", COMMAND[i].name);
@@ -65,7 +68,7 @@ static void gui_command_manager(server_t *server, char *command)
 		return;
 	if (tmp_len != strlen(name))
 		arg = &command[strlen(name) + 1];
-	for (uint i = 0; COMMAND[i].name; i++) {
+	for (uint32_t i = 0; COMMAND[i].name; i++) {
 		if (strcmp(name, COMMAND[i].name) == 0) {
 			check_gui_command(server, i, arg);
 			return;

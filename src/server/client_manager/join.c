@@ -26,7 +26,7 @@ static bool malloc_client_data(client_t *client)
 		return false;
 	}
 	memset(client->queue, 0, sizeof(char *) * (LIMIT_TASK_NUMBER + 1));
-	memset(client->user.bag, 0, sizeof(uint) * RESOURCE_NB);
+	memset(client->user.bag, 0, sizeof(uint32_t) * RESOURCE_NB);
 	memset(client->task, 0, sizeof(task_t *) * LIMIT_TASK_NUMBER);
 	return true;
 }

@@ -41,6 +41,13 @@ void gui_pbc(server_t *server, client_t *client, char *arg);
 void gui_pic(server_t *server, client_t *client, entity_t *entity);
 void gui_pfk(server_t *server, client_t *client);
 void gui_pie(server_t *server, client_t *client);
+void gui_pdr(server_t *server, client_t *client, entity_type_t type);
+void gui_pgt(server_t *server, client_t *client, entity_type_t type);
+void gui_pdi(server_t *server, client_t *client);
+void gui_enw(server_t *server, egg_t *egg, client_t *client);
+void gui_eht(server_t *server, egg_t *egg);
+void gui_ebo(server_t *server, egg_t *egg);
+void gui_edi(server_t *server, egg_t *egg);
 
 /**
  * GUI Server requests
@@ -52,5 +59,8 @@ void gui_nbr(server_t *server, char *arg);
 void gui_sgt(server_t *server, char *arg);
 void gui_sst(server_t *server, char *arg);
 void gui_tna(server_t *server, char *arg);
+
+uint32_t read_uint(char *buffer, int *idx);
+void write_uint(char *buffer, int *idx, uint32_t nb);
 
 #endif //PSU_ZAPPY_2017_GUI_COMMAND_H

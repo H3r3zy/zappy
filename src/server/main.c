@@ -44,7 +44,7 @@ int main(int ac, char **av)
 	int status = 0;
 
 	signal(SIGPIPE, SIG_IGN);
-	srand((uint) time(NULL) * getpid());
+	srand((uint32_t) time(NULL) * getpid());
 	memset(&serv, 0, sizeof(server_t));
 	serv.freq = 100;
 	if (ac < 13) {
@@ -57,3 +57,46 @@ int main(int ac, char **av)
 	destroy_server(&serv);
 	return status;
 }
+
+/*
+** EPITECH PROJECT, 2018
+** a
+** File description:
+** a
+*/
+/*
+#include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
+#include <gui_command.h>
+
+#define STR_TO_INT(b, i) (buff[i]) | (buff[i + 1] << 8) | \
+	(buff[i + 2] << 16) | (buff[i + 3] << 24)
+
+int main(int ac, char **av)
+{
+	////////////////////////// SENDER PART
+	char buff[55] = "nbr line dera sibu mend phir thys food eggs\n";
+	uint32_t stock[8] = {
+		2, 434, 6, 8, 100, 77, 789, 3
+	};
+	int idx = 4;
+
+	for (size_t i = 0; i < 8; i++) {
+		write_uint(buff, &idx, stock[i]);
+		idx++;
+	}
+	printf("[%s]\n", buff);
+
+	////////////////////////// RECEIVER PART
+	uint bag[8] = {0};
+	idx = 4;
+	for (size_t i = 0; i < 8; i++) {
+		bag[i] = read_uint(buff, &idx);
+		idx++;
+		printf("expeted %d : %d\n", stock[i], bag[i]);
+
+	}
+	// otherwise
+	return 0;
+}*/

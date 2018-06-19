@@ -53,9 +53,11 @@ static void spawn(server_t *server, client_t *client, teams_t *team)
 			client->entity->pos.x = egg->pos.x;
 			client->entity->pos.y = egg->pos.y;
 			client->status = EGG;
+			gui_ebo(server, egg);
 			return;
 		}
 	}
+	gui_pnw(server, client);
 	client->entity->pos.x = rand() % server->map.size.x;
 	client->entity->pos.y = rand() % server->map.size.y;
 }
@@ -66,7 +68,7 @@ static void add_client_to_team(server_t *server, client_t *client,
 	char buffer[128] = {0};
 	struct timespec spec;
 
-	for (uint i = 0; i < server->max_clients_per_teams; i++) {
+	for (uint32_t i = 0; i < server->max_clients_per_teams; i++) {
 		if (team->clients[i] == NULL) {
 			team->clients[i] = client;
 			team->remaining_place--;
@@ -91,8 +93,6 @@ void add_to_team(server_t *server, client_t *client, char *name)
 		if (strcmp(tm->name, name) != 0)
 			continue;
 		add_client_to_team(server, client, tm);
-		if (server->gui.logged)
-			gui_pnw(server, client);
 		return;
 	}
 	add_to_queue(client, "ko\n");

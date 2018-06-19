@@ -34,17 +34,17 @@ void gui_msz(server_t *server, __attribute__((unused)) char *arg)
  * @param x
  * @param y
  */
-static void print_map_cell(server_t *server, uint x, uint y)
+static void print_map_cell(server_t *server, uint32_t x, uint32_t y)
 {
 	static char buff[50] = "bct xpos ypos food line dera "
 				"sibu mend phir thys\n";
-	uint *items = server->map.map[y][x].items;
+	uint32_t *items = server->map.map[y][x].items;
 
-	memcpy(buff + 4, &x, sizeof(uint));
-	memcpy(buff + 9, &y, sizeof(uint));
+	memcpy(buff + 4, &x, sizeof(uint32_t));
+	memcpy(buff + 9, &y, sizeof(uint32_t));
 	for (size_t i = 0; i < RESOURCE_NB; i++) {
-		memcpy(buff + 14 + i * (sizeof(uint) + 1), &items[i],
-			sizeof(uint));
+		memcpy(buff + 14 + i * (sizeof(uint32_t) + 1), &items[i],
+			sizeof(uint32_t));
 
 	}
 	add_to_gui_queue(&server->gui, buff);

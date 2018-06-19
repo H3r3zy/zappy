@@ -8,6 +8,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <server.h>
+#include <gui_command.h>
 #include "command.h"
 
 /**
@@ -37,6 +38,7 @@ static bool eject_client(server_t *server, client_t *client, pos_t *ejected_to,
 			snprintf(buffer, 124, "eject: %i\n",
 				get_o_w_dlt(delta, OR(tmp)));
 			add_to_queue(tmp, buffer);
+			gui_pex(server, client);
 		}
 		en = next;
 	}

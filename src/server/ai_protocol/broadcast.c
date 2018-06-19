@@ -11,6 +11,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <server.h>
+#include <gui_command.h>
 #include "command.h"
 #include "debug.h"
 #include "server.h"
@@ -89,4 +90,6 @@ void broadcast_cmd(server_t *server, client_t *client, char *arg)
 		}
 	}
 	free(response);
+	add_to_queue(client, "ok\n");
+	gui_pbc(server, client, arg);
 }

@@ -45,23 +45,23 @@ static char *add_objects(char *response, cell_t *cell)
 		response = concat(response, " player");
 	}
 	for (int i = 0; i < RESOURCE_NB; i++) {
-		for (uint n = 0; n < cell->items[i]; n++) {
+		for (uint32_t n = 0; n < cell->items[i]; n++) {
 			response = concat(response, ENTITY_TYPES[i].name);
 		}
 	}
 	return response;
 }
 
-static char *look_horizontal(map_t *map, pos_t pos, look_opt_t opt, uint currv)
+static char *look_horizontal(map_t *map, pos_t pos, look_opt_t opt, uint32_t currv)
 {
 	char *response = strdup("");
 	char *tmp = NULL;
 	pos_t start = (pos_t){pos.x, pos.y};
 
 	start.x = (opt.d < 0 && !pos.x) ? map->size.x - 1 : pos.x + opt.d;
-	start.y = (opt.d < 0 && !pos.y) ? map->size.y - 1 : pos.y + opt.d;
+	start.y = (opt.d > 0 && !pos.y) ? map->size.y - 1 : pos.y - opt.d;
 	pos = start;
-	for (uint i = 0; i < currv * 2 + 1; i++) {
+	for (uint32_t i = 0; i < currv * 2 + 1; i++) {
 		pos.y = (pos.y > map->size.y - 1) ? 0 : pos.y;
 		pos.x = (pos.x > map->size.x - 1) ? 0 : pos.x;
 		debug(WARNING "Look in %i;%i\n", pos.x, pos.y);
@@ -88,14 +88,14 @@ static char *look_horizontal(map_t *map, pos_t pos, look_opt_t opt, uint currv)
 * @param currv
 * @return
 */
-static char *look_vertical(map_t *map, pos_t pos, look_opt_t opt, uint currv)
+static char *look_vertical(map_t *map, pos_t pos, look_opt_t opt, uint32_t currv)
 {
 	char *response = strdup("");
 	char *tmp = NULL;
 	pos_t start = (pos_t){pos.x, pos.y};
 
 	start.x = (opt.d < 0 && !pos.x) ? map->size.x - 1 : pos.x + opt.d;
-	start.y = (opt.d < 0 && !pos.y) ? map->size.y - 1 : pos.y + opt.d;
+	start.y = (opt.d > 0 && !pos.y) ? map->size.y - 1 : pos.y - opt.d;
 	pos = start;
 	for (size_t i = 0; i < currv * 2 + 1; i++) {
 		pos.y = (pos.y > map->size.y - 1) ? 0 : pos.y;

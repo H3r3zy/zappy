@@ -35,7 +35,7 @@ void gui_nbu(server_t *server, __attribute__((unused)) char *arg)
 void gui_nbt(server_t *server, __attribute__((unused)) char *arg)
 {
 	char buff[10] = {0};
-	uint n = 0;
+	uint32_t n = 0;
 
 	for (teams_t *team = server->teams; team; team = team->next)
 		++n;
@@ -53,11 +53,11 @@ void gui_nbt(server_t *server, __attribute__((unused)) char *arg)
 void gui_nbr(server_t *server, __attribute__((unused)) char *arg)
 {
 	static char buff[55] = "nbr line dera sibu mend phir thys food eggs\n";
+	int idx = 4;
 
 	for (size_t i = 0; i < RESOURCE_NB + 1; i++) {
-		memcpy(buff + 4 + i * (sizeof(uint) + 1),
-			&server->map.stock[i], sizeof(uint));
-
+		write_uint32(buff, &idx, server->map.stock[i]);
+		idx++;
 	}
 	add_to_gui_queue(&server->gui, buff);
 }

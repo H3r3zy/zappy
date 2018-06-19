@@ -33,7 +33,7 @@ void update_resource(map_t *map, pos_t pos, entity_type_t t, int n)
 void init_map(map_t *map)
 {
 	float density = 1.0f;
-	uint elements = (uint)(map->size.x * map->size.y * density);
+	uint32_t elements = (uint32_t)(map->size.x * map->size.y * density);
 	pos_t pos;
 
 	map->map = malloc(sizeof(cell_t *) * map->size.y);
@@ -111,7 +111,7 @@ void move_player_to(map_t *map, entity_t *entity, pos_t *pos)
 }
 
 // TODO Remove this shit
-int print_da_letter(uint *items, entity_t *entities)
+int print_da_letter(uint32_t *items, entity_t *entities)
 {
 	int ok = 1;
 	if (items[Linemate])

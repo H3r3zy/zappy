@@ -50,7 +50,7 @@ std::vector<std::string>& irc::Communication::getEnqueueMap()
 int irc::Communication::writeOnServer(const std::string &msg)
 {
 	_write.lock();
-	int ret = irc::ManageServer::writeOnServer(_socket, msg);
+	int ret = irc::ManageServer::writeOnServer(_socket, msg + "\n");
 	_write.unlock();
 	return ret;
 }

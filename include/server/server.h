@@ -102,7 +102,7 @@ struct client_s {
 	struct client_s *prev;
 	struct client_s *next;
 	status_t status;
-	char queue_index;
+	int queue_index;
 };
 
 struct teams_s {

@@ -35,7 +35,7 @@ static const command_t COMMAND[] = {
 	{name: NULL, function: NULL, verify: NULL, time_unit: 0, argument: false}
 };
 
-static void check_command(server_t *server, client_t *client, uint i, char *arg)
+static void check_command(server_t *server, client_t *client, uint32_t i, char *arg)
 {
 	if (client->status == EGG) {
 		debug(INFO "'%i' is an EGG, can't do action\n", client->fd);
@@ -74,33 +74,38 @@ static void add_gui_client(server_t *server, client_t *client)
 		gui_pnw(server, clt);
 }
 
-static void command_manager(server_t *server, client_t *client, char *command)
+static int set_client_team(server_t *server, client_t *client, char *command)
+{
+	if (!strcmp(command, "gui"))
+		add_gui_client(server, client);
+	else {
+		debug(INFO "'%i' Try to join '%s' team\n", client->fd,
+			command);
+		add_to_team(server, client, command);
+	}
+	return 0;
+}
+
+static int command_manager(server_t *server, client_t *client, char *command)
 {
 	size_t tmp_len = strlen(command);
 	char *name = strtok(command, " \t");
 	char *arg = NULL;
 
 	if (!name)
-		return;
-	if (!client->team) {
-		if (!strcmp(command, "gui"))
-			add_gui_client(server, client);
-		else {
-			debug(INFO "'%i' Try to join '%s' team\n", client->fd,
-				command);
-			add_to_team(server, client, command);
-		}
-		return;
-	}
+		return 0;
+	if (!client->team)
+		return set_client_team(server, client, command);
 	if (tmp_len != strlen(name))
 		arg = &command[strlen(name) + 1];
-	for (uint i = 0; COMMAND[i].name; i++) {
+	for (uint32_t i = 0; COMMAND[i].name; i++) {
 		if (strcmp(name, COMMAND[i].name) == 0) {
 			check_command(server, client, i, arg);
-			return;
+			return 0;
 		}
 	}
 	add_to_queue(client, "ko\n");
+	return 1;
 }
 
 int read_client(server_t *server, client_t *client)

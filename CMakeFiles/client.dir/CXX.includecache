@@ -203,11 +203,15 @@ iostream
 -
 cstring
 -
+sstream
+-
 ManageServer.hpp
 /home/wisenoa/mergeZappy/PSU_zappy_2017/Src/client/ManageServer.hpp
 
 /home/wisenoa/mergeZappy/PSU_zappy_2017/Src/client/Map.cpp
 iostream
+-
+unistd.h
 -
 thread
 -

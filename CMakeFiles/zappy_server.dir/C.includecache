@@ -19,6 +19,8 @@ math.h
 -
 server.h
 -
+gui_command.h
+-
 command.h
 /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/command.h
 debug.h
@@ -35,6 +37,8 @@ server.h
 /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/server.h
 
 /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/die.c
+gui_command.h
+-
 server.h
 /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/server.h
 debug.h
@@ -47,6 +51,8 @@ stdio.h
 -
 server.h
 -
+gui_command.h
+-
 command.h
 /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/command.h
 
@@ -55,7 +61,7 @@ time.h
 -
 stdlib.h
 -
-server.h
+gui_command.h
 -
 debug.h
 /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/debug.h
@@ -72,6 +78,8 @@ stdio.h
 server.h
 -
 memory.h
+-
+gui_command.h
 -
 elevation.h
 /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/elevation.h
@@ -127,6 +135,8 @@ stdlib.h
 -
 debug.h
 -
+gui_command.h
+-
 server.h
 /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/server.h
 
@@ -140,6 +150,8 @@ stdbool.h
 stdlib.h
 -
 debug.h
+-
+gui_command.h
 -
 server.h
 /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/server.h
@@ -224,6 +236,8 @@ stdio.h
 time.h
 -
 server.h
+-
+server.h
 /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/client_manager/server.h
 scheduler.h
 /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/client_manager/scheduler.h
@@ -241,6 +255,26 @@ stdio.h
 -
 debug.h
 /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/debug.h
+
+/home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/action.c
+unistd.h
+-
+string.h
+-
+stdlib.h
+-
+server.h
+/home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/server.h
+
+/home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/egg.c
+server.h
+/home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/server.h
+
+/home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/io.c
+stdint.h
+-
+memory.h
+-
 
 /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/map.c
 stdio.h
@@ -263,6 +297,20 @@ stdio.h
 -
 server.h
 -
+memory.h
+-
+debug.h
+-
+server.h
+/home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/server.h
+
+/home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/quantification.c
+stdio.h
+-
+string.h
+-
+server.h
+-
 server.h
 /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/server.h
 
@@ -273,6 +321,22 @@ stdlib.h
 -
 server.h
 /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/server.h
+
+/home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/status.c
+string.h
+-
+server.h
+/home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/server.h
+
+/home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/gui_manager/command.c
+string.h
+-
+gui_command.h
+/home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/gui_manager/gui_command.h
+debug.h
+/home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/gui_manager/debug.h
+server.h
+/home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/gui_manager/server.h
 
 /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/gui_manager/manager.c
 stdlib.h
@@ -336,6 +400,12 @@ server.h
 debug.h
 /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/debug.h
 
+/home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/parsing/game.c
+server.h
+/home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/parsing/server.h
+parser.h
+/home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/parsing/parser.h
+
 /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/parsing/gnl.c
 sys/types.h
 -
@@ -392,6 +462,8 @@ time.h
 stdbool.h
 -
 server.h
+-
+gui_command.h
 -
 debug.h
 /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/scheduler/debug.h
@@ -457,6 +529,8 @@ include/server/server.h
 include/server/parser.h
 stdbool.h
 -
+stdint.h
+-
 stdlib.h
 -
 
@@ -476,6 +550,8 @@ include/server/server.h
 unistd.h
 -
 poll.h
+-
+inttypes.h
 -
 socket.h
 include/server/socket.h

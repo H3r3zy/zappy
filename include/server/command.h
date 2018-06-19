@@ -20,12 +20,12 @@ typedef struct {
 	char *name;
 	void (*function)(server_t *server, client_t *client, char *arg);
 	bool (*verify)(server_t *server, client_t *client, char *arg);
-	uint time_unit;
+	uint32_t time_unit;
 	bool argument;
 } command_t;
 
 typedef struct look_opt_s {
-	uint vision;
+	uint32_t vision;
 	int d;
 } look_opt_t;
 

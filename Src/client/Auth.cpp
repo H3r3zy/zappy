@@ -194,7 +194,7 @@ bool irc::Auth::checkConnection()
 		modalError("Can't connect to the server");
 		return true;
 	}
-	if (irc::ManageServer::readServer(_socketServer, true) != "WELCOME") {
+	if (irc::ManageServer::readServer(_socketServer, true) != "WELCOME\n") {
 		modalError("Not a zappy server");
 		return true;
 	}
@@ -202,7 +202,7 @@ bool irc::Auth::checkConnection()
 		modalError("Can't write on server");
 		return true;
 	}
-	if (irc::ManageServer::readServer(_socketServer, true) != "ok") {
+	if (irc::ManageServer::readServer(_socketServer, true) != "ok\n") {
 		modalError("Can't login");
 	}
 	return false;

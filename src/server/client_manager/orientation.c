@@ -10,13 +10,13 @@
 #include "debug.h"
 
 /**
- * Fill the delta Arg with the delta between pos1 and pos2
- * @param size
- * @param pos1
- * @param pos2
- * @param delta
- * @return
- */
+* Fill the delta Arg with the delta between pos1 and pos2
+* @param size
+* @param pos1
+* @param pos2
+* @param delta
+* @return
+*/
 void fill_delta(pos_t *size, pos_t *pos1, pos_t *pos2, pos_t *delta)
 {
 	delta->x = pos2->x - pos1->x;
@@ -34,12 +34,12 @@ void fill_delta(pos_t *size, pos_t *pos1, pos_t *pos2, pos_t *delta)
 }
 
 /**
- * Transforme the delta the orientation of other player
- * in orientation from delta
- * @param delta
- * @param orientation
- * @return
- */
+* Transforme the delta the orientation of other player
+* in orientation from delta
+* @param delta
+* @param orientation
+* @return
+*/
 int get_o_w_dlt(pos_t *delta, orientation_t orientation)
 {
 	int o;

@@ -17,7 +17,7 @@
 * @param function
 */
 static void add_task_in_client(task_t **client_task, char *command,
-	uint time_unit, task_function_t function)
+	uint32_t time_unit, task_function_t function)
 {
 	task_t *task = malloc(sizeof(task_t));
 	struct timespec spec;
@@ -40,10 +40,10 @@ static void add_task_in_client(task_t **client_task, char *command,
 * @param command
 * @param function
 */
-void add_task_to_schedule(client_t *client, uint time_unit, char *command,
+void add_task_to_schedule(client_t *client, uint32_t time_unit, char *command,
 	task_function_t function)
 {
-	for (uint i = 0; i < LIMIT_TASK_NUMBER; i++) {
+	for (uint32_t i = 0; i < LIMIT_TASK_NUMBER; i++) {
 		if (client->task[i] == NULL) {
 			add_task_in_client(&client->task[i], command,
 				time_unit, function);

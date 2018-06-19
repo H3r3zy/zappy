@@ -1432,6 +1432,87 @@ src/server/debug.c.s:
 	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/debug.c.s
 .PHONY : src/server/debug.c.s
 
+src/server/grahic_protocol/action.o: src/server/grahic_protocol/action.c.o
+
+.PHONY : src/server/grahic_protocol/action.o
+
+# target to build an object file
+src/server/grahic_protocol/action.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/action.c.o
+.PHONY : src/server/grahic_protocol/action.c.o
+
+src/server/grahic_protocol/action.i: src/server/grahic_protocol/action.c.i
+
+.PHONY : src/server/grahic_protocol/action.i
+
+# target to preprocess a source file
+src/server/grahic_protocol/action.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/action.c.i
+.PHONY : src/server/grahic_protocol/action.c.i
+
+src/server/grahic_protocol/action.s: src/server/grahic_protocol/action.c.s
+
+.PHONY : src/server/grahic_protocol/action.s
+
+# target to generate assembly for a file
+src/server/grahic_protocol/action.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/action.c.s
+.PHONY : src/server/grahic_protocol/action.c.s
+
+src/server/grahic_protocol/egg.o: src/server/grahic_protocol/egg.c.o
+
+.PHONY : src/server/grahic_protocol/egg.o
+
+# target to build an object file
+src/server/grahic_protocol/egg.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/egg.c.o
+.PHONY : src/server/grahic_protocol/egg.c.o
+
+src/server/grahic_protocol/egg.i: src/server/grahic_protocol/egg.c.i
+
+.PHONY : src/server/grahic_protocol/egg.i
+
+# target to preprocess a source file
+src/server/grahic_protocol/egg.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/egg.c.i
+.PHONY : src/server/grahic_protocol/egg.c.i
+
+src/server/grahic_protocol/egg.s: src/server/grahic_protocol/egg.c.s
+
+.PHONY : src/server/grahic_protocol/egg.s
+
+# target to generate assembly for a file
+src/server/grahic_protocol/egg.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/egg.c.s
+.PHONY : src/server/grahic_protocol/egg.c.s
+
+src/server/grahic_protocol/io.o: src/server/grahic_protocol/io.c.o
+
+.PHONY : src/server/grahic_protocol/io.o
+
+# target to build an object file
+src/server/grahic_protocol/io.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/io.c.o
+.PHONY : src/server/grahic_protocol/io.c.o
+
+src/server/grahic_protocol/io.i: src/server/grahic_protocol/io.c.i
+
+.PHONY : src/server/grahic_protocol/io.i
+
+# target to preprocess a source file
+src/server/grahic_protocol/io.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/io.c.i
+.PHONY : src/server/grahic_protocol/io.c.i
+
+src/server/grahic_protocol/io.s: src/server/grahic_protocol/io.c.s
+
+.PHONY : src/server/grahic_protocol/io.s
+
+# target to generate assembly for a file
+src/server/grahic_protocol/io.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/io.c.s
+.PHONY : src/server/grahic_protocol/io.c.s
+
 src/server/grahic_protocol/map.o: src/server/grahic_protocol/map.c.o
 
 .PHONY : src/server/grahic_protocol/map.o
@@ -1486,6 +1567,33 @@ src/server/grahic_protocol/player.c.s:
 	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/player.c.s
 .PHONY : src/server/grahic_protocol/player.c.s
 
+src/server/grahic_protocol/quantification.o: src/server/grahic_protocol/quantification.c.o
+
+.PHONY : src/server/grahic_protocol/quantification.o
+
+# target to build an object file
+src/server/grahic_protocol/quantification.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/quantification.c.o
+.PHONY : src/server/grahic_protocol/quantification.c.o
+
+src/server/grahic_protocol/quantification.i: src/server/grahic_protocol/quantification.c.i
+
+.PHONY : src/server/grahic_protocol/quantification.i
+
+# target to preprocess a source file
+src/server/grahic_protocol/quantification.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/quantification.c.i
+.PHONY : src/server/grahic_protocol/quantification.c.i
+
+src/server/grahic_protocol/quantification.s: src/server/grahic_protocol/quantification.c.s
+
+.PHONY : src/server/grahic_protocol/quantification.s
+
+# target to generate assembly for a file
+src/server/grahic_protocol/quantification.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/quantification.c.s
+.PHONY : src/server/grahic_protocol/quantification.c.s
+
 src/server/grahic_protocol/server.o: src/server/grahic_protocol/server.c.o
 
 .PHONY : src/server/grahic_protocol/server.o
@@ -1512,6 +1620,60 @@ src/server/grahic_protocol/server.s: src/server/grahic_protocol/server.c.s
 src/server/grahic_protocol/server.c.s:
 	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/server.c.s
 .PHONY : src/server/grahic_protocol/server.c.s
+
+src/server/grahic_protocol/status.o: src/server/grahic_protocol/status.c.o
+
+.PHONY : src/server/grahic_protocol/status.o
+
+# target to build an object file
+src/server/grahic_protocol/status.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/status.c.o
+.PHONY : src/server/grahic_protocol/status.c.o
+
+src/server/grahic_protocol/status.i: src/server/grahic_protocol/status.c.i
+
+.PHONY : src/server/grahic_protocol/status.i
+
+# target to preprocess a source file
+src/server/grahic_protocol/status.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/status.c.i
+.PHONY : src/server/grahic_protocol/status.c.i
+
+src/server/grahic_protocol/status.s: src/server/grahic_protocol/status.c.s
+
+.PHONY : src/server/grahic_protocol/status.s
+
+# target to generate assembly for a file
+src/server/grahic_protocol/status.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/status.c.s
+.PHONY : src/server/grahic_protocol/status.c.s
+
+src/server/gui_manager/command.o: src/server/gui_manager/command.c.o
+
+.PHONY : src/server/gui_manager/command.o
+
+# target to build an object file
+src/server/gui_manager/command.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/gui_manager/command.c.o
+.PHONY : src/server/gui_manager/command.c.o
+
+src/server/gui_manager/command.i: src/server/gui_manager/command.c.i
+
+.PHONY : src/server/gui_manager/command.i
+
+# target to preprocess a source file
+src/server/gui_manager/command.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/gui_manager/command.c.i
+.PHONY : src/server/gui_manager/command.c.i
+
+src/server/gui_manager/command.s: src/server/gui_manager/command.c.s
+
+.PHONY : src/server/gui_manager/command.s
+
+# target to generate assembly for a file
+src/server/gui_manager/command.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/gui_manager/command.c.s
+.PHONY : src/server/gui_manager/command.c.s
 
 src/server/gui_manager/manager.o: src/server/gui_manager/manager.c.o
 
@@ -1620,6 +1782,33 @@ src/server/map.s: src/server/map.c.s
 src/server/map.c.s:
 	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/map.c.s
 .PHONY : src/server/map.c.s
+
+src/server/parsing/game.o: src/server/parsing/game.c.o
+
+.PHONY : src/server/parsing/game.o
+
+# target to build an object file
+src/server/parsing/game.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/parsing/game.c.o
+.PHONY : src/server/parsing/game.c.o
+
+src/server/parsing/game.i: src/server/parsing/game.c.i
+
+.PHONY : src/server/parsing/game.i
+
+# target to preprocess a source file
+src/server/parsing/game.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/parsing/game.c.i
+.PHONY : src/server/parsing/game.c.i
+
+src/server/parsing/game.s: src/server/parsing/game.c.s
+
+.PHONY : src/server/parsing/game.s
+
+# target to generate assembly for a file
+src/server/parsing/game.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/parsing/game.c.s
+.PHONY : src/server/parsing/game.c.s
 
 src/server/parsing/gnl.o: src/server/parsing/gnl.c.o
 
@@ -1964,15 +2153,33 @@ help:
 	@echo "... src/server/debug.o"
 	@echo "... src/server/debug.i"
 	@echo "... src/server/debug.s"
+	@echo "... src/server/grahic_protocol/action.o"
+	@echo "... src/server/grahic_protocol/action.i"
+	@echo "... src/server/grahic_protocol/action.s"
+	@echo "... src/server/grahic_protocol/egg.o"
+	@echo "... src/server/grahic_protocol/egg.i"
+	@echo "... src/server/grahic_protocol/egg.s"
+	@echo "... src/server/grahic_protocol/io.o"
+	@echo "... src/server/grahic_protocol/io.i"
+	@echo "... src/server/grahic_protocol/io.s"
 	@echo "... src/server/grahic_protocol/map.o"
 	@echo "... src/server/grahic_protocol/map.i"
 	@echo "... src/server/grahic_protocol/map.s"
 	@echo "... src/server/grahic_protocol/player.o"
 	@echo "... src/server/grahic_protocol/player.i"
 	@echo "... src/server/grahic_protocol/player.s"
+	@echo "... src/server/grahic_protocol/quantification.o"
+	@echo "... src/server/grahic_protocol/quantification.i"
+	@echo "... src/server/grahic_protocol/quantification.s"
 	@echo "... src/server/grahic_protocol/server.o"
 	@echo "... src/server/grahic_protocol/server.i"
 	@echo "... src/server/grahic_protocol/server.s"
+	@echo "... src/server/grahic_protocol/status.o"
+	@echo "... src/server/grahic_protocol/status.i"
+	@echo "... src/server/grahic_protocol/status.s"
+	@echo "... src/server/gui_manager/command.o"
+	@echo "... src/server/gui_manager/command.i"
+	@echo "... src/server/gui_manager/command.s"
 	@echo "... src/server/gui_manager/manager.o"
 	@echo "... src/server/gui_manager/manager.i"
 	@echo "... src/server/gui_manager/manager.s"
@@ -1985,6 +2192,9 @@ help:
 	@echo "... src/server/map.o"
 	@echo "... src/server/map.i"
 	@echo "... src/server/map.s"
+	@echo "... src/server/parsing/game.o"
+	@echo "... src/server/parsing/game.i"
+	@echo "... src/server/parsing/game.s"
 	@echo "... src/server/parsing/gnl.o"
 	@echo "... src/server/parsing/gnl.i"
 	@echo "... src/server/parsing/gnl.s"

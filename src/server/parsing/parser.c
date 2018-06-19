@@ -15,9 +15,9 @@ static const char *ARGUMENT_REQUIRED = "The argument '%s' is required\n";
 
 static const char *ERROR = "An error appeared with argument '%s'\n";
 
-static bool check_arg(void *argument, argument_t *manager, char **av, uint *i)
+static bool check_arg(void *argument, argument_t *manager, char **av, uint32_t *i)
 {
-	for (uint j = 0; manager[j].flag; j++) {
+	for (uint32_t j = 0; manager[j].flag; j++) {
 		if (strcmp(manager[j].flag, av[*i]) == 0) {
 			*i += manager[j].func(&manager[j], argument, av, *i);
 			manager[j].call_number++;
@@ -31,13 +31,13 @@ bool parser(void *argument, argument_t *manager, char **av)
 {
 	bool ret = true;
 
-	for (uint i = 1; av[i]; i++) {
+	for (uint32_t i = 1; av[i]; i++) {
 		if (!check_arg(argument, manager, av, &i)) {
 			fprintf(stderr, INVALID_ARGUMENT, av[i], i);
 			return false;
 		}
 	}
-	for (uint i = 0; manager[i].flag; i++) {
+	for (uint32_t i = 0; manager[i].flag; i++) {
 		if (manager[i].mandatory && !manager[i].call_number) {
 			fprintf(stderr, ARGUMENT_REQUIRED, manager[i].flag);
 			ret = false;

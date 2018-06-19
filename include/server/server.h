@@ -10,6 +10,7 @@
 
 #include <unistd.h>
 #include <poll.h>
+#include <inttypes.h>
 #include "socket.h"
 
 #define READ_SIZE (16)
@@ -19,12 +20,12 @@
 #define ENTITY_NB ((RESOURCE_NB) + 1)
 #define START_FOOD (10)
 
+#define EGG_ID ((RESOURCE_NB) + 1)
+
 #define FOOD_UNIT_TIME (126)
 #define EGG_UNIT_TIME (600)
 
 #define GUI_QUEUE_SIZE (1 << 12)
-
-#define UPDATE_RESOURCE(m, p, t, n) ((m)->map[(p).y][(p).x].items[(t)] += (n))
 
 typedef enum {
 	Linemate,
@@ -56,18 +57,17 @@ typedef struct {
 } pos_t;
 
 typedef struct entity_s {
-	ulong id;
-	entity_type_t type;
-	void *ptr;
-	pos_t pos;
 	struct entity_s *prev;
 	struct entity_s *next;
+	pos_t pos;
+	uint32_t id;
+	void *ptr;
 } entity_t;
 
 typedef struct {
-	uint level;
-	uint vision;
-	uint bag[RESOURCE_NB];
+	uint32_t bag[RESOURCE_NB];
+	uint32_t level;
+	uint32_t vision;
 	orientation_t orientation;
 } user_t;
 
@@ -77,51 +77,54 @@ typedef struct teams_s teams_t;
 
 typedef struct task_s {
 	long long int started_time;
-	uint time_unit;
+	uint32_t time_unit;
 	char *command;
 	void (*function)(server_t *server, client_t *invoker, char *command);
 } task_t;
 
 typedef struct egg_s {
 	long long int started_time;
-	teams_t *team;
-	client_t *client;
 	pos_t pos;
+	uint32_t id;
 	struct egg_s *prev;
 	struct egg_s *next;
+	client_t *client;
+	teams_t *team;
 } egg_t;
 
 struct client_s {
 	socket_t fd;
+	long long int started_time;
 	user_t user;
 	task_t *task[LIMIT_TASK_NUMBER];
 	teams_t *team;
 	char *queue[LIMIT_TASK_NUMBER + 1];
-	size_t queue_index;
 	entity_t *entity;
-	long long int started_time;
-	status_t status;
 	struct client_s *prev;
 	struct client_s *next;
+	status_t status;
+	int queue_index;
 };
 
 struct teams_s {
-	char *name;
-	uint remaining_place;
 	client_t **clients;
-	egg_t *eggs;
 	struct teams_s *next;
+	egg_t *eggs;
+	char *name;
+	uint32_t remaining_place;
+	uint32_t client_max;
 };
 
 typedef struct cell_s {
-	uint items[RESOURCE_NB];
 	entity_t *players;
+	uint32_t items[RESOURCE_NB];
 } cell_t;
 
 typedef struct {
 	pos_t size;
-	ulong max_id;
 	cell_t **map;
+	uint32_t stock[RESOURCE_NB + 1];
+	uint32_t max_id;
 } map_t;
 
 typedef struct gui_s {
@@ -135,12 +138,12 @@ typedef struct gui_s {
 struct server_s {
 	socket_t fd;
 	ushort port;
-	uint freq;
-	uint max_clients_per_teams;
+	uint32_t freq;
+	uint32_t max_clients_per_teams;
 	map_t map;
 	teams_t *teams;
 	client_t *clients;
-	size_t client_nb;
+	uint32_t client_nb;
 	gui_t gui;
 };
 
@@ -157,6 +160,7 @@ void die(server_t *server, client_t *client);
 void add_teams(server_t *server, char *name);
 void add_to_team(server_t *server, client_t *client, char *name);
 void create_teams_clients(server_t *server);
+void add_slot_in_team(teams_t *teams);
 
 void handle_new_client(server_t *server);
 int read_client(server_t *server, client_t *client);
@@ -164,8 +168,10 @@ void add_to_queue(client_t *client, char *msg);
 int send_responses(client_t *client);
 
 int try_write(int fd, char *msg);
+int try_write_gui(const int fd, char *msg, uint32_t len);
 
 int read_gui(server_t *server);
+void gui_continue_commands(server_t *);
 void add_to_gui_queue(gui_t *gui, char *str);
 
 void init_map(map_t *map);
@@ -175,6 +181,13 @@ void move_player_to(map_t *map, entity_t *entity, pos_t *pos);
 
 int get_o_w_dlt(pos_t *delta, orientation_t orientation);
 void fill_delta(pos_t *size, pos_t *pos1, pos_t *pos2, pos_t *delta);
+
+void update_resource(map_t *map, pos_t pos, entity_type_t t, int n);
+
+void write_uint32(char *buffer, int *idx, uint32_t nb);
+uint32_t read_uint32(char *buffer, int *idx);
+
+int try_write_gui(int fd, char *msg, uint32_t len);
 
 #define POS(c) (c)->entity->pos
 #define OR(c) (c)->user.orientation

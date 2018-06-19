@@ -12,59 +12,45 @@
 #include "debug.h"
 #include "server.h"
 
-static const gui_command_t COMMAND[] = {
-	{"msz", &gui_msz, false},
-	{"ppo", &gui_ppo, true},
-	{"plv", &gui_plv, true},
-	{"pin", &gui_pin, true},
-	{"bct", &gui_bct, true},
-	{"mct", &gui_mct, false},
-	{"nbu", &gui_nbu, false},
-	{"nbt", &gui_nbt, false},
-	{"sgt", &gui_sgt, false},
-	{"sst", &gui_sst, true},
-	{"tna", &gui_tna, true},
-};
+uint32_t my_strlen_backn(char *str)
+{
+	uint32_t i = 0;
 
+	while (str && str[i] != '\n')
+		i++;
+	return i;
+}
+
+void my_strcpy_backn(char *dest, char const *str, uint32_t len)
+{
+	uint32_t i = 0;
+
+	while (i < len) {
+		dest[i] = str[i];
+		i++;
+	}
+}
+
+/**
+* Add a string to the GUI Queue
+* @param gui
+* @param str
+*/
 void add_to_gui_queue(gui_t *gui, char *str)
 {
-	size_t len = strlen(str);
+	uint32_t len = my_strlen_backn(str) + 1;
 
+	debug(ERROR "%i => %s\n", len, str);
+	if (!gui->logged)
+		return;
 	if (gui->len + len >= gui->size) {
 		gui->size += GUI_QUEUE_SIZE;
 		gui->queue = realloc(gui->queue, gui->size);
 	}
-	strcat(gui->queue + gui->len, str);
+
+	my_strcpy_backn(gui->queue + gui->len, str, len);
 	gui->len += len;
-}
-
-static void check_gui_command(server_t *server, uint i, char *arg)
-{
-	if (COMMAND[i].argument && !arg) {
-		debug(INFO "%s need argument\n", COMMAND[i].name);
-		add_to_gui_queue(&server->gui, "ko\n");
-		return;
-	}
-	(*COMMAND[i].function)(server, arg);
-}
-
-static void gui_command_manager(server_t *server, char *command)
-{
-	size_t tmp_len = strlen(command);
-	char *name = strtok(command, " \t");
-	char *arg = NULL;
-
-	if (!name)
-		return;
-	if (tmp_len != strlen(name))
-		arg = &command[strlen(name) + 1];
-	for (uint i = 0; COMMAND[i].name; i++) {
-		if (strcmp(name, COMMAND[i].name) == 0) {
-			check_gui_command(server, i, arg);
-			return;
-		}
-	}
-	add_to_gui_queue(&server->gui, "ko\n");
+	debug(ERROR "%i => %s\n", gui->len, gui->queue);
 }
 
 int read_gui(server_t *server)
@@ -77,4 +63,12 @@ int read_gui(server_t *server)
 	gui_command_manager(server, request);
 	free(request);
 	return 0;
+}
+
+void gui_continue_commands(server_t *server)
+{
+	for (gui_command_t *cmd = get_commands(); cmd->name; cmd++) {
+		if (cmd->status)
+			(*cmd->function)(server, cmd->arg, &cmd->status);
+	}
 }

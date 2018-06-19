@@ -9,6 +9,7 @@
 #include <time.h>
 #include <stdbool.h>
 #include <server.h>
+#include <gui_command.h>
 #include "debug.h"
 #include "egg.h"
 #include "scheduler.h"
@@ -44,7 +45,7 @@ static bool check_task(server_t *server, client_t *client, task_t *task,
 */
 static void shift_task(client_t *client, ms_t now)
 {
-	for (uint i = 0; i < LIMIT_TASK_NUMBER - 1; i++) {
+	for (uint32_t i = 0; i < LIMIT_TASK_NUMBER - 1; i++) {
 		client->task[i] = client->task[i + 1];
 	}
 	if (client->task[0])
@@ -91,6 +92,7 @@ static void schedule_egg(server_t *server, client_t *client, ms_t now)
 			client->entity->pos.x, client->entity->pos.y,
 			client->user.orientation);
 		remove_egg(egg);
+		gui_eht(server, egg);
 		client->status = NORMAL;
 	}
 }

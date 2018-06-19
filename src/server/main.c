@@ -29,10 +29,8 @@ void usage(char *binary)
 	" of actions\n");
 }
 
-int main(int ac, char **av)
-{
-	server_t serv;
-	argument_t manager[] = {
+argument_t *get_arguments_manager() {
+	static argument_t manager[] = {
 		{"-p", &argument_port, true, false, 0},
 		{"-x", &argument_width, true, false, 0},
 		{"-y", &argument_height, true, false, 0},
@@ -41,10 +39,19 @@ int main(int ac, char **av)
 		{"-f", &argument_frequency, false, false, 0},
 		{NULL, NULL, true, false, 0}
 	};
+
+	return manager;
+}
+
+int main(int ac, char **av)
+{
+	server_t serv;
+	argument_t *manager = get_arguments_manager();
+
 	int status = 0;
 
 	signal(SIGPIPE, SIG_IGN);
-	srand((uint) time(NULL) * getpid());
+	srand((uint32_t) time(NULL) * getpid());
 	memset(&serv, 0, sizeof(server_t));
 	serv.freq = 100;
 	if (ac < 13) {

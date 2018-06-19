@@ -6,6 +6,7 @@
 */
 
 #include <iostream>
+#include <unistd.h>
 #include <thread>
 #include "SfmlTool.hpp"
 #include "Map.hpp"
@@ -20,7 +21,7 @@ irc::Map::Map(irc::Communication &comm, std::vector<int> &listId, bool &displayG
 	_playerPos.setSize(sf::Vector2f(20, 20));
 	_playerPos.setFillColor(sf::Color::Red);
 
-	_gameWindow.setFramerateLimit(60);
+	//_gameWindow.setFramerateLimit(60);
 	_gameWindow.setPosition(sf::Vector2i(200, 50));
 
 	/* Faking first movement */
@@ -34,6 +35,7 @@ irc::Map::Map(irc::Communication &comm, std::vector<int> &listId, bool &displayG
 	_character.emplace_back(_grid.getTextureCharacter(), tmp);
 
 	/* */
+	_comm.writeOnServer("msz");
 }
 
 void irc::Map::initCamera()
@@ -54,9 +56,12 @@ void irc::Map::loopDisplay()
 {
 	//std::thread caca(_character[0].playerLoop, _gameWindow);
 
-
+	sleep(3);
 	while (_gameWindow.isOpen()) {
 		_comm.lockDisplay();
+
+	//	_comm.loopRead();
+
 		getEvent();
 		/* Global Display */
 		_gameWindow.setView(_camera[MAP]);
@@ -93,6 +98,8 @@ bool irc::Map::getEvent()
 	sf::Event event{};
 
 	// while there are pending events...
+//	_comm.loopRead();
+
 	while (_gameWindow.pollEvent(event))
 	{
 		// check the type of the event...

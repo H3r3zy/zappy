@@ -7,31 +7,67 @@
 
 #include <iostream>
 #include <cstring>
+#include <sstream>
 #include "ManageServer.hpp"
 
 std::string irc::ManageServer::readServer(int socket, bool blockRead)
 {
+	std::cout << "je vais read sur mon serveur" << std::endl;
+
 	std::string result;
 	fd_set readfds;
 	struct timeval t = {0, 1000};
 
 	FD_ZERO(&readfds);
 	FD_SET(socket, &readfds);
-	if (select(socket + 1, &readfds, NULL, NULL, (!blockRead) ? &t : NULL) == -1)
+	if (select(socket + 1, &readfds, NULL, NULL, (!blockRead) ? &t : NULL) == -1) {
 		result = "select error\n";
-	else if (FD_ISSET(socket, &readfds)) {
+		std::cout << "ca a fail bordel" << std::endl;
+
+	} else if (FD_ISSET(socket, &readfds)) {
 		char buffer[4096];
 		int len = 0;
+		std::cout << "je boucle dedans" << std::endl;
+
 		do {
 			len = (int)read(socket, buffer, 4095);
 			if (len <= 0)
 				throw std::exception();
 			buffer[len] = '\0';
 			result += buffer;
-		} while (strlen(buffer) == 4096);
-		if (result.size() > 1 && result[result.size() - 1] == '\n')
-			result.erase(result.size() - 1, 1);
+			std::cout << len << " => " << buffer << " = " << result << std::endl;
+		} while (len == 4095);
+		if (strncmp(buffer, "msz", 3) == 0) {
+			uint32_t x = 0;
+			uint32_t y = 0;
+			memcpy(&x, buffer + 4, sizeof(uint32_t));
+			memcpy(&y, buffer + 9, sizeof(uint32_t));
+			std::cout << len << " map size: " << (int) x << " " << (int) y << std::endl;
+
+
+
+
+
+			uint bag[8] = {0};
+			for (size_t i = 0; i < 8; i++) {
+				memcpy(&bag[i],
+					buffer + 4 + i * (sizeof(uint) + 1), sizeof(uint));
+				printf("expeted %d\n", bag[i]);
+
+			}
+
+			exit(1);
+		}
+	} else {
+		std::cout << "NTM gros con" << std::endl;
+
 	}
+	sleep(2);
+	std::stringstream ss(result);
+	std::string command;
+	ss >> command;
+	std::cout << "COMMAND: " << command << std::endl;
+
 	std::cout << "result: " << result << std::endl;
 	return result;
 }
@@ -66,6 +102,7 @@ int irc::ManageServer::getFileDescriptorSocket()
 
 int irc::ManageServer::writeOnServer(int socket, std::string msg)
 {
+	std::cout << "J'envoie [" << msg << "] a la socket " << socket << std::endl;
 	if (write(socket, msg.c_str(), msg.size()) == -1)
 		throw std::exception();
 	return 0;

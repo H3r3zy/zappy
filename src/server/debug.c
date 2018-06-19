@@ -56,11 +56,13 @@ void vdebug_if(bool status, char const *format, va_list ap)
 */
 void debug(char *format, ...)
 {
+	#ifdef DEBUG
 	va_list ap;
 
 	va_start(ap, format);
 	vdebug(format, ap);
 	va_end(ap);
+	#endif
 }
 
 /**
@@ -71,9 +73,11 @@ void debug(char *format, ...)
 */
 void debug_if(bool status, char *format, ...)
 {
+	#ifdef DEBUG
 	va_list ap;
 
 	va_start(ap, format);
 	vdebug_if(status, format, ap);
 	va_end(ap);
+	#endif
 }

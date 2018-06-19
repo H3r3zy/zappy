@@ -426,13 +426,31 @@
 		<Unit filename="/home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/debug.c">
 			<Option target="zappy_server"/>
 		</Unit>
+		<Unit filename="/home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/action.c">
+			<Option target="zappy_server"/>
+		</Unit>
+		<Unit filename="/home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/egg.c">
+			<Option target="zappy_server"/>
+		</Unit>
+		<Unit filename="/home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/io.c">
+			<Option target="zappy_server"/>
+		</Unit>
 		<Unit filename="/home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/map.c">
 			<Option target="zappy_server"/>
 		</Unit>
 		<Unit filename="/home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/player.c">
 			<Option target="zappy_server"/>
 		</Unit>
+		<Unit filename="/home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/quantification.c">
+			<Option target="zappy_server"/>
+		</Unit>
 		<Unit filename="/home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/server.c">
+			<Option target="zappy_server"/>
+		</Unit>
+		<Unit filename="/home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/status.c">
+			<Option target="zappy_server"/>
+		</Unit>
+		<Unit filename="/home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/gui_manager/command.c">
 			<Option target="zappy_server"/>
 		</Unit>
 		<Unit filename="/home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/gui_manager/manager.c">
@@ -445,6 +463,9 @@
 			<Option target="zappy_server"/>
 		</Unit>
 		<Unit filename="/home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/map.c">
+			<Option target="zappy_server"/>
+		</Unit>
+		<Unit filename="/home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/parsing/game.c">
 			<Option target="zappy_server"/>
 		</Unit>
 		<Unit filename="/home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/parsing/gnl.c">

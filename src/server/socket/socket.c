@@ -43,9 +43,10 @@ socket_t i_socket(uint16_t port)
 		debug(ERROR "socket error\n");
 		return SOCKET_ERROR;
 	}
-	if (i_socket_bind(fd, port) == SOCKET_ERROR)
-		return SOCKET_ERROR;
 	setsockopt(fd, SOL_SOCKET, SO_REUSEPORT, &optval, sizeof(optval));
+	if (i_socket_bind(fd, port) == SOCKET_ERROR) {
+		return SOCKET_ERROR;
+	}
 	return i_socket_listen(fd);
 }
 

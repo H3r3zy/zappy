@@ -73,18 +73,17 @@ void broadcast_cmd(server_t *server, client_t *client, char *arg)
 {
 	pos_t *pos = &client->entity->pos;
 	char *response = malloc(13 + strlen(arg));
-	int dx = 0;
-	int dy = 0;
+	pos_t d = {0};
 	char tile;
 
 	sprintf(response, "message 0, %s\n", arg);
 	for (client_t *clt = server->clients; clt; clt = clt->next) {
 		if (clt != client) {
-			dx = MAP_SHORTEST_PATH(
+			d.x = MAP_SHORTEST_PATH(
 				POS(clt).x - POS(clt).x, server->map.size.x);
-			dy = MAP_SHORTEST_PATH(
+			d.y = MAP_SHORTEST_PATH(
 				POS(clt).y - POS(clt).y, server->map.size.y);
-			tile = get_broadcast_tile(pos, clt, dx, dy);
+			tile = get_broadcast_tile(pos, clt, d.x, d.y);
 			response[8] = tile;
 			add_to_queue(clt, response);
 		}

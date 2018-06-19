@@ -33,17 +33,6 @@ void add_teams(server_t *server, char *name)
 	team->next = new;
 }
 
-void create_teams_clients(server_t *server)
-{
-	for (teams_t *team = server->teams; team; team = team->next) {
-		team->remaining_place = server->max_clients_per_teams;
-		team->client_max = server->max_clients_per_teams;
-		team->clients = calloc(server->max_clients_per_teams,
-			sizeof(client_t *));
-		debug(GINFO "Team '%s' created\n", team->name);
-	}
-}
-
 static void spawn(server_t *server, client_t *client, teams_t *team)
 {
 	for (egg_t *egg = team->eggs; egg; egg = egg->next) {

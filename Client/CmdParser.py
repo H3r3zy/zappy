@@ -21,7 +21,7 @@ class CmdParser:
             'Look': re.compile("\[( ?\w+)*(,( \w+)*)* ?\]", re.ASCII),
             'Inventory': re.compile("\[( ?(\w+ \d+)(,( \w+ \d+)?)* ?)\]", re.ASCII),
             'Connect_nbr': re.compile("%d+", re.ASCII),
-            'Incantation': re.compile("(Elevation underway Current level: \d)|(ko)", re.ASCII),
+            'Incantation': re.compile("(Elevation underway)|(ko)", re.ASCII),
             'Forward': re.compile("ok", re.ASCII),
             'Right': re.compile("ok", re.ASCII),
             'Left': re.compile("ok", re.ASCII),
@@ -130,6 +130,9 @@ class CmdParser:
     def parse(self, cmd: str) -> bool:
         if cmd == "dead":
             return False
+        if re.match("Current level: \d", cmd) is not None:
+            self.__player.levelUp()
+            return True
         last = self.__queue.popleft()
         match = self.__patterns[last[0]].match(cmd)
         self.__handledId += 1

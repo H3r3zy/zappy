@@ -59,3 +59,6 @@ class Ai:
     def setCoord(self, x: int, y: int):
         self.__coord[0] = x
         self.__coord[1] = y
+
+    def levelUp(self):
+        self.__level += 1

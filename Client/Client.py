@@ -133,7 +133,7 @@ class Client:
         while True:
             self.refresh()
             self.refresh_queue()
-            if len(self.__inQueue) > 0:
+            while len(self.__inQueue) > 0:
                 if not parser.parse(self.__inQueue.popleft()):
                     print("I died being at the %s level" % ordinal(player.getLevel()))
                     return

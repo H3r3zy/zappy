@@ -21,15 +21,14 @@ uint32_t my_strlen_backn(char *str)
 	return i;
 }
 
-void my_strcpy_backn(char *dest, char *str)
+void my_strcpy_backn(char *dest, char const *str, uint32_t len)
 {
-	uint32_t  i =0;
+	uint32_t i = 0;
 
-	while (str && str[i] != '\n') {
+	while (i < len) {
 		dest[i] = str[i];
 		i++;
 	}
-	dest[i] = '\n';
 }
 
 /**
@@ -39,7 +38,7 @@ void my_strcpy_backn(char *dest, char *str)
 */
 void add_to_gui_queue(gui_t *gui, char *str)
 {
-	uint32_t len = my_strlen_backn(str);
+	uint32_t len = my_strlen_backn(str) + 1;
 
 	debug(ERROR "%i => %s\n", len, str);
 	if (!gui->logged)
@@ -48,9 +47,10 @@ void add_to_gui_queue(gui_t *gui, char *str)
 		gui->size += GUI_QUEUE_SIZE;
 		gui->queue = realloc(gui->queue, gui->size);
 	}
-	my_strcpy_backn(gui->queue + gui->len, str);
+
+	my_strcpy_backn(gui->queue + gui->len, str, len);
 	gui->len += len;
-	debug(ERROR "%s\n", gui->queue);
+	debug(ERROR "%i => %s\n", gui->len, gui->queue);
 }
 
 int read_gui(server_t *server)

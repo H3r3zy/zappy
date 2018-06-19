@@ -12,6 +12,8 @@ class Actions(IntEnum):
     CHECK_FOOD = 1,  # type: Actions
     FIND_FOOD = 2,
     FIND_CRYSTALS = 3,
+    FORWARD = 4,
+    CHECKUP = 5,
 
 
 def look(client: Client, player: Ai, args):
@@ -33,12 +35,27 @@ def CheckingFood(client: Client, player: Ai, args):
     return Actions.FIND_CRYSTALS
 
 
+def Forward(client: Client, player: Ai, args):
+    print("Pas de truc au alentour, je me déplace aléatoirement")
+    finding_path = PathFinding(client.mapSize[1], client.mapSize[0])
+    coords = player.getCoord()
+    actions, player.dir = finding_path.goToTile(coords, (coords[0] + 1, coords[1] + 1), player.dir)
+    for move in actions:
+        client.build_command(move)
+    print("Du coup je suis en %s" % player.getCoord())
+    return Actions.LOOK
+
+
 def FindFood(client: Client, player: Ai, args):
     print("Je cherche de la food")
     radar = PathFinding.radar(player.getCoord()[0], player.getCoord()[1], 9)
     finding_path = PathFinding(client.mapSize[1], client.mapSize[0])
     map = player.getMap()
 
+    x = player.getCoord()[0] % client.mapSize[0]
+    y = player.getCoord()[1] % client.mapSize[1]
+    if map[y][x].getStones()["food"] != 0:
+        client.build_command("Take", "food", tuple((x, y)))
     for coord in radar:
         coord[1] %= client.mapSize[1]
         coord[0] %= client.mapSize[0]
@@ -46,9 +63,9 @@ def FindFood(client: Client, player: Ai, args):
             actions, player.dir = finding_path.goToTile(player.getCoord(), coord, player.getDir())
             for move in actions:
                 client.build_command(move)
-            client.build_command("Take", "food", tuple(player.getCoord()))
+            client.build_command("Take", "food", tuple((coord[0], coord[1])))
             return Actions.LOOK
-    return Actions.LOOK
+    return Actions.FORWARD
 
 
 def FindCrystals(client: Client, player: Ai, args):
@@ -58,6 +75,12 @@ def FindCrystals(client: Client, player: Ai, args):
     map = player.getMap()
     needed_stones = player.elevation_array[player.getLevel()]
 
+    # Check à la case actuelle avant !
+    x = player.getCoord()[0] % client.mapSize[0]
+    y = player.getCoord()[1] % client.mapSize[1]
+    for stone in needed_stones:
+        if map[y][x].getStones()[stone] != 0:
+            client.build_command("Take", stone, tuple((x, y)))
     for coord in radar:
         for stone in needed_stones:
             coord[1] %= client.mapSize[1]
@@ -66,9 +89,10 @@ def FindCrystals(client: Client, player: Ai, args):
                 actions, player.dir = finding_path.goToTile(player.getCoord(), coord, player.getDir())
                 for move in actions:
                     client.build_command(move)
-                client.build_command("Take", stone, tuple(player.getCoord()))
+                client.build_command("Take", stone, tuple((coord[0], coord[1])))
+                print(player.getInventory())
                 return Actions.LOOK
-    return Actions.LOOK
+    return Actions.FORWARD
 
 
 class ActionNode:

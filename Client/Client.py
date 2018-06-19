@@ -33,12 +33,14 @@ class Client:
             ActionNode(Actions.CHECK_FOOD, CheckingFood),
             ActionNode(Actions.FIND_FOOD, FindFood),
             ActionNode(Actions.FIND_CRYSTALS, FindCrystals),
+            ActionNode(Actions.FORWARD, Forward),
         ]
         self.__args = {
             Actions.LOOK: [],
             Actions.CHECK_FOOD: [1, 2],
             Actions.FIND_FOOD: [1, 2],
             Actions.FIND_CRYSTALS: [1, 2],
+            Actions.FORWARD: [1, 2],
         }
         self.__outId = 0
         self.last = 0

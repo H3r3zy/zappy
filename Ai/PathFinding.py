@@ -76,7 +76,7 @@ class PathFinding:
 
         normal_range[0], normal_range[1] = self.dist(player_coords[0], to[0])
         normal_range[1] = Direction.WEST if normal_range[
-                                                          1] == Direction.NORTH else Direction.EAST
+                                                1] == Direction.NORTH else Direction.EAST
         opposite_range = [
             self.__mapsize_x - normal_range[0],
             Direction.EAST if normal_range[1] == Direction.WEST else Direction.WEST]
@@ -99,7 +99,6 @@ class PathFinding:
         if player_coords[0] == to[0] and player_coords[1] == to[1]:
             return actions
         if player_coords[0] != to[0] and player_coords[1] != to[1]:  # Diagonales
-            print("Je diagonale")
             if player_dir == Direction.NORTH or player_dir == Direction.SOUTH:
                 actions, player_dir = self.moveUpOrDown(player_coords, (player_coords[0], to[1]), player_dir)
                 player_coords[1] = to[1]
@@ -107,7 +106,6 @@ class PathFinding:
                 player_coords[0] = to[0]
                 actions += tmp
             else:
-                print("coucou c'est david")
                 actions, player_dir = self.moveLeftOrRight(player_coords, (to[0], player_coords[1]), player_dir)
                 player_coords[0] = to[0]
                 tmp, player_dir = self.moveUpOrDown(player_coords, to, player_dir)

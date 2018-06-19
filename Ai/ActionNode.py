@@ -16,7 +16,6 @@ class Actions(IntEnum):
 
 def look(client: Client, player: Ai, args):
     if look.id == -1:
-        print("Je viens de look")
         look.id = client.build_command("Look", "", tuple(player.getCoord()))
     if look.id != client.last:
         return Actions.LOOK
@@ -45,8 +44,6 @@ def FindFood(client: Client, player: Ai, args):
         coord[0] %= client.mapSize[0]
         if map[coord[1]][coord[0]].getStones()["food"] != 0:
             actions, player.dir = finding_path.goToTile(player.getCoord(), coord, player.getDir())
-            print("actions : %s " % actions)
-            print("coord après : %s" % player.getCoord())
             for move in actions:
                 client.build_command(move)
             client.build_command("Take", "food", tuple(player.getCoord()))
@@ -67,11 +64,8 @@ def FindCrystals(client: Client, player: Ai, args):
             coord[0] %= client.mapSize[0]
             if map[coord[1]][coord[0]].getStones()[stone] != 0:
                 actions, player.dir = finding_path.goToTile(player.getCoord(), coord, player.getDir())
-                print("actions : %s " % actions)
-                print("coord après : %s" % player.getCoord())
                 for move in actions:
                     client.build_command(move)
-                print(player.getCoord())
                 client.build_command("Take", stone, tuple(player.getCoord()))
                 return Actions.LOOK
     return Actions.LOOK

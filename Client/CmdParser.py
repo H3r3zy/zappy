@@ -4,7 +4,6 @@
 import re
 from os import system
 from sys import argv
-from Client import Client
 from Ai.Ai import *
 from collections import deque
 from Enum.Direction import *
@@ -58,7 +57,6 @@ class CmdParser:
 
     def take(self, ans: str, obj: str, pos: tuple):
         if ans == "ok":
-            print("J'ai take !!!!!!!!!")
             self.__player.getInventory()[obj] += 1
             self.__map[pos[1]][pos[0]].getStones()[obj] -= 1
         else:

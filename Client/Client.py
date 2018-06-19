@@ -86,7 +86,7 @@ class Client:
         return self.__outId - 1
 
     def refresh(self, mode: bool = False):
-        rcons, wcons, _ = select.select([self.__socket], [self.__socket] if len(self.__outBuff) > 0 else [], [], 0)
+        rcons, wcons, _ = select.select([self.__socket], [self.__socket] if len(self.__outBuff) > 0 else [], [], 0.1)
         for con in rcons:
             self.update_inbuff(con)
         for con in wcons:
@@ -114,6 +114,8 @@ class Client:
                 except ValueError:
                     raise ZappyException('Unexpected response')
                 break
+            if "ko" in self.__inQueue:
+                raise ZappyException('Unexpected response')
         self.__outQueue.clear()
         self.__outId = 0
 

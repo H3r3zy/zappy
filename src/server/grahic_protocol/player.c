@@ -170,6 +170,7 @@ void gui_pbc(server_t *server, client_t *client, char *arg)
 	buffer[idx] = ' ';
 	buffer[idx + 1] = 0;
 	strcat(buffer, arg);
+	strcat(buffer, "\n");
 	add_to_gui_queue(&server->gui, buffer);
 	free(buffer);
 }
@@ -184,16 +185,18 @@ void gui_pbc(server_t *server, client_t *client, char *arg)
  */
 void gui_pic(server_t *server, client_t *client, entity_t *entity)
 {
-	char buffer[1024] = {0};
-	char tmp_buff[11]  = {0};
+	static char buffer[1024] = "pic posX posY ";
+	int idx = 4;
 
-	sprintf(buffer, "pic %i %i", POS(client).x, POS(client).y);
-	for (entity_t *en = entity; en; en = en->next) {
-		sprintf(tmp_buff, " %u", en->id);
-		strcat(buffer, tmp_buff);
+	write_uint32(buffer, &idx, (uint32_t) POS(client).x);
+	++idx;
+	write_uint32(buffer, &idx, (uint32_t) POS(client).y);
+	for (entity_t *en = entity; en && idx + 5 < 1022; en = en->next) {
+		buffer[idx++] = ' ';
+		write_uint32(buffer, &idx, en->id);
 	}
-	strcat(buffer, "\n");
-	debug(ERROR "%s\n", buffer);
+	buffer[idx++] = '\n';
+	buffer[idx++] = 0;
 	add_to_gui_queue(&server->gui, buffer);
 }
 
@@ -206,9 +209,14 @@ void gui_pic(server_t *server, client_t *client, entity_t *entity)
  */
 void gui_pie(server_t *server, client_t *client)
 {
-	char buffer[1024] = {0};
+	static char buffer[1024] = "pie posX posY clvl\n";
+	int idx = 4;
 
-	snprintf(buffer, 1024, "pie %i %i %i\n", POS(client).x, POS(client).y, client->user.level);
+	write_uint32(buffer, &idx, (uint32_t) POS(client).x);
+	++idx;
+	write_uint32(buffer, &idx, (uint32_t) POS(client).y);
+	++idx;
+	write_uint32(buffer, &idx, client->user.level);
 	add_to_gui_queue(&server->gui, buffer);
 }
 
@@ -221,9 +229,10 @@ void gui_pie(server_t *server, client_t *client)
  */
 void gui_pfk(server_t *server, client_t *client)
 {
-	char buffer[1024] = {0};
+	static char buffer[1024] = "pfk clID\n";
+	int idx = 4;
 
-	snprintf(buffer, 1024, "pfk %u\n", client->entity->id);
+	write_uint32(buffer, &idx, client->entity->id);
 	add_to_gui_queue(&server->gui, buffer);
 }
 
@@ -237,9 +246,12 @@ void gui_pfk(server_t *server, client_t *client)
  */
 void gui_pdr(server_t *server, client_t *client, entity_type_t type)
 {
-	char buffer[1024] = {0};
+	static char buffer[1024] = "pdr clID enTp\n";
+	int idx = 4;
 
-	snprintf(buffer, 1024, "pdr %u %i\n", client->entity->id, type);
+	write_uint32(buffer, &idx, client->entity->id);
+	++idx;
+	write_uint32(buffer, &idx, type);
 	add_to_gui_queue(&server->gui, buffer);
 }
 
@@ -253,9 +265,12 @@ void gui_pdr(server_t *server, client_t *client, entity_type_t type)
  */
 void gui_pgt(server_t *server, client_t *client, entity_type_t type)
 {
-	char buffer[1024] = {0};
+	static char buffer[1024] = "pgt clID enTy\n";
+	int idx = 4;
 
-	snprintf(buffer, 1024, "pdt %u %i\n", client->entity->id, type);
+	write_uint32(buffer, &idx, client->entity->id);
+	++idx;
+	write_uint32(buffer, &idx, type);
 	add_to_gui_queue(&server->gui, buffer);
 }
 
@@ -268,9 +283,10 @@ void gui_pgt(server_t *server, client_t *client, entity_type_t type)
  */
 void gui_pdi(server_t *server, client_t *client)
 {
-	char buffer[1024] = {0};
+	static char buffer[1024] = "pdi clID\n";
+	int idx = 4;
 
-	snprintf(buffer, 1024, "pdi %u\n", client->entity->id);
+	write_uint32(buffer, &idx, client->entity->id);
 	add_to_gui_queue(&server->gui, buffer);
 }
 
@@ -284,10 +300,17 @@ void gui_pdi(server_t *server, client_t *client)
  */
 void gui_enw(server_t *server, egg_t *egg, client_t *client)
 {
-	char buffer[1024] = {0};
+	static char buffer[1024] = "enw egID clID posX posY\n";
+	int idx = 4;
 
-	snprintf(buffer, 1024, "enw %u %u %u %u\n", egg->id,
-		client->entity->id, POS(client).x, POS(client).y);
+	write_uint32(buffer, &idx, egg->id);
+	++idx;
+	write_uint32(buffer, &idx, client->entity->id);
+	++idx;
+	write_uint32(buffer, &idx, (uint32_t) POS(client).x);
+	++idx;
+	write_uint32(buffer, &idx, (uint32_t) POS(client).y);
+	++idx;
 	add_to_gui_queue(&server->gui, buffer);
 }
 
@@ -300,9 +323,10 @@ void gui_enw(server_t *server, egg_t *egg, client_t *client)
  */
 void gui_eht(server_t *server, egg_t *egg)
 {
-	char buffer[1024] = {0};
+	static char buffer[1024] = "eht egID\n";
+	int idx = 4;
 
-	snprintf(buffer, 1024, "eht %u\n", egg->id);
+	write_uint32(buffer, &idx, egg->id);
 	add_to_gui_queue(&server->gui, buffer);
 }
 
@@ -315,10 +339,10 @@ void gui_eht(server_t *server, egg_t *egg)
  */
 void gui_ebo(server_t *server, egg_t *egg)
 {
-	char buffer[1024] = "";
+	char buffer[1024] = "ebo egID\n";
 	int idx = 4;
 
-	snprintf(buffer, 1024, "ebo %u\n", egg->id);
+	write_uint32(buffer, &idx, egg->id);
 	add_to_gui_queue(&server->gui, buffer);
 }
 

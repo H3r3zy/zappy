@@ -21,10 +21,13 @@
  */
 void gui_msz(server_t *server, __attribute__((unused)) char *arg)
 {
-	char buff[16] = {0};
+	static char buff[16] = "msz mapX mapY\n";
+	int idx = 4;
 
-	snprintf(buff, 16, "msz %u %u\n", server->map.size.x,
-		server->map.size.y);
+	write_uint32(buff, &idx, (uint32_t) server->map.size.x);
+	++idx;
+	write_uint32(buff, &idx, (uint32_t) server->map.size.y);
+	++idx;
 	add_to_gui_queue(&server->gui, buff);
 }
 

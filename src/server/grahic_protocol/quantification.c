@@ -19,9 +19,10 @@
  */
 void gui_nbu(server_t *server, __attribute__((unused)) char *arg)
 {
-	char buff[10] = {0};
+	static char buff[10] = "nbu nbus\n";
+	int idx = 4;
 
-	snprintf(buff, 10, "nbu %u\n", server->client_nb);
+	write_uint32(buff, &idx, server->client_nb);
 	add_to_gui_queue(&server->gui, buff);
 }
 
@@ -34,12 +35,13 @@ void gui_nbu(server_t *server, __attribute__((unused)) char *arg)
  */
 void gui_nbt(server_t *server, __attribute__((unused)) char *arg)
 {
-	char buff[10] = {0};
+	static char buff[10] = "nbt nbte\n";
+	int idx = 4;
 	uint32_t n = 0;
 
 	for (teams_t *team = server->teams; team; team = team->next)
 		++n;
-	snprintf(buff, 10, "nbt %u\n", n);
+	write_uint32(buff, &idx, n);
 	add_to_gui_queue(&server->gui, buff);
 }
 

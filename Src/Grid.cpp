@@ -34,6 +34,22 @@ void Grid::loadingDisplay( sf::Vector2f &mapSize)
 	sf::Text text;
 	sf::Font font;
 	std::string total = std::to_string(mapSize.x * mapSize.y);
+	float totalNb = (mapSize.x * mapSize.y);
+	sf::Texture texture;
+	sf::Sprite sprite;
+
+	sf::RectangleShape totalRect;
+	totalRect.setFillColor(sf::Color(0, 80, 0, 122));
+	totalRect.setSize(sf::Vector2f(500, 50));
+	totalRect.setPosition(100, 540);
+
+	sf::RectangleShape currentRect;
+	currentRect.setFillColor(sf::Color::Green);
+	currentRect.setSize(sf::Vector2f(0, 50));
+	currentRect.setPosition(100, 540);
+
+	texture.loadFromFile("ronflex.png");
+	sprite.setTexture(texture);
 
 	font.loadFromFile("arial.ttf");
 	text.setFont(font);
@@ -41,6 +57,10 @@ void Grid::loadingDisplay( sf::Vector2f &mapSize)
 
 	while (!_ready) {
 		text.setString("Creating cell and texturing it : " + std::to_string(_blocNumber) + " / " + total);
+		currentRect.setSize(sf::Vector2f((_blocNumber / totalNb) * 500, 50));
+		window.draw(sprite);
+		window.draw(totalRect);
+		window.draw(currentRect);
 		window.draw(text);
 		window.display();
 		window.clear();

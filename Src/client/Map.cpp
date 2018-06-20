@@ -31,7 +31,6 @@ irc::Map::Map(irc::Communication &comm, bool &displayGui, bool &endClient) : _co
 
 	_gameWindow.setSize(sf::Vector2u(1200, 800));
 	_gameWindow.setFramerateLimit(60);
-	_gameWindow.setPosition(sf::Vector2i(200, 50));
 	//_gameWindow.setFramerateLimit(60);
 	_gameWindow.setPosition(sf::Vector2i(200, 50));
 

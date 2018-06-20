@@ -16,9 +16,12 @@ class ParseEnqueueMap {
 	ParseEnqueueMap(irc::Communication &comm);
 	sf::Vector2f ParseMapSize();
 	void fillMap(Grid &_grid, sf::Vector2f &mapSize);
+	void loadingDisplay( sf::Vector2f &mapSize);
 
 	private:
 	irc::Communication &_comm;
+	bool _ready = false;
+	int _blocNumber = 0;
 };
 
 #endif //CLIENT_PARSEENQUEUEMAP_HPP

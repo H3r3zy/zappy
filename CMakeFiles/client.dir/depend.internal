@@ -41,6 +41,7 @@ CMakeFiles/client.dir/Src/Grid.cpp.o
  Include/Grid.hpp
  Include/Text/AText.hpp
  Include/Text/GameText.hpp
+ Include/Tools/Thread.hpp
 CMakeFiles/client.dir/Src/Main.cpp.o
  /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Main.cpp
  Include/Class/Auth.hpp
@@ -250,6 +251,7 @@ CMakeFiles/client.dir/Src/client/Map.cpp.o
  Include/SfmlTool.hpp
  Include/Text/AText.hpp
  Include/Text/GameText.hpp
+ Include/Tools/Thread.hpp
  Include/WindowInfo.hpp
 CMakeFiles/client.dir/Src/client/Texture/GuiTexture.cpp.o
  /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/GuiTexture.cpp

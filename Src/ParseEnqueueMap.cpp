@@ -51,7 +51,9 @@ void ParseEnqueueMap::fillMap(Grid &_grid, sf::Vector2f &mapSize)
 		_comm.lockMap();
 		std::vector<CstringArray> test = _comm.getEnqueueMap();
 		_comm.unlockMap();
+		_blocNumber = 0;
 		for (const auto &it : test) {
+		//	window.clear(sf::Color::Black);
 			if (it.getCommandName() == "bct") {
 				std::cout << "Coammnde Name [" << it.getCommandName() << "]" << std::endl;
 				auto tmpPrint = it.getCommand();
@@ -70,10 +72,36 @@ void ParseEnqueueMap::fillMap(Grid &_grid, sf::Vector2f &mapSize)
 				_grid.getCell(tmpPrint[0], tmpPrint[1])->setRessources(4, tmpPrint[6]);
 				_grid.getCell(tmpPrint[0], tmpPrint[1])->setRessources(5, tmpPrint[7]);
 				_grid.getCell(tmpPrint[0], tmpPrint[1])->setRessources(6, tmpPrint[8]);
-				if (tmpPrint[0] == mapSize.x - 1 && tmpPrint[1] == mapSize.y - 1)
+				_blocNumber++;
+
+				if (tmpPrint[0] == mapSize.x - 1 && tmpPrint[1] == mapSize.y - 1) {
+					_ready = true;
 					return;
+				}
 			}
 		}
-		sleep(1);
+		//sleep(1);
 	}
+}
+
+
+void ParseEnqueueMap::loadingDisplay( sf::Vector2f &mapSize)
+{
+	sf::RenderWindow window(sf::VideoMode(800, 600), "Loading");
+	sf::Text text;
+	sf::Font font;
+	std::string total = std::to_string(mapSize.x * mapSize.y);
+
+	font.loadFromFile("arial.ttf");
+	text.setFont(font);
+
+
+	while (!_ready) {
+		std::cout << "bloc :" << _blocNumber << " total " << total << std::endl;
+		text.setString("Loading : " + std::to_string(_blocNumber) + " / " + total);
+		window.draw(text);
+		window.display();
+		window.clear();
+	}
+	window.close();
 }

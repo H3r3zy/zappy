@@ -5,19 +5,48 @@
 
 #include <SFML/Graphics/Sprite.hpp>
 #include <thread>
+#include <Tools/Thread.hpp>
 #include "Grid.hpp"
 
-Grid::Grid(const sf::Vector2f &mapSize) : _mapSize(mapSize), _nbActive(0)
+Grid::Grid(const sf::Vector2f &mapSize, sf::RenderWindow &window) : _mapSize(mapSize), _nbActive(0)
 {
 	std::cout << "nnike ta grosse chienne" << std::endl;
 	std::cout << "je suis dans Grid, la taille de ma map map X" << _mapSize.x << " Y " << _mapSize.y << std::endl;
+
+	window.setActive(false);
+	auto thread(new my::Thread([&]() {loadingDisplay(_mapSize);}));
 	loadTextures();
 	loadMap();
+
+	thread->join();
+	window.setActive(true);
 }
 
 Grid::~Grid()
 {
 	// TODO DELETE
+}
+
+
+void Grid::loadingDisplay( sf::Vector2f &mapSize)
+{
+	sf::RenderWindow window(sf::VideoMode(800, 600), "Loading ");
+	sf::Text text;
+	sf::Font font;
+	std::string total = std::to_string(mapSize.x * mapSize.y);
+
+	font.loadFromFile("arial.ttf");
+	text.setFont(font);
+
+
+	while (!_ready) {
+		std::cout << "bloc :" << _blocNumber << " total " << total << std::endl;
+		text.setString("Creating cell and texturing it : " + std::to_string(_blocNumber) + " / " + total);
+		window.draw(text);
+		window.display();
+		window.clear();
+	}
+	window.close();
 }
 
 void Grid::loadMap()
@@ -34,11 +63,13 @@ void Grid::loadMap()
 			dimension.first.x = i * 100;
 			dimension.first.y = ((j) * 100);
 			dimension.first.y *= -1;
+			++_blocNumber;
 			_gameMap.insert(GRID_MAP::value_type(POSITION(i, j),
 				new Cell(dimension, _texturePack[dist6(rng)], _resourcesPack)));
 		}
 	}
 	loadWater();
+	_ready = true;
 }
 
 bool Grid::loadTextures()

@@ -43,6 +43,8 @@ SFML/Graphics/Sprite.hpp
 -
 thread
 -
+Tools/Thread.hpp
+-
 Grid.hpp
 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Grid.hpp
 
@@ -108,6 +110,8 @@ IncludeGui.hpp
 
 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Communication.cpp
 iostream
+-
+SFML/Graphics/RenderWindow.hpp
 -
 ManageServer.hpp
 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/ManageServer.hpp
@@ -216,6 +220,8 @@ iostream
 unistd.h
 -
 thread
+-
+Tools/Thread.hpp
 -
 SfmlTool.hpp
 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/SfmlTool.hpp

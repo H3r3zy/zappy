@@ -8,10 +8,11 @@
 #include <iostream>
 #include <unistd.h>
 #include <thread>
+#include <Tools/Thread.hpp>
 #include "SfmlTool.hpp"
 #include "Map.hpp"
 
-irc::Map::Map(irc::Communication &comm, bool &displayGui, bool &endClient) : _comm(comm), _displayGui(displayGui), _endClient(endClient), _gameWindow(sf::VideoMode(1200, 800), "Oh voyage voyage, plus loiiiiin que la nuit et le jour"), _enqueueMap(_comm), _mapSize(_enqueueMap.ParseMapSize()), _grid(_mapSize)
+irc::Map::Map(irc::Communication &comm, bool &displayGui, bool &endClient) : _comm(comm), _displayGui(displayGui), _endClient(endClient), _gameWindow(sf::VideoMode(1200, 800), "Oh voyage voyage, plus loiiiiin que la nuit et le jour"), _enqueueMap(_comm), _mapSize(_enqueueMap.ParseMapSize()), _grid(_mapSize, _gameWindow)
 {
 	SfmlTool::InitAllFont();
 	//_gameWindow.setFramerateLimit(60);
@@ -20,6 +21,13 @@ irc::Map::Map(irc::Communication &comm, bool &displayGui, bool &endClient) : _co
 	_playerPos.setPosition(_camera[MAP].getCenter() -_camera[MAP].getSize());
 	_playerPos.setSize(sf::Vector2f(20, 20));
 	_playerPos.setFillColor(sf::Color::Red);
+
+	/* Updating all cells + creating thread for oadingScreen */
+	_gameWindow.setActive(false);
+	auto thread(new my::Thread([&]() {_enqueueMap.loadingDisplay(_mapSize);}));
+	_enqueueMap.fillMap(_grid, _mapSize);
+	thread->join();
+	_gameWindow.setActive(true);
 
 	_gameWindow.setFramerateLimit(60);
 	_gameWindow.setPosition(sf::Vector2i(200, 50));
@@ -31,8 +39,6 @@ irc::Map::Map(irc::Communication &comm, bool &displayGui, bool &endClient) : _co
 	_windowInfo->updateInfo(_grid.getNbActive(), _camera[MAP]);
 
 
-	/* Updating all cells */
-	_enqueueMap.fillMap(_grid, _mapSize);
 
 	sf::Vector2f tmp = {1000, 0};
 	_character.emplace_back(_grid.getTextureCharacter(), tmp);

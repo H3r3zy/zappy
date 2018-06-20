@@ -35,7 +35,6 @@ Cell::Cell(std::pair<sf::Vector2f, sf::Vector2f> squareDimension, sf::Texture *&
 
 	for (int i = 0; i < 9; i++) {
 		_takenPos[i] = false;
-		std::cout << "takenPos[" << i << "] = "<< _takenPos[i] << std::endl;
 	}
 	//sleep(1);
 
@@ -43,15 +42,11 @@ Cell::Cell(std::pair<sf::Vector2f, sf::Vector2f> squareDimension, sf::Texture *&
 		auto tmpPos = dist6(rng);
 
 		sf::Vector2f tmp = _randomPos[tmpPos];
-		std::cout << "Au début, tmpPos vaut " << tmpPos << std::endl;
-
 		while (_takenPos[tmpPos]) {
 			tmpPos++;
 			if (tmpPos > 8)
 				tmpPos = 0;
 			sf::Vector2f tmp = _randomPos[tmpPos];
-			std::cout << "c'est deja prit, tmpPos vaut maintenant " << tmpPos << std::endl;
-		//	usleep(10000);
 		}
 
 		_takenPos[tmpPos] = true;
@@ -63,11 +58,6 @@ Cell::Cell(std::pair<sf::Vector2f, sf::Vector2f> squareDimension, sf::Texture *&
 		_sprite[i + 7].setPosition(_position.x + tmp.x, _position.y + tmp.y);
 
 		_sprite[i].setScale(0.3, 0.3);
-
-		for (int j = 0; j < 9; j++) {
-			std::cout << "je regarde mnt ce qui est prit : takenPos[" << j << "] = "<< _takenPos[j] << std::endl;
-		}
-
 
 		std::cout << std::endl;
 	}

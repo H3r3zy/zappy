@@ -6,6 +6,7 @@
 */
 
 #include <iostream>
+#include <SFML/Graphics/RenderWindow.hpp>
 #include "ManageServer.hpp"
 #include "Communication.hpp"
 
@@ -114,3 +115,4 @@ void irc::Communication::unlockDisplay()
 {
 	_display.unlock();
 }
+

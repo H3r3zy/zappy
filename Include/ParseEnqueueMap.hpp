@@ -9,11 +9,13 @@
 #include <Class/Communication.hpp>
 #include <SFML/System.hpp>
 #include <unistd.h>
+#include "Grid.hpp"
 
 class ParseEnqueueMap {
 	public:
 	ParseEnqueueMap(irc::Communication &comm);
 	sf::Vector2f ParseMapSize();
+	void fillMap(Grid &_grid);
 
 	private:
 	irc::Communication &_comm;

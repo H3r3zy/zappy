@@ -35,7 +35,7 @@ void Grid::loadMap()
 			dimension.first.y = ((j) * 100);
 			dimension.first.y *= -1;
 			_gameMap.insert(GRID_MAP::value_type(POSITION(i, j),
-				new Cell(dimension, _texturePack[dist6(rng)])));
+				new Cell(dimension, _texturePack[dist6(rng)], _resourcesPack)));
 		}
 	}
 	loadWater();
@@ -60,6 +60,21 @@ bool Grid::loadTextures()
 			return false;
 		}
 	}
+
+	for (int i = 0; i < 14; i++) {
+		_resourcesPack.emplace_back(sf::Texture());
+	}
+
+	/* Food */
+	_resourcesPack[0].loadFromFile("extra/gui/pokeball.png", sf::IntRect(0, 0, 60, 60));
+
+	/* Pokeball */
+	_resourcesPack[1].loadFromFile("extra/gui/pokeball.png", sf::IntRect(60, 0, 60, 60));
+	_resourcesPack[2].loadFromFile("extra/gui/pokeball.png", sf::IntRect(120, 0, 60, 60));
+	_resourcesPack[3].loadFromFile("extra/gui/pokeball.png", sf::IntRect(180, 0, 60, 60));
+	_resourcesPack[4].loadFromFile("extra/gui/pokeball.png", sf::IntRect(240, 0, 60, 60));
+	_resourcesPack[5].loadFromFile("extra/gui/pokeball.png", sf::IntRect(300, 0, 60, 60));
+	_resourcesPack[6].loadFromFile("extra/gui/pokeball.png", sf::IntRect(360, 0, 60, 60));
 
 	for (int i = 0; i < 9; i++) {
 		_textureCharacterPack[WALK_LEFT].emplace_back(sf::Texture());
@@ -120,6 +135,8 @@ void Grid::displayGlobalGrid(sf::RenderWindow &window, const sf::View &view)
 	for (const auto &it : _activeMap) {
 		window.draw(it->getCell());
 		window.draw(it->getCellPos());
+		it->printAllResources(window);
+
 		++_nbActive;
 	}
 	for (auto &it : _waterMap) {

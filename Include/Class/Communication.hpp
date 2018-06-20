@@ -11,9 +11,41 @@
 # include <vector>
 # include <string>
 # include <mutex>
-#include <CstringArray.hpp>
+# include "CstringArray.hpp"
+# include <map>
 
 namespace irc {
+
+	typedef struct {
+		int q0;
+		int q1;
+		int q2;
+		int q3;
+		int q4;
+		int q5;
+		int q6;
+	} ressources_t;
+
+	typedef struct {
+		int id = 1;
+		std::string team = "Unknown";
+		std::string status = "Unknown";
+		ressources_t ressources = {0, 0, 0, 0, 0, 0, 0};
+		std::pair<double, double> _pos = {0, 0};
+	} player_data_t;
+
+	typedef struct {
+		int team_number = 0;
+		int user = 1;
+		ressources_t ressources = {0, 0, 0, 0, 0, 0, 0};
+		int eggs = 0;
+	} server_data_t;
+
+	typedef struct {
+		std::pair<int, int> _pos = {0, 0};
+		ressources_t ressources = {0, 0, 0, 0, 0, 0, 0};
+		int player_on = 0;
+	} shack_data_t;
 
 	class Communication {
 		public:
@@ -41,8 +73,16 @@ namespace irc {
 		void lockDisplay();
 		void unlockDisplay();
 
+		std::vector<int> _listId;
+		player_data_t _player;
+		server_data_t _server;
+		shack_data_t _shack;
+
 		protected:
 		void addMsgToQueue(const CstringArray &command);
+
+		protected:
+		void addMsgToQueue(const std::string &msg);
 
 		private:
 		int _socket = 0;

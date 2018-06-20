@@ -6,29 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/ParseEnqueueMap.cpp
-SFML/System.hpp
--
-ParseEnqueueMap.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/ParseEnqueueMap.hpp
-
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/ParseEnqueueMap.hpp
-Class/Communication.hpp
--
-SFML/System.hpp
--
-unistd.h
--
-
 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/CstringArray.cpp
 CstringArray.hpp
 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/CstringArray.hpp
-
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/CstringArray.hpp
-iostream
--
-vector
--
 
 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Entity/AMotionShape.cpp
 AMotionShape.hpp
@@ -42,6 +22,8 @@ ARectangleShape.hpp
 SFML/Graphics/RenderWindow.hpp
 -
 SfmlTool.hpp
+-
+random
 -
 Cell.hpp
 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Entity/Cell.hpp
@@ -69,6 +51,12 @@ iostream
 -
 Auth.hpp
 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Auth.hpp
+
+/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/ParseEnqueueMap.cpp
+SFML/System.hpp
+-
+ParseEnqueueMap.hpp
+/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/ParseEnqueueMap.hpp
 
 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/SfmlTool.cpp
 iostream
@@ -204,18 +192,6 @@ SFML_monitor.hpp
 IObjectSFML.hpp
 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui/IObjectSFML.hpp
 
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/GuiTexture.cpp
-regex
--
-Class/ManageServer.hpp
--
-iostream
--
-TextInputBckPlaceHolder.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/TextInputBckPlaceHolder.hpp
-GuiTexture.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/GuiTexture.hpp
-
 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/ManageDisplay.cpp
 unistd.h
 -
@@ -228,6 +204,8 @@ iostream
 cstring
 -
 sstream
+-
+CstringArray.hpp
 -
 ManageServer.hpp
 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/ManageServer.hpp
@@ -243,6 +221,42 @@ SfmlTool.hpp
 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/SfmlTool.hpp
 Map.hpp
 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Map.hpp
+
+/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/GuiTexture.cpp
+regex
+-
+iostream
+-
+Class/Communication.hpp
+-
+ManageServer.hpp
+/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/ManageServer.hpp
+Gui.hpp
+/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/Gui.hpp
+TextInputBckPlaceHolder.hpp
+/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/TextInputBckPlaceHolder.hpp
+GuiTexture.hpp
+/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/GuiTexture.hpp
+
+/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/IATexture.cpp
+Class/Gui/PersonalizedObject/TextInputBckPlaceHolder.hpp
+-
+Class/Communication.hpp
+-
+Gui.hpp
+/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/Gui.hpp
+IATexture.hpp
+/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/IATexture.hpp
+
+/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/shackTexture.cpp
+iostream
+-
+Class/Communication.hpp
+-
+Gui.hpp
+/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/Gui.hpp
+shackTexture.hpp
+/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/shackTexture.hpp
 
 Include/Abstract/AbsractObjectSFML.hpp
 map
@@ -266,6 +280,8 @@ string
 mutex
 -
 CstringArray.hpp
+Include/Class/CstringArray.hpp
+map
 -
 
 Include/Class/Gui.hpp
@@ -275,6 +291,10 @@ mutex
 -
 GuiTexture.hpp
 Include/Class/GuiTexture.hpp
+shackTexture.hpp
+Include/Class/shackTexture.hpp
+IATexture.hpp
+Include/Class/IATexture.hpp
 Communication.hpp
 Include/Class/Communication.hpp
 
@@ -354,12 +374,6 @@ functional
 Communication.hpp
 Include/Class/Gui/Communication.hpp
 
-Include/Class/GuiTexture.hpp
-SFML_monitor.hpp
-Include/Class/SFML_monitor.hpp
-IncludeGui.hpp
-Include/Class/IncludeGui.hpp
-
 Include/Class/ManageDisplay.hpp
 vector
 -
@@ -420,6 +434,26 @@ Include/Class/Character.hpp
 Communication.hpp
 Include/Class/Communication.hpp
 
+Include/Class/Texture/GuiTexture.hpp
+SFML_monitor.hpp
+Include/Class/Texture/SFML_monitor.hpp
+IncludeGui.hpp
+Include/Class/Texture/IncludeGui.hpp
+
+Include/Class/Texture/IATexture.hpp
+IncludeGui.hpp
+Include/Class/Texture/IncludeGui.hpp
+
+Include/Class/Texture/shackTexture.hpp
+IncludeGui.hpp
+Include/Class/Texture/IncludeGui.hpp
+
+Include/CstringArray.hpp
+iostream
+-
+vector
+-
+
 Include/Entity/AMotionShape.hpp
 SFML/System.hpp
 -
@@ -441,6 +475,8 @@ Include/Entity/IEntity.hpp
 Include/Entity/Cell.hpp
 iostream
 -
+unistd.h
+-
 map
 -
 SFML/System.hpp
@@ -452,6 +488,8 @@ SFML/Graphics/RectangleShape.hpp
 SFML/Graphics/Text.hpp
 -
 Text/GameText.hpp
+-
+SFML/Graphics/Sprite.hpp
 -
 ARectangleShape.hpp
 Include/Entity/ARectangleShape.hpp
@@ -523,6 +561,8 @@ SFML/System.hpp
 -
 unistd.h
 -
+Grid.hpp
+Include/Grid.hpp
 
 Include/SfmlTool.hpp
 SFML/Graphics/Font.hpp
@@ -556,11 +596,5 @@ SFML/Graphics/Font.hpp
 SFML/Graphics/Text.hpp
 -
 SfmlTool.hpp
--
-
-Src/CstringArray.hpp
-iostream
--
-vector
 -
 

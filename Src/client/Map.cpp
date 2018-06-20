@@ -11,7 +11,7 @@
 #include "SfmlTool.hpp"
 #include "Map.hpp"
 
-irc::Map::Map(irc::Communication &comm, std::vector<int> &listId, bool &displayGui, bool &endClient) : _comm(comm), _listId(listId), _displayGui(displayGui), _endClient(endClient), _gameWindow(sf::VideoMode(1200, 800), "Oh voyage voyage, plus loiiiiin que la nuit et le jour"), _enqueueMap(_comm), _mapSize(_enqueueMap.ParseMapSize()), _grid(_mapSize)
+irc::Map::Map(irc::Communication &comm, bool &displayGui, bool &endClient) : _comm(comm), _displayGui(displayGui), _endClient(endClient), _gameWindow(sf::VideoMode(1200, 800), "Oh voyage voyage, plus loiiiiin que la nuit et le jour"), _enqueueMap(_comm), _mapSize(_enqueueMap.ParseMapSize()), _grid(_mapSize)
 {
 	SfmlTool::InitAllFont();
 	//_gameWindow.setFramerateLimit(60);
@@ -21,12 +21,18 @@ irc::Map::Map(irc::Communication &comm, std::vector<int> &listId, bool &displayG
 	_playerPos.setSize(sf::Vector2f(20, 20));
 	_playerPos.setFillColor(sf::Color::Red);
 
+	_gameWindow.setFramerateLimit(60);
+	_gameWindow.setPosition(sf::Vector2i(200, 50));
 	//_gameWindow.setFramerateLimit(60);
 	_gameWindow.setPosition(sf::Vector2i(200, 50));
 
 	/* Faking first movement */
 	_grid.updateGrid3D(_camera[MAP]);
 	_windowInfo->updateInfo(_grid.getNbActive(), _camera[MAP]);
+
+
+	/* Updating all cells */
+	_enqueueMap.fillMap(_grid);
 
 	sf::Vector2f tmp = {1000, 0};
 	_character.emplace_back(_grid.getTextureCharacter(), tmp);

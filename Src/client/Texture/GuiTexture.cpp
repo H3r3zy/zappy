@@ -6,10 +6,16 @@
 */
 
 #include <regex>
-#include <Class/ManageServer.hpp>
 #include <iostream>
+#include <Class/Communication.hpp>
+#include "ManageServer.hpp"
+#include "Gui.hpp"
 #include "TextInputBckPlaceHolder.hpp"
 #include "GuiTexture.hpp"
+
+irc::GuiTexture::GuiTexture(irc::Gui &base) : _base(base)
+{
+}
 
 void irc::GuiTexture::initTexture()
 {
@@ -18,6 +24,19 @@ void irc::GuiTexture::initTexture()
 	initSettingsGame();
 	initDataServer();
 	initDataGame();
+
+	_base._monitor->addFuncLoop(0, [this] {
+		_nb_egg->setText("x "+ std::to_string(_base._comm._server.eggs));
+		_nb_q0->setText("x "+ std::to_string(_base._comm._server.ressources.q0));
+		_nb_q1->setText("x "+ std::to_string(_base._comm._server.ressources.q1));
+		_nb_q2->setText("x "+ std::to_string(_base._comm._server.ressources.q2));
+		_nb_q3->setText("x "+ std::to_string(_base._comm._server.ressources.q3));
+		_nb_q4->setText("x "+ std::to_string(_base._comm._server.ressources.q4));
+		_nb_q5->setText("x "+ std::to_string(_base._comm._server.ressources.q5));
+		_nb_q6->setText("x "+ std::to_string(_base._comm._server.ressources.q6));
+		_nb_teams->setText("Number of teams: "+ std::to_string(_base._comm._server.team_number));
+		_user_connected->setText("User connected: "+ std::to_string(_base._comm._server.user));
+	});
 }
 
 void irc::GuiTexture::initDataGame()
@@ -69,7 +88,7 @@ void irc::GuiTexture::initDataGame()
 	_nb_q6->setColor(sf::Color::Black);
 	container->addObjectList("q6_nb", _nb_q6);
 
-	_monitor->addObjectToDraw("data_games", container);
+	_base._monitor->addObjectToDraw("data_games", container);
 }
 
 void irc::GuiTexture::initDataServer()
@@ -93,13 +112,13 @@ void irc::GuiTexture::initDataServer()
 	_nb_teams->setColor(sf::Color::Black);
 	container->addObjectList("nb_teams", _nb_teams);
 
-	_monitor->addObjectToDraw("data_server", container);
+	_base._monitor->addObjectToDraw("data_server", container);
 }
 
 void irc::GuiTexture::initSettingsGame()
 {
 	auto container = new irc::Container(sf::IntRect(10, 260, WIDTH - 10, 60));
-	auto input = irc::TextInputBckPlaceHorder::createInput(sf::IntRect(0, 30, 220, 30), "Frequency", "extra/arial.tff", 20);
+	auto input = irc::TextInputBckPlaceHorder::createInput(sf::IntRect(0, 30, 220, 30), "Frequency", "extra/arial.ttf", 20);
 	auto title_change_freq = new irc::Text("extra/Gobold.otf", sf::IntRect(0, 0, 100, 20), "Change frequency:");
 	title_change_freq->setColor(sf::Color::Black);
 
@@ -118,13 +137,13 @@ void irc::GuiTexture::initSettingsGame()
 			return;
 		}
 		input->getObjectByName("bck")->setColor(sf::Color::White);
-		irc::ManageServer::writeOnServer(_socketServer, "sst " + freq);
+		_base._comm.writeOnServer("sst " + freq);
 	});
 
 	container->addObjectList("btn", btn, 1);
 	container->addObjectList("btn_hover", btn_hover, 0);
 
-	_monitor->addObjectToDraw("settings_game", container);
+	_base._monitor->addObjectToDraw("settings_game", container);
 }
 
 void irc::GuiTexture::initUser()
@@ -139,12 +158,12 @@ void irc::GuiTexture::initUser()
 	container->addObjectList("user_picture", user);
 	container->addObjectList("user_nick", nick);
 	container->addObjectList("user_sep", sep);
-	_monitor->addObjectToDraw("user_header", container);
+	_base._monitor->addObjectToDraw("user_header", container);
 }
 
 void irc::GuiTexture::initBck()
 {
 	auto bck = new irc::Square(sf::IntRect(0, 0, WIDTH, HEIGHT));
 	bck->setColor(sf::Color(240, 240, 240, 255));
-	_monitor->addObjectToDraw("background", bck);
+	_base._monitor->addObjectToDraw("background", bck);
 }

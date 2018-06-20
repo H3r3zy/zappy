@@ -39,6 +39,7 @@ namespace irc {
 
 		void setScene(int scene);
 		int getCurrentScene() const;
+		bool isSceneCreated(int scene);
 
 		sf::Vector2f getWindowSize() const;
 

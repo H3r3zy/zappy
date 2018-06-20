@@ -37,16 +37,17 @@ void irc::SFML_monitor::manageEvent(sf::Event &event)
 	bool ret = false;
 	std::size_t obj_send = 0;
 	std::size_t nb_obj = this->_listObject[_scene].size();
+	int save = _scene;
 
 	for (int layer = 1000; layer >= 0; layer--) {
-		for (auto it = this->_listObject[_scene].begin(); it != this->_listObject[_scene].end(); ++it) {
+		for (auto it = this->_listObject[save].begin(); it != this->_listObject[save].end(); ++it) {
 			if (!it->second)
 				break;
 			if (layer == (int)it->second->getLayer() && it->second->getBoolDisplay()) {
 				ret = it->second->updateEvent(event, this->_window, this->_windowSize);
 				obj_send++;
 			}
-			if (this->_listObject[_scene].size() != nb_obj)
+			if (this->_listObject[save].size() != nb_obj || _scene != save)
 				return;
 			if (obj_send == nb_obj || ret)
 				break;
@@ -74,8 +75,12 @@ void irc::SFML_monitor::drawObject()
 
 void irc::SFML_monitor::callFuncLoop()
 {
+	int save = _scene;
+
 	for (auto it = this->_listFunc[_scene].begin(); it != this->_listFunc[_scene].end() ; ++it) {
 		(*it)();
+		if (save != _scene)
+			break;
 	}
 }
 
@@ -168,4 +173,9 @@ bool irc::SFML_monitor::isWindowOpen()
 void irc::SFML_monitor::setPostionWindow(const sf::Vector2i &pos)
 {
 	_window.setPosition(pos);
+}
+
+bool irc::SFML_monitor::isSceneCreated(int scene)
+{
+	return _listObject.find(scene) != _listObject.end();
 }

@@ -4,7 +4,6 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/ParseEnqueueMap.cpp" "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/client.dir/Include/ParseEnqueueMap.cpp.o"
   "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/CstringArray.cpp" "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/client.dir/Src/CstringArray.cpp.o"
   "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Entity/AMotionShape.cpp" "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/client.dir/Src/Entity/AMotionShape.cpp.o"
   "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Entity/ARectangleShape.cpp" "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/client.dir/Src/Entity/ARectangleShape.cpp.o"
@@ -13,6 +12,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Entity/Water.cpp" "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/client.dir/Src/Entity/Water.cpp.o"
   "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Grid.cpp" "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/client.dir/Src/Grid.cpp.o"
   "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Main.cpp" "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/client.dir/Src/Main.cpp.o"
+  "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/ParseEnqueueMap.cpp" "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/client.dir/Src/ParseEnqueueMap.cpp.o"
   "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/SfmlTool.cpp" "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/client.dir/Src/SfmlTool.cpp.o"
   "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Text/AText.cpp" "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/client.dir/Src/Text/AText.cpp.o"
   "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Text/GameText.cpp" "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/client.dir/Src/Text/GameText.cpp.o"
@@ -31,16 +31,17 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui/ObjectSFML/TextInput.cpp" "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/TextInput.cpp.o"
   "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.cpp" "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/client.dir/Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.cpp.o"
   "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui/SFML_monitor.cpp" "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/client.dir/Src/client/Gui/SFML_monitor.cpp.o"
-  "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/GuiTexture.cpp" "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/client.dir/Src/client/GuiTexture.cpp.o"
   "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/ManageDisplay.cpp" "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/client.dir/Src/client/ManageDisplay.cpp.o"
   "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/ManageServer.cpp" "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/client.dir/Src/client/ManageServer.cpp.o"
   "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Map.cpp" "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/client.dir/Src/client/Map.cpp.o"
+  "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/GuiTexture.cpp" "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/client.dir/Src/client/Texture/GuiTexture.cpp.o"
+  "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/IATexture.cpp" "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/client.dir/Src/client/Texture/IATexture.cpp.o"
+  "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/shackTexture.cpp" "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/client.dir/Src/client/Texture/shackTexture.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "Src"
   "Include"
   "Include/Text"
   "Include/Entity"
@@ -48,6 +49,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "Include/Abstract"
   "Include/Interface"
   "Include/Class"
+  "Include/Class/Texture"
   "Include/Class/Gui"
   "Include/Class/Gui/PersonalizedObject"
   "Include/Class/Gui/Animation"

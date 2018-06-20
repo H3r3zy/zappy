@@ -49,7 +49,6 @@ set(CMAKE_C_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
-  "Src"
   "Include"
   "Include/Text"
   "Include/Entity"
@@ -57,6 +56,7 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
   "Include/Abstract"
   "Include/Interface"
   "Include/Class"
+  "Include/Class/Texture"
   "Include/Class/Gui"
   "Include/Class/Gui/PersonalizedObject"
   "Include/Class/Gui/Animation"

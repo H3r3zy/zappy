@@ -64,6 +64,7 @@ class Grid {
 	std::map<char, std::vector<sf::Texture>> _textureCharacterPack;
 	std::vector<sf::Texture *> _texturePack;
 	std::vector<sf::Texture> _waterPack;
+	std::vector<sf::Texture> _resourcesPack;
 };
 
 #endif //PSU_ZAPPY_2017_GRID_HPP

@@ -13,18 +13,18 @@
 
 namespace irc {
 
-	const std::size_t WIDTH = 300;
-	const std::size_t HEIGHT = 800;
+	class Gui;
 
 	class GuiTexture {
 		public:
-		GuiTexture() = default;
+		GuiTexture(irc::Gui &base);
 		virtual ~GuiTexture() = default;
 
 		void initTexture();
 
 		protected:
-		irc::SFML_monitor *_monitor = nullptr;
+		irc::Gui &_base;
+
 		std::string _nick = "Unknown";
 		std::string _ip = "0.0.0.0";
 
@@ -33,6 +33,13 @@ namespace irc {
 		// OBJ with update
 		irc::Text *_nb_teams = nullptr;
 		irc::Text *_user_connected = nullptr;
+
+		private:
+		void initBck();
+		void initUser();
+		void initSettingsGame();
+		void initDataServer();
+		void initDataGame();
 
 		irc::Text *_nb_egg = nullptr;
 		irc::Text *_nb_q0 = nullptr;
@@ -43,12 +50,6 @@ namespace irc {
 		irc::Text *_nb_q5 = nullptr;
 		irc::Text *_nb_q6 = nullptr;
 
-		private:
-		void initBck();
-		void initUser();
-		void initSettingsGame();
-		void initDataServer();
-		void initDataGame();
 	};
 
 }

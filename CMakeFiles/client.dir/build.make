@@ -249,9 +249,33 @@ CMakeFiles/client.dir/Src/Main.cpp.o.provides: CMakeFiles/client.dir/Src/Main.cp
 CMakeFiles/client.dir/Src/Main.cpp.o.provides.build: CMakeFiles/client.dir/Src/Main.cpp.o
 
 
+CMakeFiles/client.dir/Src/ParseEnqueueMap.cpp.o: CMakeFiles/client.dir/flags.make
+CMakeFiles/client.dir/Src/ParseEnqueueMap.cpp.o: Src/ParseEnqueueMap.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/client.dir/Src/ParseEnqueueMap.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/Src/ParseEnqueueMap.cpp.o -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/ParseEnqueueMap.cpp
+
+CMakeFiles/client.dir/Src/ParseEnqueueMap.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/client.dir/Src/ParseEnqueueMap.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/ParseEnqueueMap.cpp > CMakeFiles/client.dir/Src/ParseEnqueueMap.cpp.i
+
+CMakeFiles/client.dir/Src/ParseEnqueueMap.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/client.dir/Src/ParseEnqueueMap.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/ParseEnqueueMap.cpp -o CMakeFiles/client.dir/Src/ParseEnqueueMap.cpp.s
+
+CMakeFiles/client.dir/Src/ParseEnqueueMap.cpp.o.requires:
+
+.PHONY : CMakeFiles/client.dir/Src/ParseEnqueueMap.cpp.o.requires
+
+CMakeFiles/client.dir/Src/ParseEnqueueMap.cpp.o.provides: CMakeFiles/client.dir/Src/ParseEnqueueMap.cpp.o.requires
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/ParseEnqueueMap.cpp.o.provides.build
+.PHONY : CMakeFiles/client.dir/Src/ParseEnqueueMap.cpp.o.provides
+
+CMakeFiles/client.dir/Src/ParseEnqueueMap.cpp.o.provides.build: CMakeFiles/client.dir/Src/ParseEnqueueMap.cpp.o
+
+
 CMakeFiles/client.dir/Src/SfmlTool.cpp.o: CMakeFiles/client.dir/flags.make
 CMakeFiles/client.dir/Src/SfmlTool.cpp.o: Src/SfmlTool.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/client.dir/Src/SfmlTool.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/client.dir/Src/SfmlTool.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/Src/SfmlTool.cpp.o -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/SfmlTool.cpp
 
 CMakeFiles/client.dir/Src/SfmlTool.cpp.i: cmake_force
@@ -275,7 +299,7 @@ CMakeFiles/client.dir/Src/SfmlTool.cpp.o.provides.build: CMakeFiles/client.dir/S
 
 CMakeFiles/client.dir/Src/Text/AText.cpp.o: CMakeFiles/client.dir/flags.make
 CMakeFiles/client.dir/Src/Text/AText.cpp.o: Src/Text/AText.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/client.dir/Src/Text/AText.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/client.dir/Src/Text/AText.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/Src/Text/AText.cpp.o -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Text/AText.cpp
 
 CMakeFiles/client.dir/Src/Text/AText.cpp.i: cmake_force
@@ -299,7 +323,7 @@ CMakeFiles/client.dir/Src/Text/AText.cpp.o.provides.build: CMakeFiles/client.dir
 
 CMakeFiles/client.dir/Src/Text/GameText.cpp.o: CMakeFiles/client.dir/flags.make
 CMakeFiles/client.dir/Src/Text/GameText.cpp.o: Src/Text/GameText.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/client.dir/Src/Text/GameText.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/client.dir/Src/Text/GameText.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/Src/Text/GameText.cpp.o -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Text/GameText.cpp
 
 CMakeFiles/client.dir/Src/Text/GameText.cpp.i: cmake_force
@@ -323,7 +347,7 @@ CMakeFiles/client.dir/Src/Text/GameText.cpp.o.provides.build: CMakeFiles/client.
 
 CMakeFiles/client.dir/Src/Tools/Thread.cpp.o: CMakeFiles/client.dir/flags.make
 CMakeFiles/client.dir/Src/Tools/Thread.cpp.o: Src/Tools/Thread.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/client.dir/Src/Tools/Thread.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/client.dir/Src/Tools/Thread.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/Src/Tools/Thread.cpp.o -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Tools/Thread.cpp
 
 CMakeFiles/client.dir/Src/Tools/Thread.cpp.i: cmake_force
@@ -347,7 +371,7 @@ CMakeFiles/client.dir/Src/Tools/Thread.cpp.o.provides.build: CMakeFiles/client.d
 
 CMakeFiles/client.dir/Src/WindowInfo.cpp.o: CMakeFiles/client.dir/flags.make
 CMakeFiles/client.dir/Src/WindowInfo.cpp.o: Src/WindowInfo.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/client.dir/Src/WindowInfo.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/client.dir/Src/WindowInfo.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/Src/WindowInfo.cpp.o -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/WindowInfo.cpp
 
 CMakeFiles/client.dir/Src/WindowInfo.cpp.i: cmake_force
@@ -371,7 +395,7 @@ CMakeFiles/client.dir/Src/WindowInfo.cpp.o.provides.build: CMakeFiles/client.dir
 
 CMakeFiles/client.dir/Src/client/Auth.cpp.o: CMakeFiles/client.dir/flags.make
 CMakeFiles/client.dir/Src/client/Auth.cpp.o: Src/client/Auth.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/client.dir/Src/client/Auth.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/client.dir/Src/client/Auth.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/Src/client/Auth.cpp.o -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Auth.cpp
 
 CMakeFiles/client.dir/Src/client/Auth.cpp.i: cmake_force
@@ -395,7 +419,7 @@ CMakeFiles/client.dir/Src/client/Auth.cpp.o.provides.build: CMakeFiles/client.di
 
 CMakeFiles/client.dir/Src/client/Communication.cpp.o: CMakeFiles/client.dir/flags.make
 CMakeFiles/client.dir/Src/client/Communication.cpp.o: Src/client/Communication.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/client.dir/Src/client/Communication.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/client.dir/Src/client/Communication.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/Src/client/Communication.cpp.o -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Communication.cpp
 
 CMakeFiles/client.dir/Src/client/Communication.cpp.i: cmake_force
@@ -419,7 +443,7 @@ CMakeFiles/client.dir/Src/client/Communication.cpp.o.provides.build: CMakeFiles/
 
 CMakeFiles/client.dir/Src/client/Gui.cpp.o: CMakeFiles/client.dir/flags.make
 CMakeFiles/client.dir/Src/client/Gui.cpp.o: Src/client/Gui.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/client.dir/Src/client/Gui.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/client.dir/Src/client/Gui.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/Src/client/Gui.cpp.o -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui.cpp
 
 CMakeFiles/client.dir/Src/client/Gui.cpp.i: cmake_force
@@ -443,7 +467,7 @@ CMakeFiles/client.dir/Src/client/Gui.cpp.o.provides.build: CMakeFiles/client.dir
 
 CMakeFiles/client.dir/Src/client/Gui/Animation/Modal.cpp.o: CMakeFiles/client.dir/flags.make
 CMakeFiles/client.dir/Src/client/Gui/Animation/Modal.cpp.o: Src/client/Gui/Animation/Modal.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/client.dir/Src/client/Gui/Animation/Modal.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/client.dir/Src/client/Gui/Animation/Modal.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/Src/client/Gui/Animation/Modal.cpp.o -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui/Animation/Modal.cpp
 
 CMakeFiles/client.dir/Src/client/Gui/Animation/Modal.cpp.i: cmake_force
@@ -467,7 +491,7 @@ CMakeFiles/client.dir/Src/client/Gui/Animation/Modal.cpp.o.provides.build: CMake
 
 CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/AbstractObjectSFML.cpp.o: CMakeFiles/client.dir/flags.make
 CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/AbstractObjectSFML.cpp.o: Src/client/Gui/ObjectSFML/AbstractObjectSFML.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/AbstractObjectSFML.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/AbstractObjectSFML.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/AbstractObjectSFML.cpp.o -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui/ObjectSFML/AbstractObjectSFML.cpp
 
 CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/AbstractObjectSFML.cpp.i: cmake_force
@@ -491,7 +515,7 @@ CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/AbstractObjectSFML.cpp.o.provide
 
 CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Circle.cpp.o: CMakeFiles/client.dir/flags.make
 CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Circle.cpp.o: Src/client/Gui/ObjectSFML/Circle.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Circle.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Circle.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Circle.cpp.o -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui/ObjectSFML/Circle.cpp
 
 CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Circle.cpp.i: cmake_force
@@ -515,7 +539,7 @@ CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Circle.cpp.o.provides.build: CMa
 
 CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Container.cpp.o: CMakeFiles/client.dir/flags.make
 CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Container.cpp.o: Src/client/Gui/ObjectSFML/Container.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Container.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Container.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Container.cpp.o -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui/ObjectSFML/Container.cpp
 
 CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Container.cpp.i: cmake_force
@@ -539,7 +563,7 @@ CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Container.cpp.o.provides.build: 
 
 CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Sprite.cpp.o: CMakeFiles/client.dir/flags.make
 CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Sprite.cpp.o: Src/client/Gui/ObjectSFML/Sprite.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Sprite.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Sprite.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Sprite.cpp.o -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui/ObjectSFML/Sprite.cpp
 
 CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Sprite.cpp.i: cmake_force
@@ -563,7 +587,7 @@ CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Sprite.cpp.o.provides.build: CMa
 
 CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Square.cpp.o: CMakeFiles/client.dir/flags.make
 CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Square.cpp.o: Src/client/Gui/ObjectSFML/Square.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Square.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Square.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Square.cpp.o -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui/ObjectSFML/Square.cpp
 
 CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Square.cpp.i: cmake_force
@@ -587,7 +611,7 @@ CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Square.cpp.o.provides.build: CMa
 
 CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Text.cpp.o: CMakeFiles/client.dir/flags.make
 CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Text.cpp.o: Src/client/Gui/ObjectSFML/Text.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Text.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Text.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Text.cpp.o -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui/ObjectSFML/Text.cpp
 
 CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Text.cpp.i: cmake_force
@@ -611,7 +635,7 @@ CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Text.cpp.o.provides.build: CMake
 
 CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/TextInput.cpp.o: CMakeFiles/client.dir/flags.make
 CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/TextInput.cpp.o: Src/client/Gui/ObjectSFML/TextInput.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/TextInput.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/TextInput.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/TextInput.cpp.o -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui/ObjectSFML/TextInput.cpp
 
 CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/TextInput.cpp.i: cmake_force
@@ -635,7 +659,7 @@ CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/TextInput.cpp.o.provides.build: 
 
 CMakeFiles/client.dir/Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.cpp.o: CMakeFiles/client.dir/flags.make
 CMakeFiles/client.dir/Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.cpp.o: Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/client.dir/Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/client.dir/Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.cpp.o -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.cpp
 
 CMakeFiles/client.dir/Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.cpp.i: cmake_force
@@ -659,7 +683,7 @@ CMakeFiles/client.dir/Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.
 
 CMakeFiles/client.dir/Src/client/Gui/SFML_monitor.cpp.o: CMakeFiles/client.dir/flags.make
 CMakeFiles/client.dir/Src/client/Gui/SFML_monitor.cpp.o: Src/client/Gui/SFML_monitor.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/client.dir/Src/client/Gui/SFML_monitor.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/client.dir/Src/client/Gui/SFML_monitor.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/Src/client/Gui/SFML_monitor.cpp.o -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui/SFML_monitor.cpp
 
 CMakeFiles/client.dir/Src/client/Gui/SFML_monitor.cpp.i: cmake_force
@@ -679,30 +703,6 @@ CMakeFiles/client.dir/Src/client/Gui/SFML_monitor.cpp.o.provides: CMakeFiles/cli
 .PHONY : CMakeFiles/client.dir/Src/client/Gui/SFML_monitor.cpp.o.provides
 
 CMakeFiles/client.dir/Src/client/Gui/SFML_monitor.cpp.o.provides.build: CMakeFiles/client.dir/Src/client/Gui/SFML_monitor.cpp.o
-
-
-CMakeFiles/client.dir/Src/client/GuiTexture.cpp.o: CMakeFiles/client.dir/flags.make
-CMakeFiles/client.dir/Src/client/GuiTexture.cpp.o: Src/client/GuiTexture.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/client.dir/Src/client/GuiTexture.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/Src/client/GuiTexture.cpp.o -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/GuiTexture.cpp
-
-CMakeFiles/client.dir/Src/client/GuiTexture.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/client.dir/Src/client/GuiTexture.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/GuiTexture.cpp > CMakeFiles/client.dir/Src/client/GuiTexture.cpp.i
-
-CMakeFiles/client.dir/Src/client/GuiTexture.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/client.dir/Src/client/GuiTexture.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/GuiTexture.cpp -o CMakeFiles/client.dir/Src/client/GuiTexture.cpp.s
-
-CMakeFiles/client.dir/Src/client/GuiTexture.cpp.o.requires:
-
-.PHONY : CMakeFiles/client.dir/Src/client/GuiTexture.cpp.o.requires
-
-CMakeFiles/client.dir/Src/client/GuiTexture.cpp.o.provides: CMakeFiles/client.dir/Src/client/GuiTexture.cpp.o.requires
-	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/GuiTexture.cpp.o.provides.build
-.PHONY : CMakeFiles/client.dir/Src/client/GuiTexture.cpp.o.provides
-
-CMakeFiles/client.dir/Src/client/GuiTexture.cpp.o.provides.build: CMakeFiles/client.dir/Src/client/GuiTexture.cpp.o
 
 
 CMakeFiles/client.dir/Src/client/ManageDisplay.cpp.o: CMakeFiles/client.dir/flags.make
@@ -777,28 +777,76 @@ CMakeFiles/client.dir/Src/client/Map.cpp.o.provides: CMakeFiles/client.dir/Src/c
 CMakeFiles/client.dir/Src/client/Map.cpp.o.provides.build: CMakeFiles/client.dir/Src/client/Map.cpp.o
 
 
-CMakeFiles/client.dir/Include/ParseEnqueueMap.cpp.o: CMakeFiles/client.dir/flags.make
-CMakeFiles/client.dir/Include/ParseEnqueueMap.cpp.o: Include/ParseEnqueueMap.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/client.dir/Include/ParseEnqueueMap.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/Include/ParseEnqueueMap.cpp.o -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/ParseEnqueueMap.cpp
+CMakeFiles/client.dir/Src/client/Texture/GuiTexture.cpp.o: CMakeFiles/client.dir/flags.make
+CMakeFiles/client.dir/Src/client/Texture/GuiTexture.cpp.o: Src/client/Texture/GuiTexture.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/client.dir/Src/client/Texture/GuiTexture.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/Src/client/Texture/GuiTexture.cpp.o -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/GuiTexture.cpp
 
-CMakeFiles/client.dir/Include/ParseEnqueueMap.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/client.dir/Include/ParseEnqueueMap.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/ParseEnqueueMap.cpp > CMakeFiles/client.dir/Include/ParseEnqueueMap.cpp.i
+CMakeFiles/client.dir/Src/client/Texture/GuiTexture.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/client.dir/Src/client/Texture/GuiTexture.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/GuiTexture.cpp > CMakeFiles/client.dir/Src/client/Texture/GuiTexture.cpp.i
 
-CMakeFiles/client.dir/Include/ParseEnqueueMap.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/client.dir/Include/ParseEnqueueMap.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/ParseEnqueueMap.cpp -o CMakeFiles/client.dir/Include/ParseEnqueueMap.cpp.s
+CMakeFiles/client.dir/Src/client/Texture/GuiTexture.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/client.dir/Src/client/Texture/GuiTexture.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/GuiTexture.cpp -o CMakeFiles/client.dir/Src/client/Texture/GuiTexture.cpp.s
 
-CMakeFiles/client.dir/Include/ParseEnqueueMap.cpp.o.requires:
+CMakeFiles/client.dir/Src/client/Texture/GuiTexture.cpp.o.requires:
 
-.PHONY : CMakeFiles/client.dir/Include/ParseEnqueueMap.cpp.o.requires
+.PHONY : CMakeFiles/client.dir/Src/client/Texture/GuiTexture.cpp.o.requires
 
-CMakeFiles/client.dir/Include/ParseEnqueueMap.cpp.o.provides: CMakeFiles/client.dir/Include/ParseEnqueueMap.cpp.o.requires
-	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Include/ParseEnqueueMap.cpp.o.provides.build
-.PHONY : CMakeFiles/client.dir/Include/ParseEnqueueMap.cpp.o.provides
+CMakeFiles/client.dir/Src/client/Texture/GuiTexture.cpp.o.provides: CMakeFiles/client.dir/Src/client/Texture/GuiTexture.cpp.o.requires
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/Texture/GuiTexture.cpp.o.provides.build
+.PHONY : CMakeFiles/client.dir/Src/client/Texture/GuiTexture.cpp.o.provides
 
-CMakeFiles/client.dir/Include/ParseEnqueueMap.cpp.o.provides.build: CMakeFiles/client.dir/Include/ParseEnqueueMap.cpp.o
+CMakeFiles/client.dir/Src/client/Texture/GuiTexture.cpp.o.provides.build: CMakeFiles/client.dir/Src/client/Texture/GuiTexture.cpp.o
+
+
+CMakeFiles/client.dir/Src/client/Texture/IATexture.cpp.o: CMakeFiles/client.dir/flags.make
+CMakeFiles/client.dir/Src/client/Texture/IATexture.cpp.o: Src/client/Texture/IATexture.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/client.dir/Src/client/Texture/IATexture.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/Src/client/Texture/IATexture.cpp.o -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/IATexture.cpp
+
+CMakeFiles/client.dir/Src/client/Texture/IATexture.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/client.dir/Src/client/Texture/IATexture.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/IATexture.cpp > CMakeFiles/client.dir/Src/client/Texture/IATexture.cpp.i
+
+CMakeFiles/client.dir/Src/client/Texture/IATexture.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/client.dir/Src/client/Texture/IATexture.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/IATexture.cpp -o CMakeFiles/client.dir/Src/client/Texture/IATexture.cpp.s
+
+CMakeFiles/client.dir/Src/client/Texture/IATexture.cpp.o.requires:
+
+.PHONY : CMakeFiles/client.dir/Src/client/Texture/IATexture.cpp.o.requires
+
+CMakeFiles/client.dir/Src/client/Texture/IATexture.cpp.o.provides: CMakeFiles/client.dir/Src/client/Texture/IATexture.cpp.o.requires
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/Texture/IATexture.cpp.o.provides.build
+.PHONY : CMakeFiles/client.dir/Src/client/Texture/IATexture.cpp.o.provides
+
+CMakeFiles/client.dir/Src/client/Texture/IATexture.cpp.o.provides.build: CMakeFiles/client.dir/Src/client/Texture/IATexture.cpp.o
+
+
+CMakeFiles/client.dir/Src/client/Texture/shackTexture.cpp.o: CMakeFiles/client.dir/flags.make
+CMakeFiles/client.dir/Src/client/Texture/shackTexture.cpp.o: Src/client/Texture/shackTexture.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/client.dir/Src/client/Texture/shackTexture.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/client.dir/Src/client/Texture/shackTexture.cpp.o -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/shackTexture.cpp
+
+CMakeFiles/client.dir/Src/client/Texture/shackTexture.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/client.dir/Src/client/Texture/shackTexture.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/shackTexture.cpp > CMakeFiles/client.dir/Src/client/Texture/shackTexture.cpp.i
+
+CMakeFiles/client.dir/Src/client/Texture/shackTexture.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/client.dir/Src/client/Texture/shackTexture.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/shackTexture.cpp -o CMakeFiles/client.dir/Src/client/Texture/shackTexture.cpp.s
+
+CMakeFiles/client.dir/Src/client/Texture/shackTexture.cpp.o.requires:
+
+.PHONY : CMakeFiles/client.dir/Src/client/Texture/shackTexture.cpp.o.requires
+
+CMakeFiles/client.dir/Src/client/Texture/shackTexture.cpp.o.provides: CMakeFiles/client.dir/Src/client/Texture/shackTexture.cpp.o.requires
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/Texture/shackTexture.cpp.o.provides.build
+.PHONY : CMakeFiles/client.dir/Src/client/Texture/shackTexture.cpp.o.provides
+
+CMakeFiles/client.dir/Src/client/Texture/shackTexture.cpp.o.provides.build: CMakeFiles/client.dir/Src/client/Texture/shackTexture.cpp.o
 
 
 # Object files for target client
@@ -811,6 +859,7 @@ client_OBJECTS = \
 "CMakeFiles/client.dir/Src/Entity/Water.cpp.o" \
 "CMakeFiles/client.dir/Src/Grid.cpp.o" \
 "CMakeFiles/client.dir/Src/Main.cpp.o" \
+"CMakeFiles/client.dir/Src/ParseEnqueueMap.cpp.o" \
 "CMakeFiles/client.dir/Src/SfmlTool.cpp.o" \
 "CMakeFiles/client.dir/Src/Text/AText.cpp.o" \
 "CMakeFiles/client.dir/Src/Text/GameText.cpp.o" \
@@ -829,11 +878,12 @@ client_OBJECTS = \
 "CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/TextInput.cpp.o" \
 "CMakeFiles/client.dir/Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.cpp.o" \
 "CMakeFiles/client.dir/Src/client/Gui/SFML_monitor.cpp.o" \
-"CMakeFiles/client.dir/Src/client/GuiTexture.cpp.o" \
 "CMakeFiles/client.dir/Src/client/ManageDisplay.cpp.o" \
 "CMakeFiles/client.dir/Src/client/ManageServer.cpp.o" \
 "CMakeFiles/client.dir/Src/client/Map.cpp.o" \
-"CMakeFiles/client.dir/Include/ParseEnqueueMap.cpp.o"
+"CMakeFiles/client.dir/Src/client/Texture/GuiTexture.cpp.o" \
+"CMakeFiles/client.dir/Src/client/Texture/IATexture.cpp.o" \
+"CMakeFiles/client.dir/Src/client/Texture/shackTexture.cpp.o"
 
 # External object files for target client
 client_EXTERNAL_OBJECTS =
@@ -846,6 +896,7 @@ client: CMakeFiles/client.dir/Src/Entity/Character.cpp.o
 client: CMakeFiles/client.dir/Src/Entity/Water.cpp.o
 client: CMakeFiles/client.dir/Src/Grid.cpp.o
 client: CMakeFiles/client.dir/Src/Main.cpp.o
+client: CMakeFiles/client.dir/Src/ParseEnqueueMap.cpp.o
 client: CMakeFiles/client.dir/Src/SfmlTool.cpp.o
 client: CMakeFiles/client.dir/Src/Text/AText.cpp.o
 client: CMakeFiles/client.dir/Src/Text/GameText.cpp.o
@@ -864,14 +915,15 @@ client: CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Text.cpp.o
 client: CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/TextInput.cpp.o
 client: CMakeFiles/client.dir/Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.cpp.o
 client: CMakeFiles/client.dir/Src/client/Gui/SFML_monitor.cpp.o
-client: CMakeFiles/client.dir/Src/client/GuiTexture.cpp.o
 client: CMakeFiles/client.dir/Src/client/ManageDisplay.cpp.o
 client: CMakeFiles/client.dir/Src/client/ManageServer.cpp.o
 client: CMakeFiles/client.dir/Src/client/Map.cpp.o
-client: CMakeFiles/client.dir/Include/ParseEnqueueMap.cpp.o
+client: CMakeFiles/client.dir/Src/client/Texture/GuiTexture.cpp.o
+client: CMakeFiles/client.dir/Src/client/Texture/IATexture.cpp.o
+client: CMakeFiles/client.dir/Src/client/Texture/shackTexture.cpp.o
 client: CMakeFiles/client.dir/build.make
 client: CMakeFiles/client.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Linking CXX executable client"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Linking CXX executable client"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/client.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -887,6 +939,7 @@ CMakeFiles/client.dir/requires: CMakeFiles/client.dir/Src/Entity/Character.cpp.o
 CMakeFiles/client.dir/requires: CMakeFiles/client.dir/Src/Entity/Water.cpp.o.requires
 CMakeFiles/client.dir/requires: CMakeFiles/client.dir/Src/Grid.cpp.o.requires
 CMakeFiles/client.dir/requires: CMakeFiles/client.dir/Src/Main.cpp.o.requires
+CMakeFiles/client.dir/requires: CMakeFiles/client.dir/Src/ParseEnqueueMap.cpp.o.requires
 CMakeFiles/client.dir/requires: CMakeFiles/client.dir/Src/SfmlTool.cpp.o.requires
 CMakeFiles/client.dir/requires: CMakeFiles/client.dir/Src/Text/AText.cpp.o.requires
 CMakeFiles/client.dir/requires: CMakeFiles/client.dir/Src/Text/GameText.cpp.o.requires
@@ -905,11 +958,12 @@ CMakeFiles/client.dir/requires: CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/
 CMakeFiles/client.dir/requires: CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/TextInput.cpp.o.requires
 CMakeFiles/client.dir/requires: CMakeFiles/client.dir/Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.cpp.o.requires
 CMakeFiles/client.dir/requires: CMakeFiles/client.dir/Src/client/Gui/SFML_monitor.cpp.o.requires
-CMakeFiles/client.dir/requires: CMakeFiles/client.dir/Src/client/GuiTexture.cpp.o.requires
 CMakeFiles/client.dir/requires: CMakeFiles/client.dir/Src/client/ManageDisplay.cpp.o.requires
 CMakeFiles/client.dir/requires: CMakeFiles/client.dir/Src/client/ManageServer.cpp.o.requires
 CMakeFiles/client.dir/requires: CMakeFiles/client.dir/Src/client/Map.cpp.o.requires
-CMakeFiles/client.dir/requires: CMakeFiles/client.dir/Include/ParseEnqueueMap.cpp.o.requires
+CMakeFiles/client.dir/requires: CMakeFiles/client.dir/Src/client/Texture/GuiTexture.cpp.o.requires
+CMakeFiles/client.dir/requires: CMakeFiles/client.dir/Src/client/Texture/IATexture.cpp.o.requires
+CMakeFiles/client.dir/requires: CMakeFiles/client.dir/Src/client/Texture/shackTexture.cpp.o.requires
 
 .PHONY : CMakeFiles/client.dir/requires
 

@@ -11,7 +11,6 @@
 
 irc::Communication::Communication(int socket, bool &endClient) : _socket(socket), _read(endClient)
 {
-	getEnqueueMap();
 }
 
 int irc::Communication::getSocket() const
@@ -39,12 +38,12 @@ void irc::Communication::enqueueMap(const CstringArray &command)
 	unlockMap();
 }
 
-std::vector<std::string>& irc::Communication::getEnqueueGui()
+std::vector<std::string> &irc::Communication::getEnqueueGui()
 {
 	return _enqueueGui;
 }
 
-std::vector<CstringArray>& irc::Communication::getEnqueueMap()
+std::vector<CstringArray> &irc::Communication::getEnqueueMap()
 {
 	return _enqueueMap;
 }
@@ -71,13 +70,13 @@ void irc::Communication::loopRead()
 void irc::Communication::addMsgToQueue(const CstringArray &command)
 {
 	auto tmpPrint = command.getCommand();
-	if (tmpPrint.size() == 8) {
+	if (tmpPrint.size() == 9) {
 		std::cout << "J'arrive à la fin du parsing, le nom de la commande est [" << command.getCommandName() << "]" << std::endl;
 		std::cout << "Et son message est :" << tmpPrint[0] << " "
 			<< tmpPrint[1] << " " << tmpPrint[2] << " "
 			<< tmpPrint[3] << " " << tmpPrint[4] << " "
 			<< tmpPrint[5] << " " << tmpPrint[6] << " "
-			<< tmpPrint[7] << std::endl;
+			<< tmpPrint[7] << " " << tmpPrint[8] << std::endl;
 	}
 	if (!command.getCommandName().empty()) {
 		std::cout << "Nom de ma comamnde " << command.getCommandName() << std::endl;

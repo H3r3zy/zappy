@@ -8,6 +8,7 @@
 #include <iostream>
 #include <cstring>
 #include <sstream>
+#include <CstringArray.hpp>
 #include "ManageServer.hpp"
 
 std::string irc::ManageServer::readServer(int socket, bool blockRead)
@@ -43,6 +44,7 @@ std::string irc::ManageServer::readServer(int socket, bool blockRead)
 	std::cout << "result: " << result << std::endl;
 	return result;
 }
+
 CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 {
 //	std::cout << "je vais read sur mon serveur" << std::endl;
@@ -90,9 +92,9 @@ CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 		if (strncmp(buffer, "msz", 3) == 0) {
 
 			std::vector<uint> bag;
-			for (int i = 0; i < 8; i++)
+			for (int i = 0; i < 9; i++)
 				bag.emplace_back(0);
-			for (size_t i = 0; i < 8; i++) {
+			for (size_t i = 0; i < 9; i++) {
 				memcpy(&bag[i], buffer + 4 + i * (sizeof(uint) + 1), sizeof(uint));
 			//	printf("bag %d\n", bag[i]);
 			}
@@ -102,11 +104,11 @@ CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 		}
 		if (strncmp(buffer, "bct", 3) == 0) {
 			std::vector<uint> bag;
-			for (int i = 0; i < 8; i++)
+			for (int i = 0; i < 9; i++)
 				bag.emplace_back(0);
-			for (size_t i = 0; i < 8; i++) {
+			for (size_t i = 0; i < 9; i++) {
 				memcpy(&bag[i], buffer + 4 + i * (sizeof(uint) + 1), sizeof(uint));
-				printf("expeted %d\n", bag[i]);
+			//	printf("expeted %d\n", bag[i]);
 
 			}
 			finalCommand.setCommand(bag);

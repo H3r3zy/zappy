@@ -44,7 +44,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src"/>
 					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include"/>
 					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Text"/>
 					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Entity"/>
@@ -52,6 +51,7 @@
 					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Abstract"/>
 					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Interface"/>
 					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Class"/>
+					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Class/Texture"/>
 					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Class/Gui"/>
 					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Class/Gui/PersonalizedObject"/>
 					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Class/Gui/Animation"/>
@@ -73,7 +73,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src"/>
 					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include"/>
 					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Text"/>
 					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Entity"/>
@@ -81,6 +80,7 @@
 					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Abstract"/>
 					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Interface"/>
 					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Class"/>
+					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Class/Texture"/>
 					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Class/Gui"/>
 					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Class/Gui/PersonalizedObject"/>
 					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Class/Gui/Animation"/>
@@ -102,7 +102,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src"/>
 					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include"/>
 					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Text"/>
 					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Entity"/>
@@ -110,6 +109,7 @@
 					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Abstract"/>
 					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Interface"/>
 					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Class"/>
+					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Class/Texture"/>
 					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Class/Gui"/>
 					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Class/Gui/PersonalizedObject"/>
 					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Class/Gui/Animation"/>
@@ -131,7 +131,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src"/>
 					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include"/>
 					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Text"/>
 					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Entity"/>
@@ -139,6 +138,7 @@
 					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Abstract"/>
 					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Interface"/>
 					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Class"/>
+					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Class/Texture"/>
 					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Class/Gui"/>
 					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Class/Gui/PersonalizedObject"/>
 					<Add directory="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Class/Gui/Animation"/>
@@ -196,9 +196,6 @@
 		<Unit filename="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Class/Gui/SFML_monitor.hpp">
 			<Option target="client"/>
 		</Unit>
-		<Unit filename="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Class/GuiTexture.hpp">
-			<Option target="client"/>
-		</Unit>
 		<Unit filename="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Class/ManageDisplay.hpp">
 			<Option target="client"/>
 		</Unit>
@@ -206,6 +203,18 @@
 			<Option target="client"/>
 		</Unit>
 		<Unit filename="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Class/Map.hpp">
+			<Option target="client"/>
+		</Unit>
+		<Unit filename="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Class/Texture/GuiTexture.hpp">
+			<Option target="client"/>
+		</Unit>
+		<Unit filename="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Class/Texture/IATexture.hpp">
+			<Option target="client"/>
+		</Unit>
+		<Unit filename="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Class/Texture/shackTexture.hpp">
+			<Option target="client"/>
+		</Unit>
+		<Unit filename="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/CstringArray.hpp">
 			<Option target="client"/>
 		</Unit>
 		<Unit filename="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Entity/AMotionShape.hpp">
@@ -232,9 +241,6 @@
 		<Unit filename="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Interface/IObjectSFML.hpp">
 			<Option target="client"/>
 		</Unit>
-		<Unit filename="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/ParseEnqueueMap.cpp">
-			<Option target="client"/>
-		</Unit>
 		<Unit filename="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/ParseEnqueueMap.hpp">
 			<Option target="client"/>
 		</Unit>
@@ -256,9 +262,6 @@
 		<Unit filename="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/CstringArray.cpp">
 			<Option target="client"/>
 		</Unit>
-		<Unit filename="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/CstringArray.hpp">
-			<Option target="client"/>
-		</Unit>
 		<Unit filename="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Entity/AMotionShape.cpp">
 			<Option target="client"/>
 		</Unit>
@@ -278,6 +281,9 @@
 			<Option target="client"/>
 		</Unit>
 		<Unit filename="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Main.cpp">
+			<Option target="client"/>
+		</Unit>
+		<Unit filename="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/ParseEnqueueMap.cpp">
 			<Option target="client"/>
 		</Unit>
 		<Unit filename="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/SfmlTool.cpp">
@@ -334,9 +340,6 @@
 		<Unit filename="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui/SFML_monitor.cpp">
 			<Option target="client"/>
 		</Unit>
-		<Unit filename="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/GuiTexture.cpp">
-			<Option target="client"/>
-		</Unit>
 		<Unit filename="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/ManageDisplay.cpp">
 			<Option target="client"/>
 		</Unit>
@@ -344,6 +347,15 @@
 			<Option target="client"/>
 		</Unit>
 		<Unit filename="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Map.cpp">
+			<Option target="client"/>
+		</Unit>
+		<Unit filename="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/GuiTexture.cpp">
+			<Option target="client"/>
+		</Unit>
+		<Unit filename="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/IATexture.cpp">
+			<Option target="client"/>
+		</Unit>
+		<Unit filename="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/shackTexture.cpp">
 			<Option target="client"/>
 		</Unit>
 		<Unit filename="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/include">

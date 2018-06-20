@@ -61,5 +61,5 @@ class Ai:
         self.__coord[0] = x
         self.__coord[1] = y
 
-    def levelUp(self):
-        self.__level += 1
+    def levelUp(self, lvl: int):
+        self.__level = lvl

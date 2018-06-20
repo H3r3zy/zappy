@@ -21,7 +21,7 @@ class CmdParser:
             'Look': re.compile("\[( ?\w+)*(,( \w+)*)* ?\]", re.ASCII),
             'Inventory': re.compile("\[( ?(\w+ \d+)(,( \w+ \d+)?)* ?)\]", re.ASCII),
             'Connect_nbr': re.compile("%d+", re.ASCII),
-            'Incantation': re.compile("(Elevation underway)|(ko)", re.ASCII),
+            'Incantation': re.compile("(Elevation underway)|(Current level: \d)|(ko)", re.ASCII),
             'Forward': re.compile("ok", re.ASCII),
             'Right': re.compile("ok", re.ASCII),
             'Left': re.compile("ok", re.ASCII),
@@ -41,7 +41,9 @@ class CmdParser:
             'Look': self.parse_map,
             'Inventory': self.parse_inv,
             'Fork': self.fork,
-            'Take': self.take
+            'Take': self.take,
+            'Set': self.set,
+            'Incantation': self.lvl_up
         }
         self.__handledId = 0
         self.__deltas = {
@@ -55,12 +57,25 @@ class CmdParser:
             8: (-1, -1)
         }
 
+    def lvl_up(self, ans: str, _1, _2):
+        match = re.search("(\d)", ans)
+        if match:
+            print("LVL UP")
+            self.__player.levelUp(int(match.group(1)))
+
+    def set(self, ans: str, obj: str, pos: tuple):
+        if ans == "ok":
+            self.__player.getInventory()[obj] -= 1
+            self.__map[pos[1]][pos[0]].getStones()[obj] += 1
+        else:
+            self.__player.getInventory()[obj] = 0
+
     def take(self, ans: str, obj: str, pos: tuple):
         if ans == "ok":
             self.__player.getInventory()[obj] += 1
             self.__map[pos[1]][pos[0]].getStones()[obj] -= 1
         else:
-            print("ko")
+            print("TAKE KO: " + obj + " " + str(pos))
             self.__map[pos[1]][pos[0]].getStones()[obj] = 0
 
     def fork(self):
@@ -103,19 +118,16 @@ class CmdParser:
         map = map.replace("[", "").replace("]", "")
         tiles = map.split(",")
         i = 0
-        for x, y in self.__dirs[self.__player.getDir()](pos[0],
-                                                        pos[1],
-                                                        self.__player.getLevel()):
+        for x, y in self.__dirs[self.__player.getDir()](pos[0], pos[1], self.__player.getLevel()):
             currentTile = self.__map[y % len(self.__player.getMap())][x % len(self.__player.getMap()[0])]
             currentTile.reset()
             players = 0
             for elem in tiles[i].split(" "):
                 if elem == "player":
                     players += 1
-                    #currentTile.setPlayer(currentTile.getPlayer() + 1)
                     continue
                 if len(elem) > 0:
-                    currentTile.getStones()[elem] += 1
+                    currentTile.getStones()[elem] += 1 #Changer
             if currentTile.getPlayer() < players:
                 currentTile.setPlayer(players)
             i += 1
@@ -135,18 +147,12 @@ class CmdParser:
     def parse(self, cmd: str) -> bool:
         if cmd == "dead":
             return False
-        if re.match("Current level: \d", cmd) is not None:
-            self.__player.levelUp()
-            return True
-        if len(self.__queue) == 0: #TODO à regarder!
-            return True
         last = self.__queue.popleft()
         match = self.__patterns[last[0]].match(cmd)
         self.__handledId += 1
-        if match is None:
-            return True
+        print("(" + cmd + ":" + last[0] + ")")
         try:
-            if last[0] in self.__actions.keys():
+            if last[0] in self.__actions.keys() and match is not None:
                 self.__actions[last[0]](match.group(0), last[1], last[2])
             else:
                 match = re.match("message (\d), (.+)", cmd)
@@ -155,7 +161,6 @@ class CmdParser:
                     self.__msgQueue.append(match.group(2))
                 elif match1:
                     self.eject(int(match1.group(1)))
-
         except AttributeError:
             if cmd == "ko":
                 self.__player.egg = True

@@ -16,7 +16,8 @@ class Actions(IntEnum):
     CHECK_LVL_UP = 5,
     TAKE_ALL = 6,
     LVL_UP = 7,
-    CHECK_PLAYER = 8
+    CHECK_PLAYER = 8,
+    NEED_PEOPLE = 9
 
 
 def look(client: Client, player: Ai, _):
@@ -25,6 +26,7 @@ def look(client: Client, player: Ai, _):
     if look.id != client.last:
         return Actions.LOOK
     look.id = -1
+    print("J'ai fini de look")
     return Actions.CHECK_FOOD
 
 
@@ -39,19 +41,22 @@ def CheckingFood(client: Client, player: Ai, _):
 
 
 def Forward(client: Client, player: Ai, _):
-    print("Pas de truc au alentour, je me déplace aléatoirement")
+    x = player.getCoord()[0] % client.mapSize[0]
+    y = player.getCoord()[1] % client.mapSize[1]
+    x_forward = (x + 1) % client.mapSize[0]
+    y_forward = (y + 1) % client.mapSize[1]
+    map = player.getMap()
+    map[y][x].setPlayer(
+        map[y][x].getPlayer() - 1)
     finding_path = PathFinding(client.mapSize[1], client.mapSize[0])
-    coords = player.getCoord()
-    actions, player.dir = finding_path.goToTile(coords, (coords[0] + 1, coords[1] + 1), player.dir)
+    actions, player.dir = finding_path.goToTile([x, y], (x_forward, y_forward), player.dir)
     for move in actions:
         client.build_command(move)
-    print("Du coup je suis en %s" % player.getCoord())
+    map[y_forward][x_forward].setPlayer(map[y_forward][x_forward].getPlayer() + 1)
     return Actions.LOOK
 
 
 def CheckLvlUp(_1, player: Ai, _2):
-    if player.getLevel() > 1:
-        return Actions.FIND_CRYSTALS
     print("Je check si je peux up")
     needed_stones = player.elevation_array[player.getLevel()]
     inventory = player.getInventory()
@@ -60,6 +65,13 @@ def CheckLvlUp(_1, player: Ai, _2):
         if inventory[stone] < nb:
             return Actions.FIND_CRYSTALS
     return Actions.CHECK_PLAYER
+
+
+def IncantBroadCast(client: Client, player: Ai, _):
+    print("J'ai besoin de gens à ma case")
+    str = "Incantation Lvl %d".format(player.getLevel())
+    client.build_command("Broadcast", str)
+    return Actions.CHECK_LVL_UP
 
 
 def CheckPlayer(client: Client, player: Ai, _):
@@ -71,6 +83,8 @@ def CheckPlayer(client: Client, player: Ai, _):
     print("Je suis lvl : %d on doit être : %d on est %d" % (
         player.getLevel(), nb_player, player.getMap()[y][x].getPlayer()))
     if nb_player != player.getMap()[y][x].getPlayer():
+        # return Actions.NEED_PEOPLE
+
         print("Je n'ai pas le bon nombre de joueur")
         '''todo Check Si quelqu'un fait appelle
             sinon broadcast
@@ -104,13 +118,11 @@ def LvlUp(client: Client, player: Ai, _):
 
     print("Je drop ce que j'ai besoin : %s je suis lvl : %d" % (player.getInventory(), player.getLevel()))
     for stone, nb in needed_stone:
-        drop = 0
         for drop in range(nb):
             client.build_command("Set", stone)
-            drop += 1
-        pass
     print("Tout est setup")
     client.build_command("Incantation")
+    client.build_command("Incantation", "", (), True)
     return Actions.LOOK
 
 
@@ -127,18 +139,19 @@ def FindCrystals(client: Client, player: Ai, _):
     for stone, _ in needed_stones:
         if map[y][x].getStones()[stone] != 0:
             client.build_command("Take", stone, tuple((x, y)))
-            print("J'ai un truc à ma case : %s" % player.getInventory())
     for x, y in radar:
         for stone, _ in needed_stones:
             y %= client.mapSize[1]
             x %= client.mapSize[0]
             if map[y][x].getStones()[stone] != 0:
+                print("[Crystal] :J'enleve à : %s" % coord_player)
                 map[coord_player[1]][coord_player[0]].setPlayer(map[coord_player[1]][coord_player[0]].getPlayer() - 1)
                 actions, player.dir = finding_path.goToTile(player.getCoord(), [x, y], player.getDir())
                 for move in actions:
                     client.build_command(move)
+                player.setCoord(x, y)
                 client.build_command("Take", stone, tuple((x, y)))
-                print("J'augmente le nombre de player sur la case")
+                print("[Crystals] :J'augmente le nombre de player sur la case : %s" % str([x, y]))
                 map[y][x].setPlayer(map[y][x].getPlayer() + 1)
                 print(player.getInventory())
                 return Actions.LOOK
@@ -160,11 +173,13 @@ def FindFood(client: Client, player: Ai, _):
         y %= client.mapSize[1]
         x %= client.mapSize[0]
         if map[y][x].getStones()["food"] != 0:
+            print("[Food] :J'enleve à : %s" % coord_player)
             map[coord_player[1]][coord_player[0]].setPlayer(map[coord_player[1]][coord_player[0]].getPlayer() - 1)
             actions, player.dir = finding_path.goToTile(player.getCoord(), [x, y], player.getDir())
             for move in actions:
                 client.build_command(move)
-            print("J'augmente le nombre de player sur la case")
+            player.setCoord(x, y)
+            print("[Food] :J'augmente le nombre de player sur la case %s" % str([x, y]))
             map[y][x].setPlayer(map[y][x].getPlayer() + 1)
             client.build_command("Take", "food", tuple((x, y)))
             return Actions.LOOK

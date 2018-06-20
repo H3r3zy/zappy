@@ -86,11 +86,15 @@ class Client:
     def refresh_queue(self):
         while len(self.__outQueue) != self.__outQueue.maxlen and len(self.__topQueue) > 0:
             tup = self.__topQueue.popleft()
+            if tup[3]:
+                self.__outQueue.append(tup[:3])
+                continue
             self.__outBuff += tup[0] + (" " + tup[1] if len(tup[1]) > 0 else "") + '\n'
             self.__outQueue.append(tup)
 
-    def build_command(self, cmd: str, arg: str = "", pos: tuple = (0, 0)) -> int:
-        self.__topQueue.append((cmd, arg, pos))
+    def build_command(self, cmd: str, arg: str = "", pos: tuple = (0, 0), fake: bool = False) -> int:
+        print("(" + cmd + ")")
+        self.__topQueue.append((cmd, arg, pos, fake))
         self.__outId += 1
         self.refresh_queue()
         return self.__outId - 1

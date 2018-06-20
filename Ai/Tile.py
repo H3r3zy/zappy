@@ -5,7 +5,7 @@ class Tile:
         self.__stones = {"linemate": 0, "deraumere": 0, "sibur": 0, "mendiane": 0, "phiras": 0, "thystame": 0,
                          "food": 0}
 
-    def getPlayer(self):
+    def getPlayer(self) -> int:
         return self.__player
 
     def getFood(self):
@@ -19,7 +19,8 @@ class Tile:
             self.__stones[key] = 0
 
     def setPlayer(self, player: int):
-        print("Hey")
+
+        print("Hey ", player)
         self.__player = player
 
     def __str__(self):

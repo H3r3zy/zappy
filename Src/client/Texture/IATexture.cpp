@@ -25,6 +25,8 @@ void irc::IATexture::initTexture()
 	initClose();
 
 	_base._monitor->addFuncLoop(1, [this] {
+		_base._comm._player.id = _base._comm._listId[0];
+
 		_base._monitor->getObjectByName("arrow_change", 1)->setBoolDisplay(_base._comm._listId.size() != 1);
 		_nb_q0->setText("x "+ std::to_string(_base._comm._player.ressources.q0));
 		_nb_q1->setText("x "+ std::to_string(_base._comm._player.ressources.q1));

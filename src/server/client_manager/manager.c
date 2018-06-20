@@ -69,7 +69,7 @@ static void add_gui_client(server_t *server, client_t *client)
 	--server->client_nb;
 	server->gui.fd = client->fd;
 	server->gui.logged = 1;
-	add_to_gui_queue(&server->gui, "ok\n");
+	add_to_gui_queue(&server->gui, (char []){'o', 'k', -5}, 3);
 	for (client_t *clt = server->clients; clt; clt = clt->next)
 		gui_pnw(server, clt);
 }

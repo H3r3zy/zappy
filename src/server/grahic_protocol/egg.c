@@ -27,8 +27,8 @@ void gui_enw(server_t *server, egg_t *egg, client_t *client)
 	write_uint32(buffer, &idx, (uint32_t) POS(client).x);
 	++idx;
 	write_uint32(buffer, &idx, (uint32_t) POS(client).y);
-	++idx;
-	add_to_gui_queue(&server->gui, buffer);
+	buffer[idx] = -5;
+	add_to_gui_queue(&server->gui, buffer, idx + 1);
 }
 
 /**
@@ -44,7 +44,8 @@ void gui_eht(server_t *server, egg_t *egg)
 	int idx = 4;
 
 	write_uint32(buffer, &idx, egg->id);
-	add_to_gui_queue(&server->gui, buffer);
+	buffer[idx] = -5;
+	add_to_gui_queue(&server->gui, buffer, idx + 1);
 }
 
 /**
@@ -60,7 +61,8 @@ void gui_ebo(server_t *server, egg_t *egg)
 	int idx = 4;
 
 	write_uint32(buffer, &idx, egg->id);
-	add_to_gui_queue(&server->gui, buffer);
+	buffer[idx] = -5;
+	add_to_gui_queue(&server->gui, buffer, idx + 1);
 }
 
 /**
@@ -76,5 +78,6 @@ void gui_edi(server_t *server, egg_t *egg)
 	int idx = 4;
 
 	write_uint32(buffer, &idx, egg->id);
-	add_to_gui_queue(&server->gui, buffer);
+	buffer[idx] = -5;
+	add_to_gui_queue(&server->gui, buffer, idx + 1);
 }

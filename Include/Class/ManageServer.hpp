@@ -17,8 +17,9 @@
 # include <unistd.h>
 # include <sys/select.h>
 # include <fstream>
-#include <CstringArray.hpp>
-
+# include <functional>
+# include <map>
+# include "CstringArray.hpp"
 
 namespace irc {
 
@@ -32,11 +33,17 @@ namespace irc {
 		static CstringArray readGameServer(int socket, bool = false);
 		static int writeOnServer(int socket, std::string msg);
 
-		protected:
+		static void parseLine8Input(char *buffer, CstringArray &command);
 
+		protected:
 
 		private:
 		ManageServer() = default;
+	};
+
+	const std::map<std::string, std::function<void(char *, CstringArray &)>> _pattern = {
+		{"msz", &irc::ManageServer::parseLine8Input},
+		{"bct", &irc::ManageServer::parseLine8Input}
 	};
 
 }

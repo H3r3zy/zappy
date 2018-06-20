@@ -6,6 +6,7 @@
 */
 
 #include <iostream>
+#include <cstring>
 #include "ManageServer.hpp"
 #include "Communication.hpp"
 
@@ -23,10 +24,10 @@ void irc::Communication::setSocket(int socket)
 	_socket = socket;
 }
 
-void irc::Communication::enqueueGui(const std::string &msg)
+void irc::Communication::enqueueGui(const CstringArray &msg)
 {
 	lockGui();
-	_enqueueGui.push_back(msg);
+	_enqueueGui.emplace_back(msg);
 	unlockGui();
 }
 
@@ -38,7 +39,7 @@ void irc::Communication::enqueueMap(const CstringArray &command)
 	unlockMap();
 }
 
-std::vector<std::string> &irc::Communication::getEnqueueGui()
+std::vector<CstringArray> &irc::Communication::getEnqueueGui()
 {
 	return _enqueueGui;
 }
@@ -79,8 +80,15 @@ void irc::Communication::addMsgToQueue(const CstringArray &command)
 			<< tmpPrint[7] << std::endl;
 	}
 	if (!command.getCommandName().empty()) {
-		std::cout << "Nom de ma comamnde " << command.getCommandName() << std::endl;
-		enqueueMap(command);
+		for (auto &&comm : _forWho) {
+			if (comm.first == command.getCommandName()) {
+				if (comm.second == irc::TYPE_ENQUEUE::T_MAP || comm.second == irc::TYPE_ENQUEUE::T_BOTH)
+					enqueueMap(command);
+				if (comm.second == irc::TYPE_ENQUEUE::T_GUI || comm.second == irc::TYPE_ENQUEUE::T_BOTH)
+					enqueueGui(command);
+				return;
+			}
+		}
 	}
 	// Todo: Create a parser for msg needed by gui and map, don't forget to lock / unlock
 }

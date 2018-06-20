@@ -19,6 +19,7 @@ sf::Vector2f ParseEnqueueMap::ParseMapSize()
 		_comm.lockMap();
 		std::vector<CstringArray> test = _comm.getEnqueueMap();
 		_comm.unlockMap();
+//		std::cerr << "SIZE: " << test.size() << std::endl;
 		for (const auto &it : test) {
 			std::cout << "Coammnde Name [" << it.getCommandName() << "]" << std::endl;
 			auto tmpPrint = it.getCommand();

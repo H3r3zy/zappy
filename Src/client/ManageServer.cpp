@@ -47,8 +47,6 @@ std::string irc::ManageServer::readServer(int socket, bool blockRead)
 
 CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 {
-//	std::cout << "je vais read sur mon serveur" << std::endl;
-
 	std::string result;
 	CstringArray finalCommand;
 	fd_set readfds;
@@ -56,32 +54,20 @@ CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 
 	//	FD_ZERO(&readfds);
 	FD_SET(socket, &readfds);
-	if (select(socket + 1, &readfds, NULL, NULL, (!blockRead) ? &t : NULL) == -1) {
+	if (select(socket + 1, &readfds, NULL, NULL, (!blockRead) ? &t : NULL) == -1)
 		result = "select error\n";
-		std::cout << "ca a fail bordel" << std::endl;
-
-	} else if (FD_ISSET(socket, &readfds)) {
-
-
+	else if (FD_ISSET(socket, &readfds)) {
 		std::vector<char> test;
 		char c[1];
-		int rc;
+		long int rc;
 
 		while ((rc = read(socket, c, 1)) > 0) {
-			if (c[0] != '\n') {
+			if (c[0] != '\n')
 				test.push_back(*c);
-			} else {
+			else
 				break;
-			}
 		}
-	//	sleep(1);
-		//std::cout << "Ma chaine :" << std::endl;
-		for (const auto &it : test) {
-			std::cout << it;
-		}
-		std::cout << std::endl;
-
-		char buffer[4096];
+		char buffer[8192];
 		int i = 0;
 		for (const auto &it : test) {
 			buffer[i] = test[i];
@@ -89,32 +75,11 @@ CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 		}
 		buffer[i] = '\0';
 
-		if (strncmp(buffer, "msz", 3) == 0) {
-
-			std::vector<uint> bag;
-			for (int i = 0; i < 8; i++)
-				bag.emplace_back(0);
-			for (size_t i = 0; i < 8; i++) {
-				memcpy(&bag[i], buffer + 4 + i * (sizeof(uint) + 1), sizeof(uint));
-			//	printf("bag %d\n", bag[i]);
-			}
-			finalCommand.setCommand(bag);
-
-			//exit(1);
+		for (auto &&item : _pattern) {
+			if (!strncmp(item.first.c_str(), buffer, 3))
+				item.second(buffer, finalCommand);
 		}
-		if (strncmp(buffer, "bct", 3) == 0) {
-			std::vector<uint> bag;
-			for (int i = 0; i < 8; i++)
-				bag.emplace_back(0);
-			for (size_t i = 0; i < 8; i++) {
-				memcpy(&bag[i], buffer + 4 + i * (sizeof(uint) + 1), sizeof(uint));
-				printf("expeted %d\n", bag[i]);
 
-			}
-			finalCommand.setCommand(bag);
-
-			//exit(1);
-		}
 		std::string commandName;
 		for (const auto &it : buffer) {
 			if (it == ' ')
@@ -168,4 +133,14 @@ int irc::ManageServer::writeOnServer(int socket, std::string msg)
 		throw std::exception();
 	}
 	return 0;
+}
+
+void irc::ManageServer::parseLine8Input(char *buffer, CstringArray &command)
+{
+	std::vector<uint> bag;
+	for (int i = 0; i < 8; i++)
+		bag.emplace_back(0);
+	for (size_t i = 0; i < 8; i++)
+		memcpy(&bag[i], buffer + 4 + i * (sizeof(uint) + 1), sizeof(uint));
+	command.setCommand(bag);
 }

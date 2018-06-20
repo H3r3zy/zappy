@@ -11,7 +11,7 @@
 #include "SfmlTool.hpp"
 #include "Map.hpp"
 
-irc::Map::Map(irc::Communication &comm, std::vector<int> &listId, bool &displayGui, bool &endClient) : _comm(comm), _listId(listId), _displayGui(displayGui), _endClient(endClient), _gameWindow(sf::VideoMode(1200, 800), "Oh voyage voyage, plus loiiiiin que la nuit et le jour"), _grid(_mapSize)
+irc::Map::Map(irc::Communication &comm, std::vector<int> &listId, bool &displayGui, bool &endClient) : _comm(comm), _listId(listId), _displayGui(displayGui), _endClient(endClient), _gameWindow(sf::VideoMode(1200, 800), "Oh voyage voyage, plus loiiiiin que la nuit et le jour"), _enqueueMap(_comm), _mapSize(_enqueueMap.ParseMapSize()), _grid(_mapSize)
 {
 	SfmlTool::InitAllFont();
 	//_gameWindow.setFramerateLimit(60);
@@ -35,7 +35,6 @@ irc::Map::Map(irc::Communication &comm, std::vector<int> &listId, bool &displayG
 	_character.emplace_back(_grid.getTextureCharacter(), tmp);
 
 	/* */
-	_comm.writeOnServer("msz");
 
 }
 
@@ -59,8 +58,6 @@ void irc::Map::loopDisplay()
 
 	while (_gameWindow.isOpen()) {
 		_comm.lockDisplay();
-
-	//	_comm.loopRead();
 
 		getEvent();
 		/* Global Display */
@@ -121,6 +118,7 @@ bool irc::Map::getEvent()
 				_playerPos.setPosition(_camera[MAP].getCenter());
 				_grid.updateGrid3D(_camera[MAP]);
 				_windowInfo->updateInfo(_grid.getNbActive(), _camera[HUD]);
+
 				break;
 			case sf::Keyboard::Left:
 				_camera[MAP].move(-10, 0);

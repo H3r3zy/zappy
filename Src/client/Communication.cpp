@@ -11,6 +11,7 @@
 
 irc::Communication::Communication(int socket, bool &endClient) : _socket(socket), _read(endClient)
 {
+	getEnqueueMap();
 }
 
 int irc::Communication::getSocket() const
@@ -31,7 +32,7 @@ void irc::Communication::enqueueGui(const std::string &msg)
 }
 
 
-void irc::Communication::enqueueMap(const std::vector<uint> &command)
+void irc::Communication::enqueueMap(const CstringArray &command)
 {
 	lockMap();
 	_enqueueMap.emplace_back(command);
@@ -62,19 +63,26 @@ void irc::Communication::loopRead()
 	CstringArray msg;
 
 	while (!_read) {
-		std::cout << "je passe dedans" << std::endl;
-		msg = irc::ManageServer::readGameServer(_socket, false);
-		std::cout << "J'arrive à la fin du parsing, le nom de la commande est [" << msg.getCommandName() << "]" << std::endl;
-		auto tmpPrint = msg.getCommand();
-		if (tmpPrint.size() == 8)
-			std::cout << "Et son message est :" << tmpPrint[0] << " " << tmpPrint[1] << " " << tmpPrint[2] << " " << tmpPrint[3] << " " << tmpPrint[4] << " " << tmpPrint[5] << " " << tmpPrint[6] << " " << tmpPrint[7] <<  std::endl;
-		//addMsgToQueue(msg);
+		msg = irc::ManageServer::readGameServer(_socket, true);
+		addMsgToQueue(msg);
 	}
 }
 
-void irc::Communication::addMsgToQueue(const std::string &msg)
+void irc::Communication::addMsgToQueue(const CstringArray &command)
 {
-	std::cout << "add: " << msg << std::endl;
+	auto tmpPrint = command.getCommand();
+	if (tmpPrint.size() == 8) {
+		std::cout << "J'arrive à la fin du parsing, le nom de la commande est [" << command.getCommandName() << "]" << std::endl;
+		std::cout << "Et son message est :" << tmpPrint[0] << " "
+			<< tmpPrint[1] << " " << tmpPrint[2] << " "
+			<< tmpPrint[3] << " " << tmpPrint[4] << " "
+			<< tmpPrint[5] << " " << tmpPrint[6] << " "
+			<< tmpPrint[7] << std::endl;
+	}
+	if (!command.getCommandName().empty()) {
+		std::cout << "Nom de ma comamnde " << command.getCommandName() << std::endl;
+		enqueueMap(command);
+	}
 	// Todo: Create a parser for msg needed by gui and map, don't forget to lock / unlock
 }
 

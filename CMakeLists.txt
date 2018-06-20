@@ -19,8 +19,8 @@ include_directories(
 file(GLOB_RECURSE FILE Src/*.cpp Include/Interface/*.hpp Include/*.hpp)
 
 set(CMAKE_CXX_STANDARD 11)
-add_executable(client ${FILE} Src/Entity/Water.cpp Include/Entity/Water.hpp Src/CstringArray.cpp Src/CstringArray.hpp)
-target_compile_options(client PRIVATE -std=c++11 -W -Wall -Wextra -ggdb3 -w)
+add_executable(client ${FILE} Src/Entity/Water.cpp Include/Entity/Water.hpp Src/CstringArray.cpp Src/CstringArray.hpp Include/ParseEnqueueMap.cpp Include/ParseEnqueueMap.hpp)
+target_compile_options(client PRIVATE -std=c++11 -W -Wall -Wextra -ggdb3)
 target_link_libraries(client pthread -lsfml-graphics -lsfml-window -lsfml-system)
 
 

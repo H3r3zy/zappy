@@ -232,6 +232,12 @@
 		<Unit filename="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/Interface/IObjectSFML.hpp">
 			<Option target="client"/>
 		</Unit>
+		<Unit filename="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/ParseEnqueueMap.cpp">
+			<Option target="client"/>
+		</Unit>
+		<Unit filename="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/ParseEnqueueMap.hpp">
+			<Option target="client"/>
+		</Unit>
 		<Unit filename="/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/SfmlTool.hpp">
 			<Option target="client"/>
 		</Unit>

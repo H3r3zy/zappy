@@ -136,6 +136,33 @@ client/fast:
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/build
 .PHONY : client/fast
 
+Include/ParseEnqueueMap.o: Include/ParseEnqueueMap.cpp.o
+
+.PHONY : Include/ParseEnqueueMap.o
+
+# target to build an object file
+Include/ParseEnqueueMap.cpp.o:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Include/ParseEnqueueMap.cpp.o
+.PHONY : Include/ParseEnqueueMap.cpp.o
+
+Include/ParseEnqueueMap.i: Include/ParseEnqueueMap.cpp.i
+
+.PHONY : Include/ParseEnqueueMap.i
+
+# target to preprocess a source file
+Include/ParseEnqueueMap.cpp.i:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Include/ParseEnqueueMap.cpp.i
+.PHONY : Include/ParseEnqueueMap.cpp.i
+
+Include/ParseEnqueueMap.s: Include/ParseEnqueueMap.cpp.s
+
+.PHONY : Include/ParseEnqueueMap.s
+
+# target to generate assembly for a file
+Include/ParseEnqueueMap.cpp.s:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Include/ParseEnqueueMap.cpp.s
+.PHONY : Include/ParseEnqueueMap.cpp.s
+
 Src/CstringArray.o: Src/CstringArray.cpp.o
 
 .PHONY : Src/CstringArray.o
@@ -2036,6 +2063,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... zappy_server"
 	@echo "... client"
+	@echo "... Include/ParseEnqueueMap.o"
+	@echo "... Include/ParseEnqueueMap.i"
+	@echo "... Include/ParseEnqueueMap.s"
 	@echo "... Src/CstringArray.o"
 	@echo "... Src/CstringArray.i"
 	@echo "... Src/CstringArray.s"

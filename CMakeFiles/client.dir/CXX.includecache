@@ -6,6 +6,20 @@
 
 #IncludeRegexTransform: 
 
+/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/ParseEnqueueMap.cpp
+SFML/System.hpp
+-
+ParseEnqueueMap.hpp
+/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/ParseEnqueueMap.hpp
+
+/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Include/ParseEnqueueMap.hpp
+Class/Communication.hpp
+-
+SFML/System.hpp
+-
+unistd.h
+-
+
 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/CstringArray.cpp
 CstringArray.hpp
 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/CstringArray.hpp
@@ -395,6 +409,8 @@ SFML/Graphics/RenderWindow.hpp
 -
 SFML/Window/Event.hpp
 -
+ParseEnqueueMap.hpp
+-
 Grid.hpp
 Include/Class/Grid.hpp
 WindowInfo.hpp
@@ -498,6 +514,14 @@ string
 memory
 -
 functional
+-
+
+Include/ParseEnqueueMap.hpp
+Class/Communication.hpp
+-
+SFML/System.hpp
+-
+unistd.h
 -
 
 Include/SfmlTool.hpp

@@ -10,11 +10,6 @@
 
 int main(void)
 {
-	try {
 		irc::Auth auth(1200, 800);
-	} catch (const std::exception &e) {
-		std::cout << "Error occured" << std::endl;
-		return 84;
-	}
 	return 0;
 }

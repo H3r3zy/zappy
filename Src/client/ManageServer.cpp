@@ -27,8 +27,10 @@ std::string irc::ManageServer::readServer(int socket, bool blockRead)
 		int len = 0;
 		do {
 			len = (int)read(socket, buffer, 4095);
-			if (len <= 0)
+			if (len <= 0) {
+				std::cout << "Manage server" << "je throw" << std::endl;
 				throw std::exception();
+			}
 			buffer[len] = '\0';
 			result += buffer;
 		} while (len == 4095);
@@ -43,7 +45,7 @@ std::string irc::ManageServer::readServer(int socket, bool blockRead)
 }
 CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 {
-	std::cout << "je vais read sur mon serveur" << std::endl;
+//	std::cout << "je vais read sur mon serveur" << std::endl;
 
 	std::string result;
 	CstringArray finalCommand;
@@ -64,36 +66,18 @@ CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 		int rc;
 
 		while ((rc = read(socket, c, 1)) > 0) {
-			std::cout << c[0] << std::endl;
 			if (c[0] != '\n') {
 				test.push_back(*c);
 			} else {
 				break;
 			}
 		}
-		sleep(1);
-		std::cout << "Ma chaine :" << std::endl;
+	//	sleep(1);
+		//std::cout << "Ma chaine :" << std::endl;
 		for (const auto &it : test) {
 			std::cout << it;
 		}
 		std::cout << std::endl;
-
-		//char buffer[4096];
-		//int len = 1;
-		std::cout << "je boucle dedans" << std::endl;
-
-		/*do {
-			len = (int)read(socket, buffer, 1);
-			if (len <= 0)
-				throw std::exception();
-			buffer[len] = '\0';
-			result += buffer;
-			if (buffer[0] == '\n')
-				break;
-			std::cout << "buffer[" << buffer << "]"  << std::endl;
-			std::cout << len << " => " << buffer << " = " << result << std::endl;
-			usleep(10000);
-		} while (len == 4095);*/
 
 		char buffer[4096];
 		int i = 0;
@@ -110,46 +94,39 @@ CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 				bag.emplace_back(0);
 			for (size_t i = 0; i < 8; i++) {
 				memcpy(&bag[i], buffer + 4 + i * (sizeof(uint) + 1), sizeof(uint));
-				printf("bag %d\n", bag[i]);
+			//	printf("bag %d\n", bag[i]);
 			}
 			finalCommand.setCommand(bag);
 
 			//exit(1);
 		}
-
-
-
-
-
-
 		if (strncmp(buffer, "bct", 3) == 0) {
 			std::vector<uint> bag;
 			for (int i = 0; i < 8; i++)
 				bag.emplace_back(0);
 			for (size_t i = 0; i < 8; i++) {
 				memcpy(&bag[i], buffer + 4 + i * (sizeof(uint) + 1), sizeof(uint));
-				printf("expeted %d\n", bag[i]);
+		//		printf("expeted %d\n", bag[i]);
 
 			}
 			finalCommand.setCommand(bag);
 
 			//exit(1);
 		}
-
+		std::string commandName;
+		for (const auto &it : buffer) {
+			if (it == ' ')
+				break;
+			commandName.push_back(it);
+		}
+		std::cout << "Nom de ma commande : " << commandName << std::endl;
+		finalCommand.setCommandName(commandName);
 
 
 	} else {
-		std::cout << "NTM gros con" << std::endl;
+	//	std::cout << "NTM gros con" << std::endl;
 
 	}
-//	sleep(2);
-	std::stringstream ss(result);
-	std::string command;
-	ss >> command;
-	std::cout << "COMMAND: " << command << std::endl;
-	finalCommand.setCommandName(command);
-
-	std::cout << "result: " << result << std::endl;
 	return finalCommand;
 }
 
@@ -184,7 +161,9 @@ int irc::ManageServer::getFileDescriptorSocket()
 int irc::ManageServer::writeOnServer(int socket, std::string msg)
 {
 	std::cout << "J'envoie [" << msg << "] a la socket " << socket << std::endl;
-	if (write(socket, msg.c_str(), msg.size()) == -1)
+	if (write(socket, msg.c_str(), msg.size()) == -1) {
+		std::cout << "excpetion ici" << std::endl;
 		throw std::exception();
+	}
 	return 0;
 }

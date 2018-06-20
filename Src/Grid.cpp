@@ -10,6 +10,7 @@
 Grid::Grid(const sf::Vector2f &mapSize) : _mapSize(mapSize), _nbActive(0)
 {
 	std::cout << "nnike ta grosse chienne" << std::endl;
+	std::cout << "je suis dans Grid, la taille de ma map map X" << _mapSize.x << " Y " << _mapSize.y << std::endl;
 	loadTextures();
 	loadMap();
 }

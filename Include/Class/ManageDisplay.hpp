@@ -33,11 +33,11 @@ namespace irc {
 
 		irc::Communication _comm;
 
-		irc::Map _map;
-		irc::Gui _gui;
-
 		my::Thread *_thread = nullptr;
 		my::Thread *_threadRead = nullptr;
+		irc::Map _map;
+
+		irc::Gui _gui;
 
 
 		std::string _nick;

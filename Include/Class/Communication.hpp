@@ -24,7 +24,7 @@ namespace irc {
 		void setSocket(int socket);
 
 		std::vector<CstringArray> &getEnqueueMap();
-		void enqueueMap(const std::vector<uint> &command);
+		void enqueueMap(const CstringArray &command);
 
 		std::vector<std::string> &getEnqueueGui();
 		void enqueueGui(const std::string &msg);
@@ -42,7 +42,7 @@ namespace irc {
 		void unlockDisplay();
 
 		protected:
-		void addMsgToQueue(const std::string &msg);
+		void addMsgToQueue(const CstringArray &command);
 
 		private:
 		int _socket = 0;
@@ -54,8 +54,8 @@ namespace irc {
 		std::mutex _mutexGui;
 		std::mutex _mutexMap;
 
-		std::vector<CstringArray> _enqueueMap;
-		std::vector<std::string> _enqueueGui;
+		std::vector<CstringArray> _enqueueMap = {};
+		std::vector<std::string> _enqueueGui = {};
 	};
 }
 

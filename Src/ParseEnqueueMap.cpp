@@ -8,7 +8,6 @@
 
 ParseEnqueueMap::ParseEnqueueMap(irc::Communication &comm) : _comm(comm)
 {
-	std::cout << "coucou" << std::endl;
 	_comm.writeOnServer("msz");
 }
 
@@ -44,7 +43,7 @@ sf::Vector2f ParseEnqueueMap::ParseMapSize()
 	}
 }
 
-void ParseEnqueueMap::fillMap(Grid &_grid)
+void ParseEnqueueMap::fillMap(Grid &_grid, sf::Vector2f &mapSize)
 {
 	_comm.writeOnServer("mct");
 
@@ -71,7 +70,7 @@ void ParseEnqueueMap::fillMap(Grid &_grid)
 				_grid.getCell(tmpPrint[0], tmpPrint[1])->setRessources(4, tmpPrint[6]);
 				_grid.getCell(tmpPrint[0], tmpPrint[1])->setRessources(5, tmpPrint[7]);
 				_grid.getCell(tmpPrint[0], tmpPrint[1])->setRessources(6, tmpPrint[8]);
-				if (tmpPrint[0] == 8 && tmpPrint[1] == 8)
+				if (tmpPrint[0] == mapSize.x - 1 && tmpPrint[1] == mapSize.y - 1)
 					return;
 			}
 		}

@@ -15,7 +15,7 @@ class ParseEnqueueMap {
 	public:
 	ParseEnqueueMap(irc::Communication &comm);
 	sf::Vector2f ParseMapSize();
-	void fillMap(Grid &_grid);
+	void fillMap(Grid &_grid, sf::Vector2f &mapSize);
 
 	private:
 	irc::Communication &_comm;

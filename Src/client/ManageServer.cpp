@@ -68,7 +68,7 @@ CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 		int rc;
 
 		while ((rc = read(socket, c, 1)) > 0) {
-			if (c[0] != '\n') {
+			if (c[0] != -5) {
 				test.push_back(*c);
 			} else {
 				break;

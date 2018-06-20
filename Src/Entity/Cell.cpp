@@ -40,7 +40,6 @@ Cell::Cell(std::pair<sf::Vector2f, sf::Vector2f> squareDimension, sf::Texture *&
 	//sleep(1);
 
 	for (int i = 0; i < 7; i++) {
-		_sprite[i].setTexture(resourcePack[i]);
 		auto tmpPos = dist6(rng);
 
 		sf::Vector2f tmp = _randomPos[tmpPos];
@@ -57,7 +56,12 @@ Cell::Cell(std::pair<sf::Vector2f, sf::Vector2f> squareDimension, sf::Texture *&
 
 		_takenPos[tmpPos] = true;
 
+		_sprite[i].setTexture(resourcePack[i]);
+		_sprite[i + 7].setTexture(resourcePack[i + 7]);
+
 		_sprite[i].setPosition(_position.x + tmp.x, _position.y + tmp.y);
+		_sprite[i + 7].setPosition(_position.x + tmp.x, _position.y + tmp.y);
+
 		_sprite[i].setScale(0.3, 0.3);
 
 		for (int j = 0; j < 9; j++) {
@@ -114,9 +118,11 @@ void Cell::makeTarget()
 void Cell::printAllResources(sf::RenderWindow &window) const
 {
 	for (const auto &it : _ressources) {
-		if (it.second != 0) {
+		if (it.second == 1) {
 			window.draw(_sprite[it.first]);
-			std::cout << "Il y a dans ma cellule la ressource " << it.first << " et sa quantité " << it.second << std::endl;
+		} else if (it.second > 1) {
+			window.draw(_sprite[it.first + 7]);
 		}
+//		std::cout << "Il y a dans ma cellule la ressource " << it.first << " et sa quantité " << it.second << std::endl;
 	}
 }

@@ -32,7 +32,7 @@ irc::Map::Map(irc::Communication &comm, bool &displayGui, bool &endClient) : _co
 
 
 	/* Updating all cells */
-	_enqueueMap.fillMap(_grid);
+	_enqueueMap.fillMap(_grid, _mapSize);
 
 	sf::Vector2f tmp = {1000, 0};
 	_character.emplace_back(_grid.getTextureCharacter(), tmp);

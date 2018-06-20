@@ -76,6 +76,18 @@ bool Grid::loadTextures()
 	_resourcesPack[5].loadFromFile("extra/gui/pokeball.png", sf::IntRect(300, 0, 60, 60));
 	_resourcesPack[6].loadFromFile("extra/gui/pokeball.png", sf::IntRect(360, 0, 60, 60));
 
+	/* Multi Food */
+	_resourcesPack[7].loadFromFile("extra/gui/pokeball2.png", sf::IntRect(0, 0, 50, 50));
+
+	/* Multi Pokeball */
+	_resourcesPack[8].loadFromFile("extra/gui/pokeball2.png", sf::IntRect(60, 0, 50, 50));
+	_resourcesPack[9].loadFromFile("extra/gui/pokeball2.png", sf::IntRect(120, 0, 50, 50));
+	_resourcesPack[10].loadFromFile("extra/gui/pokeball2.png", sf::IntRect(180, 0, 50, 50));
+	_resourcesPack[11].loadFromFile("extra/gui/pokeball2.png", sf::IntRect(240, 0, 50, 50));
+	_resourcesPack[12].loadFromFile("extra/gui/pokeball2.png", sf::IntRect(300, 0, 50, 50));
+	_resourcesPack[13].loadFromFile("extra/gui/pokeball2.png", sf::IntRect(360, 0, 50, 50));
+
+
 	for (int i = 0; i < 9; i++) {
 		_textureCharacterPack[WALK_LEFT].emplace_back(sf::Texture());
 		_textureCharacterPack[WALK_RIGHT].emplace_back(sf::Texture());

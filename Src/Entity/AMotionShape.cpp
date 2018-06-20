@@ -32,3 +32,8 @@ const sf::Vector2f &AMotionShape::getPosition() const
 AMotionShape::AMotionShape()
 {
 }
+
+const uint AMotionShape::getActualSprite() const
+{
+	return _actualSprite;
+}

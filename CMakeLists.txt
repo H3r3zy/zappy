@@ -2,7 +2,6 @@ cmake_minimum_required(VERSION 3.7.2)
 project(client)
 
 include_directories(
-		Src
 		Include/
 		Include/Text/
 		Include/Entity/
@@ -10,6 +9,7 @@ include_directories(
 		Include/Abstract/
 		Include/Interface/
 		Include/Class/
+		Include/Class/Texture
 		Include/Class/Gui/
 		Include/Class/Gui/PersonalizedObject/
 		Include/Class/Gui/Animation/

@@ -10,6 +10,7 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <debug.h>
+#include <gui_command.h>
 #include "server.h"
 
 static const char *TYPENAME[] = {
@@ -34,11 +35,12 @@ void take_cmd(server_t *server, client_t *client, char *arg)
 	debug(INFO "'%i' call Take '%s'\n", client->fd, arg);
 	for (int i = 0; TYPENAME[i]; i++) {
 		if (!strcasecmp(TYPENAME[i], arg) && server->map.map[
-		client->entity->pos.y][client->entity->pos.x].items[i]) {
-			UPDATE_RESOURCE(&server->map, client->entity->pos,
+		POS(client).y][POS(client).x].items[i]) {
+			update_resource(&server->map, client->entity->pos,
 				i, -1);
 			client->user.bag[i]++;
 			add_to_queue(client, "ok\n");
+			gui_pgt(server, client, i);
 			return;
 		}
 	}

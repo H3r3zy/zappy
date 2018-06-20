@@ -1,7 +1,7 @@
 #!/bin/bash
 
-command=( "Forward" "Left" "Right" "Look" "Inventory" "Broadcast caca"
-        "Connect_nbr" "Fork" "Eject" "Take Linemate" "Take Deraumere" "Take Sibur"
+command=( "Forward" "Left" "Right" "Look"
+        "Take Linemate" "Take Deraumere" "Take Sibur"
         "Take Mendiane" "Take Phiras" "Take Thystame" "Take Food" "Take caca"
         "Set Linemate" "Set Deraumere" "Set Sibur" "Set Mendiane" "Set Phiras"
         "Set Thystame" "Set Food" "Set caca" "Incantation" "caca" "Take Food"

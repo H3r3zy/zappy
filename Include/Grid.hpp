@@ -12,6 +12,7 @@
 #include <iostream>
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Graphics/Text.hpp>
+#include <Entity/Water.hpp>
 #include "Entity/Cell.hpp"
 #include "Character.hpp"
 
@@ -48,16 +49,21 @@ class Grid {
 	private:
 	bool loadTextures();
 	void loadMap();
+	void loadWater();
 
 	/* TOOLS */
 	sf::Vector2f _mapSize;
 	uint _nbActive;
+	std::vector<Water> _waterMap;
 	std::vector<Cell *> _activeMap;
 	std::map<std::pair<uint, uint>, Cell *> _gameMap;
+
+	bool _mapBorder = false;
 
 	/*  SFML */
 	std::map<char, std::vector<sf::Texture>> _textureCharacterPack;
 	std::vector<sf::Texture *> _texturePack;
+	std::vector<sf::Texture> _waterPack;
 };
 
 #endif //PSU_ZAPPY_2017_GRID_HPP

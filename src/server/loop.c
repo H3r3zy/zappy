@@ -73,10 +73,14 @@ static void handle_gui_poll(server_t *server, struct pollfd *fd)
 {
 	int status = 0;
 
-	if (*server->gui.queue && (fd->revents & POLLOUT)) {
-		status = try_write(server->gui.fd, server->gui.queue);
-		*server->gui.queue = 0;
-		server->gui.len = 0;
+	if ((fd->revents & POLLOUT)) {
+		if (*server->gui.queue) {
+			debug(ERROR "%i\n", server->gui.len);
+			status = try_write_gui(server->gui.fd, server->gui.queue, (uint32_t) server->gui.len);
+			*server->gui.queue = 0;
+			server->gui.len = 0;
+		}
+		gui_continue_commands(server);
 	}
 	if ((fd->revents & POLLIN))
 		status += read_gui(server);

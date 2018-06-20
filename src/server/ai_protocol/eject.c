@@ -8,16 +8,17 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <server.h>
+#include <gui_command.h>
 #include "command.h"
 
 /**
- * Eject all the clients in the cell (not himself)
- * @param server
- * @param client
- * @param ejected_to
- * @param delta
- * @return
- */
+* Eject all the clients in the cell (not himself)
+* @param server
+* @param client
+* @param ejected_to
+* @param delta
+* @return
+*/
 static bool eject_client(server_t *server, client_t *client, pos_t *ejected_to,
 	pos_t *delta
 )
@@ -37,6 +38,7 @@ static bool eject_client(server_t *server, client_t *client, pos_t *ejected_to,
 			snprintf(buffer, 124, "eject: %i\n",
 				get_o_w_dlt(delta, OR(tmp)));
 			add_to_queue(tmp, buffer);
+			gui_pex(server, client);
 		}
 		en = next;
 	}
@@ -44,12 +46,12 @@ static bool eject_client(server_t *server, client_t *client, pos_t *ejected_to,
 }
 
 /**
- * Eject all the player in the cell where the client is
- * They are ejected in the direction he look
- * @param server
- * @param client
- * @param arg
- */
+* Eject all the player in the cell where the client is
+* They are ejected in the direction he look
+* @param server
+* @param client
+* @param arg
+*/
 void eject_cmd(server_t *server, client_t *client,
 	char *__attribute__((unused))arg
 )

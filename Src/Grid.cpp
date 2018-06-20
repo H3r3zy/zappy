@@ -4,10 +4,13 @@
 
 
 #include <SFML/Graphics/Sprite.hpp>
+#include <thread>
 #include "Grid.hpp"
 
 Grid::Grid(const sf::Vector2f &mapSize) : _mapSize(mapSize), _nbActive(0)
 {
+	std::cout << "nnike ta grosse chienne" << std::endl;
+	std::cout << "je suis dans Grid, la taille de ma map map X" << _mapSize.x << " Y " << _mapSize.y << std::endl;
 	loadTextures();
 	loadMap();
 }
@@ -26,15 +29,16 @@ void Grid::loadMap()
 
 	dimension.second.x = 100;
 	dimension.second.y = 100;
-	srand(static_cast<unsigned int>(time(0)));
 	for (uint j = 0; j < _mapSize.y; j++) {
 		for (uint i = 0; i < _mapSize.x; i++) {
 			dimension.first.x = i * 100;
 			dimension.first.y = ((j) * 100);
 			dimension.first.y *= -1;
-			_gameMap.insert(GRID_MAP::value_type(POSITION(i, j), new Cell(dimension, _texturePack[dist6(rng)])));
+			_gameMap.insert(GRID_MAP::value_type(POSITION(i, j),
+				new Cell(dimension, _texturePack[dist6(rng)])));
 		}
 	}
+	loadWater();
 }
 
 bool Grid::loadTextures()
@@ -44,6 +48,15 @@ bool Grid::loadTextures()
 	}
 	for (int i = 0; i < 5; i++) {
 		if (!_texturePack[i]->loadFromFile("Grass" + std::to_string(i) + ".png")) {
+			return false;
+		}
+	}
+
+	for (int i = 0; i < 4; i++) {
+		_waterPack.emplace_back(sf::Texture());
+	}
+	for (int i = 0; i < 4; i++) {
+		if (!_waterPack[i].loadFromFile("Water" + std::to_string(i) + ".png")) {
 			return false;
 		}
 	}
@@ -61,6 +74,7 @@ bool Grid::loadTextures()
 		_textureCharacterPack[WALK_DOWN][i].loadFromFile("Character.png", sf::IntRect(i * 64, 640, 64, 64));
 		_textureCharacterPack[WALK_RIGHT][i].loadFromFile("Character.png", sf::IntRect(i * 64, 704, 64, 64));
 	}
+
 	return true;
 }
 
@@ -82,7 +96,10 @@ void Grid::updateGrid3D(sf::View &view)
 		if (chunk.x >= 0 && chunk.y >= 0) {
 			if (_gameMap.find(POSITION(static_cast<const uint &>(chunk.x), static_cast<const uint &>(chunk.y))) != _gameMap.end()) {
 				_activeMap.push_back(_gameMap[POSITION(static_cast<const uint &>(chunk.x), static_cast<const uint &>(chunk.y))]);
+			} else {
 			}
+		} else {
+			_mapBorder = true;
 		}
 		chunk.x++;
 		if (chunk.x >= to.x) {
@@ -104,6 +121,9 @@ void Grid::displayGlobalGrid(sf::RenderWindow &window, const sf::View &view)
 		window.draw(it->getCell());
 		window.draw(it->getCellPos());
 		++_nbActive;
+	}
+	for (auto &it : _waterMap) {
+		window.draw(it.getSprite());
 	}
 	tmpRect.setFillColor(sf::Color::Cyan);
 	window.draw(tmpRect);
@@ -146,4 +166,27 @@ bool Grid::checkvalid(int x, int y)
 std::map<char, std::vector<sf::Texture>> &Grid::getTextureCharacter()
 {
 	return _textureCharacterPack;
+}
+
+void Grid::loadWater()
+{
+	sf::Vector2f actualPos;
+	sf::Vector2f destPos;
+
+	destPos.x = 0;
+	destPos.y = (_mapSize.y * -100);
+
+	actualPos.x = -500;
+	actualPos.y = 0;
+
+
+	while (actualPos.y > destPos.y) {
+		std::cout << "je creer un macaque en" << actualPos.x<< " "<< actualPos.y<< std::endl;
+		_waterMap.emplace_back(actualPos, _waterPack);
+		actualPos.x += 100;
+		if (actualPos.x == destPos.x) {
+			actualPos.x = -500;
+			actualPos.y -= 100;
+		}
+	}
 }

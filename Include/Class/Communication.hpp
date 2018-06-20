@@ -11,6 +11,7 @@
 # include <vector>
 # include <string>
 # include <mutex>
+# include "CstringArray.hpp"
 # include <map>
 
 namespace irc {
@@ -54,8 +55,8 @@ namespace irc {
 		int getSocket() const;
 		void setSocket(int socket);
 
-		std::vector<std::string> &getEnqueueMap();
-		void enqueueMap(const std::string &msg);
+		std::vector<CstringArray> &getEnqueueMap();
+		void enqueueMap(const CstringArray &command);
 
 		std::vector<std::string> &getEnqueueGui();
 		void enqueueGui(const std::string &msg);
@@ -78,6 +79,9 @@ namespace irc {
 		shack_data_t _shack;
 
 		protected:
+		void addMsgToQueue(const CstringArray &command);
+
+		protected:
 		void addMsgToQueue(const std::string &msg);
 
 		private:
@@ -90,8 +94,8 @@ namespace irc {
 		std::mutex _mutexGui;
 		std::mutex _mutexMap;
 
-		std::vector<std::string> _enqueueMap;
-		std::vector<std::string> _enqueueGui;
+		std::vector<CstringArray> _enqueueMap = {};
+		std::vector<std::string> _enqueueGui = {};
 	};
 }
 

@@ -6,11 +6,12 @@
 */
 
 #include <iostream>
+#include <unistd.h>
 #include <thread>
 #include "SfmlTool.hpp"
 #include "Map.hpp"
 
-irc::Map::Map(irc::Communication &comm, bool &displayGui, bool &endClient) : _comm(comm), _displayGui(displayGui), _endClient(endClient), _gameWindow(sf::VideoMode(1200, 800), "Oh voyage voyage, plus loiiiiin que la nuit et le jour"), _grid(_mapSize)
+irc::Map::Map(irc::Communication &comm, bool &displayGui, bool &endClient) : _comm(comm), _displayGui(displayGui), _endClient(endClient), _gameWindow(sf::VideoMode(1200, 800), "Oh voyage voyage, plus loiiiiin que la nuit et le jour"), _enqueueMap(_comm), _mapSize(_enqueueMap.ParseMapSize()), _grid(_mapSize)
 {
 	SfmlTool::InitAllFont();
 	//_gameWindow.setFramerateLimit(60);
@@ -22,12 +23,13 @@ irc::Map::Map(irc::Communication &comm, bool &displayGui, bool &endClient) : _co
 
 	_gameWindow.setFramerateLimit(60);
 	_gameWindow.setPosition(sf::Vector2i(200, 50));
+	//_gameWindow.setFramerateLimit(60);
+	_gameWindow.setPosition(sf::Vector2i(200, 50));
 
 	/* Faking first movement */
 	_grid.updateGrid3D(_camera[MAP]);
 	_windowInfo->updateInfo(_grid.getNbActive(), _camera[MAP]);
 
-	/* Coucou je crer un thread */
 	sf::Vector2f tmp = {1000, 0};
 	_character.emplace_back(_grid.getTextureCharacter(), tmp);
 	tmp.x -= 500;
@@ -35,6 +37,7 @@ irc::Map::Map(irc::Communication &comm, bool &displayGui, bool &endClient) : _co
 	_character.emplace_back(_grid.getTextureCharacter(), tmp);
 
 	/* */
+
 }
 
 void irc::Map::initCamera()
@@ -55,9 +58,9 @@ void irc::Map::loopDisplay()
 {
 	//std::thread caca(_character[0].playerLoop, _gameWindow);
 
-
 	while (_gameWindow.isOpen()) {
 		_comm.lockDisplay();
+
 		getEvent();
 		/* Global Display */
 		_gameWindow.setView(_camera[MAP]);
@@ -94,6 +97,8 @@ bool irc::Map::getEvent()
 	sf::Event event{};
 
 	// while there are pending events...
+//	_comm.loopRead();
+
 	while (_gameWindow.pollEvent(event))
 	{
 		// check the type of the event...
@@ -115,10 +120,13 @@ bool irc::Map::getEvent()
 				_playerPos.setPosition(_camera[MAP].getCenter());
 				_grid.updateGrid3D(_camera[MAP]);
 				_windowInfo->updateInfo(_grid.getNbActive(), _camera[HUD]);
+
 				break;
 			case sf::Keyboard::Left:
 				_camera[MAP].move(-10, 0);
 				_camera[MINIMAP].move(-10, 0);
+				_comm.writeOnServer("mct");
+
 				_playerPos.setPosition(_camera[MAP].getCenter());
 				_grid.updateGrid3D(_camera[MAP]);
 				_windowInfo->updateInfo(_grid.getNbActive(), _camera[HUD]);

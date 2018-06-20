@@ -38,6 +38,24 @@ int try_write(const int fd, char *msg)
 	return 0;
 }
 
+int try_write_gui(const int fd, char *msg, uint32_t len)
+{
+	size_t wrote = 0;
+	ssize_t status = 0;
+
+	while (wrote < len) {
+		status = write(fd, msg + wrote, len - wrote);
+		if (status < 1) {
+			debug(ERROR "Failed to wrote response to client %d\n",
+				fd);
+			return 1;
+		}
+		wrote += status;
+	}
+	debug(GINFO "Send to %i => %s", fd, msg);
+	return 0;
+}
+
 int send_responses(client_t *client)
 {
 	while (client->queue_index) {
@@ -45,7 +63,7 @@ int send_responses(client_t *client)
 			return 1;
 		}
 		free(*client->queue);
-		for (uint i = 1; client->queue[i]; i++) {
+		for (uint32_t i = 1; client->queue[i]; i++) {
 			client->queue[i - 1] = client->queue[i];
 		}
 		client->queue[client->queue_index - 1] = NULL;

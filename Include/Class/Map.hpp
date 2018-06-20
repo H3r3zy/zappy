@@ -14,6 +14,7 @@
 # include <SFML/System.hpp>
 # include <SFML/Graphics/RenderWindow.hpp>
 # include <SFML/Window/Event.hpp>
+#include <ParseEnqueueMap.hpp>
 # include "Grid.hpp"
 # include "WindowInfo.hpp"
 # include "Character.hpp"
@@ -43,7 +44,6 @@ namespace irc {
 
 		bool getEvent();
 		void initCamera();
-		sf::Vector2f _mapSize = {50, 50};
 
 		/* SFML */
 		sf::Event _event;
@@ -53,9 +53,11 @@ namespace irc {
 		sf::RenderWindow _gameWindow;
 
 		/* Member Classes */
-		Grid _grid;
 		WindowInfo *_windowInfo;
 		std::vector<Character> _character;
+		ParseEnqueueMap _enqueueMap;
+		sf::Vector2f _mapSize = {10, 10};
+		Grid _grid;
 
 	};
 }

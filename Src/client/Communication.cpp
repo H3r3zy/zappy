@@ -30,19 +30,20 @@ void irc::Communication::enqueueGui(const std::string &msg)
 	unlockGui();
 }
 
-void irc::Communication::enqueueMap(const std::string &msg)
+
+void irc::Communication::enqueueMap(const CstringArray &command)
 {
 	lockMap();
-	_enqueueMap.push_back(msg);
+	_enqueueMap.emplace_back(command);
 	unlockMap();
 }
 
-std::vector<std::string>& irc::Communication::getEnqueueGui()
+std::vector<std::string> &irc::Communication::getEnqueueGui()
 {
 	return _enqueueGui;
 }
 
-std::vector<std::string>& irc::Communication::getEnqueueMap()
+std::vector<CstringArray> &irc::Communication::getEnqueueMap()
 {
 	return _enqueueMap;
 }
@@ -50,6 +51,7 @@ std::vector<std::string>& irc::Communication::getEnqueueMap()
 int irc::Communication::writeOnServer(const std::string &msg)
 {
 	_write.lock();
+	std::cout << "jecris ["  << msg << "] au serveur" << std::endl;
 	int ret = irc::ManageServer::writeOnServer(_socket, msg + "\n");
 	_write.unlock();
 	return ret;
@@ -57,17 +59,29 @@ int irc::Communication::writeOnServer(const std::string &msg)
 
 void irc::Communication::loopRead()
 {
-	std::string msg;
+	CstringArray msg;
 
 	while (!_read) {
-		msg = irc::ManageServer::readServer(_socket, true);
+		msg = irc::ManageServer::readGameServer(_socket, true);
 		addMsgToQueue(msg);
 	}
 }
 
-void irc::Communication::addMsgToQueue(const std::string &msg)
+void irc::Communication::addMsgToQueue(const CstringArray &command)
 {
-	std::cout << "add: " << msg << std::endl;
+	auto tmpPrint = command.getCommand();
+	if (tmpPrint.size() == 8) {
+		std::cout << "J'arrive à la fin du parsing, le nom de la commande est [" << command.getCommandName() << "]" << std::endl;
+		std::cout << "Et son message est :" << tmpPrint[0] << " "
+			<< tmpPrint[1] << " " << tmpPrint[2] << " "
+			<< tmpPrint[3] << " " << tmpPrint[4] << " "
+			<< tmpPrint[5] << " " << tmpPrint[6] << " "
+			<< tmpPrint[7] << std::endl;
+	}
+	if (!command.getCommandName().empty()) {
+		std::cout << "Nom de ma comamnde " << command.getCommandName() << std::endl;
+		enqueueMap(command);
+	}
 	// Todo: Create a parser for msg needed by gui and map, don't forget to lock / unlock
 }
 

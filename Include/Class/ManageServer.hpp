@@ -17,6 +17,8 @@
 # include <unistd.h>
 # include <sys/select.h>
 # include <fstream>
+#include <CstringArray.hpp>
+
 
 namespace irc {
 
@@ -27,6 +29,7 @@ namespace irc {
 		static int getFileDescriptorSocket();
 
 		static std::string readServer(int socket, bool = false);
+		static CstringArray readGameServer(int socket, bool = false);
 		static int writeOnServer(int socket, std::string msg);
 
 		protected:

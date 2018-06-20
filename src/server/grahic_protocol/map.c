@@ -12,28 +12,57 @@
 #include <debug.h>
 #include "server.h"
 
-void gui_msz(server_t *server, __attribute__((unused)) char *arg)
+/**
+* GUI command : get map size
+* @param server
+* @param arg
+*
+* @response msz sizeX:4 sizeY:4
+*/
+void gui_msz(server_t *server, __attribute__((unused)) char *arg,
+	__attribute__((unused)) bool *status)
 {
-	char buff[16] = {0};
+	static char buff[16] = "msz mapX mapY\n";
+	int idx = 4;
 
-	snprintf(buff, 16, "msz %u;%u\n", server->map.size.x,
-		server->map.size.y);
+	write_uint32(buff, &idx, (uint32_t) server->map.size.x);
+	++idx;
+	write_uint32(buff, &idx, (uint32_t) server->map.size.y);
+	++idx;
 	add_to_gui_queue(&server->gui, buff);
 }
 
-static void print_map_cell(server_t *server, size_t x, size_t y)
+/**
+* Print the content of a cell into a buffer
+* @param server
+* @param x
+* @param y
+*/
+static void print_map_cell(server_t *server, uint32_t x, uint32_t y)
 {
-	char buff[50] = {0};
-	uint *items = server->map.map[y][x].items;
+	static char buff[50] = "bct xpos ypos food line dera "
+			       "sibu mend phir thys\n";
+	uint32_t *items = server->map.map[y][x].items;
 
-	snprintf(buff, 55, "bct %zu %zu %u %u %u %u %u %u %u\n", x, y,
-		items[Food], items[Linemate], items[Deraumere],
-		items[Sibur], items[Mendiane], items[Phiras],
-		items[Thystame]);
+	memcpy(buff + 4, &x, sizeof(uint32_t));
+	memcpy(buff + 9, &y, sizeof(uint32_t));
+	for (size_t i = 0; i < RESOURCE_NB; i++) {
+		memcpy(buff + 14 + i * (sizeof(uint32_t) + 1), &items[i],
+			sizeof(uint32_t));
+
+	}
 	add_to_gui_queue(&server->gui, buff);
 }
 
-void gui_bct(server_t *server, char *arg)
+/**
+* GUI command : get cell content at pos X Y
+* @param server
+* @param arg
+*
+* @response bct xpos:4 ypos:4 line:4 dera:4 sibu:4 mend:4 phir:4 thys:4 food:4
+*/
+void gui_bct(server_t *server, char *arg,
+	__attribute__((unused)) bool *status)
 {
 	long x = strtol(arg, NULL, 10);
 	long y = strtol(strchr(arg, ' ') + 1, NULL, 10);
@@ -42,12 +71,44 @@ void gui_bct(server_t *server, char *arg)
 		y >= server->map.size.y)
 		add_to_gui_queue(&server->gui, "ko\n");
 	else
-		print_map_cell(server, (size_t)x, (size_t)y);
+		print_map_cell(server, x, y);
 }
 
-void gui_mct(server_t *server, __attribute__((unused)) char *arg)
+int process_map_printing(server_t *server, pos_t *pos,
+	uint32_t *cells_done, bool *status)
 {
-	for (int y = 0; y < server->map.size.y; y++)
-		for (int x = 0; x < server->map.size.x; x++)
-			print_map_cell(server, x, y);
+	for (; pos->x < server->map.size.x; pos->x++) {
+		print_map_cell(server, pos->x, pos->y);
+		++(*cells_done);
+		if (*cells_done >= 50) {
+			*status = true;
+			return 1;
+		}
+	}
+
+	return 0;
+}
+
+/**
+* GUI command : get full map content
+* @param server
+* @param arg
+*
+* @response bct xpos:4 ypos:4 line:4 dera:4 sibu:4 mend:4 phir:4 thys:4 food:4
+* for each cell
+*/
+void gui_mct(server_t *server, __attribute__((unused)) char *arg, bool *status)
+{
+	static pos_t pos = {0};
+	uint32_t cells_done = 0;
+
+	for (; pos.y < server->map.size.y; pos.y++) {
+		if (process_map_printing(server, &pos, &cells_done, status))
+			return;
+		pos.x = 0;
+
+	}
+	pos.x = 0;
+	pos.y = 0;
+	*status = false;
 }

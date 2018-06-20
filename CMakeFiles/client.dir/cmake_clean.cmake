@@ -1,0 +1,42 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/client.dir/Src/CstringArray.cpp.o"
+  "CMakeFiles/client.dir/Src/Entity/AMotionShape.cpp.o"
+  "CMakeFiles/client.dir/Src/Entity/ARectangleShape.cpp.o"
+  "CMakeFiles/client.dir/Src/Entity/Cell.cpp.o"
+  "CMakeFiles/client.dir/Src/Entity/Character.cpp.o"
+  "CMakeFiles/client.dir/Src/Entity/Water.cpp.o"
+  "CMakeFiles/client.dir/Src/Grid.cpp.o"
+  "CMakeFiles/client.dir/Src/Main.cpp.o"
+  "CMakeFiles/client.dir/Src/ParseEnqueueMap.cpp.o"
+  "CMakeFiles/client.dir/Src/SfmlTool.cpp.o"
+  "CMakeFiles/client.dir/Src/Text/AText.cpp.o"
+  "CMakeFiles/client.dir/Src/Text/GameText.cpp.o"
+  "CMakeFiles/client.dir/Src/Tools/Thread.cpp.o"
+  "CMakeFiles/client.dir/Src/WindowInfo.cpp.o"
+  "CMakeFiles/client.dir/Src/client/Auth.cpp.o"
+  "CMakeFiles/client.dir/Src/client/Communication.cpp.o"
+  "CMakeFiles/client.dir/Src/client/Gui.cpp.o"
+  "CMakeFiles/client.dir/Src/client/Gui/Animation/Modal.cpp.o"
+  "CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/AbstractObjectSFML.cpp.o"
+  "CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Circle.cpp.o"
+  "CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Container.cpp.o"
+  "CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Sprite.cpp.o"
+  "CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Square.cpp.o"
+  "CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/Text.cpp.o"
+  "CMakeFiles/client.dir/Src/client/Gui/ObjectSFML/TextInput.cpp.o"
+  "CMakeFiles/client.dir/Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.cpp.o"
+  "CMakeFiles/client.dir/Src/client/Gui/SFML_monitor.cpp.o"
+  "CMakeFiles/client.dir/Src/client/ManageDisplay.cpp.o"
+  "CMakeFiles/client.dir/Src/client/ManageServer.cpp.o"
+  "CMakeFiles/client.dir/Src/client/Map.cpp.o"
+  "CMakeFiles/client.dir/Src/client/Texture/GuiTexture.cpp.o"
+  "CMakeFiles/client.dir/Src/client/Texture/IATexture.cpp.o"
+  "CMakeFiles/client.dir/Src/client/Texture/shackTexture.cpp.o"
+  "client.pdb"
+  "client"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang CXX)
+  include(CMakeFiles/client.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

@@ -136,6 +136,33 @@ client/fast:
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/build
 .PHONY : client/fast
 
+Src/CstringArray.o: Src/CstringArray.cpp.o
+
+.PHONY : Src/CstringArray.o
+
+# target to build an object file
+Src/CstringArray.cpp.o:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/CstringArray.cpp.o
+.PHONY : Src/CstringArray.cpp.o
+
+Src/CstringArray.i: Src/CstringArray.cpp.i
+
+.PHONY : Src/CstringArray.i
+
+# target to preprocess a source file
+Src/CstringArray.cpp.i:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/CstringArray.cpp.i
+.PHONY : Src/CstringArray.cpp.i
+
+Src/CstringArray.s: Src/CstringArray.cpp.s
+
+.PHONY : Src/CstringArray.s
+
+# target to generate assembly for a file
+Src/CstringArray.cpp.s:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/CstringArray.cpp.s
+.PHONY : Src/CstringArray.cpp.s
+
 Src/Entity/AMotionShape.o: Src/Entity/AMotionShape.cpp.o
 
 .PHONY : Src/Entity/AMotionShape.o
@@ -244,6 +271,33 @@ Src/Entity/Character.cpp.s:
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/Entity/Character.cpp.s
 .PHONY : Src/Entity/Character.cpp.s
 
+Src/Entity/Water.o: Src/Entity/Water.cpp.o
+
+.PHONY : Src/Entity/Water.o
+
+# target to build an object file
+Src/Entity/Water.cpp.o:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/Entity/Water.cpp.o
+.PHONY : Src/Entity/Water.cpp.o
+
+Src/Entity/Water.i: Src/Entity/Water.cpp.i
+
+.PHONY : Src/Entity/Water.i
+
+# target to preprocess a source file
+Src/Entity/Water.cpp.i:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/Entity/Water.cpp.i
+.PHONY : Src/Entity/Water.cpp.i
+
+Src/Entity/Water.s: Src/Entity/Water.cpp.s
+
+.PHONY : Src/Entity/Water.s
+
+# target to generate assembly for a file
+Src/Entity/Water.cpp.s:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/Entity/Water.cpp.s
+.PHONY : Src/Entity/Water.cpp.s
+
 Src/Grid.o: Src/Grid.cpp.o
 
 .PHONY : Src/Grid.o
@@ -297,6 +351,33 @@ Src/Main.s: Src/Main.cpp.s
 Src/Main.cpp.s:
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/Main.cpp.s
 .PHONY : Src/Main.cpp.s
+
+Src/ParseEnqueueMap.o: Src/ParseEnqueueMap.cpp.o
+
+.PHONY : Src/ParseEnqueueMap.o
+
+# target to build an object file
+Src/ParseEnqueueMap.cpp.o:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/ParseEnqueueMap.cpp.o
+.PHONY : Src/ParseEnqueueMap.cpp.o
+
+Src/ParseEnqueueMap.i: Src/ParseEnqueueMap.cpp.i
+
+.PHONY : Src/ParseEnqueueMap.i
+
+# target to preprocess a source file
+Src/ParseEnqueueMap.cpp.i:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/ParseEnqueueMap.cpp.i
+.PHONY : Src/ParseEnqueueMap.cpp.i
+
+Src/ParseEnqueueMap.s: Src/ParseEnqueueMap.cpp.s
+
+.PHONY : Src/ParseEnqueueMap.s
+
+# target to generate assembly for a file
+Src/ParseEnqueueMap.cpp.s:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/ParseEnqueueMap.cpp.s
+.PHONY : Src/ParseEnqueueMap.cpp.s
 
 Src/SfmlTool.o: Src/SfmlTool.cpp.o
 
@@ -784,33 +865,6 @@ Src/client/Gui/SFML_monitor.cpp.s:
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/Gui/SFML_monitor.cpp.s
 .PHONY : Src/client/Gui/SFML_monitor.cpp.s
 
-Src/client/GuiTexture.o: Src/client/GuiTexture.cpp.o
-
-.PHONY : Src/client/GuiTexture.o
-
-# target to build an object file
-Src/client/GuiTexture.cpp.o:
-	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/GuiTexture.cpp.o
-.PHONY : Src/client/GuiTexture.cpp.o
-
-Src/client/GuiTexture.i: Src/client/GuiTexture.cpp.i
-
-.PHONY : Src/client/GuiTexture.i
-
-# target to preprocess a source file
-Src/client/GuiTexture.cpp.i:
-	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/GuiTexture.cpp.i
-.PHONY : Src/client/GuiTexture.cpp.i
-
-Src/client/GuiTexture.s: Src/client/GuiTexture.cpp.s
-
-.PHONY : Src/client/GuiTexture.s
-
-# target to generate assembly for a file
-Src/client/GuiTexture.cpp.s:
-	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/GuiTexture.cpp.s
-.PHONY : Src/client/GuiTexture.cpp.s
-
 Src/client/ManageDisplay.o: Src/client/ManageDisplay.cpp.o
 
 .PHONY : Src/client/ManageDisplay.o
@@ -891,6 +945,87 @@ Src/client/Map.s: Src/client/Map.cpp.s
 Src/client/Map.cpp.s:
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/Map.cpp.s
 .PHONY : Src/client/Map.cpp.s
+
+Src/client/Texture/GuiTexture.o: Src/client/Texture/GuiTexture.cpp.o
+
+.PHONY : Src/client/Texture/GuiTexture.o
+
+# target to build an object file
+Src/client/Texture/GuiTexture.cpp.o:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/Texture/GuiTexture.cpp.o
+.PHONY : Src/client/Texture/GuiTexture.cpp.o
+
+Src/client/Texture/GuiTexture.i: Src/client/Texture/GuiTexture.cpp.i
+
+.PHONY : Src/client/Texture/GuiTexture.i
+
+# target to preprocess a source file
+Src/client/Texture/GuiTexture.cpp.i:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/Texture/GuiTexture.cpp.i
+.PHONY : Src/client/Texture/GuiTexture.cpp.i
+
+Src/client/Texture/GuiTexture.s: Src/client/Texture/GuiTexture.cpp.s
+
+.PHONY : Src/client/Texture/GuiTexture.s
+
+# target to generate assembly for a file
+Src/client/Texture/GuiTexture.cpp.s:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/Texture/GuiTexture.cpp.s
+.PHONY : Src/client/Texture/GuiTexture.cpp.s
+
+Src/client/Texture/IATexture.o: Src/client/Texture/IATexture.cpp.o
+
+.PHONY : Src/client/Texture/IATexture.o
+
+# target to build an object file
+Src/client/Texture/IATexture.cpp.o:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/Texture/IATexture.cpp.o
+.PHONY : Src/client/Texture/IATexture.cpp.o
+
+Src/client/Texture/IATexture.i: Src/client/Texture/IATexture.cpp.i
+
+.PHONY : Src/client/Texture/IATexture.i
+
+# target to preprocess a source file
+Src/client/Texture/IATexture.cpp.i:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/Texture/IATexture.cpp.i
+.PHONY : Src/client/Texture/IATexture.cpp.i
+
+Src/client/Texture/IATexture.s: Src/client/Texture/IATexture.cpp.s
+
+.PHONY : Src/client/Texture/IATexture.s
+
+# target to generate assembly for a file
+Src/client/Texture/IATexture.cpp.s:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/Texture/IATexture.cpp.s
+.PHONY : Src/client/Texture/IATexture.cpp.s
+
+Src/client/Texture/shackTexture.o: Src/client/Texture/shackTexture.cpp.o
+
+.PHONY : Src/client/Texture/shackTexture.o
+
+# target to build an object file
+Src/client/Texture/shackTexture.cpp.o:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/Texture/shackTexture.cpp.o
+.PHONY : Src/client/Texture/shackTexture.cpp.o
+
+Src/client/Texture/shackTexture.i: Src/client/Texture/shackTexture.cpp.i
+
+.PHONY : Src/client/Texture/shackTexture.i
+
+# target to preprocess a source file
+Src/client/Texture/shackTexture.cpp.i:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/Texture/shackTexture.cpp.i
+.PHONY : Src/client/Texture/shackTexture.cpp.i
+
+Src/client/Texture/shackTexture.s: Src/client/Texture/shackTexture.cpp.s
+
+.PHONY : Src/client/Texture/shackTexture.s
+
+# target to generate assembly for a file
+Src/client/Texture/shackTexture.cpp.s:
+	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/Src/client/Texture/shackTexture.cpp.s
+.PHONY : Src/client/Texture/shackTexture.cpp.s
 
 src/server/ai_protocol/broadcast.o: src/server/ai_protocol/broadcast.c.o
 
@@ -1405,6 +1540,87 @@ src/server/debug.c.s:
 	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/debug.c.s
 .PHONY : src/server/debug.c.s
 
+src/server/grahic_protocol/action.o: src/server/grahic_protocol/action.c.o
+
+.PHONY : src/server/grahic_protocol/action.o
+
+# target to build an object file
+src/server/grahic_protocol/action.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/action.c.o
+.PHONY : src/server/grahic_protocol/action.c.o
+
+src/server/grahic_protocol/action.i: src/server/grahic_protocol/action.c.i
+
+.PHONY : src/server/grahic_protocol/action.i
+
+# target to preprocess a source file
+src/server/grahic_protocol/action.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/action.c.i
+.PHONY : src/server/grahic_protocol/action.c.i
+
+src/server/grahic_protocol/action.s: src/server/grahic_protocol/action.c.s
+
+.PHONY : src/server/grahic_protocol/action.s
+
+# target to generate assembly for a file
+src/server/grahic_protocol/action.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/action.c.s
+.PHONY : src/server/grahic_protocol/action.c.s
+
+src/server/grahic_protocol/egg.o: src/server/grahic_protocol/egg.c.o
+
+.PHONY : src/server/grahic_protocol/egg.o
+
+# target to build an object file
+src/server/grahic_protocol/egg.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/egg.c.o
+.PHONY : src/server/grahic_protocol/egg.c.o
+
+src/server/grahic_protocol/egg.i: src/server/grahic_protocol/egg.c.i
+
+.PHONY : src/server/grahic_protocol/egg.i
+
+# target to preprocess a source file
+src/server/grahic_protocol/egg.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/egg.c.i
+.PHONY : src/server/grahic_protocol/egg.c.i
+
+src/server/grahic_protocol/egg.s: src/server/grahic_protocol/egg.c.s
+
+.PHONY : src/server/grahic_protocol/egg.s
+
+# target to generate assembly for a file
+src/server/grahic_protocol/egg.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/egg.c.s
+.PHONY : src/server/grahic_protocol/egg.c.s
+
+src/server/grahic_protocol/io.o: src/server/grahic_protocol/io.c.o
+
+.PHONY : src/server/grahic_protocol/io.o
+
+# target to build an object file
+src/server/grahic_protocol/io.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/io.c.o
+.PHONY : src/server/grahic_protocol/io.c.o
+
+src/server/grahic_protocol/io.i: src/server/grahic_protocol/io.c.i
+
+.PHONY : src/server/grahic_protocol/io.i
+
+# target to preprocess a source file
+src/server/grahic_protocol/io.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/io.c.i
+.PHONY : src/server/grahic_protocol/io.c.i
+
+src/server/grahic_protocol/io.s: src/server/grahic_protocol/io.c.s
+
+.PHONY : src/server/grahic_protocol/io.s
+
+# target to generate assembly for a file
+src/server/grahic_protocol/io.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/io.c.s
+.PHONY : src/server/grahic_protocol/io.c.s
+
 src/server/grahic_protocol/map.o: src/server/grahic_protocol/map.c.o
 
 .PHONY : src/server/grahic_protocol/map.o
@@ -1459,6 +1675,33 @@ src/server/grahic_protocol/player.c.s:
 	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/player.c.s
 .PHONY : src/server/grahic_protocol/player.c.s
 
+src/server/grahic_protocol/quantification.o: src/server/grahic_protocol/quantification.c.o
+
+.PHONY : src/server/grahic_protocol/quantification.o
+
+# target to build an object file
+src/server/grahic_protocol/quantification.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/quantification.c.o
+.PHONY : src/server/grahic_protocol/quantification.c.o
+
+src/server/grahic_protocol/quantification.i: src/server/grahic_protocol/quantification.c.i
+
+.PHONY : src/server/grahic_protocol/quantification.i
+
+# target to preprocess a source file
+src/server/grahic_protocol/quantification.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/quantification.c.i
+.PHONY : src/server/grahic_protocol/quantification.c.i
+
+src/server/grahic_protocol/quantification.s: src/server/grahic_protocol/quantification.c.s
+
+.PHONY : src/server/grahic_protocol/quantification.s
+
+# target to generate assembly for a file
+src/server/grahic_protocol/quantification.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/quantification.c.s
+.PHONY : src/server/grahic_protocol/quantification.c.s
+
 src/server/grahic_protocol/server.o: src/server/grahic_protocol/server.c.o
 
 .PHONY : src/server/grahic_protocol/server.o
@@ -1485,6 +1728,60 @@ src/server/grahic_protocol/server.s: src/server/grahic_protocol/server.c.s
 src/server/grahic_protocol/server.c.s:
 	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/server.c.s
 .PHONY : src/server/grahic_protocol/server.c.s
+
+src/server/grahic_protocol/status.o: src/server/grahic_protocol/status.c.o
+
+.PHONY : src/server/grahic_protocol/status.o
+
+# target to build an object file
+src/server/grahic_protocol/status.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/status.c.o
+.PHONY : src/server/grahic_protocol/status.c.o
+
+src/server/grahic_protocol/status.i: src/server/grahic_protocol/status.c.i
+
+.PHONY : src/server/grahic_protocol/status.i
+
+# target to preprocess a source file
+src/server/grahic_protocol/status.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/status.c.i
+.PHONY : src/server/grahic_protocol/status.c.i
+
+src/server/grahic_protocol/status.s: src/server/grahic_protocol/status.c.s
+
+.PHONY : src/server/grahic_protocol/status.s
+
+# target to generate assembly for a file
+src/server/grahic_protocol/status.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/status.c.s
+.PHONY : src/server/grahic_protocol/status.c.s
+
+src/server/gui_manager/command.o: src/server/gui_manager/command.c.o
+
+.PHONY : src/server/gui_manager/command.o
+
+# target to build an object file
+src/server/gui_manager/command.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/gui_manager/command.c.o
+.PHONY : src/server/gui_manager/command.c.o
+
+src/server/gui_manager/command.i: src/server/gui_manager/command.c.i
+
+.PHONY : src/server/gui_manager/command.i
+
+# target to preprocess a source file
+src/server/gui_manager/command.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/gui_manager/command.c.i
+.PHONY : src/server/gui_manager/command.c.i
+
+src/server/gui_manager/command.s: src/server/gui_manager/command.c.s
+
+.PHONY : src/server/gui_manager/command.s
+
+# target to generate assembly for a file
+src/server/gui_manager/command.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/gui_manager/command.c.s
+.PHONY : src/server/gui_manager/command.c.s
 
 src/server/gui_manager/manager.o: src/server/gui_manager/manager.c.o
 
@@ -1593,6 +1890,33 @@ src/server/map.s: src/server/map.c.s
 src/server/map.c.s:
 	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/map.c.s
 .PHONY : src/server/map.c.s
+
+src/server/parsing/game.o: src/server/parsing/game.c.o
+
+.PHONY : src/server/parsing/game.o
+
+# target to build an object file
+src/server/parsing/game.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/parsing/game.c.o
+.PHONY : src/server/parsing/game.c.o
+
+src/server/parsing/game.i: src/server/parsing/game.c.i
+
+.PHONY : src/server/parsing/game.i
+
+# target to preprocess a source file
+src/server/parsing/game.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/parsing/game.c.i
+.PHONY : src/server/parsing/game.c.i
+
+src/server/parsing/game.s: src/server/parsing/game.c.s
+
+.PHONY : src/server/parsing/game.s
+
+# target to generate assembly for a file
+src/server/parsing/game.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/parsing/game.c.s
+.PHONY : src/server/parsing/game.c.s
 
 src/server/parsing/gnl.o: src/server/parsing/gnl.c.o
 
@@ -1793,6 +2117,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... zappy_server"
 	@echo "... client"
+	@echo "... Src/CstringArray.o"
+	@echo "... Src/CstringArray.i"
+	@echo "... Src/CstringArray.s"
 	@echo "... Src/Entity/AMotionShape.o"
 	@echo "... Src/Entity/AMotionShape.i"
 	@echo "... Src/Entity/AMotionShape.s"
@@ -1805,12 +2132,18 @@ help:
 	@echo "... Src/Entity/Character.o"
 	@echo "... Src/Entity/Character.i"
 	@echo "... Src/Entity/Character.s"
+	@echo "... Src/Entity/Water.o"
+	@echo "... Src/Entity/Water.i"
+	@echo "... Src/Entity/Water.s"
 	@echo "... Src/Grid.o"
 	@echo "... Src/Grid.i"
 	@echo "... Src/Grid.s"
 	@echo "... Src/Main.o"
 	@echo "... Src/Main.i"
 	@echo "... Src/Main.s"
+	@echo "... Src/ParseEnqueueMap.o"
+	@echo "... Src/ParseEnqueueMap.i"
+	@echo "... Src/ParseEnqueueMap.s"
 	@echo "... Src/SfmlTool.o"
 	@echo "... Src/SfmlTool.i"
 	@echo "... Src/SfmlTool.s"
@@ -1865,9 +2198,6 @@ help:
 	@echo "... Src/client/Gui/SFML_monitor.o"
 	@echo "... Src/client/Gui/SFML_monitor.i"
 	@echo "... Src/client/Gui/SFML_monitor.s"
-	@echo "... Src/client/GuiTexture.o"
-	@echo "... Src/client/GuiTexture.i"
-	@echo "... Src/client/GuiTexture.s"
 	@echo "... Src/client/ManageDisplay.o"
 	@echo "... Src/client/ManageDisplay.i"
 	@echo "... Src/client/ManageDisplay.s"
@@ -1877,6 +2207,15 @@ help:
 	@echo "... Src/client/Map.o"
 	@echo "... Src/client/Map.i"
 	@echo "... Src/client/Map.s"
+	@echo "... Src/client/Texture/GuiTexture.o"
+	@echo "... Src/client/Texture/GuiTexture.i"
+	@echo "... Src/client/Texture/GuiTexture.s"
+	@echo "... Src/client/Texture/IATexture.o"
+	@echo "... Src/client/Texture/IATexture.i"
+	@echo "... Src/client/Texture/IATexture.s"
+	@echo "... Src/client/Texture/shackTexture.o"
+	@echo "... Src/client/Texture/shackTexture.i"
+	@echo "... Src/client/Texture/shackTexture.s"
 	@echo "... src/server/ai_protocol/broadcast.o"
 	@echo "... src/server/ai_protocol/broadcast.i"
 	@echo "... src/server/ai_protocol/broadcast.s"
@@ -1934,15 +2273,33 @@ help:
 	@echo "... src/server/debug.o"
 	@echo "... src/server/debug.i"
 	@echo "... src/server/debug.s"
+	@echo "... src/server/grahic_protocol/action.o"
+	@echo "... src/server/grahic_protocol/action.i"
+	@echo "... src/server/grahic_protocol/action.s"
+	@echo "... src/server/grahic_protocol/egg.o"
+	@echo "... src/server/grahic_protocol/egg.i"
+	@echo "... src/server/grahic_protocol/egg.s"
+	@echo "... src/server/grahic_protocol/io.o"
+	@echo "... src/server/grahic_protocol/io.i"
+	@echo "... src/server/grahic_protocol/io.s"
 	@echo "... src/server/grahic_protocol/map.o"
 	@echo "... src/server/grahic_protocol/map.i"
 	@echo "... src/server/grahic_protocol/map.s"
 	@echo "... src/server/grahic_protocol/player.o"
 	@echo "... src/server/grahic_protocol/player.i"
 	@echo "... src/server/grahic_protocol/player.s"
+	@echo "... src/server/grahic_protocol/quantification.o"
+	@echo "... src/server/grahic_protocol/quantification.i"
+	@echo "... src/server/grahic_protocol/quantification.s"
 	@echo "... src/server/grahic_protocol/server.o"
 	@echo "... src/server/grahic_protocol/server.i"
 	@echo "... src/server/grahic_protocol/server.s"
+	@echo "... src/server/grahic_protocol/status.o"
+	@echo "... src/server/grahic_protocol/status.i"
+	@echo "... src/server/grahic_protocol/status.s"
+	@echo "... src/server/gui_manager/command.o"
+	@echo "... src/server/gui_manager/command.i"
+	@echo "... src/server/gui_manager/command.s"
 	@echo "... src/server/gui_manager/manager.o"
 	@echo "... src/server/gui_manager/manager.i"
 	@echo "... src/server/gui_manager/manager.s"
@@ -1955,6 +2312,9 @@ help:
 	@echo "... src/server/map.o"
 	@echo "... src/server/map.i"
 	@echo "... src/server/map.s"
+	@echo "... src/server/parsing/game.o"
+	@echo "... src/server/parsing/game.i"
+	@echo "... src/server/parsing/game.s"
 	@echo "... src/server/parsing/gnl.o"
 	@echo "... src/server/parsing/gnl.i"
 	@echo "... src/server/parsing/gnl.s"

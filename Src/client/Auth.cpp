@@ -16,7 +16,7 @@
 #include "Auth.hpp"
 #include "IncludeGui.hpp"
 
-irc::Auth::Auth(int width, int height) : _base("Authentication", width, height), _width(width), _height(height)
+irc::Auth::Auth(int width, int height) : _base("Authentication", (ulong)width, (ulong)height), _height(height), _width(width)
 {
 	initBck();
 	initSubmit();

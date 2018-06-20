@@ -32,7 +32,6 @@ namespace irc {
 
 		irc::Gui &_base;
 
-		irc::Text *_nb_egg = nullptr;
 		irc::Text *_nb_q0 = nullptr;
 		irc::Text *_nb_q1 = nullptr;
 		irc::Text *_nb_q2 = nullptr;

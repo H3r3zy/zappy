@@ -25,7 +25,6 @@ void irc::shackTexture::initTexture()
 
 	_base._monitor->addFuncLoop(-1, [this] {
 		_base._monitor->getObjectByName("arrow_change", -1)->setBoolDisplay(_base._comm._listId.size() != 1);
-		_nb_egg->setText("x "+ std::to_string(_base._comm._shack.eggs));
 		_nb_q0->setText("x "+ std::to_string(_base._comm._shack.ressources.q0));
 		_nb_q1->setText("x "+ std::to_string(_base._comm._shack.ressources.q1));
 		_nb_q2->setText("x "+ std::to_string(_base._comm._shack.ressources.q2));
@@ -109,43 +108,38 @@ void irc::shackTexture::initData()
 	title->setColor(sf::Color::Black);
 	container->addObjectList("title", title);
 
-	container->addObjectList("egg", new irc::Sprite("extra/gui/egg.png", sf::IntRect(0, 40, 40, 50)));
-	_nb_egg = new irc::Text("extra/arial.ttf", sf::IntRect(60, 55, 80, 20), "x ???");
-	_nb_egg->setColor(sf::Color::Black);
-	container->addObjectList("egg_nb", _nb_egg);
-
-	container->addObjectList("q0", new irc::Sprite("extra/gui/baie.png", sf::IntRect(0, 100, 50, 50)));
-	_nb_q0 = new irc::Text("extra/arial.ttf", sf::IntRect(60, 115, 80, 20), "x ???");
+	container->addObjectList("q0", new irc::Sprite("extra/gui/baie.png", sf::IntRect(0, 40, 40, 50)));
+	_nb_q0 = new irc::Text("extra/arial.ttf", sf::IntRect(60, 55, 80, 20), "x ???");
 	_nb_q0->setColor(sf::Color::Black);
 	container->addObjectList("q0_nb", _nb_q0);
 
-	container->addObjectList("q1", new irc::Sprite("extra/gui/list_pokeballs.png", sf::IntRect(0, 160, 50, 50), sf::IntRect(0, 0, 60, 60)));
-	_nb_q1 = new irc::Text("extra/arial.ttf", sf::IntRect(60, 175, 80, 20), "x ???");
+	container->addObjectList("q1", new irc::Sprite("extra/gui/list_pokeballs.png", sf::IntRect(0, 100, 50, 50), sf::IntRect(0, 0, 60, 60)));
+	_nb_q1 = new irc::Text("extra/arial.ttf", sf::IntRect(60, 115, 80, 20), "x ???");
 	_nb_q1->setColor(sf::Color::Black);
 	container->addObjectList("q1_nb", _nb_q1);
 
-	container->addObjectList("q2", new irc::Sprite("extra/gui/list_pokeballs.png", sf::IntRect(0, 220, 50, 50), sf::IntRect(60, 0, 60, 60)));
-	_nb_q2 = new irc::Text("extra/arial.ttf", sf::IntRect(60, 235, 80, 20), "x ???");
+	container->addObjectList("q2", new irc::Sprite("extra/gui/list_pokeballs.png", sf::IntRect(0, 160, 50, 50), sf::IntRect(60, 0, 60, 60)));
+	_nb_q2 = new irc::Text("extra/arial.ttf", sf::IntRect(60, 175, 80, 20), "x ???");
 	_nb_q2->setColor(sf::Color::Black);
 	container->addObjectList("q2_nb", _nb_q2);
 
-	container->addObjectList("q3", new irc::Sprite("extra/gui/list_pokeballs.png", sf::IntRect(150, 40, 50, 50), sf::IntRect(120, 0, 60, 60)));
-	_nb_q3 = new irc::Text("extra/arial.ttf", sf::IntRect(210, 55, 80, 20), "x ???");
+	container->addObjectList("q3", new irc::Sprite("extra/gui/list_pokeballs.png", sf::IntRect(0, 220, 50, 50), sf::IntRect(120, 0, 60, 60)));
+	_nb_q3 = new irc::Text("extra/arial.ttf", sf::IntRect(60, 235, 80, 20), "x ???");
 	_nb_q3->setColor(sf::Color::Black);
 	container->addObjectList("q3_nb", _nb_q3);
 
-	container->addObjectList("q4", new irc::Sprite("extra/gui/list_pokeballs.png", sf::IntRect(150, 100, 50, 50), sf::IntRect(180, 0, 60, 60)));
-	_nb_q4 = new irc::Text("extra/arial.ttf", sf::IntRect(210, 115, 80, 20), "x ???");
+	container->addObjectList("q4", new irc::Sprite("extra/gui/list_pokeballs.png", sf::IntRect(150, 40, 50, 50), sf::IntRect(180, 0, 60, 60)));
+	_nb_q4 = new irc::Text("extra/arial.ttf", sf::IntRect(210, 55, 80, 20), "x ???");
 	_nb_q4->setColor(sf::Color::Black);
 	container->addObjectList("q4_nb", _nb_q4);
 
-	container->addObjectList("q5", new irc::Sprite("extra/gui/list_pokeballs.png", sf::IntRect(150, 160, 50, 50), sf::IntRect(180, 120, 60, 60)));
-	_nb_q5 = new irc::Text("extra/arial.ttf", sf::IntRect(210, 175, 80, 20), "x ???");
+	container->addObjectList("q5", new irc::Sprite("extra/gui/list_pokeballs.png", sf::IntRect(150, 100, 50, 50), sf::IntRect(180, 120, 60, 60)));
+	_nb_q5 = new irc::Text("extra/arial.ttf", sf::IntRect(210, 115, 80, 20), "x ???");
 	_nb_q5->setColor(sf::Color::Black);
 	container->addObjectList("q5_nb", _nb_q5);
 
-	container->addObjectList("q6", new irc::Sprite("extra/gui/list_pokeballs.png", sf::IntRect(150, 220, 50, 50), sf::IntRect(240, 180, 60, 60)));
-	_nb_q6 = new irc::Text("extra/arial.ttf", sf::IntRect(210, 235, 80, 20), "x ???");
+	container->addObjectList("q6", new irc::Sprite("extra/gui/list_pokeballs.png", sf::IntRect(150, 160, 50, 50), sf::IntRect(240, 180, 60, 60)));
+	_nb_q6 = new irc::Text("extra/arial.ttf", sf::IntRect(210, 175, 80, 20), "x ???");
 	_nb_q6->setColor(sf::Color::Black);
 	container->addObjectList("q6_nb", _nb_q6);
 

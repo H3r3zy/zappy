@@ -18,7 +18,7 @@ irc::Gui::Gui(irc::Communication &comm, const std::string &nick, const std::stri
 irc::Gui::~Gui()
 {
 	if (_monitor) {
-		if (_monitor->isWindowOpen());
+		if (_monitor->isWindowOpen())
 			_monitor->closeWindow();
 		delete _monitor;
 	}
@@ -67,7 +67,7 @@ void irc::Gui::loopDisplay()
 		}
 		_displayGui = false;
 	}
-	if (_monitor->isWindowOpen()); {
+	if (_monitor->isWindowOpen()) {
 		_comm.lockDisplay();
 		_monitor->closeWindow();
 		_comm.unlockDisplay();

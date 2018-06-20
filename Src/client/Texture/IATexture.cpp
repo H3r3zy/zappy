@@ -46,7 +46,6 @@ void irc::IATexture::initTexture()
 
 }
 
-
 void irc::IATexture::initClose()
 {
 	auto close = new irc::Sprite("extra/gui/close.png", sf::IntRect(250, 10, 30, 30));

@@ -43,7 +43,6 @@ namespace irc {
 	typedef struct {
 		std::pair<int, int> _pos = {0, 0};
 		ressources_t ressources = {0, 0, 0, 0, 0, 0, 0};
-		int eggs = 0;
 		int player_on = 0;
 	} shack_data_t;
 

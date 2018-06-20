@@ -118,7 +118,7 @@ void irc::GuiTexture::initDataServer()
 void irc::GuiTexture::initSettingsGame()
 {
 	auto container = new irc::Container(sf::IntRect(10, 260, WIDTH - 10, 60));
-	auto input = irc::TextInputBckPlaceHorder::createInput(sf::IntRect(0, 30, 220, 30), "Frequency", "extra/arial.tff", 20);
+	auto input = irc::TextInputBckPlaceHorder::createInput(sf::IntRect(0, 30, 220, 30), "Frequency", "extra/arial.ttf", 20);
 	auto title_change_freq = new irc::Text("extra/Gobold.otf", sf::IntRect(0, 0, 100, 20), "Change frequency:");
 	title_change_freq->setColor(sf::Color::Black);
 

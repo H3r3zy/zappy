@@ -106,7 +106,7 @@ CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 				bag.emplace_back(0);
 			for (size_t i = 0; i < 8; i++) {
 				memcpy(&bag[i], buffer + 4 + i * (sizeof(uint) + 1), sizeof(uint));
-		//		printf("expeted %d\n", bag[i]);
+				printf("expeted %d\n", bag[i]);
 
 			}
 			finalCommand.setCommand(bag);

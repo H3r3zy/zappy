@@ -1,3 +1,4 @@
+
 cmake_minimum_required(VERSION 3.7.2)
 project(client)
 
@@ -23,7 +24,8 @@ add_executable(client ${FILE} Src/Entity/Water.cpp Include/Entity/Water.hpp Src/
 target_compile_options(client PRIVATE -std=c++11 -W -Wall -Wextra -ggdb3)
 target_link_libraries(client pthread -lsfml-graphics -lsfml-window -lsfml-system)
 
-
+cmake_minimum_required(VERSION 3.7.2)
+project(PSU_zappy_2017 C)
 set(CMAKE_C_STANDARD 11)
 
 set(CMAKE_C_FLAGS_DEBUG

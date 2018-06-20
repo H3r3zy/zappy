@@ -9,7 +9,7 @@
 #include <thread>
 #include "Gui.hpp"
 
-irc::Gui::Gui(irc::Communication &comm, const std::string &nick, const std::string &ip, std::vector<int> &listId, bool &displayGui, bool &endClient) : GuiTexture(), _comm(comm), _listId(listId), _displayGui(displayGui), _endClient(endClient)
+irc::Gui::Gui(irc::Communication &comm, const std::string &nick, const std::string &ip, bool &displayGui, bool &endClient) : GuiTexture(*this), shackTexture(*this), IATexture(*this), _comm(comm), _displayGui(displayGui), _endClient(endClient)
 {
 	_nick = nick;
 	_ip = ip;
@@ -24,17 +24,35 @@ irc::Gui::~Gui()
 	}
 }
 
+void irc::Gui::addGenericFunction(int scene)
+{
+	_monitor->addFuncLoop(scene, [this]{
+		if (!_comm._listId.empty() && !_monitor->getCurrentScene()) {
+			if (_comm._listId[0] != -1)
+				_monitor->setScene(1);
+			else
+				_monitor->setScene(-1);
+		}
+	});
+	_monitor->addFuncLoop(scene, [this]{
+		if (!_displayGui || _endClient)
+			_monitor->closeWindow();
+	});
+}
+
 int irc::Gui::initDisplayGui()
 {
 	_comm.lockDisplay();
 	_monitor = new irc::SFML_monitor("Interface User", WIDTH, HEIGHT);
 	_monitor->setPostionWindow(sf::Vector2i(1400, 50));
-	_monitor->addFuncLoop(0, [this]{
-		if (!_displayGui || _endClient)
-			_monitor->closeWindow();
-	});
 
-	initTexture();
+	addGenericFunction(0);
+	addGenericFunction(-1);
+	addGenericFunction(1);
+
+	irc::GuiTexture::initTexture();
+	irc::shackTexture::initTexture();
+	irc::IATexture::initTexture();
 	_comm.unlockDisplay();
 	std::this_thread::sleep_for(std::chrono::milliseconds(2));
 	return 0;
@@ -43,16 +61,12 @@ int irc::Gui::initDisplayGui()
 void irc::Gui::loopDisplay()
 {
 	while (!_endClient) {
-		std::cout << "val: " << _displayGui << std::endl;
 		if (_displayGui) {
-			std::cerr << "INIT" << std::endl;
 			initDisplayGui();
 			_monitor->loopWindow(&_comm);
-			std::cerr << "END" << std::endl;
 		}
 		_displayGui = false;
 	}
-	std::cout << "LOOP DISPLAY END" << std::endl;
 	if (_monitor->isWindowOpen()); {
 		_comm.lockDisplay();
 		_monitor->closeWindow();

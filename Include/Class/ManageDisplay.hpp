@@ -26,8 +26,6 @@ namespace irc {
 		int _socketServer = 0;
 
 		private:
-		std::vector<int> _listId; // List id to check on GUI
-
 		bool _displayGui = true; // Check if the gui is displayed
 		bool _endClient = false;
 

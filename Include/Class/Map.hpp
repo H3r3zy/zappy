@@ -29,7 +29,7 @@ namespace irc {
 
 	class Map {
 		public:
-		Map(irc::Communication &comm, std::vector<int> &listId, bool &displayGui, bool &endClient);
+		Map(irc::Communication &comm, bool &displayGui, bool &endClient);
 		~Map() = default;
 
 		void loopDisplay();
@@ -38,7 +38,6 @@ namespace irc {
 		private:
 		irc::Communication &_comm;
 
-		std::vector<int> &_listId; // List id to check on GUI
 		bool &_displayGui; // Check if the gui is displayed
 		bool &_endClient;
 

@@ -43,10 +43,10 @@ RM = /home/wisenoa/Téléchargements/clion-2017.3.1/bin/cmake/bin/cmake -E remov
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/wisenoa/mergeZappy/PSU_zappy_2017
+CMAKE_SOURCE_DIR = /home/wisenoa/NikeBienTaMere/PSU_zappy_2017
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/wisenoa/mergeZappy/PSU_zappy_2017
+CMAKE_BINARY_DIR = /home/wisenoa/NikeBienTaMere/PSU_zappy_2017
 
 # Include any dependencies generated for this target.
 include CMakeFiles/zappy_server.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/zappy_server.dir/flags.make
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/broadcast.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/broadcast.c.o: src/server/ai_protocol/broadcast.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/zappy_server.dir/src/server/ai_protocol/broadcast.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/broadcast.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/broadcast.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/zappy_server.dir/src/server/ai_protocol/broadcast.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/broadcast.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/ai_protocol/broadcast.c
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/broadcast.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/ai_protocol/broadcast.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/broadcast.c > CMakeFiles/zappy_server.dir/src/server/ai_protocol/broadcast.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/ai_protocol/broadcast.c > CMakeFiles/zappy_server.dir/src/server/ai_protocol/broadcast.c.i
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/broadcast.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/ai_protocol/broadcast.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/broadcast.c -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/broadcast.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/ai_protocol/broadcast.c -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/broadcast.c.s
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/broadcast.c.o.requires:
 
@@ -83,16 +83,16 @@ CMakeFiles/zappy_server.dir/src/server/ai_protocol/broadcast.c.o.provides.build:
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/connect_nbr.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/connect_nbr.c.o: src/server/ai_protocol/connect_nbr.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/zappy_server.dir/src/server/ai_protocol/connect_nbr.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/connect_nbr.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/connect_nbr.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/zappy_server.dir/src/server/ai_protocol/connect_nbr.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/connect_nbr.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/ai_protocol/connect_nbr.c
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/connect_nbr.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/ai_protocol/connect_nbr.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/connect_nbr.c > CMakeFiles/zappy_server.dir/src/server/ai_protocol/connect_nbr.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/ai_protocol/connect_nbr.c > CMakeFiles/zappy_server.dir/src/server/ai_protocol/connect_nbr.c.i
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/connect_nbr.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/ai_protocol/connect_nbr.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/connect_nbr.c -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/connect_nbr.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/ai_protocol/connect_nbr.c -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/connect_nbr.c.s
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/connect_nbr.c.o.requires:
 
@@ -107,16 +107,16 @@ CMakeFiles/zappy_server.dir/src/server/ai_protocol/connect_nbr.c.o.provides.buil
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/die.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/die.c.o: src/server/ai_protocol/die.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/zappy_server.dir/src/server/ai_protocol/die.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/die.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/die.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/zappy_server.dir/src/server/ai_protocol/die.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/die.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/ai_protocol/die.c
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/die.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/ai_protocol/die.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/die.c > CMakeFiles/zappy_server.dir/src/server/ai_protocol/die.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/ai_protocol/die.c > CMakeFiles/zappy_server.dir/src/server/ai_protocol/die.c.i
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/die.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/ai_protocol/die.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/die.c -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/die.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/ai_protocol/die.c -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/die.c.s
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/die.c.o.requires:
 
@@ -131,16 +131,16 @@ CMakeFiles/zappy_server.dir/src/server/ai_protocol/die.c.o.provides.build: CMake
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/eject.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/eject.c.o: src/server/ai_protocol/eject.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/zappy_server.dir/src/server/ai_protocol/eject.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/eject.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/eject.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/zappy_server.dir/src/server/ai_protocol/eject.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/eject.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/ai_protocol/eject.c
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/eject.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/ai_protocol/eject.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/eject.c > CMakeFiles/zappy_server.dir/src/server/ai_protocol/eject.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/ai_protocol/eject.c > CMakeFiles/zappy_server.dir/src/server/ai_protocol/eject.c.i
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/eject.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/ai_protocol/eject.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/eject.c -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/eject.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/ai_protocol/eject.c -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/eject.c.s
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/eject.c.o.requires:
 
@@ -155,16 +155,16 @@ CMakeFiles/zappy_server.dir/src/server/ai_protocol/eject.c.o.provides.build: CMa
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/fork.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/fork.c.o: src/server/ai_protocol/fork.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/zappy_server.dir/src/server/ai_protocol/fork.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/fork.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/fork.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/zappy_server.dir/src/server/ai_protocol/fork.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/fork.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/ai_protocol/fork.c
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/fork.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/ai_protocol/fork.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/fork.c > CMakeFiles/zappy_server.dir/src/server/ai_protocol/fork.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/ai_protocol/fork.c > CMakeFiles/zappy_server.dir/src/server/ai_protocol/fork.c.i
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/fork.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/ai_protocol/fork.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/fork.c -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/fork.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/ai_protocol/fork.c -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/fork.c.s
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/fork.c.o.requires:
 
@@ -179,16 +179,16 @@ CMakeFiles/zappy_server.dir/src/server/ai_protocol/fork.c.o.provides.build: CMak
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/incantation.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/incantation.c.o: src/server/ai_protocol/incantation.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/zappy_server.dir/src/server/ai_protocol/incantation.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/incantation.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/incantation.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/zappy_server.dir/src/server/ai_protocol/incantation.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/incantation.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/ai_protocol/incantation.c
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/incantation.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/ai_protocol/incantation.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/incantation.c > CMakeFiles/zappy_server.dir/src/server/ai_protocol/incantation.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/ai_protocol/incantation.c > CMakeFiles/zappy_server.dir/src/server/ai_protocol/incantation.c.i
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/incantation.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/ai_protocol/incantation.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/incantation.c -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/incantation.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/ai_protocol/incantation.c -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/incantation.c.s
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/incantation.c.o.requires:
 
@@ -203,16 +203,16 @@ CMakeFiles/zappy_server.dir/src/server/ai_protocol/incantation.c.o.provides.buil
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/inventory.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/inventory.c.o: src/server/ai_protocol/inventory.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/zappy_server.dir/src/server/ai_protocol/inventory.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/inventory.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/inventory.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/zappy_server.dir/src/server/ai_protocol/inventory.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/inventory.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/ai_protocol/inventory.c
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/inventory.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/ai_protocol/inventory.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/inventory.c > CMakeFiles/zappy_server.dir/src/server/ai_protocol/inventory.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/ai_protocol/inventory.c > CMakeFiles/zappy_server.dir/src/server/ai_protocol/inventory.c.i
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/inventory.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/ai_protocol/inventory.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/inventory.c -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/inventory.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/ai_protocol/inventory.c -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/inventory.c.s
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/inventory.c.o.requires:
 
@@ -227,16 +227,16 @@ CMakeFiles/zappy_server.dir/src/server/ai_protocol/inventory.c.o.provides.build:
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/look.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/look.c.o: src/server/ai_protocol/look.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/zappy_server.dir/src/server/ai_protocol/look.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/look.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/look.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/zappy_server.dir/src/server/ai_protocol/look.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/look.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/ai_protocol/look.c
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/look.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/ai_protocol/look.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/look.c > CMakeFiles/zappy_server.dir/src/server/ai_protocol/look.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/ai_protocol/look.c > CMakeFiles/zappy_server.dir/src/server/ai_protocol/look.c.i
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/look.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/ai_protocol/look.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/look.c -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/look.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/ai_protocol/look.c -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/look.c.s
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/look.c.o.requires:
 
@@ -251,16 +251,16 @@ CMakeFiles/zappy_server.dir/src/server/ai_protocol/look.c.o.provides.build: CMak
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/movement.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/movement.c.o: src/server/ai_protocol/movement.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/zappy_server.dir/src/server/ai_protocol/movement.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/movement.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/movement.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/zappy_server.dir/src/server/ai_protocol/movement.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/movement.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/ai_protocol/movement.c
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/movement.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/ai_protocol/movement.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/movement.c > CMakeFiles/zappy_server.dir/src/server/ai_protocol/movement.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/ai_protocol/movement.c > CMakeFiles/zappy_server.dir/src/server/ai_protocol/movement.c.i
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/movement.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/ai_protocol/movement.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/movement.c -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/movement.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/ai_protocol/movement.c -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/movement.c.s
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/movement.c.o.requires:
 
@@ -275,16 +275,16 @@ CMakeFiles/zappy_server.dir/src/server/ai_protocol/movement.c.o.provides.build: 
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/set.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/set.c.o: src/server/ai_protocol/set.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/zappy_server.dir/src/server/ai_protocol/set.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/set.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/set.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/zappy_server.dir/src/server/ai_protocol/set.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/set.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/ai_protocol/set.c
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/set.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/ai_protocol/set.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/set.c > CMakeFiles/zappy_server.dir/src/server/ai_protocol/set.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/ai_protocol/set.c > CMakeFiles/zappy_server.dir/src/server/ai_protocol/set.c.i
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/set.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/ai_protocol/set.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/set.c -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/set.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/ai_protocol/set.c -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/set.c.s
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/set.c.o.requires:
 
@@ -299,16 +299,16 @@ CMakeFiles/zappy_server.dir/src/server/ai_protocol/set.c.o.provides.build: CMake
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/take.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/take.c.o: src/server/ai_protocol/take.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/zappy_server.dir/src/server/ai_protocol/take.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/take.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/take.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/zappy_server.dir/src/server/ai_protocol/take.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/take.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/ai_protocol/take.c
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/take.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/ai_protocol/take.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/take.c > CMakeFiles/zappy_server.dir/src/server/ai_protocol/take.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/ai_protocol/take.c > CMakeFiles/zappy_server.dir/src/server/ai_protocol/take.c.i
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/take.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/ai_protocol/take.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/ai_protocol/take.c -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/take.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/ai_protocol/take.c -o CMakeFiles/zappy_server.dir/src/server/ai_protocol/take.c.s
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/take.c.o.requires:
 
@@ -323,16 +323,16 @@ CMakeFiles/zappy_server.dir/src/server/ai_protocol/take.c.o.provides.build: CMak
 
 CMakeFiles/zappy_server.dir/src/server/client_manager/egg.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/client_manager/egg.c.o: src/server/client_manager/egg.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/zappy_server.dir/src/server/client_manager/egg.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/client_manager/egg.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/client_manager/egg.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/zappy_server.dir/src/server/client_manager/egg.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/client_manager/egg.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/client_manager/egg.c
 
 CMakeFiles/zappy_server.dir/src/server/client_manager/egg.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/client_manager/egg.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/client_manager/egg.c > CMakeFiles/zappy_server.dir/src/server/client_manager/egg.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/client_manager/egg.c > CMakeFiles/zappy_server.dir/src/server/client_manager/egg.c.i
 
 CMakeFiles/zappy_server.dir/src/server/client_manager/egg.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/client_manager/egg.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/client_manager/egg.c -o CMakeFiles/zappy_server.dir/src/server/client_manager/egg.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/client_manager/egg.c -o CMakeFiles/zappy_server.dir/src/server/client_manager/egg.c.s
 
 CMakeFiles/zappy_server.dir/src/server/client_manager/egg.c.o.requires:
 
@@ -347,16 +347,16 @@ CMakeFiles/zappy_server.dir/src/server/client_manager/egg.c.o.provides.build: CM
 
 CMakeFiles/zappy_server.dir/src/server/client_manager/join.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/client_manager/join.c.o: src/server/client_manager/join.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/zappy_server.dir/src/server/client_manager/join.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/client_manager/join.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/client_manager/join.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building C object CMakeFiles/zappy_server.dir/src/server/client_manager/join.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/client_manager/join.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/client_manager/join.c
 
 CMakeFiles/zappy_server.dir/src/server/client_manager/join.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/client_manager/join.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/client_manager/join.c > CMakeFiles/zappy_server.dir/src/server/client_manager/join.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/client_manager/join.c > CMakeFiles/zappy_server.dir/src/server/client_manager/join.c.i
 
 CMakeFiles/zappy_server.dir/src/server/client_manager/join.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/client_manager/join.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/client_manager/join.c -o CMakeFiles/zappy_server.dir/src/server/client_manager/join.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/client_manager/join.c -o CMakeFiles/zappy_server.dir/src/server/client_manager/join.c.s
 
 CMakeFiles/zappy_server.dir/src/server/client_manager/join.c.o.requires:
 
@@ -371,16 +371,16 @@ CMakeFiles/zappy_server.dir/src/server/client_manager/join.c.o.provides.build: C
 
 CMakeFiles/zappy_server.dir/src/server/client_manager/leave.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/client_manager/leave.c.o: src/server/client_manager/leave.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/zappy_server.dir/src/server/client_manager/leave.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/client_manager/leave.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/client_manager/leave.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building C object CMakeFiles/zappy_server.dir/src/server/client_manager/leave.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/client_manager/leave.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/client_manager/leave.c
 
 CMakeFiles/zappy_server.dir/src/server/client_manager/leave.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/client_manager/leave.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/client_manager/leave.c > CMakeFiles/zappy_server.dir/src/server/client_manager/leave.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/client_manager/leave.c > CMakeFiles/zappy_server.dir/src/server/client_manager/leave.c.i
 
 CMakeFiles/zappy_server.dir/src/server/client_manager/leave.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/client_manager/leave.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/client_manager/leave.c -o CMakeFiles/zappy_server.dir/src/server/client_manager/leave.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/client_manager/leave.c -o CMakeFiles/zappy_server.dir/src/server/client_manager/leave.c.s
 
 CMakeFiles/zappy_server.dir/src/server/client_manager/leave.c.o.requires:
 
@@ -395,16 +395,16 @@ CMakeFiles/zappy_server.dir/src/server/client_manager/leave.c.o.provides.build: 
 
 CMakeFiles/zappy_server.dir/src/server/client_manager/manager.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/client_manager/manager.c.o: src/server/client_manager/manager.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/zappy_server.dir/src/server/client_manager/manager.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/client_manager/manager.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/client_manager/manager.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building C object CMakeFiles/zappy_server.dir/src/server/client_manager/manager.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/client_manager/manager.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/client_manager/manager.c
 
 CMakeFiles/zappy_server.dir/src/server/client_manager/manager.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/client_manager/manager.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/client_manager/manager.c > CMakeFiles/zappy_server.dir/src/server/client_manager/manager.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/client_manager/manager.c > CMakeFiles/zappy_server.dir/src/server/client_manager/manager.c.i
 
 CMakeFiles/zappy_server.dir/src/server/client_manager/manager.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/client_manager/manager.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/client_manager/manager.c -o CMakeFiles/zappy_server.dir/src/server/client_manager/manager.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/client_manager/manager.c -o CMakeFiles/zappy_server.dir/src/server/client_manager/manager.c.s
 
 CMakeFiles/zappy_server.dir/src/server/client_manager/manager.c.o.requires:
 
@@ -419,16 +419,16 @@ CMakeFiles/zappy_server.dir/src/server/client_manager/manager.c.o.provides.build
 
 CMakeFiles/zappy_server.dir/src/server/client_manager/msg_queue.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/client_manager/msg_queue.c.o: src/server/client_manager/msg_queue.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/zappy_server.dir/src/server/client_manager/msg_queue.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/client_manager/msg_queue.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/client_manager/msg_queue.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object CMakeFiles/zappy_server.dir/src/server/client_manager/msg_queue.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/client_manager/msg_queue.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/client_manager/msg_queue.c
 
 CMakeFiles/zappy_server.dir/src/server/client_manager/msg_queue.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/client_manager/msg_queue.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/client_manager/msg_queue.c > CMakeFiles/zappy_server.dir/src/server/client_manager/msg_queue.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/client_manager/msg_queue.c > CMakeFiles/zappy_server.dir/src/server/client_manager/msg_queue.c.i
 
 CMakeFiles/zappy_server.dir/src/server/client_manager/msg_queue.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/client_manager/msg_queue.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/client_manager/msg_queue.c -o CMakeFiles/zappy_server.dir/src/server/client_manager/msg_queue.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/client_manager/msg_queue.c -o CMakeFiles/zappy_server.dir/src/server/client_manager/msg_queue.c.s
 
 CMakeFiles/zappy_server.dir/src/server/client_manager/msg_queue.c.o.requires:
 
@@ -443,16 +443,16 @@ CMakeFiles/zappy_server.dir/src/server/client_manager/msg_queue.c.o.provides.bui
 
 CMakeFiles/zappy_server.dir/src/server/client_manager/orientation.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/client_manager/orientation.c.o: src/server/client_manager/orientation.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/zappy_server.dir/src/server/client_manager/orientation.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/client_manager/orientation.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/client_manager/orientation.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object CMakeFiles/zappy_server.dir/src/server/client_manager/orientation.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/client_manager/orientation.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/client_manager/orientation.c
 
 CMakeFiles/zappy_server.dir/src/server/client_manager/orientation.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/client_manager/orientation.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/client_manager/orientation.c > CMakeFiles/zappy_server.dir/src/server/client_manager/orientation.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/client_manager/orientation.c > CMakeFiles/zappy_server.dir/src/server/client_manager/orientation.c.i
 
 CMakeFiles/zappy_server.dir/src/server/client_manager/orientation.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/client_manager/orientation.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/client_manager/orientation.c -o CMakeFiles/zappy_server.dir/src/server/client_manager/orientation.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/client_manager/orientation.c -o CMakeFiles/zappy_server.dir/src/server/client_manager/orientation.c.s
 
 CMakeFiles/zappy_server.dir/src/server/client_manager/orientation.c.o.requires:
 
@@ -467,16 +467,16 @@ CMakeFiles/zappy_server.dir/src/server/client_manager/orientation.c.o.provides.b
 
 CMakeFiles/zappy_server.dir/src/server/client_manager/teams.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/client_manager/teams.c.o: src/server/client_manager/teams.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/zappy_server.dir/src/server/client_manager/teams.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/client_manager/teams.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/client_manager/teams.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object CMakeFiles/zappy_server.dir/src/server/client_manager/teams.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/client_manager/teams.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/client_manager/teams.c
 
 CMakeFiles/zappy_server.dir/src/server/client_manager/teams.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/client_manager/teams.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/client_manager/teams.c > CMakeFiles/zappy_server.dir/src/server/client_manager/teams.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/client_manager/teams.c > CMakeFiles/zappy_server.dir/src/server/client_manager/teams.c.i
 
 CMakeFiles/zappy_server.dir/src/server/client_manager/teams.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/client_manager/teams.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/client_manager/teams.c -o CMakeFiles/zappy_server.dir/src/server/client_manager/teams.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/client_manager/teams.c -o CMakeFiles/zappy_server.dir/src/server/client_manager/teams.c.s
 
 CMakeFiles/zappy_server.dir/src/server/client_manager/teams.c.o.requires:
 
@@ -491,16 +491,16 @@ CMakeFiles/zappy_server.dir/src/server/client_manager/teams.c.o.provides.build: 
 
 CMakeFiles/zappy_server.dir/src/server/debug.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/debug.c.o: src/server/debug.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/zappy_server.dir/src/server/debug.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/debug.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/debug.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building C object CMakeFiles/zappy_server.dir/src/server/debug.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/debug.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/debug.c
 
 CMakeFiles/zappy_server.dir/src/server/debug.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/debug.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/debug.c > CMakeFiles/zappy_server.dir/src/server/debug.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/debug.c > CMakeFiles/zappy_server.dir/src/server/debug.c.i
 
 CMakeFiles/zappy_server.dir/src/server/debug.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/debug.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/debug.c -o CMakeFiles/zappy_server.dir/src/server/debug.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/debug.c -o CMakeFiles/zappy_server.dir/src/server/debug.c.s
 
 CMakeFiles/zappy_server.dir/src/server/debug.c.o.requires:
 
@@ -515,16 +515,16 @@ CMakeFiles/zappy_server.dir/src/server/debug.c.o.provides.build: CMakeFiles/zapp
 
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/action.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/action.c.o: src/server/grahic_protocol/action.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/zappy_server.dir/src/server/grahic_protocol/action.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/grahic_protocol/action.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/action.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building C object CMakeFiles/zappy_server.dir/src/server/grahic_protocol/action.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/grahic_protocol/action.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/grahic_protocol/action.c
 
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/action.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/grahic_protocol/action.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/action.c > CMakeFiles/zappy_server.dir/src/server/grahic_protocol/action.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/grahic_protocol/action.c > CMakeFiles/zappy_server.dir/src/server/grahic_protocol/action.c.i
 
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/action.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/grahic_protocol/action.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/action.c -o CMakeFiles/zappy_server.dir/src/server/grahic_protocol/action.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/grahic_protocol/action.c -o CMakeFiles/zappy_server.dir/src/server/grahic_protocol/action.c.s
 
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/action.c.o.requires:
 
@@ -539,16 +539,16 @@ CMakeFiles/zappy_server.dir/src/server/grahic_protocol/action.c.o.provides.build
 
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/egg.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/egg.c.o: src/server/grahic_protocol/egg.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/zappy_server.dir/src/server/grahic_protocol/egg.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/grahic_protocol/egg.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/egg.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building C object CMakeFiles/zappy_server.dir/src/server/grahic_protocol/egg.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/grahic_protocol/egg.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/grahic_protocol/egg.c
 
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/egg.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/grahic_protocol/egg.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/egg.c > CMakeFiles/zappy_server.dir/src/server/grahic_protocol/egg.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/grahic_protocol/egg.c > CMakeFiles/zappy_server.dir/src/server/grahic_protocol/egg.c.i
 
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/egg.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/grahic_protocol/egg.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/egg.c -o CMakeFiles/zappy_server.dir/src/server/grahic_protocol/egg.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/grahic_protocol/egg.c -o CMakeFiles/zappy_server.dir/src/server/grahic_protocol/egg.c.s
 
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/egg.c.o.requires:
 
@@ -563,16 +563,16 @@ CMakeFiles/zappy_server.dir/src/server/grahic_protocol/egg.c.o.provides.build: C
 
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/io.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/io.c.o: src/server/grahic_protocol/io.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building C object CMakeFiles/zappy_server.dir/src/server/grahic_protocol/io.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/grahic_protocol/io.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/io.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building C object CMakeFiles/zappy_server.dir/src/server/grahic_protocol/io.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/grahic_protocol/io.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/grahic_protocol/io.c
 
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/io.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/grahic_protocol/io.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/io.c > CMakeFiles/zappy_server.dir/src/server/grahic_protocol/io.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/grahic_protocol/io.c > CMakeFiles/zappy_server.dir/src/server/grahic_protocol/io.c.i
 
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/io.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/grahic_protocol/io.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/io.c -o CMakeFiles/zappy_server.dir/src/server/grahic_protocol/io.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/grahic_protocol/io.c -o CMakeFiles/zappy_server.dir/src/server/grahic_protocol/io.c.s
 
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/io.c.o.requires:
 
@@ -587,16 +587,16 @@ CMakeFiles/zappy_server.dir/src/server/grahic_protocol/io.c.o.provides.build: CM
 
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/map.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/map.c.o: src/server/grahic_protocol/map.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building C object CMakeFiles/zappy_server.dir/src/server/grahic_protocol/map.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/grahic_protocol/map.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/map.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building C object CMakeFiles/zappy_server.dir/src/server/grahic_protocol/map.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/grahic_protocol/map.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/grahic_protocol/map.c
 
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/map.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/grahic_protocol/map.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/map.c > CMakeFiles/zappy_server.dir/src/server/grahic_protocol/map.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/grahic_protocol/map.c > CMakeFiles/zappy_server.dir/src/server/grahic_protocol/map.c.i
 
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/map.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/grahic_protocol/map.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/map.c -o CMakeFiles/zappy_server.dir/src/server/grahic_protocol/map.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/grahic_protocol/map.c -o CMakeFiles/zappy_server.dir/src/server/grahic_protocol/map.c.s
 
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/map.c.o.requires:
 
@@ -611,16 +611,16 @@ CMakeFiles/zappy_server.dir/src/server/grahic_protocol/map.c.o.provides.build: C
 
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/player.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/player.c.o: src/server/grahic_protocol/player.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/zappy_server.dir/src/server/grahic_protocol/player.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/grahic_protocol/player.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/player.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building C object CMakeFiles/zappy_server.dir/src/server/grahic_protocol/player.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/grahic_protocol/player.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/grahic_protocol/player.c
 
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/player.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/grahic_protocol/player.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/player.c > CMakeFiles/zappy_server.dir/src/server/grahic_protocol/player.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/grahic_protocol/player.c > CMakeFiles/zappy_server.dir/src/server/grahic_protocol/player.c.i
 
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/player.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/grahic_protocol/player.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/player.c -o CMakeFiles/zappy_server.dir/src/server/grahic_protocol/player.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/grahic_protocol/player.c -o CMakeFiles/zappy_server.dir/src/server/grahic_protocol/player.c.s
 
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/player.c.o.requires:
 
@@ -635,16 +635,16 @@ CMakeFiles/zappy_server.dir/src/server/grahic_protocol/player.c.o.provides.build
 
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/quantification.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/quantification.c.o: src/server/grahic_protocol/quantification.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/zappy_server.dir/src/server/grahic_protocol/quantification.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/grahic_protocol/quantification.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/quantification.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building C object CMakeFiles/zappy_server.dir/src/server/grahic_protocol/quantification.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/grahic_protocol/quantification.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/grahic_protocol/quantification.c
 
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/quantification.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/grahic_protocol/quantification.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/quantification.c > CMakeFiles/zappy_server.dir/src/server/grahic_protocol/quantification.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/grahic_protocol/quantification.c > CMakeFiles/zappy_server.dir/src/server/grahic_protocol/quantification.c.i
 
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/quantification.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/grahic_protocol/quantification.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/quantification.c -o CMakeFiles/zappy_server.dir/src/server/grahic_protocol/quantification.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/grahic_protocol/quantification.c -o CMakeFiles/zappy_server.dir/src/server/grahic_protocol/quantification.c.s
 
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/quantification.c.o.requires:
 
@@ -659,16 +659,16 @@ CMakeFiles/zappy_server.dir/src/server/grahic_protocol/quantification.c.o.provid
 
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/server.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/server.c.o: src/server/grahic_protocol/server.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/zappy_server.dir/src/server/grahic_protocol/server.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/grahic_protocol/server.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/server.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building C object CMakeFiles/zappy_server.dir/src/server/grahic_protocol/server.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/grahic_protocol/server.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/grahic_protocol/server.c
 
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/server.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/grahic_protocol/server.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/server.c > CMakeFiles/zappy_server.dir/src/server/grahic_protocol/server.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/grahic_protocol/server.c > CMakeFiles/zappy_server.dir/src/server/grahic_protocol/server.c.i
 
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/server.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/grahic_protocol/server.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/server.c -o CMakeFiles/zappy_server.dir/src/server/grahic_protocol/server.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/grahic_protocol/server.c -o CMakeFiles/zappy_server.dir/src/server/grahic_protocol/server.c.s
 
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/server.c.o.requires:
 
@@ -683,16 +683,16 @@ CMakeFiles/zappy_server.dir/src/server/grahic_protocol/server.c.o.provides.build
 
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/status.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/status.c.o: src/server/grahic_protocol/status.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/zappy_server.dir/src/server/grahic_protocol/status.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/grahic_protocol/status.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/status.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building C object CMakeFiles/zappy_server.dir/src/server/grahic_protocol/status.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/grahic_protocol/status.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/grahic_protocol/status.c
 
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/status.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/grahic_protocol/status.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/status.c > CMakeFiles/zappy_server.dir/src/server/grahic_protocol/status.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/grahic_protocol/status.c > CMakeFiles/zappy_server.dir/src/server/grahic_protocol/status.c.i
 
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/status.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/grahic_protocol/status.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/grahic_protocol/status.c -o CMakeFiles/zappy_server.dir/src/server/grahic_protocol/status.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/grahic_protocol/status.c -o CMakeFiles/zappy_server.dir/src/server/grahic_protocol/status.c.s
 
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/status.c.o.requires:
 
@@ -707,16 +707,16 @@ CMakeFiles/zappy_server.dir/src/server/grahic_protocol/status.c.o.provides.build
 
 CMakeFiles/zappy_server.dir/src/server/gui_manager/command.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/gui_manager/command.c.o: src/server/gui_manager/command.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/zappy_server.dir/src/server/gui_manager/command.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/gui_manager/command.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/gui_manager/command.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building C object CMakeFiles/zappy_server.dir/src/server/gui_manager/command.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/gui_manager/command.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/gui_manager/command.c
 
 CMakeFiles/zappy_server.dir/src/server/gui_manager/command.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/gui_manager/command.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/gui_manager/command.c > CMakeFiles/zappy_server.dir/src/server/gui_manager/command.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/gui_manager/command.c > CMakeFiles/zappy_server.dir/src/server/gui_manager/command.c.i
 
 CMakeFiles/zappy_server.dir/src/server/gui_manager/command.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/gui_manager/command.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/gui_manager/command.c -o CMakeFiles/zappy_server.dir/src/server/gui_manager/command.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/gui_manager/command.c -o CMakeFiles/zappy_server.dir/src/server/gui_manager/command.c.s
 
 CMakeFiles/zappy_server.dir/src/server/gui_manager/command.c.o.requires:
 
@@ -731,16 +731,16 @@ CMakeFiles/zappy_server.dir/src/server/gui_manager/command.c.o.provides.build: C
 
 CMakeFiles/zappy_server.dir/src/server/gui_manager/manager.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/gui_manager/manager.c.o: src/server/gui_manager/manager.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building C object CMakeFiles/zappy_server.dir/src/server/gui_manager/manager.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/gui_manager/manager.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/gui_manager/manager.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building C object CMakeFiles/zappy_server.dir/src/server/gui_manager/manager.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/gui_manager/manager.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/gui_manager/manager.c
 
 CMakeFiles/zappy_server.dir/src/server/gui_manager/manager.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/gui_manager/manager.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/gui_manager/manager.c > CMakeFiles/zappy_server.dir/src/server/gui_manager/manager.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/gui_manager/manager.c > CMakeFiles/zappy_server.dir/src/server/gui_manager/manager.c.i
 
 CMakeFiles/zappy_server.dir/src/server/gui_manager/manager.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/gui_manager/manager.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/gui_manager/manager.c -o CMakeFiles/zappy_server.dir/src/server/gui_manager/manager.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/gui_manager/manager.c -o CMakeFiles/zappy_server.dir/src/server/gui_manager/manager.c.s
 
 CMakeFiles/zappy_server.dir/src/server/gui_manager/manager.c.o.requires:
 
@@ -755,16 +755,16 @@ CMakeFiles/zappy_server.dir/src/server/gui_manager/manager.c.o.provides.build: C
 
 CMakeFiles/zappy_server.dir/src/server/loop.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/loop.c.o: src/server/loop.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object CMakeFiles/zappy_server.dir/src/server/loop.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/loop.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/loop.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building C object CMakeFiles/zappy_server.dir/src/server/loop.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/loop.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/loop.c
 
 CMakeFiles/zappy_server.dir/src/server/loop.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/loop.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/loop.c > CMakeFiles/zappy_server.dir/src/server/loop.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/loop.c > CMakeFiles/zappy_server.dir/src/server/loop.c.i
 
 CMakeFiles/zappy_server.dir/src/server/loop.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/loop.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/loop.c -o CMakeFiles/zappy_server.dir/src/server/loop.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/loop.c -o CMakeFiles/zappy_server.dir/src/server/loop.c.s
 
 CMakeFiles/zappy_server.dir/src/server/loop.c.o.requires:
 
@@ -779,16 +779,16 @@ CMakeFiles/zappy_server.dir/src/server/loop.c.o.provides.build: CMakeFiles/zappy
 
 CMakeFiles/zappy_server.dir/src/server/main.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/main.c.o: src/server/main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/zappy_server.dir/src/server/main.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/main.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building C object CMakeFiles/zappy_server.dir/src/server/main.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/main.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/main.c
 
 CMakeFiles/zappy_server.dir/src/server/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/main.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/main.c > CMakeFiles/zappy_server.dir/src/server/main.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/main.c > CMakeFiles/zappy_server.dir/src/server/main.c.i
 
 CMakeFiles/zappy_server.dir/src/server/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/main.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/main.c -o CMakeFiles/zappy_server.dir/src/server/main.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/main.c -o CMakeFiles/zappy_server.dir/src/server/main.c.s
 
 CMakeFiles/zappy_server.dir/src/server/main.c.o.requires:
 
@@ -803,16 +803,16 @@ CMakeFiles/zappy_server.dir/src/server/main.c.o.provides.build: CMakeFiles/zappy
 
 CMakeFiles/zappy_server.dir/src/server/map.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/map.c.o: src/server/map.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/zappy_server.dir/src/server/map.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/map.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/map.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building C object CMakeFiles/zappy_server.dir/src/server/map.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/map.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/map.c
 
 CMakeFiles/zappy_server.dir/src/server/map.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/map.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/map.c > CMakeFiles/zappy_server.dir/src/server/map.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/map.c > CMakeFiles/zappy_server.dir/src/server/map.c.i
 
 CMakeFiles/zappy_server.dir/src/server/map.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/map.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/map.c -o CMakeFiles/zappy_server.dir/src/server/map.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/map.c -o CMakeFiles/zappy_server.dir/src/server/map.c.s
 
 CMakeFiles/zappy_server.dir/src/server/map.c.o.requires:
 
@@ -827,16 +827,16 @@ CMakeFiles/zappy_server.dir/src/server/map.c.o.provides.build: CMakeFiles/zappy_
 
 CMakeFiles/zappy_server.dir/src/server/parsing/game.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/parsing/game.c.o: src/server/parsing/game.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/zappy_server.dir/src/server/parsing/game.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/parsing/game.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/parsing/game.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building C object CMakeFiles/zappy_server.dir/src/server/parsing/game.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/parsing/game.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/parsing/game.c
 
 CMakeFiles/zappy_server.dir/src/server/parsing/game.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/parsing/game.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/parsing/game.c > CMakeFiles/zappy_server.dir/src/server/parsing/game.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/parsing/game.c > CMakeFiles/zappy_server.dir/src/server/parsing/game.c.i
 
 CMakeFiles/zappy_server.dir/src/server/parsing/game.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/parsing/game.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/parsing/game.c -o CMakeFiles/zappy_server.dir/src/server/parsing/game.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/parsing/game.c -o CMakeFiles/zappy_server.dir/src/server/parsing/game.c.s
 
 CMakeFiles/zappy_server.dir/src/server/parsing/game.c.o.requires:
 
@@ -851,16 +851,16 @@ CMakeFiles/zappy_server.dir/src/server/parsing/game.c.o.provides.build: CMakeFil
 
 CMakeFiles/zappy_server.dir/src/server/parsing/gnl.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/parsing/gnl.c.o: src/server/parsing/gnl.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/zappy_server.dir/src/server/parsing/gnl.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/parsing/gnl.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/parsing/gnl.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building C object CMakeFiles/zappy_server.dir/src/server/parsing/gnl.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/parsing/gnl.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/parsing/gnl.c
 
 CMakeFiles/zappy_server.dir/src/server/parsing/gnl.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/parsing/gnl.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/parsing/gnl.c > CMakeFiles/zappy_server.dir/src/server/parsing/gnl.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/parsing/gnl.c > CMakeFiles/zappy_server.dir/src/server/parsing/gnl.c.i
 
 CMakeFiles/zappy_server.dir/src/server/parsing/gnl.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/parsing/gnl.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/parsing/gnl.c -o CMakeFiles/zappy_server.dir/src/server/parsing/gnl.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/parsing/gnl.c -o CMakeFiles/zappy_server.dir/src/server/parsing/gnl.c.s
 
 CMakeFiles/zappy_server.dir/src/server/parsing/gnl.c.o.requires:
 
@@ -875,16 +875,16 @@ CMakeFiles/zappy_server.dir/src/server/parsing/gnl.c.o.provides.build: CMakeFile
 
 CMakeFiles/zappy_server.dir/src/server/parsing/parser.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/parsing/parser.c.o: src/server/parsing/parser.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/zappy_server.dir/src/server/parsing/parser.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/parsing/parser.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/parsing/parser.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building C object CMakeFiles/zappy_server.dir/src/server/parsing/parser.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/parsing/parser.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/parsing/parser.c
 
 CMakeFiles/zappy_server.dir/src/server/parsing/parser.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/parsing/parser.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/parsing/parser.c > CMakeFiles/zappy_server.dir/src/server/parsing/parser.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/parsing/parser.c > CMakeFiles/zappy_server.dir/src/server/parsing/parser.c.i
 
 CMakeFiles/zappy_server.dir/src/server/parsing/parser.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/parsing/parser.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/parsing/parser.c -o CMakeFiles/zappy_server.dir/src/server/parsing/parser.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/parsing/parser.c -o CMakeFiles/zappy_server.dir/src/server/parsing/parser.c.s
 
 CMakeFiles/zappy_server.dir/src/server/parsing/parser.c.o.requires:
 
@@ -899,16 +899,16 @@ CMakeFiles/zappy_server.dir/src/server/parsing/parser.c.o.provides.build: CMakeF
 
 CMakeFiles/zappy_server.dir/src/server/parsing/port.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/parsing/port.c.o: src/server/parsing/port.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/zappy_server.dir/src/server/parsing/port.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/parsing/port.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/parsing/port.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building C object CMakeFiles/zappy_server.dir/src/server/parsing/port.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/parsing/port.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/parsing/port.c
 
 CMakeFiles/zappy_server.dir/src/server/parsing/port.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/parsing/port.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/parsing/port.c > CMakeFiles/zappy_server.dir/src/server/parsing/port.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/parsing/port.c > CMakeFiles/zappy_server.dir/src/server/parsing/port.c.i
 
 CMakeFiles/zappy_server.dir/src/server/parsing/port.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/parsing/port.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/parsing/port.c -o CMakeFiles/zappy_server.dir/src/server/parsing/port.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/parsing/port.c -o CMakeFiles/zappy_server.dir/src/server/parsing/port.c.s
 
 CMakeFiles/zappy_server.dir/src/server/parsing/port.c.o.requires:
 
@@ -923,16 +923,16 @@ CMakeFiles/zappy_server.dir/src/server/parsing/port.c.o.provides.build: CMakeFil
 
 CMakeFiles/zappy_server.dir/src/server/scheduler/add.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/scheduler/add.c.o: src/server/scheduler/add.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/zappy_server.dir/src/server/scheduler/add.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/scheduler/add.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/scheduler/add.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building C object CMakeFiles/zappy_server.dir/src/server/scheduler/add.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/scheduler/add.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/scheduler/add.c
 
 CMakeFiles/zappy_server.dir/src/server/scheduler/add.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/scheduler/add.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/scheduler/add.c > CMakeFiles/zappy_server.dir/src/server/scheduler/add.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/scheduler/add.c > CMakeFiles/zappy_server.dir/src/server/scheduler/add.c.i
 
 CMakeFiles/zappy_server.dir/src/server/scheduler/add.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/scheduler/add.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/scheduler/add.c -o CMakeFiles/zappy_server.dir/src/server/scheduler/add.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/scheduler/add.c -o CMakeFiles/zappy_server.dir/src/server/scheduler/add.c.s
 
 CMakeFiles/zappy_server.dir/src/server/scheduler/add.c.o.requires:
 
@@ -947,16 +947,16 @@ CMakeFiles/zappy_server.dir/src/server/scheduler/add.c.o.provides.build: CMakeFi
 
 CMakeFiles/zappy_server.dir/src/server/scheduler/scheduler.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/scheduler/scheduler.c.o: src/server/scheduler/scheduler.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/zappy_server.dir/src/server/scheduler/scheduler.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/scheduler/scheduler.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/scheduler/scheduler.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building C object CMakeFiles/zappy_server.dir/src/server/scheduler/scheduler.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/scheduler/scheduler.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/scheduler/scheduler.c
 
 CMakeFiles/zappy_server.dir/src/server/scheduler/scheduler.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/scheduler/scheduler.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/scheduler/scheduler.c > CMakeFiles/zappy_server.dir/src/server/scheduler/scheduler.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/scheduler/scheduler.c > CMakeFiles/zappy_server.dir/src/server/scheduler/scheduler.c.i
 
 CMakeFiles/zappy_server.dir/src/server/scheduler/scheduler.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/scheduler/scheduler.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/scheduler/scheduler.c -o CMakeFiles/zappy_server.dir/src/server/scheduler/scheduler.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/scheduler/scheduler.c -o CMakeFiles/zappy_server.dir/src/server/scheduler/scheduler.c.s
 
 CMakeFiles/zappy_server.dir/src/server/scheduler/scheduler.c.o.requires:
 
@@ -971,16 +971,16 @@ CMakeFiles/zappy_server.dir/src/server/scheduler/scheduler.c.o.provides.build: C
 
 CMakeFiles/zappy_server.dir/src/server/server.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/server.c.o: src/server/server.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object CMakeFiles/zappy_server.dir/src/server/server.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/server.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/server.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building C object CMakeFiles/zappy_server.dir/src/server/server.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/server.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/server.c
 
 CMakeFiles/zappy_server.dir/src/server/server.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/server.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/server.c > CMakeFiles/zappy_server.dir/src/server/server.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/server.c > CMakeFiles/zappy_server.dir/src/server/server.c.i
 
 CMakeFiles/zappy_server.dir/src/server/server.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/server.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/server.c -o CMakeFiles/zappy_server.dir/src/server/server.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/server.c -o CMakeFiles/zappy_server.dir/src/server/server.c.s
 
 CMakeFiles/zappy_server.dir/src/server/server.c.o.requires:
 
@@ -995,16 +995,16 @@ CMakeFiles/zappy_server.dir/src/server/server.c.o.provides.build: CMakeFiles/zap
 
 CMakeFiles/zappy_server.dir/src/server/socket/socket.c.o: CMakeFiles/zappy_server.dir/flags.make
 CMakeFiles/zappy_server.dir/src/server/socket/socket.c.o: src/server/socket/socket.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building C object CMakeFiles/zappy_server.dir/src/server/socket/socket.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/socket/socket.c.o   -c /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/socket/socket.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building C object CMakeFiles/zappy_server.dir/src/server/socket/socket.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/zappy_server.dir/src/server/socket/socket.c.o   -c /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/socket/socket.c
 
 CMakeFiles/zappy_server.dir/src/server/socket/socket.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/zappy_server.dir/src/server/socket/socket.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/socket/socket.c > CMakeFiles/zappy_server.dir/src/server/socket/socket.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/socket/socket.c > CMakeFiles/zappy_server.dir/src/server/socket/socket.c.i
 
 CMakeFiles/zappy_server.dir/src/server/socket/socket.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/zappy_server.dir/src/server/socket/socket.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/mergeZappy/PSU_zappy_2017/src/server/socket/socket.c -o CMakeFiles/zappy_server.dir/src/server/socket/socket.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/socket/socket.c -o CMakeFiles/zappy_server.dir/src/server/socket/socket.c.s
 
 CMakeFiles/zappy_server.dir/src/server/socket/socket.c.o.requires:
 
@@ -1105,7 +1105,7 @@ zappy_server: CMakeFiles/zappy_server.dir/src/server/server.c.o
 zappy_server: CMakeFiles/zappy_server.dir/src/server/socket/socket.c.o
 zappy_server: CMakeFiles/zappy_server.dir/build.make
 zappy_server: CMakeFiles/zappy_server.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Linking C executable zappy_server"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Linking C executable zappy_server"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/zappy_server.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -1161,6 +1161,6 @@ CMakeFiles/zappy_server.dir/clean:
 .PHONY : CMakeFiles/zappy_server.dir/clean
 
 CMakeFiles/zappy_server.dir/depend:
-	cd /home/wisenoa/mergeZappy/PSU_zappy_2017 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/wisenoa/mergeZappy/PSU_zappy_2017 /home/wisenoa/mergeZappy/PSU_zappy_2017 /home/wisenoa/mergeZappy/PSU_zappy_2017 /home/wisenoa/mergeZappy/PSU_zappy_2017 /home/wisenoa/mergeZappy/PSU_zappy_2017/CMakeFiles/zappy_server.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/wisenoa/NikeBienTaMere/PSU_zappy_2017 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/wisenoa/NikeBienTaMere/PSU_zappy_2017 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/zappy_server.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/zappy_server.dir/depend
 

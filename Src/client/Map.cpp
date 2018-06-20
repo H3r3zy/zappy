@@ -36,6 +36,7 @@ irc::Map::Map(irc::Communication &comm, std::vector<int> &listId, bool &displayG
 
 	/* */
 	_comm.writeOnServer("msz");
+
 }
 
 void irc::Map::initCamera()
@@ -56,7 +57,6 @@ void irc::Map::loopDisplay()
 {
 	//std::thread caca(_character[0].playerLoop, _gameWindow);
 
-	sleep(3);
 	while (_gameWindow.isOpen()) {
 		_comm.lockDisplay();
 
@@ -125,6 +125,8 @@ bool irc::Map::getEvent()
 			case sf::Keyboard::Left:
 				_camera[MAP].move(-10, 0);
 				_camera[MINIMAP].move(-10, 0);
+				_comm.writeOnServer("mct");
+
 				_playerPos.setPosition(_camera[MAP].getCenter());
 				_grid.updateGrid3D(_camera[MAP]);
 				_windowInfo->updateInfo(_grid.getNbActive(), _camera[HUD]);

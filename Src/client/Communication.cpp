@@ -30,10 +30,11 @@ void irc::Communication::enqueueGui(const std::string &msg)
 	unlockGui();
 }
 
-void irc::Communication::enqueueMap(const std::string &msg)
+
+void irc::Communication::enqueueMap(const std::vector<uint> &command)
 {
 	lockMap();
-	_enqueueMap.push_back(msg);
+	_enqueueMap.emplace_back(command);
 	unlockMap();
 }
 
@@ -42,7 +43,7 @@ std::vector<std::string>& irc::Communication::getEnqueueGui()
 	return _enqueueGui;
 }
 
-std::vector<std::string>& irc::Communication::getEnqueueMap()
+std::vector<CstringArray>& irc::Communication::getEnqueueMap()
 {
 	return _enqueueMap;
 }
@@ -50,6 +51,7 @@ std::vector<std::string>& irc::Communication::getEnqueueMap()
 int irc::Communication::writeOnServer(const std::string &msg)
 {
 	_write.lock();
+	std::cout << "jecris ["  << msg << "] au serveur" << std::endl;
 	int ret = irc::ManageServer::writeOnServer(_socket, msg + "\n");
 	_write.unlock();
 	return ret;
@@ -57,12 +59,16 @@ int irc::Communication::writeOnServer(const std::string &msg)
 
 void irc::Communication::loopRead()
 {
-	std::string msg;
+	CstringArray msg;
 
 	while (!_read) {
 		std::cout << "je passe dedans" << std::endl;
-		msg = irc::ManageServer::readServer(_socket, false);
-		addMsgToQueue(msg);
+		msg = irc::ManageServer::readGameServer(_socket, false);
+		std::cout << "J'arrive à la fin du parsing, le nom de la commande est [" << msg.getCommandName() << "]" << std::endl;
+		auto tmpPrint = msg.getCommand();
+		if (tmpPrint.size() == 8)
+			std::cout << "Et son message est :" << tmpPrint[0] << " " << tmpPrint[1] << " " << tmpPrint[2] << " " << tmpPrint[3] << " " << tmpPrint[4] << " " << tmpPrint[5] << " " << tmpPrint[6] << " " << tmpPrint[7] <<  std::endl;
+		//addMsgToQueue(msg);
 	}
 }
 

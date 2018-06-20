@@ -13,63 +13,144 @@
 std::string irc::ManageServer::readServer(int socket, bool blockRead)
 {
 	std::cout << "je vais read sur mon serveur" << std::endl;
-
 	std::string result;
 	fd_set readfds;
 	struct timeval t = {0, 1000};
+	char buffer[4096];
 
 	FD_ZERO(&readfds);
 	FD_SET(socket, &readfds);
 	if (select(socket + 1, &readfds, NULL, NULL, (!blockRead) ? &t : NULL) == -1) {
 		result = "select error\n";
-		std::cout << "ca a fail bordel" << std::endl;
 
 	} else if (FD_ISSET(socket, &readfds)) {
-		char buffer[4096];
 		int len = 0;
-		std::cout << "je boucle dedans" << std::endl;
-
 		do {
 			len = (int)read(socket, buffer, 4095);
 			if (len <= 0)
 				throw std::exception();
 			buffer[len] = '\0';
 			result += buffer;
-			std::cout << len << " => " << buffer << " = " << result << std::endl;
 		} while (len == 4095);
+	}
+	std::stringstream ss(result);
+	std::string command;
+	ss >> command;
+
+	std::cout << "COMMAND: " << command << std::endl;
+	std::cout << "result: " << result << std::endl;
+	return result;
+}
+CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
+{
+	std::cout << "je vais read sur mon serveur" << std::endl;
+
+	std::string result;
+	CstringArray finalCommand;
+	fd_set readfds;
+	struct timeval t = {0, 300};
+
+	//	FD_ZERO(&readfds);
+	FD_SET(socket, &readfds);
+	if (select(socket + 1, &readfds, NULL, NULL, (!blockRead) ? &t : NULL) == -1) {
+		result = "select error\n";
+		std::cout << "ca a fail bordel" << std::endl;
+
+	} else if (FD_ISSET(socket, &readfds)) {
+
+
+		std::vector<char> test;
+		char c[1];
+		int rc;
+
+		while ((rc = read(socket, c, 1)) > 0) {
+			std::cout << c[0] << std::endl;
+			if (c[0] != '\n') {
+				test.push_back(*c);
+			} else {
+				break;
+			}
+		}
+		sleep(1);
+		std::cout << "Ma chaine :" << std::endl;
+		for (const auto &it : test) {
+			std::cout << it;
+		}
+		std::cout << std::endl;
+
+		//char buffer[4096];
+		//int len = 1;
+		std::cout << "je boucle dedans" << std::endl;
+
+		/*do {
+			len = (int)read(socket, buffer, 1);
+			if (len <= 0)
+				throw std::exception();
+			buffer[len] = '\0';
+			result += buffer;
+			if (buffer[0] == '\n')
+				break;
+			std::cout << "buffer[" << buffer << "]"  << std::endl;
+			std::cout << len << " => " << buffer << " = " << result << std::endl;
+			usleep(10000);
+		} while (len == 4095);*/
+
+		char buffer[4096];
+		int i = 0;
+		for (const auto &it : test) {
+			buffer[i] = test[i];
+			i++;
+		}
+		buffer[i] = '\0';
+
 		if (strncmp(buffer, "msz", 3) == 0) {
-			uint32_t x = 0;
-			uint32_t y = 0;
-			memcpy(&x, buffer + 4, sizeof(uint32_t));
-			memcpy(&y, buffer + 9, sizeof(uint32_t));
-			std::cout << len << " map size: " << (int) x << " " << (int) y << std::endl;
 
-
-
-
-
-			uint bag[8] = {0};
+			std::vector<uint> bag;
+			for (int i = 0; i < 8; i++)
+				bag.emplace_back(0);
 			for (size_t i = 0; i < 8; i++) {
-				memcpy(&bag[i],
-					buffer + 4 + i * (sizeof(uint) + 1), sizeof(uint));
+				memcpy(&bag[i], buffer + 4 + i * (sizeof(uint) + 1), sizeof(uint));
+				printf("bag %d\n", bag[i]);
+			}
+			finalCommand.setCommand(bag);
+
+			//exit(1);
+		}
+
+
+
+
+
+
+		if (strncmp(buffer, "bct", 3) == 0) {
+			std::vector<uint> bag;
+			for (int i = 0; i < 8; i++)
+				bag.emplace_back(0);
+			for (size_t i = 0; i < 8; i++) {
+				memcpy(&bag[i], buffer + 4 + i * (sizeof(uint) + 1), sizeof(uint));
 				printf("expeted %d\n", bag[i]);
 
 			}
+			finalCommand.setCommand(bag);
 
-			exit(1);
+			//exit(1);
 		}
+
+
+
 	} else {
 		std::cout << "NTM gros con" << std::endl;
 
 	}
-	sleep(2);
+//	sleep(2);
 	std::stringstream ss(result);
 	std::string command;
 	ss >> command;
 	std::cout << "COMMAND: " << command << std::endl;
+	finalCommand.setCommandName(command);
 
 	std::cout << "result: " << result << std::endl;
-	return result;
+	return finalCommand;
 }
 
 std::string irc::ManageServer::connectServer(int socket, std::string ip, std::string port)

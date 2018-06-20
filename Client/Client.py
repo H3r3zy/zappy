@@ -35,6 +35,9 @@ class Client:
             ActionNode(Actions.FIND_CRYSTALS, FindCrystals),
             ActionNode(Actions.FORWARD, Forward),
             ActionNode(Actions.CHECK_LVL_UP, CheckLvlUp),
+            ActionNode(Actions.TAKE_ALL, TakeAll),
+            ActionNode(Actions.LVL_UP, LvlUp),
+            ActionNode(Actions.CHECK_PLAYER, CheckPlayer),
         ]
         self.__args = {
             Actions.LOOK: [],
@@ -43,6 +46,9 @@ class Client:
             Actions.FIND_CRYSTALS: [1, 2],
             Actions.FORWARD: [1, 2],
             Actions.CHECK_LVL_UP: [],
+            Actions.TAKE_ALL: [],
+            Actions.LVL_UP: [],
+            Actions.CHECK_PLAYER: [],
         }
         self.__outId = 0
         self.last = 0

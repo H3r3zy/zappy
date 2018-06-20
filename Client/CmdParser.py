@@ -60,6 +60,7 @@ class CmdParser:
             self.__player.getInventory()[obj] += 1
             self.__map[pos[1]][pos[0]].getStones()[obj] -= 1
         else:
+            print("ko")
             self.__map[pos[1]][pos[0]].getStones()[obj] = 0
 
     def fork(self):
@@ -107,12 +108,16 @@ class CmdParser:
                                                         self.__player.getLevel()):
             currentTile = self.__map[y % len(self.__player.getMap())][x % len(self.__player.getMap()[0])]
             currentTile.reset()
+            players = 0
             for elem in tiles[i].split(" "):
                 if elem == "player":
-                    currentTile.setPlayer(currentTile.getPlayer() + 1)
+                    players += 1
+                    #currentTile.setPlayer(currentTile.getPlayer() + 1)
                     continue
                 if len(elem) > 0:
                     currentTile.getStones()[elem] += 1
+            if currentTile.getPlayer() < players:
+                currentTile.setPlayer(players)
             i += 1
 
     def parse_inv(self, inv: str, _1, _2):
@@ -132,6 +137,8 @@ class CmdParser:
             return False
         if re.match("Current level: \d", cmd) is not None:
             self.__player.levelUp()
+            return True
+        if len(self.__queue) == 0: #TODO à regarder!
             return True
         last = self.__queue.popleft()
         match = self.__patterns[last[0]].match(cmd)

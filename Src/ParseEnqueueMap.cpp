@@ -52,6 +52,10 @@ void ParseEnqueueMap::fillMap(Grid &_grid, sf::Vector2f &mapSize)
 		std::vector<CstringArray> test = _comm.getEnqueueMap();
 		_comm.unlockMap();
 		_blocNumber = 0;
+		if (test.size() < mapSize.x * mapSize.y) {
+			usleep(100000);
+			continue;
+		}
 		for (const auto &it : test) {
 		//	window.clear(sf::Color::Black);
 			if (it.getCommandName() == "bct") {
@@ -97,8 +101,12 @@ void ParseEnqueueMap::loadingDisplay( sf::Vector2f &mapSize)
 
 
 	while (!_ready) {
-		std::cout << "bloc :" << _blocNumber << " total " << total << std::endl;
-		text.setString("Loading : " + std::to_string(_blocNumber) + " / " + total);
+		if (_blocNumber != 0) {
+			text.setString("Parsing and filling resources into the map : " + std::to_string(_blocNumber) + " / " + total);
+		} else {
+			text.setString("Waiting Data response from server");
+
+		}
 		window.draw(text);
 		window.display();
 		window.clear();

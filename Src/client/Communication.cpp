@@ -71,16 +71,16 @@ void irc::Communication::loopRead()
 void irc::Communication::addMsgToQueue(const CstringArray &command)
 {
 	auto tmpPrint = command.getCommand();
-	if (tmpPrint.size() == 9) {
+/*	if (tmpPrint.size() == 9) {
 		std::cout << "J'arrive à la fin du parsing, le nom de la commande est [" << command.getCommandName() << "]" << std::endl;
 		std::cout << "Et son message est :" << tmpPrint[0] << " "
 			<< tmpPrint[1] << " " << tmpPrint[2] << " "
 			<< tmpPrint[3] << " " << tmpPrint[4] << " "
 			<< tmpPrint[5] << " " << tmpPrint[6] << " "
 			<< tmpPrint[7] << " " << tmpPrint[8] << std::endl;
-	}
+	}*/
 	if (!command.getCommandName().empty()) {
-		std::cout << "Nom de ma comamnde " << command.getCommandName() << std::endl;
+	//	std::cout << "Nom de ma comamnde " << command.getCommandName() << std::endl;
 		enqueueMap(command);
 	}
 	// Todo: Create a parser for msg needed by gui and map, don't forget to lock / unlock

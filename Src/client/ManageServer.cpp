@@ -76,9 +76,9 @@ CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 		}
 	//	sleep(1);
 		//std::cout << "Ma chaine :" << std::endl;
-		for (const auto &it : test) {
-			std::cout << it;
-		}
+	//	for (const auto &it : test) {
+	//		std::cout << it;
+	//	}
 		std::cout << std::endl;
 
 		char buffer[4096];
@@ -121,7 +121,7 @@ CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 				break;
 			commandName.push_back(it);
 		}
-		std::cout << "Nom de ma commande : " << commandName << std::endl;
+	//	std::cout << "Nom de ma commande : " << commandName << std::endl;
 		finalCommand.setCommandName(commandName);
 
 

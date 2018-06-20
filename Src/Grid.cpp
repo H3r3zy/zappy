@@ -40,7 +40,6 @@ void Grid::loadingDisplay( sf::Vector2f &mapSize)
 
 
 	while (!_ready) {
-		std::cout << "bloc :" << _blocNumber << " total " << total << std::endl;
 		text.setString("Creating cell and texturing it : " + std::to_string(_blocNumber) + " / " + total);
 		window.draw(text);
 		window.display();

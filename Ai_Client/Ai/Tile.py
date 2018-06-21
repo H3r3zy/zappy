@@ -22,8 +22,6 @@ class Tile:
 
     def setPlayer(self, player: int):
         print("set %d player on tile" % player)
-        if player > 1:
-            sys.exit(1234)
         self.__player = player
 
     def __str__(self):

@@ -27,7 +27,7 @@ class Client:
         self.mapSize = (0, 0)
         self.wait = 0
         self.__currentNode = Actions.LOOK
-        self.__msgQueue = deque()
+        self.msgQueue = deque()
         self.__nodes = [
             ActionNode(Actions.LOOK, look),
             ActionNode(Actions.CHECK_FOOD, CheckingFood),
@@ -38,18 +38,8 @@ class Client:
             ActionNode(Actions.TAKE_ALL, TakeAll),
             ActionNode(Actions.LVL_UP, LvlUp),
             ActionNode(Actions.CHECK_PLAYER, CheckPlayer),
+            ActionNode(Actions.NEED_PEOPLE, IncantBroadCast)
         ]
-        self.__args = {
-            Actions.LOOK: [],
-            Actions.CHECK_FOOD: [1, 2],
-            Actions.FIND_FOOD: [1, 2],
-            Actions.FIND_CRYSTALS: [1, 2],
-            Actions.FORWARD: [1, 2],
-            Actions.CHECK_LVL_UP: [],
-            Actions.TAKE_ALL: [],
-            Actions.LVL_UP: [],
-            Actions.CHECK_PLAYER: [],
-        }
         self.__outId = 0
         self.last = 0
 
@@ -138,7 +128,7 @@ class Client:
         ordinal = lambda n: "%d%s" % (n, "tsnrhtdd"[(n / 10 % 10 != 1) * (n % 10 < 4) * n % 10::4])
         print("Authentication successful, map size of %d x %d" % (self.mapSize[0], self.mapSize[1]))
         player = Ai(self.mapSize[1], self.mapSize[0])
-        parser = CmdParser.CmdParser(player, self.__outQueue, self.__msgQueue,
+        parser = CmdParser.CmdParser(player, self.__outQueue, self.msgQueue,
                                      (self.__port, self.__name, self.__machine))
         while True:
             self.refresh()
@@ -148,5 +138,4 @@ class Client:
                     print("I died being at the %s level" % ordinal(player.getLevel()))
                     return
             self.last = parser.get_last()
-            self.__currentNode = self.__nodes[self.__currentNode].action(self, player,
-                                                                         self.__args[self.__currentNode])
+            self.__currentNode = self.__nodes[self.__currentNode].action(self, player)

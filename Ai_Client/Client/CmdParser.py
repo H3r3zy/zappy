@@ -148,6 +148,7 @@ class CmdParser:
             return False
         last = self.__queue.popleft()
         match = self.__patterns[last[0]].match(cmd)
+        print("(" + last[0] + ":" + cmd + ")")
         self.__handledId += 1
         try:
             if last[0] in self.__actions.keys() and match is not None:

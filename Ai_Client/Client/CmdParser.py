@@ -117,18 +117,16 @@ class CmdParser:
         map = map.replace("[", "").replace("]", "")
         tiles = map.split(",")
         i = 0
+        print("Je vais parse la map")
         for x, y in self.__dirs[pos[1]](pos[0][0], pos[0][1], self.__player.getLevel()):
             currentTile = self.__map[y % len(self.__player.getMap())][x % len(self.__player.getMap()[0])]
             currentTile.reset()
-            players = 0
             for elem in tiles[i].split(" "):
                 if elem == "player":
-                    players += 1
+                    currentTile.setPlayer(currentTile.getPlayer() + 1)
                     continue
                 if len(elem) > 0:
                     currentTile.getStones()[elem] += 1 #Changer
-            if currentTile.getPlayer() < players:
-                currentTile.setPlayer(players)
             i += 1
 
     def parse_inv(self, inv: str, _1, _2):
@@ -144,6 +142,7 @@ class CmdParser:
         return self.__handledId
 
     def parse(self, cmd: str) -> bool:
+        print("(" + cmd + ":" + cmd + ")")
         if cmd == "dead":
             return False
         last = self.__queue.popleft()

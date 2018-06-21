@@ -17,13 +17,12 @@ class Tile:
         return self.__stones
 
     def reset(self):
+        self.__player = 0
         for key, val in self.__stones.items():
             self.__stones[key] = 0
 
     def setPlayer(self, player: int):
         print("set %d player on tile" % player)
-        if player > 1:
-            sys.exit(1234)
         self.__player = player
 
     def __str__(self):

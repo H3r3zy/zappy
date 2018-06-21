@@ -13,7 +13,7 @@
 #include <inttypes.h>
 #include "socket.h"
 
-#define READ_SIZE (16)
+#define READ_SIZE (1)
 #define LIMIT_TASK_NUMBER (10)
 
 #define RESOURCE_NB (7)
@@ -26,6 +26,9 @@
 #define EGG_UNIT_TIME (600)
 
 #define GUI_QUEUE_SIZE (1 << 12)
+
+#define GUI_OK ((char []){'o', 'k', -5})
+#define GUI_KO ((char []){'k', 'o', -5})
 
 typedef enum {
 	Linemate,
@@ -112,6 +115,7 @@ struct teams_s {
 	egg_t *eggs;
 	char *name;
 	uint32_t remaining_place;
+	uint32_t client_max;
 };
 
 typedef struct cell_s {
@@ -159,6 +163,7 @@ void die(server_t *server, client_t *client);
 void add_teams(server_t *server, char *name);
 void add_to_team(server_t *server, client_t *client, char *name);
 void create_teams_clients(server_t *server);
+void add_slot_in_team(teams_t *teams);
 
 void handle_new_client(server_t *server);
 int read_client(server_t *server, client_t *client);
@@ -166,9 +171,11 @@ void add_to_queue(client_t *client, char *msg);
 int send_responses(client_t *client);
 
 int try_write(int fd, char *msg);
+int try_write_gui(const int fd, char *msg, uint32_t len);
 
 int read_gui(server_t *server);
-void add_to_gui_queue(gui_t *gui, char *str);
+void gui_continue_commands(server_t *);
+void add_to_gui_queue(gui_t *gui, char *str, int len);
 
 void init_map(map_t *map);
 void add_player_to_map(map_t *map, entity_t *entity);
@@ -178,7 +185,7 @@ void move_player_to(map_t *map, entity_t *entity, pos_t *pos);
 int get_o_w_dlt(pos_t *delta, orientation_t orientation);
 void fill_delta(pos_t *size, pos_t *pos1, pos_t *pos2, pos_t *delta);
 
-void update_resource(map_t *map, pos_t pos, entity_type_t t, int n);
+void update_resource(map_t *map, pos_t *pos, entity_type_t t, int n);
 
 void write_uint32(char *buffer, int *idx, uint32_t nb);
 uint32_t read_uint32(char *buffer, int *idx);

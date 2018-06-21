@@ -29,10 +29,8 @@ void usage(char *binary)
 	" of actions\n");
 }
 
-int main(int ac, char **av)
-{
-	server_t serv;
-	argument_t manager[] = {
+argument_t *get_arguments_manager() {
+	static argument_t manager[] = {
 		{"-p", &argument_port, true, false, 0},
 		{"-x", &argument_width, true, false, 0},
 		{"-y", &argument_height, true, false, 0},
@@ -41,6 +39,15 @@ int main(int ac, char **av)
 		{"-f", &argument_frequency, false, false, 0},
 		{NULL, NULL, true, false, 0}
 	};
+
+	return manager;
+}
+
+int main(int ac, char **av)
+{
+	server_t serv;
+	argument_t *manager = get_arguments_manager();
+
 	int status = 0;
 
 	signal(SIGPIPE, SIG_IGN);
@@ -57,46 +64,3 @@ int main(int ac, char **av)
 	destroy_server(&serv);
 	return status;
 }
-
-/*
-** EPITECH PROJECT, 2018
-** a
-** File description:
-** a
-*/
-/*
-#include <stdlib.h>
-#include <string.h>
-#include <stdio.h>
-#include <gui_command.h>
-
-#define STR_TO_INT(b, i) (buff[i]) | (buff[i + 1] << 8) | \
-	(buff[i + 2] << 16) | (buff[i + 3] << 24)
-
-int main(int ac, char **av)
-{
-	////////////////////////// SENDER PART
-	char buff[55] = "nbr line dera sibu mend phir thys food eggs\n";
-	uint32_t stock[8] = {
-		2, 434, 6, 8, 100, 77, 789, 3
-	};
-	int idx = 4;
-
-	for (size_t i = 0; i < 8; i++) {
-		write_uint(buff, &idx, stock[i]);
-		idx++;
-	}
-	printf("[%s]\n", buff);
-
-	////////////////////////// RECEIVER PART
-	uint bag[8] = {0};
-	idx = 4;
-	for (size_t i = 0; i < 8; i++) {
-		bag[i] = read_uint(buff, &idx);
-		idx++;
-		printf("expeted %d : %d\n", stock[i], bag[i]);
-
-	}
-	// otherwise
-	return 0;
-}*/

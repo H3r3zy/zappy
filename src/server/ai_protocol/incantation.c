@@ -51,7 +51,7 @@ static void lvlup(cell_t *cell)
 static void remove_stones(map_t *map, pos_t *pos, uint32_t level)
 {
 	for (uint32_t i = 0; i < RESOURCE_NB; i++) {
-		update_resource(map, *pos, i, ELEVATIONS[level - 1][i] * -1);
+		update_resource(map, pos, i, ELEVATIONS[level - 1][i] * -1);
 	}
 }
 

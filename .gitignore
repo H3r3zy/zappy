@@ -24,7 +24,6 @@ reference
 test?
 test
 build/
-
 # Source #
 *.o
 
@@ -37,4 +36,6 @@ cmake-build-debug/*
 # PYCHARM STUFF #
 __pycache__
 venv
+callgrind*
+file
 

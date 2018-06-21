@@ -28,6 +28,7 @@ void fork_cmd(server_t *__attribute__((unused))server, client_t *client, char *_
 	egg->started_time = spec.tv_sec * STOMS + spec.tv_nsec / NTOMS;
 	egg->client = NULL;
 	egg->team = client->team;
+	add_slot_in_team(client->team);
 	egg->pos.x = client->entity->pos.x;
 	egg->pos.y = client->entity->pos.y;
 	egg->next = client->team->eggs;

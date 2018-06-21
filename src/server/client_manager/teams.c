@@ -33,16 +33,6 @@ void add_teams(server_t *server, char *name)
 	team->next = new;
 }
 
-void create_teams_clients(server_t *server)
-{
-	for (teams_t *team = server->teams; team; team = team->next) {
-		team->remaining_place = server->max_clients_per_teams;
-		team->clients = calloc(server->max_clients_per_teams,
-			sizeof(client_t *));
-		debug(GINFO "Team '%s' created\n", team->name);
-	}
-}
-
 static void spawn(server_t *server, client_t *client, teams_t *team)
 {
 	for (egg_t *egg = team->eggs; egg; egg = egg->next) {
@@ -57,9 +47,9 @@ static void spawn(server_t *server, client_t *client, teams_t *team)
 			return;
 		}
 	}
-	gui_pnw(server, client);
 	client->entity->pos.x = rand() % server->map.size.x;
 	client->entity->pos.y = rand() % server->map.size.y;
+	gui_pnw(server, client);
 }
 
 static void add_client_to_team(server_t *server, client_t *client,
@@ -68,7 +58,7 @@ static void add_client_to_team(server_t *server, client_t *client,
 	char buffer[128] = {0};
 	struct timespec spec;
 
-	for (uint32_t i = 0; i < server->max_clients_per_teams; i++) {
+	for (uint32_t i = 0; i < team->client_max; i++) {
 		if (team->clients[i] == NULL) {
 			team->clients[i] = client;
 			team->remaining_place--;
@@ -96,4 +86,14 @@ void add_to_team(server_t *server, client_t *client, char *name)
 		return;
 	}
 	add_to_queue(client, "ko\n");
+}
+
+void add_slot_in_team(teams_t *teams)
+{
+	teams->clients = realloc(teams->clients, teams->client_max + 1);
+	if (!teams->clients)
+		return;
+	teams->clients[teams->client_max] = NULL;
+	++teams->client_max;
+	++teams->remaining_place;
 }

@@ -11,28 +11,29 @@
 #include "server.h"
 
 /**
- * GUI command : get number of clients
- * @param server
- * @param arg
- *
- * @response nbu nbclients:4
- */
+* GUI command : get number of clients
+* @param server
+* @param arg
+*
+* @response nbu nbclients:4
+*/
 void gui_nbu(server_t *server, __attribute__((unused)) char *arg)
 {
 	static char buff[10] = "nbu nbus\n";
 	int idx = 4;
 
 	write_uint32(buff, &idx, server->client_nb);
-	add_to_gui_queue(&server->gui, buff);
+	buff[idx] = -5;
+	add_to_gui_queue(&server->gui, buff, idx + 1);
 }
 
 /**
- * GUI command : get the number of teams
- * @param server
- * @param arg
- *
- * @response nbt nbteam:4
- */
+* GUI command : get the number of teams
+* @param server
+* @param arg
+*
+* @response nbt nbteam:4
+*/
 void gui_nbt(server_t *server, __attribute__((unused)) char *arg)
 {
 	static char buff[10] = "nbt nbte\n";
@@ -42,16 +43,16 @@ void gui_nbt(server_t *server, __attribute__((unused)) char *arg)
 	for (teams_t *team = server->teams; team; team = team->next)
 		++n;
 	write_uint32(buff, &idx, n);
-	add_to_gui_queue(&server->gui, buff);
+	add_to_gui_queue(&server->gui, buff, idx + 1);
 }
 
 /**
- * GUI command : get the number of resources
- * @param server
- * @param arg
- *
- * @response nbr line:4 dera:4 sibu:4 mend:4 phir:4 thys:4 food:4 eggs:4
- */
+* GUI command : get the number of resources
+* @param server
+* @param arg
+*
+* @response nbr line:4 dera:4 sibu:4 mend:4 phir:4 thys:4 food:4 eggs:4
+*/
 void gui_nbr(server_t *server, __attribute__((unused)) char *arg)
 {
 	static char buff[55] = "nbr line dera sibu mend phir thys food eggs\n";
@@ -61,5 +62,5 @@ void gui_nbr(server_t *server, __attribute__((unused)) char *arg)
 		write_uint32(buff, &idx, server->map.stock[i]);
 		idx++;
 	}
-	add_to_gui_queue(&server->gui, buff);
+	add_to_gui_queue(&server->gui, buff, idx);
 }

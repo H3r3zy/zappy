@@ -2,7 +2,6 @@
 // Created by wisenoa on 20/06/18.
 //
 
-
 #include <SFML/System.hpp>
 #include "ParseEnqueueMap.hpp"
 

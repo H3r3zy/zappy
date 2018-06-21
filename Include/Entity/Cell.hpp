@@ -24,12 +24,15 @@ class Cell : public ARectangleShape {
 	void setRessources(unsigned int resourceName, unsigned int number);
 	void addRessources(unsigned int resourceName);
 	void makeTarget();
+	void removeTarget();
 
 	private:
 	GameText _cellPos;
 
 	ulong _textureNumber;
 	std::map<unsigned int, unsigned int> _ressources;
+	sf::Color tmp;
+
 };
 
 #endif //PSU_ZAPPY_2017_CELL_HPP

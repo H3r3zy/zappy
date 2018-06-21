@@ -8,6 +8,7 @@
 #include <iostream>
 #include <unistd.h>
 #include <thread>
+#include <Class/Communication.hpp>
 #include "SfmlTool.hpp"
 #include "Map.hpp"
 
@@ -113,6 +114,7 @@ bool irc::Map::getEvent()
 			switch (event.key.code) {
 			case sf::Keyboard::F:
 				_displayGui = true;
+				std::cerr << "OPEN GUI" << std::endl;
 				break;
 			case sf::Keyboard::Right:
 				_camera[MAP].move(10, 0);
@@ -183,7 +185,16 @@ bool irc::Map::getEvent()
 
 
 			if (_grid.checkvalid(static_cast<int>(worldPos.x / 100), static_cast<int>((worldPos.y - 100) * -1 / 100))) {
+				if (_comm._shack._pos.first != -1 && _comm._shack._pos.second != -1)
+					_grid.getCell(_comm._shack._pos.first, _comm._shack._pos.second)->removeTarget();
 				_grid.getCell(static_cast<int>(worldPos.x / 100), static_cast<int>((worldPos.y - 100) * -1 / 100))->makeTarget();
+
+				_comm._shack._pos.first = static_cast<int>(worldPos.x / 100);
+				_comm._shack._pos.second = static_cast<int>((worldPos.y - 100) * -1 / 100);
+				_comm._listId.clear();
+				_displayGui = true;
+				_comm._listId.push_back(-1);
+				// Todo: Add list player on it
 
 				std::cout << "je creer un perso en" << worldPos.x << " " << worldPos.y << std::endl;
 				_character.emplace_back(_grid.getTextureCharacter(), worldPos);

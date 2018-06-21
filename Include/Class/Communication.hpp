@@ -42,7 +42,7 @@ namespace irc {
 	} server_data_t;
 
 	typedef struct {
-		std::pair<int, int> _pos = {0, 0};
+		std::pair<int, int> _pos = {-1, -1};
 		ressources_t ressources = {0, 0, 0, 0, 0, 0, 0};
 		int player_on = 0;
 	} shack_data_t;
@@ -103,7 +103,7 @@ namespace irc {
 
 		const std::map<std::string, irc::TYPE_ENQUEUE> _forWho = {
 			{"msz", irc::TYPE_ENQUEUE::T_MAP},
-			{"bct", irc::TYPE_ENQUEUE::T_MAP},
+			{"bct", irc::TYPE_ENQUEUE::T_BOTH},
 			{"", irc::TYPE_ENQUEUE::T_UNKNOWN}
 		};
 

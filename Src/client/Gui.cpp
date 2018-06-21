@@ -9,7 +9,10 @@
 #include <thread>
 #include "Gui.hpp"
 
-irc::Gui::Gui(irc::Communication &comm, const std::string &nick, const std::string &ip, bool &displayGui, bool &endClient) : GuiTexture(*this), shackTexture(*this), IATexture(*this), _comm(comm), _displayGui(displayGui), _endClient(endClient)
+irc::Gui::Gui(irc::Communication &comm, const std::string &nick,
+	const std::string &ip, bool &displayGui, bool &endClient
+) : GuiTexture(*this), shackTexture(*this), IATexture(*this), _comm(comm),
+	_displayGui(displayGui), _endClient(endClient)
 {
 	_nick = nick;
 	_ip = ip;
@@ -26,7 +29,7 @@ irc::Gui::~Gui()
 
 void irc::Gui::addGenericFunction(int scene)
 {
-	_monitor->addFuncLoop(scene, [this]{
+	_monitor->addFuncLoop(scene, [this] {
 		if (!_comm._listId.empty() && !_monitor->getCurrentScene()) {
 			if (_comm._listId[0] != -1)
 				_monitor->setScene(1);
@@ -34,7 +37,7 @@ void irc::Gui::addGenericFunction(int scene)
 				_monitor->setScene(-1);
 		}
 	});
-	_monitor->addFuncLoop(scene, [this]{
+	_monitor->addFuncLoop(scene, [this] {
 		if (!_displayGui || _endClient)
 			_monitor->closeWindow();
 	});
@@ -64,13 +67,13 @@ void irc::Gui::loopDisplay()
 		if (_displayGui) {
 			initDisplayGui();
 			_monitor->loopWindow(&_comm);
+			_displayGui = false;
 		}
-		_displayGui = false;
+		_comm._listId.clear();
 	}
 	if (_monitor->isWindowOpen()) {
 		_comm.lockDisplay();
 		_monitor->closeWindow();
 		_comm.unlockDisplay();
 	}
-
 }

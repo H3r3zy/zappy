@@ -13,6 +13,7 @@ Cell::Cell(std::pair<sf::Vector2f, sf::Vector2f> squareDimension, sf::Texture *&
 	_rectangle.setOutlineColor(sf::Color::Black);
 	_rectangle.setTexture(texture);
 	_cellPos.setPosition(_position.x, _position.y + _size.y - _cellPos.getText().getCharacterSize() - 5);
+	tmp = _rectangle.getFillColor();
 }
 
 Cell::~Cell()
@@ -48,4 +49,9 @@ sf::Text &Cell::getCellPos()
 void Cell::makeTarget()
 {
 	_rectangle.setFillColor(sf::Color::Red);
+}
+
+void Cell::removeTarget()
+{
+	_rectangle.setFillColor(tmp);
 }

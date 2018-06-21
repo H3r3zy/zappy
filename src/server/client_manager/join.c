@@ -48,7 +48,7 @@ static void init_client_data(server_t *server, client_t *client)
 	client->team = NULL;
 	client->user.bag[Food] = START_FOOD;
 	#ifdef DEBUG
-	client->user.bag[Food] = 999999;
+	client->user.bag[Food] = 100;
 	#endif
 	client->user.orientation = (orientation_t)(rand() % 4);
 	client->started_time = 0;

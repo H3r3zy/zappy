@@ -185,7 +185,7 @@ void move_player_to(map_t *map, entity_t *entity, pos_t *pos);
 int get_o_w_dlt(pos_t *delta, orientation_t orientation);
 void fill_delta(pos_t *size, pos_t *pos1, pos_t *pos2, pos_t *delta);
 
-void update_resource(map_t *map, pos_t pos, entity_type_t t, int n);
+void update_resource(map_t *map, pos_t *pos, entity_type_t t, int n);
 
 void write_uint32(char *buffer, int *idx, uint32_t nb);
 uint32_t read_uint32(char *buffer, int *idx);

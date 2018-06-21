@@ -56,6 +56,7 @@ namespace irc {
 		void setSocket(int socket);
 
 		std::vector<CstringArray> &getEnqueueMap();
+		void setEnqueueMap(std::vector<CstringArray> &newEnqueue);
 		void enqueueMap(const CstringArray &command);
 
 		std::vector<std::string> &getEnqueueGui();

@@ -14,13 +14,14 @@ ParseEnqueueMap::ParseEnqueueMap(irc::Communication &comm) : _comm(comm)
 sf::Vector2f ParseEnqueueMap::ParseMapSize()
 {
 	sf::Vector2f tmpMap = {0, 0};
+	bool loop = true;
 	while (true) {
 		_comm.lockMap();
-		std::vector<CstringArray> test = _comm.getEnqueueMap();
+		std::vector<CstringArray> &test = _comm.getEnqueueMap();
 		_comm.unlockMap();
-		for (const auto &it : test) {
-			std::cout << "Coammnde Name [" << it.getCommandName() << "]" << std::endl;
-			auto tmpPrint = it.getCommand();
+		for (auto it = (test).begin(); it != (test).end(); ) {
+			std::cout << "Coammnde Name [" << it->getCommandName() << "]" << std::endl;
+			auto tmpPrint = it->getCommand();
 			if (tmpPrint.size() == 8)
 				std::cout << "Et son message est :"
 					<< tmpPrint[0] << " " << tmpPrint[1]
@@ -30,14 +31,16 @@ sf::Vector2f ParseEnqueueMap::ParseMapSize()
 					<< tmpPrint[6] << " " << tmpPrint[7]
 					<< std::endl;
 
-			if (it.getCommandName() == "msz") {
+			if (it->getCommandName() == "msz") {
 				tmpMap.x = tmpPrint[0];
 				tmpMap.y = tmpPrint[1];
 				std::cout << "je vais return un vector X" << tmpMap.x << " Y " << tmpMap.y << std::endl;
 				_comm.lockMap();
-				// TODO delete node
+				test.erase(it);
 				_comm.unlockMap();
 				return tmpMap;
+			} else {
+				++it;
 			}
 		}
 	}
@@ -49,7 +52,8 @@ void ParseEnqueueMap::fillMap(Grid &_grid, sf::Vector2f &mapSize)
 
 	while (true) {
 		_comm.lockMap();
-		std::vector<CstringArray> test = _comm.getEnqueueMap();
+		std::vector<CstringArray> &test = _comm.getEnqueueMap();
+		std::vector<CstringArray> save;
 		_comm.unlockMap();
 		_blocNumber = 0;
 		if (test.size() < mapSize.x * mapSize.y) {
@@ -80,8 +84,13 @@ void ParseEnqueueMap::fillMap(Grid &_grid, sf::Vector2f &mapSize)
 
 				if (tmpPrint[0] == mapSize.x - 1 && tmpPrint[1] == mapSize.y - 1) {
 					_ready = true;
+					_comm.lockMap();
+					_comm.setEnqueueMap(save);
+					_comm.unlockMap();
 					return;
 				}
+			} else {
+				save.push_back(it);
 			}
 		}
 		//sleep(1);

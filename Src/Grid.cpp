@@ -252,6 +252,7 @@ std::map<char, std::vector<sf::Texture>> &Grid::getTextureCharacter()
 
 void Grid::loadWater()
 {
+	return;
 	sf::Vector2f actualPos;
 	sf::Vector2f destPos;
 

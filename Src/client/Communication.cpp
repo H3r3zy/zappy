@@ -116,3 +116,8 @@ void irc::Communication::unlockDisplay()
 	_display.unlock();
 }
 
+void irc::Communication::setEnqueueMap(std::vector<CstringArray> &newEnqueue)
+{
+	_enqueueMap = newEnqueue;
+}
+

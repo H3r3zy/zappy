@@ -72,6 +72,14 @@ void irc::Map::loopDisplay()
 	while (_gameWindow.isOpen()) {
 		_comm.lockDisplay();
 
+		int i = 0;
+		auto caca = _comm.getEnqueueMap();
+		for (const auto &it : caca) {
+			std::cout << "Commande numero " << i << " [" << it.getCommandName() << "]" << std::endl;
+			i++;
+		}
+		std::cout << "il y a " << i << "messages dans ma queue "<< std::endl;
+
 		getEvent();
 		/* Global Display */
 		_gameWindow.setView(_camera[MAP]);

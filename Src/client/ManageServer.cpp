@@ -85,9 +85,35 @@ CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 		int i = 0;
 		for (const auto &it : test) {
 			buffer[i] = test[i];
+			std::cout << test[i];
 			i++;
 		}
+		std::cout << std::endl;
 		buffer[i] = '\0';
+
+		std::string teamName;
+		while (buffer[i] != ' ' && i > 0) {
+			teamName.insert(teamName.begin(), buffer[i]);
+			i--;
+		}
+		teamName.pop_back();
+		if (strncmp(buffer, "pnw", 3) == 0) {
+		//	std::cout << "le nom de ma team est [" << teamName << "]" << std::endl;
+		//	std::cout << "Jai RECU LA COMMANDE :" << buffer << std::endl;
+
+		//	std::cout << "coucouu jai recu lapparition dun joueur" << std::endl;
+		//	printf("bufefr %s\n", buffer);
+			std::vector<uint> bag;
+			for (int i = 0; i < 9; i++)
+				bag.emplace_back(0);
+			for (size_t i = 0; i < 9; i++) {
+				memcpy(&bag[i], buffer + 4 + i * (sizeof(uint) + 1), sizeof(uint));
+		//			printf("bag %d\n", bag[i]);
+			}
+			finalCommand.setCommand(bag);
+
+			//exit(1);
+		}
 
 		if (strncmp(buffer, "msz", 3) == 0) {
 

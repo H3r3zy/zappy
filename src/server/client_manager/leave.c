@@ -60,6 +60,7 @@ void disconnect(server_t *server, client_t *client)
 		remove_player_from_map(&server->map, client->entity);
 	}
 	gui_pdi(server, client);
+	shutdown(client->fd, SHUT_RDWR);
 	close(client->fd);
 	free(client->entity);
 	free(client);

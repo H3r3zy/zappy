@@ -43,7 +43,7 @@ void gui_ppo(server_t *server, char *arg, __attribute__((unused)) bool *status)
 		buff[idx] = -5;
 		add_to_gui_queue(&server->gui, buff, idx + 1);
 	} else
-		add_to_gui_queue(&server->gui, "ko" -5, 3);
+		add_to_gui_queue(&server->gui, GUI_KO, 3);
 }
 
 /**
@@ -67,7 +67,7 @@ void gui_plv(server_t *server, char *arg, __attribute__((unused)) bool *status)
 		buff[idx] = -5;
 		add_to_gui_queue(&server->gui, buff, idx + 1);
 	} else
-		add_to_gui_queue(&server->gui, "ko" -5, 3);
+		add_to_gui_queue(&server->gui, GUI_KO, 3);
 }
 
 static void write_pin_clt_infos(client_t *clt, char buff[55],
@@ -109,5 +109,5 @@ void gui_pin(server_t *server, char *arg, __attribute__((unused)) bool *status)
 		buff[idx] = -5;
 		add_to_gui_queue(&server->gui, buff, idx + 1);
 	} else
-		add_to_gui_queue(&server->gui, "ko" -5, 3);
+		add_to_gui_queue(&server->gui, GUI_KO, 3);
 }

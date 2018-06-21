@@ -70,7 +70,7 @@ void gui_bct(server_t *server, char *arg,
 
 	if (x < 0 || y < 0 || x >= server->map.size.x ||
 		y >= server->map.size.y)
-		add_to_gui_queue(&server->gui, "ko" -5, 3);
+		add_to_gui_queue(&server->gui, GUI_KO, 3);
 	else
 		print_map_cell(server, x, y);
 }

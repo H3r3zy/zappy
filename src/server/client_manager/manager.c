@@ -48,9 +48,7 @@ static void check_command(server_t *server, client_t *client, uint32_t i, char *
 		return;
 	}
 	if (COMMAND[i].verify && !COMMAND[i].verify(server, client, arg)) {
-		debug(INFO "don't verify the condition for %s\n", COMMAND[i].name);
 		add_to_queue(client, "ko\n");
-		return;
 	}
 	add_task_to_schedule(client, COMMAND[i].time_unit, arg, COMMAND[i].function);
 }

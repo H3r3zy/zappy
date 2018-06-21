@@ -24,3 +24,17 @@ reference
 test?
 test
 build/
+
+# Source #
+*.o
+
+# CLION INFOS #
+*.xml
+*.iml
+*.txt
+cmake-build-debug/*
+.idea/fileTemplates/*
+# PYCHARM STUFF #
+__pycache__
+venv
+

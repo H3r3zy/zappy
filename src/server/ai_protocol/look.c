@@ -72,6 +72,7 @@ static char *look_horizontal(map_t *map, pos_t pos, look_opt_t opt, uint32_t cur
 		pos.y = opt.d < 0 && !pos.y ? map->size.y - 1 : pos.y + opt.d;
 	}
 	if (currv < opt.vision) {
+		response = concat(response, ",");
 		tmp = look_horizontal(map, start, opt, currv + 1);
 		response = concat(response, tmp);
 		free(tmp);
@@ -107,6 +108,7 @@ static char *look_vertical(map_t *map, pos_t pos, look_opt_t opt, uint32_t currv
 		pos.x = opt.d < 0 && !pos.x ? map->size.x - 1 : pos.x + opt.d;
 	}
 	if (currv < opt.vision) {
+		response = concat(response, ",");
 		tmp = look_vertical(map, start, opt, currv + 1);
 		response = concat(response, tmp);
 		free(tmp);

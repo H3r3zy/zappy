@@ -20,6 +20,7 @@ sf::Vector2f ParseEnqueueMap::ParseMapSize()
 	std::vector<CstringArray> save;
 
 	bool loop = true;
+	usleep(100000);
 	while (true) {
 		int i = 0;
 		_comm.lockMap();
@@ -165,13 +166,15 @@ void ParseEnqueueMap::parseNextCommand(irc::Map &map)
 	for (const auto &it : _comm.getEnqueueMap()) {
 		if (it.getCommandName() == "pnw") {
 			addPlayer(map, it);
+		} else if (it.getCommandName() == "pdi") {
+			deletePlayer(map, it);
 		}
 		i++;
 		_comm.getEnqueueMap().erase(_comm.getEnqueueMap().begin());
 		break;
 	}
 	//sleep(1);
-	std::cout << "il y a " << i << "messages dans ma queue "<< std::endl;
+//	std::cout << "il y a " << i << "messages dans ma queue "<< std::endl;
 
 	_comm.unlockMap();
 }
@@ -193,6 +196,22 @@ void ParseEnqueueMap::addPlayer(irc::Map &map, const CstringArray &command)
 			it.setPlayerOrientation(static_cast<char>(tmpCommand[3]));
 			it.setPlayerTeam(command.getTeamName());
 			it.setPlayerLevel(tmpCommand[4]);
+			break;
+		}
+	}
+}
+
+void ParseEnqueueMap::deletePlayer(irc::Map &map, const CstringArray &command)
+{
+	std::cout << "je vais supprimer le joueur " << command.getCommand()[0] << std::endl;
+	std::vector<Character> &tmp = map.getCharacterMap();
+
+	for (auto vec_it = (tmp).begin(); vec_it != (tmp).end(); ) {
+		if (vec_it->getPlayerID() == command.getCommand()[0]) {
+			tmp.erase(vec_it);
+			break;
+		} else {
+			++vec_it;
 		}
 	}
 }

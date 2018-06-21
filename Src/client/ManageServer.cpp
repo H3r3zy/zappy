@@ -92,6 +92,9 @@ CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 		std::cout << std::endl;
 		buffer[i] = '\0';
 
+		if (buffer[0] != '\0')
+			std::cout << "buffer : " << buffer << std::endl;
+
 		std::string teamName;
 		while (buffer[i] != ' ' && i > 0) {
 			teamName.insert(teamName.begin(), buffer[i]);
@@ -137,6 +140,20 @@ CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 			for (size_t i = 0; i < 9; i++) {
 				memcpy(&bag[i], buffer + 4 + i * (sizeof(uint) + 1), sizeof(uint));
 			//	printf("expeted %d\n", bag[i]);
+
+			}
+			finalCommand.setCommand(bag);
+
+			//exit(1);
+		}
+
+		if (strncmp(buffer, "pdi", 3) == 0) {
+			std::vector<uint> bag;
+			for (int i = 0; i < 9; i++)
+				bag.emplace_back(0);
+			for (size_t i = 0; i < 9; i++) {
+				memcpy(&bag[i], buffer + 4 + i * (sizeof(uint) + 1), sizeof(uint));
+				//	printf("expeted %d\n", bag[i]);
 
 			}
 			finalCommand.setCommand(bag);

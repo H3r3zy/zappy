@@ -25,6 +25,7 @@ class ParseEnqueueMap {
 
 	/* Managa Game */
 	void addPlayer(irc::Map &map, const CstringArray &command);
+	void deletePlayer(irc::Map &map, const CstringArray &command);
 
 	private:
 	irc::Communication &_comm;

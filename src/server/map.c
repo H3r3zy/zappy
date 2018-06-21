@@ -19,9 +19,9 @@
 * @param t
 * @param n
 */
-void update_resource(map_t *map, pos_t pos, entity_type_t t, int n)
+void update_resource(map_t *map, pos_t *pos, entity_type_t t, int n)
 {
-	map->map[pos.y][pos.x].items[t] += n;
+	map->map[pos->y][pos->x].items[t] += n;
 	map->stock[t] += n;
 }
 
@@ -45,7 +45,7 @@ void init_map(map_t *map)
 	srand(time(NULL));
 	while (elements--) {
 		pos = (pos_t){rand() % map->size.x, rand() % map->size.y};
-		update_resource(map, pos, rand() % RESOURCE_NB, 1);
+		update_resource(map, &pos, rand() % RESOURCE_NB, 1);
 	}
 }
 

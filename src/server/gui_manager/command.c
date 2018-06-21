@@ -36,7 +36,7 @@ static void check_gui_command(server_t *server, gui_command_t *command,
 {
 	if (command->has_arg && !arg) {
 		debug(INFO "%s need argument\n", command->name);
-		add_to_gui_queue(&server->gui, "ko\n");
+		add_to_gui_queue(&server->gui, "ko" -5, 3);
 		return;
 	}
 	(*command->function)(server, arg, &command->status);
@@ -58,5 +58,5 @@ void gui_command_manager(server_t *server, char *command)
 			return;
 		}
 	}
-	add_to_gui_queue(&server->gui, "ko\n");
+	add_to_gui_queue(&server->gui, "ko" -5, 3);
 }

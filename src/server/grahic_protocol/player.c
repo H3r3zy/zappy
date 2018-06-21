@@ -40,9 +40,10 @@ void gui_ppo(server_t *server, char *arg, __attribute__((unused)) bool *status)
 		write_uint32(buff, &idx, (uint32_t) POS(player).x);
 		idx++;
 		write_uint32(buff, &idx, (uint32_t) POS(player).y);
-		add_to_gui_queue(&server->gui, buff);
+		buff[idx] = -5;
+		add_to_gui_queue(&server->gui, buff, idx + 1);
 	} else
-		add_to_gui_queue(&server->gui, "ko\n");
+		add_to_gui_queue(&server->gui, GUI_KO, 3);
 }
 
 /**
@@ -63,9 +64,10 @@ void gui_plv(server_t *server, char *arg, __attribute__((unused)) bool *status)
 		write_uint32(buff, &idx, id);
 		idx++;
 		write_uint32(buff, &idx, player->user.level);
-		add_to_gui_queue(&server->gui, buff);
+		buff[idx] = -5;
+		add_to_gui_queue(&server->gui, buff, idx + 1);
 	} else
-		add_to_gui_queue(&server->gui, "ko\n");
+		add_to_gui_queue(&server->gui, GUI_KO, 3);
 }
 
 static void write_pin_clt_infos(client_t *clt, char buff[55],
@@ -104,7 +106,8 @@ void gui_pin(server_t *server, char *arg, __attribute__((unused)) bool *status)
 			write_uint32(buff, &idx, clt->user.bag[i]);
 			idx++;
 		}
-		add_to_gui_queue(&server->gui, buff);
+		buff[idx] = -5;
+		add_to_gui_queue(&server->gui, buff, idx + 1);
 	} else
-		add_to_gui_queue(&server->gui, "ko\n");
+		add_to_gui_queue(&server->gui, GUI_KO, 3);
 }

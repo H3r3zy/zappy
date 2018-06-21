@@ -26,7 +26,8 @@ void gui_pdr(server_t *server, client_t *client, entity_type_t type)
 	write_uint32(buffer, &idx, client->entity->id);
 	++idx;
 	write_uint32(buffer, &idx, type);
-	add_to_gui_queue(&server->gui, buffer);
+	buffer[idx] = -5;
+	add_to_gui_queue(&server->gui, buffer, idx + 1);
 }
 
 /**
@@ -45,7 +46,8 @@ void gui_pgt(server_t *server, client_t *client, entity_type_t type)
 	write_uint32(buffer, &idx, client->entity->id);
 	++idx;
 	write_uint32(buffer, &idx, type);
-	add_to_gui_queue(&server->gui, buffer);
+	buffer[idx] = -5;
+	add_to_gui_queue(&server->gui, buffer, idx + 1);
 }
 
 /**
@@ -61,7 +63,8 @@ void gui_pfk(server_t *server, client_t *client)
 	int idx = 4;
 
 	write_uint32(buffer, &idx, client->entity->id);
-	add_to_gui_queue(&server->gui, buffer);
+	buffer[idx] = -5;
+	add_to_gui_queue(&server->gui, buffer, idx + 1);
 }
 
 /**
@@ -81,11 +84,11 @@ void gui_pbc(server_t *server, client_t *client, char *arg)
 		return;
 	memcpy(buffer, "pbc ", 4);
 	write_uint32(buffer, &idx, client->entity->id);
-	buffer[idx] = ' ';
-	buffer[idx + 1] = 0;
-	strcat(buffer, arg);
-	strcat(buffer, "\n");
-	add_to_gui_queue(&server->gui, buffer);
+	buffer[idx++] = ' ';
+	buffer[idx++] = 0;
+	memcpy(buffer + idx, arg, strlen(arg));
+	buffer[idx + strlen(arg)] = -5;
+	add_to_gui_queue(&server->gui, buffer, idx + strlen(arg) + 1);
 	free(buffer);
 }
 
@@ -102,5 +105,6 @@ void gui_pex(server_t *server, client_t *client)
 	int idx = 4;
 
 	write_uint32(buffer, &idx, client->entity->id);
-	add_to_gui_queue(&server->gui, buffer);
+	buffer[idx] = -5;
+	add_to_gui_queue(&server->gui, buffer, idx + 1);
 }

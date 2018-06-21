@@ -48,6 +48,8 @@ void gui_enw(server_t *server, egg_t *egg, client_t *client);
 void gui_eht(server_t *server, egg_t *egg);
 void gui_ebo(server_t *server, egg_t *egg);
 void gui_edi(server_t *server, egg_t *egg);
+void gui_ptu(server_t *server, client_t *client);
+void gui_pmv(server_t *server, client_t *client);
 
 /**
  * GUI Server requests

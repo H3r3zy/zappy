@@ -22,7 +22,7 @@ irc::Map::Map(irc::Communication &comm, bool &displayGui, bool &endClient) : _co
 	_playerPos.setSize(sf::Vector2f(20, 20));
 	_playerPos.setFillColor(sf::Color::Red);
 
-	/* Updating all cells + creating thread for oadingScreen */
+	/* Updating all cells + creating thread for loadingScreen */
 	_gameWindow.setActive(false);
 	auto thread(new my::Thread([&]() {_enqueueMap.loadingDisplay(_mapSize);}));
 	_enqueueMap.fillMap(_grid, _mapSize);
@@ -34,12 +34,12 @@ irc::Map::Map(irc::Communication &comm, bool &displayGui, bool &endClient) : _co
 	_gameWindow.setFramerateLimit(60);
 	//_gameWindow.setFramerateLimit(60);
 	_gameWindow.setPosition(sf::Vector2i(200, 50));
+	_gameWindow.setActive(true);
 
 	/* Faking first movement */
+	_playerPos.setPosition(_camera[MAP].getCenter());
 	_grid.updateGrid3D(_camera[MAP]);
-	_windowInfo->updateInfo(_grid.getNbActive(), _camera[MAP]);
-
-
+	_windowInfo->updateInfo(_grid.getNbActive(), _camera[HUD]);
 
 	sf::Vector2f tmp = {1000, 0};
 	_character.emplace_back(_grid.getTextureCharacter(), tmp);

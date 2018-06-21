@@ -28,8 +28,8 @@ void gui_msz(server_t *server, __attribute__((unused)) char *arg,
 	write_uint32(buff, &idx, (uint32_t) server->map.size.x);
 	++idx;
 	write_uint32(buff, &idx, (uint32_t) server->map.size.y);
-	++idx;
-	add_to_gui_queue(&server->gui, buff);
+	buff[idx] = -5;
+	add_to_gui_queue(&server->gui, buff, idx + 1);
 }
 
 /**
@@ -51,7 +51,8 @@ static void print_map_cell(server_t *server, uint32_t x, uint32_t y)
 			sizeof(uint32_t));
 
 	}
-	add_to_gui_queue(&server->gui, buff);
+	buff[49] = -5;
+	add_to_gui_queue(&server->gui, buff, 50);
 }
 
 /**
@@ -69,7 +70,7 @@ void gui_bct(server_t *server, char *arg,
 
 	if (x < 0 || y < 0 || x >= server->map.size.x ||
 		y >= server->map.size.y)
-		add_to_gui_queue(&server->gui, "ko\n");
+		add_to_gui_queue(&server->gui, GUI_KO, 3);
 	else
 		print_map_cell(server, x, y);
 }

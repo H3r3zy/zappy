@@ -9,6 +9,7 @@
 #include <unistd.h>
 #include <thread>
 #include <Tools/Thread.hpp>
+#include "Communication.hpp"
 #include "SfmlTool.hpp"
 #include "Map.hpp"
 
@@ -32,10 +33,10 @@ irc::Map::Map(irc::Communication &comm, bool &displayGui, bool &endClient) : _co
 	_gameWindow.close();
 	_gameWindow.create(sf::VideoMode(1200, 800), "Oh voyage voyage, plus loiiiiin que la nuit et le jour");
 	_gameWindow.setFramerateLimit(60);
-	//_gameWindow.setFramerateLimit(60); b  b
 	_gameWindow.setPosition(sf::Vector2i(200, 50));
-	_gameWindow.setActive(true);
+	//_gameWindow.setFramerateLimit(60); b  b
 
+	_gameWindow.setActive(true);
 	/* Faking first movement */
 	_playerPos.setPosition(_camera[MAP].getCenter());
 	_grid.updateGrid3D(_camera[MAP]);
@@ -66,9 +67,13 @@ void irc::Map::loopDisplay()
 
 	while (_gameWindow.isOpen()) {
 		_comm.lockDisplay();
+		if (!_displayGui && _comm._shack._pos.first != -1 && _comm._shack._pos.second != -1) {
+			_grid.getCell(_comm._shack._pos.first, _comm._shack._pos.second)->removeTarget();
+			_comm._shack._pos.first = -1;
+			_comm._shack._pos.second = -1;
+		}
 
 		_enqueueMap.parseNextCommand(*this);
-
 
 		getEvent();
 		/* Global Display */
@@ -82,12 +87,10 @@ void irc::Map::loopDisplay()
 		_gameWindow.setView(_camera[HUD]);
 		_windowInfo->drawInfo(_gameWindow);
 
-
 		/* Minimap Display*/
 		_gameWindow.setView(_camera[MINIMAP]);
 		_grid.displayMiniGrid(_gameWindow, _camera[MAP], _character);
 		_gameWindow.draw(_playerPos);
-
 
 		/* Display and Reset */
 		_gameWindow.display();
@@ -170,14 +173,14 @@ bool irc::Map::getEvent()
 			}
 			break;
 		case sf::Event::MouseButtonReleased:
-			std::cout << "the right button was pressed" << std::endl;
+//			std::cout << "the right button was pressed" << std::endl;
 
 
 			sf::Vector2i pixelPos = sf::Vector2i(sf::Mouse::getPosition(_gameWindow));
 
 			// convert it to world coordinates
 			sf::Vector2f worldPos = _gameWindow.mapPixelToCoords(pixelPos, _camera[MAP]);
-
+/*
 			std::cout << "mouse x: " << event.mouseButton.x << std::endl;
 			std::cout << "mouse y: " << event.mouseButton.y << std::endl;
 
@@ -189,9 +192,23 @@ bool irc::Map::getEvent()
 			std::cout << "Je regarde si la cellule X: " << (static_cast<int>(worldPos.x / 100)) << " Y: " << static_cast<int>((worldPos.y + 100)* -1 / 100) << "est valide" << std::endl;
 			std::cout << "=-=-=-==-=-=-==-=-=--=-==-=-" << std::endl;
 
-
+*/
 			if (_grid.checkvalid(static_cast<int>(worldPos.x / 100), static_cast<int>((worldPos.y - 100) * -1 / 100))) {
-				_grid.getCell(static_cast<int>(worldPos.x / 100), static_cast<int>((worldPos.y - 100) * -1 / 100))->makeTarget();
+				if (_comm._shack._pos.first != -1 && _comm._shack._pos.second != -1)
+					_grid.getCell(_comm._shack._pos.first, _comm._shack._pos.second)->removeTarget();
+
+				_comm._listId.clear();
+				if (_comm._shack._pos.first != static_cast<int>(worldPos.x / 100) || _comm._shack._pos.second != static_cast<int>((worldPos.y - 100) * -1 / 100)) {
+					_grid.getCell(static_cast<int>(worldPos.x / 100), static_cast<int>((worldPos.y - 100) * -1 / 100))->makeTarget();
+					_comm._listId.push_back(-1);
+					_displayGui = true;
+					_comm._shack._pos.first = static_cast<int>(worldPos.x / 100);
+					_comm._shack._pos.second = static_cast<int>((worldPos.y - 100) * -1 / 100);
+				} else {
+					_comm._shack._pos.first = -1;
+					_comm._shack._pos.second = -1;
+				}
+				// Todo: Add list player on it
 
 				std::cout << "je creer un perso en" << worldPos.x << " " << worldPos.y << std::endl;
 				//_character.emplace_back(_grid.getTextureCharacter(), worldPos);

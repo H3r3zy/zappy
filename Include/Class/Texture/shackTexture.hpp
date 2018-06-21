@@ -8,6 +8,7 @@
 #ifndef CLIENT_SHACKTEXTURE_HPP
 # define CLIENT_SHACKTEXTURE_HPP
 
+# include "CstringArray.hpp"
 # include "IncludeGui.hpp"
 
 namespace irc {
@@ -21,6 +22,7 @@ namespace irc {
 
 		void initTexture();
 		protected:
+		void updateShack();
 
 		private:
 		void initBck();

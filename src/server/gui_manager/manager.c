@@ -12,23 +12,13 @@
 #include "debug.h"
 #include "server.h"
 
-uint32_t my_strlen_backn(char *str)
+uint32_t my_strlen_proto(char const *str)
 {
 	uint32_t i = 0;
 
-	while (str && str[i] != '\n')
+	while (str && str[i] != -5)
 		i++;
 	return i;
-}
-
-void my_strcpy_backn(char *dest, char const *str, uint32_t len)
-{
-	uint32_t i = 0;
-
-	while (i < len) {
-		dest[i] = str[i];
-		i++;
-	}
 }
 
 /**
@@ -36,11 +26,8 @@ void my_strcpy_backn(char *dest, char const *str, uint32_t len)
 * @param gui
 * @param str
 */
-void add_to_gui_queue(gui_t *gui, char *str)
+void add_to_gui_queue(gui_t *gui, char *str, int len)
 {
-	uint32_t len = my_strlen_backn(str) + 1;
-
-	debug(ERROR "%i => %s\n", len, str);
 	if (!gui->logged)
 		return;
 	if (gui->len + len >= gui->size) {
@@ -48,9 +35,9 @@ void add_to_gui_queue(gui_t *gui, char *str)
 		gui->queue = realloc(gui->queue, gui->size);
 	}
 
-	my_strcpy_backn(gui->queue + gui->len, str, len);
+	memcpy(gui->queue + gui->len, str, len);
 	gui->len += len;
-	debug(ERROR "%i => %s\n", gui->len, gui->queue);
+	debug(GINFO "Queue len: %i\n", gui->len);
 }
 
 int read_gui(server_t *server)

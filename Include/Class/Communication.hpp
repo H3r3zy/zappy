@@ -11,8 +11,8 @@
 # include <vector>
 # include <string>
 # include <mutex>
-# include "CstringArray.hpp"
 # include <map>
+# include "CstringArray.hpp"
 
 namespace irc {
 
@@ -42,10 +42,17 @@ namespace irc {
 	} server_data_t;
 
 	typedef struct {
-		std::pair<int, int> _pos = {0, 0};
+		std::pair<int, int> _pos = {-1, -1};
 		ressources_t ressources = {0, 0, 0, 0, 0, 0, 0};
 		int player_on = 0;
 	} shack_data_t;
+
+	enum TYPE_ENQUEUE {
+		T_UNKNOWN,
+		T_GUI,
+		T_MAP,
+		T_BOTH
+	};
 
 	class Communication {
 		public:
@@ -59,8 +66,8 @@ namespace irc {
 		void setEnqueueMap(std::vector<CstringArray> &newEnqueue);
 		void enqueueMap(const CstringArray &command);
 
-		std::vector<std::string> &getEnqueueGui();
-		void enqueueGui(const std::string &msg);
+		std::vector<CstringArray> &getEnqueueGui();
+		void enqueueGui(const CstringArray &msg);
 
 		void loopRead();
 		int writeOnServer(const std::string &msg);
@@ -82,9 +89,6 @@ namespace irc {
 		protected:
 		void addMsgToQueue(const CstringArray &command);
 
-		protected:
-		void addMsgToQueue(const std::string &msg);
-
 		private:
 		int _socket = 0;
 		bool &_read;
@@ -96,7 +100,16 @@ namespace irc {
 		std::mutex _mutexMap;
 
 		std::vector<CstringArray> _enqueueMap = {};
-		std::vector<std::string> _enqueueGui = {};
+		std::vector<CstringArray> _enqueueGui = {};
+
+		const std::map<std::string, irc::TYPE_ENQUEUE> _forWho = {
+			{"msz", irc::TYPE_ENQUEUE::T_MAP},
+			{"bct", irc::TYPE_ENQUEUE::T_BOTH},
+			{"pdi", irc::TYPE_ENQUEUE::T_MAP},
+			{"pnw", irc::TYPE_ENQUEUE::T_MAP},
+			{"", irc::TYPE_ENQUEUE::T_UNKNOWN}
+		};
+
 	};
 }
 

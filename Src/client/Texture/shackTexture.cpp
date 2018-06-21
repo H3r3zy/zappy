@@ -24,6 +24,10 @@ void irc::shackTexture::initTexture()
 	initClose();
 
 	_base._monitor->addFuncLoop(-1, [this] {
+		if (_base._comm._listId.empty()) {
+			_base._monitor->setScene(0);
+			return;
+		}
 		_base._monitor->getObjectByName("arrow_change", -1)->setBoolDisplay(_base._comm._listId.size() != 1);
 		_nb_q0->setText("x "+ std::to_string(_base._comm._shack.ressources.q0));
 		_nb_q1->setText("x "+ std::to_string(_base._comm._shack.ressources.q1));
@@ -39,6 +43,29 @@ void irc::shackTexture::initTexture()
 		_nickShack->setText(id);
 
 	});
+	_base._monitor->addFuncLoop(-1, &irc::shackTexture::updateShack, this);
+}
+
+void irc::shackTexture::updateShack()
+{
+	_base._comm.writeOnServer("bct " + std::to_string(_base._comm._shack._pos.first) + " " + std::to_string(_base._comm._shack._pos.second));
+	_base._comm.lockGui();
+	auto list_msg = _base._comm.getEnqueueGui();
+
+	for (auto &&it : list_msg) {
+		if (it.getCommandName() == "bct" && _base._comm._shack._pos.first == it.getCommand()[0] && _base._comm._shack._pos.second == it.getCommand()[1]) {
+			_base._comm._shack.ressources.q0 = it.getCommand()[8];
+			_base._comm._shack.ressources.q1 = it.getCommand()[2];
+			_base._comm._shack.ressources.q2 = it.getCommand()[3];
+			_base._comm._shack.ressources.q3 = it.getCommand()[4];
+			_base._comm._shack.ressources.q4 = it.getCommand()[5];
+			_base._comm._shack.ressources.q5 = it.getCommand()[6];
+			_base._comm._shack.ressources.q6 = it.getCommand()[7];
+			break;
+		}
+	}
+	_base._comm.getEnqueueGui().clear();
+	_base._comm.unlockGui();
 }
 
 void irc::shackTexture::initClose()

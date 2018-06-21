@@ -27,6 +27,9 @@
 
 #define GUI_QUEUE_SIZE (1 << 12)
 
+#define GUI_OK ((char []){'o', 'k', -5})
+#define GUI_KO ((char []){'k', 'o', -5})
+
 typedef enum {
 	Linemate,
 	Deraumere,
@@ -172,7 +175,7 @@ int try_write_gui(const int fd, char *msg, uint32_t len);
 
 int read_gui(server_t *server);
 void gui_continue_commands(server_t *);
-void add_to_gui_queue(gui_t *gui, char *str);
+void add_to_gui_queue(gui_t *gui, char *str, int len);
 
 void init_map(map_t *map);
 void add_player_to_map(map_t *map, entity_t *entity);
@@ -182,7 +185,7 @@ void move_player_to(map_t *map, entity_t *entity, pos_t *pos);
 int get_o_w_dlt(pos_t *delta, orientation_t orientation);
 void fill_delta(pos_t *size, pos_t *pos1, pos_t *pos2, pos_t *delta);
 
-void update_resource(map_t *map, pos_t pos, entity_type_t t, int n);
+void update_resource(map_t *map, pos_t *pos, entity_type_t t, int n);
 
 void write_uint32(char *buffer, int *idx, uint32_t nb);
 uint32_t read_uint32(char *buffer, int *idx);

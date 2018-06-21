@@ -47,9 +47,9 @@ static void spawn(server_t *server, client_t *client, teams_t *team)
 			return;
 		}
 	}
-	gui_pnw(server, client);
 	client->entity->pos.x = rand() % server->map.size.x;
 	client->entity->pos.y = rand() % server->map.size.y;
+	gui_pnw(server, client);
 }
 
 static void add_client_to_team(server_t *server, client_t *client,

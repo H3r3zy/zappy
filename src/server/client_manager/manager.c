@@ -48,9 +48,7 @@ static void check_command(server_t *server, client_t *client, uint32_t i, char *
 		return;
 	}
 	if (COMMAND[i].verify && !COMMAND[i].verify(server, client, arg)) {
-		debug(INFO "don't verify the condition for %s\n", COMMAND[i].name);
 		add_to_queue(client, "ko\n");
-		return;
 	}
 	add_task_to_schedule(client, COMMAND[i].time_unit, arg, COMMAND[i].function);
 }
@@ -69,9 +67,11 @@ static void add_gui_client(server_t *server, client_t *client)
 	--server->client_nb;
 	server->gui.fd = client->fd;
 	server->gui.logged = 1;
-	add_to_gui_queue(&server->gui, "ok\n");
-	for (client_t *clt = server->clients; clt; clt = clt->next)
-		gui_pnw(server, clt);
+	add_to_gui_queue(&server->gui, (char []){'o', 'k', -5}, 3);
+	for (client_t *clt = server->clients; clt; clt = clt->next) {
+		if (clt->team)
+			gui_pnw(server, clt);
+	}
 }
 
 static int set_client_team(server_t *server, client_t *client, char *command)

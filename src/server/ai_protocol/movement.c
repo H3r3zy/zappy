@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <server.h>
+#include <gui_command.h>
 #include "server.h"
 #include "debug.h"
 
@@ -41,6 +42,7 @@ void forward_cmd(server_t *server, client_t *client,
 		break;
 	}
 	add_player_to_map(&server->map, client->entity);
+	gui_pmv(server, client);
 	add_to_queue(client, "ok\n");
 }
 
@@ -57,6 +59,7 @@ void left_cmd(server_t *server, client_t *client,
 		--client->user.orientation;
 	else
 		client->user.orientation = LEFT;
+	gui_ptu(server, client);
 	add_to_queue(client, "ok\n");
 }
 
@@ -73,6 +76,7 @@ void right_cmd(server_t *server, client_t *client,
 		++client->user.orientation;
 	else
 		client->user.orientation = TOP;
+	gui_ptu(server, client);
 	add_to_queue(client, "ok\n");
 }
 

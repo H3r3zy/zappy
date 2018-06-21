@@ -119,6 +119,8 @@ string.h
 -
 server.h
 -
+gui_command.h
+-
 server.h
 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/ai_protocol/server.h
 debug.h
@@ -181,6 +183,8 @@ unistd.h
 -
 stdlib.h
 -
+gui_command.h
+/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/client_manager/gui_command.h
 server.h
 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/client_manager/server.h
 debug.h
@@ -290,6 +294,12 @@ debug.h
 server.h
 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/grahic_protocol/server.h
 
+/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/grahic_protocol/movement.c
+server.h
+/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/grahic_protocol/server.h
+gui_command.h
+/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/grahic_protocol/gui_command.h
+
 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/grahic_protocol/player.c
 stdlib.h
 -
@@ -318,6 +328,8 @@ server.h
 stdio.h
 -
 stdlib.h
+-
+memory.h
 -
 server.h
 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/grahic_protocol/server.h

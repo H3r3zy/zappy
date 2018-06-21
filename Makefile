@@ -1648,6 +1648,33 @@ src/server/grahic_protocol/map.c.s:
 	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/map.c.s
 .PHONY : src/server/grahic_protocol/map.c.s
 
+src/server/grahic_protocol/movement.o: src/server/grahic_protocol/movement.c.o
+
+.PHONY : src/server/grahic_protocol/movement.o
+
+# target to build an object file
+src/server/grahic_protocol/movement.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/movement.c.o
+.PHONY : src/server/grahic_protocol/movement.c.o
+
+src/server/grahic_protocol/movement.i: src/server/grahic_protocol/movement.c.i
+
+.PHONY : src/server/grahic_protocol/movement.i
+
+# target to preprocess a source file
+src/server/grahic_protocol/movement.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/movement.c.i
+.PHONY : src/server/grahic_protocol/movement.c.i
+
+src/server/grahic_protocol/movement.s: src/server/grahic_protocol/movement.c.s
+
+.PHONY : src/server/grahic_protocol/movement.s
+
+# target to generate assembly for a file
+src/server/grahic_protocol/movement.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/movement.c.s
+.PHONY : src/server/grahic_protocol/movement.c.s
+
 src/server/grahic_protocol/player.o: src/server/grahic_protocol/player.c.o
 
 .PHONY : src/server/grahic_protocol/player.o
@@ -2285,6 +2312,9 @@ help:
 	@echo "... src/server/grahic_protocol/map.o"
 	@echo "... src/server/grahic_protocol/map.i"
 	@echo "... src/server/grahic_protocol/map.s"
+	@echo "... src/server/grahic_protocol/movement.o"
+	@echo "... src/server/grahic_protocol/movement.i"
+	@echo "... src/server/grahic_protocol/movement.s"
 	@echo "... src/server/grahic_protocol/player.o"
 	@echo "... src/server/grahic_protocol/player.i"
 	@echo "... src/server/grahic_protocol/player.s"

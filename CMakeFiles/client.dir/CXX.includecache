@@ -113,7 +113,7 @@ IncludeGui.hpp
 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Communication.cpp
 iostream
 -
-SFML/Graphics/RenderWindow.hpp
+cstring
 -
 ManageServer.hpp
 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/ManageServer.hpp
@@ -212,7 +212,7 @@ cstring
 sstream
 -
 CstringArray.hpp
--
+/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/CstringArray.hpp
 ManageServer.hpp
 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/ManageServer.hpp
 
@@ -225,6 +225,8 @@ thread
 -
 Tools/Thread.hpp
 -
+Communication.hpp
+/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Communication.hpp
 SfmlTool.hpp
 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/SfmlTool.hpp
 Map.hpp
@@ -287,10 +289,10 @@ string
 -
 mutex
 -
-CstringArray.hpp
-Include/Class/CstringArray.hpp
 map
 -
+CstringArray.hpp
+Include/Class/CstringArray.hpp
 
 Include/Class/Gui.hpp
 vector
@@ -415,8 +417,12 @@ sys/select.h
 -
 fstream
 -
-CstringArray.hpp
+functional
 -
+map
+-
+CstringArray.hpp
+Include/Class/CstringArray.hpp
 
 Include/Class/Map.hpp
 string
@@ -453,6 +459,8 @@ IncludeGui.hpp
 Include/Class/Texture/IncludeGui.hpp
 
 Include/Class/Texture/shackTexture.hpp
+CstringArray.hpp
+Include/Class/Texture/CstringArray.hpp
 IncludeGui.hpp
 Include/Class/Texture/IncludeGui.hpp
 

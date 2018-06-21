@@ -51,6 +51,7 @@ CMakeFiles/zappy_server.dir/src/server/ai_protocol/look.c.o: include/server/sock
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/movement.c.o: src/server/ai_protocol/movement.c
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/movement.c.o: include/server/debug.h
+CMakeFiles/zappy_server.dir/src/server/ai_protocol/movement.c.o: include/server/gui_command.h
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/movement.c.o: include/server/server.h
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/movement.c.o: include/server/socket.h
 
@@ -80,6 +81,7 @@ CMakeFiles/zappy_server.dir/src/server/client_manager/join.c.o: include/server/s
 CMakeFiles/zappy_server.dir/src/server/client_manager/leave.c.o: src/server/client_manager/leave.c
 CMakeFiles/zappy_server.dir/src/server/client_manager/leave.c.o: include/server/debug.h
 CMakeFiles/zappy_server.dir/src/server/client_manager/leave.c.o: include/server/egg.h
+CMakeFiles/zappy_server.dir/src/server/client_manager/leave.c.o: include/server/gui_command.h
 CMakeFiles/zappy_server.dir/src/server/client_manager/leave.c.o: include/server/server.h
 CMakeFiles/zappy_server.dir/src/server/client_manager/leave.c.o: include/server/socket.h
 
@@ -126,6 +128,11 @@ CMakeFiles/zappy_server.dir/src/server/grahic_protocol/map.c.o: src/server/grahi
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/map.c.o: include/server/debug.h
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/map.c.o: include/server/server.h
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/map.c.o: include/server/socket.h
+
+CMakeFiles/zappy_server.dir/src/server/grahic_protocol/movement.c.o: src/server/grahic_protocol/movement.c
+CMakeFiles/zappy_server.dir/src/server/grahic_protocol/movement.c.o: include/server/gui_command.h
+CMakeFiles/zappy_server.dir/src/server/grahic_protocol/movement.c.o: include/server/server.h
+CMakeFiles/zappy_server.dir/src/server/grahic_protocol/movement.c.o: include/server/socket.h
 
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/player.c.o: src/server/grahic_protocol/player.c
 CMakeFiles/zappy_server.dir/src/server/grahic_protocol/player.c.o: include/server/debug.h

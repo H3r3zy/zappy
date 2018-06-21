@@ -21,7 +21,8 @@ void gui_pdi(server_t *server, client_t *client)
 	int idx = 4;
 
 	write_uint32(buffer, &idx, client->entity->id);
-	add_to_gui_queue(&server->gui, buffer);
+	buffer[idx] = -5;
+	add_to_gui_queue(&server->gui, buffer, idx + 1);
 }
 
 /**
@@ -44,9 +45,8 @@ void gui_pic(server_t *server, client_t *client, entity_t *entity)
 		buffer[idx++] = ' ';
 		write_uint32(buffer, &idx, en->id);
 	}
-	buffer[idx++] = '\n';
-	buffer[idx++] = 0;
-	add_to_gui_queue(&server->gui, buffer);
+	buffer[idx] = -5;
+	add_to_gui_queue(&server->gui, buffer, idx + 1);
 }
 
 /**
@@ -66,7 +66,8 @@ void gui_pie(server_t *server, client_t *client)
 	write_uint32(buffer, &idx, (uint32_t) POS(client).y);
 	++idx;
 	write_uint32(buffer, &idx, client->user.level);
-	add_to_gui_queue(&server->gui, buffer);
+	buffer[idx] = -5;
+	add_to_gui_queue(&server->gui, buffer, idx + 1);
 }
 
 /**
@@ -92,8 +93,8 @@ void gui_pnw(server_t *server, client_t *client)
 	idx++;
 	write_uint32(buff, &idx, client->user.level);
 	idx++;
-	buff[idx] = '\0';
-	strcat(buff, client->team ? client->team->name : "");
-	strcat(buff, "\n");
-	add_to_gui_queue(&server->gui, buff);
+	if (strlen(client->team->name))
+		memcpy(buff + idx, client->team->name, strlen(client->team->name));
+	buff[idx + strlen(client->team->name)] = -5;
+	add_to_gui_queue(&server->gui, buff, idx + strlen(client->team->name) + 1);
 }

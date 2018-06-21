@@ -22,6 +22,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/zappy_server.dir/src/server/grahic_protocol/egg.c.o"
   "CMakeFiles/zappy_server.dir/src/server/grahic_protocol/io.c.o"
   "CMakeFiles/zappy_server.dir/src/server/grahic_protocol/map.c.o"
+  "CMakeFiles/zappy_server.dir/src/server/grahic_protocol/movement.c.o"
   "CMakeFiles/zappy_server.dir/src/server/grahic_protocol/player.c.o"
   "CMakeFiles/zappy_server.dir/src/server/grahic_protocol/quantification.c.o"
   "CMakeFiles/zappy_server.dir/src/server/grahic_protocol/server.c.o"

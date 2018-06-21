@@ -37,6 +37,7 @@ class Cell : public ARectangleShape {
 	void addRessources(unsigned int resourceName);
 	void printAllResources(sf::RenderWindow &window) const;
 	void makeTarget();
+	void removeTarget();
 
 	private:
 	GameText _cellPos;
@@ -47,6 +48,8 @@ class Cell : public ARectangleShape {
 	std::vector<sf::Sprite> _sprite;
 	ulong _textureNumber;
 	std::map<unsigned int, unsigned int> _ressources;
+	sf::Color tmp;
+
 };
 
 #endif //PSU_ZAPPY_2017_CELL_HPP

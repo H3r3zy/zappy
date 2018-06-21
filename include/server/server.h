@@ -13,7 +13,7 @@
 #include <inttypes.h>
 #include "socket.h"
 
-#define READ_SIZE (16)
+#define READ_SIZE (1)
 #define LIMIT_TASK_NUMBER (10)
 
 #define RESOURCE_NB (7)

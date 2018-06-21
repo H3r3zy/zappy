@@ -194,7 +194,7 @@ bool irc::Map::getEvent()
 				_grid.getCell(static_cast<int>(worldPos.x / 100), static_cast<int>((worldPos.y - 100) * -1 / 100))->makeTarget();
 
 				std::cout << "je creer un perso en" << worldPos.x << " " << worldPos.y << std::endl;
-				_character.emplace_back(_grid.getTextureCharacter(), worldPos);
+				//_character.emplace_back(_grid.getTextureCharacter(), worldPos);
 
 				std::cout << "jai reussit" << std::endl;
 			}

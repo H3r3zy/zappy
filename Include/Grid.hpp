@@ -25,11 +25,12 @@ class Grid {
 		GRASS3,
 		GRASS4
 	};
+
 	enum {
-		WALK_DOWN,
-		WALK_UP,
-		WALK_LEFT,
-		WALK_RIGHT
+		WALK_UP = 1,
+		WALK_RIGHT = 2,
+		WALK_DOWN = 3,
+		WALK_LEFT = 4
 	};
 
 	typedef std::pair<uint, uint> 				POSITION;

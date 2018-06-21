@@ -5,7 +5,7 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include "Character.hpp"
 
-Character::Character(std::map<char, std::vector<sf::Texture>> &_texturePack, sf::Vector2f &position) : AMotionShape(position)
+Character::Character(std::map<char, std::vector<sf::Texture>> &_texturePack, sf::Vector2f &position, uint id) : AMotionShape(position), _id(id)
 {
 	 _beginTime = std::chrono::system_clock::now();
 	for (int i = 0; i < _texturePack[WALK_LEFT].size(); i++) {
@@ -31,6 +31,7 @@ Character::~Character()
 sf::Sprite &Character::getCharacter()
 {
 	// 0 => 100 => 7 sec
+	return _sprite[_orientation][_actualSprite];
 
 	if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - _beginTime).count() > 100) {
 	//	std::cout << "il c passé une dixieme de seconde" << std::endl;
@@ -76,4 +77,40 @@ bool Character::playerLoop(sf::RenderWindow &window)
 //			window.draw(_sprite[WALK_LEFT][_actualSprite]);
 		}
 	}
+}
+
+void Character::setPlayerTeam(const std::string &teamName)
+{
+	_teamName = teamName;
+}
+
+const std::string &Character::getPlayerTeam() const
+{
+	return _teamName;
+}
+
+void Character::setPlayerOrientation(char orientation)
+{
+	_orientation = orientation;
+	_sprite[orientation][_actualSprite].setPosition(_position.x, _position.y);
+}
+
+const char Character::getPlayerOrientation() const
+{
+	return _orientation;
+}
+
+const uint &Character::getPlayerID() const
+{
+	return _id;
+}
+
+void Character::setPlayerLevel(uint level)
+{
+	_level = level;
+}
+
+const uint &Character::getPlayerLevel() const
+{
+	return _level;
 }

@@ -187,5 +187,12 @@ void ParseEnqueueMap::addPlayer(irc::Map &map, const CstringArray &command)
 	tmp.y *= -1;
 	std::cout << "Je vais placer mon joueur en X " << tmp.x << " Y " << tmp.y << std::endl;
 
-	map.getCharacterMap().emplace_back(map.getGrid().getTextureCharacter(), tmp);
+	map.getCharacterMap().emplace_back(map.getGrid().getTextureCharacter(), tmp, tmpCommand[0]);
+	for (auto &it : map.getCharacterMap()) {
+		if (it.getPlayerID() == tmpCommand[0]) {
+			it.setPlayerOrientation(static_cast<char>(tmpCommand[3]));
+			it.setPlayerTeam(command.getTeamName());
+			it.setPlayerLevel(tmpCommand[4]);
+		}
+	}
 }

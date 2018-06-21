@@ -21,6 +21,7 @@ void gui_pdi(server_t *server, client_t *client)
 	int idx = 4;
 
 	write_uint32(buffer, &idx, client->entity->id);
+	buffer[idx] = -5;
 	add_to_gui_queue(&server->gui, buffer, idx + 1);
 }
 

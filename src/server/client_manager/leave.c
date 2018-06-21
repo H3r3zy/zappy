@@ -12,6 +12,8 @@
 #include "debug.h"
 #include "egg.h"
 
+
+
 static void disconnect_of_team(server_t *server, teams_t *team,
 	client_t *client)
 {

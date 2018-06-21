@@ -87,7 +87,7 @@ class Client:
         self.__topQueue.append((cmd, arg, pos, fake))
         self.__outId += 1
         self.refresh_queue()
-        return self.__outId - 1
+        return self.__outId
 
     def refresh(self, mode: bool = False):
         rcons, wcons, _ = select.select([self.__socket], [self.__socket] if len(self.__outBuff) > 0 else [], [], 0.1)
@@ -108,17 +108,21 @@ class Client:
             if len(self.__inQueue) >= 1 and welcome is False:
                 resp = self.__inQueue.popleft()
                 if resp != "WELCOME":
+                    print("tata")
                     raise ZappyException('Unexpected response')
                 self.build_command(self.__name)
                 welcome = True
             if len(self.__inQueue) == 2 and welcome is True:
                 try:
                     int(self.__inQueue.popleft())
+                    print("titi")
                     self.mapSize = tuple(map(int, self.__inQueue.popleft().split(" ")))
                 except ValueError:
                     raise ZappyException('Unexpected response')
                 break
             if "ko" in self.__inQueue:
+                print("mdr")
+                print(self.__inQueue.pop())
                 raise ZappyException('Unexpected response')
         self.__outQueue.clear()
         self.__outId = 0

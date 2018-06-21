@@ -17,6 +17,7 @@ class Tile:
         return self.__stones
 
     def reset(self):
+        self.__player = 0
         for key, val in self.__stones.items():
             self.__stones[key] = 0
 

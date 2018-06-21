@@ -23,7 +23,9 @@ class Actions(IntEnum):
 def look(client: Client, player: Ai):
     if look.id == -1:
         look.id = client.build_command("Look", "", (player.getCoord(), player.getDir()))
+        print(look.id)
     if look.id != client.last:
+        print(client.last)
         return Actions.LOOK
     look.id = -1
     print("J'ai fini de look")
@@ -85,8 +87,8 @@ def CheckPlayer(client: Client, player: Ai):
     if nb_player != player.getMap()[y][x].getPlayer():
         if len(client.msgQueue) > 0:
             pass
-            #print(client.msgQueue.popleft())
-        return Actions.LOOK #CHANGER
+            # print(client.msgQueue.popleft())
+        return Actions.LOOK  # CHANGER
     else:
         return Actions.TAKE_ALL
     # todo, broadcast pour savoir le lvl des autres personnes sur la case
@@ -141,7 +143,11 @@ def FindCrystals(client: Client, player: Ai):
             x %= client.mapSize[0]
             if map[y][x].getStones()[stone] != 0:
                 map[coord_player[1]][coord_player[0]].setPlayer(map[coord_player[1]][coord_player[0]].getPlayer() - 1)
-                actions, player.dir = finding_path.goToTile(player.getCoord(), [x, y], player.getDir())
+                print("coord : " + str(player.getCoord()) + "x, y : " + str(x) + ", " + str(
+                    y) + "dir : " + str(player.getDir()))
+                actions, player.dir = finding_path.goToTile(player.getCoord(),
+                                                            [x, y],
+                                                            player.getDir())
                 for move in actions:
                     client.build_command(move)
                 player.setCoord(x, y)

@@ -92,7 +92,7 @@ class PathFinding:
         actions += tmp
         return actions, player_dir
 
-    def goToTile(self, player_coords, to, player_dir):
+    def goToTile(self, player_coords: list, to: list, player_dir: Direction):
         nb_actions = 0
         actions = []
 

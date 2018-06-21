@@ -31,9 +31,11 @@ Grid::~Grid()
 void Grid::loadingDisplay( sf::Vector2f &mapSize)
 {
 	sf::RenderWindow window(sf::VideoMode(800, 600), "Loading ");
+	window.setPosition(sf::Vector2i(200, 100));
 	sf::Text text;
 	sf::Font font;
 	std::string total = std::to_string(mapSize.x * mapSize.y);
+	total.erase (total.find_last_not_of('0'), std::string::npos);
 	float totalNb = (mapSize.x * mapSize.y);
 	sf::Texture texture;
 	sf::Sprite sprite;
@@ -51,12 +53,13 @@ void Grid::loadingDisplay( sf::Vector2f &mapSize)
 	texture.loadFromFile("ronflex.png");
 	sprite.setTexture(texture);
 
-	font.loadFromFile("arial.ttf");
+	font.loadFromFile("pokemon.ttf");
 	text.setFont(font);
-
+	text.setCharacterSize(20);
+	text.setPosition(100, 0);
 
 	while (!_ready) {
-		text.setString("Creating cell and texturing it : " + std::to_string(_blocNumber) + " / " + total);
+		text.setString("Creating cells : " + std::to_string(_blocNumber) + " / " + total);
 		currentRect.setSize(sf::Vector2f((_blocNumber / totalNb) * 500, 50));
 		window.draw(sprite);
 		window.draw(totalRect);

@@ -12,7 +12,7 @@
 #include "SfmlTool.hpp"
 #include "Map.hpp"
 
-irc::Map::Map(irc::Communication &comm, bool &displayGui, bool &endClient) : _comm(comm), _displayGui(displayGui), _endClient(endClient), _gameWindow(sf::VideoMode(1, 1), "Oh voyage voyage, plus loiiiiin que la nuit et le jour"), _enqueueMap(_comm), _mapSize(_enqueueMap.ParseMapSize()), _grid(_mapSize, _gameWindow)
+irc::Map::Map(irc::Communication &comm, bool &displayGui, bool &endClient) : _comm(comm), _displayGui(displayGui), _endClient(endClient), _gameWindow(sf::VideoMode(1, 1), "empty", sf::Style::None), _enqueueMap(_comm), _mapSize(_enqueueMap.ParseMapSize()), _grid(_mapSize, _gameWindow)
 {
 	SfmlTool::InitAllFont();
 	//_gameWindow.setFramerateLimit(60);
@@ -29,7 +29,8 @@ irc::Map::Map(irc::Communication &comm, bool &displayGui, bool &endClient) : _co
 	thread->join();
 	_gameWindow.setActive(true);
 
-	_gameWindow.setSize(sf::Vector2u(1200, 800));
+	_gameWindow.close();
+	_gameWindow.create(sf::VideoMode(1200, 800), "Oh voyage voyage, plus loiiiiin que la nuit et le jour");
 	_gameWindow.setFramerateLimit(60);
 	//_gameWindow.setFramerateLimit(60);
 	_gameWindow.setPosition(sf::Vector2i(200, 50));

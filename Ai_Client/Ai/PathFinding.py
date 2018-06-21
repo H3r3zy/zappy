@@ -1,4 +1,4 @@
-from Enum.Direction import *
+from Ai_Client.Enum.Direction import *
 
 
 class PathFinding:

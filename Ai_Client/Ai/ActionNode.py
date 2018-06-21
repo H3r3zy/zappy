@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-from Client import Client
-from Ai.Ai import Ai
+from Ai_Client.Client import Client
+from Ai_Client.Ai.Ai import Ai
 from enum import IntEnum
-from Ai.PathFinding import PathFinding
+from Ai_Client.Ai.PathFinding import PathFinding
 
 
 class Actions(IntEnum):

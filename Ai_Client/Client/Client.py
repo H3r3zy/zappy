@@ -3,10 +3,10 @@
 
 import socket
 import select
-from Client import CmdParser
+from Ai_Client.Client import CmdParser
 from collections import deque
-from Ai.ActionNode import *
-from Ai.Ai import *
+from Ai_Client.Ai.ActionNode import *
+from Ai_Client.Ai.Ai import *
 
 
 class ZappyException(Exception):

@@ -4,9 +4,9 @@
 import re
 from os import system
 from sys import argv
-from Ai.Ai import *
+from Ai_Client.Ai.Ai import *
 from collections import deque
-from Enum.Direction import *
+from Ai_Client.Enum.Direction import *
 
 
 class CmdParser:

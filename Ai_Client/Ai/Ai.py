@@ -1,6 +1,6 @@
-from Ai import Tile
-from Ai import PathFinding
-from Enum.Direction import *
+from Ai_Client.Ai import Tile
+from Ai_Client.Ai import PathFinding
+from Ai_Client.Enum.Direction import *
 from time import *
 
 

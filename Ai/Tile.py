@@ -1,3 +1,5 @@
+import sys
+
 class Tile:
     def __init__(self):
         self.__player = 0
@@ -19,8 +21,9 @@ class Tile:
             self.__stones[key] = 0
 
     def setPlayer(self, player: int):
-
-        print("Hey ", player)
+        print("set %d player on tile" % player)
+        if player > 1:
+            sys.exit(1234)
         self.__player = player
 
     def __str__(self):

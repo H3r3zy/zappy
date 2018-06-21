@@ -22,7 +22,7 @@ class Actions(IntEnum):
 
 def look(client: Client, player: Ai, _):
     if look.id == -1:
-        look.id = client.build_command("Look", "", tuple(player.getCoord()))
+        look.id = client.build_command("Look", "", (player.getCoord(), player.getDir()))
     if look.id != client.last:
         return Actions.LOOK
     look.id = -1
@@ -52,12 +52,12 @@ def Forward(client: Client, player: Ai, _):
     actions, player.dir = finding_path.goToTile([x, y], (x_forward, y_forward), player.dir)
     for move in actions:
         client.build_command(move)
+    player.setCoord(x_forward, y_forward)
     map[y_forward][x_forward].setPlayer(map[y_forward][x_forward].getPlayer() + 1)
     return Actions.LOOK
 
 
 def CheckLvlUp(_1, player: Ai, _2):
-    print("Je check si je peux up")
     needed_stones = player.elevation_array[player.getLevel()]
     inventory = player.getInventory()
 
@@ -144,14 +144,12 @@ def FindCrystals(client: Client, player: Ai, _):
             y %= client.mapSize[1]
             x %= client.mapSize[0]
             if map[y][x].getStones()[stone] != 0:
-                print("[Crystal] :J'enleve à : %s" % coord_player)
                 map[coord_player[1]][coord_player[0]].setPlayer(map[coord_player[1]][coord_player[0]].getPlayer() - 1)
                 actions, player.dir = finding_path.goToTile(player.getCoord(), [x, y], player.getDir())
                 for move in actions:
                     client.build_command(move)
                 player.setCoord(x, y)
                 client.build_command("Take", stone, tuple((x, y)))
-                print("[Crystals] :J'augmente le nombre de player sur la case : %s" % str([x, y]))
                 map[y][x].setPlayer(map[y][x].getPlayer() + 1)
                 print(player.getInventory())
                 return Actions.LOOK
@@ -173,13 +171,11 @@ def FindFood(client: Client, player: Ai, _):
         y %= client.mapSize[1]
         x %= client.mapSize[0]
         if map[y][x].getStones()["food"] != 0:
-            print("[Food] :J'enleve à : %s" % coord_player)
             map[coord_player[1]][coord_player[0]].setPlayer(map[coord_player[1]][coord_player[0]].getPlayer() - 1)
             actions, player.dir = finding_path.goToTile(player.getCoord(), [x, y], player.getDir())
             for move in actions:
                 client.build_command(move)
             player.setCoord(x, y)
-            print("[Food] :J'augmente le nombre de player sur la case %s" % str([x, y]))
             map[y][x].setPlayer(map[y][x].getPlayer() + 1)
             client.build_command("Take", "food", tuple((x, y)))
             return Actions.LOOK

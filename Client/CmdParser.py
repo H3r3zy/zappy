@@ -75,7 +75,6 @@ class CmdParser:
             self.__player.getInventory()[obj] += 1
             self.__map[pos[1]][pos[0]].getStones()[obj] -= 1
         else:
-            print("TAKE KO: " + obj + " " + str(pos))
             self.__map[pos[1]][pos[0]].getStones()[obj] = 0
 
     def fork(self):
@@ -118,7 +117,7 @@ class CmdParser:
         map = map.replace("[", "").replace("]", "")
         tiles = map.split(",")
         i = 0
-        for x, y in self.__dirs[self.__player.getDir()](pos[0], pos[1], self.__player.getLevel()):
+        for x, y in self.__dirs[pos[1]](pos[0][0], pos[0][1], self.__player.getLevel()):
             currentTile = self.__map[y % len(self.__player.getMap())][x % len(self.__player.getMap()[0])]
             currentTile.reset()
             players = 0
@@ -150,7 +149,6 @@ class CmdParser:
         last = self.__queue.popleft()
         match = self.__patterns[last[0]].match(cmd)
         self.__handledId += 1
-        print("(" + cmd + ":" + last[0] + ")")
         try:
             if last[0] in self.__actions.keys() and match is not None:
                 self.__actions[last[0]](match.group(0), last[1], last[2])

@@ -93,7 +93,7 @@ void gui_pnw(server_t *server, client_t *client)
 	write_uint32(buff, &idx, client->user.level);
 	idx++;
 	if (strlen(client->team->name))
-		memcpy(buff + idx, client->team, strlen(client->team->name));
+		memcpy(buff + idx, client->team->name, strlen(client->team->name));
 	buff[idx + strlen(client->team->name)] = -5;
 	add_to_gui_queue(&server->gui, buff, idx + strlen(client->team->name) + 1);
 }

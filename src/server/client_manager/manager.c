@@ -68,8 +68,10 @@ static void add_gui_client(server_t *server, client_t *client)
 	server->gui.fd = client->fd;
 	server->gui.logged = 1;
 	add_to_gui_queue(&server->gui, (char []){'o', 'k', -5}, 3);
-	for (client_t *clt = server->clients; clt; clt = clt->next)
-		gui_pnw(server, clt);
+	for (client_t *clt = server->clients; clt; clt = clt->next) {
+		if (clt->team)
+			gui_pnw(server, clt);
+	}
 }
 
 static int set_client_team(server_t *server, client_t *client, char *command)

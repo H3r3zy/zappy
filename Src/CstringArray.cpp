@@ -33,3 +33,13 @@ void CstringArray::setCommand(const std::vector<uint> &commandInfo)
 {
 	_command = commandInfo;
 }
+
+const std::string &CstringArray::getTeamName() const
+{
+	return _teamName;
+}
+
+void CstringArray::setTeamName(const std::string &command)
+{
+	_teamName = command;
+}

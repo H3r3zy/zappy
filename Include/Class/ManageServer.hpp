@@ -43,7 +43,9 @@ namespace irc {
 
 	const std::map<std::string, std::function<void(char *, CstringArray &)>> _pattern = {
 		{"msz", &irc::ManageServer::parseLine8Input},
-		{"bct", &irc::ManageServer::parseLine8Input}
+		{"pnw", &irc::ManageServer::parseLine8Input},
+		{"bct", &irc::ManageServer::parseLine8Input},
+		{"pdi", &irc::ManageServer::parseLine8Input},
 	};
 
 }

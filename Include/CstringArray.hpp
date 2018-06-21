@@ -14,13 +14,18 @@ class CstringArray {
 	CstringArray();
 	CstringArray(const std::vector<uint> &commandInfo);
 	~CstringArray() = default;
+
 	void setCommandName(const std::string &command);
+	void setTeamName(const std::string &command);
 	void setCommand(const std::vector<uint> &commandInfo);
+
 	const std::string &getCommandName() const;
+	const std::string &getTeamName() const;
 	const std::vector<uint> &getCommand() const;
 
 	private:
 	std::string _commandName;
+	std::string _teamName;
 	std::vector<uint> _command;
 };
 

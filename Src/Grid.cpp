@@ -5,19 +5,70 @@
 
 #include <SFML/Graphics/Sprite.hpp>
 #include <thread>
+#include <Tools/Thread.hpp>
 #include "Grid.hpp"
 
-Grid::Grid(const sf::Vector2f &mapSize) : _mapSize(mapSize), _nbActive(0)
+Grid::Grid(const sf::Vector2f &mapSize, sf::RenderWindow &window) : _mapSize(mapSize), _nbActive(0)
 {
 	std::cout << "nnike ta grosse chienne" << std::endl;
 	std::cout << "je suis dans Grid, la taille de ma map map X" << _mapSize.x << " Y " << _mapSize.y << std::endl;
+
+	window.setActive(false);
+	auto thread(new my::Thread([&]() {loadingDisplay(_mapSize);}));
 	loadTextures();
 	loadMap();
+
+	thread->join();
+	window.setActive(true);
 }
 
 Grid::~Grid()
 {
 	// TODO DELETE
+}
+
+
+void Grid::loadingDisplay( sf::Vector2f &mapSize)
+{
+	sf::RenderWindow window(sf::VideoMode(800, 600), "Loading ");
+	window.setPosition(sf::Vector2i(200, 100));
+	sf::Text text;
+	sf::Font font;
+	std::string total = std::to_string(mapSize.x * mapSize.y);
+	total.erase (total.find_last_not_of('0'), std::string::npos);
+	float totalNb = (mapSize.x * mapSize.y);
+	sf::Texture texture;
+	sf::Sprite sprite;
+
+	sf::RectangleShape totalRect;
+	totalRect.setFillColor(sf::Color(0, 80, 0, 122));
+	totalRect.setSize(sf::Vector2f(500, 50));
+	totalRect.setPosition(100, 540);
+
+	sf::RectangleShape currentRect;
+	currentRect.setFillColor(sf::Color::Green);
+	currentRect.setSize(sf::Vector2f(0, 50));
+	currentRect.setPosition(100, 540);
+
+	texture.loadFromFile("ronflex.png");
+	sprite.setTexture(texture);
+
+	font.loadFromFile("pokemon.ttf");
+	text.setFont(font);
+	text.setCharacterSize(20);
+	text.setPosition(100, 0);
+
+	while (!_ready) {
+		text.setString("Creating cells : " + std::to_string(_blocNumber) + " / " + total);
+		currentRect.setSize(sf::Vector2f((_blocNumber / totalNb) * 500, 50));
+		window.draw(sprite);
+		window.draw(totalRect);
+		window.draw(currentRect);
+		window.draw(text);
+		window.display();
+		window.clear();
+	}
+	window.close();
 }
 
 void Grid::loadMap()
@@ -34,11 +85,13 @@ void Grid::loadMap()
 			dimension.first.x = i * 100;
 			dimension.first.y = ((j) * 100);
 			dimension.first.y *= -1;
+			++_blocNumber;
 			_gameMap.insert(GRID_MAP::value_type(POSITION(i, j),
-				new Cell(dimension, _texturePack[dist6(rng)])));
+				new Cell(dimension, _texturePack[dist6(rng)], _resourcesPack)));
 		}
 	}
 	loadWater();
+	_ready = true;
 }
 
 bool Grid::loadTextures()
@@ -61,6 +114,33 @@ bool Grid::loadTextures()
 		}
 	}
 
+	for (int i = 0; i < 14; i++) {
+		_resourcesPack.emplace_back(sf::Texture());
+	}
+
+	/* Food */
+	_resourcesPack[0].loadFromFile("extra/gui/pokeball.png", sf::IntRect(0, 0, 60, 60));
+
+	/* Pokeball */
+	_resourcesPack[1].loadFromFile("extra/gui/pokeball.png", sf::IntRect(60, 0, 60, 60));
+	_resourcesPack[2].loadFromFile("extra/gui/pokeball.png", sf::IntRect(120, 0, 60, 60));
+	_resourcesPack[3].loadFromFile("extra/gui/pokeball.png", sf::IntRect(180, 0, 60, 60));
+	_resourcesPack[4].loadFromFile("extra/gui/pokeball.png", sf::IntRect(240, 0, 60, 60));
+	_resourcesPack[5].loadFromFile("extra/gui/pokeball.png", sf::IntRect(300, 0, 60, 60));
+	_resourcesPack[6].loadFromFile("extra/gui/pokeball.png", sf::IntRect(360, 0, 60, 60));
+
+	/* Multi Food */
+	_resourcesPack[7].loadFromFile("extra/gui/pokeball2.png", sf::IntRect(0, 0, 50, 50));
+
+	/* Multi Pokeball */
+	_resourcesPack[8].loadFromFile("extra/gui/pokeball2.png", sf::IntRect(60, 0, 50, 50));
+	_resourcesPack[9].loadFromFile("extra/gui/pokeball2.png", sf::IntRect(120, 0, 50, 50));
+	_resourcesPack[10].loadFromFile("extra/gui/pokeball2.png", sf::IntRect(180, 0, 50, 50));
+	_resourcesPack[11].loadFromFile("extra/gui/pokeball2.png", sf::IntRect(240, 0, 50, 50));
+	_resourcesPack[12].loadFromFile("extra/gui/pokeball2.png", sf::IntRect(300, 0, 50, 50));
+	_resourcesPack[13].loadFromFile("extra/gui/pokeball2.png", sf::IntRect(360, 0, 50, 50));
+
+
 	for (int i = 0; i < 9; i++) {
 		_textureCharacterPack[WALK_LEFT].emplace_back(sf::Texture());
 		_textureCharacterPack[WALK_RIGHT].emplace_back(sf::Texture());
@@ -69,10 +149,10 @@ bool Grid::loadTextures()
 	}
 
 	for (int i = 0; i < 9; i++) {
-		_textureCharacterPack[WALK_UP][i].loadFromFile("Character.png", sf::IntRect(i * 64, 512, 64, 64));
-		_textureCharacterPack[WALK_LEFT][i].loadFromFile("Character.png", sf::IntRect(i * 64, 576, 64, 64));
-		_textureCharacterPack[WALK_DOWN][i].loadFromFile("Character.png", sf::IntRect(i * 64, 640, 64, 64));
-		_textureCharacterPack[WALK_RIGHT][i].loadFromFile("Character.png", sf::IntRect(i * 64, 704, 64, 64));
+		_textureCharacterPack[WALK_UP][i].loadFromFile("Character2.png", sf::IntRect(i * 64, 512, 64, 64));
+		_textureCharacterPack[WALK_LEFT][i].loadFromFile("Character2.png", sf::IntRect(i * 64, 576, 64, 64));
+		_textureCharacterPack[WALK_DOWN][i].loadFromFile("Character2.png", sf::IntRect(i * 64, 640, 64, 64));
+		_textureCharacterPack[WALK_RIGHT][i].loadFromFile("Character2.png", sf::IntRect(i * 64, 704, 64, 64));
 	}
 
 	return true;
@@ -120,6 +200,8 @@ void Grid::displayGlobalGrid(sf::RenderWindow &window, const sf::View &view)
 	for (const auto &it : _activeMap) {
 		window.draw(it->getCell());
 		window.draw(it->getCellPos());
+		it->printAllResources(window);
+
 		++_nbActive;
 	}
 	for (auto &it : _waterMap) {
@@ -170,6 +252,7 @@ std::map<char, std::vector<sf::Texture>> &Grid::getTextureCharacter()
 
 void Grid::loadWater()
 {
+	return;
 	sf::Vector2f actualPos;
 	sf::Vector2f destPos;
 

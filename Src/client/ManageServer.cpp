@@ -8,7 +8,7 @@
 #include <iostream>
 #include <cstring>
 #include <sstream>
-#include <CstringArray.hpp>
+#include "CstringArray.hpp"
 #include "ManageServer.hpp"
 
 std::string irc::ManageServer::readServer(int socket, bool blockRead)
@@ -17,24 +17,26 @@ std::string irc::ManageServer::readServer(int socket, bool blockRead)
 	std::string result;
 	fd_set readfds;
 	struct timeval t = {0, 1000};
-	char buffer[4096];
+	char buffer[2];
 
 	FD_ZERO(&readfds);
 	FD_SET(socket, &readfds);
-	if (select(socket + 1, &readfds, NULL, NULL, (!blockRead) ? &t : NULL) == -1) {
+	if (select(socket + 1, &readfds, NULL, NULL,
+		(!blockRead) ? &t : NULL) == -1) {
 		result = "select error\n";
-
 	} else if (FD_ISSET(socket, &readfds)) {
 		int len = 0;
 		do {
-			len = (int)read(socket, buffer, 4095);
+			len = (int)read(socket, buffer, 1);
 			if (len <= 0) {
-				std::cout << "Manage server" << "je throw" << std::endl;
+				std::cout << "Manage server" << "je throw"
+					<< std::endl;
 				throw std::exception();
 			}
-			buffer[len] = '\0';
+			buffer[1] = '\0';
+			std::cout << "buffer: " << buffer << std::endl;
 			result += buffer;
-		} while (len == 4095);
+		} while (buffer[0] != -5 && buffer[0] != '\n');
 	}
 	std::stringstream ss(result);
 	std::string command;
@@ -54,7 +56,8 @@ CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 
 	//	FD_ZERO(&readfds);
 	FD_SET(socket, &readfds);
-	if (select(socket + 1, &readfds, NULL, NULL, (!blockRead) ? &t : NULL) == -1)
+	if (select(socket + 1, &readfds, NULL, NULL,
+		(!blockRead) ? &t : NULL) == -1)
 		result = "select error\n";
 	else if (FD_ISSET(socket, &readfds)) {
 		std::vector<char> test;
@@ -62,7 +65,7 @@ CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 		long int rc;
 
 		while ((rc = read(socket, c, 1)) > 0) {
-			if (c[0] != '\n')
+			if (c[0] != -5)
 				test.push_back(*c);
 			else
 				break;
@@ -86,18 +89,15 @@ CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 				break;
 			commandName.push_back(it);
 		}
-		std::cout << "Nom de ma commande : " << commandName << std::endl;
+		//	std::cout << "Nom de ma commande : " << commandName << std::endl;
 		finalCommand.setCommandName(commandName);
-
-
-	} else {
-	//	std::cout << "NTM gros con" << std::endl;
-
 	}
 	return finalCommand;
 }
 
-std::string irc::ManageServer::connectServer(int socket, std::string ip, std::string port)
+std::string irc::ManageServer::connectServer(int socket, std::string ip,
+	std::string port
+)
 {
 	struct sockaddr_in s_in;
 	struct timeval t = {10, 0};
@@ -127,7 +127,8 @@ int irc::ManageServer::getFileDescriptorSocket()
 
 int irc::ManageServer::writeOnServer(int socket, std::string msg)
 {
-	std::cout << "J'envoie [" << msg << "] a la socket " << socket << std::endl;
+	std::cout << "J'envoie [" << msg << "] a la socket " << socket
+		<< std::endl;
 	if (write(socket, msg.c_str(), msg.size()) == -1) {
 		std::cout << "excpetion ici" << std::endl;
 		throw std::exception();

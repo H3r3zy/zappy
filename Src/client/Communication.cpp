@@ -71,7 +71,7 @@ void irc::Communication::loopRead()
 void irc::Communication::addMsgToQueue(const CstringArray &command)
 {
 	auto tmpPrint = command.getCommand();
-	if (tmpPrint.size() == 8) {
+/*	if (tmpPrint.size() == 9) {
 		std::cout << "J'arrive à la fin du parsing, le nom de la commande est [" << command.getCommandName() << "]" << std::endl;
 		std::cout << "Et son message est :" << tmpPrint[0] << " "
 			<< tmpPrint[1] << " " << tmpPrint[2] << " "
@@ -79,6 +79,7 @@ void irc::Communication::addMsgToQueue(const CstringArray &command)
 			<< tmpPrint[5] << " " << tmpPrint[6] << " "
 			<< tmpPrint[7] << std::endl;
 	}
+ */
 	if (!command.getCommandName().empty()) {
 		for (auto &&comm : _forWho) {
 			if (comm.first == command.getCommandName()) {
@@ -122,3 +123,9 @@ void irc::Communication::unlockDisplay()
 {
 	_display.unlock();
 }
+
+void irc::Communication::setEnqueueMap(std::vector<CstringArray> &newEnqueue)
+{
+	_enqueueMap = newEnqueue;
+}
+

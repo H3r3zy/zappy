@@ -63,6 +63,7 @@ namespace irc {
 		void setSocket(int socket);
 
 		std::vector<CstringArray> &getEnqueueMap();
+		void setEnqueueMap(std::vector<CstringArray> &newEnqueue);
 		void enqueueMap(const CstringArray &command);
 
 		std::vector<CstringArray> &getEnqueueGui();
@@ -104,6 +105,8 @@ namespace irc {
 		const std::map<std::string, irc::TYPE_ENQUEUE> _forWho = {
 			{"msz", irc::TYPE_ENQUEUE::T_MAP},
 			{"bct", irc::TYPE_ENQUEUE::T_BOTH},
+			{"pdi", irc::TYPE_ENQUEUE::T_MAP},
+			{"pnw", irc::TYPE_ENQUEUE::T_MAP},
 			{"", irc::TYPE_ENQUEUE::T_UNKNOWN}
 		};
 

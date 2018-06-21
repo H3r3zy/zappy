@@ -30,6 +30,7 @@ irc::Gui::~Gui()
 void irc::Gui::addGenericFunction(int scene)
 {
 	_monitor->addFuncLoop(scene, [this] {
+		std::cerr << "SIZE: " << _comm._listId.size() << std::endl;
 		if (!_comm._listId.empty() && !_monitor->getCurrentScene()) {
 			if (_comm._listId[0] != -1)
 				_monitor->setScene(1);

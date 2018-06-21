@@ -17,7 +17,7 @@ std::string irc::ManageServer::readServer(int socket, bool blockRead)
 	std::string result;
 	fd_set readfds;
 	struct timeval t = {0, 1000};
-	char buffer[4096];
+	char buffer[2];
 
 	FD_ZERO(&readfds);
 	FD_SET(socket, &readfds);
@@ -27,14 +27,15 @@ std::string irc::ManageServer::readServer(int socket, bool blockRead)
 	} else if (FD_ISSET(socket, &readfds)) {
 		int len = 0;
 		do {
-			len = (int)read(socket, buffer, 4095);
+			len = (int)read(socket, buffer, 1);
 			if (len <= 0) {
 				std::cout << "Manage server" << "je throw" << std::endl;
 				throw std::exception();
 			}
-			buffer[len] = '\0';
+			buffer[1] = '\0';
+			std::cout << "buffer: " << buffer << std::endl;
 			result += buffer;
-		} while (len == 4095);
+		} while (buffer[0] != -5 && buffer[0] != '\n');
 	}
 	std::stringstream ss(result);
 	std::string command;
@@ -97,6 +98,7 @@ CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 			i--;
 		}
 		teamName.pop_back();
+		finalCommand.setTeamName(teamName);
 		if (strncmp(buffer, "pnw", 3) == 0) {
 		//	std::cout << "le nom de ma team est [" << teamName << "]" << std::endl;
 		//	std::cout << "Jai RECU LA COMMANDE :" << buffer << std::endl;

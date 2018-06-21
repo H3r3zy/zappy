@@ -59,6 +59,8 @@ SFML/System.hpp
 -
 ParseEnqueueMap.hpp
 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/ParseEnqueueMap.hpp
+Map.hpp
+/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Map.hpp
 
 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/SfmlTool.cpp
 iostream
@@ -430,7 +432,7 @@ SFML/Graphics/RenderWindow.hpp
 SFML/Window/Event.hpp
 -
 ParseEnqueueMap.hpp
--
+Include/Class/ParseEnqueueMap.hpp
 Grid.hpp
 Include/Class/Grid.hpp
 WindowInfo.hpp

@@ -32,7 +32,7 @@ irc::Map::Map(irc::Communication &comm, bool &displayGui, bool &endClient) : _co
 	_gameWindow.close();
 	_gameWindow.create(sf::VideoMode(1200, 800), "Oh voyage voyage, plus loiiiiin que la nuit et le jour");
 	_gameWindow.setFramerateLimit(60);
-	//_gameWindow.setFramerateLimit(60);
+	//_gameWindow.setFramerateLimit(60); b  b
 	_gameWindow.setPosition(sf::Vector2i(200, 50));
 	_gameWindow.setActive(true);
 
@@ -41,11 +41,6 @@ irc::Map::Map(irc::Communication &comm, bool &displayGui, bool &endClient) : _co
 	_grid.updateGrid3D(_camera[MAP]);
 	_windowInfo->updateInfo(_grid.getNbActive(), _camera[HUD]);
 
-	sf::Vector2f tmp = {1000, 0};
-	_character.emplace_back(_grid.getTextureCharacter(), tmp);
-	tmp.x -= 500;
-	tmp.y -= 1000;
-	_character.emplace_back(_grid.getTextureCharacter(), tmp);
 
 	/* */
 
@@ -72,13 +67,8 @@ void irc::Map::loopDisplay()
 	while (_gameWindow.isOpen()) {
 		_comm.lockDisplay();
 
-		int i = 0;
-		auto caca = _comm.getEnqueueMap();
-		for (const auto &it : caca) {
-			std::cout << "Commande numero " << i << " [" << it.getCommandName() << "]" << std::endl;
-			i++;
-		}
-		std::cout << "il y a " << i << "messages dans ma queue "<< std::endl;
+		_enqueueMap.parseNextCommand(*this);
+
 
 		getEvent();
 		/* Global Display */
@@ -144,7 +134,6 @@ bool irc::Map::getEvent()
 			case sf::Keyboard::Left:
 				_camera[MAP].move(-10, 0);
 				_camera[MINIMAP].move(-10, 0);
-				_comm.writeOnServer("mct");
 
 				_playerPos.setPosition(_camera[MAP].getCenter());
 				_grid.updateGrid3D(_camera[MAP]);
@@ -232,4 +221,14 @@ bool irc::Map::getEvent()
 		_windowInfo->updateZoom(1.2);
 	}
 	return true;
+}
+
+std::vector<Character> &irc::Map::getCharacterMap()
+{
+	return _character;
+}
+
+Grid &irc::Map::getGrid()
+{
+	return _grid;
 }

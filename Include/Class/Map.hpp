@@ -14,7 +14,7 @@
 # include <SFML/System.hpp>
 # include <SFML/Graphics/RenderWindow.hpp>
 # include <SFML/Window/Event.hpp>
-#include <ParseEnqueueMap.hpp>
+# include "ParseEnqueueMap.hpp"
 # include "Grid.hpp"
 # include "WindowInfo.hpp"
 # include "Character.hpp"
@@ -34,6 +34,8 @@ namespace irc {
 		~Map() = default;
 
 		void loopDisplay();
+		std::vector<Character> &getCharacterMap();
+		Grid &getGrid();
 
 
 		private:

@@ -5,6 +5,7 @@
 
 #include <SFML/System.hpp>
 #include "ParseEnqueueMap.hpp"
+#include "Map.hpp"
 
 ParseEnqueueMap::ParseEnqueueMap(irc::Communication &comm) : _comm(comm)
 {
@@ -14,14 +15,20 @@ ParseEnqueueMap::ParseEnqueueMap(irc::Communication &comm) : _comm(comm)
 sf::Vector2f ParseEnqueueMap::ParseMapSize()
 {
 	sf::Vector2f tmpMap = {0, 0};
+
+
+	std::vector<CstringArray> save;
+
 	bool loop = true;
 	while (true) {
+		int i = 0;
 		_comm.lockMap();
 		std::vector<CstringArray> &test = _comm.getEnqueueMap();
 		_comm.unlockMap();
-		for (auto it = (test).begin(); it != (test).end(); ) {
-			std::cout << "Coammnde Name [" << it->getCommandName() << "]" << std::endl;
-			auto tmpPrint = it->getCommand();
+		save.clear();
+		for (const auto &it : test) {
+		//	std::cout << "Coammnde Name [" << it.getCommandName() << "]" << std::endl;
+			auto tmpPrint = it.getCommand();
 			if (tmpPrint.size() == 8)
 				std::cout << "Et son message est :"
 					<< tmpPrint[0] << " " << tmpPrint[1]
@@ -31,17 +38,19 @@ sf::Vector2f ParseEnqueueMap::ParseMapSize()
 					<< tmpPrint[6] << " " << tmpPrint[7]
 					<< std::endl;
 
-			if (it->getCommandName() == "msz") {
+			if (it.getCommandName() == "msz") {
 				tmpMap.x = tmpPrint[0];
 				tmpMap.y = tmpPrint[1];
 				std::cout << "je vais return un vector X" << tmpMap.x << " Y " << tmpMap.y << std::endl;
 				_comm.lockMap();
-				test.erase(it);
+				_comm.setEnqueueMap(save);
 				_comm.unlockMap();
 				return tmpMap;
 			} else {
-				++it;
+				save.push_back(it);
 			}
+			std::cout << "je boucle dedans pour la " << i << " fois" << std::endl;
+			i++;
 		}
 	}
 }
@@ -49,18 +58,21 @@ sf::Vector2f ParseEnqueueMap::ParseMapSize()
 void ParseEnqueueMap::fillMap(Grid &_grid, sf::Vector2f &mapSize)
 {
 	_comm.writeOnServer("mct");
+	std::vector<CstringArray> save;
 
 	while (true) {
 		_comm.lockMap();
 		std::vector<CstringArray> &test = _comm.getEnqueueMap();
-		std::vector<CstringArray> save;
 		_comm.unlockMap();
 		_blocNumber = 0;
 		if (test.size() < mapSize.x * mapSize.y) {
 			usleep(100000);
 			continue;
 		}
+		save.clear();
+		_comm.lockMap();
 		for (const auto &it : test) {
+
 		//	window.clear(sf::Color::Black);
 			if (it.getCommandName() == "bct") {
 				std::cout << "Coammnde Name [" << it.getCommandName() << "]" << std::endl;
@@ -84,7 +96,6 @@ void ParseEnqueueMap::fillMap(Grid &_grid, sf::Vector2f &mapSize)
 
 				if (tmpPrint[0] == mapSize.x - 1 && tmpPrint[1] == mapSize.y - 1) {
 					_ready = true;
-					_comm.lockMap();
 					_comm.setEnqueueMap(save);
 					_comm.unlockMap();
 					return;
@@ -93,6 +104,7 @@ void ParseEnqueueMap::fillMap(Grid &_grid, sf::Vector2f &mapSize)
 				save.push_back(it);
 			}
 		}
+		_comm.unlockMap();
 		//sleep(1);
 	}
 }
@@ -144,4 +156,36 @@ void ParseEnqueueMap::loadingDisplay( sf::Vector2f &mapSize)
 		window.clear();
 	}
 	window.close();
+}
+
+void ParseEnqueueMap::parseNextCommand(irc::Map &map)
+{
+	int i = 0;
+	_comm.lockMap();
+	for (const auto &it : _comm.getEnqueueMap()) {
+		if (it.getCommandName() == "pnw") {
+			addPlayer(map, it);
+		}
+		i++;
+		_comm.getEnqueueMap().erase(_comm.getEnqueueMap().begin());
+		break;
+	}
+	//sleep(1);
+	std::cout << "il y a " << i << "messages dans ma queue "<< std::endl;
+
+	_comm.unlockMap();
+}
+
+void ParseEnqueueMap::addPlayer(irc::Map &map, const CstringArray &command)
+{
+	std::cout << "Commande numero " << " [" << command.getCommandName() << "]" << std::endl;
+
+	std::vector<uint> tmpCommand = command.getCommand();
+
+	std::cout << "Player number :" << tmpCommand[0] << " Position en X " << tmpCommand[1] << " Position en Y " << tmpCommand[2] << " Orientation "  << tmpCommand[3] << " level " << tmpCommand[4] << " team name " << command.getTeamName() << std::endl;
+	sf::Vector2f tmp = {tmpCommand[1] * 100, (tmpCommand[2] * 100)};
+	tmp.y *= -1;
+	std::cout << "Je vais placer mon joueur en X " << tmp.x << " Y " << tmp.y << std::endl;
+
+	map.getCharacterMap().emplace_back(map.getGrid().getTextureCharacter(), tmp);
 }

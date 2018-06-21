@@ -11,12 +11,20 @@
 #include <unistd.h>
 #include "Grid.hpp"
 
+namespace irc {
+	class Map;
+}
+
 class ParseEnqueueMap {
 	public:
 	ParseEnqueueMap(irc::Communication &comm);
 	sf::Vector2f ParseMapSize();
 	void fillMap(Grid &_grid, sf::Vector2f &mapSize);
-	void loadingDisplay( sf::Vector2f &mapSize);
+	void parseNextCommand(irc::Map &map);
+	void loadingDisplay(sf::Vector2f &mapSize);
+
+	/* Managa Game */
+	void addPlayer(irc::Map &map, const CstringArray &command);
 
 	private:
 	irc::Communication &_comm;

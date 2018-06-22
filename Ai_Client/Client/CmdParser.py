@@ -156,6 +156,7 @@ class CmdParser:
                 match1 = re.match("eject: (\d)", cmd)
                 if match:
                     self.__msgQueue.append(match.group(2))
+                    self.__handledId -= 1
                 elif match1:
                     self.eject(int(match1.group(1)))
         except AttributeError:

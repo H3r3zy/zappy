@@ -71,8 +71,8 @@ def CheckLvlUp(_1, player: Ai):
 
 def IncantBroadCast(client: Client, player: Ai):
     print("J'ai besoin de gens à ma case")
-    str = "Incantation Lvl %d".format(player.getLevel())
-    client.build_command("Broadcast", str)
+    # str = "Incantation Lvl %d" % format(player.getLevel())
+    client.build_command("Broadcast", "toto")
     return Actions.CHECK_LVL_UP
 
 
@@ -88,7 +88,7 @@ def CheckPlayer(client: Client, player: Ai):
         if len(client.msgQueue) > 0:
             pass
             # print(client.msgQueue.popleft())
-        return Actions.LOOK  # CHANGER
+        return Actions.NEED_PEOPLE  # CHANGER
     else:
         return Actions.TAKE_ALL
     # todo, broadcast pour savoir le lvl des autres personnes sur la case

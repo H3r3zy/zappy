@@ -34,10 +34,18 @@ void gui_sgt(server_t *server, __attribute__((unused)) char *arg)
 */
 void gui_sst(server_t *server, char *arg)
 {
-	long freq = strtol(arg, NULL, 10);
+	char *err = NULL;
+	long freq;
 
-	server->freq = (uint32_t)freq;
-	add_to_gui_queue(&server->gui, GUI_OK, 3);
+	if (arg) {
+		freq = strtol(arg, &err, 10);
+		if (*err) {
+			add_to_gui_queue(&server->gui, GUI_KO, 3);
+			return;
+		}
+		server->freq = (uint32_t)freq;
+		add_to_gui_queue(&server->gui, GUI_OK, 3);
+	}
 }
 
 /**
@@ -49,9 +57,11 @@ void gui_tna(server_t *server, __attribute__((unused)) char *arg)
 {
 	char buff[262] = {0};
 	static char end[] = {'e', 'n', 'd', 't', 'n', 'a', -5};
+	int len = 0;
 
 	for (teams_t *team = server->teams; team; team = team->next) {
-		snprintf(buff, 262, "tna %s" -5, team->name);
+		len = snprintf(buff, 262, "tna %s", team->name);
+		buff[len] = -5;
 		add_to_gui_queue(&server->gui, buff, 5 + strlen(team->name));
 	}
 	add_to_gui_queue(&server->gui, (char *)end, 3);

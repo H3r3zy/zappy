@@ -65,14 +65,16 @@ static void print_map_cell(server_t *server, uint32_t x, uint32_t y)
 void gui_bct(server_t *server, char *arg,
 	__attribute__((unused)) bool *status)
 {
-	long x = strtol(arg, NULL, 10);
-	long y = strtol(strchr(arg, ' ') + 1, NULL, 10);
+	char *err;
+	long x = (arg) ? strtol(arg, &err, 10) : -1;
+	long y = ((!*err || *err == ' ') && x > -1 && strchr(arg, ' '))
+		? strtol(strchr(arg, ' ') + 1, &err, 10) : -1;
 
-	if (x < 0 || y < 0 || x >= server->map.size.x ||
-		y >= server->map.size.y)
-		add_to_gui_queue(&server->gui, GUI_KO, 3);
-	else
+	if (!*err && x < server->map.size.x &&
+		y > -1 && y < server->map.size.y)
 		print_map_cell(server, x, y);
+	else
+		add_to_gui_queue(&server->gui, GUI_KO, 3);
 }
 
 int process_map_printing(server_t *server, pos_t *pos,

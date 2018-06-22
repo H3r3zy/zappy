@@ -75,9 +75,12 @@ int pollin_gui(server_t *server)
 		end = strchr(cmd, '\n');
 	}
 	*server->gui.buff = 0;
-	if (server->gui.buff[off])
+	if (server->gui.buff[off]) {
+		debug(WARNING "%i => off: %i => len : %i\n", server->gui.buff, off, server->gui.buff_len);
 		memmove(server->gui.buff, server->gui.buff + off,
 			server->gui.buff_len - off + 1);
+		server->gui.buff_len -= off;
+	}
 	return 0;
 }
 

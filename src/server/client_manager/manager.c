@@ -144,8 +144,10 @@ int pollin_client(server_t *server, client_t *client)
 		end = strchr(cmd, '\n');
 	}
 	*client->buff = 0;
-	if (client->buff[off])
+	if (client->buff[off]) {
 		memmove(client->buff, client->buff + off,
 			client->buff_len - off + 1);
+		client->buff_len -= off;
+	}
 	return 0;
 }

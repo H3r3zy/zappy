@@ -32,7 +32,7 @@ void update_resource(map_t *map, pos_t *pos, entity_type_t t, int n)
 */
 void init_map(map_t *map)
 {
-	float density = 100.0f;
+	float density = 5.0f;
 	uint32_t elements = (uint32_t)(map->size.x * map->size.y * density);
 	pos_t pos;
 

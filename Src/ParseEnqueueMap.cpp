@@ -180,9 +180,10 @@ void ParseEnqueueMap::parseNextCommand(irc::Map &map)
 			movePlayerPosition(map, it);
 		} else if (it.getCommandName() == "ptu") {
 			movePlayerOrientation(map, it);
-		}
-		else if (it.getCommandName() == "pgt") {
+		} else if (it.getCommandName() == "pgt") {
 			takeResourcePlayer(map, it);
+		} else if (it.getCommandName() == "pdr") {
+			dropResourcePlayer(map, it);
 		}
 		_comm.getEnqueueMap().erase(_comm.getEnqueueMap().begin());
 
@@ -262,6 +263,13 @@ bool ParseEnqueueMap::takeResourcePlayer(irc::Map &map, const CstringArray &comm
 	std::cout << "Sur la case X " << map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().x << " Y "<< map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().y  << " c'est la ressoucre " << command.getCommand()[1] << std::endl;*/
 	map.getCharacterMap().at(command.getCommand()[0]).setPlayerTake((char)command.getCommand()[1], command.getCommand()[1]);
 	map.getGrid().getCell(static_cast<int>(map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().x / 100), static_cast<int>(map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().y / 100))->delResources(command.getCommand()[1]);
+	return true;
+}
+
+bool ParseEnqueueMap::dropResourcePlayer(irc::Map &map, const CstringArray &command)
+{
+	map.getCharacterMap().at(command.getCommand()[0]).setPlayerTake((char)command.getCommand()[1], command.getCommand()[1]);
+	map.getGrid().getCell(static_cast<int>(map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().x / 100), static_cast<int>(map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().y / 100))->addRessources(command.getCommand()[1]);
 	return true;
 }
 

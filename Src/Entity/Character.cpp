@@ -61,8 +61,8 @@ sf::Sprite &Character::getCharacter()
 				_action = false;
 				_testTmp = 0;
 			}
-			std::cout << "je veux le mettre en pos" << _position.x << " " << _position.y << " et son orientation ";
-			printf("%d\n", _orientation);
+			//std::cout << "je veux le mettre en pos" << _position.x << " " << _position.y << " et son orientation ";
+			//printf("%d\n", _orientation);
 
 
 		}

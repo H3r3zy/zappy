@@ -57,6 +57,8 @@ Auth.hpp
 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/ParseEnqueueMap.cpp
 SFML/System.hpp
 -
+Class/Communication.hpp
+-
 ParseEnqueueMap.hpp
 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/ParseEnqueueMap.hpp
 Map.hpp

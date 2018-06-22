@@ -4,6 +4,7 @@
 
 
 #include <SFML/System.hpp>
+#include <Class/Communication.hpp>
 #include "ParseEnqueueMap.hpp"
 #include "Map.hpp"
 
@@ -92,9 +93,21 @@ void ParseEnqueueMap::fillMap(Grid &_grid, sf::Vector2f &mapSize)
 				_grid.getCell(tmpPrint[0], tmpPrint[1])->setRessources(3, tmpPrint[5]);
 				_grid.getCell(tmpPrint[0], tmpPrint[1])->setRessources(4, tmpPrint[6]);
 				_grid.getCell(tmpPrint[0], tmpPrint[1])->setRessources(5, tmpPrint[7]);
+				_grid.getCell(tmpPrint[0], tmpPrint[1])->setRessources(6, tmpPrint[8]);
+
+
+				_comm._server.ressources.q6 += tmpPrint[2];
+
+				_comm._server.ressources.q1 += tmpPrint[3];
+				_comm._server.ressources.q2 += tmpPrint[4];
+				_comm._server.ressources.q3 += tmpPrint[5];
+
+				_comm._server.ressources.q4 += tmpPrint[6];
+				_comm._server.ressources.q5 += tmpPrint[7];
+				_comm._server.ressources.q0 += tmpPrint[8];
+
 
 				/* Food */
-				_grid.getCell(tmpPrint[0], tmpPrint[1])->setRessources(6, tmpPrint[8]);
 				_blocNumber++;
 
 				if (tmpPrint[0] == mapSize.x - 1 && tmpPrint[1] == mapSize.y - 1) {
@@ -263,6 +276,27 @@ bool ParseEnqueueMap::takeResourcePlayer(irc::Map &map, const CstringArray &comm
 	std::cout << "Sur la case X " << map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().x << " Y "<< map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().y  << " c'est la ressoucre " << command.getCommand()[1] << std::endl;*/
 	map.getCharacterMap().at(command.getCommand()[0]).setPlayerTake((char)command.getCommand()[1], command.getCommand()[1]);
 	map.getGrid().getCell(static_cast<int>(map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().x / 100), static_cast<int>(map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().y / 100))->delResources(command.getCommand()[1]);
+
+
+	// TODO enelever cette foret de if degueu xD
+
+	if (command.getCommand()[1] == 6)
+		_comm._server.ressources.q0--;
+	else if (command.getCommand()[1] == 1)
+		_comm._server.ressources.q1--;
+	else if (command.getCommand()[1] == 2)
+		_comm._server.ressources.q2--;
+	else if (command.getCommand()[1] == 3)
+		_comm._server.ressources.q3--;
+	else if (command.getCommand()[1] == 4)
+		_comm._server.ressources.q4--;
+	else if (command.getCommand()[1] == 5)
+		_comm._server.ressources.q5--;
+	else if (command.getCommand()[1] == 1) {
+		std::cout << "JE SUIS UNE GROSSE CHIENNE" << std::endl;
+		_comm._server.ressources.q6--;
+		std::cout << "resource mnt : " << _comm._server.ressources.q6 << std::endl;
+	}
 	return true;
 }
 
@@ -270,6 +304,21 @@ bool ParseEnqueueMap::dropResourcePlayer(irc::Map &map, const CstringArray &comm
 {
 	map.getCharacterMap().at(command.getCommand()[0]).setPlayerTake((char)command.getCommand()[1], command.getCommand()[1]);
 	map.getGrid().getCell(static_cast<int>(map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().x / 100), static_cast<int>(map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().y / 100))->addRessources(command.getCommand()[1]);
+
+	if (command.getCommand()[1] == 6)
+		_comm._server.ressources.q0++;
+	else if (command.getCommand()[1] == 1)
+		_comm._server.ressources.q1++;
+	else if (command.getCommand()[1] == 2)
+		_comm._server.ressources.q2++;
+	else if (command.getCommand()[1] == 3)
+		_comm._server.ressources.q3++;
+	else if (command.getCommand()[1] == 4)
+		_comm._server.ressources.q4++;
+	else if (command.getCommand()[1] == 5)
+		_comm._server.ressources.q5++;
+	else if (command.getCommand()[1] == 1)
+		_comm._server.ressources.q6++;
 	return true;
 }
 

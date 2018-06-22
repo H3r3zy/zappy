@@ -107,6 +107,12 @@ namespace irc {
 			{"bct", irc::TYPE_ENQUEUE::T_BOTH},
 			{"pdi", irc::TYPE_ENQUEUE::T_MAP},
 			{"pnw", irc::TYPE_ENQUEUE::T_MAP},
+
+			{"pmv", irc::TYPE_ENQUEUE::T_MAP}, // move joueur
+			{"ptu", irc::TYPE_ENQUEUE::T_MAP}, // change orientation joueur
+			{"pdr", irc::TYPE_ENQUEUE::T_MAP}, //
+			{"pgt", irc::TYPE_ENQUEUE::T_MAP}, //
+
 			{"", irc::TYPE_ENQUEUE::T_UNKNOWN}
 		};
 

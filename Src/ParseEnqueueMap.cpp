@@ -29,21 +29,21 @@ sf::Vector2f ParseEnqueueMap::ParseMapSize()
 		save.clear();
 		std::cerr << "size: " << test.size() << std::endl;
 		for (const auto &it : test) {
-			std::cout << "Coammnde Name [" << it.getCommandName() << "]" << std::endl;
+			//std::cout << "Coammnde Name [" << it.getCommandName() << "]" << std::endl;
 			auto tmpPrint = it.getCommand();
 			if (tmpPrint.size() == 8) {
-				std::cout << "Et son message est :"
+/*				std::cout << "Et son message est :"
 					<< tmpPrint[0] << " " << tmpPrint[1]
 					<< " " << tmpPrint[2] << " "
 					<< tmpPrint[3] << " " << tmpPrint[4]
 					<< " " << tmpPrint[5] << " "
 					<< tmpPrint[6] << " " << tmpPrint[7]
-					<< std::endl;
+					<< std::endl;*/
 			}
 			if (it.getCommandName() == "msz") {
 				tmpMap.x = tmpPrint[0];
 				tmpMap.y = tmpPrint[1];
-				std::cout << "je vais return un vector X" << tmpMap.x << " Y " << tmpMap.y << std::endl;
+				//std::cout << "je vais return un vector X" << tmpMap.x << " Y " << tmpMap.y << std::endl;
 				_comm.lockMap();
 				_comm.setEnqueueMap(save);
 				_comm.unlockMap();
@@ -51,7 +51,7 @@ sf::Vector2f ParseEnqueueMap::ParseMapSize()
 			} else {
 				save.push_back(it);
 			}
-			std::cout << "je boucle dedans pour la " << i << " fois" << std::endl;
+			//std::cout << "je boucle dedans pour la " << i << " fois" << std::endl;
 			i++;
 		}
 	}
@@ -77,11 +77,11 @@ void ParseEnqueueMap::fillMap(Grid &_grid, sf::Vector2f &mapSize)
 
 			//	window.clear(sf::Color::Black);
 			if (it.getCommandName() == "bct") {
-				std::cout << "Coammnde Name [" << it.getCommandName() << "]" << std::endl;
+				//std::cout << "Coammnde Name [" << it.getCommandName() << "]" << std::endl;
 				auto tmpPrint = it.getCommand();
 				if (tmpPrint.size() == 9)
-					std::cout << "Et son message est :" << tmpPrint[0] << " " << tmpPrint[1] << " " << tmpPrint[2] << " " << tmpPrint[3] << " " << tmpPrint[4] << " " << tmpPrint[5] << " " << tmpPrint[6] << " " << tmpPrint[7]<< " " << tmpPrint[8] << std::endl;
-				std::cout << "Ma cellule est en X " << _grid.getCell(tmpPrint[0], tmpPrint[1])->getPosition().x << " Y " << _grid.getCell(tmpPrint[0], tmpPrint[1])->getPosition().y << std::endl;
+					//std::cout << "Et son message est :" << tmpPrint[0] << " " << tmpPrint[1] << " " << tmpPrint[2] << " " << tmpPrint[3] << " " << tmpPrint[4] << " " << tmpPrint[5] << " " << tmpPrint[6] << " " << tmpPrint[7]<< " " << tmpPrint[8] << std::endl;
+				//std::cout << "Ma cellule est en X " << _grid.getCell(tmpPrint[0], tmpPrint[1])->getPosition().x << " Y " << _grid.getCell(tmpPrint[0], tmpPrint[1])->getPosition().y << std::endl;
 
 
 				/* Q1 => Q6 */
@@ -165,38 +165,51 @@ void ParseEnqueueMap::parseNextCommand(irc::Map &map)
 	int i = 0;
 	_comm.lockMap();
 	for (const auto &it : _comm.getEnqueueMap()) {
+		/*std::cout << "Commande numero " << " [" << it.getCommandName() << "]" << std::endl;
+
+		std::vector<uint> tmpCommand = it.getCommand();
+
+		std::cout << "Player number :" << tmpCommand[0] << " Position en X " << tmpCommand[1] << " Position en Y " << tmpCommand[2] << " Orientation "  << tmpCommand[3] << " level " << tmpCommand[4] << " team name " << it.getTeamName() << std::endl;*/
+
 		if (it.getCommandName() == "pnw") {
 			addPlayer(map, it);
+			_comm.getEnqueueMap().erase(_comm.getEnqueueMap().begin());
 		} else if (it.getCommandName() == "pdi") {
 			deletePlayer(map, it);
+			_comm.getEnqueueMap().erase(_comm.getEnqueueMap().begin());
+		}  else if (it.getCommandName() == "pmv") {
+			if (movePlayerPosition(map, it))
+				_comm.getEnqueueMap().erase(_comm.getEnqueueMap().begin());
+		} else if (it.getCommandName() == "ptu") {
+			movePlayerOrientation(map, it);
+			_comm.getEnqueueMap().erase(_comm.getEnqueueMap().begin());
 		}
 		i++;
-		_comm.getEnqueueMap().erase(_comm.getEnqueueMap().begin());
 		break;
 	}
 	//sleep(1);
-	//	std::cout << "il y a " << i << "messages dans ma queue "<< std::endl;
+	//	//std::cout << "il y a " << i << "messages dans ma queue "<< std::endl;
 
 	_comm.unlockMap();
 }
 
 void ParseEnqueueMap::addPlayer(irc::Map &map, const CstringArray &command)
 {
-	std::cout << "Commande numero " << " [" << command.getCommandName() << "]" << std::endl;
+	//std::cout << "Commande numero " << " [" << command.getCommandName() << "]" << std::endl;
 
 	std::vector<uint> tmpCommand = command.getCommand();
 
-	std::cout << "Player number :" << tmpCommand[0] << " Position en X " << tmpCommand[1] << " Position en Y " << tmpCommand[2] << " Orientation "  << tmpCommand[3] << " level " << tmpCommand[4] << " team name " << command.getTeamName() << std::endl;
+	//std::cout << "Player number :" << tmpCommand[0] << " Position en X " << tmpCommand[1] << " Position en Y " << tmpCommand[2] << " Orientation "  << tmpCommand[3] << " level " << tmpCommand[4] << " team name " << command.getTeamName() << std::endl;
 	sf::Vector2f tmp = {tmpCommand[1] * 100, (tmpCommand[2] * 100)};
 	tmp.y *= -1;
-	std::cout << "Je vais placer mon joueur en X " << tmp.x << " Y " << tmp.y << std::endl;
+	//std::cout << "Je vais placer mon joueur en X " << tmp.x << " Y " << tmp.y << std::endl;
 
-	map.getCharacterMap().emplace_back(map.getGrid().getTextureCharacter(), tmp, tmpCommand[0]);
+	map.getCharacterMap().emplace(tmpCommand[0], Character(map.getGrid().getTextureCharacter(), tmp, tmpCommand[0]));
 	for (auto &it : map.getCharacterMap()) {
-		if (it.getPlayerID() == tmpCommand[0]) {
-			it.setPlayerOrientation(static_cast<char>(tmpCommand[3]));
-			it.setPlayerTeam(command.getTeamName());
-			it.setPlayerLevel(tmpCommand[4]);
+		if (it.second.getPlayerID() == tmpCommand[0]) {
+			it.second.setPlayerOrientation(static_cast<char>(tmpCommand[3]));
+			it.second.setPlayerTeam(command.getTeamName());
+			it.second.setPlayerLevel(tmpCommand[4]);
 			break;
 		}
 	}
@@ -204,11 +217,11 @@ void ParseEnqueueMap::addPlayer(irc::Map &map, const CstringArray &command)
 
 void ParseEnqueueMap::deletePlayer(irc::Map &map, const CstringArray &command)
 {
-	std::cout << "je vais supprimer le joueur " << command.getCommand()[0] << std::endl;
-	std::vector<Character> &tmp = map.getCharacterMap();
+	//std::cout << "je vais supprimer le joueur " << command.getCommand()[0] << std::endl;
+	std::map<uint, Character> &tmp = map.getCharacterMap();
 
 	for (auto vec_it = (tmp).begin(); vec_it != (tmp).end(); ) {
-		if (vec_it->getPlayerID() == command.getCommand()[0]) {
+		if (vec_it->second.getPlayerID() == command.getCommand()[0]) {
 			tmp.erase(vec_it);
 			break;
 		} else {
@@ -216,3 +229,28 @@ void ParseEnqueueMap::deletePlayer(irc::Map &map, const CstringArray &command)
 		}
 	}
 }
+
+bool ParseEnqueueMap::movePlayerPosition(irc::Map &map, const CstringArray &command)
+{
+	std::cout << "je vais faire bouger " << command.getCommand()[0] << std::endl;
+	sf::Vector2f tmpPos = {command.getCommand()[1] * 100, command.getCommand()[2] * 100};
+	tmpPos.y *= -1;
+	std::cout << "Mon joueur va bouger en X " << tmpPos.x << " Y " << tmpPos.y << std::endl;
+
+	//	if (!map.getCharacterMap().at(command.getCommand()[0]).getAction()) {
+		map.getCharacterMap().at(command.getCommand()[0]).setPlayerMovement(tmpPos, command.getCommand()[3]);
+		return true;
+//	} else {
+///		return false;
+//	}
+	//map.getCharacterMap()[0].setPlayerMovement(tmpPos, command.getCommand()[3]);
+}
+
+void ParseEnqueueMap::movePlayerOrientation(irc::Map &map, const CstringArray &command)
+{
+	std::cout << " je vais mettre l'orientation de mon gars en " << command.getCommand()[1] << std::endl;
+	map.getCharacterMap().at(command.getCommand()[0]).setPlayerOrientation(static_cast<char>(command.getCommand()[1]));
+}
+
+// pmv // ID posX posY orientation
+// lautre // ID orientation

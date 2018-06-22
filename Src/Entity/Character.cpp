@@ -31,48 +31,55 @@ Character::~Character()
 sf::Sprite &Character::getCharacter()
 {
 	// 0 => 100 => 7 sec
-	return _sprite[_orientation][_actualSprite];
 
 	if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - _beginTime).count() > 100) {
-	//	std::cout << "il c passé une dixieme de seconde" << std::endl;
+	//	//std::cout << "il c passé une dixieme de seconde" << std::endl;
 		_beginTime = std::chrono::system_clock::now();
-		_sprite[_randomDirection][_actualSprite].setPosition(_position.x, _position.y);
-
 
 		// TODO A DEGAGER
-		if (_randomDirection == WALK_LEFT)
-			_position.x -= 1.4;
-		else if (_randomDirection == WALK_RIGHT)
-			_position.x += 1.4;
-		else if (_randomDirection == WALK_UP)
-			_position.y -= 1.4;
-		else if (_randomDirection == WALK_DOWN)
-			_position.y += 1.4;
+		if (_action) {
+			//std::cout << "Le joueur " << _id << " est en action" << std::endl;
+			if (_orientation == WALK_LEFT)
+				_position.x -= 1.4;
+			else if (_orientation == WALK_RIGHT)
+				_position.x += 1.4;
+			else if (_orientation == WALK_UP)
+				_position.y -= 1.4;
+			else if (_orientation == WALK_DOWN)
+				_position.y += 1.4;
 
-		_actualSprite++;
-		_testTmp++;
+			_actualSprite++;
+			if (_actualSprite == 8)
+				_actualSprite = 0;
 
+
+			_testTmp++;
+			//std::cout << " le tmp = " << _testTmp << std::endl;
+			if (_testTmp == 70) {
+				_action = false;
+				_testTmp = 0;
+			}
+	//		std::cout << "je veux le mettre en pos" << _position.x << " " << _position.y << " et son orientation ";
+	//		printf("%d\n", _orientation);
+
+
+		}
+		_sprite[_orientation][_actualSprite].setPosition(_position.x, _position.y);
 	}
-	if (_testTmp == 70) {
-		_testTmp = 0;
-		_randomDirection = rand() % 4;
-	}
 
-//	std::cout << "il est en "<< _position.x << " " <<  _position.y << std::endl;
-	if (_actualSprite == 9)
-		_actualSprite = 0;
 
-	_sprite[_randomDirection][_actualSprite].setPosition(_position.x, _position.y);
-	return _sprite[_randomDirection][_actualSprite];
+//	//std::cout << "il est en "<< _position.x << " " <<  _position.y << std::endl;
+
+	return _sprite[_orientation][_actualSprite];
 }
 
 bool Character::playerLoop(sf::RenderWindow &window)
 {
-	std::cout << "coucou" << std::endl;
+	//std::cout << "coucou" << std::endl;
 	auto _beginTime = std::chrono::system_clock::now();
 	while (true) {
 		if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - _beginTime).count() > 1000) {
-			std::cout << "il c passé une seconde" << std::endl;
+			//std::cout << "il c passé une seconde" << std::endl;
 			_beginTime = std::chrono::system_clock::now();
 //			window.draw(_sprite[WALK_LEFT][_actualSprite]);
 		}
@@ -92,7 +99,7 @@ const std::string &Character::getPlayerTeam() const
 void Character::setPlayerOrientation(char orientation)
 {
 	_orientation = orientation;
-	_sprite[orientation][_actualSprite].setPosition(_position.x, _position.y);
+//	_sprite[orientation][_actualSprite].setPosition(_position.x, _position.y);
 }
 
 const char Character::getPlayerOrientation() const
@@ -113,4 +120,24 @@ void Character::setPlayerLevel(uint level)
 const uint &Character::getPlayerLevel() const
 {
 	return _level;
+}
+
+void Character::setPlayerMovement(sf::Vector2f &finalPos, uint orientation)
+{
+	static bool oneTime = false;
+
+	if (oneTime) {
+		_position = _nextPos;
+		std::cout << "nextpos = " << _nextPos.x << " " << _nextPos.y << std::endl;
+	}
+	oneTime = true;
+	_testTmp = 0;
+	//_orientation = static_cast<char>(orientation);
+	_nextPos = finalPos;
+	_action = true;
+}
+
+const bool Character::getAction() const
+{
+	return _action;
 }

@@ -7,5 +7,5 @@ then
 fi
 
 for ((i=0;i<$2;++i)); do
-    cat $1 | nc -N -i 1 0 $3 > /dev/null &
+    cat $1 | nc -i 1 0 $3 > /dev/null &
 done

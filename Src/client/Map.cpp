@@ -72,7 +72,7 @@ void irc::Map::loopDisplay()
 			_comm._shack._pos.first = -1;
 			_comm._shack._pos.second = -1;
 		}
-
+		//std::cout << "je boucle " << std::endl;
 		_enqueueMap.parseNextCommand(*this);
 
 		getEvent();
@@ -80,7 +80,7 @@ void irc::Map::loopDisplay()
 		_gameWindow.setView(_camera[MAP]);
 		_grid.displayGlobalGrid(_gameWindow, _camera[MAP]);
 		for (auto &it : _character) {
-			_gameWindow.draw(it.getCharacter());
+			_gameWindow.draw(it.second.getCharacter());
 		}
 
 		/* HUD DISPLAY */
@@ -173,7 +173,7 @@ bool irc::Map::getEvent()
 			}
 			break;
 		case sf::Event::MouseButtonReleased:
-//			std::cout << "the right button was pressed" << std::endl;
+//			//std::cout << "the right button was pressed" << std::endl;
 
 
 			sf::Vector2i pixelPos = sf::Vector2i(sf::Mouse::getPosition(_gameWindow));
@@ -181,16 +181,16 @@ bool irc::Map::getEvent()
 			// convert it to world coordinates
 			sf::Vector2f worldPos = _gameWindow.mapPixelToCoords(pixelPos, _camera[MAP]);
 /*
-			std::cout << "mouse x: " << event.mouseButton.x << std::endl;
-			std::cout << "mouse y: " << event.mouseButton.y << std::endl;
+			//std::cout << "mouse x: " << event.mouseButton.x << std::endl;
+			//std::cout << "mouse y: " << event.mouseButton.y << std::endl;
 
-			std::cout << "position map" << worldPos.x << " " << worldPos.y << std::endl;
+			//std::cout << "position map" << worldPos.x << " " << worldPos.y << std::endl;
 
 
 
-			std::cout << "=-=-=-==-=-=-==-=-=--=-==-=-" << std::endl;
-			std::cout << "Je regarde si la cellule X: " << (static_cast<int>(worldPos.x / 100)) << " Y: " << static_cast<int>((worldPos.y + 100)* -1 / 100) << "est valide" << std::endl;
-			std::cout << "=-=-=-==-=-=-==-=-=--=-==-=-" << std::endl;
+			//std::cout << "=-=-=-==-=-=-==-=-=--=-==-=-" << std::endl;
+			//std::cout << "Je regarde si la cellule X: " << (static_cast<int>(worldPos.x / 100)) << " Y: " << static_cast<int>((worldPos.y + 100)* -1 / 100) << "est valide" << std::endl;
+			//std::cout << "=-=-=-==-=-=-==-=-=--=-==-=-" << std::endl;
 
 */
 			if (_grid.checkvalid(static_cast<int>(worldPos.x / 100), static_cast<int>((worldPos.y - 100) * -1 / 100))) {
@@ -210,10 +210,10 @@ bool irc::Map::getEvent()
 				}
 				// Todo: Add list player on it
 
-				std::cout << "je creer un perso en" << worldPos.x << " " << worldPos.y << std::endl;
+				//std::cout << "je creer un perso en" << worldPos.x << " " << worldPos.y << std::endl;
 				//_character.emplace_back(_grid.getTextureCharacter(), worldPos);
 
-				std::cout << "jai reussit" << std::endl;
+				//std::cout << "jai reussit" << std::endl;
 			}
 
 			break;
@@ -228,19 +228,19 @@ bool irc::Map::getEvent()
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
 		while (sf::Keyboard::isKeyPressed(sf::Keyboard::Z));
-		std::cout << " jai appuyé sur Z"<< std::endl;
+		//std::cout << " jai appuyé sur Z"<< std::endl;
 
 	}
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
 		while (sf::Keyboard::isKeyPressed(sf::Keyboard::A));
-		std::cout << " jai appuyé sur Z"<< std::endl;
+		//std::cout << " jai appuyé sur Z"<< std::endl;
 		_camera[MAP].zoom(1.2f);
 		_windowInfo->updateZoom(1.2);
 	}
 	return true;
 }
 
-std::vector<Character> &irc::Map::getCharacterMap()
+std::map<uint, Character> &irc::Map::getCharacterMap()
 {
 	return _character;
 }

@@ -10,8 +10,8 @@
 
 Grid::Grid(const sf::Vector2f &mapSize, sf::RenderWindow &window) : _mapSize(mapSize), _nbActive(0)
 {
-	std::cout << "nnike ta grosse chienne" << std::endl;
-	std::cout << "je suis dans Grid, la taille de ma map map X" << _mapSize.x << " Y " << _mapSize.y << std::endl;
+	//std::cout << "nnike ta grosse chienne" << std::endl;
+	//std::cout << "je suis dans Grid, la taille de ma map map X" << _mapSize.x << " Y " << _mapSize.y << std::endl;
 
 	window.setActive(false);
 	auto thread(new my::Thread([&]() {loadingDisplay(_mapSize);}));
@@ -164,10 +164,10 @@ void Grid::updateGrid3D(sf::View &view)
 	sf::Vector2f chunk;
 	chunk.x = (view.getCenter().x) / 100 - 7 >= 0? (view.getCenter().x) / 100 - 7 : -1;
 	chunk.y = ((view.getCenter().y * -1) / 100) - 10;
-/*	std::cout << "Je suis en [" << view.getCenter().x << "][" << view.getCenter().y << "]" << std::endl;
-	std::cout << "Mon chunk est en [" << chunk.x << "][" << chunk.y << "]" << std::endl;
-	std::cout << "L calcul que je fais X:" << (view.getCenter().x) / 100 - 10 << std::endl;
-	std::cout << "L calcul que je fais Y:" << (view.getCenter().y * - 1) / 100 - 10 << std::endl;*/
+/*	//std::cout << "Je suis en [" << view.getCenter().x << "][" << view.getCenter().y << "]" << std::endl;
+	//std::cout << "Mon chunk est en [" << chunk.x << "][" << chunk.y << "]" << std::endl;
+	//std::cout << "L calcul que je fais X:" << (view.getCenter().x) / 100 - 10 << std::endl;
+	//std::cout << "L calcul que je fais Y:" << (view.getCenter().y * - 1) / 100 - 10 << std::endl;*/
 	// TODO dont push entities when left or e dessous
 	sf::Vector2f to = chunk;
 	to.x += 17;
@@ -185,7 +185,7 @@ void Grid::updateGrid3D(sf::View &view)
 		if (chunk.x >= to.x) {
 			chunk.x = (view.getCenter().x) / 100 - 7;
 			chunk.y++;
-			//std::cout << "mnt mon chunk vaut :" << chunk.y << " de haut et doit pas depasser " << to.y << std::endl;
+			////std::cout << "mnt mon chunk vaut :" << chunk.y << " de haut et doit pas depasser " << to.y << std::endl;
 		}
 	}
 
@@ -216,7 +216,7 @@ uint Grid::getNbActive() const
 	return _nbActive;
 }
 
-void Grid::displayMiniGrid(sf::RenderWindow &window, const sf::View &view, std::vector<Character> &character)
+void Grid::displayMiniGrid(sf::RenderWindow &window, const sf::View &view, std::map<uint, Character> &character)
 {
 	sf::RectangleShape tmpRect;
 	tmpRect.setSize(sf::Vector2f(10, 10));
@@ -227,7 +227,7 @@ void Grid::displayMiniGrid(sf::RenderWindow &window, const sf::View &view, std::
 
 	window.draw(Grey);
 	for (const auto &it : character) {
-		tmpRect.setPosition(sf::Vector2f(it.getPosition()));
+		tmpRect.setPosition(sf::Vector2f(it.second.getPosition()));
 		window.draw(tmpRect);
 	}
 }
@@ -239,7 +239,7 @@ Cell *&Grid::getCell(int x, int y)
 
 bool Grid::checkvalid(int x, int y)
 {
-	std::cout << "je recoit" << x << " " << y << std::endl;
+	//std::cout << "je recoit" << x << " " << y << std::endl;
 	if (x < 0 || y < 0)
 		return false;
 	return _gameMap.find(POSITION(static_cast<const uint &>(x), static_cast<const uint &>(y))) != _gameMap.end();
@@ -264,7 +264,7 @@ void Grid::loadWater()
 
 
 	while (actualPos.y > destPos.y) {
-		std::cout << "je creer un macaque en" << actualPos.x<< " "<< actualPos.y<< std::endl;
+		//std::cout << "je creer un macaque en" << actualPos.x<< " "<< actualPos.y<< std::endl;
 		_waterMap.emplace_back(actualPos, _waterPack);
 		actualPos.x += 100;
 		if (actualPos.x == destPos.x) {

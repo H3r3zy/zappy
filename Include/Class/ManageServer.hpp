@@ -46,6 +46,11 @@ namespace irc {
 		{"pnw", &irc::ManageServer::parseLine8Input},
 		{"bct", &irc::ManageServer::parseLine8Input},
 		{"pdi", &irc::ManageServer::parseLine8Input},
+		{"pmv", &irc::ManageServer::parseLine8Input}, // move
+		{"ptu", &irc::ManageServer::parseLine8Input}, // move 2 ?
+		{"pdr", &irc::ManageServer::parseLine8Input}, //
+		{"pgt", &irc::ManageServer::parseLine8Input}, //
+
 	};
 
 }

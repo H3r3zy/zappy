@@ -39,7 +39,7 @@ class Grid {
 	public:
 	Grid(const sf::Vector2f &mapSize, sf::RenderWindow &window);
 	void displayGlobalGrid(sf::RenderWindow &window, const sf::View &view);
-	void displayMiniGrid(sf::RenderWindow &window, const sf::View &view, std::vector<Character> &character);
+	void displayMiniGrid(sf::RenderWindow &window, const sf::View &view, std::map<uint, Character> &character);
 	void updateGrid3D(sf::View &view);
 	uint getNbActive() const;
 	bool checkvalid(int x, int y);

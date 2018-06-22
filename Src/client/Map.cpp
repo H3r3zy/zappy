@@ -9,7 +9,6 @@
 #include <unistd.h>
 #include <thread>
 #include <Tools/Thread.hpp>
-#include <Class/Communication.hpp>
 #include "Communication.hpp"
 #include "SfmlTool.hpp"
 #include "Map.hpp"

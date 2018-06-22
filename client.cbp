@@ -44,7 +44,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Src"/>
 					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Include"/>
 					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Include/Text"/>
 					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Include/Entity"/>
@@ -82,7 +81,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Src"/>
 					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Include"/>
 					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Include/Text"/>
 					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Include/Entity"/>
@@ -120,7 +118,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Src"/>
 					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Include"/>
 					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Include/Text"/>
 					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Include/Entity"/>
@@ -158,7 +155,6 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
-					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Src"/>
 					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Include"/>
 					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Include/Text"/>
 					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Include/Entity"/>
@@ -397,13 +393,7 @@
 		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/include">
 			<Option target="zappy_server"/>
 		</Unit>
-		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/ai_protocol/broadcast.c">
-			<Option target="zappy_server"/>
-		</Unit>
 		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/ai_protocol/connect_nbr.c">
-			<Option target="zappy_server"/>
-		</Unit>
-		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/ai_protocol/die.c">
 			<Option target="zappy_server"/>
 		</Unit>
 		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/ai_protocol/eject.c">
@@ -424,18 +414,6 @@
 		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/ai_protocol/movement.c">
 			<Option target="zappy_server"/>
 		</Unit>
-		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/ai_protocol/set.c">
-			<Option target="zappy_server"/>
-		</Unit>
-		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/ai_protocol/take.c">
-			<Option target="zappy_server"/>
-		</Unit>
-		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/client_manager/egg.c">
-			<Option target="zappy_server"/>
-		</Unit>
-		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/client_manager/end.c">
-			<Option target="zappy_server"/>
-		</Unit>
 		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/client_manager/join.c">
 			<Option target="zappy_server"/>
 		</Unit>
@@ -445,18 +423,10 @@
 		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/client_manager/manager.c">
 			<Option target="zappy_server"/>
 		</Unit>
-		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/client_manager/msg_queue.c">
+		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/graphic_protocol/action.c">
 			<Option target="zappy_server"/>
 		</Unit>
-		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/client_manager/orientation.c">
-			<Option target="zappy_server"/>
-		</Unit>
-		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/client_manager/teams.c">
-			<Option target="zappy_server"/>
-		</Unit>
-		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/debug.c">
-			<Option target="zappy_server"/>
-		</Unit>
+<<<<<<< Updated upstream
 		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/graphic_protocol/action.c">
 			<Option target="zappy_server"/>
 		</Unit>
@@ -481,6 +451,29 @@
 		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/graphic_protocol/server.c">
 			<Option target="zappy_server"/>
 		</Unit>
+=======
+		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/graphic_protocol/egg.c">
+			<Option target="zappy_server"/>
+		</Unit>
+		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/graphic_protocol/io.c">
+			<Option target="zappy_server"/>
+		</Unit>
+		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/graphic_protocol/map.c">
+			<Option target="zappy_server"/>
+		</Unit>
+		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/graphic_protocol/movement.c">
+			<Option target="zappy_server"/>
+		</Unit>
+		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/graphic_protocol/player.c">
+			<Option target="zappy_server"/>
+		</Unit>
+		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/graphic_protocol/quantification.c">
+			<Option target="zappy_server"/>
+		</Unit>
+		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/graphic_protocol/server.c">
+			<Option target="zappy_server"/>
+		</Unit>
+>>>>>>> Stashed changes
 		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/graphic_protocol/status.c">
 			<Option target="zappy_server"/>
 		</Unit>
@@ -493,6 +486,7 @@
 		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/loop.c">
 			<Option target="zappy_server"/>
 		</Unit>
+<<<<<<< Updated upstream
 		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/main.c">
 			<Option target="zappy_server"/>
 		</Unit>
@@ -512,18 +506,15 @@
 			<Option target="zappy_server"/>
 		</Unit>
 		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/scheduler/add.c">
+=======
+		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/parsing/string.c">
+>>>>>>> Stashed changes
 			<Option target="zappy_server"/>
 		</Unit>
 		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/scheduler/resource.c">
 			<Option target="zappy_server"/>
 		</Unit>
-		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/scheduler/scheduler.c">
-			<Option target="zappy_server"/>
-		</Unit>
 		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/server.c">
-			<Option target="zappy_server"/>
-		</Unit>
-		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/socket/socket.c">
 			<Option target="zappy_server"/>
 		</Unit>
 		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/CMakeLists.txt">

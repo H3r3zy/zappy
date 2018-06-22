@@ -27,6 +27,9 @@ class ParseEnqueueMap {
 	void addPlayer(irc::Map &map, const CstringArray &command);
 	void deletePlayer(irc::Map &map, const CstringArray &command);
 	bool movePlayerPosition(irc::Map &map, const CstringArray &command);
+	bool takeResourcePlayer(irc::Map &map, const CstringArray &command);
+	bool dropResourcePlayer(irc::Map &map, const CstringArray &command);
+	bool addRandomResource(irc::Map &map, const CstringArray &command);
 	void movePlayerOrientation(irc::Map &map, const CstringArray &command);
 
 	private:

@@ -19,7 +19,8 @@ class Character : public AMotionShape {
 		WALK_UP = 1,
 		WALK_RIGHT = 2,
 		WALK_DOWN = 3,
-		WALK_LEFT = 4
+		WALK_LEFT = 4,
+		TAKE = 5
 	};
 	public:
 	Character(std::map<char, std::vector<sf::Texture>> &_texturePack, sf::Vector2f &position, uint id);
@@ -36,7 +37,10 @@ class Character : public AMotionShape {
 	const uint &getPlayerLevel() const;
 
 	void setPlayerMovement(sf::Vector2f &finalPos, uint orientation);
+	void setPlayerTake(char orientation, uint resourceNumber);
 	static bool playerLoop(sf::RenderWindow &window);
+
+	const sf::Vector2f &getPlayerPosition() const;
 
 	sf::Sprite &getCharacter();
 	const bool getAction() const;

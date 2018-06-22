@@ -52,9 +52,11 @@ namespace irc {
 		{"nbu", &irc::ManageServer::parseLine1Input},
 		{"pmv", &irc::ManageServer::parseLine8Input}, // move
 		{"ptu", &irc::ManageServer::parseLine8Input}, // move 2 ?
-		{"pdr", &irc::ManageServer::parseLine8Input}, //
-		{"pgt", &irc::ManageServer::parseLine8Input}, //
+		{"pdr", &irc::ManageServer::parseLine8Input}, // resource dropping
+		{"pgt", &irc::ManageServer::parseLine8Input}, // resource collecting
+		{"sgr", &irc::ManageServer::parseLine8Input}, // resource random generate
 	};
+
 }
 
 #endif //CLIENT_MANAGESERVER_HPP

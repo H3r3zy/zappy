@@ -77,7 +77,7 @@ CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 			i++;
 		}
 		buffer[i] = '\0';
-
+std::cerr << "buffer: " << buffer << std::endl;
 		if (!strncmp("pnw", buffer, 3)) {
 			std::string teamName;
 			while (buffer[i] != ' ' && i > 0) {
@@ -93,7 +93,6 @@ CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 				break;
 			}
 		}
-		std::cout << "FINAL COMMAND: " << finalCommand.getCommandName() << std::endl;
 
 		std::string commandName;
 		for (const auto &it : buffer) {
@@ -103,6 +102,7 @@ CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 		}
 		//	std::cout << "Nom de ma commande : " << commandName << std::endl;
 		finalCommand.setCommandName(commandName);
+		std::cout << "FINAL COMMAND: " << finalCommand.getCommandName() << std::endl;
 	}
 	return finalCommand;
 }

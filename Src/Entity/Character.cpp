@@ -13,12 +13,14 @@ Character::Character(std::map<char, std::vector<sf::Texture>> &_texturePack, sf:
 		_sprite[WALK_RIGHT].emplace_back(sf::Sprite());
 		_sprite[WALK_UP].emplace_back(sf::Sprite());
 		_sprite[WALK_DOWN].emplace_back(sf::Sprite());
+		_sprite[TAKE].emplace_back(sf::Sprite());
 	}
 	for (int i = 0; i < 9; i++) {
 		_sprite[WALK_LEFT][i].setTexture(_texturePack[WALK_LEFT][i]);
 		_sprite[WALK_RIGHT][i].setTexture(_texturePack[WALK_RIGHT][i]);
 		_sprite[WALK_UP][i].setTexture(_texturePack[WALK_UP][i]);
 		_sprite[WALK_DOWN][i].setTexture(_texturePack[WALK_DOWN][i]);
+		_sprite[TAKE][i].setTexture(_texturePack[TAKE][i]);
 	}
 	srand(time(NULL));
 //	_sprite[WALK_LEFT][0]->setTexture(_texturePack[WALK_LEFT][0]);
@@ -59,8 +61,8 @@ sf::Sprite &Character::getCharacter()
 				_action = false;
 				_testTmp = 0;
 			}
-	//		std::cout << "je veux le mettre en pos" << _position.x << " " << _position.y << " et son orientation ";
-	//		printf("%d\n", _orientation);
+			//std::cout << "je veux le mettre en pos" << _position.x << " " << _position.y << " et son orientation ";
+			//printf("%d\n", _orientation);
 
 
 		}
@@ -132,7 +134,7 @@ void Character::setPlayerMovement(sf::Vector2f &finalPos, uint orientation)
 	}
 	oneTime = true;
 	_testTmp = 0;
-	//_orientation = static_cast<char>(orientation);
+	_orientation = static_cast<char>(orientation);
 	_nextPos = finalPos;
 	_action = true;
 }
@@ -140,4 +142,20 @@ void Character::setPlayerMovement(sf::Vector2f &finalPos, uint orientation)
 const bool Character::getAction() const
 {
 	return _action;
+}
+
+void Character::setPlayerTake(char orientation, uint resourceNumber)
+{
+	if (_nextPos.x != 0 && _nextPos.y != 0)
+		_position = _nextPos;
+	std::cout << "je dis au joueur" << _id << " de prendre un truc par terre, c'est la ressource " << resourceNumber << std::endl;
+	_actualSprite = 0;
+	_testTmp = 0;
+	_orientation = TAKE;
+	_action = true;
+}
+
+const sf::Vector2f &Character::getPlayerPosition() const
+{
+	return _position;
 }

@@ -107,13 +107,14 @@ namespace irc {
 			{"bct", irc::TYPE_ENQUEUE::T_BOTH},
 			{"pdi", irc::TYPE_ENQUEUE::T_MAP},
 			{"pnw", irc::TYPE_ENQUEUE::T_MAP},
+			{"pin", irc::TYPE_ENQUEUE::T_GUI},
 			{"nbu", irc::TYPE_ENQUEUE::T_GUI},
 			{"nbt", irc::TYPE_ENQUEUE::T_GUI},
-			{"pin", irc::TYPE_ENQUEUE::T_GUI},
 			{"pmv", irc::TYPE_ENQUEUE::T_MAP}, // move joueur
 			{"ptu", irc::TYPE_ENQUEUE::T_MAP}, // change orientation joueur
-			{"pdr", irc::TYPE_ENQUEUE::T_MAP}, //
-			{"pgt", irc::TYPE_ENQUEUE::T_MAP}, //
+			{"pdr", irc::TYPE_ENQUEUE::T_MAP}, // resource droppping
+			{"pgt", irc::TYPE_ENQUEUE::T_MAP}, // resource collecting
+			{"sgr", irc::TYPE_ENQUEUE::T_MAP}, // resource random generate
 			{"", irc::TYPE_ENQUEUE::T_UNKNOWN}
 		};
 	};

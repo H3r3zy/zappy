@@ -53,6 +53,7 @@ namespace irc {
 		{"ptu", &irc::ManageServer::parseLine8Input}, // move 2 ?
 		{"pdr", &irc::ManageServer::parseLine8Input}, // resource dropping
 		{"pgt", &irc::ManageServer::parseLine8Input}, // resource collecting
+		{"sgr", &irc::ManageServer::parseLine8Input}, // resource random generate
 	};
 
 }

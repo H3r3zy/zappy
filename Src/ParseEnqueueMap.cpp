@@ -197,6 +197,8 @@ void ParseEnqueueMap::parseNextCommand(irc::Map &map)
 			takeResourcePlayer(map, it);
 		} else if (it.getCommandName() == "pdr") {
 			dropResourcePlayer(map, it);
+		} else if (it.getCommandName() == "sgr") {
+			addRandomResource(map, it);
 		}
 		_comm.getEnqueueMap().erase(_comm.getEnqueueMap().begin());
 
@@ -319,6 +321,31 @@ bool ParseEnqueueMap::dropResourcePlayer(irc::Map &map, const CstringArray &comm
 		_comm._server.ressources.q5++;
 	else if (command.getCommand()[1] == 1)
 		_comm._server.ressources.q6++;
+	return true;
+}
+
+bool ParseEnqueueMap::addRandomResource(irc::Map &map, const CstringArray &command)
+{
+	std::cout << "size " << command.getCommand().size() << std::endl;
+	std::cout << "ma celle est cencee etre en " << command.getCommand()[0] << " " << command.getCommand()[1] << std::endl;
+	std::cout << "je vais add une random ressource " << command.getCommand()[2] << std::endl;
+	map.getGrid().getCell(command.getCommand()[0], command.getCommand()[1])->addRessources(command.getCommand()[2]);
+
+	if (command.getCommand()[1] == 6)
+		_comm._server.ressources.q0++;
+	else if (command.getCommand()[1] == 1)
+		_comm._server.ressources.q1++;
+	else if (command.getCommand()[1] == 2)
+		_comm._server.ressources.q2++;
+	else if (command.getCommand()[1] == 3)
+		_comm._server.ressources.q3++;
+	else if (command.getCommand()[1] == 4)
+		_comm._server.ressources.q4++;
+	else if (command.getCommand()[1] == 5)
+		_comm._server.ressources.q5++;
+	else if (command.getCommand()[1] == 1)
+		_comm._server.ressources.q6++;
+
 	return true;
 }
 

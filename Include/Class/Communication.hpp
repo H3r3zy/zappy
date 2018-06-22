@@ -113,6 +113,7 @@ namespace irc {
 			{"ptu", irc::TYPE_ENQUEUE::T_MAP}, // change orientation joueur
 			{"pdr", irc::TYPE_ENQUEUE::T_MAP}, // resource droppping
 			{"pgt", irc::TYPE_ENQUEUE::T_MAP}, // resource collecting
+			{"sgr", irc::TYPE_ENQUEUE::T_MAP}, // resource random generate
 			{"", irc::TYPE_ENQUEUE::T_UNKNOWN}
 		};
 	};

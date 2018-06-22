@@ -82,6 +82,14 @@ CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 			if (!strncmp(item.first.c_str(), buffer, 3))
 				item.second(buffer, finalCommand);
 		}
+		std::string commandName;
+		for (const auto &it : buffer) {
+			if (it == ' ')
+				break;
+			commandName.push_back(it);
+		}
+		finalCommand.setCommandName(commandName);
+
 /*
 	if (finalCommand.getCommandName() == "pnw") {
 		std::string teamName;
@@ -91,14 +99,8 @@ CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 		}
 	}
 */
-		std::string commandName;
-		for (const auto &it : buffer) {
-			if (it == ' ')
-				break;
-			commandName.push_back(it);
-		}
+
 		//	std::cout << "Nom de ma commande : " << commandName << std::endl;
-		finalCommand.setCommandName(commandName);
 	}
 	return finalCommand;
 }
@@ -149,8 +151,9 @@ void irc::ManageServer::parseLine8Input(char *buffer, CstringArray &command)
 	std::vector<uint> bag;
 	for (int i = 0; i < 9; i++)
 		bag.emplace_back(0);
-	for (size_t i = 0; i < 9; i++)
+	for (size_t i = 0; i < 9; i++) {
 		memcpy(&bag[i], buffer + 4 + i * (sizeof(uint) + 1), sizeof(uint));
+	}
 	command.setCommand(bag);
 }
 

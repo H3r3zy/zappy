@@ -9,6 +9,8 @@
 ## SERVER
 ##
 
+CC		=	gcc
+
 SERVER_NAME	=	zappy_server
 
 CFLAGS		=	-W -Wall -Wextra

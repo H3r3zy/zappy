@@ -13,7 +13,7 @@
 #include "SfmlTool.hpp"
 #include "Map.hpp"
 
-irc::Map::Map(irc::Communication &comm, bool &displayGui, bool &endClient) : _comm(comm), _displayGui(displayGui), _endClient(endClient), _gameWindow(sf::VideoMode(1200, 800), "Fenetre principale"), _enqueueMap(_comm), _mapSize(_enqueueMap.ParseMapSize()), _grid(_mapSize, _gameWindow)
+irc::Map::Map(irc::Communication &comm, bool &displayGui, bool &endClient) : _comm(comm), _displayGui(displayGui), _endClient(endClient), _gameWindow(sf::VideoMode(1200, 800), "Zappy"), _enqueueMap(_comm), _mapSize(_enqueueMap.ParseMapSize()), _grid(_mapSize, _gameWindow)
 {
 	SfmlTool::InitAllFont();
 	//_gameWindow.setFramerateLimit(60);

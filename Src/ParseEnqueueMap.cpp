@@ -68,9 +68,8 @@ void irc::ParseEnqueueMap::fillMap(Grid &_grid, sf::Vector2f &mapSize)
 		std::vector<CstringArray> &test = _comm.getEnqueueMap();
 		_comm.unlockMap();
 		_blocNumber = 0;
-		if (test.size() < mapSize.x * mapSize.y) {
-			usleep(100000);
-			std::cout << "taille de la queue " << test.size() << std::endl;
+		if (test.size() < (mapSize.x * mapSize.y) + save.size()) {
+			usleep(400000);
 			continue;
 		}
 		save.clear();
@@ -120,6 +119,8 @@ void irc::ParseEnqueueMap::fillMap(Grid &_grid, sf::Vector2f &mapSize)
 				save.push_back(it);
 			}
 		}
+		std::cout << "[" << GREEN << "MAP" << RESET << "] read all the queue, did not found last cell, retrying" << std::endl;
+
 		_comm.unlockMap();
 		//sleep(1);
 	}
@@ -153,14 +154,12 @@ void irc::ParseEnqueueMap::loadingDisplay( sf::Vector2f &mapSize, sf::RenderWind
 	font.loadFromFile("pokemon.ttf");
 	text.setFont(font);
 	text.setCharacterSize(20);
-	text.setPosition(100, 0);
 
 	while (!_ready) {
-		std::cout << "je parse les infos du serveur" << std::endl;
 		if (_blocNumber != 0) {
 			text.setString("Filling resources : " + std::to_string(_blocNumber) + " / " + total);
 		} else {
-			text.setString("Waiting Data response from server");
+			text.setString("Waiting Data response from server (Current data send :" + std::to_string(_comm.getEnqueueMap().size()) + ")");
 
 		}
 		currentRect.setSize(sf::Vector2f((_blocNumber / totalNb) * 500, 50));

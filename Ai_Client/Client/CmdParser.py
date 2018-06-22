@@ -70,7 +70,7 @@ class CmdParser:
         match = re.match("message (\d), (.*)", msg)
         self.__msgQueue.append((match.group(1), match.group(2)))
 
-    def lvl_up(self, ans: str, _1 = "", _2 = ""):
+    def lvl_up(self, ans: str, _1:str ="", _2:str =""):
         match = re.search("(\d)", ans)
         if match:
             print("LVL UP")
@@ -159,13 +159,13 @@ class CmdParser:
         print("(" + cmd + ")")
         if cmd == "dead":
             return False
-        last = self.__queue.popleft()
-        match = self.__patterns[last[0]].match(cmd)
-        if match is None:
+        if len(self.__queue) == 0 or self.__patterns[self.__queue[0][0]].match(cmd) is None:
             for reg, func in self.__unexpected:
                 if reg.match(cmd):
                     func(cmd)
                     return True
+        last = self.__queue.popleft()
+        match = self.__patterns[last[0]].match(cmd)
         self.__handledId += 1
         try:
             if last[0] in self.__actions.keys() and match is not None:

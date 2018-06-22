@@ -110,6 +110,7 @@ void scheduler(server_t *server)
 
 	clock_gettime(CLOCK_REALTIME, &spec);
 	now = spec.tv_sec * STOMS + spec.tv_nsec / NTOMS;
+	schedule_resource_generator(server, now);
 	while (client) {
 		if (client->status == EGG) {
 			schedule_egg(server, client, now);

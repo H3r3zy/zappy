@@ -14,7 +14,7 @@
  * @param client
  *
  * @response pmv clientID<uint32_t> posX<uint32_t> posY<uint32_t>
- * 	orientation<uint32_t>(0: TOP, 1: LEFT, 2: BOTTOM, 3: RIGHT)
+ * 	orientation<uint32_t>(1: TOP, 2: RIGHT, 3: BOTTOM, 4: LEFT)
  */
 void gui_pmv(server_t *server, client_t *client)
 {
@@ -27,7 +27,7 @@ void gui_pmv(server_t *server, client_t *client)
 	idx++;
 	write_uint32(buff, &idx, (uint32_t) POS(client).y);
 	idx++;
-	write_uint32(buff, &idx, (uint32_t) OR(client));
+	write_uint32(buff, &idx, (uint32_t) OR(client) + 1);
 	buff[idx] = -5;
 	add_to_gui_queue(&server->gui, buff, idx + 1);
 }
@@ -38,7 +38,7 @@ void gui_pmv(server_t *server, client_t *client)
  * @param client
  *
  * @response ptu clientID<uint32_t>
- * 	orientation<uint32_t>(0: TOP, 1: LEFT, 2: BOTTOM, 3: RIGHT)
+ * 	orientation<uint32_t>(1: TOP, 2: RIGHT, 3: BOTTOM, 4: LEFT)
  */
 void gui_ptu(server_t *server, client_t *client)
 {
@@ -47,7 +47,7 @@ void gui_ptu(server_t *server, client_t *client)
 
 	write_uint32(buff, &idx, client->entity->id);
 	idx++;
-	write_uint32(buff, &idx, (uint32_t) OR(client));
+	write_uint32(buff, &idx, (uint32_t) OR(client) + 1);
 	buff[idx] = -5;
 	add_to_gui_queue(&server->gui, buff, idx + 1);
 }

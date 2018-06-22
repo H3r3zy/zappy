@@ -16,7 +16,6 @@ CMakeCache.txt
 CMakeFiles
 cmake_install.cmake
 *.cbp
-Makefile
 .gui_*
 .save.indie./.ntmcs.filelist
 ./.ntmcs.tmp
@@ -38,4 +37,5 @@ __pycache__
 venv
 callgrind*
 file
-
+urandom_*
+vgcore*

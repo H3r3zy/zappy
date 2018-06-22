@@ -48,11 +48,33 @@ void gui_sst(server_t *server, char *arg)
 void gui_tna(server_t *server, __attribute__((unused)) char *arg)
 {
 	char buff[262] = {0};
-	char end[] = {'e', 'n', 'd', 't', 'n', 'a', -5};
+	static char end[] = {'e', 'n', 'd', 't', 'n', 'a', -5};
 
 	for (teams_t *team = server->teams; team; team = team->next) {
 		snprintf(buff, 262, "tna %s" -5, team->name);
 		add_to_gui_queue(&server->gui, buff, 5 + strlen(team->name));
 	}
 	add_to_gui_queue(&server->gui, (char *)end, 3);
+}
+
+/**
+ * GUI response when a resource is generate
+ * @param server
+ * @param pos
+ * @param type
+ *
+ * @response sgr posX<uint32_t> posY<uint32_t> type<uint32_t>
+ */
+void gui_sgr(server_t *server, pos_t *pos, entity_type_t type)
+{
+	static char buffer[20] = "sgr posX posY enID\n";
+	int idx = 4;
+
+	write_uint32(buffer, &idx, (uint32_t) pos->x);
+	idx++;
+	write_uint32(buffer, &idx, (uint32_t) pos->x);
+	idx++;
+	write_uint32(buffer, &idx, (uint32_t) type);
+	buffer[idx] = -5;
+	add_to_gui_queue(&server->gui, buffer, 20);
 }

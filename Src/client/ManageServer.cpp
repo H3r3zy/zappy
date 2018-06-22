@@ -145,3 +145,11 @@ void irc::ManageServer::parseLine8Input(char *buffer, CstringArray &command)
 		memcpy(&bag[i], buffer + 4 + i * (sizeof(uint) + 1), sizeof(uint));
 	command.setCommand(bag);
 }
+
+void irc::ManageServer::parseLine1Input(char *buffer, CstringArray &command)
+{
+	std::vector<uint> bag;
+	bag.emplace_back(0);
+	memcpy(&bag[0], buffer + 4, sizeof(uint));
+	command.setCommand(bag);
+}

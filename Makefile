@@ -39,10 +39,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/velo6raptor/Téléchargements/clion-2017.3.1/bin/cmake/bin/cmake
+CMAKE_COMMAND = /usr/bin/cmake
 
 # The command to remove a file.
-RM = /home/velo6raptor/Téléchargements/clion-2017.3.1/bin/cmake/bin/cmake -E remove -f
+RM = /usr/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/velo6raptor/delivery/PSU/PSU_zappy_2017
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/home/velo6raptor/Téléchargements/clion-2017.3.1/bin/cmake/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/home/velo6raptor/Téléchargements/clion-2017.3.1/bin/cmake/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -111,19 +111,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named zappy_server
-
-# Build rule for target.
-zappy_server: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 zappy_server
-.PHONY : zappy_server
-
-# fast build rule for target.
-zappy_server/fast:
-	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/build
-.PHONY : zappy_server/fast
-
-#=============================================================================
 # Target rules for targets named client
 
 # Build rule for target.
@@ -135,6 +122,19 @@ client: cmake_check_build_system
 client/fast:
 	$(MAKE) -f CMakeFiles/client.dir/build.make CMakeFiles/client.dir/build
 .PHONY : client/fast
+
+#=============================================================================
+# Target rules for targets named zappy_server
+
+# Build rule for target.
+zappy_server: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 zappy_server
+.PHONY : zappy_server
+
+# fast build rule for target.
+zappy_server/fast:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/build
+.PHONY : zappy_server/fast
 
 Src/CstringArray.o: Src/CstringArray.cpp.o
 
@@ -1648,6 +1648,33 @@ src/server/grahic_protocol/map.c.s:
 	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/map.c.s
 .PHONY : src/server/grahic_protocol/map.c.s
 
+src/server/grahic_protocol/movement.o: src/server/grahic_protocol/movement.c.o
+
+.PHONY : src/server/grahic_protocol/movement.o
+
+# target to build an object file
+src/server/grahic_protocol/movement.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/movement.c.o
+.PHONY : src/server/grahic_protocol/movement.c.o
+
+src/server/grahic_protocol/movement.i: src/server/grahic_protocol/movement.c.i
+
+.PHONY : src/server/grahic_protocol/movement.i
+
+# target to preprocess a source file
+src/server/grahic_protocol/movement.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/movement.c.i
+.PHONY : src/server/grahic_protocol/movement.c.i
+
+src/server/grahic_protocol/movement.s: src/server/grahic_protocol/movement.c.s
+
+.PHONY : src/server/grahic_protocol/movement.s
+
+# target to generate assembly for a file
+src/server/grahic_protocol/movement.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/grahic_protocol/movement.c.s
+.PHONY : src/server/grahic_protocol/movement.c.s
+
 src/server/grahic_protocol/player.o: src/server/grahic_protocol/player.c.o
 
 .PHONY : src/server/grahic_protocol/player.o
@@ -2026,6 +2053,33 @@ src/server/scheduler/add.c.s:
 	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/scheduler/add.c.s
 .PHONY : src/server/scheduler/add.c.s
 
+src/server/scheduler/resource.o: src/server/scheduler/resource.c.o
+
+.PHONY : src/server/scheduler/resource.o
+
+# target to build an object file
+src/server/scheduler/resource.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/scheduler/resource.c.o
+.PHONY : src/server/scheduler/resource.c.o
+
+src/server/scheduler/resource.i: src/server/scheduler/resource.c.i
+
+.PHONY : src/server/scheduler/resource.i
+
+# target to preprocess a source file
+src/server/scheduler/resource.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/scheduler/resource.c.i
+.PHONY : src/server/scheduler/resource.c.i
+
+src/server/scheduler/resource.s: src/server/scheduler/resource.c.s
+
+.PHONY : src/server/scheduler/resource.s
+
+# target to generate assembly for a file
+src/server/scheduler/resource.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/scheduler/resource.c.s
+.PHONY : src/server/scheduler/resource.c.s
+
 src/server/scheduler/scheduler.o: src/server/scheduler/scheduler.c.o
 
 .PHONY : src/server/scheduler/scheduler.o
@@ -2115,8 +2169,8 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... zappy_server"
 	@echo "... client"
+	@echo "... zappy_server"
 	@echo "... Src/CstringArray.o"
 	@echo "... Src/CstringArray.i"
 	@echo "... Src/CstringArray.s"
@@ -2285,6 +2339,9 @@ help:
 	@echo "... src/server/grahic_protocol/map.o"
 	@echo "... src/server/grahic_protocol/map.i"
 	@echo "... src/server/grahic_protocol/map.s"
+	@echo "... src/server/grahic_protocol/movement.o"
+	@echo "... src/server/grahic_protocol/movement.i"
+	@echo "... src/server/grahic_protocol/movement.s"
 	@echo "... src/server/grahic_protocol/player.o"
 	@echo "... src/server/grahic_protocol/player.i"
 	@echo "... src/server/grahic_protocol/player.s"
@@ -2327,6 +2384,9 @@ help:
 	@echo "... src/server/scheduler/add.o"
 	@echo "... src/server/scheduler/add.i"
 	@echo "... src/server/scheduler/add.s"
+	@echo "... src/server/scheduler/resource.o"
+	@echo "... src/server/scheduler/resource.i"
+	@echo "... src/server/scheduler/resource.s"
 	@echo "... src/server/scheduler/scheduler.o"
 	@echo "... src/server/scheduler/scheduler.i"
 	@echo "... src/server/scheduler/scheduler.s"

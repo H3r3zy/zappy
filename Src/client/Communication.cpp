@@ -52,7 +52,6 @@ std::vector<CstringArray> &irc::Communication::getEnqueueMap()
 int irc::Communication::writeOnServer(const std::string &msg)
 {
 	_write.lock();
-	std::cout << "jecris ["  << msg << "] au serveur" << std::endl;
 	int ret = irc::ManageServer::writeOnServer(_socket, msg + "\n");
 	_write.unlock();
 	return ret;

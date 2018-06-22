@@ -107,6 +107,8 @@ namespace irc {
 			{"bct", irc::TYPE_ENQUEUE::T_BOTH},
 			{"pdi", irc::TYPE_ENQUEUE::T_MAP},
 			{"pnw", irc::TYPE_ENQUEUE::T_MAP},
+			{"nbu", irc::TYPE_ENQUEUE::T_GUI},
+			{"nbt", irc::TYPE_ENQUEUE::T_GUI},
 			{"", irc::TYPE_ENQUEUE::T_UNKNOWN}
 		};
 

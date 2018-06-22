@@ -13,12 +13,10 @@ my_cat
 *.so
 [a-zA-Z0-9]
 toto
-<<<<<<< HEAD
 CMakeCache.txt
 CMakeFiles
 cmake_install.cmake
 *.cbp
-=======
 bomberman
 CMakeCache.txt
 CMakeFiles
@@ -32,4 +30,3 @@ reference
 test?
 test
 build/
->>>>>>> 1da6a4fd2f5437a32057783f5f7942cd965b30bc

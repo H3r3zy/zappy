@@ -34,6 +34,7 @@ namespace irc {
 		static int writeOnServer(int socket, std::string msg);
 
 		static void parseLine8Input(char *buffer, CstringArray &command);
+		static void parseLine1Input(char *buffer, CstringArray &command);
 
 		protected:
 
@@ -46,6 +47,8 @@ namespace irc {
 		{"pnw", &irc::ManageServer::parseLine8Input},
 		{"bct", &irc::ManageServer::parseLine8Input},
 		{"pdi", &irc::ManageServer::parseLine8Input},
+		{"nbt", &irc::ManageServer::parseLine1Input},
+		{"nbu", &irc::ManageServer::parseLine1Input},
 	};
 
 }

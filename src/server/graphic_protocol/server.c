@@ -68,13 +68,13 @@ void gui_tna(server_t *server, __attribute__((unused)) char *arg)
 }
 
 /**
- * GUI response when a resource is generate
- * @param server
- * @param pos
- * @param type
- *
- * @response sgr posX<uint32_t> posY<uint32_t> type<uint32_t>
- */
+* GUI response when a resource is generate
+* @param server
+* @param pos
+* @param type
+*
+* @response sgr posX<uint32_t> posY<uint32_t> type<uint32_t>
+*/
 void gui_sgr(server_t *server, pos_t *pos, entity_type_t type)
 {
 	static char buffer[20] = "sgr posX posY enID\n";

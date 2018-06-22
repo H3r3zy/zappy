@@ -29,7 +29,7 @@ void usage(char *binary)
 	" of actions\n");
 }
 
-argument_t *get_arguments_manager() {
+argument_t *get_arguments_manager(void) {
 	static argument_t manager[] = {
 		{"-p", &argument_port, true, false, 0},
 		{"-x", &argument_width, true, false, 0},
@@ -58,7 +58,7 @@ int main(int ac, char **av)
 		usage(av[0]);
 		return 84;
 	}
-	if (!parser(&serv, (argument_t *) manager, av))
+	if (!parser(&serv, manager, av))
 		return 84;
 	status = server(&serv);
 	destroy_server(&serv);

@@ -27,7 +27,8 @@ static bool check_task(server_t *server, client_t *client, task_t *task,
 {
 	if (!task)
 		return false;
-	if (UNITTOMS(task->time_unit, server->freq) <= now - task->started_time) {
+	if (UNITTOMS(task->time_unit, server->freq) <=
+		now - task->started_time) {
 		debug("Execute command of %i\n", client->fd);
 		if (task->function)
 			task->function(server, client, task->command);
@@ -88,7 +89,7 @@ static void schedule_egg(server_t *server, client_t *client, ms_t now)
 	egg_t *egg = get_egg_of(client);
 
 	if (now > egg->started_time + UNITTOMS(EGG_UNIT_TIME, server->freq)) {
-		debug(GINFO "'%i' hatched (%i,%i:%i)\n", client->fd,
+		debug(GINFO "'%i' hatched (%i, %i:%i)\n", client->fd,
 			client->entity->pos.x, client->entity->pos.y,
 			client->user.orientation);
 		remove_egg(egg);

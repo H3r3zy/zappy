@@ -100,4 +100,5 @@ void incantation_cmd(server_t *server, client_t *client,
 		add_to_queue(cl->ptr, buffer);
 		gui_pie(server, cl->ptr);
 	}
+	is_ended(server);
 }

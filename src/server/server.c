@@ -32,6 +32,7 @@ static int init_server(server_t *server)
 	if (!server->map.map)
 		return 1;
 	create_teams_clients(server);
+	server->end = NULL;
 	server->gui.queue = calloc(GUI_QUEUE_SIZE, 1);
 	server->gui.size = GUI_QUEUE_SIZE;
 	return 0;
@@ -39,8 +40,6 @@ static int init_server(server_t *server)
 
 int server(server_t *server)
 {
-	int end = EXIT_SUCCESS;
-
 	server->fd = i_socket((uint16_t) server->port);
 	if (server->fd == SOCKET_ERROR) {
 		fprintf(stderr, "Can't create server on port: %i\n",
@@ -51,10 +50,11 @@ int server(server_t *server)
 		server->port);
 	if (init_server(server) != 0)
 		return EXIT_FAILURE;
-	while (end == EXIT_SUCCESS) {
+	while (!server->end) {
 		server_loop(server);
 		scheduler(server);
 	}
+	printf("team %s won the game\n", server->end->name);
 	close(server->fd);
 	return 0;
 }

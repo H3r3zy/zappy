@@ -13,7 +13,7 @@
 
 std::string irc::ManageServer::readServer(int socket, bool blockRead)
 {
-	//std::cout << "je vais read sur mon serveur" << std::endl;
+	std::cout << "je vais read sur mon serveur" << std::endl;
 	std::string result;
 	fd_set readfds;
 	struct timeval t = {0, 1000};
@@ -29,12 +29,12 @@ std::string irc::ManageServer::readServer(int socket, bool blockRead)
 		do {
 			len = (int)read(socket, buffer, 1);
 			if (len <= 0) {
-				//std::cout << "Manage server" << "je throw"
-					//<< std::endl;
+				std::cout << "Manage server" << "je throw"
+					<< std::endl;
 				throw std::exception();
 			}
 			buffer[1] = '\0';
-			//std::cout << "buffer: " << buffer << std::endl;
+			std::cout << "buffer: " << buffer << std::endl;
 			result += buffer;
 		} while (buffer[0] != -5 && buffer[0] != '\n');
 	}
@@ -42,8 +42,8 @@ std::string irc::ManageServer::readServer(int socket, bool blockRead)
 	std::string command;
 	ss >> command;
 
-	//std::cout << "COMMAND: " << command << std::endl;
-	//std::cout << "result: " << result << std::endl;
+	std::cout << "COMMAND: " << command << std::endl;
+	std::cout << "result: " << result << std::endl;
 	return result;
 }
 
@@ -72,20 +72,17 @@ CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 		}
 		char buffer[8192];
 		int i = 0;
-		std::cout << "commande :";
-
 		for (const auto &it : test) {
 			buffer[i] = test[i];
-			std::cout << it;
 			i++;
 		}
-		std::cout << std::endl;
 		buffer[i] = '\0';
 
 		for (auto &&item : _pattern) {
 			if (!strncmp(item.first.c_str(), buffer, 3))
 				item.second(buffer, finalCommand);
 		}
+/*
 	if (finalCommand.getCommandName() == "pnw") {
 		std::string teamName;
 		while (buffer[i] != ' ' && i > 0) {
@@ -93,14 +90,14 @@ CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 			i--;
 		}
 	}
-
+*/
 		std::string commandName;
 		for (const auto &it : buffer) {
 			if (it == ' ')
 				break;
 			commandName.push_back(it);
 		}
-		//	//std::cout << "Nom de ma commande : " << commandName << std::endl;
+		//	std::cout << "Nom de ma commande : " << commandName << std::endl;
 		finalCommand.setCommandName(commandName);
 	}
 	return finalCommand;
@@ -139,9 +136,9 @@ int irc::ManageServer::getFileDescriptorSocket()
 int irc::ManageServer::writeOnServer(int socket, std::string msg)
 {
 	//std::cout << "J'envoie [" << msg << "] a la socket " << socket
-		//<< std::endl;
+	//	<< std::endl;
 	if (write(socket, msg.c_str(), msg.size()) == -1) {
-		//std::cout << "excpetion ici" << std::endl;
+		std::cout << "excpetion ici" << std::endl;
 		throw std::exception();
 	}
 	return 0;
@@ -149,15 +146,18 @@ int irc::ManageServer::writeOnServer(int socket, std::string msg)
 
 void irc::ManageServer::parseLine8Input(char *buffer, CstringArray &command)
 {
-	std::cout << "commande : " << buffer << std::endl;
 	std::vector<uint> bag;
 	for (int i = 0; i < 9; i++)
 		bag.emplace_back(0);
-	for (size_t i = 0; i < 9; i++) {
-		memcpy(&bag[i], buffer + 4 + i * (sizeof(uint) + 1),
-			sizeof(uint));
-		printf("bag %d\n", bag[i]);
-	}
-	std::cout << std::endl;
+	for (size_t i = 0; i < 9; i++)
+		memcpy(&bag[i], buffer + 4 + i * (sizeof(uint) + 1), sizeof(uint));
+	command.setCommand(bag);
+}
+
+void irc::ManageServer::parseLine1Input(char *buffer, CstringArray &command)
+{
+	std::vector<uint> bag;
+	bag.emplace_back(0);
+	memcpy(&bag[0], buffer + 4, sizeof(uint));
 	command.setCommand(bag);
 }

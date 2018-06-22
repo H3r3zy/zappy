@@ -16,6 +16,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/ai_protocol/set.c" "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/zappy_server.dir/src/server/ai_protocol/set.c.o"
   "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/ai_protocol/take.c" "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/zappy_server.dir/src/server/ai_protocol/take.c.o"
   "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/client_manager/egg.c" "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/zappy_server.dir/src/server/client_manager/egg.c.o"
+  "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/client_manager/end.c" "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/zappy_server.dir/src/server/client_manager/end.c.o"
   "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/client_manager/join.c" "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/zappy_server.dir/src/server/client_manager/join.c.o"
   "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/client_manager/leave.c" "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/zappy_server.dir/src/server/client_manager/leave.c.o"
   "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/client_manager/manager.c" "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/zappy_server.dir/src/server/client_manager/manager.c.o"
@@ -42,6 +43,7 @@ set(CMAKE_DEPENDS_CHECK_C
   "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/parsing/parser.c" "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/zappy_server.dir/src/server/parsing/parser.c.o"
   "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/parsing/port.c" "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/zappy_server.dir/src/server/parsing/port.c.o"
   "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/scheduler/add.c" "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/zappy_server.dir/src/server/scheduler/add.c.o"
+  "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/scheduler/resource.c" "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/zappy_server.dir/src/server/scheduler/resource.c.o"
   "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/scheduler/scheduler.c" "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/zappy_server.dir/src/server/scheduler/scheduler.c.o"
   "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/server.c" "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/zappy_server.dir/src/server/server.c.o"
   "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/socket/socket.c" "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/zappy_server.dir/src/server/socket/socket.c.o"
@@ -50,6 +52,7 @@ set(CMAKE_C_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
+  "Src"
   "Include"
   "Include/Text"
   "Include/Entity"

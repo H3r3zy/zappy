@@ -71,6 +71,10 @@ CMakeFiles/zappy_server.dir/src/server/client_manager/egg.c.o: src/server/client
 CMakeFiles/zappy_server.dir/src/server/client_manager/egg.c.o: include/server/server.h
 CMakeFiles/zappy_server.dir/src/server/client_manager/egg.c.o: include/server/socket.h
 
+CMakeFiles/zappy_server.dir/src/server/client_manager/end.c.o: src/server/client_manager/end.c
+CMakeFiles/zappy_server.dir/src/server/client_manager/end.c.o: include/server/server.h
+CMakeFiles/zappy_server.dir/src/server/client_manager/end.c.o: include/server/socket.h
+
 CMakeFiles/zappy_server.dir/src/server/client_manager/join.c.o: src/server/client_manager/join.c
 CMakeFiles/zappy_server.dir/src/server/client_manager/join.c.o: include/server/command.h
 CMakeFiles/zappy_server.dir/src/server/client_manager/join.c.o: include/server/debug.h
@@ -202,6 +206,14 @@ CMakeFiles/zappy_server.dir/src/server/scheduler/add.c.o: include/server/command
 CMakeFiles/zappy_server.dir/src/server/scheduler/add.c.o: include/server/scheduler.h
 CMakeFiles/zappy_server.dir/src/server/scheduler/add.c.o: include/server/server.h
 CMakeFiles/zappy_server.dir/src/server/scheduler/add.c.o: include/server/socket.h
+
+CMakeFiles/zappy_server.dir/src/server/scheduler/resource.c.o: src/server/scheduler/resource.c
+CMakeFiles/zappy_server.dir/src/server/scheduler/resource.c.o: include/server/command.h
+CMakeFiles/zappy_server.dir/src/server/scheduler/resource.c.o: include/server/debug.h
+CMakeFiles/zappy_server.dir/src/server/scheduler/resource.c.o: include/server/gui_command.h
+CMakeFiles/zappy_server.dir/src/server/scheduler/resource.c.o: include/server/scheduler.h
+CMakeFiles/zappy_server.dir/src/server/scheduler/resource.c.o: include/server/server.h
+CMakeFiles/zappy_server.dir/src/server/scheduler/resource.c.o: include/server/socket.h
 
 CMakeFiles/zappy_server.dir/src/server/scheduler/scheduler.c.o: src/server/scheduler/scheduler.c
 CMakeFiles/zappy_server.dir/src/server/scheduler/scheduler.c.o: include/server/command.h

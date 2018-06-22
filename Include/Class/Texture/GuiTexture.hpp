@@ -23,6 +23,8 @@ namespace irc {
 		void initTexture();
 
 		protected:
+		void updateServerData();
+
 		irc::Gui &_base;
 
 		std::string _nick = "Unknown";

@@ -27,7 +27,7 @@ sf::Vector2f ParseEnqueueMap::ParseMapSize()
 		std::vector<CstringArray> &test = _comm.getEnqueueMap();
 		_comm.unlockMap();
 		save.clear();
-		std::cerr << "size: " << test.size() << std::endl;
+		//std::cerr << "size: " << test.size() << std::endl;
 		for (const auto &it : test) {
 			//std::cout << "Coammnde Name [" << it.getCommandName() << "]" << std::endl;
 			auto tmpPrint = it.getCommand();
@@ -69,6 +69,7 @@ void ParseEnqueueMap::fillMap(Grid &_grid, sf::Vector2f &mapSize)
 		_blocNumber = 0;
 		if (test.size() < mapSize.x * mapSize.y) {
 			usleep(100000);
+			std::cout << "taille de la queue " << test.size() << std::endl;
 			continue;
 		}
 		save.clear();
@@ -180,6 +181,9 @@ void ParseEnqueueMap::parseNextCommand(irc::Map &map)
 		} else if (it.getCommandName() == "ptu") {
 			movePlayerOrientation(map, it);
 		}
+		else if (it.getCommandName() == "pgt") {
+			takeResourcePlayer(map, it);
+		}
 		_comm.getEnqueueMap().erase(_comm.getEnqueueMap().begin());
 
 		i++;
@@ -248,6 +252,17 @@ void ParseEnqueueMap::movePlayerOrientation(irc::Map &map, const CstringArray &c
 {
 	std::cout << " je vais mettre l'orientation de mon gars en " << command.getCommand()[1] << std::endl;
 	map.getCharacterMap().at(command.getCommand()[0]).setPlayerOrientation(static_cast<char>(command.getCommand()[1]));
+}
+
+bool ParseEnqueueMap::takeResourcePlayer(irc::Map &map, const CstringArray &command)
+{
+	/*std::cout << "Je vais chercher la cellule qui est en X " << command.getCommand()[0] << " X " << command.getCommand()[1] << " Y " << command.getCommand()[2] << std::endl;
+	std::cout << "L'id de mon joueur " << map.getCharacterMap().at(command.getCommand()[0]).getPlayerID() << std::endl;
+	std::cout << "mon joueur est en " << map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().x << " Y " << map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().y << std::endl;
+	std::cout << "Sur la case X " << map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().x << " Y "<< map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().y  << " c'est la ressoucre " << command.getCommand()[1] << std::endl;*/
+	map.getCharacterMap().at(command.getCommand()[0]).setPlayerTake((char)command.getCommand()[1], command.getCommand()[1]);
+	map.getGrid().getCell(static_cast<int>(map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().x / 100), static_cast<int>(map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().y / 100))->delResources(command.getCommand()[1]);
+	return true;
 }
 
 // pmv // ID posX posY orientation

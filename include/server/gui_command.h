@@ -61,5 +61,6 @@ void gui_nbr(server_t *server, char *arg, bool *status);
 void gui_sgt(server_t *server, char *arg, bool *status);
 void gui_sst(server_t *server, char *arg, bool *status);
 void gui_tna(server_t *server, char *arg, bool *status);
+void gui_sgr(server_t *server, pos_t *pos, entity_type_t type);
 
 #endif //PSU_ZAPPY_2017_GUI_COMMAND_H

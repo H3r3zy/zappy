@@ -1351,6 +1351,33 @@ src/server/client_manager/egg.c.s:
 	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/client_manager/egg.c.s
 .PHONY : src/server/client_manager/egg.c.s
 
+src/server/client_manager/end.o: src/server/client_manager/end.c.o
+
+.PHONY : src/server/client_manager/end.o
+
+# target to build an object file
+src/server/client_manager/end.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/client_manager/end.c.o
+.PHONY : src/server/client_manager/end.c.o
+
+src/server/client_manager/end.i: src/server/client_manager/end.c.i
+
+.PHONY : src/server/client_manager/end.i
+
+# target to preprocess a source file
+src/server/client_manager/end.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/client_manager/end.c.i
+.PHONY : src/server/client_manager/end.c.i
+
+src/server/client_manager/end.s: src/server/client_manager/end.c.s
+
+.PHONY : src/server/client_manager/end.s
+
+# target to generate assembly for a file
+src/server/client_manager/end.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/client_manager/end.c.s
+.PHONY : src/server/client_manager/end.c.s
+
 src/server/client_manager/join.o: src/server/client_manager/join.c.o
 
 .PHONY : src/server/client_manager/join.o
@@ -2053,6 +2080,33 @@ src/server/scheduler/add.c.s:
 	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/scheduler/add.c.s
 .PHONY : src/server/scheduler/add.c.s
 
+src/server/scheduler/resource.o: src/server/scheduler/resource.c.o
+
+.PHONY : src/server/scheduler/resource.o
+
+# target to build an object file
+src/server/scheduler/resource.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/scheduler/resource.c.o
+.PHONY : src/server/scheduler/resource.c.o
+
+src/server/scheduler/resource.i: src/server/scheduler/resource.c.i
+
+.PHONY : src/server/scheduler/resource.i
+
+# target to preprocess a source file
+src/server/scheduler/resource.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/scheduler/resource.c.i
+.PHONY : src/server/scheduler/resource.c.i
+
+src/server/scheduler/resource.s: src/server/scheduler/resource.c.s
+
+.PHONY : src/server/scheduler/resource.s
+
+# target to generate assembly for a file
+src/server/scheduler/resource.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/scheduler/resource.c.s
+.PHONY : src/server/scheduler/resource.c.s
+
 src/server/scheduler/scheduler.o: src/server/scheduler/scheduler.c.o
 
 .PHONY : src/server/scheduler/scheduler.o
@@ -2279,6 +2333,9 @@ help:
 	@echo "... src/server/client_manager/egg.o"
 	@echo "... src/server/client_manager/egg.i"
 	@echo "... src/server/client_manager/egg.s"
+	@echo "... src/server/client_manager/end.o"
+	@echo "... src/server/client_manager/end.i"
+	@echo "... src/server/client_manager/end.s"
 	@echo "... src/server/client_manager/join.o"
 	@echo "... src/server/client_manager/join.i"
 	@echo "... src/server/client_manager/join.s"
@@ -2357,6 +2414,9 @@ help:
 	@echo "... src/server/scheduler/add.o"
 	@echo "... src/server/scheduler/add.i"
 	@echo "... src/server/scheduler/add.s"
+	@echo "... src/server/scheduler/resource.o"
+	@echo "... src/server/scheduler/resource.i"
+	@echo "... src/server/scheduler/resource.s"
 	@echo "... src/server/scheduler/scheduler.o"
 	@echo "... src/server/scheduler/scheduler.i"
 	@echo "... src/server/scheduler/scheduler.s"

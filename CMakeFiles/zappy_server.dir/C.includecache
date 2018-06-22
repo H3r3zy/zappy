@@ -164,6 +164,12 @@ stdlib.h
 server.h
 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/client_manager/server.h
 
+/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/client_manager/end.c
+server.h
+-
+server.h
+/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/client_manager/server.h
+
 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/client_manager/join.c
 stdlib.h
 -
@@ -465,6 +471,22 @@ time.h
 -
 scheduler.h
 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/scheduler/scheduler.h
+
+/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/scheduler/resource.c
+math.h
+-
+time.h
+-
+server.h
+-
+debug.h
+/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/scheduler/debug.h
+server.h
+/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/scheduler/server.h
+scheduler.h
+/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/scheduler/scheduler.h
+gui_command.h
+/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/scheduler/gui_command.h
 
 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/scheduler/scheduler.c
 stdlib.h

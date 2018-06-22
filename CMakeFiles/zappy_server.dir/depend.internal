@@ -71,6 +71,10 @@ CMakeFiles/zappy_server.dir/src/server/client_manager/egg.c.o
  /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/client_manager/egg.c
  include/server/server.h
  include/server/socket.h
+CMakeFiles/zappy_server.dir/src/server/client_manager/end.c.o
+ /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/client_manager/end.c
+ include/server/server.h
+ include/server/socket.h
 CMakeFiles/zappy_server.dir/src/server/client_manager/join.c.o
  /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/client_manager/join.c
  include/server/command.h
@@ -200,6 +204,14 @@ CMakeFiles/zappy_server.dir/src/server/parsing/port.c.o
 CMakeFiles/zappy_server.dir/src/server/scheduler/add.c.o
  /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/scheduler/add.c
  include/server/command.h
+ include/server/scheduler.h
+ include/server/server.h
+ include/server/socket.h
+CMakeFiles/zappy_server.dir/src/server/scheduler/resource.c.o
+ /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/src/server/scheduler/resource.c
+ include/server/command.h
+ include/server/debug.h
+ include/server/gui_command.h
  include/server/scheduler.h
  include/server/server.h
  include/server/socket.h

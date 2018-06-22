@@ -146,6 +146,7 @@ bool Grid::loadTextures()
 		_textureCharacterPack[WALK_RIGHT].emplace_back(sf::Texture());
 		_textureCharacterPack[WALK_UP].emplace_back(sf::Texture());
 		_textureCharacterPack[WALK_DOWN].emplace_back(sf::Texture());
+		_textureCharacterPack[TAKE].emplace_back(sf::Texture());
 	}
 
 	for (int i = 0; i < 9; i++) {
@@ -153,6 +154,7 @@ bool Grid::loadTextures()
 		_textureCharacterPack[WALK_LEFT][i].loadFromFile("Character2.png", sf::IntRect(i * 64, 576, 64, 64));
 		_textureCharacterPack[WALK_DOWN][i].loadFromFile("Character2.png", sf::IntRect(i * 64, 640, 64, 64));
 		_textureCharacterPack[WALK_RIGHT][i].loadFromFile("Character2.png", sf::IntRect(i * 64, 704, 64, 64));
+		_textureCharacterPack[TAKE][i].loadFromFile("Character2.png", sf::IntRect(i * 64, 1344, 64, 64));
 	}
 
 	return true;

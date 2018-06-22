@@ -13,7 +13,7 @@
 #include <inttypes.h>
 #include "socket.h"
 
-#define READ_SIZE (16)
+#define READ_SIZE (1)
 #define LIMIT_TASK_NUMBER (10)
 
 #define RESOURCE_NB (7)
@@ -145,6 +145,7 @@ struct server_s {
 	uint32_t max_clients_per_teams;
 	map_t map;
 	teams_t *teams;
+	teams_t *end;
 	client_t *clients;
 	uint32_t client_nb;
 	gui_t gui;
@@ -155,6 +156,7 @@ char *gnl(int fd, char *delim);
 
 int server(server_t *serv);
 void destroy_server(server_t *serv);
+void is_ended(server_t *server);
 
 void server_loop(server_t *server);
 void disconnect(server_t *server, client_t *client);

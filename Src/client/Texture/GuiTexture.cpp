@@ -37,6 +37,27 @@ void irc::GuiTexture::initTexture()
 		_nb_teams->setText("Number of teams: "+ std::to_string(_base._comm._server.team_number));
 		_user_connected->setText("User connected: "+ std::to_string(_base._comm._server.user));
 	});
+	_base._monitor->addFuncLoop(0, &irc::GuiTexture::updateServerData, this);
+}
+
+void irc::GuiTexture::updateServerData()
+{
+	_base._comm.writeOnServer("nbu");
+	_base._comm.writeOnServer("nbt");
+	_base._comm.lockGui();
+	auto list_msg = _base._comm.getEnqueueGui();
+
+	for (auto &&it : list_msg) {
+		if (it.getCommandName() == "nbt") {
+			_base._comm._server.team_number = it.getCommand()[0];
+		}
+		if (it.getCommandName() == "nbu") {
+			_base._comm._server.user = it.getCommand()[0];
+		}
+	}
+	_base._comm.getEnqueueGui().clear();
+	_base._comm.unlockGui();
+
 }
 
 void irc::GuiTexture::initDataGame()

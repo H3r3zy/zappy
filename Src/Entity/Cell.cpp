@@ -120,3 +120,13 @@ void Cell::printAllResources(sf::RenderWindow &window) const
 //		//std::cout << "Il y a dans ma cellule la ressource " << it.first << " et sa quantité " << it.second << std::endl;
 	}
 }
+
+void Cell::delResources(unsigned int resourceName)
+{
+	for (auto &&it : _ressources) {
+		if (it.first == resourceName) {
+			--it.second;
+			break;
+		}
+	}
+}

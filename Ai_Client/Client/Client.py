@@ -52,7 +52,7 @@ class Client:
     def connect(self) -> bool:
         try:
             self.__socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            self.__socket.connect(("localhost", self.__port))
+            self.__socket.connect((self.__machine, self.__port))
             print("Connection on port %d successful" % self.__port)
         except socket.error:
             print("Connection on port %d failed" % self.__port)

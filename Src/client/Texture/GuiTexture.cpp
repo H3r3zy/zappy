@@ -42,8 +42,8 @@ void irc::GuiTexture::initTexture()
 
 void irc::GuiTexture::updateServerData()
 {
-//	_base._comm.writeOnServer("nbu");
-//	_base._comm.writeOnServer("nbt");
+	_base._comm.writeOnServer("nbu");
+	_base._comm.writeOnServer("nbt");
 	_base._comm.lockGui();
 	auto list_msg = _base._comm.getEnqueueGui();
 

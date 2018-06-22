@@ -63,7 +63,7 @@ void irc::Map::initCamera()
 
 void irc::Map::updateGuiData()
 {
-	if (!_displayGui && _comm._shack._pos.first != -1 && _comm._shack._pos.second != -1) {
+	if ((!_displayGui || _comm._listId.empty()) && _comm._shack._pos.first != -1 && _comm._shack._pos.second != -1) {
 		_grid.getCell(_comm._shack._pos.first, _comm._shack._pos.second)->removeTarget();
 		_comm._shack._pos.first = -1;
 		_comm._shack._pos.second = -1;

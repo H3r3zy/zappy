@@ -13,65 +13,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c4cfc34-0a8a-4123-83de-91ed4979ab16" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/CMakeFiles/3.11.2/CMakeCCompiler.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeFiles/3.11.2/CMakeCXXCompiler.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeFiles/3.11.2/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeFiles/3.11.2/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeFiles/3.11.2/CMakeSystem.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeFiles/3.11.2/CompilerIdC/CMakeCCompilerId.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeFiles/3.11.2/CompilerIdC/a.out" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeFiles/3.11.2/CompilerIdCXX/CMakeCXXCompilerId.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeFiles/3.11.2/CompilerIdCXX/a.out" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeFiles/Makefile2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeFiles/TargetDirectories.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeFiles/client.dir/CXX.includecache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeFiles/client.dir/DependInfo.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeFiles/client.dir/build.make" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeFiles/client.dir/cmake_clean.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeFiles/client.dir/depend.internal" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeFiles/client.dir/depend.make" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeFiles/client.dir/flags.make" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeFiles/client.dir/link.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeFiles/client.dir/progress.make" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeFiles/progress.marks" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeFiles/zappy_server.dir/C.includecache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeFiles/zappy_server.dir/DependInfo.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeFiles/zappy_server.dir/build.make" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeFiles/zappy_server.dir/cmake_clean.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeFiles/zappy_server.dir/depend.internal" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeFiles/zappy_server.dir/depend.make" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeFiles/zappy_server.dir/flags.make" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeFiles/zappy_server.dir/link.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CMakeFiles/zappy_server.dir/progress.make" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Include/Class/Communication.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Include/Class/Communication.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Include/Class/ManageServer.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Include/Class/ManageServer.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Include/Class/Map.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Include/Class/Map.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Include/Entity/Character.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Include/Entity/Character.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Include/Grid.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Include/Grid.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Include/ParseEnqueueMap.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Include/ParseEnqueueMap.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Entity/Cell.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Entity/Cell.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Entity/Character.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Entity/Character.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Entity/Water.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Entity/Water.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Grid.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Grid.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/ParseEnqueueMap.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Src/ParseEnqueueMap.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/SfmlTool.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Src/SfmlTool.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Text/GameText.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Text/GameText.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/client/Communication.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Src/client/Communication.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/client/ManageServer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Src/client/ManageServer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/client/Map.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Src/client/Map.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/parsing/string.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/client.cbp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extra/gui/pokeball.png" beforeDir="false" afterPath="$PROJECT_DIR$/extra/gui/pokeball.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/extra/gui/pokeball2.png" beforeDir="false" afterPath="$PROJECT_DIR$/extra/gui/pokeball2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sh.sh" beforeDir="false" afterPath="$PROJECT_DIR$/sh.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake_install.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/include/server/server.h" beforeDir="false" afterPath="$PROJECT_DIR$/include/server/server.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/ai_protocol/connect_nbr.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ai_protocol/connect_nbr.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/ai_protocol/eject.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ai_protocol/eject.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/ai_protocol/fork.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ai_protocol/fork.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/ai_protocol/incantation.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ai_protocol/incantation.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/ai_protocol/inventory.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ai_protocol/inventory.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/ai_protocol/look.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ai_protocol/look.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/ai_protocol/movement.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ai_protocol/movement.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/client_manager/join.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/client_manager/join.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/client_manager/leave.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/client_manager/leave.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/client_manager/manager.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/client_manager/manager.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/grahic_protocol/action.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/graphic_protocol/action.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/grahic_protocol/egg.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/graphic_protocol/egg.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/grahic_protocol/io.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/graphic_protocol/io.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/grahic_protocol/map.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/graphic_protocol/map.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/grahic_protocol/movement.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/graphic_protocol/movement.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/grahic_protocol/player.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/graphic_protocol/player.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/grahic_protocol/quantification.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/graphic_protocol/quantification.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/grahic_protocol/server.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/graphic_protocol/server.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/grahic_protocol/status.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/graphic_protocol/status.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/gui_manager/command.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/gui_manager/command.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/gui_manager/manager.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/gui_manager/manager.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/loop.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/loop.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/parsing/gnl.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/scheduler/resource.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/scheduler/resource.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/server.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/server.c" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/CMakeFiles/" />
@@ -85,11 +55,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Default" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ManageServer.hpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Include/Class/ManageServer.hpp">
+      <file leaf-file-name="Map.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Src/client/Map.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
-              <caret line="31" column="39" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
+            <state relative-caret-position="511">
+              <caret line="273" selection-start-line="273" selection-end-line="273" />
             </state>
           </provider>
         </entry>
@@ -97,83 +67,26 @@
       <file leaf-file-name="ManageServer.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Src/client/ManageServer.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="486">
-              <caret line="91" selection-start-line="91" selection-end-line="91" />
+            <state relative-caret-position="270">
+              <caret line="78" column="33" selection-start-line="78" selection-start-column="33" selection-end-line="78" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="quantification.c" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/server/grahic_protocol/quantification.c">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="server.c" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/server/grahic_protocol/server.c">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1008">
-              <caret line="59" column="3" selection-start-line="59" selection-start-column="3" selection-end-line="59" selection-end-column="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="movement.c" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/server/grahic_protocol/movement.c">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="35" column="11" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="11" />
+            <state relative-caret-position="72">
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="resource.c" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/server/scheduler/resource.c">
+      <file leaf-file-name="GuiTexture.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Src/client/Texture/GuiTexture.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="25" column="58" selection-start-line="25" selection-start-column="58" selection-end-line="25" selection-end-column="58" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Map.hpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Include/Class/Map.hpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1044">
-              <caret line="58" column="31" selection-start-line="58" selection-start-column="31" selection-end-line="58" selection-end-column="31" />
-              <folding>
-                <element signature="e#153#171#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ManageDisplay.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Src/client/ManageDisplay.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Character.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Src/Entity/Character.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="122" column="1" selection-start-line="122" selection-start-column="1" selection-end-line="122" selection-end-column="1" />
+            <state relative-caret-position="306">
+              <caret line="56" column="9" selection-start-line="56" selection-start-column="9" selection-end-line="56" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -235,16 +148,15 @@
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-95" />
-    <option name="width" value="1272" />
-    <option name="height" value="692" />
+    <option name="x" value="-35" />
+    <option name="width" value="1252" />
+    <option name="height" value="690" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -255,32 +167,26 @@
             <path>
               <item name="client" type="b2602c69:ProjectViewProjectNode" />
               <item name="PSU_zappy_2017" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="client" type="b2602c69:ProjectViewProjectNode" />
               <item name="PSU_zappy_2017" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="Src" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="client" type="b2602c69:ProjectViewProjectNode" />
               <item name="PSU_zappy_2017" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="grahic_protocol" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="client" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PSU_zappy_2017" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="scheduler" type="462c0819:PsiDirectoryNode" />
+              <item name="Src" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="Texture" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -334,30 +240,41 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="73975000" />
+    <option name="totallyTimeSpent" value="74083000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="34" width="1920" height="1046" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14812863" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17659463" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.20765027" />
-      <window_info anchor="bottom" id="CMake" order="7" weight="0.3296582" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.28196722" />
+      <window_info anchor="bottom" id="CMake" order="7" weight="0.32896176" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50184697" side_tool="true" weight="0.029768467" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.25248072" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49815303" visible="true" weight="0.19453552" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49815303" visible="true" weight="0.26666668" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14812863" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="CMake" order="7" weight="0.3296582" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49815303" visible="true" weight="0.19453552" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.25248072" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50184697" side_tool="true" weight="0.029768467" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.20765027" />
+      <window_info id="Favorites" order="2" side_tool="true" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -372,6 +289,13 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Src/client/ManageServer.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="78" column="33" selection-start-line="78" selection-start-column="33" selection-end-line="78" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Include/Class/ManageServer.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="663">
@@ -482,8 +406,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Src/client/Texture/GuiTexture.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="58" column="50" selection-start-line="58" selection-start-column="50" selection-end-line="58" selection-end-column="50" />
+        <state relative-caret-position="306">
+          <caret line="56" column="9" selection-start-line="56" selection-start-column="9" selection-end-line="56" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -493,9 +417,6 @@
           <caret line="35" selection-start-line="35" selection-end-line="35" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/server.c">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file:///usr/local/include/SFML/Graphics/Color.hpp" />
     <entry file="file:///usr/include/c++/7/bits/stl_vector.h">
@@ -608,8 +529,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Src/client/Map.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3726">
-          <caret line="207" column="68" selection-start-line="207" selection-start-column="68" selection-end-line="207" selection-end-column="68" />
+        <state relative-caret-position="511">
+          <caret line="273" selection-start-line="273" selection-end-line="273" />
         </state>
       </provider>
     </entry>
@@ -631,9 +552,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1044">
           <caret line="58" column="31" selection-start-line="58" selection-start-column="31" selection-end-line="58" selection-end-column="31" />
-          <folding>
-            <element signature="e#153#171#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -667,15 +585,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Src/client/ManageServer.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="91" selection-start-line="91" selection-end-line="91" />
+        <state relative-caret-position="270">
+          <caret line="78" column="33" selection-start-line="78" selection-start-column="33" selection-end-line="78" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="35" column="11" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="11" />
+        <state relative-caret-position="72">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
@@ -686,26 +604,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/grahic_protocol/quantification.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/grahic_protocol/movement.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/grahic_protocol/server.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1008">
-          <caret line="59" column="3" selection-start-line="59" selection-start-column="3" selection-end-line="59" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/grahic_protocol/quantification.c" />
+    <entry file="file://$PROJECT_DIR$/src/server/grahic_protocol/movement.c" />
+    <entry file="file://$PROJECT_DIR$/src/server/grahic_protocol/server.c" />
   </component>
 </project>

@@ -35,6 +35,9 @@ static int init_server(server_t *server)
 	server->end = NULL;
 	server->gui.queue = calloc(GUI_QUEUE_SIZE, 1);
 	server->gui.size = GUI_QUEUE_SIZE;
+	server->gui.buff = calloc(READ_SIZE + 1, 1);
+	server->gui.buff_len = 0;
+	server->gui.buff_size = READ_SIZE + 1;
 	return 0;
 }
 

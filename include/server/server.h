@@ -13,7 +13,7 @@
 #include <inttypes.h>
 #include "socket.h"
 
-#define READ_SIZE (1)
+#define READ_SIZE ((1 << 8))
 #define LIMIT_TASK_NUMBER (10)
 
 #define RESOURCE_NB (7)
@@ -107,6 +107,9 @@ struct client_s {
 	struct client_s *next;
 	status_t status;
 	int queue_index;
+	char *buff;
+	size_t buff_len;
+	size_t buff_size;
 };
 
 struct teams_s {
@@ -136,6 +139,9 @@ typedef struct gui_s {
 	size_t len;
 	int fd;
 	char logged;
+	char *buff;
+	size_t buff_len;
+	size_t buff_size;
 } gui_t;
 
 struct server_s {
@@ -168,14 +174,14 @@ void create_teams_clients(server_t *server);
 void add_slot_in_team(teams_t *teams);
 
 void handle_new_client(server_t *server);
-int read_client(server_t *server, client_t *client);
+int pollin_client(server_t *server, client_t *client);
 void add_to_queue(client_t *client, char *msg);
 int send_responses(client_t *client);
 
 int try_write(int fd, char *msg);
-int try_write_gui(const int fd, char *msg, uint32_t len);
+int try_write_gui(int fd, char *msg, uint32_t len);
 
-int read_gui(server_t *server);
+int pollin_gui(server_t *server);
 void gui_continue_commands(server_t *);
 void add_to_gui_queue(gui_t *gui, char *str, int len);
 
@@ -192,7 +198,7 @@ void update_resource(map_t *map, pos_t *pos, entity_type_t t, int n);
 void write_uint32(char *buffer, int *idx, uint32_t nb);
 uint32_t read_uint32(char *buffer, int *idx);
 
-int try_write_gui(int fd, char *msg, uint32_t len);
+size_t char_nb(const char *str, char c);
 
 #define POS(c) (c)->entity->pos
 #define OR(c) (c)->user.orientation

@@ -64,7 +64,6 @@ static char *look_horizontal(map_t *map, pos_t pos, look_opt_t opt, uint32_t cur
 	for (uint32_t i = 0; i < currv * 2 + 1; i++) {
 		pos.y = (pos.y > map->size.y - 1) ? 0 : pos.y;
 		pos.x = (pos.x > map->size.x - 1) ? 0 : pos.x;
-		debug(WARNING "Look in %i;%i\n", pos.x, pos.y);
 		response = add_objects(response, &map->map[pos.y][pos.x]);
 		if (i < currv * 2) {
 			response = concat(response, ",");
@@ -133,7 +132,6 @@ void look_cmd(server_t *server, client_t *client,
 		client->user.orientation - 1 : 0;
 	look_opt_t opt = {client->user.vision, 0};
 
-	debug(GINFO "'%d' call Look command (%i,%i:%i)\n", client->fd, client->entity->pos.x, client->entity->pos.y, (int)client->user.orientation);
 	response = add_objects(response, &server->map.map[client->entity->pos.y][client->entity->pos.x]);
 	response = concat(response, ",");
 	if (dx) {

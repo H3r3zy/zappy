@@ -9,7 +9,7 @@
 #include <server.h>
 #include "server.h"
 
-void inventory_cmd(server_t *server, client_t *client,
+void inventory_cmd(__attribute__((unused)) server_t *server, client_t *client,
 	__attribute__((unused)) char *arg)
 {
 	char response[106] = {0};

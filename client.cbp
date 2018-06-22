@@ -11,30 +11,30 @@
 				<Option working_dir="/home/velo6raptor/delivery/PSU/PSU_zappy_2017"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
 				<Option working_dir="/home/velo6raptor/delivery/PSU/PSU_zappy_2017"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
 				<Option working_dir="/home/velo6raptor/delivery/PSU/PSU_zappy_2017"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="zappy_server">
@@ -59,12 +59,20 @@
 					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Include/Class/Gui/ObjectSFML"/>
 					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/include/server"/>
 					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 zappy_server"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 zappy_server"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="zappy_server/fast">
@@ -89,12 +97,20 @@
 					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Include/Class/Gui/ObjectSFML"/>
 					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/include/server"/>
 					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 zappy_server/fast"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 zappy_server/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="client">
@@ -119,12 +135,20 @@
 					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Include/Class/Gui/ObjectSFML"/>
 					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/include/server"/>
 					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 client"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 client"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="client/fast">
@@ -149,12 +173,20 @@
 					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Include/Class/Gui/ObjectSFML"/>
 					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/include/server"/>
 					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 client/fast"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 client/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
@@ -425,31 +457,31 @@
 		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/debug.c">
 			<Option target="zappy_server"/>
 		</Unit>
-		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/grahic_protocol/action.c">
+		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/graphic_protocol/action.c">
 			<Option target="zappy_server"/>
 		</Unit>
-		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/grahic_protocol/egg.c">
+		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/graphic_protocol/egg.c">
 			<Option target="zappy_server"/>
 		</Unit>
-		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/grahic_protocol/io.c">
+		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/graphic_protocol/io.c">
 			<Option target="zappy_server"/>
 		</Unit>
-		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/grahic_protocol/map.c">
+		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/graphic_protocol/map.c">
 			<Option target="zappy_server"/>
 		</Unit>
-		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/grahic_protocol/movement.c">
+		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/graphic_protocol/movement.c">
 			<Option target="zappy_server"/>
 		</Unit>
-		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/grahic_protocol/player.c">
+		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/graphic_protocol/player.c">
 			<Option target="zappy_server"/>
 		</Unit>
-		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/grahic_protocol/quantification.c">
+		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/graphic_protocol/quantification.c">
 			<Option target="zappy_server"/>
 		</Unit>
-		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/grahic_protocol/server.c">
+		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/graphic_protocol/server.c">
 			<Option target="zappy_server"/>
 		</Unit>
-		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/grahic_protocol/status.c">
+		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/graphic_protocol/status.c">
 			<Option target="zappy_server"/>
 		</Unit>
 		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/gui_manager/command.c">
@@ -470,13 +502,13 @@
 		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/parsing/game.c">
 			<Option target="zappy_server"/>
 		</Unit>
-		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/parsing/gnl.c">
-			<Option target="zappy_server"/>
-		</Unit>
 		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/parsing/parser.c">
 			<Option target="zappy_server"/>
 		</Unit>
 		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/parsing/port.c">
+			<Option target="zappy_server"/>
+		</Unit>
+		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/parsing/string.c">
 			<Option target="zappy_server"/>
 		</Unit>
 		<Unit filename="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/src/server/scheduler/add.c">

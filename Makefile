@@ -50,7 +50,6 @@ SERVER_SRC	=	$(SERVER_DIR)/ai_protocol/broadcast.c		\
 			$(SERVER_DIR)/main.c				\
 			$(SERVER_DIR)/map.c				\
 			$(SERVER_DIR)/parsing/game.c			\
-			$(SERVER_DIR)/parsing/gnl.c			\
 			$(SERVER_DIR)/parsing/parser.c			\
 			$(SERVER_DIR)/parsing/port.c			\
 			$(SERVER_DIR)/scheduler/add.c			\
@@ -97,4 +96,4 @@ debug:		CFLAGS += -ggdb3 -DDEBUG=1
 
 debug:		re
 
-.PHONY:		debug
+.PHONY:		all clean fclean re debug

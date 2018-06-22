@@ -27,3 +27,5 @@ ia.sh
 sh.sh
 callgrind*
 file
+urandom_*
+vgcore*

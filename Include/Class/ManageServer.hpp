@@ -47,6 +47,7 @@ namespace irc {
 		{"pnw", &irc::ManageServer::parseLine8Input},
 		{"bct", &irc::ManageServer::parseLine8Input},
 		{"pdi", &irc::ManageServer::parseLine8Input},
+		{"pin", &irc::ManageServer::parseLine8Input},
 		{"nbt", &irc::ManageServer::parseLine1Input},
 		{"nbu", &irc::ManageServer::parseLine1Input},
 		{"pmv", &irc::ManageServer::parseLine8Input}, // move
@@ -54,7 +55,6 @@ namespace irc {
 		{"pdr", &irc::ManageServer::parseLine8Input}, //
 		{"pgt", &irc::ManageServer::parseLine8Input}, //
 	};
-
 }
 
 #endif //CLIENT_MANAGESERVER_HPP

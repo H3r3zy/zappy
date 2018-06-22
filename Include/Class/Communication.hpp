@@ -29,7 +29,7 @@ namespace irc {
 	typedef struct {
 		int id = 1;
 		std::string team = "Unknown";
-		std::string status = "Unknown";
+		int level = 0;
 		ressources_t ressources = {0, 0, 0, 0, 0, 0, 0};
 		std::pair<double, double> _pos = {0, 0};
 	} player_data_t;
@@ -109,6 +109,7 @@ namespace irc {
 			{"pnw", irc::TYPE_ENQUEUE::T_MAP},
 			{"nbu", irc::TYPE_ENQUEUE::T_GUI},
 			{"nbt", irc::TYPE_ENQUEUE::T_GUI},
+			{"pin", irc::TYPE_ENQUEUE::T_GUI},
 			{"pmv", irc::TYPE_ENQUEUE::T_MAP}, // move joueur
 			{"ptu", irc::TYPE_ENQUEUE::T_MAP}, // change orientation joueur
 			{"pdr", irc::TYPE_ENQUEUE::T_MAP}, //

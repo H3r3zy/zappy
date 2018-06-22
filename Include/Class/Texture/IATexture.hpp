@@ -21,6 +21,7 @@ namespace irc {
 
 		void initTexture();
 		protected:
+		void updateIAData();
 
 		private:
 		void initBck();

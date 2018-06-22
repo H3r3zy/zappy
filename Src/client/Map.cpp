@@ -9,6 +9,7 @@
 #include <unistd.h>
 #include <thread>
 #include <Tools/Thread.hpp>
+#include <Class/Communication.hpp>
 #include "Communication.hpp"
 #include "SfmlTool.hpp"
 #include "Map.hpp"
@@ -61,17 +62,32 @@ void irc::Map::initCamera()
 	_camera[MAP].setCenter(600, 400);
 }
 
+void irc::Map::updateGuiData()
+{
+	if (!_displayGui && _comm._shack._pos.first != -1 && _comm._shack._pos.second != -1) {
+		_grid.getCell(_comm._shack._pos.first, _comm._shack._pos.second)->removeTarget();
+		_comm._shack._pos.first = -1;
+		_comm._shack._pos.second = -1;
+	}
+	_comm._shack.player_on = 0;
+	for (auto && it : _character) {
+		auto pos = it.second.getPosition();
+		if (pos.x > (_comm._shack._pos.first * 100) - 30 && pos.x < (_comm._shack._pos.first * 100) + 70 && pos.y > (_comm._shack._pos.second * 100) - 50 && pos.y < (_comm._shack._pos.second * 100) + 50)
+			_comm._shack.player_on++;
+		if (it.second.getPlayerID() == _comm._player.id) {
+			_comm._player.level = it.second.getPlayerLevel();
+			_comm._player.team = it.second.getPlayerTeam();
+			_comm._player._pos.first = pos.x;
+			_comm._player._pos.second = pos.y;
+		}
+	}
+}
+
 void irc::Map::loopDisplay()
 {
-	//std::thread caca(_character[0].playerLoop, _gameWindow);
-
 	while (_gameWindow.isOpen()) {
 		_comm.lockDisplay();
-		if (!_displayGui && _comm._shack._pos.first != -1 && _comm._shack._pos.second != -1) {
-			_grid.getCell(_comm._shack._pos.first, _comm._shack._pos.second)->removeTarget();
-			_comm._shack._pos.first = -1;
-			_comm._shack._pos.second = -1;
-		}
+		updateGuiData();
 		//std::cout << "je boucle " << std::endl;
 		_enqueueMap.parseNextCommand(*this);
 
@@ -204,6 +220,12 @@ bool irc::Map::getEvent()
 					_displayGui = true;
 					_comm._shack._pos.first = static_cast<int>(worldPos.x / 100);
 					_comm._shack._pos.second = static_cast<int>((worldPos.y) / 100);
+					for (auto && it : _character) {
+						auto pos = it.second.getPosition();
+						if (pos.x > (_comm._shack._pos.first * 100) - 30 && pos.x < (_comm._shack._pos.first * 100) + 70 && pos.y > (_comm._shack._pos.second * 100) - 50 && pos.y < (_comm._shack._pos.second * 100) + 50)
+							_comm._listId.push_back(it.second.getPlayerID());
+					}
+
 				} else {
 					_comm._shack._pos.first = -1;
 					_comm._shack._pos.second = -1;

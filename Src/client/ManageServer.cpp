@@ -82,7 +82,15 @@ CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 			if (!strncmp(item.first.c_str(), buffer, 3))
 				item.second(buffer, finalCommand);
 		}
-
+/*
+	if (finalCommand.getCommandName() == "pnw") {
+		std::string teamName;
+		while (buffer[i] != ' ' && i > 0) {
+			teamName.insert(teamName.begin(), buffer[i]);
+			i--;
+		}
+	}
+*/
 		std::string commandName;
 		for (const auto &it : buffer) {
 			if (it == ' ')

@@ -1351,6 +1351,33 @@ src/server/client_manager/egg.c.s:
 	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/client_manager/egg.c.s
 .PHONY : src/server/client_manager/egg.c.s
 
+src/server/client_manager/end.o: src/server/client_manager/end.c.o
+
+.PHONY : src/server/client_manager/end.o
+
+# target to build an object file
+src/server/client_manager/end.c.o:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/client_manager/end.c.o
+.PHONY : src/server/client_manager/end.c.o
+
+src/server/client_manager/end.i: src/server/client_manager/end.c.i
+
+.PHONY : src/server/client_manager/end.i
+
+# target to preprocess a source file
+src/server/client_manager/end.c.i:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/client_manager/end.c.i
+.PHONY : src/server/client_manager/end.c.i
+
+src/server/client_manager/end.s: src/server/client_manager/end.c.s
+
+.PHONY : src/server/client_manager/end.s
+
+# target to generate assembly for a file
+src/server/client_manager/end.c.s:
+	$(MAKE) -f CMakeFiles/zappy_server.dir/build.make CMakeFiles/zappy_server.dir/src/server/client_manager/end.c.s
+.PHONY : src/server/client_manager/end.c.s
+
 src/server/client_manager/join.o: src/server/client_manager/join.c.o
 
 .PHONY : src/server/client_manager/join.o
@@ -2306,6 +2333,9 @@ help:
 	@echo "... src/server/client_manager/egg.o"
 	@echo "... src/server/client_manager/egg.i"
 	@echo "... src/server/client_manager/egg.s"
+	@echo "... src/server/client_manager/end.o"
+	@echo "... src/server/client_manager/end.i"
+	@echo "... src/server/client_manager/end.s"
 	@echo "... src/server/client_manager/join.o"
 	@echo "... src/server/client_manager/join.i"
 	@echo "... src/server/client_manager/join.s"

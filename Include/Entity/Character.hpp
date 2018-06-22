@@ -35,26 +35,27 @@ class Character : public AMotionShape {
 	void setPlayerLevel(uint level);
 	const uint &getPlayerLevel() const;
 
+	void setPlayerMovement(sf::Vector2f &finalPos, uint orientation);
 	static bool playerLoop(sf::RenderWindow &window);
 
 	sf::Sprite &getCharacter();
+	const bool getAction() const;
 
 	~Character();
 
 	private:
 	chrono_t _beginTime;
 	std::string _teamName;
-	char _action;
-	char _orientation;
+	sf::Vector2f _nextPos;
+	bool _action = false;
+	char _orientation = 1;
 	uint _id;
 	uint _level;
 
+	bool oneTime = false;
 
 	// TODO LE DEGAGER
 	int _testTmp = 0;
-	int _randomDirection = 2;
-	bool oneTime = true;
-
 
 };
 

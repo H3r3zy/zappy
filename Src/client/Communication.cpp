@@ -52,6 +52,7 @@ std::vector<CstringArray> &irc::Communication::getEnqueueMap()
 int irc::Communication::writeOnServer(const std::string &msg)
 {
 	_write.lock();
+	//std::cout << "jecris ["  << msg << "] au serveur" << std::endl;
 	int ret = irc::ManageServer::writeOnServer(_socket, msg + "\n");
 	_write.unlock();
 	return ret;
@@ -71,8 +72,8 @@ void irc::Communication::addMsgToQueue(const CstringArray &command)
 {
 	auto tmpPrint = command.getCommand();
 /*	if (tmpPrint.size() == 9) {
-		std::cout << "J'arrive à la fin du parsing, le nom de la commande est [" << command.getCommandName() << "]" << std::endl;
-		std::cout << "Et son message est :" << tmpPrint[0] << " "
+		//std::cout << "J'arrive à la fin du parsing, le nom de la commande est [" << command.getCommandName() << "]" << std::endl;
+		//std::cout << "Et son message est :" << tmpPrint[0] << " "
 			<< tmpPrint[1] << " " << tmpPrint[2] << " "
 			<< tmpPrint[3] << " " << tmpPrint[4] << " "
 			<< tmpPrint[5] << " " << tmpPrint[6] << " "

@@ -13,36 +13,65 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c4cfc34-0a8a-4123-83de-91ed4979ab16" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeFiles/3.11.2/CMakeCCompiler.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeFiles/3.11.2/CMakeCXXCompiler.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeFiles/3.11.2/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeFiles/3.11.2/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeFiles/3.11.2/CMakeSystem.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeFiles/3.11.2/CompilerIdC/CMakeCCompilerId.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeFiles/3.11.2/CompilerIdC/a.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeFiles/3.11.2/CompilerIdCXX/CMakeCXXCompilerId.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeFiles/3.11.2/CompilerIdCXX/a.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeFiles/CMakeOutput.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeFiles/Makefile2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeFiles/TargetDirectories.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeFiles/client.dir/CXX.includecache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeFiles/client.dir/DependInfo.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeFiles/client.dir/build.make" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeFiles/client.dir/cmake_clean.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeFiles/client.dir/depend.internal" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeFiles/client.dir/depend.make" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeFiles/client.dir/flags.make" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeFiles/client.dir/link.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeFiles/client.dir/progress.make" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeFiles/progress.marks" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeFiles/zappy_server.dir/C.includecache" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeFiles/zappy_server.dir/DependInfo.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeFiles/zappy_server.dir/build.make" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeFiles/zappy_server.dir/cmake_clean.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeFiles/zappy_server.dir/depend.internal" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeFiles/zappy_server.dir/depend.make" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeFiles/zappy_server.dir/flags.make" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeFiles/zappy_server.dir/link.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CMakeFiles/zappy_server.dir/progress.make" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeCache.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/TargetDirectories.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/client.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/client.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/client.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/client.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/client.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/client.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/client.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/client.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/clion-environment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/progress.marks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/zappy_server.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/zappy_server.dir/C.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/zappy_server.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/zappy_server.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/zappy_server.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/zappy_server.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/zappy_server.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/zappy_server.dir/cmake_clean.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/zappy_server.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/zappy_server.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/zappy_server.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/zappy_server.dir/depend.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/zappy_server.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/zappy_server.dir/link.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeFiles/zappy_server.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeFiles/zappy_server.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Include/Class/Communication.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Include/Class/Communication.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Include/Class/ManageServer.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Include/Class/ManageServer.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Include/Class/Texture/GuiTexture.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Include/Class/Texture/GuiTexture.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Include/Class/Map.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Include/Class/Map.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Include/Entity/Character.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Include/Entity/Character.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Include/Grid.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Include/Grid.hpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Include/ParseEnqueueMap.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Include/ParseEnqueueMap.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/Entity/Cell.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Entity/Cell.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/Entity/Character.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Entity/Character.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/Entity/Water.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Entity/Water.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/Grid.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Grid.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/ParseEnqueueMap.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Src/ParseEnqueueMap.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/SfmlTool.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Src/SfmlTool.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/Text/GameText.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Text/GameText.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Src/client/Communication.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Src/client/Communication.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Src/client/ManageServer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Src/client/ManageServer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/client/Texture/GuiTexture.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Src/client/Texture/GuiTexture.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Src/client/Map.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Src/client/Map.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/client.cbp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/grahic_protocol/quantification.c" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/grahic_protocol/quantification.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extra/gui/pokeball.png" beforeDir="false" afterPath="$PROJECT_DIR$/extra/gui/pokeball.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/extra/gui/pokeball2.png" beforeDir="false" afterPath="$PROJECT_DIR$/extra/gui/pokeball2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sh.sh" beforeDir="false" afterPath="$PROJECT_DIR$/sh.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/CMakeFiles/" />
@@ -56,38 +85,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Default" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GuiTexture.cpp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Src/client/Texture/GuiTexture.cpp">
+      <file leaf-file-name="ManageServer.hpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Include/Class/ManageServer.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="50" column="48" selection-start-line="50" selection-start-column="48" selection-end-line="50" selection-end-column="48" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Communication.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Src/client/Communication.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="65" selection-start-line="65" selection-end-line="65" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GuiTexture.hpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Include/Class/Texture/GuiTexture.hpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1">
-              <caret line="6" selection-start-line="6" selection-end-line="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Map.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Src/client/Map.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="195" column="115" selection-start-line="195" selection-start-column="112" selection-end-line="195" selection-end-column="115" />
+            <state relative-caret-position="233">
+              <caret line="31" column="39" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -95,29 +97,83 @@
       <file leaf-file-name="ManageServer.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Src/client/ManageServer.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="696">
-              <caret line="150" column="30" selection-start-line="150" selection-start-column="30" selection-end-line="150" selection-end-column="30" />
+            <state relative-caret-position="486">
+              <caret line="91" selection-start-line="91" selection-end-line="91" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="quantification.c" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/server/grahic_protocol/quantification.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="18">
+              <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="server.c" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/server/grahic_protocol/server.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1008">
+              <caret line="59" column="3" selection-start-line="59" selection-start-column="3" selection-end-line="59" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="movement.c" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/server/grahic_protocol/movement.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="234">
+              <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CMakeLists.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="35" column="11" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="resource.c" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/server/scheduler/resource.c">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="342">
+              <caret line="25" column="58" selection-start-line="25" selection-start-column="58" selection-end-line="25" selection-end-column="58" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Map.hpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Include/Class/Map.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1044">
+              <caret line="58" column="31" selection-start-line="58" selection-start-column="31" selection-end-line="58" selection-end-column="31" />
               <folding>
-                <element signature="e#105#124#0" expanded="true" />
+                <element signature="e#153#171#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Communication.hpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Include/Class/Communication.hpp">
+      <file leaf-file-name="ManageDisplay.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Src/client/ManageDisplay.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="110" column="45" selection-start-line="110" selection-start-column="45" selection-end-line="110" selection-end-column="45" />
+            <state relative-caret-position="288">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ManageServer.hpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Include/Class/ManageServer.hpp">
+      <file leaf-file-name="Character.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Src/Entity/Character.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
-              <caret line="35" column="33" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
+            <state relative-caret-position="414">
+              <caret line="122" column="1" selection-start-line="122" selection-start-column="1" selection-end-line="122" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -127,11 +183,11 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>Cstring</find>
-      <find>listId.pus</find>
-      <find>addFuncLo</find>
+      <find>std::cout</find>
     </findStrings>
     <replaceStrings>
       <replace>CstringArray</replace>
+      <replace>//std::cout</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -149,25 +205,25 @@
         <option value="$PROJECT_DIR$/Include/Class/ManageDisplay.hpp" />
         <option value="$PROJECT_DIR$/Src/client/ManageDisplay.cpp" />
         <option value="$PROJECT_DIR$/Src/Entity/Cell.cpp" />
-        <option value="$PROJECT_DIR$/Src/Grid.cpp" />
-        <option value="$PROJECT_DIR$/Include/Class/Map.hpp" />
+        <option value="$PROJECT_DIR$/Src/client/Communication.cpp" />
         <option value="$PROJECT_DIR$/Include/CstringArray.hpp" />
         <option value="$PROJECT_DIR$/Src/CstringArray.cpp" />
-        <option value="$PROJECT_DIR$/Include/Entity/Character.hpp" />
-        <option value="$PROJECT_DIR$/Src/Entity/Character.cpp" />
-        <option value="$PROJECT_DIR$/Include/Grid.hpp" />
-        <option value="$PROJECT_DIR$/Include/ParseEnqueueMap.hpp" />
-        <option value="$PROJECT_DIR$/CMakeLists.txt" />
-        <option value="$PROJECT_DIR$/Src/ParseEnqueueMap.cpp" />
         <option value="$PROJECT_DIR$/Src/client/Gui.cpp" />
-        <option value="$PROJECT_DIR$/Src/client/Texture/shackTexture.cpp" />
-        <option value="$PROJECT_DIR$/Src/client/Map.cpp" />
-        <option value="$PROJECT_DIR$/Include/Class/Texture/GuiTexture.hpp" />
         <option value="$PROJECT_DIR$/Include/Class/ManageServer.hpp" />
-        <option value="$PROJECT_DIR$/Src/client/ManageServer.cpp" />
+        <option value="$PROJECT_DIR$/Include/Class/Map.hpp" />
+        <option value="$PROJECT_DIR$/Include/Grid.hpp" />
         <option value="$PROJECT_DIR$/Include/Class/Communication.hpp" />
-        <option value="$PROJECT_DIR$/Src/client/Communication.cpp" />
-        <option value="$PROJECT_DIR$/Src/client/Texture/GuiTexture.cpp" />
+        <option value="$PROJECT_DIR$/Include/ParseEnqueueMap.hpp" />
+        <option value="$PROJECT_DIR$/Src/Grid.cpp" />
+        <option value="$PROJECT_DIR$/Src/client/Map.cpp" />
+        <option value="$PROJECT_DIR$/Src/ParseEnqueueMap.cpp" />
+        <option value="$PROJECT_DIR$/Src/Entity/Character.cpp" />
+        <option value="$PROJECT_DIR$/Include/Entity/Character.hpp" />
+        <option value="$PROJECT_DIR$/Src/client/ManageServer.cpp" />
+        <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/src/server/grahic_protocol/quantification.c" />
+        <option value="$PROJECT_DIR$/src/server/grahic_protocol/movement.c" />
+        <option value="$PROJECT_DIR$/src/server/grahic_protocol/server.c" />
       </list>
     </option>
   </component>
@@ -179,15 +235,16 @@
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="956" />
-    <option name="width" value="964" />
-    <option name="height" value="1044" />
+    <option name="x" value="-95" />
+    <option name="width" value="1272" />
+    <option name="height" value="692" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -198,37 +255,32 @@
             <path>
               <item name="client" type="b2602c69:ProjectViewProjectNode" />
               <item name="PSU_zappy_2017" type="462c0819:PsiDirectoryNode" />
-              <item name="Include" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="client" type="b2602c69:ProjectViewProjectNode" />
               <item name="PSU_zappy_2017" type="462c0819:PsiDirectoryNode" />
-              <item name="Include" type="462c0819:PsiDirectoryNode" />
-              <item name="Class" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="client" type="b2602c69:ProjectViewProjectNode" />
               <item name="PSU_zappy_2017" type="462c0819:PsiDirectoryNode" />
-              <item name="Src" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="grahic_protocol" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="client" type="b2602c69:ProjectViewProjectNode" />
               <item name="PSU_zappy_2017" type="462c0819:PsiDirectoryNode" />
-              <item name="Src" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="client" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PSU_zappy_2017" type="462c0819:PsiDirectoryNode" />
-              <item name="Src" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="Texture" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="scheduler" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -251,9 +303,11 @@
   </component>
   <component name="RunManager" selected="Application.Build All">
     <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="client" TARGET_NAME="client" CONFIG_NAME="Default" RUN_TARGET_PROJECT_NAME="client" RUN_TARGET_NAME="client" />
+    <configuration name="client" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="client" TARGET_NAME="client" CONFIG_NAME="Default" RUN_TARGET_PROJECT_NAME="client" RUN_TARGET_NAME="client" />
     <configuration name="zappy_server" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="client" TARGET_NAME="zappy_server" CONFIG_NAME="Default" RUN_TARGET_PROJECT_NAME="client" RUN_TARGET_NAME="zappy_server" />
     <list>
       <item itemvalue="Application.Build All" />
+      <item itemvalue="Application.client" />
       <item itemvalue="Application.zappy_server" />
     </list>
   </component>
@@ -272,30 +326,31 @@
       <workItem from="1529506672970" duration="695000" />
       <workItem from="1529523656856" duration="14133000" />
       <workItem from="1529586587584" duration="6445000" />
-      <workItem from="1529595750857" duration="9407000" />
-      <workItem from="1529616420200" duration="5205000" />
-      <workItem from="1529681989549" duration="2917000" />
+      <workItem from="1529595750857" duration="11572000" />
+      <workItem from="1529622137730" duration="933000" />
+      <workItem from="1529672417627" duration="4369000" />
+      <workItem from="1529686247340" duration="1695000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="63156000" />
+    <option name="totallyTimeSpent" value="73975000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="34" width="1920" height="1046" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16552451" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14812863" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Messages" order="7" weight="0.20765027" />
-      <window_info anchor="bottom" id="CMake" order="7" weight="0.32896176" />
+      <window_info anchor="bottom" id="CMake" order="7" weight="0.3296582" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50184697" side_tool="true" weight="0.029768467" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.25248072" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" sideWeight="0.49815303" visible="true" weight="0.2612022" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49815303" visible="true" weight="0.19453552" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -313,18 +368,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <option name="time" value="4" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Include/ParseEnqueueMap.cpp" />
-    <entry file="file://$PROJECT_DIR$/Include/ParseEnqueueMap.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Include/Class/ManageServer.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="663">
@@ -379,13 +426,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1445">
           <caret line="85" selection-start-line="85" selection-end-line="85" />
-          <folding>
-            <element signature="e#105#124#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Src/CstringArray.hpp" />
+    <entry file="file:///usr/include/c++/7/bits/stl_iterator.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="844" selection-start-line="844" selection-end-line="844" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file:///usr/include/c++/7/bits/stl_tree.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="236">
@@ -429,6 +480,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Src/client/Texture/GuiTexture.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="58" column="50" selection-start-line="58" selection-start-column="50" selection-end-line="58" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Include/Class/ManageDisplay.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -436,28 +494,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Src/client/ManageDisplay.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="11" column="50" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="58" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/src/server/server.c">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file:///usr/local/include/SFML/Graphics/Color.hpp" />
-    <entry file="file:///usr/include/c++/7/bits/basic_string.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="6032" selection-start-line="6032" selection-end-line="6032" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Src/Entity/Character.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="26" column="23" lean-forward="true" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/include/c++/7/bits/stl_vector.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
@@ -465,192 +505,205 @@
         </state>
       </provider>
     </entry>
+    <entry file="file:///usr/include/c++/7/bits/basic_string.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="6032" selection-start-line="6032" selection-end-line="6032" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/x86_64-linux-gnu/c++/7/bits/gthr-default.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="747" selection-start-line="747" selection-end-line="747" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Src/client/Gui.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="32" column="10" selection-start-line="32" selection-start-column="10" selection-end-line="32" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Include/CstringArray.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
+        <state relative-caret-position="36">
           <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/client_manager/manager.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="33" column="6" selection-start-line="33" selection-start-column="6" selection-end-line="33" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Src/CstringArray.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="17" column="57" selection-start-line="17" selection-start-column="57" selection-end-line="17" selection-end-column="57" />
+        <state relative-caret-position="221">
+          <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Include/Entity/AMotionShape.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="26" column="48" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Include/Grid.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="52" column="18" selection-start-line="52" selection-start-column="18" selection-end-line="52" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/c++/7/bits/stl_pair.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="232">
+          <caret line="230" column="25" selection-start-line="230" selection-start-column="25" selection-end-line="230" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Src/client/Communication.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="93" column="93" selection-start-line="93" selection-start-column="93" selection-end-line="93" selection-end-column="93" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Src/Grid.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="248" column="1" lean-forward="true" selection-start-line="248" selection-start-column="1" selection-end-line="248" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Src/Entity/Cell.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Include/ParseEnqueueMap.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" column="14" selection-start-line="14" selection-start-column="14" selection-end-line="14" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Include/Class/Communication.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1584">
+          <caret line="88" column="26" selection-start-line="88" selection-start-column="26" selection-end-line="88" selection-end-column="26" />
+          <folding>
+            <element signature="e#173#191#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Src/client/Map.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3726">
+          <caret line="207" column="68" selection-start-line="207" selection-start-column="68" selection-end-line="207" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Src/ParseEnqueueMap.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4284">
+          <caret line="238" column="75" selection-start-line="238" selection-start-column="75" selection-end-line="238" selection-end-column="75" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Include/Entity/Character.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
+        <state relative-caret-position="1044">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Include/Class/Map.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1044">
-          <caret line="58" column="32" selection-start-line="58" selection-start-column="32" selection-end-line="58" selection-end-column="32" />
+          <caret line="58" column="31" selection-start-line="58" selection-start-column="31" selection-end-line="58" selection-end-column="31" />
           <folding>
             <element signature="e#153#171#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Include/Grid.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Src/Grid.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2628">
-          <caret line="146" column="40" selection-start-line="146" selection-start-column="40" selection-end-line="146" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Src/ParseEnqueueMap.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="22" column="23" lean-forward="true" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
-          <folding>
-            <element signature="e#43#69#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/include/c++/7/bits/stl_iterator.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="879" selection-start-line="879" selection-end-line="879" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/include/c++/7/bits/stl_construct.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="126" selection-start-line="126" selection-end-line="126" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Include/ParseEnqueueMap.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="27" column="19" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/include/c++/7/bits/stl_algobase.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="367" selection-start-line="367" selection-end-line="367" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Src/Entity/Cell.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1944">
-          <caret line="108" selection-start-line="108" selection-end-line="108" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Src/client/Gui.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1296">
-          <caret line="72" column="38" selection-start-line="72" selection-start-column="38" selection-end-line="72" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/server/command.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-216" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/gui_manager/command.c">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/include/server/gui_command.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="56" column="17" lean-forward="true" selection-start-line="56" selection-start-column="17" selection-end-line="56" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Src/client/Texture/shackTexture.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="68" selection-start-line="50" selection-end-line="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Include/Class/Texture/shackTexture.hpp">
+    <entry file="file://$PROJECT_DIR$/Src/client/ManageDisplay.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
-          <caret line="17" column="14" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Src/client/ManageServer.cpp">
+    <entry file="file://$PROJECT_DIR$/Src/Entity/Character.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="696">
-          <caret line="150" column="30" selection-start-line="150" selection-start-column="30" selection-end-line="150" selection-end-column="30" />
-          <folding>
-            <element signature="e#105#124#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="414">
+          <caret line="122" column="1" selection-start-line="122" selection-start-column="1" selection-end-line="122" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/c++/7/bits/stringfwd.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="73" column="32" selection-start-line="73" selection-start-column="32" selection-end-line="73" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Include/Class/ManageServer.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="35" column="33" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
+        <state relative-caret-position="233">
+          <caret line="31" column="39" selection-start-line="31" selection-start-column="39" selection-end-line="31" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Include/Class/Communication.hpp">
+    <entry file="file://$PROJECT_DIR$/Src/client/ManageServer.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="110" column="45" selection-start-line="110" selection-start-column="45" selection-end-line="110" selection-end-column="45" />
+        <state relative-caret-position="486">
+          <caret line="91" selection-start-line="91" selection-end-line="91" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Src/client/Map.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="195" column="115" selection-start-line="195" selection-start-column="112" selection-end-line="195" selection-end-column="115" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Include/Class/Texture/GuiTexture.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Src/client/Communication.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="65" selection-start-line="65" selection-end-line="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Src/client/Texture/GuiTexture.cpp">
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
-          <caret line="50" column="48" selection-start-line="50" selection-start-column="48" selection-end-line="50" selection-end-column="48" />
+          <caret line="35" column="11" selection-start-line="35" selection-start-column="11" selection-end-line="35" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/scheduler/resource.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="25" column="58" selection-start-line="25" selection-start-column="58" selection-end-line="25" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/grahic_protocol/quantification.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="16" selection-start-line="1" selection-start-column="16" selection-end-line="1" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/grahic_protocol/movement.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/grahic_protocol/server.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1008">
+          <caret line="59" column="3" selection-start-line="59" selection-start-column="3" selection-end-line="59" selection-end-column="3" />
         </state>
       </provider>
     </entry>

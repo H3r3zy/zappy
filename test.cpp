@@ -17,7 +17,7 @@ public:
         std::thread thrd = std::thread(&Foo::sleep_for, this, tname, 3600);
         thrd.detach();
         tm_[tname] = std::move(thrd);
-        std::cout << "Thread " << tname << " created:" << std::endl;
+        //std::cout << "Thread " << tname << " created:" << std::endl;
     }
 
     void stop_thread(const std::string &tname)
@@ -26,7 +26,7 @@ public:
         if (it != tm_.end()) {
             it->second.std::thread::~thread(); // thread not killed
             tm_.erase(tname);
-            std::cout << "Thread " << tname << " killed:" << std::endl;
+            //std::cout << "Thread " << tname << " killed:" << std::endl;
         }
     }
 

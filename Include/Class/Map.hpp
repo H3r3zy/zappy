@@ -34,7 +34,7 @@ namespace irc {
 		~Map() = default;
 
 		void loopDisplay();
-		std::vector<Character> &getCharacterMap();
+		std::map<uint, Character> &getCharacterMap();
 		Grid &getGrid();
 
 
@@ -56,7 +56,7 @@ namespace irc {
 
 		/* Member Classes */
 		WindowInfo *_windowInfo;
-		std::vector<Character> _character;
+		std::map<uint, Character> _character;
 		ParseEnqueueMap _enqueueMap;
 		sf::Vector2f _mapSize = {10, 10};
 		Grid _grid;

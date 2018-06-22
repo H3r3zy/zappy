@@ -56,7 +56,7 @@ static void remove_stones(map_t *map, pos_t *pos, uint32_t level)
 }
 
 bool incantation_verify(server_t *server, client_t *client,
-	char *__attribute__((unused)) arg
+	__attribute__((unused)) char *arg
 )
 {
 	cell_t *cell = &server->map.map[client->entity->pos.y]
@@ -79,7 +79,7 @@ bool incantation_verify(server_t *server, client_t *client,
 }
 
 void incantation_cmd(server_t *server, client_t *client,
-	char *__attribute__((unused))arg
+	__attribute__((unused)) char *arg
 )
 {
 	cell_t *cell = &server->map.map[client->entity->pos.y]

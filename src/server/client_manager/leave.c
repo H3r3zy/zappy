@@ -8,7 +8,6 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include "gui_command.h"
-#include "server.h"
 #include "debug.h"
 #include "egg.h"
 
@@ -16,15 +15,17 @@ static void drop_player_ressource(server_t *server, client_t *client)
 {
 	for (uint i = 0; i < RESOURCE_NB; ++i) {
 		while (client->user.bag[i]) {
-			update_resource(&server->map, &client->entity->pos, i, 1);
+			update_resource(&server->map, &client->entity->pos, i,
+				1);
 			gui_pdr(server, client, i);
 			client->user.bag[i]--;
 		}
 	}
 }
 
-static void disconnect_of_team(server_t *server, teams_t *team,
-	client_t *client)
+static void disconnect_of_team(__attribute__((unused)) server_t *server,
+	teams_t *team, client_t *client
+)
 {
 	for (uint32_t i = 0; i < team->client_max; i++) {
 		if (team->clients[i] == client) {

@@ -108,12 +108,12 @@ void gui_pin(server_t *server, char *arg, __attribute__((unused)) bool *status)
 
 	if (clt) {
 		write_pin_clt_infos(clt, buff, &idx, (uint32_t)id);
-		for (uint i = 1; i <= Thystame; i++) {
+		for (uint i = 0; i <= Thystame; i++) {
 			write_uint32(buff, &idx, clt->user.bag[i]);
 			idx++;
 		}
-		buff[idx] = -5;
-		add_to_gui_queue(&server->gui, buff, idx + 1);
+		buff[idx - 1] = -5;
+		add_to_gui_queue(&server->gui, buff, idx);
 	} else
 		add_to_gui_queue(&server->gui, GUI_KO, 3);
 }

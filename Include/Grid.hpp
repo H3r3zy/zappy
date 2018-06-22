@@ -52,7 +52,7 @@ class Grid {
 	bool loadTextures();
 	void loadMap();
 	void loadWater();
-	void loadingDisplay( sf::Vector2f &mapSize);
+	void loadingDisplay( sf::Vector2f &mapSize, sf::RenderWindow &window);
 
 	/* TOOLS */
 	sf::Vector2f _mapSize;

@@ -24,7 +24,7 @@ static bool can_do_incantation(client_t *client, cell_t *cell)
 
 	for (uint32_t i = 0; i < RESOURCE_NB; i++) {
 		if (cell->items[i] != ELEVATIONS[client->user.level - 1][i]) {
-			debug(INFO "%i failed: %i instead of %i\n", i, cell->items[i], ELEVATIONS[client->user.level - 1][i]);
+			//debug(INFO "%i failed: %i instead of %i\n", i, cell->items[i], ELEVATIONS[client->user.level - 1][i]);
 			return false;
 		}
 	}
@@ -56,7 +56,7 @@ static void remove_stones(map_t *map, pos_t *pos, uint32_t level)
 }
 
 bool incantation_verify(server_t *server, client_t *client,
-	char *__attribute__((unused)) arg
+	__attribute__((unused)) char *arg
 )
 {
 	cell_t *cell = &server->map.map[client->entity->pos.y]
@@ -79,7 +79,7 @@ bool incantation_verify(server_t *server, client_t *client,
 }
 
 void incantation_cmd(server_t *server, client_t *client,
-	char *__attribute__((unused))arg
+	__attribute__((unused)) char *arg
 )
 {
 	cell_t *cell = &server->map.map[client->entity->pos.y]

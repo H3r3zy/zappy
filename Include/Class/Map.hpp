@@ -34,6 +34,7 @@ namespace irc {
 		~Map() = default;
 
 		void loopDisplay();
+		void updateGuiData();
 		std::map<uint, Character> &getCharacterMap();
 		Grid &getGrid();
 

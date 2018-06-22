@@ -108,14 +108,44 @@ static int command_manager(server_t *server, client_t *client, char *command)
 	return 1;
 }
 
-int read_client(server_t *server, client_t *client)
+static int read_client(client_t *client)
 {
-	char *request = gnl(client->fd, "\n");
+	char buff[READ_SIZE + 1];
+	ssize_t status = read(client->fd, buff, READ_SIZE);
 
-	if (!request)
+	if (status < 1)
 		return 1;
-	debug(INFO "'%i' Client request : %s\n", client->fd, request);
-	command_manager(server, client, request);
-	free(request);
+	buff[status] = 0;
+	if (strlen(client->buff) + status >= READ_SIZE) {
+		client->buff_size += READ_SIZE;
+		client->buff = realloc(client->buff, client->buff_size + 1);
+	}
+	strcat(client->buff, buff);
+	client->buff_len += status;
+	return 0;
+}
+
+int pollin_client(server_t *server, client_t *client)
+{
+	int status = read_client(client);
+	char *end;
+	char *cmd;
+	size_t off = 0;
+
+	if (status != 0)
+		return 1;
+	cmd = client->buff;
+	end = strchr(cmd, '\n');
+	while (end) {
+		*end = 0;
+		command_manager(server, client, cmd);
+		off += end - cmd + 1;
+		cmd = end + 1;
+		end = strchr(cmd, '\n');
+	}
+	*client->buff = 0;
+	if (client->buff[off])
+		memmove(client->buff, client->buff + off,
+			client->buff_len - off + 1);
 	return 0;
 }

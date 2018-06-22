@@ -8,12 +8,12 @@
 #include "ParseEnqueueMap.hpp"
 #include "Map.hpp"
 
-ParseEnqueueMap::ParseEnqueueMap(irc::Communication &comm) : _comm(comm)
+irc::ParseEnqueueMap::ParseEnqueueMap(irc::Communication &comm) : _comm(comm)
 {
 	_comm.writeOnServer("msz");
 }
 
-sf::Vector2f ParseEnqueueMap::ParseMapSize()
+sf::Vector2f irc::ParseEnqueueMap::ParseMapSize()
 {
 	sf::Vector2f tmpMap = {0, 0};
 
@@ -58,7 +58,7 @@ sf::Vector2f ParseEnqueueMap::ParseMapSize()
 	}
 }
 
-void ParseEnqueueMap::fillMap(Grid &_grid, sf::Vector2f &mapSize)
+void irc::ParseEnqueueMap::fillMap(Grid &_grid, sf::Vector2f &mapSize)
 {
 	_comm.writeOnServer("mct");
 	std::vector<CstringArray> save;
@@ -126,10 +126,9 @@ void ParseEnqueueMap::fillMap(Grid &_grid, sf::Vector2f &mapSize)
 }
 
 
-void ParseEnqueueMap::loadingDisplay( sf::Vector2f &mapSize)
+void irc::ParseEnqueueMap::loadingDisplay( sf::Vector2f &mapSize, sf::RenderWindow &window)
 {
-	sf::RenderWindow window(sf::VideoMode(800, 600), "Loading ");
-	window.setPosition(sf::Vector2i(200, 100));
+	window.setActive(true);
 	sf::Text text;
 	sf::Font font;
 	std::string total = std::to_string(mapSize.x * mapSize.y);
@@ -157,6 +156,7 @@ void ParseEnqueueMap::loadingDisplay( sf::Vector2f &mapSize)
 	text.setPosition(100, 0);
 
 	while (!_ready) {
+		std::cout << "je parse les infos du serveur" << std::endl;
 		if (_blocNumber != 0) {
 			text.setString("Filling resources : " + std::to_string(_blocNumber) + " / " + total);
 		} else {
@@ -169,12 +169,11 @@ void ParseEnqueueMap::loadingDisplay( sf::Vector2f &mapSize)
 		window.draw(currentRect);
 		window.draw(text);
 		window.display();
-		window.clear();
+		window.clear(sf::Color::Black);
 	}
-	window.close();
 }
 
-void ParseEnqueueMap::parseNextCommand(irc::Map &map)
+void irc::ParseEnqueueMap::parseNextCommand(irc::Map &map)
 {
 	int i = 0;
 	_comm.lockMap();
@@ -211,9 +210,9 @@ void ParseEnqueueMap::parseNextCommand(irc::Map &map)
 	_comm.unlockMap();
 }
 
-void ParseEnqueueMap::addPlayer(irc::Map &map, const CstringArray &command)
+void irc::ParseEnqueueMap::addPlayer(irc::Map &map, const CstringArray &command)
 {
-	//std::cout << "Commande numero " << " [" << command.getCommandName() << "]" << std::endl;
+	std::cout << "Commande numero " << " [" << command.getCommandName() << "]" << std::endl;
 
 	std::vector<uint> tmpCommand = command.getCommand();
 
@@ -233,7 +232,7 @@ void ParseEnqueueMap::addPlayer(irc::Map &map, const CstringArray &command)
 	}
 }
 
-void ParseEnqueueMap::deletePlayer(irc::Map &map, const CstringArray &command)
+void irc::ParseEnqueueMap::deletePlayer(irc::Map &map, const CstringArray &command)
 {
 	//std::cout << "je vais supprimer le joueur " << command.getCommand()[0] << std::endl;
 	std::map<uint, Character> &tmp = map.getCharacterMap();
@@ -248,7 +247,7 @@ void ParseEnqueueMap::deletePlayer(irc::Map &map, const CstringArray &command)
 	}
 }
 
-bool ParseEnqueueMap::movePlayerPosition(irc::Map &map, const CstringArray &command)
+bool irc::ParseEnqueueMap::movePlayerPosition(irc::Map &map, const CstringArray &command)
 {
 	std::cout << "je vais faire bouger " << command.getCommand()[0] << std::endl;
 	sf::Vector2f tmpPos = {command.getCommand()[1] * 100, command.getCommand()[2] * 100};
@@ -264,13 +263,13 @@ bool ParseEnqueueMap::movePlayerPosition(irc::Map &map, const CstringArray &comm
 	//map.getCharacterMap()[0].setPlayerMovement(tmpPos, command.getCommand()[3]);
 }
 
-void ParseEnqueueMap::movePlayerOrientation(irc::Map &map, const CstringArray &command)
+void irc::ParseEnqueueMap::movePlayerOrientation(irc::Map &map, const CstringArray &command)
 {
 	std::cout << " je vais mettre l'orientation de mon gars en " << command.getCommand()[1] << std::endl;
 	map.getCharacterMap().at(command.getCommand()[0]).setPlayerOrientation(static_cast<char>(command.getCommand()[1]));
 }
 
-bool ParseEnqueueMap::takeResourcePlayer(irc::Map &map, const CstringArray &command)
+bool irc::ParseEnqueueMap::takeResourcePlayer(irc::Map &map, const CstringArray &command)
 {
 	/*std::cout << "Je vais chercher la cellule qui est en X " << command.getCommand()[0] << " X " << command.getCommand()[1] << " Y " << command.getCommand()[2] << std::endl;
 	std::cout << "L'id de mon joueur " << map.getCharacterMap().at(command.getCommand()[0]).getPlayerID() << std::endl;
@@ -282,72 +281,108 @@ bool ParseEnqueueMap::takeResourcePlayer(irc::Map &map, const CstringArray &comm
 
 	// TODO enelever cette foret de if degueu xD
 
-	if (command.getCommand()[1] == 6)
+	if (command.getCommand()[1] == 6) {
 		_comm._server.ressources.q0--;
-	else if (command.getCommand()[1] == 1)
-		_comm._server.ressources.q1--;
-	else if (command.getCommand()[1] == 2)
-		_comm._server.ressources.q2--;
-	else if (command.getCommand()[1] == 3)
-		_comm._server.ressources.q3--;
-	else if (command.getCommand()[1] == 4)
-		_comm._server.ressources.q4--;
-	else if (command.getCommand()[1] == 5)
-		_comm._server.ressources.q5--;
+		std::cout << "[" << GREEN << "PLAYER " << command.getCommand()[0] << RESET << "] took 1 resource 6" << std::endl;
+	}
 	else if (command.getCommand()[1] == 1) {
-		std::cout << "JE SUIS UNE GROSSE CHIENNE" << std::endl;
+		_comm._server.ressources.q1--;
+		std::cout << "[" << GREEN << "PLAYER " << command.getCommand()[0] << RESET << "] took 1 resource 1" << std::endl;
+	}
+	else if (command.getCommand()[1] == 2) {
+		_comm._server.ressources.q2--;
+		std::cout << "[" << GREEN << "PLAYER " << command.getCommand()[0] << RESET << "] took 1 resource 2" << std::endl;
+	}
+	else if (command.getCommand()[1] == 3) {
+		_comm._server.ressources.q3--;
+		std::cout << "[" << GREEN << "PLAYER " << command.getCommand()[0] << RESET << "] took 1 resource 3" << std::endl;
+	}
+	else if (command.getCommand()[1] == 4) {
+		_comm._server.ressources.q4--;
+		std::cout << "[" << GREEN << "PLAYER " << command.getCommand()[0] << RESET << "] took 1 resource 4" << std::endl;
+	}
+	else if (command.getCommand()[1] == 5) {
+		_comm._server.ressources.q5--;
+		std::cout << "[" << GREEN << "PLAYER " << command.getCommand()[0] << RESET << "] took 1 resource 5" << std::endl;
+	}
+	else if (command.getCommand()[1] == 0) {
 		_comm._server.ressources.q6--;
-		std::cout << "resource mnt : " << _comm._server.ressources.q6 << std::endl;
+		std::cout << "[" << GREEN << "PLAYER " << command.getCommand()[0] << RESET << "] took 1 resource 6" << std::endl;
 	}
 	return true;
 }
 
-bool ParseEnqueueMap::dropResourcePlayer(irc::Map &map, const CstringArray &command)
+bool irc::ParseEnqueueMap::dropResourcePlayer(irc::Map &map, const CstringArray &command)
 {
 	map.getCharacterMap().at(command.getCommand()[0]).setPlayerTake((char)command.getCommand()[1], command.getCommand()[1]);
 	map.getGrid().getCell(static_cast<int>(map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().x / 100), static_cast<int>(map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().y / 100))->addRessources(command.getCommand()[1]);
 
-	if (command.getCommand()[1] == 6)
+	if (command.getCommand()[1] == 6) {
 		_comm._server.ressources.q0++;
-	else if (command.getCommand()[1] == 1)
+		std::cout << "[" << GREEN << "PLAYER " << command.getCommand()[0] << RESET << "] dropped 1 resource 6" << std::endl;
+	}
+	else if (command.getCommand()[1] == 1) {
 		_comm._server.ressources.q1++;
-	else if (command.getCommand()[1] == 2)
+		std::cout << "[" << GREEN << "PLAYER " << command.getCommand()[0] << RESET << "] dropped 1 resource 1" << std::endl;
+	}
+	else if (command.getCommand()[1] == 2) {
 		_comm._server.ressources.q2++;
-	else if (command.getCommand()[1] == 3)
+		std::cout << "[" << GREEN << "PLAYER " << command.getCommand()[0] << RESET << "] dropped 1 resource 2" << std::endl;
+	}
+	else if (command.getCommand()[1] == 3) {
 		_comm._server.ressources.q3++;
-	else if (command.getCommand()[1] == 4)
+		std::cout << "[" << GREEN << "PLAYER " << command.getCommand()[0] << RESET << "] dropped 1 resource 3" << std::endl;
+	}
+	else if (command.getCommand()[1] == 4) {
 		_comm._server.ressources.q4++;
-	else if (command.getCommand()[1] == 5)
+		std::cout << "[" << GREEN << "PLAYER " << command.getCommand()[0] << RESET << "] dropped 1 resource 4" << std::endl;
+	}
+	else if (command.getCommand()[1] == 5) {
 		_comm._server.ressources.q5++;
-	else if (command.getCommand()[1] == 1)
+		std::cout << "[" << GREEN << "PLAYER " << command.getCommand()[0] << RESET << "] dropped 1 resource 5" << std::endl;
+	}
+	else if (command.getCommand()[1] == 0) {
 		_comm._server.ressources.q6++;
+		std::cout << "[" << GREEN << "PLAYER " << command.getCommand()[0] << RESET << "] dropped 1 resource 0" << std::endl;
+	}
 	return true;
 }
 
-bool ParseEnqueueMap::addRandomResource(irc::Map &map, const CstringArray &command)
+bool irc::ParseEnqueueMap::addRandomResource(irc::Map &map, const CstringArray &command)
 {
 	std::cout << "size " << command.getCommand().size() << std::endl;
 	std::cout << "ma celle est cencee etre en " << command.getCommand()[0] << " " << command.getCommand()[1] << std::endl;
 	std::cout << "je vais add une random ressource " << command.getCommand()[2] << std::endl;
 	map.getGrid().getCell(command.getCommand()[0], command.getCommand()[1])->addRessources(command.getCommand()[2]);
 
-	if (command.getCommand()[1] == 6)
+	if (command.getCommand()[1] == 6) {
 		_comm._server.ressources.q0++;
-	else if (command.getCommand()[1] == 1)
+		std::cout << "[" << GREEN << "SERVER " << RESET << "] generated 1 resource 6" << std::endl;
+	}
+	else if (command.getCommand()[1] == 1) {
 		_comm._server.ressources.q1++;
-	else if (command.getCommand()[1] == 2)
+		std::cout << "[" << GREEN << "SERVER " << RESET << "] generated 1 resource 1" << std::endl;
+	}
+	else if (command.getCommand()[1] == 2) {
 		_comm._server.ressources.q2++;
-	else if (command.getCommand()[1] == 3)
+		std::cout << "[" << GREEN << "SERVER " << RESET << "] generated 1 resource 2" << std::endl;
+	}
+	else if (command.getCommand()[1] == 3) {
 		_comm._server.ressources.q3++;
-	else if (command.getCommand()[1] == 4)
+		std::cout << "[" << GREEN << "SERVER " << RESET << "] generated 1 resource 3" << std::endl;
+	}
+	else if (command.getCommand()[1] == 4) {
 		_comm._server.ressources.q4++;
-	else if (command.getCommand()[1] == 5)
+		std::cout << "[" << GREEN << "PLAYER " << RESET << "] generated 1 resource 4" << std::endl;
+	}
+	else if (command.getCommand()[1] == 5) {
 		_comm._server.ressources.q5++;
-	else if (command.getCommand()[1] == 1)
+		std::cout << "[" << GREEN << "PLAYER " << RESET << "] generated 1 resource 5" << std::endl;
+	}
+	else if (command.getCommand()[1] == 0) {
 		_comm._server.ressources.q6++;
+		std::cout << "[" << GREEN << "PLAYER " << RESET << "] generated 1 resource 0" << std::endl;
+	}
 
 	return true;
 }
-
-// pmv // ID posX posY orientation
-// lautre // ID orientation

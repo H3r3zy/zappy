@@ -25,6 +25,14 @@ void irc::IATexture::initTexture()
 	initClose();
 
 	_base._monitor->addFuncLoop(1, [this] {
+		if (_base._comm._listId.empty()) {
+			_base._monitor->setScene(0);
+			return;
+		} else if (_base._comm._listId[0] == -1) {
+			_base._monitor->setScene(-1);
+			return;
+		}
+
 		_base._comm._player.id = _base._comm._listId[0];
 
 		_base._monitor->getObjectByName("arrow_change", 1)->setBoolDisplay(_base._comm._listId.size() != 1);
@@ -35,14 +43,37 @@ void irc::IATexture::initTexture()
 		_nb_q4->setText("x "+ std::to_string(_base._comm._player.ressources.q4));
 		_nb_q5->setText("x "+ std::to_string(_base._comm._player.ressources.q5));
 		_nb_q6->setText("x "+ std::to_string(_base._comm._player.ressources.q6));
-		_status->setText("Status: " + _base._comm._player.status);
-		_pos->setText("Position: " + std::to_string(_base._comm._player._pos.first) + ", " + std::to_string(_base._comm._player._pos.second));
+		_status->setText("Level: " + std::to_string(_base._comm._player.level));
+		_pos->setText("Position: " + std::to_string((int)_base._comm._player._pos.first) + ", " + std::to_string((int)_base._comm._player._pos.second));
 
 		_team->setText("Team name: " + _base._comm._player.team);
 		std::string id = std::to_string(_base._comm._player.id);
 		_nickIA->setPos(sf::IntRect(145 - (int)(id.size() / 2 * 13), 180, (int)(id.size() / 2 * 13), 26));
 		_nickIA->setText(id);
 	});
+	_base._monitor->addFuncLoop(1, &irc::IATexture::updateIAData, this);
+}
+
+void irc::IATexture::updateIAData()
+{
+	_base._comm.writeOnServer("pin " + std::to_string(_base._comm._listId[0]));
+	_base._comm.lockGui();
+	auto list_msg = _base._comm.getEnqueueGui();
+
+	for (auto &&it : list_msg) {
+		if (it.getCommandName() == "pin") {
+			std::cerr << "inventory: " << it.getCommand()[3] << ", " << it.getCommand()[4] << ", " << it.getCommand()[5] << ", " << it.getCommand()[6] << ", "<< it.getCommand()[7] << ", " << it.getCommand()[8] << ", " << it.getCommand()[9] << ", " <<  std::endl;
+			_base._comm._player.ressources.q0 = it.getCommand()[3];
+			_base._comm._player.ressources.q1 = it.getCommand()[4];
+			_base._comm._player.ressources.q2 = it.getCommand()[5];
+			_base._comm._player.ressources.q3 = it.getCommand()[6];
+			_base._comm._player.ressources.q4 = it.getCommand()[7];
+			_base._comm._player.ressources.q5 = it.getCommand()[8];
+			_base._comm._player.ressources.q6 = it.getCommand()[9];
+		}
+	}
+	_base._comm.getEnqueueGui().clear();
+	_base._comm.unlockGui();
 
 }
 
@@ -168,7 +199,7 @@ void irc::IATexture::initDataServer()
 	_pos->setColor(sf::Color::Black);
 	container->addObjectList("pos", _pos);
 
-	_status = new irc::Text("extra/arial.ttf", sf::IntRect(0, 75, 100, 20), "Status: ???");
+	_status = new irc::Text("extra/arial.ttf", sf::IntRect(0, 75, 100, 20), "Level: ???");
 	_status->setColor(sf::Color::Black);
 	container->addObjectList("status", _status);
 

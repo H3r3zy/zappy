@@ -14,7 +14,7 @@ Grid::Grid(const sf::Vector2f &mapSize, sf::RenderWindow &window) : _mapSize(map
 	//std::cout << "je suis dans Grid, la taille de ma map map X" << _mapSize.x << " Y " << _mapSize.y << std::endl;
 
 	window.setActive(false);
-	auto thread(new my::Thread([&]() {loadingDisplay(_mapSize);}));
+	auto thread(new my::Thread([&]() {loadingDisplay(_mapSize, window);}));
 	loadTextures();
 	loadMap();
 
@@ -28,10 +28,9 @@ Grid::~Grid()
 }
 
 
-void Grid::loadingDisplay( sf::Vector2f &mapSize)
+void Grid::loadingDisplay( sf::Vector2f &mapSize, sf::RenderWindow &window)
 {
-	sf::RenderWindow window(sf::VideoMode(800, 600), "Loading ");
-	window.setPosition(sf::Vector2i(200, 100));
+	window.setActive(true);
 	sf::Text text;
 	sf::Font font;
 	std::string total = std::to_string(mapSize.x * mapSize.y);
@@ -68,7 +67,6 @@ void Grid::loadingDisplay( sf::Vector2f &mapSize)
 		window.display();
 		window.clear();
 	}
-	window.close();
 }
 
 void Grid::loadMap()

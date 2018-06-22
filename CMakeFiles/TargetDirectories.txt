@@ -1,4 +1,4 @@
 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/rebuild_cache.dir
 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/edit_cache.dir
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/client.dir
 /home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/zappy_server.dir
+/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/CMakeFiles/client.dir

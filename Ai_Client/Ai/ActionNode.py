@@ -5,6 +5,7 @@ from Ai_Client.Client import Client
 from Ai_Client.Ai.Ai import Ai
 from enum import IntEnum
 from Ai_Client.Ai.PathFinding import PathFinding
+import re
 
 
 class Actions(IntEnum):
@@ -17,15 +18,20 @@ class Actions(IntEnum):
     TAKE_ALL = 6,
     LVL_UP = 7,
     CHECK_PLAYER = 8,
-    NEED_PEOPLE = 9
+    NEED_PEOPLE = 9,
+    DROP = 10,
+    WAIT_ALL_DROPS = 11,
+    WAIT_LVL_UP = 12,
+    GO_TO_BROADCASTER = 13,
+    FIND_IF_BROADCASTER = 14,
+    WAIT_TO_DROP = 15,
 
 
 def look(client: Client, player: Ai):
     if look.id == -1:
+        client.msgQueue.clear()
         look.id = client.build_command("Look", "", (player.getCoord(), player.getDir()))
-        print(look.id)
     if look.id != client.last:
-        print(client.last)
         return Actions.LOOK
     look.id = -1
     print("J'ai fini de look")
@@ -33,6 +39,35 @@ def look(client: Client, player: Ai):
 
 
 look.id = -1
+
+
+def take_all_resources(client: Client, player: Ai):
+    x = player.getCoord()[0] % client.mapSize[0]
+    y = player.getCoord()[1] % client.mapSize[1]
+    map = player.getMap()
+    items = map[y][x].getStones()
+
+    for obj, nb in items.items():
+
+        if nb > 0:
+            while nb > 0:
+                client.build_command("Take", obj, (x, y))
+                nb -= 1
+
+
+def shifting(client: Client, player: Ai, to_go: list):
+    map = player.getMap()
+    player_coord = [player.getCoord()[0] % client.mapSize[0], player.getCoord()[1] % client.mapSize[1]]
+    finding_path = PathFinding(client.mapSize[1], client.mapSize[0])
+
+    map[player_coord[1]][player_coord[1]].setPlayer(map[player_coord[1]][player_coord[0]].getPlayer() - 1)
+    actions, player.dir = finding_path.goToTile(
+        player.getCoord(),
+        to_go,
+        player.getDir())
+    for move in actions:
+        client.build_command(move)
+    player.setCoord(to_go[0], to_go[1])
 
 
 def CheckingFood(client: Client, player: Ai):
@@ -47,15 +82,7 @@ def Forward(client: Client, player: Ai):
     y = player.getCoord()[1] % client.mapSize[1]
     x_forward = (x + 1) % client.mapSize[0]
     y_forward = (y + 1) % client.mapSize[1]
-    map = player.getMap()
-    map[y][x].setPlayer(
-        map[y][x].getPlayer() - 1)
-    finding_path = PathFinding(client.mapSize[1], client.mapSize[0])
-    actions, player.dir = finding_path.goToTile([x, y], (x_forward, y_forward), player.dir)
-    for move in actions:
-        client.build_command(move)
-    player.setCoord(x_forward, y_forward)
-    map[y_forward][x_forward].setPlayer(map[y_forward][x_forward].getPlayer() + 1)
+    shifting(client, player, [x_forward, y_forward])
     return Actions.LOOK
 
 
@@ -69,63 +96,151 @@ def CheckLvlUp(_1, player: Ai):
     return Actions.CHECK_PLAYER
 
 
+def Drop(client: Client, player: Ai):
+    client.build_command("Broadcast", "Drop")
+    needed_stone = player.elevation_array[player.getLevel()]
+    for stone, nb in needed_stone:
+        for drop in range(nb):
+            client.build_command("Set", stone)
+    if player.getBroadcaster():
+        return Actions.WAIT_ALL_DROPS
+    else:
+        return Actions.WAIT_LVL_UP
+
+
+def WaitDrop(client: Client, player: Ai):
+    need_player = player.elevation_player[player.getLevel()]
+    while len(client.msgQueue) > 0:
+        msg = client.msgQueue.popleft()
+        if msg[0] == 0 and msg[1] == "Drop":
+            WaitDrop.nb_resp += 1
+    if WaitDrop.nb_resp < need_player:
+        return Actions.DROP
+    return Actions.LVL_UP
+
+
+WaitDrop.nb_resp = 1
+
+
 def IncantBroadCast(client: Client, player: Ai):
-    print("J'ai besoin de gens à ma case")
-    # str = "Incantation Lvl %d" % format(player.getLevel())
-    client.build_command("Broadcast", "toto")
-    return Actions.CHECK_LVL_UP
+    # todo Vérifier que je vais pas crever ^^
+    print("Je suis broadcaster")
+    take_all_resources(client, player)
+    x = player.getCoord()[0]
+    y = player.getCoord()[1]
+    nb_player = player.elevation_player[player.getLevel()]
+    if nb_player == player.getMap()[y][x].getPlayer():
+        return Actions.DROP
+    player.setBroadcaster(True)
+    str = "Incantation Lvl {}".format(int(player.getLevel()))
+    client.build_command("Broadcast", str)
+    return Actions.NEED_PEOPLE
+
+
+def WaitLvlUp(client: Client, player: Ai):
+    if WaitLvlUp.lvl == -1:
+        print("C'est ma première iter ! ;)")
+        WaitLvlUp.lvl = player.getLevel()
+    elif WaitLvlUp.lvl != player.getLevel():
+        print("J'ai lvl UP <3")
+        WaitLvlUp.lvl = -1
+        return Actions.LOOK
+    return Actions.WAIT_LVL_UP
+
+
+WaitLvlUp.lvl = -1
+
+
+def WaitToDrop(client: Client, player: Ai):
+    while len(client.msgQueue) > 0:
+        msg = client.msgQueue.popleft()
+        if msg[0] == 0 and msg[1] == "Drop":
+            return Actions.DROP
+    return Actions.WAIT_TO_DROP
+
+
+def GoToBroadCaster(client: Client, player: Ai):
+    #Synchro les players
+    player_coord = player.getCoord()
+    map = player.getMap()
+
+    if map[player_coord[1]][player_coord[0]].getStones()["food"] != 0:
+        client.build_command("Take", "food", player_coord)
+
+    while len(client.msgQueue) > 0:
+        msg = client.msgQueue.popleft()
+        print("Quelqu'un Broadcasting  :::: " + str(msg))
+        lvl = re.match("Incantation Lvl (\d)", msg[1])
+        print(lvl.group(1))
+        if int(lvl.group(1)) == player.getLevel():
+            if msg[0] == 0:
+                return Actions.WAIT_TO_DROP
+            new_coord = player.WhereIs(msg[0])
+            shifting(client, player, new_coord)
+            print("Je me déplace vers lui")
+            client.msgQueue.clear()
+            # Todo Déplacer 1 fois et attendre la response encore, jusqu'a ce que je la recoive sur message 0
+            return Actions.GO_TO_BROADCASTER
+    return Actions.GO_TO_BROADCASTER
+
+
+def FindIfBroadCaster(client: Client, player: Ai):
+    while len(client.msgQueue) > 0:
+        msg = client.msgQueue.popleft()
+        print("Quelqu'un Broadcast : " + str(msg))
+        lvl = re.match("Incantation Lvl (\d)", msg[1])
+        print("Le monsieur est lvl : %d et moi %d " % (int(lvl.group(1)), player.getLevel()))
+        if int(lvl.group(1)) == player.getLevel():
+            print("j'y vais :D")
+            new_coord = player.WhereIs(msg[0])
+            shifting(client, player, new_coord)
+
+            # Todo Déplacer 1 fois et attendre la response encore, jusqu'a ce que je la recoive sur message 0
+            return Actions.GO_TO_BROADCASTER
+    print("Aucun des messages est interressant alors je vais broad moi même")
+    return Actions.NEED_PEOPLE
 
 
 def CheckPlayer(client: Client, player: Ai):
-    print("Je check si il y a suffisament de personne")
     nb_player = player.elevation_player[player.getLevel()]
     x = player.getCoord()[0] % client.mapSize[0]
     y = player.getCoord()[1] % client.mapSize[1]
 
-    print("Je suis lvl : %d on doit être : %d on est %d" % (
-        player.getLevel(), nb_player, player.getMap()[y][x].getPlayer()))
+    # todo Gestion d'ID
     if nb_player != player.getMap()[y][x].getPlayer():
+        if nb_player < player.getMap()[y][x].getPlayer():
+            pass
+            #return Actions.FORWARD
         if len(client.msgQueue) > 0:
             pass
-            # print(client.msgQueue.popleft())
-        return Actions.NEED_PEOPLE  # CHANGER
+            #return Actions.FIND_IF_BROADCASTER
+        # Je dois y aller !
+        #return Actions.NEED_PEOPLE
+        return Actions.FORWARD
     else:
         return Actions.TAKE_ALL
-    # todo, broadcast pour savoir le lvl des autres personnes sur la case
 
 
 def TakeAll(client: Client, player: Ai):
-    x = player.getCoord()[0] % client.mapSize[0]
-    y = player.getCoord()[1] % client.mapSize[1]
-    map = player.getMap()
-    items = map[y][x].getStones()  # Peut être faire une copie
+    needed_stone = player.elevation_array[player.getLevel()]
 
-    for obj, nb in items.items():
-
-        if nb > 0:
-            while nb > 0:
-                client.build_command("Take", obj, (x, y))
-                nb -= 1
-    print("La case : %s" % items)
+    take_all_resources(client, player)
+    for stone, nb in needed_stone:
+        for drop in range(nb):
+            client.build_command("Set", stone)
     return Actions.LVL_UP
 
 
 def LvlUp(client: Client, player: Ai):
-    needed_stone = player.elevation_array[player.getLevel()]
     needed_player = player.elevation_player[player.getLevel()]
 
-    print("Je drop ce que j'ai besoin : %s je suis lvl : %d" % (player.getInventory(), player.getLevel()))
-    for stone, nb in needed_stone:
-        for drop in range(nb):
-            client.build_command("Set", stone)
-    print("Tout est setup")
     client.build_command("Incantation")
     client.build_command("Incantation", "", (), True)
     return Actions.LOOK
 
 
 def FindCrystals(client: Client, player: Ai):
-    print("Je cherche des cristaux")
+    # print("Je cherche des cristaux")
     radar = PathFinding.radar(player.getCoord()[0], player.getCoord()[1], 9)
     finding_path = PathFinding(client.mapSize[1], client.mapSize[0])
     map = player.getMap()
@@ -142,24 +257,14 @@ def FindCrystals(client: Client, player: Ai):
             y %= client.mapSize[1]
             x %= client.mapSize[0]
             if map[y][x].getStones()[stone] != 0:
-                map[coord_player[1]][coord_player[0]].setPlayer(map[coord_player[1]][coord_player[0]].getPlayer() - 1)
-                print("coord : " + str(player.getCoord()) + "x, y : " + str(x) + ", " + str(
-                    y) + "dir : " + str(player.getDir()))
-                actions, player.dir = finding_path.goToTile(player.getCoord(),
-                                                            [x, y],
-                                                            player.getDir())
-                for move in actions:
-                    client.build_command(move)
-                player.setCoord(x, y)
+                shifting(client, player, [x, y])
                 client.build_command("Take", stone, tuple((x, y)))
                 map[y][x].setPlayer(map[y][x].getPlayer() + 1)
-                print(player.getInventory())
                 return Actions.LOOK
     return Actions.FORWARD
 
 
 def FindFood(client: Client, player: Ai):
-    print("Je cherche de la food")
     radar = PathFinding.radar(player.getCoord()[0], player.getCoord()[1], 9)
     finding_path = PathFinding(client.mapSize[1], client.mapSize[0])
     map = player.getMap()
@@ -173,11 +278,7 @@ def FindFood(client: Client, player: Ai):
         y %= client.mapSize[1]
         x %= client.mapSize[0]
         if map[y][x].getStones()["food"] != 0:
-            map[coord_player[1]][coord_player[0]].setPlayer(map[coord_player[1]][coord_player[0]].getPlayer() - 1)
-            actions, player.dir = finding_path.goToTile(player.getCoord(), [x, y], player.getDir())
-            for move in actions:
-                client.build_command(move)
-            player.setCoord(x, y)
+            shifting(client, player, [x, y])
             map[y][x].setPlayer(map[y][x].getPlayer() + 1)
             client.build_command("Take", "food", tuple((x, y)))
             return Actions.LOOK

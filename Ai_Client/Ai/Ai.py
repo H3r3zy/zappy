@@ -1,19 +1,13 @@
 from Ai_Client.Ai import Tile
 from Ai_Client.Ai import PathFinding
 from Ai_Client.Enum.Direction import *
-from time import *
-
-
-class Target(Enum):
-    NOTHING = 0
-    FOOD = 1
-    STONE = 2
-    PLAYER = 3
+import sys
 
 
 class Ai:
 
     def __init__(self, x, y):
+        self.__mapSize = (x, y)
         self.__inventory = {"food": 10, "linemate": 0, "deraumere": 0, "sibur": 0, "mendiane": 0, "phiras": 0,
                             "thystame": 0}
         self.__map = [[Tile.Tile() for _ in range(x)] for _ in range(y)]
@@ -32,6 +26,13 @@ class Ai:
                                     ("thystame", 1)]}
         self.elevation_player = [0, 1, 2, 2, 4, 4, 6, 6]
         self.egg = False
+        self.__Broadcaster = False
+        self.__listenDir = {
+            Direction.NORTH: [(0, -1), (-1, -1), (-1, 0), (-1, 1), (0, 1), (1, 1), (1, 0), (1, -1)],
+            Direction.SOUTH: [(0, 1), (1, 1), (1, 0), (1, -1), (0, -1), (-1, -1), (-1, 0), (-1, 1)],
+            Direction.EAST: [(1, 0), (1, -1), (0, -1), (-1, -1), (-1, 0), (-1, 1), (0, 1), (1, 1)],
+            Direction.WEST: [(-1, 0), (-1, 1), (0, 1), (1, 1), (1, 0), (1, -1), (0, -1), (-1, -1)]
+        }
 
     def think(self):
         toto, self.dir = self.__pathFind.goToTile(self.__coord, (1, 1), self.dir)
@@ -46,7 +47,12 @@ class Ai:
         return self.__map
 
     def getCoord(self) -> list:
-        return self.__coord
+        coord = []
+        coord.append(self.__coord[0] %\
+                   self.__mapSize[0])
+        coord.append(self.__coord[1] %\
+                   self.__mapSize[1])
+        return coord
 
     def getInventory(self):
         return self.__inventory
@@ -62,4 +68,26 @@ class Ai:
         self.__coord[1] = y
 
     def levelUp(self, lvl: int):
+        sys.stderr.write(str(lvl) + '\n')
         self.__level = lvl
+
+    def getBroadcaster(self):
+        return self.__Broadcaster
+
+    def setBroadcaster(self, b: bool):
+        self.__Broadcaster = b
+
+    def WhereIs(self, number: int) -> list:
+        toto = self.__listenDir[self.dir]
+        coord = toto[int(number) - 1]
+        player_coord = [self.__coord[0] + coord[0], self.__coord[1] + coord[1]]
+        if player_coord[0] < 0:
+            player_coord[0] = self.__mapSize[0] - 1
+        elif player_coord[0] > self.__mapSize[0]:
+            player_coord[0] = 0
+
+        if player_coord[1] < 0:
+            player_coord[1] = self.__mapSize[1] - 1
+        elif player_coord[1] > self.__mapSize[1]:
+            player_coord[1] = 0
+        return player_coord

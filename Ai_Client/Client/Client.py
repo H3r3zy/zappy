@@ -38,7 +38,13 @@ class Client:
             ActionNode(Actions.TAKE_ALL, TakeAll),
             ActionNode(Actions.LVL_UP, LvlUp),
             ActionNode(Actions.CHECK_PLAYER, CheckPlayer),
-            ActionNode(Actions.NEED_PEOPLE, IncantBroadCast)
+            ActionNode(Actions.NEED_PEOPLE, IncantBroadCast),
+            ActionNode(Actions.DROP, Drop),
+            ActionNode(Actions.WAIT_ALL_DROPS, WaitDrop),
+            ActionNode(Actions.WAIT_LVL_UP, WaitLvlUp),
+            ActionNode(Actions.GO_TO_BROADCASTER, GoToBroadCaster),
+            ActionNode(Actions.FIND_IF_BROADCASTER, FindIfBroadCaster),
+            ActionNode(Actions.WAIT_TO_DROP, WaitToDrop),
         ]
         self.__outId = 0
         self.last = 0
@@ -54,16 +60,15 @@ class Client:
         return True
 
     def update_inbuff(self, con):
-        data = con.recv(1024)
+        data = con.recv(4096)
         if len(data) == 0:
             raise socket.error('Connection lost')
         self.__inBuff += data.decode("ascii")
-        if self.__inBuff.find("\n") == -1:
-            return
-        for cmd in self.__inBuff.split("\n"):
-            if len(cmd) != 0:
-                self.__inQueue.append(cmd)
-        self.__inBuff = self.__inBuff.split("\n")[-1]
+        while self.__inBuff.find("\n") != -1:
+            cmd = self.__inBuff.partition("\n")
+            if len(cmd[0]) != 0 and cmd[1] == "\n":
+                self.__inQueue.append(cmd[0])
+            self.__inBuff = cmd[2]
 
     def udpate_outbuff(self, con, mode: bool = False):
         if mode:
@@ -83,7 +88,6 @@ class Client:
             self.__outQueue.append(tup)
 
     def build_command(self, cmd: str, arg: str = "", pos: tuple = (0, 0), fake: bool = False) -> int:
-        print("(" + cmd + ")")
         self.__topQueue.append((cmd, arg, pos, fake))
         self.__outId += 1
         self.refresh_queue()
@@ -108,20 +112,17 @@ class Client:
             if len(self.__inQueue) >= 1 and welcome is False:
                 resp = self.__inQueue.popleft()
                 if resp != "WELCOME":
-                    print("tata")
                     raise ZappyException('Unexpected response')
                 self.build_command(self.__name)
                 welcome = True
             if len(self.__inQueue) == 2 and welcome is True:
                 try:
                     int(self.__inQueue.popleft())
-                    print("titi")
                     self.mapSize = tuple(map(int, self.__inQueue.popleft().split(" ")))
                 except ValueError:
                     raise ZappyException('Unexpected response')
                 break
             if "ko" in self.__inQueue:
-                print("mdr")
                 print(self.__inQueue.pop())
                 raise ZappyException('Unexpected response')
         self.__outQueue.clear()
@@ -137,9 +138,10 @@ class Client:
         while True:
             self.refresh()
             self.refresh_queue()
+            if "dead" in self.__inQueue:
+                print("I died being at the %s level" % ordinal(player.getLevel()))
+                exit(0)
             while len(self.__inQueue) > 0:
-                if not parser.parse(self.__inQueue.popleft()):
-                    print("I died being at the %s level" % ordinal(player.getLevel()))
-                    return
+                parser.parse(self.__inQueue.popleft())
             self.last = parser.get_last()
             self.__currentNode = self.__nodes[self.__currentNode].action(self, player)

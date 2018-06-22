@@ -22,7 +22,6 @@ class Tile:
             self.__stones[key] = 0
 
     def setPlayer(self, player: int):
-        print("set %d player on tile" % player)
         self.__player = player
 
     def __str__(self):

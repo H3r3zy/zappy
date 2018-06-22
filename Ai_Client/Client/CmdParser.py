@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-import re
+import re, sys
 from os import system
 from sys import argv
 from Ai_Client.Ai.Ai import *
@@ -34,7 +34,7 @@ class CmdParser:
         self.__unexpected = (
             (re.compile("message (\d), (.*)", re.ASCII), self.message),
             (re.compile("Elevation underway"), self.nothing),
-            (re.compile("Current level (\d)"), self.lvl_up),
+            (re.compile("Current level: (\d)"), self.lvl_up),
             (re.compile("eject: (\d)"), self.eject)
         )
         self.__dirs = {
@@ -73,7 +73,6 @@ class CmdParser:
     def lvl_up(self, ans: str, _1:str ="", _2:str =""):
         match = re.search("(\d)", ans)
         if match:
-            print("LVL UP")
             self.__player.levelUp(int(match.group(1)))
 
     def set(self, ans: str, obj: str, pos: tuple):
@@ -131,7 +130,6 @@ class CmdParser:
         map = map.replace("[", "").replace("]", "")
         tiles = map.split(",")
         i = 0
-        print("Je vais parse la map")
         for x, y in self.__dirs[pos[1]](pos[0][0], pos[0][1], self.__player.getLevel()):
             currentTile = self.__map[y % len(self.__player.getMap())][x % len(self.__player.getMap()[0])]
             currentTile.reset()
@@ -156,9 +154,6 @@ class CmdParser:
         return self.__handledId
 
     def parse(self, cmd: str) -> bool:
-        print("(" + cmd + ")")
-        if cmd == "dead":
-            return False
         if len(self.__queue) == 0 or self.__patterns[self.__queue[0][0]].match(cmd) is None:
             for reg, func in self.__unexpected:
                 if reg.match(cmd):

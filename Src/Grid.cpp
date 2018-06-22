@@ -84,7 +84,7 @@ void Grid::loadMap()
 		for (uint i = 0; i < _mapSize.x; i++) {
 			dimension.first.x = i * 100;
 			dimension.first.y = ((j) * 100);
-			dimension.first.y *= -1;
+			//dimension.first.y *= -1;
 			++_blocNumber;
 			_gameMap.insert(GRID_MAP::value_type(POSITION(i, j),
 				new Cell(dimension, _texturePack[dist6(rng)], _resourcesPack)));
@@ -163,7 +163,7 @@ void Grid::updateGrid3D(sf::View &view)
 	_activeMap.clear();
 	sf::Vector2f chunk;
 	chunk.x = (view.getCenter().x) / 100 - 7 >= 0? (view.getCenter().x) / 100 - 7 : -1;
-	chunk.y = ((view.getCenter().y * -1) / 100) - 10;
+	chunk.y = ((view.getCenter().y) / 100) - 10;
 /*	//std::cout << "Je suis en [" << view.getCenter().x << "][" << view.getCenter().y << "]" << std::endl;
 	//std::cout << "Mon chunk est en [" << chunk.x << "][" << chunk.y << "]" << std::endl;
 	//std::cout << "L calcul que je fais X:" << (view.getCenter().x) / 100 - 10 << std::endl;

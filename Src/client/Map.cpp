@@ -57,8 +57,8 @@ void irc::Map::initCamera()
 	_camera[MINIMAP].reset(sf::FloatRect(0, 0, 1200, 800));
 	_camera[MINIMAP].setViewport(sf::FloatRect(0.66f, 0, 0.25f, 0.25f));
 	_camera[MINIMAP].zoom(1.3f);
-	_camera[MINIMAP].setCenter(600, -400);
-	_camera[MAP].setCenter(600, -400);
+	_camera[MINIMAP].setCenter(600, 400);
+	_camera[MAP].setCenter(600, 400);
 }
 
 void irc::Map::loopDisplay()
@@ -193,17 +193,17 @@ bool irc::Map::getEvent()
 			//std::cout << "=-=-=-==-=-=-==-=-=--=-==-=-" << std::endl;
 
 */
-			if (_grid.checkvalid(static_cast<int>(worldPos.x / 100), static_cast<int>((worldPos.y - 100) * -1 / 100))) {
+			if (_grid.checkvalid(static_cast<int>(worldPos.x / 100), static_cast<int>((worldPos.y) / 100))) {
 				if (_comm._shack._pos.first != -1 && _comm._shack._pos.second != -1)
 					_grid.getCell(_comm._shack._pos.first, _comm._shack._pos.second)->removeTarget();
 
 				_comm._listId.clear();
-				if (_comm._shack._pos.first != static_cast<int>(worldPos.x / 100) || _comm._shack._pos.second != static_cast<int>((worldPos.y - 100) * -1 / 100)) {
-					_grid.getCell(static_cast<int>(worldPos.x / 100), static_cast<int>((worldPos.y - 100) * -1 / 100))->makeTarget();
+				if (_comm._shack._pos.first != static_cast<int>(worldPos.x / 100) || _comm._shack._pos.second != static_cast<int>((worldPos.y) / 100)) {
+					_grid.getCell(static_cast<int>(worldPos.x / 100), static_cast<int>((worldPos.y) / 100))->makeTarget();
 					_comm._listId.push_back(-1);
 					_displayGui = true;
 					_comm._shack._pos.first = static_cast<int>(worldPos.x / 100);
-					_comm._shack._pos.second = static_cast<int>((worldPos.y - 100) * -1 / 100);
+					_comm._shack._pos.second = static_cast<int>((worldPos.y) / 100);
 				} else {
 					_comm._shack._pos.first = -1;
 					_comm._shack._pos.second = -1;

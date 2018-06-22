@@ -173,17 +173,15 @@ void ParseEnqueueMap::parseNextCommand(irc::Map &map)
 
 		if (it.getCommandName() == "pnw") {
 			addPlayer(map, it);
-			_comm.getEnqueueMap().erase(_comm.getEnqueueMap().begin());
 		} else if (it.getCommandName() == "pdi") {
 			deletePlayer(map, it);
-			_comm.getEnqueueMap().erase(_comm.getEnqueueMap().begin());
 		}  else if (it.getCommandName() == "pmv") {
-			if (movePlayerPosition(map, it))
-				_comm.getEnqueueMap().erase(_comm.getEnqueueMap().begin());
+			movePlayerPosition(map, it);
 		} else if (it.getCommandName() == "ptu") {
 			movePlayerOrientation(map, it);
-			_comm.getEnqueueMap().erase(_comm.getEnqueueMap().begin());
 		}
+		_comm.getEnqueueMap().erase(_comm.getEnqueueMap().begin());
+
 		i++;
 		break;
 	}
@@ -201,8 +199,8 @@ void ParseEnqueueMap::addPlayer(irc::Map &map, const CstringArray &command)
 
 	//std::cout << "Player number :" << tmpCommand[0] << " Position en X " << tmpCommand[1] << " Position en Y " << tmpCommand[2] << " Orientation "  << tmpCommand[3] << " level " << tmpCommand[4] << " team name " << command.getTeamName() << std::endl;
 	sf::Vector2f tmp = {tmpCommand[1] * 100, (tmpCommand[2] * 100)};
-	tmp.y *= -1;
-	//std::cout << "Je vais placer mon joueur en X " << tmp.x << " Y " << tmp.y << std::endl;
+	//tmp.y *= -1;
+	std::cout << "Je vais placer mon joueur " << tmpCommand[0] << " en X " << tmp.x << " Y " << tmp.y << std::endl;
 
 	map.getCharacterMap().emplace(tmpCommand[0], Character(map.getGrid().getTextureCharacter(), tmp, tmpCommand[0]));
 	for (auto &it : map.getCharacterMap()) {
@@ -234,7 +232,7 @@ bool ParseEnqueueMap::movePlayerPosition(irc::Map &map, const CstringArray &comm
 {
 	std::cout << "je vais faire bouger " << command.getCommand()[0] << std::endl;
 	sf::Vector2f tmpPos = {command.getCommand()[1] * 100, command.getCommand()[2] * 100};
-	tmpPos.y *= -1;
+	//tmpPos.y *= -1;
 	std::cout << "Mon joueur va bouger en X " << tmpPos.x << " Y " << tmpPos.y << std::endl;
 
 	//	if (!map.getCharacterMap().at(command.getCommand()[0]).getAction()) {

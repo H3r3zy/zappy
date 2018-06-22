@@ -124,7 +124,7 @@ const uint &Character::getPlayerLevel() const
 
 void Character::setPlayerMovement(sf::Vector2f &finalPos, uint orientation)
 {
-	static bool oneTime = false;
+	std::cout << "Le joueur " << _id << "a un ontTime aui vaut "  << oneTime << std::endl;
 
 	if (oneTime) {
 		_position = _nextPos;

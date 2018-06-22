@@ -52,11 +52,10 @@ class Character : public AMotionShape {
 	uint _id;
 	uint _level;
 
+	bool oneTime = false;
 
 	// TODO LE DEGAGER
 	int _testTmp = 0;
-	bool oneTime = true;
-
 
 };
 

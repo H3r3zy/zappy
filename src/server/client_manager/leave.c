@@ -64,6 +64,7 @@ void disconnect(server_t *server, client_t *client)
 	shutdown(client->fd, SHUT_RDWR);
 	close(client->fd);
 	free(client->entity);
+	free(client->buff);
 	free(client);
 	server->client_nb--;
 }

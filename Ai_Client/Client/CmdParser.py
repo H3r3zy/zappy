@@ -31,6 +31,12 @@ class CmdParser:
             'Take': re.compile("(ok)|(ko)", re.ASCII),
             'Set': re.compile("(ok)|(ko)", re.ASCII)
         }
+        self.__unexpected = (
+            (re.compile("message (\d), (.*)", re.ASCII), self.message),
+            (re.compile("Elevation underway"), self.nothing),
+            (re.compile("Current level (\d)"), self.lvl_up),
+            (re.compile("eject: (\d)"), self.eject)
+        )
         self.__dirs = {
             Direction.SOUTH: CmdParser.viewSouth,
             Direction.NORTH: CmdParser.viewNorth,
@@ -57,7 +63,14 @@ class CmdParser:
             8: (-1, -1)
         }
 
-    def lvl_up(self, ans: str, _1, _2):
+    def nothing(self, _):
+        pass
+
+    def message(self, msg):
+        match = re.match("message (\d), (.*)", msg)
+        self.__msgQueue.append((match.group(1), match.group(2)))
+
+    def lvl_up(self, ans: str, _1 = "", _2 = ""):
         match = re.search("(\d)", ans)
         if match:
             print("LVL UP")
@@ -80,7 +93,8 @@ class CmdParser:
     def fork(self):
         system(argv[0] + " -p " + str(self.__info[0]) + " -n " + self.__info[1] + " -h " + self.__info[2])
 
-    def eject(self, key: int):
+    def eject(self, ans):
+        key = int(ans)
         delta = self.__deltas[key]
         pos = self.__player.getCoord()
         self.__player.setCoord(pos[0] + delta[0], pos[1] + delta[1])
@@ -142,23 +156,20 @@ class CmdParser:
         return self.__handledId
 
     def parse(self, cmd: str) -> bool:
-        print("(" + cmd + ":" + cmd + ")")
+        print("(" + cmd + ")")
         if cmd == "dead":
             return False
         last = self.__queue.popleft()
         match = self.__patterns[last[0]].match(cmd)
+        if match is None:
+            for reg, func in self.__unexpected:
+                if reg.match(cmd):
+                    func(cmd)
+                    return True
         self.__handledId += 1
         try:
             if last[0] in self.__actions.keys() and match is not None:
                 self.__actions[last[0]](match.group(0), last[1], last[2])
-            else:
-                match = re.match("message (\d), (.+)", cmd)
-                match1 = re.match("eject: (\d)", cmd)
-                if match:
-                    self.__msgQueue.append(match.group(2))
-                    self.__handledId -= 1
-                elif match1:
-                    self.eject(int(match1.group(1)))
         except AttributeError:
             if cmd == "ko":
                 self.__player.egg = True

@@ -32,6 +32,8 @@ CMakeFiles/client.dir/Src/Entity/Water.cpp.o
  Include/Entity/Water.hpp
 CMakeFiles/client.dir/Src/Grid.cpp.o
  /home/wisenoa/tamere/PSU_zappy_2017/Src/Grid.cpp
+ Include/Class/Communication.hpp
+ Include/CstringArray.hpp
  Include/Entity/AMotionShape.hpp
  Include/Entity/ARectangleShape.hpp
  Include/Entity/Cell.hpp
@@ -39,6 +41,7 @@ CMakeFiles/client.dir/Src/Grid.cpp.o
  Include/Entity/IEntity.hpp
  Include/Entity/Water.hpp
  Include/Grid.hpp
+ Include/ParseEnqueueMap.hpp
  Include/Text/AText.hpp
  Include/Text/GameText.hpp
  Include/Tools/Thread.hpp

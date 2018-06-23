@@ -42,8 +42,8 @@ void irc::GuiTexture::initTexture()
 
 void irc::GuiTexture::updateServerData()
 {
-	_base._comm.writeOnServer("nbu");
-	_base._comm.writeOnServer("nbt");
+	//_base._comm.writeOnServer("nbu");
+	//_base._comm.writeOnServer("nbt");
 	_base._comm.lockGui();
 	auto list_msg = _base._comm.getEnqueueGui();
 
@@ -53,6 +53,10 @@ void irc::GuiTexture::updateServerData()
 		}
 		if (it.getCommandName() == "nbu") {
 			_base._comm._server.user = it.getCommand()[0];
+		}
+		if (it.getCommandName() == "sgt") {
+			_base._comm.setFreq(it.getCommand()[0]);
+			std::cout <<"frequence de la GUI : " << it.getCommand()[0] << std::endl;
 		}
 	}
 	_base._comm.getEnqueueGui().clear();
@@ -151,15 +155,19 @@ void irc::GuiTexture::initSettingsGame()
 
 	btn->addFuncMouseEvent(irc::MouseEvent::HOVER, &irc::Sprite::setLayer, btn_hover, 3);
 	btn->addFuncMouseEvent(irc::MouseEvent::HOVEROUT, &irc::Sprite::setLayer, btn_hover, 0);
-	btn->addFuncMouseEvent(irc::MouseEvent::CLICK, [this, input]{
+
+	auto setFreq = [this, input]{
 		std::string freq = dynamic_cast<irc::TextInput *>(input->getObjectByName("input"))->getPrompt();
 		if (!std::regex_match(freq, std::regex("\\d+")) || std::stoi(freq) <= 0) {
 			input->getObjectByName("bck")->setColor(sf::Color(222, 170, 170));
 			return;
 		}
+		_base._comm.setFreq(std::stoi(freq));
 		input->getObjectByName("bck")->setColor(sf::Color::White);
 		_base._comm.writeOnServer("sst " + freq);
-	});
+	};
+	btn->addFuncMouseEvent(irc::MouseEvent::CLICK, setFreq);
+	btn->addFuncKeyEvent(sf::Keyboard::Return, setFreq);
 
 	container->addObjectList("btn", btn, 1);
 	container->addObjectList("btn_hover", btn_hover, 0);

@@ -3,7 +3,6 @@
 
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/broadcast.c.o: src/server/ai_protocol/broadcast.c
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/broadcast.c.o: include/server/command.h
-CMakeFiles/zappy_server.dir/src/server/ai_protocol/broadcast.c.o: include/server/debug.h
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/broadcast.c.o: include/server/gui_command.h
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/broadcast.c.o: include/server/server.h
 CMakeFiles/zappy_server.dir/src/server/ai_protocol/broadcast.c.o: include/server/socket.h

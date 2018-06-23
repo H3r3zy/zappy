@@ -26,7 +26,7 @@ irc::Map::Map(irc::Communication &comm, bool &displayGui, bool &endClient) : _co
 	/* Updating all cells + creating thread for loadingScreen */
 	_gameWindow.setActive(false);
 	auto thread(new my::Thread([&]() {_enqueueMap.loadingDisplay(_mapSize, _gameWindow);}));
-	_enqueueMap.fillMap(_grid, _mapSize);
+	_enqueueMap.fillMap(*this, _mapSize);
 	thread->join();
 	_gameWindow.setActive(true);
 	_gameWindow.setPosition(sf::Vector2i(200, 50));
@@ -279,4 +279,9 @@ void irc::Map::initColorTeam()
 		color.b = static_cast<sf::Uint8>(dist6(rng));
 		_teamColor[it] = color;
 	}
+}
+
+irc::Communication &irc::Map::getComm()
+{
+	return _comm;
 }

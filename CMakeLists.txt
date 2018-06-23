@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.7.2)
 project(client)
 
 include_directories(
+		Src
 		Include/
 		Include/Text/
 		Include/Entity/
@@ -32,6 +33,7 @@ set(CMAKE_C_FLAGS_RELEASE
         "-W -Wall -Wextra -O3 -Wno-unused-parameter")
 
 file(GLOB_RECURSE SERVER_FILE
+		src
         src
         src/*.c
         src/server/debug.c
@@ -39,7 +41,8 @@ file(GLOB_RECURSE SERVER_FILE
 
 file(GLOB SERVER_HEADER
         include/*.h
-        include
+		include
+		include
         )
 
 include_directories(include/server)

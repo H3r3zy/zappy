@@ -31,6 +31,8 @@ CMakeFiles/client.dir/Src/Entity/Water.cpp.o: Include/Entity/IEntity.hpp
 CMakeFiles/client.dir/Src/Entity/Water.cpp.o: Include/Entity/Water.hpp
 
 CMakeFiles/client.dir/Src/Grid.cpp.o: Src/Grid.cpp
+CMakeFiles/client.dir/Src/Grid.cpp.o: Include/Class/Communication.hpp
+CMakeFiles/client.dir/Src/Grid.cpp.o: Include/CstringArray.hpp
 CMakeFiles/client.dir/Src/Grid.cpp.o: Include/Entity/AMotionShape.hpp
 CMakeFiles/client.dir/Src/Grid.cpp.o: Include/Entity/ARectangleShape.hpp
 CMakeFiles/client.dir/Src/Grid.cpp.o: Include/Entity/Cell.hpp
@@ -38,6 +40,7 @@ CMakeFiles/client.dir/Src/Grid.cpp.o: Include/Entity/Character.hpp
 CMakeFiles/client.dir/Src/Grid.cpp.o: Include/Entity/IEntity.hpp
 CMakeFiles/client.dir/Src/Grid.cpp.o: Include/Entity/Water.hpp
 CMakeFiles/client.dir/Src/Grid.cpp.o: Include/Grid.hpp
+CMakeFiles/client.dir/Src/Grid.cpp.o: Include/ParseEnqueueMap.hpp
 CMakeFiles/client.dir/Src/Grid.cpp.o: Include/Text/AText.hpp
 CMakeFiles/client.dir/Src/Grid.cpp.o: Include/Text/GameText.hpp
 CMakeFiles/client.dir/Src/Grid.cpp.o: Include/Tools/Thread.hpp

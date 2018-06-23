@@ -26,7 +26,7 @@ class ParseEnqueueMap {
 	ParseEnqueueMap(irc::Communication &comm);
 	sf::Vector2f ParseMapSize();
 	std::vector<std::string> &getTeam();
-	void fillMap(Grid &_grid, sf::Vector2f &mapSize);
+	void fillMap(Map &map, sf::Vector2f &mapSize);
 	void parseNextCommand(irc::Map &map);
 	void loadingDisplay(sf::Vector2f &mapSize, sf::RenderWindow &window);
 

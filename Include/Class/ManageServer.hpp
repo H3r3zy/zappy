@@ -53,6 +53,7 @@ namespace irc {
 		{"nbt", &irc::ManageServer::parseLine1Input},
 		{"nbu", &irc::ManageServer::parseLine1Input},
 		{"pmv", &irc::ManageServer::parseLine8Input}, // move
+		{"sgt", &irc::ManageServer::parseLine1Input},
 		{"ptu", &irc::ManageServer::parseLine8Input}, // move 2 ?
 		{"pdr", &irc::ManageServer::parseLine8Input}, // resource dropping
 		{"pgt", &irc::ManageServer::parseLine8Input}, // resource collecting

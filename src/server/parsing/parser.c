@@ -15,7 +15,9 @@ static const char *ARGUMENT_REQUIRED = "The argument '%s' is required\n";
 
 static const char *ERROR = "An error appeared with argument '%s'\n";
 
-static bool check_arg(void *argument, argument_t *manager, char **av, uint32_t *i)
+static bool check_arg(void *argument, argument_t *manager, char **av,
+	uint32_t *i
+)
 {
 	for (uint32_t j = 0; manager[j].flag; j++) {
 		if (strcmp(manager[j].flag, av[*i]) == 0) {

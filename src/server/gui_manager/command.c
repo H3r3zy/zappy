@@ -10,7 +10,7 @@
 #include "debug.h"
 #include "server.h"
 
-gui_command_t *get_commands()
+gui_command_t *get_commands(void)
 {
 	static gui_command_t commands[] = {
 		{"msz", &gui_msz, has_arg: false, status: false, arg: NULL},

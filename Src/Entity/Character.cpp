@@ -6,7 +6,7 @@
 #include "Character.hpp"
 #include <unistd.h>
 
-Character::Character(std::map<char, std::vector<sf::Texture>> &_texturePack, sf::Vector2f &position, uint id) : AMotionShape(position), _id(id)
+Character::Character(std::map<char, std::vector<sf::Texture>> &_texturePack, sf::Vector2f &position, uint id, int freq) : AMotionShape(position), _id(id), _freq(freq)
 {
 	 _beginTime = std::chrono::system_clock::now();
 	for (int i = 0; i < _texturePack[WALK_LEFT].size(); i++) {
@@ -35,22 +35,31 @@ Character::~Character()
 sf::Sprite &Character::getCharacter()
 {
 	// 0 => 100 => 7 sec
-
-	if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - _beginTime).count() > 100) {
+	//_freq = 100;
+	if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - _beginTime).count() > (100 / _freq)) {
 	//	//std::cout << "il c passé une dixieme de seconde" << std::endl;
-		_beginTime = std::chrono::system_clock::now();
+
+		double savetime = (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - _beginTime).count()) / 7;
 
 		// TODO A DEGAGER
 		if (_action) {
+			//std::cout << "il c passé " << std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - _beginTime).count() << "millisecondes (normal = 10)" <<std::endl;
+			//printf("avant le calucl, savetime vaut %f  \n", savetime);
+
+			savetime *= _freq;
+			savetime /= 10;
+			//printf("je suis supposé avancer de %f pixels \n", savetime);
+
 			//std::cout << "Le joueur " << _id << " est en action" << std::endl;
+			//double dist = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - _beginTime).count() * (500 / 7);
 			if (_orientation == WALK_LEFT)
-				_position.x -= 1.4;
+				_position.x -= savetime;
 			else if (_orientation == WALK_RIGHT)
-				_position.x += 1.4;
+				_position.x += savetime;
 			else if (_orientation == WALK_UP)
-				_position.y -= 1.4;
+				_position.y -= savetime;
 			else if (_orientation == WALK_DOWN)
-				_position.y += 1.4;
+				_position.y += savetime;
 
 			_actualSprite++;
 			if (_actualSprite == 8)
@@ -58,16 +67,23 @@ sf::Sprite &Character::getCharacter()
 
 
 			_testTmp++;
+
+
+			_totalDist += savetime;
+			//std::cout << "j'ai parcourur une distance total de " << _totalDist << std::endl;
 			//std::cout << " le tmp = " << _testTmp << std::endl;
-			if (_testTmp == 70) {
+			if (_totalDist >= 100) {
 				_action = false;
 				_testTmp = 0;
+				_totalDist = 0;
 			}
 			//std::cout << "je veux le mettre en pos" << _position.x << " " << _position.y << " et son orientation ";
 			//printf("%d\n", _orientation);
 
 
 		}
+		if (savetime != 0)
+			_beginTime = std::chrono::system_clock::now();
 		_sprite[_orientation][_actualSprite].setPosition(_position.x, _position.y);
 	}
 
@@ -126,16 +142,18 @@ const uint &Character::getPlayerLevel() const
 	return _level;
 }
 
-void Character::setPlayerMovement(sf::Vector2f &finalPos, uint orientation)
+void Character::setPlayerMovement(sf::Vector2f &finalPos, const uint &orientation, int freq)
 {
 	std::cout << "Le joueur " << _id << "a un ontTime aui vaut "  << oneTime << std::endl;
 
+	_freq = freq;
 	if (oneTime) {
 		_position = _nextPos;
 		std::cout << "nextpos = " << _nextPos.x << " " << _nextPos.y << std::endl;
 	}
 	oneTime = true;
 	_testTmp = 0;
+	_totalDist = 0;
 	_orientation = static_cast<char>(orientation);
 	_nextPos = finalPos;
 	_action = true;
@@ -153,6 +171,8 @@ void Character::setPlayerTake(char orientation, uint resourceNumber)
 	std::cout << "je dis au joueur" << _id << " de prendre un truc par terre, c'est la ressource " << resourceNumber << std::endl;
 	_actualSprite = 0;
 	_testTmp = 0;
+	_totalDist = 0;
+
 	_orientation = TAKE;
 	_action = true;
 }

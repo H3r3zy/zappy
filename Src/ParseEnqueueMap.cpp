@@ -58,17 +58,17 @@ sf::Vector2f irc::ParseEnqueueMap::ParseMapSize()
 	}
 }
 
-void irc::ParseEnqueueMap::fillMap(Grid &_grid, sf::Vector2f &mapSize)
+void irc::ParseEnqueueMap::fillMap(Map &map, sf::Vector2f &mapSize)
 {
 	_comm.writeOnServer("mct");
 	std::vector<CstringArray> save;
-
-	while (true) {
+	bool end = false;
+	while (!end) {
 		_comm.lockMap();
 		std::vector<CstringArray> &test = _comm.getEnqueueMap();
 		_comm.unlockMap();
 		_blocNumber = 0;
-		if (test.size() < (mapSize.x * mapSize.y) + save.size()) {
+		if (test.size() < ((mapSize.x - 1) * (mapSize.y - 1) + save.size())) {
 			usleep(400000);
 			continue;
 		}
@@ -86,13 +86,13 @@ void irc::ParseEnqueueMap::fillMap(Grid &_grid, sf::Vector2f &mapSize)
 
 
 				/* Q1 => Q6 */
-				_grid.getCell(tmpPrint[0], tmpPrint[1])->setRessources(0, tmpPrint[2]);
-				_grid.getCell(tmpPrint[0], tmpPrint[1])->setRessources(1, tmpPrint[3]);
-				_grid.getCell(tmpPrint[0], tmpPrint[1])->setRessources(2, tmpPrint[4]);
-				_grid.getCell(tmpPrint[0], tmpPrint[1])->setRessources(3, tmpPrint[5]);
-				_grid.getCell(tmpPrint[0], tmpPrint[1])->setRessources(4, tmpPrint[6]);
-				_grid.getCell(tmpPrint[0], tmpPrint[1])->setRessources(5, tmpPrint[7]);
-				_grid.getCell(tmpPrint[0], tmpPrint[1])->setRessources(6, tmpPrint[8]);
+				map.getGrid().getCell(tmpPrint[0], tmpPrint[1])->setRessources(0, tmpPrint[2]);
+				map.getGrid().getCell(tmpPrint[0], tmpPrint[1])->setRessources(1, tmpPrint[3]);
+				map.getGrid().getCell(tmpPrint[0], tmpPrint[1])->setRessources(2, tmpPrint[4]);
+				map.getGrid().getCell(tmpPrint[0], tmpPrint[1])->setRessources(3, tmpPrint[5]);
+				map.getGrid().getCell(tmpPrint[0], tmpPrint[1])->setRessources(4, tmpPrint[6]);
+				map.getGrid().getCell(tmpPrint[0], tmpPrint[1])->setRessources(5, tmpPrint[7]);
+				map.getGrid().getCell(tmpPrint[0], tmpPrint[1])->setRessources(6, tmpPrint[8]);
 
 
 				_comm._server.ressources.q6 += tmpPrint[2];
@@ -108,12 +108,13 @@ void irc::ParseEnqueueMap::fillMap(Grid &_grid, sf::Vector2f &mapSize)
 
 				/* Food */
 				_blocNumber++;
-
+				//std::cout << "je vaic check si " << tmpPrint[0]<< "estegal a " << mapSize.x - 1 << " et " << tmpPrint[1] << " est egal a " << mapSize.y - 1 << std::endl;
 				if (tmpPrint[0] == mapSize.x - 1 && tmpPrint[1] == mapSize.y - 1) {
 					_ready = true;
 					_comm.setEnqueueMap(save);
 					_comm.unlockMap();
-					return;
+					end = true;
+					break;
 				}
 			} else {
 				save.push_back(it);
@@ -124,6 +125,30 @@ void irc::ParseEnqueueMap::fillMap(Grid &_grid, sf::Vector2f &mapSize)
 		_comm.unlockMap();
 		//sleep(1);
 	}
+
+	end = false;
+	std::vector<CstringArray> save1;
+	_comm.writeOnServer("sgt");
+	usleep(10000);
+	while (!end) {
+		_comm.lockMap();
+		save1.clear();
+		for (const auto &it : _comm.getEnqueueMap()) {
+			//	window.clear(sf::Color::Black);
+			if (it.getCommandName() == "sgt") {
+				_comm.setFreq(it.getCommand()[0]);
+				std::cout << "[" << GREEN << "MAP" << RESET << "] retrieved frequence number " << _comm.getFreq() << std::endl;
+				end = true;
+				break;
+			} else {
+				save1.push_back(it);
+			}
+		}
+		_comm.setEnqueueMap(save1);
+		_comm.unlockMap();
+		usleep(10000);
+	}
+
 }
 
 
@@ -215,14 +240,19 @@ void irc::ParseEnqueueMap::addPlayer(irc::Map &map, const CstringArray &command)
 
 	std::vector<uint> tmpCommand = command.getCommand();
 
+
+
+	int tmpFreq = map.getComm().getFreq();
+
 	//std::cout << "Player number :" << tmpCommand[0] << " Position en X " << tmpCommand[1] << " Position en Y " << tmpCommand[2] << " Orientation "  << tmpCommand[3] << " level " << tmpCommand[4] << " team name " << command.getTeamName() << std::endl;
 	sf::Vector2f tmp = {tmpCommand[1] * 100, (tmpCommand[2] * 100)};
 	//tmp.y *= -1;
+
 	std::cout << "Je vais placer mon joueur " << tmpCommand[0] << " en X " << tmp.x << " Y " << tmp.y << std::endl;
 	std::cout << "orientation "<< tmpCommand[3] << " team player " << command.getTeamName() << " player level " << tmpCommand[4] << std::endl;
 	if (tmpCommand[0] == 768 || tmpCommand[0] == 256|| tmpCommand[0] == 0 || tmpCommand[0] == 512)
 		return;
-	map.getCharacterMap().emplace(tmpCommand[0], Character(map.getGrid().getTextureCharacter()[command.getTeamName()], tmp, tmpCommand[0]));
+	map.getCharacterMap().emplace(tmpCommand[0], Character(map.getGrid().getTextureCharacter()[command.getTeamName()], tmp, tmpCommand[0], tmpFreq));
 	for (auto &it : map.getCharacterMap()) {
 		if (it.second.getPlayerID() == tmpCommand[0]) {
 			it.second.setPlayerOrientation(static_cast<char>(tmpCommand[3]));
@@ -258,7 +288,13 @@ bool irc::ParseEnqueueMap::movePlayerPosition(irc::Map &map, const CstringArray 
 		return false;
 
 	//	if (!map.getCharacterMap().at(command.getCommand()[0]).getAction()) {
-		map.getCharacterMap().at(command.getCommand()[0]).setPlayerMovement(tmpPos, command.getCommand()[3]);
+	int tmpFreq = map.getComm().getFreq();
+
+	if (map.getCharacterMap().find((command.getCommand()[0])) == map.getCharacterMap().end()) {
+		std::cout << "jai pas trouve mon joueur, tu niques ta mere jme casse" << std::endl;
+		exit(1);
+	}
+	map.getCharacterMap().at(command.getCommand()[0]).setPlayerMovement(tmpPos, command.getCommand()[3], tmpFreq);
 		return true;
 //	} else {
 ///		return false;

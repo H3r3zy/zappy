@@ -119,6 +119,8 @@ iostream
 -
 cstring
 -
+regex
+-
 ManageServer.hpp
 /home/wisenoa/tamere/PSU_zappy_2017/Src/client/ManageServer.hpp
 Communication.hpp
@@ -559,6 +561,8 @@ Entity/Water.hpp
 -
 Entity/Cell.hpp
 Include/Entity/Cell.hpp
+ParseEnqueueMap.hpp
+Include/ParseEnqueueMap.hpp
 Character.hpp
 Include/Character.hpp
 

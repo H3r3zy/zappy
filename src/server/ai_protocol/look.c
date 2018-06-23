@@ -24,21 +24,6 @@ look_type_t ENTITY_TYPES[ENTITY_NB] = {
 	{" player", 7}
 };
 
-static char *concat(char *s1, char *s2)
-{
-	char *str;
-
-	if (!s1)
-		return s2;
-	if (!s2)
-		return s1;
-	str = realloc(s1, strlen(s1) + strlen(s2) + 1);
-	if (!str)
-		return s1;
-	str = strcat(str, s2);
-	return str;
-}
-
 static char *add_objects(char *response, cell_t *cell)
 {
 	for (entity_t *entity = cell->players; entity; entity = entity->next) {
@@ -52,23 +37,32 @@ static char *add_objects(char *response, cell_t *cell)
 	return response;
 }
 
+static void update_look_pos(int dx, int dy, pos_t *pos, pos_t *size)
+{
+	if (dx < 0)
+		pos->x = (pos->x > 0) ? pos->x + dx : size->x - 1;
+	else if (dx > 0)
+		pos->x = (pos->x < size->x - 1) ? pos->x + dx : 0;
+	if (dy < 0)
+		pos->y = (pos->y > 0) ? pos->y + dy : size->y - 1;
+	else if (dy > 0)
+		pos->y = (pos->y < size->y - 1) ? pos->y + dy : 0;
+}
+
 static char *look_horizontal(map_t *map, pos_t pos, look_opt_t opt, uint32_t currv)
 {
 	char *response = strdup("");
 	char *tmp = NULL;
-	pos_t start = (pos_t){pos.x, pos.y};
+	pos_t start = pos;
 
-	start.x = (opt.d < 0 && !pos.x) ? map->size.x - 1 : pos.x + opt.d;
-	start.y = (opt.d > 0 && !pos.y) ? map->size.y - 1 : pos.y - opt.d;
+	update_look_pos(opt.d, -opt.d, &start, &map->size);
 	pos = start;
 	for (uint32_t i = 0; i < currv * 2 + 1; i++) {
-		pos.y = (pos.y > map->size.y - 1) ? 0 : pos.y;
-		pos.x = (pos.x > map->size.x - 1) ? 0 : pos.x;
 		response = add_objects(response, &map->map[pos.y][pos.x]);
 		if (i < currv * 2) {
 			response = concat(response, ",");
 		}
-		pos.y = opt.d < 0 && !pos.y ? map->size.y - 1 : pos.y + opt.d;
+		update_look_pos(0, opt.d, &pos, &map->size);
 	}
 	if (currv < opt.vision) {
 		response = concat(response, ",");
@@ -92,19 +86,16 @@ static char *look_vertical(map_t *map, pos_t pos, look_opt_t opt, uint32_t currv
 {
 	char *response = strdup("");
 	char *tmp = NULL;
-	pos_t start = (pos_t){pos.x, pos.y};
+	pos_t start = pos;
 
-	start.x = (opt.d < 0 && !pos.x) ? map->size.x - 1 : pos.x + opt.d;
-	start.y = (opt.d > 0 && !pos.y) ? map->size.y - 1 : pos.y - opt.d;
+	update_look_pos(opt.d, opt.d, &start, &map->size);
 	pos = start;
 	for (size_t i = 0; i < currv * 2 + 1; i++) {
-		pos.y = (pos.y > map->size.y - 1) ? 0 : pos.y;
-		pos.x = (pos.x > map->size.x - 1) ? 0 : pos.x;
 		response = add_objects(response, &map->map[pos.y][pos.x]);
 		if (i < currv * 2) {
 			response = concat(response, ",");
 		}
-		pos.x = opt.d < 0 && !pos.x ? map->size.x - 1 : pos.x + opt.d;
+		update_look_pos(-opt.d, 0, &pos, &map->size);
 	}
 	if (currv < opt.vision) {
 		response = concat(response, ",");

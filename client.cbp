@@ -11,30 +11,30 @@
 				<Option working_dir="/home/wisenoa/tamere/PSU_zappy_2017"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
 				<Option working_dir="/home/wisenoa/tamere/PSU_zappy_2017"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
 				<Option working_dir="/home/wisenoa/tamere/PSU_zappy_2017"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="zappy_server">
@@ -44,6 +44,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/wisenoa/tamere/PSU_zappy_2017/Src"/>
 					<Add directory="/home/wisenoa/tamere/PSU_zappy_2017/Include"/>
 					<Add directory="/home/wisenoa/tamere/PSU_zappy_2017/Include/Text"/>
 					<Add directory="/home/wisenoa/tamere/PSU_zappy_2017/Include/Entity"/>
@@ -58,12 +59,20 @@
 					<Add directory="/home/wisenoa/tamere/PSU_zappy_2017/Include/Class/Gui/ObjectSFML"/>
 					<Add directory="/home/wisenoa/tamere/PSU_zappy_2017/include/server"/>
 					<Add directory="/home/wisenoa/tamere/PSU_zappy_2017/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 zappy_server"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 zappy_server"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="zappy_server/fast">
@@ -73,6 +82,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/wisenoa/tamere/PSU_zappy_2017/Src"/>
 					<Add directory="/home/wisenoa/tamere/PSU_zappy_2017/Include"/>
 					<Add directory="/home/wisenoa/tamere/PSU_zappy_2017/Include/Text"/>
 					<Add directory="/home/wisenoa/tamere/PSU_zappy_2017/Include/Entity"/>
@@ -87,12 +97,20 @@
 					<Add directory="/home/wisenoa/tamere/PSU_zappy_2017/Include/Class/Gui/ObjectSFML"/>
 					<Add directory="/home/wisenoa/tamere/PSU_zappy_2017/include/server"/>
 					<Add directory="/home/wisenoa/tamere/PSU_zappy_2017/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 zappy_server/fast"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 zappy_server/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="client">
@@ -102,6 +120,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/wisenoa/tamere/PSU_zappy_2017/Src"/>
 					<Add directory="/home/wisenoa/tamere/PSU_zappy_2017/Include"/>
 					<Add directory="/home/wisenoa/tamere/PSU_zappy_2017/Include/Text"/>
 					<Add directory="/home/wisenoa/tamere/PSU_zappy_2017/Include/Entity"/>
@@ -116,12 +135,20 @@
 					<Add directory="/home/wisenoa/tamere/PSU_zappy_2017/Include/Class/Gui/ObjectSFML"/>
 					<Add directory="/home/wisenoa/tamere/PSU_zappy_2017/include/server"/>
 					<Add directory="/home/wisenoa/tamere/PSU_zappy_2017/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 client"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 client"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="client/fast">
@@ -131,6 +158,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/wisenoa/tamere/PSU_zappy_2017/Src"/>
 					<Add directory="/home/wisenoa/tamere/PSU_zappy_2017/Include"/>
 					<Add directory="/home/wisenoa/tamere/PSU_zappy_2017/Include/Text"/>
 					<Add directory="/home/wisenoa/tamere/PSU_zappy_2017/Include/Entity"/>
@@ -145,12 +173,20 @@
 					<Add directory="/home/wisenoa/tamere/PSU_zappy_2017/Include/Class/Gui/ObjectSFML"/>
 					<Add directory="/home/wisenoa/tamere/PSU_zappy_2017/include/server"/>
 					<Add directory="/home/wisenoa/tamere/PSU_zappy_2017/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 client/fast"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 client/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/wisenoa/tamere/PSU_zappy_2017/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>

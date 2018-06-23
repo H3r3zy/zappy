@@ -209,14 +209,11 @@ def CheckPlayer(client: Client, player: Ai):
     # todo Gestion d'ID
     if nb_player != player.getMap()[y][x].getPlayer():
         if nb_player < player.getMap()[y][x].getPlayer():
-            pass
-            #return Actions.FORWARD
+            return Actions.FORWARD
         if len(client.msgQueue) > 0:
-            pass
-            #return Actions.FIND_IF_BROADCASTER
+            return Actions.FIND_IF_BROADCASTER
         # Je dois y aller !
-        #return Actions.NEED_PEOPLE
-        return Actions.FORWARD
+        return Actions.NEED_PEOPLE
     else:
         return Actions.TAKE_ALL
 

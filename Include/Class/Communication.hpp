@@ -112,11 +112,13 @@ namespace irc {
 			{"bct", irc::TYPE_ENQUEUE::T_BOTH},
 			{"pdi", irc::TYPE_ENQUEUE::T_MAP},
 			{"pnw", irc::TYPE_ENQUEUE::T_MAP},
+			{"tna", irc::TYPE_ENQUEUE::T_MAP}, // team number
+			{"endtna", irc::TYPE_ENQUEUE::T_MAP}, // team finish
 			{"pin", irc::TYPE_ENQUEUE::T_GUI},
 			{"nbu", irc::TYPE_ENQUEUE::T_GUI},
 			{"nbt", irc::TYPE_ENQUEUE::T_GUI},
-			{"sgt", irc::TYPE_ENQUEUE::T_GUI},
 			{"pmv", irc::TYPE_ENQUEUE::T_MAP}, // move joueur
+			{"sgt", irc::TYPE_ENQUEUE::T_GUI},
 			{"ptu", irc::TYPE_ENQUEUE::T_MAP}, // change orientation joueur
 			{"pdr", irc::TYPE_ENQUEUE::T_MAP}, // resource droppping
 			{"pgt", irc::TYPE_ENQUEUE::T_MAP}, // resource collecting

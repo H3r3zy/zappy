@@ -45,13 +45,15 @@ namespace irc {
 	const std::map<std::string, std::function<void(char *, CstringArray &)>> _pattern = {
 		{"msz", &irc::ManageServer::parseLine8Input},
 		{"pnw", &irc::ManageServer::parseLine8Input},
+		{"tna", &irc::ManageServer::parseLine8Input}, // team number
+		{"endtna", &irc::ManageServer::parseLine8Input}, // team finish
 		{"bct", &irc::ManageServer::parseLine8Input},
 		{"pdi", &irc::ManageServer::parseLine8Input},
 		{"pin", &irc::ManageServer::parseLine8Input},
 		{"nbt", &irc::ManageServer::parseLine1Input},
 		{"nbu", &irc::ManageServer::parseLine1Input},
-		{"sgt", &irc::ManageServer::parseLine1Input},
 		{"pmv", &irc::ManageServer::parseLine8Input}, // move
+		{"sgt", &irc::ManageServer::parseLine1Input},
 		{"ptu", &irc::ManageServer::parseLine8Input}, // move 2 ?
 		{"pdr", &irc::ManageServer::parseLine8Input}, // resource dropping
 		{"pgt", &irc::ManageServer::parseLine8Input}, // resource collecting

@@ -13,7 +13,7 @@
 #include "SfmlTool.hpp"
 #include "Map.hpp"
 
-irc::Map::Map(irc::Communication &comm, bool &displayGui, bool &endClient) : _comm(comm), _displayGui(displayGui), _endClient(endClient), _gameWindow(sf::VideoMode(1, 1), "empty", sf::Style::None), _enqueueMap(_comm), _mapSize(_enqueueMap.ParseMapSize()), _grid(_mapSize, _gameWindow)
+irc::Map::Map(irc::Communication &comm, bool &displayGui, bool &endClient) : _comm(comm), _displayGui(displayGui), _endClient(endClient), _gameWindow(sf::VideoMode(1200, 800), "Zappy"), _enqueueMap(_comm), _mapSize(_enqueueMap.ParseMapSize()), _teamName(_enqueueMap.getTeam()), _grid(_mapSize, _gameWindow, _teamName)
 {
 	SfmlTool::InitAllFont();
 	//_gameWindow.setFramerateLimit(60);
@@ -25,26 +25,18 @@ irc::Map::Map(irc::Communication &comm, bool &displayGui, bool &endClient) : _co
 
 	/* Updating all cells + creating thread for loadingScreen */
 	_gameWindow.setActive(false);
-	auto thread(new my::Thread([&]() {_enqueueMap.loadingDisplay(_mapSize);}));
+	auto thread(new my::Thread([&]() {_enqueueMap.loadingDisplay(_mapSize, _gameWindow);}));
 	_enqueueMap.fillMap(_grid, _mapSize);
 	thread->join();
 	_gameWindow.setActive(true);
-
-	_gameWindow.close();
-	_gameWindow.create(sf::VideoMode(1200, 800), "Oh voyage voyage, plus loiiiiin que la nuit et le jour");
-	_gameWindow.setFramerateLimit(60);
 	_gameWindow.setPosition(sf::Vector2i(200, 50));
 	//_gameWindow.setFramerateLimit(60); b  b
 
-	_gameWindow.setActive(true);
 	/* Faking first movement */
 	_playerPos.setPosition(_camera[MAP].getCenter());
 	_grid.updateGrid3D(_camera[MAP]);
 	_windowInfo->updateInfo(_grid.getNbActive(), _camera[HUD]);
-
-
-	/* */
-
+	initColorTeam();
 }
 
 void irc::Map::initCamera()
@@ -90,6 +82,9 @@ void irc::Map::loopDisplay()
 		//std::cout << "je boucle " << std::endl;
 		_enqueueMap.parseNextCommand(*this);
 
+		//for (auto &it : _teamName) {
+		//	std::cout << it << std::endl;
+		//}
 		getEvent();
 		/* Global Display */
 		_gameWindow.setView(_camera[MAP]);
@@ -104,7 +99,7 @@ void irc::Map::loopDisplay()
 
 		/* Minimap Display*/
 		_gameWindow.setView(_camera[MINIMAP]);
-		_grid.displayMiniGrid(_gameWindow, _camera[MAP], _character);
+		_grid.displayMiniGrid(_gameWindow, _camera[MAP], _character, _teamColor);
 		_gameWindow.draw(_playerPos);
 
 		/* Display and Reset */
@@ -269,4 +264,19 @@ std::map<uint, Character> &irc::Map::getCharacterMap()
 Grid &irc::Map::getGrid()
 {
 	return _grid;
+}
+
+void irc::Map::initColorTeam()
+{
+	std::mt19937 rng;
+	rng.seed(std::random_device()());
+	std::uniform_int_distribution<std::mt19937::result_type> dist6(0, 255);
+
+	sf::Color color;
+	for (auto &it : _teamName) {
+		color.r = static_cast<sf::Uint8>(dist6(rng));
+		color.g = static_cast<sf::Uint8>(dist6(rng));
+		color.b = static_cast<sf::Uint8>(dist6(rng));
+		_teamColor[it] = color;
+	}
 }

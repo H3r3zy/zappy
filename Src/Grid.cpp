@@ -8,13 +8,13 @@
 #include <Tools/Thread.hpp>
 #include "Grid.hpp"
 
-Grid::Grid(const sf::Vector2f &mapSize, sf::RenderWindow &window) : _mapSize(mapSize), _nbActive(0)
+Grid::Grid(const sf::Vector2f &mapSize, sf::RenderWindow &window, std::vector<std::string> &teamName) : _mapSize(mapSize), _nbActive(0), _teamName(teamName)
 {
 	//std::cout << "nnike ta grosse chienne" << std::endl;
 	//std::cout << "je suis dans Grid, la taille de ma map map X" << _mapSize.x << " Y " << _mapSize.y << std::endl;
 
 	window.setActive(false);
-	auto thread(new my::Thread([&]() {loadingDisplay(_mapSize);}));
+	auto thread(new my::Thread([&]() {loadingDisplay(_mapSize, window);}));
 	loadTextures();
 	loadMap();
 
@@ -28,10 +28,9 @@ Grid::~Grid()
 }
 
 
-void Grid::loadingDisplay( sf::Vector2f &mapSize)
+void Grid::loadingDisplay( sf::Vector2f &mapSize, sf::RenderWindow &window)
 {
-	sf::RenderWindow window(sf::VideoMode(800, 600), "Loading ");
-	window.setPosition(sf::Vector2i(200, 100));
+	window.setActive(true);
 	sf::Text text;
 	sf::Font font;
 	std::string total = std::to_string(mapSize.x * mapSize.y);
@@ -68,7 +67,6 @@ void Grid::loadingDisplay( sf::Vector2f &mapSize)
 		window.display();
 		window.clear();
 	}
-	window.close();
 }
 
 void Grid::loadMap()
@@ -140,21 +138,26 @@ bool Grid::loadTextures()
 	_resourcesPack[12].loadFromFile("extra/gui/pokeball2.png", sf::IntRect(300, 0, 50, 50));
 	_resourcesPack[13].loadFromFile("extra/gui/pokeball2.png", sf::IntRect(360, 0, 50, 50));
 
+	int textureFiles = 1;
+	for (const auto &it : _teamName) {
+		for (int i = 0; i < 9; i++) {
+			_textureCharacterPack[it][WALK_LEFT].emplace_back(sf::Texture());
+			_textureCharacterPack[it][WALK_RIGHT].emplace_back(sf::Texture());
+			_textureCharacterPack[it][WALK_UP].emplace_back(sf::Texture());
+			_textureCharacterPack[it][WALK_DOWN].emplace_back(sf::Texture());
+			_textureCharacterPack[it][TAKE].emplace_back(sf::Texture());
+		}
 
-	for (int i = 0; i < 9; i++) {
-		_textureCharacterPack[WALK_LEFT].emplace_back(sf::Texture());
-		_textureCharacterPack[WALK_RIGHT].emplace_back(sf::Texture());
-		_textureCharacterPack[WALK_UP].emplace_back(sf::Texture());
-		_textureCharacterPack[WALK_DOWN].emplace_back(sf::Texture());
-		_textureCharacterPack[TAKE].emplace_back(sf::Texture());
-	}
-
-	for (int i = 0; i < 9; i++) {
-		_textureCharacterPack[WALK_UP][i].loadFromFile("Character2.png", sf::IntRect(i * 64, 512, 64, 64));
-		_textureCharacterPack[WALK_LEFT][i].loadFromFile("Character2.png", sf::IntRect(i * 64, 576, 64, 64));
-		_textureCharacterPack[WALK_DOWN][i].loadFromFile("Character2.png", sf::IntRect(i * 64, 640, 64, 64));
-		_textureCharacterPack[WALK_RIGHT][i].loadFromFile("Character2.png", sf::IntRect(i * 64, 704, 64, 64));
-		_textureCharacterPack[TAKE][i].loadFromFile("Character2.png", sf::IntRect(i * 64, 1344, 64, 64));
+		for (int i = 0; i < 9; i++) {
+			_textureCharacterPack[it][WALK_UP][i].loadFromFile("Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 512, 64, 64));
+			_textureCharacterPack[it][WALK_LEFT][i].loadFromFile("Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 576, 64, 64));
+			_textureCharacterPack[it][WALK_DOWN][i].loadFromFile("Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 640, 64, 64));
+			_textureCharacterPack[it][WALK_RIGHT][i].loadFromFile("Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 704, 64, 64));
+			_textureCharacterPack[it][TAKE][i].loadFromFile("Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 1344, 64, 64));
+		}
+		textureFiles++;
+		if (textureFiles > 3)
+			textureFiles = 1;
 	}
 
 	return true;
@@ -218,7 +221,7 @@ uint Grid::getNbActive() const
 	return _nbActive;
 }
 
-void Grid::displayMiniGrid(sf::RenderWindow &window, const sf::View &view, std::map<uint, Character> &character)
+void Grid::displayMiniGrid(sf::RenderWindow &window, const sf::View &view, std::map<uint, Character> &character, std::map<std::string, sf::Color> &colorTeam)
 {
 	sf::RectangleShape tmpRect;
 	tmpRect.setSize(sf::Vector2f(10, 10));
@@ -230,6 +233,7 @@ void Grid::displayMiniGrid(sf::RenderWindow &window, const sf::View &view, std::
 	window.draw(Grey);
 	for (const auto &it : character) {
 		tmpRect.setPosition(sf::Vector2f(it.second.getPosition()));
+		tmpRect.setFillColor(colorTeam[it.second.getPlayerTeam()]);
 		window.draw(tmpRect);
 	}
 }
@@ -247,7 +251,7 @@ bool Grid::checkvalid(int x, int y)
 	return _gameMap.find(POSITION(static_cast<const uint &>(x), static_cast<const uint &>(y))) != _gameMap.end();
 }
 
-std::map<char, std::vector<sf::Texture>> &Grid::getTextureCharacter()
+std::map<std::string, std::map<char, std::vector<sf::Texture>>> &Grid::getTextureCharacter()
 {
 	return _textureCharacterPack;
 }

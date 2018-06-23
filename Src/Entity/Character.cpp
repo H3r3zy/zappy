@@ -4,6 +4,7 @@
 
 #include <SFML/Graphics/RenderWindow.hpp>
 #include "Character.hpp"
+#include <unistd.h>
 
 Character::Character(std::map<char, std::vector<sf::Texture>> &_texturePack, sf::Vector2f &position, uint id) : AMotionShape(position), _id(id)
 {
@@ -22,6 +23,7 @@ Character::Character(std::map<char, std::vector<sf::Texture>> &_texturePack, sf:
 		_sprite[WALK_DOWN][i].setTexture(_texturePack[WALK_DOWN][i]);
 		_sprite[TAKE][i].setTexture(_texturePack[TAKE][i]);
 	}
+	usleep(100);
 	srand(time(NULL));
 //	_sprite[WALK_LEFT][0]->setTexture(_texturePack[WALK_LEFT][0]);
 }

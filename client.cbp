@@ -44,6 +44,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Src"/>
 					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Include"/>
 					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Include/Text"/>
 					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Include/Entity"/>
@@ -73,6 +74,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Src"/>
 					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Include"/>
 					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Include/Text"/>
 					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Include/Entity"/>
@@ -102,6 +104,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Src"/>
 					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Include"/>
 					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Include/Text"/>
 					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Include/Entity"/>
@@ -131,6 +134,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Src"/>
 					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Include"/>
 					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Include/Text"/>
 					<Add directory="/home/velo6raptor/delivery/PSU/PSU_zappy_2017/Include/Entity"/>

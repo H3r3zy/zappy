@@ -77,7 +77,7 @@ CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 			i++;
 		}
 		buffer[i] = '\0';
-		if (!strncmp("pnw", buffer, 3)) {
+		if (!strncmp("pnw", buffer, 3) || !strncmp("tna", buffer, 3)) {
 			std::string teamName;
 			while (buffer[i] != ' ' && i > 0) {
 				teamName.insert(teamName.begin(), buffer[i]);
@@ -101,7 +101,7 @@ CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 		}
 		//	std::cout << "Nom de ma commande : " << commandName << std::endl;
 		finalCommand.setCommandName(commandName);
-		std::cout << "FINAL COMMAND: " << finalCommand.getCommandName() << std::endl;
+		//std::cout << "FINAL COMMAND: " << finalCommand.getCommandName() << std::endl;
 	}
 	return finalCommand;
 }
@@ -138,8 +138,8 @@ int irc::ManageServer::getFileDescriptorSocket()
 
 int irc::ManageServer::writeOnServer(int socket, std::string msg)
 {
-	std::cout << "J'envoie [" << msg << "] a la socket " << socket
-		<< std::endl;
+	//std::cout << "J'envoie [" << msg << "] a la socket " << socket
+		//<< std::endl;
 	if (write(socket, msg.c_str(), msg.size()) == -1) {
 		std::cout << "excpetion ici" << std::endl;
 		throw std::exception();

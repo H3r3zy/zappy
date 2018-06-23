@@ -81,6 +81,9 @@ namespace irc {
 		void lockDisplay();
 		void unlockDisplay();
 
+		void setFreq(int freq);
+		int getFreq() const;
+
 		std::vector<int> _listId;
 		player_data_t _player;
 		server_data_t _server;
@@ -92,6 +95,8 @@ namespace irc {
 		private:
 		int _socket = 0;
 		bool &_read;
+
+		int _freq = 0;
 
 		std::mutex _write;
 
@@ -110,6 +115,7 @@ namespace irc {
 			{"pin", irc::TYPE_ENQUEUE::T_GUI},
 			{"nbu", irc::TYPE_ENQUEUE::T_GUI},
 			{"nbt", irc::TYPE_ENQUEUE::T_GUI},
+			{"sgt", irc::TYPE_ENQUEUE::T_GUI},
 			{"pmv", irc::TYPE_ENQUEUE::T_MAP}, // move joueur
 			{"ptu", irc::TYPE_ENQUEUE::T_MAP}, // change orientation joueur
 			{"pdr", irc::TYPE_ENQUEUE::T_MAP}, // resource droppping

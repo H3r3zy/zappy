@@ -50,6 +50,7 @@ namespace irc {
 		{"pin", &irc::ManageServer::parseLine8Input},
 		{"nbt", &irc::ManageServer::parseLine1Input},
 		{"nbu", &irc::ManageServer::parseLine1Input},
+		{"sgt", &irc::ManageServer::parseLine1Input},
 		{"pmv", &irc::ManageServer::parseLine8Input}, // move
 		{"ptu", &irc::ManageServer::parseLine8Input}, // move 2 ?
 		{"pdr", &irc::ManageServer::parseLine8Input}, // resource dropping

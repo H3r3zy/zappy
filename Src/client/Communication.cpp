@@ -7,11 +7,16 @@
 
 #include <iostream>
 #include <cstring>
+#include <regex>
 #include "ManageServer.hpp"
 #include "Communication.hpp"
 
 irc::Communication::Communication(int socket, bool &endClient) : _socket(socket), _read(endClient)
 {
+	writeOnServer("sgt");
+	CstringArray msg = irc::ManageServer::readGameServer(_socket, true);
+	if (msg.getCommandName() == "sgt")
+		_freq = msg.getCommand()[0];
 }
 
 int irc::Communication::getSocket() const
@@ -129,3 +134,12 @@ void irc::Communication::setEnqueueMap(std::vector<CstringArray> &newEnqueue)
 	_enqueueMap = newEnqueue;
 }
 
+void irc::Communication::setFreq(int freq)
+{
+	_freq = freq;
+}
+
+int irc::Communication::getFreq() const
+{
+	return _freq;
+}

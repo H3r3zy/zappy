@@ -147,12 +147,10 @@ const uint &Character::getPlayerLevel() const
 
 void Character::setPlayerMovement(sf::Vector2f &finalPos, const uint &orientation, int freq)
 {
-	std::cout << "Le joueur " << _id << "a un ontTime aui vaut "  << oneTime << std::endl;
-
 	_freq = freq;
 	if (oneTime) {
 		_position = _nextPos;
-		std::cout << "nextpos = " << _nextPos.x << " " << _nextPos.y << std::endl;
+		//std::cout << "nextpos = " << _nextPos.x << " " << _nextPos.y << std::endl;
 	}
 	oneTime = true;
 	_testTmp = 0;
@@ -171,7 +169,6 @@ void Character::setPlayerTake(char orientation, uint resourceNumber)
 {
 	if (_nextPos.x != 0 && _nextPos.y != 0)
 		_position = _nextPos;
-	std::cout << "je dis au joueur" << _id << " de prendre un truc par terre, c'est la ressource " << resourceNumber << std::endl;
 	_actualSprite = 0;
 	_testTmp = 0;
 	_totalDist = 0;

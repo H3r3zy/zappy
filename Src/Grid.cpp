@@ -8,7 +8,7 @@
 #include <Tools/Thread.hpp>
 #include "Grid.hpp"
 
-Grid::Grid(const sf::Vector2f &mapSize, sf::RenderWindow &window) : _mapSize(mapSize), _nbActive(0)
+Grid::Grid(const sf::Vector2f &mapSize, sf::RenderWindow &window, std::vector<std::string> &teamName) : _mapSize(mapSize), _nbActive(0), _teamName(teamName)
 {
 	//std::cout << "nnike ta grosse chienne" << std::endl;
 	//std::cout << "je suis dans Grid, la taille de ma map map X" << _mapSize.x << " Y " << _mapSize.y << std::endl;
@@ -138,21 +138,25 @@ bool Grid::loadTextures()
 	_resourcesPack[12].loadFromFile("extra/gui/pokeball2.png", sf::IntRect(300, 0, 50, 50));
 	_resourcesPack[13].loadFromFile("extra/gui/pokeball2.png", sf::IntRect(360, 0, 50, 50));
 
+	for (const auto &it : _teamName) {
+		std::cout << "couddeddedcou" << std::endl;
+		std::cout << "je creer la texture de la team" << it << std::endl;
+		for (int i = 0; i < 9; i++) {
+			_textureCharacterPack[it][WALK_LEFT].emplace_back(sf::Texture());
+			_textureCharacterPack[it][WALK_RIGHT].emplace_back(sf::Texture());
+			_textureCharacterPack[it][WALK_UP].emplace_back(sf::Texture());
+			_textureCharacterPack[it][WALK_DOWN].emplace_back(sf::Texture());
+			_textureCharacterPack[it][TAKE].emplace_back(sf::Texture());
+		}
 
-	for (int i = 0; i < 9; i++) {
-		_textureCharacterPack[WALK_LEFT].emplace_back(sf::Texture());
-		_textureCharacterPack[WALK_RIGHT].emplace_back(sf::Texture());
-		_textureCharacterPack[WALK_UP].emplace_back(sf::Texture());
-		_textureCharacterPack[WALK_DOWN].emplace_back(sf::Texture());
-		_textureCharacterPack[TAKE].emplace_back(sf::Texture());
-	}
-
-	for (int i = 0; i < 9; i++) {
-		_textureCharacterPack[WALK_UP][i].loadFromFile("Character2.png", sf::IntRect(i * 64, 512, 64, 64));
-		_textureCharacterPack[WALK_LEFT][i].loadFromFile("Character2.png", sf::IntRect(i * 64, 576, 64, 64));
-		_textureCharacterPack[WALK_DOWN][i].loadFromFile("Character2.png", sf::IntRect(i * 64, 640, 64, 64));
-		_textureCharacterPack[WALK_RIGHT][i].loadFromFile("Character2.png", sf::IntRect(i * 64, 704, 64, 64));
-		_textureCharacterPack[TAKE][i].loadFromFile("Character2.png", sf::IntRect(i * 64, 1344, 64, 64));
+		for (int i = 0; i < 9; i++) {
+			if (!_textureCharacterPack[it][WALK_UP][i].loadFromFile("Character2.png", sf::IntRect(i * 64, 512, 64, 64)))
+				std::cout <<"connard" << std::endl;
+			_textureCharacterPack[it][WALK_LEFT][i].loadFromFile("Character2.png", sf::IntRect(i * 64, 576, 64, 64));
+			_textureCharacterPack[it][WALK_DOWN][i].loadFromFile("Character2.png", sf::IntRect(i * 64, 640, 64, 64));
+			_textureCharacterPack[it][WALK_RIGHT][i].loadFromFile("Character2.png", sf::IntRect(i * 64, 704, 64, 64));
+			_textureCharacterPack[it][TAKE][i].loadFromFile("Character2.png", sf::IntRect(i * 64, 1344, 64, 64));
+		}
 	}
 
 	return true;
@@ -245,7 +249,7 @@ bool Grid::checkvalid(int x, int y)
 	return _gameMap.find(POSITION(static_cast<const uint &>(x), static_cast<const uint &>(y))) != _gameMap.end();
 }
 
-std::map<char, std::vector<sf::Texture>> &Grid::getTextureCharacter()
+std::map<std::string, std::map<char, std::vector<sf::Texture>>> &Grid::getTextureCharacter()
 {
 	return _textureCharacterPack;
 }

@@ -220,7 +220,7 @@ void irc::ParseEnqueueMap::addPlayer(irc::Map &map, const CstringArray &command)
 	//tmp.y *= -1;
 	std::cout << "Je vais placer mon joueur " << tmpCommand[0] << " en X " << tmp.x << " Y " << tmp.y << std::endl;
 
-	map.getCharacterMap().emplace(tmpCommand[0], Character(map.getGrid().getTextureCharacter(), tmp, tmpCommand[0]));
+	map.getCharacterMap().emplace(tmpCommand[0], Character(map.getGrid().getTextureCharacter()[command.getTeamName()], tmp, tmpCommand[0]));
 	for (auto &it : map.getCharacterMap()) {
 		if (it.second.getPlayerID() == tmpCommand[0]) {
 			it.second.setPlayerOrientation(static_cast<char>(tmpCommand[3]));

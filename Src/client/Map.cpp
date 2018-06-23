@@ -13,7 +13,7 @@
 #include "SfmlTool.hpp"
 #include "Map.hpp"
 
-irc::Map::Map(irc::Communication &comm, bool &displayGui, bool &endClient) : _comm(comm), _displayGui(displayGui), _endClient(endClient), _gameWindow(sf::VideoMode(1200, 800), "Zappy"), _enqueueMap(_comm), _mapSize(_enqueueMap.ParseMapSize()), _grid(_mapSize, _gameWindow)
+irc::Map::Map(irc::Communication &comm, bool &displayGui, bool &endClient) : _comm(comm), _displayGui(displayGui), _endClient(endClient), _gameWindow(sf::VideoMode(1200, 800), "Zappy"), _enqueueMap(_comm), _mapSize(_enqueueMap.ParseMapSize()), _teamName(_enqueueMap.getTeam()), _grid(_mapSize, _gameWindow)
 {
 	SfmlTool::InitAllFont();
 	//_gameWindow.setFramerateLimit(60);
@@ -37,7 +37,9 @@ irc::Map::Map(irc::Communication &comm, bool &displayGui, bool &endClient) : _co
 	_grid.updateGrid3D(_camera[MAP]);
 	_windowInfo->updateInfo(_grid.getNbActive(), _camera[HUD]);
 
-
+	for (auto &it : _teamName) {
+		std::cout << it << std::endl;
+	}
 	/* */
 
 }
@@ -85,6 +87,9 @@ void irc::Map::loopDisplay()
 		//std::cout << "je boucle " << std::endl;
 		_enqueueMap.parseNextCommand(*this);
 
+		for (auto &it : _teamName) {
+			std::cout << it << std::endl;
+		}
 		getEvent();
 		/* Global Display */
 		_gameWindow.setView(_camera[MAP]);

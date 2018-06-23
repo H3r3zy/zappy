@@ -25,6 +25,7 @@ class ParseEnqueueMap {
 	public:
 	ParseEnqueueMap(irc::Communication &comm);
 	sf::Vector2f ParseMapSize();
+	std::vector<std::string> &getTeam();
 	void fillMap(Grid &_grid, sf::Vector2f &mapSize);
 	void parseNextCommand(irc::Map &map);
 	void loadingDisplay(sf::Vector2f &mapSize, sf::RenderWindow &window);
@@ -40,6 +41,7 @@ class ParseEnqueueMap {
 
 	private:
 	irc::Communication &_comm;
+	std::vector<std::string> tmpTeam;
 	bool _ready = false;
 	int _blocNumber = 0;
 };

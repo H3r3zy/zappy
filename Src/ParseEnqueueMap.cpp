@@ -385,3 +385,34 @@ bool irc::ParseEnqueueMap::addRandomResource(irc::Map &map, const CstringArray &
 
 	return true;
 }
+
+std::vector<std::string> &irc::ParseEnqueueMap::getTeam()
+{
+	std::vector<CstringArray> save;
+	_comm.writeOnServer("tna");
+
+	usleep(100000);
+	std::cout << "coudzedzedcou" << std::endl;
+	int i = 1;
+	while (i != 0) {
+		_comm.lockMap();
+		save.clear();
+		i = 0;
+		for (const auto &it : _comm.getEnqueueMap()) {
+
+			//	window.clear(sf::Color::Black);
+			if (it.getCommandName() == "tna") {
+				std::cout<< it.getTeamName() << std::endl;
+				tmpTeam.push_back(it.getTeamName());
+				i++;
+			} else {
+				save.push_back(it);
+			}
+			std::cout << "i vaut " << i << std::endl;
+		}
+		_comm.setEnqueueMap(save);
+		_comm.unlockMap();
+		usleep(100000);
+	}
+	return tmpTeam;
+}

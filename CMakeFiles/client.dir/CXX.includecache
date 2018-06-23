@@ -6,19 +6,19 @@
 
 #IncludeRegexTransform: 
 
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/CstringArray.cpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/CstringArray.cpp
 CstringArray.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/CstringArray.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/CstringArray.hpp
 
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Entity/AMotionShape.cpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/Entity/AMotionShape.cpp
 AMotionShape.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Entity/AMotionShape.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/Entity/AMotionShape.hpp
 
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Entity/ARectangleShape.cpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/Entity/ARectangleShape.cpp
 ARectangleShape.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Entity/ARectangleShape.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/Entity/ARectangleShape.hpp
 
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Entity/Cell.cpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/Entity/Cell.cpp
 SFML/Graphics/RenderWindow.hpp
 -
 SfmlTool.hpp
@@ -26,19 +26,19 @@ SfmlTool.hpp
 random
 -
 Cell.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Entity/Cell.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/Entity/Cell.hpp
 
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Entity/Character.cpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/Entity/Character.cpp
 SFML/Graphics/RenderWindow.hpp
 -
 Character.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Entity/Character.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/Entity/Character.hpp
 
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Entity/Water.cpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/Entity/Water.cpp
 Water.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Entity/Water.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/Entity/Water.hpp
 
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Grid.cpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/Grid.cpp
 SFML/Graphics/Sprite.hpp
 -
 thread
@@ -46,51 +46,51 @@ thread
 Tools/Thread.hpp
 -
 Grid.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Grid.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/Grid.hpp
 
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Main.cpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/Main.cpp
 iostream
 -
 Auth.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Auth.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/Auth.hpp
 
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/ParseEnqueueMap.cpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/ParseEnqueueMap.cpp
 SFML/System.hpp
 -
 Class/Communication.hpp
 -
 ParseEnqueueMap.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/ParseEnqueueMap.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/ParseEnqueueMap.hpp
 Map.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Map.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/Map.hpp
 
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/SfmlTool.cpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/SfmlTool.cpp
 iostream
 -
 SfmlTool.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/SfmlTool.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/SfmlTool.hpp
 
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Text/AText.cpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/Text/AText.cpp
 Text/AText.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Text/Text/AText.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/Text/Text/AText.hpp
 
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Text/GameText.cpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/Text/GameText.cpp
 iostream
 -
 Text/GameText.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Text/Text/GameText.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/Text/Text/GameText.hpp
 
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Tools/Thread.cpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/Tools/Thread.cpp
 Thread.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/Tools/Thread.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/Tools/Thread.hpp
 
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/WindowInfo.cpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/WindowInfo.cpp
 unistd.h
 -
 WindowInfo.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/WindowInfo.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/WindowInfo.hpp
 
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Auth.cpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Auth.cpp
 iostream
 -
 iomanip
@@ -104,109 +104,109 @@ regex
 wait.h
 -
 ManageServer.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/ManageServer.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/ManageServer.hpp
 ManageDisplay.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/ManageDisplay.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/ManageDisplay.hpp
 Auth.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Auth.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Auth.hpp
 IncludeGui.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/IncludeGui.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/IncludeGui.hpp
 
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Communication.cpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Communication.cpp
 iostream
 -
 cstring
 -
 ManageServer.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/ManageServer.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/ManageServer.hpp
 Communication.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Communication.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Communication.hpp
 
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui.cpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Gui.cpp
 iostream
 -
 thread
 -
 Gui.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Gui.hpp
 
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui/Animation/Modal.cpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Gui/Animation/Modal.cpp
 chrono
 -
 iostream
 -
 Modal.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui/Animation/Modal.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Gui/Animation/Modal.hpp
 
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui/ObjectSFML/AbstractObjectSFML.cpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Gui/ObjectSFML/AbstractObjectSFML.cpp
 iostream
 -
 chrono
 -
 AbsractObjectSFML.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui/ObjectSFML/AbsractObjectSFML.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Gui/ObjectSFML/AbsractObjectSFML.hpp
 
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui/ObjectSFML/Circle.cpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Gui/ObjectSFML/Circle.cpp
 iostream
 -
 Class/Gui/ObjectSFML/Circle.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui/ObjectSFML/Class/Gui/ObjectSFML/Circle.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Gui/ObjectSFML/Class/Gui/ObjectSFML/Circle.hpp
 
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui/ObjectSFML/Container.cpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Gui/ObjectSFML/Container.cpp
 iostream
 -
 Container.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui/ObjectSFML/Container.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Gui/ObjectSFML/Container.hpp
 
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui/ObjectSFML/Sprite.cpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Gui/ObjectSFML/Sprite.cpp
 iostream
 -
 Class/Gui/ObjectSFML/Sprite.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui/ObjectSFML/Class/Gui/ObjectSFML/Sprite.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Gui/ObjectSFML/Class/Gui/ObjectSFML/Sprite.hpp
 
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui/ObjectSFML/Square.cpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Gui/ObjectSFML/Square.cpp
 iostream
 -
 Class/Gui/ObjectSFML/Square.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui/ObjectSFML/Class/Gui/ObjectSFML/Square.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Gui/ObjectSFML/Class/Gui/ObjectSFML/Square.hpp
 
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui/ObjectSFML/Text.cpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Gui/ObjectSFML/Text.cpp
 iostream
 -
 Class/Gui/ObjectSFML/Text.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui/ObjectSFML/Class/Gui/ObjectSFML/Text.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Gui/ObjectSFML/Class/Gui/ObjectSFML/Text.hpp
 
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui/ObjectSFML/TextInput.cpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Gui/ObjectSFML/TextInput.cpp
 iostream
 -
 chrono
 -
 TextInput.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui/ObjectSFML/TextInput.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Gui/ObjectSFML/TextInput.hpp
 
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.cpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Gui/PersonalizedObject/TextInputBckPlaceHorder.cpp
 iostream
 -
 TextInputBckPlaceHolder.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui/PersonalizedObject/TextInputBckPlaceHolder.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Gui/PersonalizedObject/TextInputBckPlaceHolder.hpp
 
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui/SFML_monitor.cpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Gui/SFML_monitor.cpp
 iostream
 -
 thread
 -
 SFML_monitor.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui/SFML_monitor.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Gui/SFML_monitor.hpp
 IObjectSFML.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Gui/IObjectSFML.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Gui/IObjectSFML.hpp
 
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/ManageDisplay.cpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/ManageDisplay.cpp
 unistd.h
 -
 ManageDisplay.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/ManageDisplay.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/ManageDisplay.hpp
 
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/ManageServer.cpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/ManageServer.cpp
 iostream
 -
 cstring
@@ -214,11 +214,11 @@ cstring
 sstream
 -
 CstringArray.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/CstringArray.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/CstringArray.hpp
 ManageServer.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/ManageServer.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/ManageServer.hpp
 
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Map.cpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Map.cpp
 iostream
 -
 unistd.h
@@ -228,13 +228,13 @@ thread
 Tools/Thread.hpp
 -
 Communication.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Communication.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Communication.hpp
 SfmlTool.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/SfmlTool.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/SfmlTool.hpp
 Map.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Map.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Map.hpp
 
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/GuiTexture.cpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Texture/GuiTexture.cpp
 regex
 -
 iostream
@@ -242,33 +242,33 @@ iostream
 Class/Communication.hpp
 -
 ManageServer.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/ManageServer.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Texture/ManageServer.hpp
 Gui.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/Gui.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Texture/Gui.hpp
 TextInputBckPlaceHolder.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/TextInputBckPlaceHolder.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Texture/TextInputBckPlaceHolder.hpp
 GuiTexture.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/GuiTexture.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Texture/GuiTexture.hpp
 
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/IATexture.cpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Texture/IATexture.cpp
 Class/Gui/PersonalizedObject/TextInputBckPlaceHolder.hpp
 -
 Class/Communication.hpp
 -
 Gui.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/Gui.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Texture/Gui.hpp
 IATexture.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/IATexture.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Texture/IATexture.hpp
 
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/shackTexture.cpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Texture/shackTexture.cpp
 iostream
 -
 Class/Communication.hpp
 -
 Gui.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/Gui.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Texture/Gui.hpp
 shackTexture.hpp
-/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/Src/client/Texture/shackTexture.hpp
+/home/wisenoa/tamere/PSU_zappy_2017/Src/client/Texture/shackTexture.hpp
 
 Include/Abstract/AbsractObjectSFML.hpp
 map

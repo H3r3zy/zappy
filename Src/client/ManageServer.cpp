@@ -77,7 +77,7 @@ CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 			i++;
 		}
 		buffer[i] = '\0';
-		if (!strncmp("pnw", buffer, 3)) {
+		if (!strncmp("pnw", buffer, 3) || !strncmp("tna", buffer, 3)) {
 			std::string teamName;
 			while (buffer[i] != ' ' && i > 0) {
 				teamName.insert(teamName.begin(), buffer[i]);

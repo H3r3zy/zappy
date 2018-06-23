@@ -1,4 +1,4 @@
-# Install script for directory: /home/wisenoa/NikeBienTaMere/PSU_zappy_2017
+# Install script for directory: /home/wisenoa/tamere/PSU_zappy_2017
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/wisenoa/NikeBienTaMere/PSU_zappy_2017/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/wisenoa/tamere/PSU_zappy_2017/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

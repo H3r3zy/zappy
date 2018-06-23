@@ -60,6 +60,7 @@ namespace irc {
 		std::map<uint, Character> _character;
 		ParseEnqueueMap _enqueueMap;
 		sf::Vector2f _mapSize = {10, 10};
+		std::vector<std::string> _teamName;
 		Grid _grid;
 
 	};

@@ -53,9 +53,9 @@ class Client:
         try:
             self.__socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             self.__socket.connect((self.__machine, self.__port))
-            print("Connection on port %d successful" % self.__port)
+            print("Connection on %s:%d successful" % (self.__machine, self.__port))
         except socket.error:
-            print("Connection on port %d failed" % self.__port)
+            print("Connection on %s:%d failed" % (self.__machine, self.__port))
             return False
         return True
 

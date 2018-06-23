@@ -15,7 +15,7 @@ def usage(code=0):
 
 
 def run(port: int, name: str, machine: str):
-    print("Running in team '%s' on port %d on machine '%s'" % (name, port, machine))
+    print("Running in team '%s'" % name)
     client = Client(port, name, machine)
     if client.connect():
         client.run()

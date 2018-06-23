@@ -22,17 +22,49 @@ irc::Auth::Auth(int width, int height) : _base("Authentication", (ulong)width, (
 	initSubmit();
 	initTextInput();
 	initPlaceHolder();
+	initSounds();
 	_base.addFuncLoop(0, &irc::Auth::loopErrorDisplay, this);
 
+	if (!_music.openFromFile("extra/gui/menu.ogg"))
+		throw std::exception();
+	_music.setLoop(true);
+	_music.play();
 	_base.loopWindow(nullptr);
+}
+
+irc::Auth::~Auth()
+{
+	_music.stop();
+}
+
+void irc::Auth::initSounds()
+{
+	irc::Sprite *sounds = new irc::Sprite("extra/gui/sounds.png", sf::IntRect(1100, 50, 50, 50));
+	irc::Sprite *sounds_off = new irc::Sprite("extra/gui/sounds_off.png", sf::IntRect(1100, 50, 50, 50));
+	irc::Square *hit_box = new irc::Square(sf::IntRect(1100, 50, 50, 50));
+	sounds_off->setBoolDisplay(false);
+
+	_base.addObjectToDraw("sounds_off", sounds_off, 0, 5);
+	_base.addObjectToDraw("sounds", sounds, 0, 5);
+	_base.addObjectToDraw("hit_box", hit_box, 0, 0);
+
+	hit_box->addFuncMouseEvent(irc::MouseEvent::CLICK, [this, sounds, sounds_off] {
+		if (!sounds->getBoolDisplay()) {
+			_music.play();
+			sounds->setBoolDisplay(true);
+			sounds_off->setBoolDisplay(false);
+		} else {
+			_music.pause();
+			sounds->setBoolDisplay(false);
+			sounds_off->setBoolDisplay(true);
+		}
+	});
 }
 
 void irc::Auth::initBck()
 {
-	irc::Square *background = new irc::Square(sf::IntRect(0, 0, _width, _height));
+	irc::Sprite *background = new irc::Sprite("extra/gui/background_menu.png", sf::IntRect(0, 0, _width, _height));
 	background->addFuncKeyEvent(sf::Keyboard::Escape, &irc::SFML_monitor::closeWindow, std::ref(_base));
-
-	background->setColor(sf::Color(66, 66, 66, 255));
 
 	irc::Square *bck_input_nick_border = new irc::Square(sf::IntRect(400, 250, 400, 60));
 	irc::Square *bck_input_ip_border = new irc::Square(sf::IntRect(400, 380, 250, 60));

@@ -9,6 +9,7 @@
 # define PSU_MYIRC_2017_AUTH_HPP
 
 # include <vector>
+# include <SFML/Audio.hpp>
 # include "SFML_monitor.hpp"
 
 namespace irc {
@@ -18,7 +19,7 @@ namespace irc {
 	class Auth {
 		public:
 		Auth(int width, int height);
-		~Auth() = default;
+		~Auth();
 
 		protected:
 		void modalError(std::string error);
@@ -29,6 +30,7 @@ namespace irc {
 		void initPlaceHolder();
 		void initTextInput();
 		void initSubmit();
+		void initSounds();
 
 		void inputTextWrite(IObjectSFML *placeholder, IObjectSFML *input, bool layer);
 		void GoToTheNextInput(IObjectSFML *from, IObjectSFML *to, int step);
@@ -49,6 +51,8 @@ namespace irc {
 
 		std::vector<std::string> _listError;
 		int _socketServer = 0;
+
+		sf::Music _music;
 	};
 }
 

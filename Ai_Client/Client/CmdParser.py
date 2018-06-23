@@ -65,7 +65,7 @@ class CmdParser:
 
     def message(self, msg):
         match = re.match("message (\d), (.*)", msg)
-        self.__msgQueue.append((match.group(1), match.group(2)))
+        self.__msgQueue.append((int(match.group(1)), match.group(2)))
 
     def lvl_up(self, ans: str, _1:str ="", _2:str =""):
         match = re.search("(\d)", ans)
@@ -155,6 +155,7 @@ class CmdParser:
                     return True
         try:
             last = self.__queue.popleft()
+            print("(" + cmd + ":" + last[0] + ")")
         except IndexError:
             raise ZappyException('Unexpected response')
         match = self.__patterns[last[0]].match(cmd)

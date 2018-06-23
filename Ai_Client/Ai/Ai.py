@@ -57,7 +57,7 @@ class Ai:
     def getInventory(self):
         return self.__inventory
 
-    def getDir(self):
+    def getDir(self) -> Direction:
         return self.dir
 
     def getLevel(self):

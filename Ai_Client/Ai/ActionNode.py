@@ -25,16 +25,39 @@ class Actions(IntEnum):
     GO_TO_BROADCASTER = 13,
     FIND_IF_BROADCASTER = 14,
     WAIT_TO_DROP = 15,
+    SYNCHRO = 16,
+
+
+def Synchronise(client: Client, player: Ai):
+    if Synchronise.look_id == -1:
+        Synchronise.look_id = client.build_command("Look", "", (player.getCoord(), player.getDir()))
+        if Synchronise.return_func == Actions.LOOK:
+            client.msgQueue.clear()
+    if Synchronise.look_id != client.last:
+        if Synchronise.return_func != Actions.LOOK:
+            client.msgQueue.clear()
+        return Actions.SYNCHRO
+    Synchronise.look_id = -1
+    return Synchronise.return_func
+
+
+Synchronise.return_func = Actions.GO_TO_BROADCASTER
+Synchronise.look_id = -1
 
 
 def look(client: Client, player: Ai):
-    if look.id == -1:
+    '''if look.id == -1:
+        print("Je passe Une fois la")
         client.msgQueue.clear()
         look.id = client.build_command("Look", "", (player.getCoord(), player.getDir()))
     if look.id != client.last:
-        return Actions.LOOK
+        print(look.id)
+        return Actions.LOOK'''
+    if look.id == -1:
+        look.id = 1
+        Synchronise.return_func = Actions.LOOK
+        return Actions.SYNCHRO
     look.id = -1
-    print("J'ai fini de look")
     return Actions.CHECK_FOOD
 
 
@@ -61,12 +84,12 @@ def shifting(client: Client, player: Ai, to_go: list):
     finding_path = PathFinding(client.mapSize[1], client.mapSize[0])
 
     map[player_coord[1]][player_coord[1]].setPlayer(map[player_coord[1]][player_coord[0]].getPlayer() - 1)
-    actions, player.dir = finding_path.goToTile(
-        player.getCoord(),
-        to_go,
-        player.getDir())
-    for move in actions:
-        client.build_command(move)
+    try:
+        actions, player.dir = finding_path.goToTile(player.getCoord(), to_go, player.getDir())
+        for move in actions:
+            client.build_command(move)
+    except:
+        print(player.getDir())
     player.setCoord(to_go[0], to_go[1])
 
 
@@ -103,19 +126,24 @@ def Drop(client: Client, player: Ai):
         for drop in range(nb):
             client.build_command("Set", stone)
     if player.getBroadcaster():
-        return Actions.WAIT_ALL_DROPS
+        print("maiiiis :(")
+        return Actions.LVL_UP
     else:
+        print("Comme je suis pas bro bajh go lv up")
         return Actions.WAIT_LVL_UP
 
 
 def WaitDrop(client: Client, player: Ai):
     need_player = player.elevation_player[player.getLevel()]
+    client.build_command("Broadcast", "Drop")
     while len(client.msgQueue) > 0:
         msg = client.msgQueue.popleft()
         if msg[0] == 0 and msg[1] == "Drop":
             WaitDrop.nb_resp += 1
     if WaitDrop.nb_resp < need_player:
-        return Actions.DROP
+        return Actions.WAIT_ALL_DROPS
+    client.clean()
+    print("J'ai tout gooooooooo")
     return Actions.LVL_UP
 
 
@@ -125,11 +153,14 @@ WaitDrop.nb_resp = 1
 def IncantBroadCast(client: Client, player: Ai):
     # todo Vérifier que je vais pas crever ^^
     print("Je suis broadcaster")
+    look.id = client.build_command("Look", "", (player.getCoord(), player.getDir()))
     take_all_resources(client, player)
     x = player.getCoord()[0]
     y = player.getCoord()[1]
     nb_player = player.elevation_player[player.getLevel()]
     if nb_player == player.getMap()[y][x].getPlayer():
+        client.clean()
+        print("Je vais drop !!")
         return Actions.DROP
     player.setBroadcaster(True)
     str = "Incantation Lvl {}".format(int(player.getLevel()))
@@ -138,6 +169,7 @@ def IncantBroadCast(client: Client, player: Ai):
 
 
 def WaitLvlUp(client: Client, player: Ai):
+    print("J'attend de lvl")
     if WaitLvlUp.lvl == -1:
         print("C'est ma première iter ! ;)")
         WaitLvlUp.lvl = player.getLevel()
@@ -160,28 +192,36 @@ def WaitToDrop(client: Client, player: Ai):
 
 
 def GoToBroadCaster(client: Client, player: Ai):
-    #Synchro les players
     player_coord = player.getCoord()
     map = player.getMap()
 
+    if GoToBroadCaster.lookId == -1:
+        GoToBroadCaster.lookId = 1
+        Synchronise.return_func = Actions.GO_TO_BROADCASTER
+        return Actions.SYNCHRO
     if map[player_coord[1]][player_coord[0]].getStones()["food"] != 0:
         client.build_command("Take", "food", player_coord)
-
     while len(client.msgQueue) > 0:
         msg = client.msgQueue.popleft()
-        print("Quelqu'un Broadcasting  :::: " + str(msg))
+        print("Quelqu'un a broad  :::: " + str(msg))
         lvl = re.match("Incantation Lvl (\d)", msg[1])
         print(lvl.group(1))
         if int(lvl.group(1)) == player.getLevel():
+            GoToBroadCaster.lookId = -1
             if msg[0] == 0:
-                return Actions.WAIT_TO_DROP
+                print("Wait to drop")
+                return Actions.WAIT_LVL_UP
+                # return Actions.WAIT_TO_DROP
             new_coord = player.WhereIs(msg[0])
             shifting(client, player, new_coord)
-            print("Je me déplace vers lui")
+            print("Je me déplace vers lui : %s dir %s" % (player.getCoord(), player.getDir()))
             client.msgQueue.clear()
             # Todo Déplacer 1 fois et attendre la response encore, jusqu'a ce que je la recoive sur message 0
             return Actions.GO_TO_BROADCASTER
     return Actions.GO_TO_BROADCASTER
+
+
+GoToBroadCaster.lookId = 0
 
 
 def FindIfBroadCaster(client: Client, player: Ai):
@@ -231,9 +271,19 @@ def TakeAll(client: Client, player: Ai):
 def LvlUp(client: Client, player: Ai):
     needed_player = player.elevation_player[player.getLevel()]
 
+    if LvlUp.Synchro == -1:
+        Synchronise.return_func = Actions.LVL_UP
+        LvlUp.Synchro = 1
+        print("TOOT")
+        return Actions.SYNCHRO
+    LvlUp.Synchro = -1
+    print("Incantation /!\\")
     client.build_command("Incantation")
     client.build_command("Incantation", "", (), True)
     return Actions.LOOK
+
+
+LvlUp.Synchro = -1
 
 
 def FindCrystals(client: Client, player: Ai):

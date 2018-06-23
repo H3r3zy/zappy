@@ -45,6 +45,7 @@ class Client:
             ActionNode(Actions.GO_TO_BROADCASTER, GoToBroadCaster),
             ActionNode(Actions.FIND_IF_BROADCASTER, FindIfBroadCaster),
             ActionNode(Actions.WAIT_TO_DROP, WaitToDrop),
+            ActionNode(Actions.SYNCHRO, Synchronise),
         ]
         self.__outId = 0
         self.last = 0
@@ -58,6 +59,10 @@ class Client:
             print("Connection on port %d failed" % self.__port)
             return False
         return True
+
+    def clean(self):
+        self.__outId -= len(self.__topQueue)
+        self.__topQueue.clear()
 
     def update_inbuff(self, con):
         data = con.recv(4096)

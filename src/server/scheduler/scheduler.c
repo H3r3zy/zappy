@@ -28,9 +28,11 @@ static bool check_task(server_t *server, client_t *client, task_t *task,
 	if (!task)
 		return false;
 	if (UNITTOMS(task->time_unit, server->freq) <= now - task->started_time) {
-		debug("Execute command of %i\n", client->fd);
-		if (task->function)
+		//debug("Execute command of %i\n", client->fd);
+		if (task->function) {
+		debug("PLAYER %d executes at pos %d;%d\n", client->entity->id, client->entity->pos.x, client->entity->pos.y);
 			task->function(server, client, task->command);
+			}
 		free(task->command);
 		free(task);
 		return true;

@@ -118,6 +118,7 @@ namespace irc {
 			{"nbu", irc::TYPE_ENQUEUE::T_GUI},
 			{"nbt", irc::TYPE_ENQUEUE::T_GUI},
 			{"pmv", irc::TYPE_ENQUEUE::T_MAP}, // move joueur
+			{"pic", irc::TYPE_ENQUEUE::T_MAP}, // incantation
 			{"sgt", irc::TYPE_ENQUEUE::T_MAP},
 			{"ptu", irc::TYPE_ENQUEUE::T_MAP}, // change orientation joueur
 			{"pdr", irc::TYPE_ENQUEUE::T_MAP}, // resource droppping

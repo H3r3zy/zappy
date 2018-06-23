@@ -119,7 +119,10 @@ const std::string &Character::getPlayerTeam() const
 void Character::setPlayerOrientation(char orientation)
 {
 	_orientation = orientation;
-//	_sprite[orientation][_actualSprite].setPosition(_position.x, _position.y);
+	_totalDist = 0;
+	_actualSprite = 0;
+
+	//	_sprite[orientation][_actualSprite].setPosition(_position.x, _position.y);
 }
 
 const char Character::getPlayerOrientation() const

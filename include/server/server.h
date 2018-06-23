@@ -199,6 +199,7 @@ void write_uint32(char *buffer, int *idx, uint32_t nb);
 uint32_t read_uint32(char *buffer, int *idx);
 
 size_t char_nb(const char *str, char c);
+char *concat(char *s1, char *s2);
 
 #define POS(c) (c)->entity->pos
 #define OR(c) (c)->user.orientation

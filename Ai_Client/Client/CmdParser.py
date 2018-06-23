@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-import re, sys
-from os import system
-from sys import argv
+import re
 from Ai_Client.Ai.Ai import *
 from collections import deque
 from Ai_Client.Enum.Direction import *
@@ -46,7 +44,6 @@ class CmdParser:
         self.__actions = {
             'Look': self.parse_map,
             'Inventory': self.parse_inv,
-            'Fork': self.fork,
             'Take': self.take,
             'Set': self.set,
             'Incantation': self.lvl_up
@@ -88,9 +85,6 @@ class CmdParser:
             self.__map[pos[1]][pos[0]].getStones()[obj] -= 1
         else:
             self.__map[pos[1]][pos[0]].getStones()[obj] = 0
-
-    def fork(self):
-        system(argv[0] + " -p " + str(self.__info[0]) + " -n " + self.__info[1] + " -h " + self.__info[2])
 
     def eject(self, ans):
         key = int(ans)
@@ -159,7 +153,10 @@ class CmdParser:
                 if reg.match(cmd):
                     func(cmd)
                     return True
-        last = self.__queue.popleft()
+        try:
+            last = self.__queue.popleft()
+        except IndexError:
+            raise ZappyException('Unexpected response')
         match = self.__patterns[last[0]].match(cmd)
         self.__handledId += 1
         try:

@@ -94,7 +94,7 @@ class Client:
         return self.__outId
 
     def refresh(self, mode: bool = False):
-        rcons, wcons, _ = select.select([self.__socket], [self.__socket] if len(self.__outBuff) > 0 else [], [], 0.1)
+        rcons, wcons, _ = select.select([self.__socket], [self.__socket] if len(self.__outBuff) > 0 else [], [], 0.01)
         for con in rcons:
             self.update_inbuff(con)
         for con in wcons:
@@ -140,6 +140,9 @@ class Client:
             self.refresh_queue()
             if "dead" in self.__inQueue:
                 print("I died being at the %s level" % ordinal(player.getLevel()))
+                exit(0)
+            if player.getLevel() == 8:
+                print("I won !")
                 exit(0)
             while len(self.__inQueue) > 0:
                 parser.parse(self.__inQueue.popleft())

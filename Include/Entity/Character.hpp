@@ -60,6 +60,7 @@ class Character : public AMotionShape {
 	int _freq = 1;
 	double _totalDist = 0;
 	int _duration = 7;
+	int _nextFrameTime = 0;
 
 	bool oneTime = false;
 

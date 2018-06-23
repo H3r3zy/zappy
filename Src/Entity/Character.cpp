@@ -63,7 +63,12 @@ sf::Sprite &Character::getCharacter()
 			else if (_orientation == WALK_DOWN)
 				_position.y += savetime;
 
-			_actualSprite++;
+			if (_nextFrameTime == _freq) {
+				_actualSprite++;
+				_nextFrameTime = 0;
+			} else {
+				_nextFrameTime++;
+			}
 			if (_actualSprite == 8)
 				_actualSprite = 0;
 

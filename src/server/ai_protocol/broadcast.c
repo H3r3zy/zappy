@@ -10,9 +10,21 @@
 #include <string.h>
 #include <stdio.h>
 #include <math.h>
-#include <server.h>
-#include <gui_command.h>
+#include "server.h"
+#include "gui_command.h"
+#include "debug.h"
 #include "command.h"
+
+const char angles[] = {
+	'1',
+	'8',
+	'7',
+	'6',
+	'5',
+	'4',
+	'3',
+	'2',
+};
 
 /**
 * Determine from which tile comes the broadcast message,
@@ -37,10 +49,10 @@ static char calcul_broadcast_tile(orientation_t orientation, int vf_x,
 	angle = (angle <= M_PI) ? M_PI - angle : 3 * M_PI - angle;
 	if (angle >= 2 * M_PI - M_PI_8 || angle < M_PI_8)
 		return '1';
-	for (char i = 1; i < 8; i++) {
+	for (short i = 1; i < 8; i++) {
 		m = i * M_PI_4;
 		if (angle >= m - M_PI_8 && angle < m + M_PI_8)
-			return i + '1';
+			return angles[i];
 	}
 	return '1';
 }
@@ -78,9 +90,9 @@ void broadcast_cmd(server_t *server, client_t *client, char *arg)
 	sprintf(response, "message 0, %s\n", arg);
 	for (client_t *clt = server->clients; clt; clt = clt->next) {
 		if (clt != client) {
-			d.x = MAP_SHORTEST_PATH(POS(clt).x - POS(clt).x,
+			d.x = MAP_SHORTEST_PATH(POS(clt).x - pos->x,
 				server->map.size.x);
-			d.y = MAP_SHORTEST_PATH(POS(clt).y - POS(clt).y,
+			d.y = MAP_SHORTEST_PATH(POS(clt).y - pos->y,
 				server->map.size.y);
 			tile = get_broadcast_tile(pos, clt, d.x, d.y);
 			response[8] = tile;

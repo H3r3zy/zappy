@@ -8,35 +8,41 @@
 #include <unistd.h>
 #include <stdbool.h>
 #include <stdlib.h>
-#include <stdio.h>
 #include <string.h>
 #include "parser.h"
 #include "server.h"
 
-int argument_port(struct argument_s *manager, void *server, char **av, uint32_t i)
+int argument_port(struct argument_s *manager, void *server, char **av,
+	uint32_t i
+)
 {
 	if (!av[i + 1]) {
 		manager->error = true;
 		return 0;
 	}
-	((server_t *) server)->port = (ushort) atoi(av[i + 1]);
+	((server_t *)server)->port = (ushort)atoi(av[i + 1]);
 	return 1;
 }
 
-int argument_clients_nb(struct argument_s *manager, void *server, char **av, uint32_t i)
+int argument_clients_nb(struct argument_s *manager, void *server, char **av,
+	uint32_t i
+)
 {
 	if (!av[i + 1]) {
 		manager->error = true;
 		return 0;
 	}
-	((server_t *) server)->max_clients_per_teams = (uint32_t) atoi(av[i + 1]);
-	if (((server_t *) server)->max_clients_per_teams == 0) {
+	((server_t *)server)->max_clients_per_teams = (uint32_t)atoi(
+		av[i + 1]);
+	if (((server_t *)server)->max_clients_per_teams == 0) {
 		manager->error = true;
 	}
 	return 1;
 }
 
-int argument_names(struct argument_s *manager, void *server, char **av, uint32_t i)
+int argument_names(struct argument_s *manager, void *server, char **av,
+	uint32_t i
+)
 {
 	int j = i + 1;
 

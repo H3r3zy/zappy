@@ -33,6 +33,8 @@ SFML/Graphics/RenderWindow.hpp
 -
 Character.hpp
 /home/wisenoa/tamere/PSU_zappy_2017/Src/Entity/Character.hpp
+unistd.h
+-
 
 /home/wisenoa/tamere/PSU_zappy_2017/Src/Entity/Water.cpp
 Water.hpp

@@ -82,9 +82,9 @@ void irc::Map::loopDisplay()
 		//std::cout << "je boucle " << std::endl;
 		_enqueueMap.parseNextCommand(*this);
 
-		for (auto &it : _teamName) {
-			std::cout << it << std::endl;
-		}
+		//for (auto &it : _teamName) {
+		//	std::cout << it << std::endl;
+		//}
 		getEvent();
 		/* Global Display */
 		_gameWindow.setView(_camera[MAP]);

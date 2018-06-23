@@ -219,7 +219,9 @@ void irc::ParseEnqueueMap::addPlayer(irc::Map &map, const CstringArray &command)
 	sf::Vector2f tmp = {tmpCommand[1] * 100, (tmpCommand[2] * 100)};
 	//tmp.y *= -1;
 	std::cout << "Je vais placer mon joueur " << tmpCommand[0] << " en X " << tmp.x << " Y " << tmp.y << std::endl;
-
+	std::cout << "orientation "<< tmpCommand[3] << " team player " << command.getTeamName() << " player level " << tmpCommand[4] << std::endl;
+	if (tmpCommand[0] == 768 || tmpCommand[0] == 256|| tmpCommand[0] == 0 || tmpCommand[0] == 512)
+		return;
 	map.getCharacterMap().emplace(tmpCommand[0], Character(map.getGrid().getTextureCharacter()[command.getTeamName()], tmp, tmpCommand[0]));
 	for (auto &it : map.getCharacterMap()) {
 		if (it.second.getPlayerID() == tmpCommand[0]) {
@@ -252,6 +254,8 @@ bool irc::ParseEnqueueMap::movePlayerPosition(irc::Map &map, const CstringArray 
 	sf::Vector2f tmpPos = {command.getCommand()[1] * 100, command.getCommand()[2] * 100};
 	//tmpPos.y *= -1;
 	std::cout << "Mon joueur va bouger en X " << tmpPos.x << " Y " << tmpPos.y << std::endl;
+	if (command.getCommand()[0] == 768 || command.getCommand()[0] == 256|| command.getCommand()[0] == 0 || command.getCommand()[0] == 512)
+		return false;
 
 	//	if (!map.getCharacterMap().at(command.getCommand()[0]).getAction()) {
 		map.getCharacterMap().at(command.getCommand()[0]).setPlayerMovement(tmpPos, command.getCommand()[3]);
@@ -264,6 +268,8 @@ bool irc::ParseEnqueueMap::movePlayerPosition(irc::Map &map, const CstringArray 
 
 void irc::ParseEnqueueMap::movePlayerOrientation(irc::Map &map, const CstringArray &command)
 {
+	if (command.getCommand()[0] == 768 || command.getCommand()[0] == 256|| command.getCommand()[0] == 0 || command.getCommand()[0] == 512)
+		return;
 	std::cout << " je vais mettre l'orientation de mon gars en " << command.getCommand()[1] << std::endl;
 	map.getCharacterMap().at(command.getCommand()[0]).setPlayerOrientation(static_cast<char>(command.getCommand()[1]));
 }

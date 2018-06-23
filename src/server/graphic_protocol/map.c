@@ -10,7 +10,6 @@
 #include <string.h>
 #include <server.h>
 #include <debug.h>
-#include "server.h"
 
 /**
 * GUI command : get map size
@@ -20,14 +19,15 @@
 * @response msz sizeX:4 sizeY:4
 */
 void gui_msz(server_t *server, __attribute__((unused)) char *arg,
-	__attribute__((unused)) bool *status)
+	__attribute__((unused)) bool *status
+)
 {
 	static char buff[16] = "msz mapX mapY\n";
 	int idx = 4;
 
-	write_uint32(buff, &idx, (uint32_t) server->map.size.x);
+	write_uint32(buff, &idx, (uint32_t)server->map.size.x);
 	++idx;
-	write_uint32(buff, &idx, (uint32_t) server->map.size.y);
+	write_uint32(buff, &idx, (uint32_t)server->map.size.y);
 	buff[idx] = -5;
 	add_to_gui_queue(&server->gui, buff, idx + 1);
 }
@@ -41,7 +41,7 @@ void gui_msz(server_t *server, __attribute__((unused)) char *arg,
 static void print_map_cell(server_t *server, uint32_t x, uint32_t y)
 {
 	static char buff[50] = "bct xpos ypos food line dera "
-			       "sibu mend phir thys\n";
+			"sibu mend phir thys\n";
 	uint32_t *items = server->map.map[y][x].items;
 
 	memcpy(buff + 4, &x, sizeof(uint32_t));
@@ -49,7 +49,6 @@ static void print_map_cell(server_t *server, uint32_t x, uint32_t y)
 	for (size_t i = 0; i < RESOURCE_NB; i++) {
 		memcpy(buff + 14 + i * (sizeof(uint32_t) + 1), &items[i],
 			sizeof(uint32_t));
-
 	}
 	buff[49] = -5;
 	add_to_gui_queue(&server->gui, buff, 50);
@@ -62,23 +61,23 @@ static void print_map_cell(server_t *server, uint32_t x, uint32_t y)
 *
 * @response bct xpos:4 ypos:4 line:4 dera:4 sibu:4 mend:4 phir:4 thys:4 food:4
 */
-void gui_bct(server_t *server, char *arg,
-	__attribute__((unused)) bool *status)
+void gui_bct(server_t *server, char *arg, __attribute__((unused)) bool *status)
 {
 	char *err;
 	long x = (arg) ? strtol(arg, &err, 10) : -1;
-	long y = ((!*err || *err == ' ') && x > -1 && strchr(arg, ' '))
-		? strtol(strchr(arg, ' ') + 1, &err, 10) : -1;
+	long y = ((!*err || *err == ' ') && x > -1 && strchr(arg, ' ')) ?
+		strtol(strchr(arg, ' ') + 1, &err, 10) : -1;
 
-	if (!*err && x < server->map.size.x &&
-		y > -1 && y < server->map.size.y)
+	if (!*err && x < server->map.size.x && y > -1 &&
+		y < server->map.size.y)
 		print_map_cell(server, x, y);
 	else
 		add_to_gui_queue(&server->gui, GUI_KO, 3);
 }
 
-int process_map_printing(server_t *server, pos_t *pos,
-	uint32_t *cells_done, bool *status)
+int process_map_printing(server_t *server, pos_t *pos, uint32_t *cells_done,
+	bool *status
+)
 {
 	for (; pos->x < server->map.size.x; pos->x++) {
 		print_map_cell(server, pos->x, pos->y);
@@ -109,7 +108,6 @@ void gui_mct(server_t *server, __attribute__((unused)) char *arg, bool *status)
 		if (process_map_printing(server, &pos, &cells_done, status))
 			return;
 		pos.x = 0;
-
 	}
 	pos.x = 0;
 	pos.y = 0;

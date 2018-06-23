@@ -54,6 +54,7 @@ SERVER_SRC	=	$(SERVER_DIR)/ai_protocol/broadcast.c		\
 			$(SERVER_DIR)/parsing/game.c			\
 			$(SERVER_DIR)/parsing/parser.c			\
 			$(SERVER_DIR)/parsing/port.c			\
+			$(SERVER_DIR)/parsing/string.c			\
 			$(SERVER_DIR)/scheduler/add.c			\
 			$(SERVER_DIR)/scheduler/resource.c		\
 			$(SERVER_DIR)/scheduler/scheduler.c		\

@@ -21,7 +21,7 @@ static void generate_resource(server_t *server)
 	pos_t pos;
 	entity_type_t id;
 
-	//debug(GINFO "I'll drop %u resource(s)\n", density);
+	debug_if(density != 0, GINFO "I'll drop %u resource(s)\n", density);
 	while (density > 0) {
 		pos = (pos_t){rand() % server->map.size.x,
 			rand() % server->map.size.y};
@@ -39,7 +39,7 @@ void schedule_resource_generator(server_t *server, ms_t now)
 	if (started_time == -1)
 		started_time = now;
 	if (now > (started_time + UNITTOMS(14, server->freq))) {
-		generate_resource(server);
+		//generate_resource(server);
 		started_time = now;
 	}
 }

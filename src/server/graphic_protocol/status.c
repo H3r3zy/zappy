@@ -38,9 +38,9 @@ void gui_pic(server_t *server, client_t *client, entity_t *entity)
 	static char buffer[1024] = "pic posX posY ";
 	int idx = 4;
 
-	write_uint32(buffer, &idx, (uint32_t) POS(client).x);
+	write_uint32(buffer, &idx, (uint32_t)POS(client).x);
 	++idx;
-	write_uint32(buffer, &idx, (uint32_t) POS(client).y);
+	write_uint32(buffer, &idx, (uint32_t)POS(client).y);
 	for (entity_t *en = entity; en && idx + 5 < 1022; en = en->next) {
 		buffer[idx++] = ' ';
 		write_uint32(buffer, &idx, en->id);
@@ -61,9 +61,9 @@ void gui_pie(server_t *server, client_t *client)
 	static char buffer[1024] = "pie posX posY clvl\n";
 	int idx = 4;
 
-	write_uint32(buffer, &idx, (uint32_t) POS(client).x);
+	write_uint32(buffer, &idx, (uint32_t)POS(client).x);
 	++idx;
-	write_uint32(buffer, &idx, (uint32_t) POS(client).y);
+	write_uint32(buffer, &idx, (uint32_t)POS(client).y);
 	++idx;
 	write_uint32(buffer, &idx, client->user.level);
 	buffer[idx] = -5;
@@ -85,16 +85,18 @@ void gui_pnw(server_t *server, client_t *client)
 
 	write_uint32(buff, &idx, client->entity->id);
 	idx++;
-	write_uint32(buff, &idx, (uint32_t) POS(client).x);
+	write_uint32(buff, &idx, (uint32_t)POS(client).x);
 	idx++;
-	write_uint32(buff, &idx, (uint32_t) POS(client).y);
+	write_uint32(buff, &idx, (uint32_t)POS(client).y);
 	idx++;
 	write_uint32(buff, &idx, OR(client) + 1);
 	idx++;
 	write_uint32(buff, &idx, client->user.level);
 	idx++;
 	if (strlen(client->team->name))
-		memcpy(buff + idx, client->team->name, strlen(client->team->name));
+		memcpy(buff + idx, client->team->name,
+			strlen(client->team->name));
 	buff[idx + strlen(client->team->name)] = -5;
-	add_to_gui_queue(&server->gui, buff, idx + strlen(client->team->name) + 1);
+	add_to_gui_queue(&server->gui, buff,
+		idx + strlen(client->team->name) + 1);
 }

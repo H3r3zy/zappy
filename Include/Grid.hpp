@@ -14,6 +14,7 @@
 #include <SFML/Graphics/Text.hpp>
 #include <Entity/Water.hpp>
 #include "Entity/Cell.hpp"
+# include "ParseEnqueueMap.hpp"
 #include "Character.hpp"
 
 class Grid {

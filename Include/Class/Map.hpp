@@ -37,7 +37,7 @@ namespace irc {
 		void updateGuiData();
 		std::map<uint, Character> &getCharacterMap();
 		Grid &getGrid();
-
+		irc::Communication &getComm();
 
 		private:
 		irc::Communication &_comm;

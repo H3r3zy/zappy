@@ -99,9 +99,7 @@ CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 				break;
 			commandName.push_back(it);
 		}
-		//	std::cout << "Nom de ma commande : " << commandName << std::endl;
 		finalCommand.setCommandName(commandName);
-		//std::cout << "FINAL COMMAND: " << finalCommand.getCommandName() << std::endl;
 	}
 	return finalCommand;
 }
@@ -161,5 +159,7 @@ void irc::ManageServer::parseLine1Input(char *buffer, CstringArray &command)
 	std::vector<uint> bag;
 	bag.emplace_back(0);
 	memcpy(&bag[0], buffer + 4, sizeof(uint));
+	std::cout << "jai recu regarde " << bag[0] << std::endl;
+	sleep(1);
 	command.setCommand(bag);
 }

@@ -96,7 +96,7 @@ namespace irc {
 		int _socket = 0;
 		bool &_read;
 
-		int _freq = 0;
+		int _freq = 1;
 
 		std::mutex _write;
 
@@ -118,7 +118,7 @@ namespace irc {
 			{"nbu", irc::TYPE_ENQUEUE::T_GUI},
 			{"nbt", irc::TYPE_ENQUEUE::T_GUI},
 			{"pmv", irc::TYPE_ENQUEUE::T_MAP}, // move joueur
-			{"sgt", irc::TYPE_ENQUEUE::T_GUI},
+			{"sgt", irc::TYPE_ENQUEUE::T_MAP},
 			{"ptu", irc::TYPE_ENQUEUE::T_MAP}, // change orientation joueur
 			{"pdr", irc::TYPE_ENQUEUE::T_MAP}, // resource droppping
 			{"pgt", irc::TYPE_ENQUEUE::T_MAP}, // resource collecting

@@ -36,12 +36,7 @@ irc::Map::Map(irc::Communication &comm, bool &displayGui, bool &endClient) : _co
 	_playerPos.setPosition(_camera[MAP].getCenter());
 	_grid.updateGrid3D(_camera[MAP]);
 	_windowInfo->updateInfo(_grid.getNbActive(), _camera[HUD]);
-
-	for (auto &it : _teamName) {
-		std::cout << it << std::endl;
-	}
-	/* */
-
+	initColorTeam();
 }
 
 void irc::Map::initCamera()
@@ -104,7 +99,7 @@ void irc::Map::loopDisplay()
 
 		/* Minimap Display*/
 		_gameWindow.setView(_camera[MINIMAP]);
-		_grid.displayMiniGrid(_gameWindow, _camera[MAP], _character);
+		_grid.displayMiniGrid(_gameWindow, _camera[MAP], _character, _teamColor);
 		_gameWindow.draw(_playerPos);
 
 		/* Display and Reset */
@@ -269,4 +264,19 @@ std::map<uint, Character> &irc::Map::getCharacterMap()
 Grid &irc::Map::getGrid()
 {
 	return _grid;
+}
+
+void irc::Map::initColorTeam()
+{
+	std::mt19937 rng;
+	rng.seed(std::random_device()());
+	std::uniform_int_distribution<std::mt19937::result_type> dist6(0, 255);
+
+	sf::Color color;
+	for (auto &it : _teamName) {
+		color.r = static_cast<sf::Uint8>(dist6(rng));
+		color.g = static_cast<sf::Uint8>(dist6(rng));
+		color.b = static_cast<sf::Uint8>(dist6(rng));
+		_teamColor[it] = color;
+	}
 }

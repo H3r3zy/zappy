@@ -138,9 +138,8 @@ bool Grid::loadTextures()
 	_resourcesPack[12].loadFromFile("extra/gui/pokeball2.png", sf::IntRect(300, 0, 50, 50));
 	_resourcesPack[13].loadFromFile("extra/gui/pokeball2.png", sf::IntRect(360, 0, 50, 50));
 
+	int textureFiles = 1;
 	for (const auto &it : _teamName) {
-		std::cout << "couddeddedcou" << std::endl;
-		std::cout << "je creer la texture de la team" << it << std::endl;
 		for (int i = 0; i < 9; i++) {
 			_textureCharacterPack[it][WALK_LEFT].emplace_back(sf::Texture());
 			_textureCharacterPack[it][WALK_RIGHT].emplace_back(sf::Texture());
@@ -150,13 +149,15 @@ bool Grid::loadTextures()
 		}
 
 		for (int i = 0; i < 9; i++) {
-			if (!_textureCharacterPack[it][WALK_UP][i].loadFromFile("Character2.png", sf::IntRect(i * 64, 512, 64, 64)))
-				std::cout <<"connard" << std::endl;
-			_textureCharacterPack[it][WALK_LEFT][i].loadFromFile("Character2.png", sf::IntRect(i * 64, 576, 64, 64));
-			_textureCharacterPack[it][WALK_DOWN][i].loadFromFile("Character2.png", sf::IntRect(i * 64, 640, 64, 64));
-			_textureCharacterPack[it][WALK_RIGHT][i].loadFromFile("Character2.png", sf::IntRect(i * 64, 704, 64, 64));
-			_textureCharacterPack[it][TAKE][i].loadFromFile("Character2.png", sf::IntRect(i * 64, 1344, 64, 64));
+			_textureCharacterPack[it][WALK_UP][i].loadFromFile("Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 512, 64, 64));
+			_textureCharacterPack[it][WALK_LEFT][i].loadFromFile("Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 576, 64, 64));
+			_textureCharacterPack[it][WALK_DOWN][i].loadFromFile("Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 640, 64, 64));
+			_textureCharacterPack[it][WALK_RIGHT][i].loadFromFile("Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 704, 64, 64));
+			_textureCharacterPack[it][TAKE][i].loadFromFile("Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 1344, 64, 64));
 		}
+		textureFiles++;
+		if (textureFiles > 3)
+			textureFiles = 1;
 	}
 
 	return true;
@@ -220,7 +221,7 @@ uint Grid::getNbActive() const
 	return _nbActive;
 }
 
-void Grid::displayMiniGrid(sf::RenderWindow &window, const sf::View &view, std::map<uint, Character> &character)
+void Grid::displayMiniGrid(sf::RenderWindow &window, const sf::View &view, std::map<uint, Character> &character, std::map<std::string, sf::Color> &colorTeam)
 {
 	sf::RectangleShape tmpRect;
 	tmpRect.setSize(sf::Vector2f(10, 10));
@@ -232,6 +233,7 @@ void Grid::displayMiniGrid(sf::RenderWindow &window, const sf::View &view, std::
 	window.draw(Grey);
 	for (const auto &it : character) {
 		tmpRect.setPosition(sf::Vector2f(it.second.getPosition()));
+		tmpRect.setFillColor(colorTeam[it.second.getPlayerTeam()]);
 		window.draw(tmpRect);
 	}
 }

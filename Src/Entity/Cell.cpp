@@ -22,8 +22,8 @@ Cell::Cell(std::pair<sf::Vector2f, sf::Vector2f> squareDimension, sf::Texture *&
 	std::uniform_int_distribution<std::mt19937::result_type> dist6(0, 8);
 
 	_randomPos[0] = sf::Vector2f(0, 0);
-	_randomPos[1] = sf::Vector2f(33, 0);
-	_randomPos[2] = sf::Vector2f(66, 0);
+	_randomPos[1] = sf::Vector2f(0, 33);
+	_randomPos[2] = sf::Vector2f(0, 66);
 
 	_randomPos[3] = sf::Vector2f(33, 0);
 	_randomPos[4] = sf::Vector2f(33, 33);
@@ -46,7 +46,7 @@ Cell::Cell(std::pair<sf::Vector2f, sf::Vector2f> squareDimension, sf::Texture *&
 			tmpPos++;
 			if (tmpPos > 8)
 				tmpPos = 0;
-			sf::Vector2f tmp = _randomPos[tmpPos];
+			tmp = _randomPos[tmpPos];
 		}
 
 		_takenPos[tmpPos] = true;

@@ -45,7 +45,7 @@ void gui_pdr(server_t *server, client_t *client, entity_type_t type);
 void gui_pgt(server_t *server, client_t *client, entity_type_t type);
 void gui_pdi(server_t *server, client_t *client);
 void gui_enw(server_t *server, egg_t *egg, client_t *client);
-void gui_eht(server_t *server, egg_t *egg);
+void gui_eht(server_t *server, egg_t *egg, client_t *client);
 void gui_ebo(server_t *server, egg_t *egg, client_t *client);
 void gui_edi(server_t *server, egg_t *egg);
 void gui_ptu(server_t *server, client_t *client);

@@ -95,7 +95,7 @@ static void schedule_egg(server_t *server, client_t *client, ms_t now)
 			client->entity->pos.x, client->entity->pos.y,
 			client->user.orientation);
 		remove_egg(egg);
-		gui_eht(server, egg);
+		gui_eht(server, egg, client);
 		client->status = NORMAL;
 	}
 }

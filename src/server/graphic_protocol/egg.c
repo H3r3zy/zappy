@@ -38,12 +38,14 @@ void gui_enw(server_t *server, egg_t *egg, client_t *client)
 *
 * @response eht eggID
 */
-void gui_eht(server_t *server, egg_t *egg)
+void gui_eht(server_t *server, egg_t *egg, client_t *client)
 {
 	static char buffer[1024] = "eht egID\n";
 	int idx = 4;
 
 	write_uint32(buffer, &idx, egg->id);
+	++idx;
+	write_uint32(buffer, &idx, client->entity->id);
 	buffer[idx] = -5;
 	add_to_gui_queue(&server->gui, buffer, idx + 1);
 }

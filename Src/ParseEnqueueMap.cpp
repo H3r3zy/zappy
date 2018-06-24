@@ -186,14 +186,17 @@ void irc::ParseEnqueueMap::loadingDisplay( sf::Vector2f &mapSize, sf::RenderWind
 	currentRect.setSize(sf::Vector2f(0, 50));
 	currentRect.setPosition(290, 490);
 
-	texture.loadFromFile("extra/game/ronflex.png");
+	if (!texture.loadFromFile("extra/game/ronflex.png"))
+		throw std::exception();
 	sprite.setTexture(texture);
 
-	texture_bck.loadFromFile("extra/game/loading_bck.png");
+	if (!texture_bck.loadFromFile("extra/game/loading_bck.png"))
+		throw std::exception();
 	bck.setTexture(texture_bck);
 	bck.setScale(sf::Vector2f(1.5, 1.5));
 
-	font.loadFromFile("extra/pokemon.ttf");
+	if (!font.loadFromFile("extra/pokemon.ttf"))
+		throw std::exception();
 	text.setFont(font);
 	text.setCharacterSize(20);
 

@@ -43,7 +43,7 @@ static void spawn(server_t *server, client_t *client, teams_t *team)
 			client->entity->pos.x = egg->pos.x;
 			client->entity->pos.y = egg->pos.y;
 			client->status = EGG;
-			gui_ebo(server, egg);
+			gui_ebo(server, egg, client);
 			return;
 		}
 	}

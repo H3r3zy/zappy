@@ -16,11 +16,15 @@
 static void generate_resource(server_t *server)
 {
 	uint32_t density = server->map.size.x * server->map.size.y /
-		(sqrt(server->map.size.x * server->map.size.y) * 2) *
+		(sqrt(server->map.size.x * server->map.size.y) * 7) *
 		server->client_nb;
 	pos_t pos;
 	entity_type_t id;
 
+	if (density < 0 && server->client_nb)
+		density = 1;
+	if (density > 100000)
+		density = 100000;
 	debug_if(density != 0, GINFO "I'll drop %u resource(s)\n", density);
 	while (density > 0) {
 		pos = (pos_t){rand() % server->map.size.x,
@@ -38,8 +42,8 @@ void schedule_resource_generator(server_t *server, ms_t now)
 
 	if (started_time == -1)
 		started_time = now;
-	if (now > (started_time + UNITTOMS(14, server->freq))) {
-		//generate_resource(server);
+	if (now > (started_time + UNITTOMS(126, server->freq))) {
+		generate_resource(server);
 		started_time = now;
 	}
 }

@@ -197,7 +197,7 @@ static int read_client(client_t *client)
 	if (status < 1)
 		return 1;
 	buff[status] = 0;
-	if (strlen(client->buff) + status >= READ_SIZE) {
+	if (client->buff_len + status >= READ_SIZE) {
 		client->buff_size += READ_SIZE;
 		client->buff = realloc(client->buff, client->buff_size + 1);
 	}

@@ -26,6 +26,7 @@ irc::ManageDisplay::ManageDisplay(int socketServer, const std::string &nick, con
 		_gui.loopDisplay();
 	});
 	_map.loopDisplay();
+	_threadRead->detach();
 	_thread->join();
 }
 

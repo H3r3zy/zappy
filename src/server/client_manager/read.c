@@ -16,6 +16,8 @@ static void shift_client_buff(client_t *client, size_t off)
 			client->buff_len - off + 1);
 		client->buff_len -= off;
 	}
+	else
+		client->buff_len = 0;
 }
 
 int pollin_client(server_t *server, client_t *client)

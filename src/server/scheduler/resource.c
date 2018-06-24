@@ -40,7 +40,7 @@ void schedule_resource_generator(server_t *server, ms_t now)
 
 	if (started_time == -1)
 		started_time = now;
-	if (now > (started_time + UNITTOMS(126, server->freq))) {
+	if (now > (started_time + UNITTOMS(28, server->freq))) {
 		generate_resource(server);
 		started_time = now;
 	}

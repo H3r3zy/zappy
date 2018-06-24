@@ -98,19 +98,6 @@ sf::Sprite &Character::getCharacter()
 	return _sprite[_orientation][_actualSprite];
 }
 
-bool Character::playerLoop(sf::RenderWindow &window)
-{
-	//std::cout << "coucou" << std::endl;
-	auto _beginTime = std::chrono::system_clock::now();
-	while (true) {
-		if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - _beginTime).count() > 1000) {
-			//std::cout << "il c passé une seconde" << std::endl;
-			_beginTime = std::chrono::system_clock::now();
-//			window.draw(_sprite[WALK_LEFT][_actualSprite]);
-		}
-	}
-}
-
 void Character::setPlayerTeam(const std::string &teamName)
 {
 	_teamName = teamName;

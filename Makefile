@@ -72,14 +72,12 @@ CFLAGS		+= 	-Iinclude/server
 CFLAGS		+=	-O3
 
 #default rule
-all:		zappy_server zappy_ai
-
-zappy_server: $(SERVER)
+all:		$(SERVER_NAME) zappy_ai
 
 zappy_ai:
 	@echo "AI built"
 
-$(SERVER):	$(SERVER_OBJ)
+$(SERVER_NAME):	$(SERVER_OBJ)
 	gcc -o $(SERVER_NAME) $(SERVER_OBJ) $(CFLAGS) $(SERVER_LDFLAGS)
 
 .PHONY:		all
@@ -106,4 +104,4 @@ debug:		CFLAGS += -ggdb3 -DDEBUG=1
 
 debug:		re
 
-.PHONY:		debug zappy_server zappy_ai
+.PHONY:		debug

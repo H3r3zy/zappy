@@ -555,7 +555,7 @@ void irc::ParseEnqueueMap::endIncantation(irc::Map &map, const CstringArray &com
 	int i = 0;
 	while (command.getCommand()[i] != 0 && i < 9) {
 		std::cout << "je boucle dans end incantation " << std::endl;
-		if (map.getCharacterMap().find((command.getCommand()[i])) == map.getCharacterMap().end()) {
+		if (map.getCharacterMap().find((command.getCommand()[i])) != map.getCharacterMap().end()) {
 			std::cout << "[" << RED << "MAP"<< RESET << "] did not found player " << command.getCommand()[i] << ", next on incantPLayer"<< std::endl;
 			++i;
 			continue;

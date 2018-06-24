@@ -49,9 +49,10 @@ class Client:
             Actions.FORWARD_STOCK: ActionNode(ForwardStock),
             Actions.SYNCHRO_INVENTORY: ActionNode(Synchronise_inventory),
             Actions.SYNCHRO_BROADCAST: ActionNode(Synchronise_broadcast),
-            Actions.AM_I_FIRST: ActionNode(AmIFirst)
+            Actions.AM_I_FIRST: ActionNode(AmIFirst),
+            Actions.SYNCHRO_INCANT: ActionNode(Synchronise_incant),
         }
-        self.msgQueue = deque()
+        self.msgQueue = deque(maxlen=1)
         self.__outId = 0
         self.last = 0
 
@@ -99,6 +100,7 @@ class Client:
 
     def build_command(self, cmd: str, arg: str = "", pos: tuple = (0, 0), fake: bool = False) -> int:
         self.__topQueue.append((cmd, arg, pos, fake))
+        print("BUILDING(%s %s)" % (cmd, arg))
         self.__outId += 1
         self.refresh_queue()
         return self.__outId

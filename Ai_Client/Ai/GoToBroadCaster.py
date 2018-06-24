@@ -3,19 +3,20 @@ import re
 
 
 def WaitLvlUp(client: Client, player: Ai):
-    print("J'attend de lvl up")
     if WaitLvlUp.lvl == -1:
+        print("J'attend de lvl up")
         WaitLvlUp.lvl = player.getLevel()
     elif WaitLvlUp.lvl != player.getLevel():
         print("J'ai lvl UP <3")
         WaitLvlUp.lvl = -1
         return Actions.LOOK
-    elif len(client.msgQueue) != 0:
+    if len(client.msgQueue) != 0:
         while len(client.msgQueue) > 0:
             msg = client.msgQueue.popleft()
+            print(msg)
             if msg[0] != "0":
                 continue
-            elif msg[1] == "Fail Incant":
+            if msg[1] == "Fail Incant":
                 return Actions.LOOK
     return Actions.WAIT_LVL_UP
 
@@ -33,14 +34,10 @@ def GoToBroadCaster(client: Client, player: Ai):
         return Actions.SYNCHRO
     GoToBroadCaster.lookId = -1
     if map[player_coord[1]][player_coord[0]].getStones()["food"] != 0:
-        toto = 0
         for nb in range(map[player_coord[1]][player_coord[0]].getStones()["food"]):
-            print("toto : %d " % toto)
             if nb > 3:
                 break
             client.build_command("Take", "food", player_coord)
-            toto += 1
-    print("len ::: %d" % len(client.msgQueue))
     while len(client.msgQueue) > 0:
         msg = client.msgQueue.popleft()
         print("Quelqu'un a broad  :::: " + str(msg))
@@ -48,16 +45,15 @@ def GoToBroadCaster(client: Client, player: Ai):
         if lvl and int(lvl.group(2)) == player.getLevel():
             GoToBroadCaster.lookId = -1
             if msg[0] == 0:
+                print(client.msgQueue)
+                #client.msgQueue.clear()
                 print("Wait to drop")
-                GoToBroadCaster.FollowId = 0
-                GoToBroadCaster.TimeToStop = 0
                 return Actions.WAIT_LVL_UP
             new_coord = player.WhereIs(msg[0])
             shifting(client, player, new_coord)
             print("Je me déplace vers lui : %s dir %s" % (player.getCoord(), player.getDir()))
-            client.msgQueue.clear()
+            #client.msgQueue.clear()
             return Actions.GO_TO_BROADCASTER
-    GoToBroadCaster.TimeToStop += 1
     return Actions.GO_TO_BROADCASTER
 
 

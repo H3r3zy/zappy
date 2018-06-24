@@ -10,11 +10,11 @@ from Ai_Client.Ai.PathFinding import PathFinding
 def Synchronise(client: Client, player: Ai):
     if Synchronise.look_id == -1:
         Synchronise.look_id = client.build_command("Look", "", (player.getCoord(), player.getDir()))
-        if Synchronise.return_func == Actions.LOOK:
-            client.msgQueue.clear()
+        #if Synchronise.return_func == Actions.LOOK:
+            #client.msgQueue.clear()
     if Synchronise.look_id != client.last:
-        # if Synchronise.return_func != Actions.LOOK:
-        #   client.msgQueue.clear()
+        #if Synchronise.return_func != Actions.LOOK:
+        #    client.msgQueue.clear()
         return Actions.SYNCHRO
     Synchronise.look_id = -1
     print(Synchronise.return_func)
@@ -54,6 +54,21 @@ Synchronise_broadcast.return_func = Actions.LOOK
 Synchronise_broadcast.id = -1
 
 
+def Synchronise_incant(client: Client, player: Ai):
+    if Synchronise_incant.id == -1:
+        client.build_command("Incantation")
+        Synchronise_incant.id = client.build_command("Incantation2", "", (), True)
+    if Synchronise_incant.id != client.last:
+        return Actions.SYNCHRO_INCANT
+    Synchronise_incant.id = -1
+    print(Synchronise_incant.return_func)
+    return Synchronise_incant.return_func
+
+
+Synchronise_incant.return_func = Actions.LOOK
+Synchronise_incant.id = -1
+
+
 def look(client: Client, player: Ai):
     if look.id == -1:
         look.id = 1
@@ -89,7 +104,7 @@ def shifting(client: Client, player: Ai, to_go: list):
         actions, player.dir = finding_path.goToTile(player.getCoord(), to_go, player.getDir())
         for move in actions:
             client.build_command(move)
-    except IndexError:
+    except ValueError:
         print(player.getDir())
     player.setCoord(to_go[0], to_go[1])
 
@@ -204,21 +219,23 @@ def TakeAll(client: Client, player: Ai):
     return Actions.LVL_UP
 
 
+import sys
+
 def LvlUp(client: Client, player: Ai):
     needed_stones = player.elevation_array[player.getLevel()]
 
     if LvlUp.Synchro == -1:
-        Synchronise.return_func = Actions.LVL_UP
+        client.build_command("Look", "", (player.getCoord(), player.getDir()))
+        Synchronise_incant.return_func = Actions.LVL_UP
         LvlUp.Synchro = 1
-        print("TOOT")
         LvlUp.OldLvl = player.getLevel()
-        return Actions.SYNCHRO
+        return Actions.SYNCHRO_INCANT
     LvlUp.Synchro = -1
-
-    print("Incantation /!\\")
-    client.build_command("Incantation")
-    client.build_command("Incantation2", "", (), True)
+    if LvlUp.OldLvl == player.getLevel():
+        print("Je n'ai pas lvl UP")
+        client.build_command("Broadcast", "Fail Incant")
     return Actions.LOOK
+
 
 
 LvlUp.OldLvl = 0

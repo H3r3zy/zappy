@@ -21,7 +21,7 @@ sf::Vector2f irc::ParseEnqueueMap::ParseMapSize()
 	std::vector<CstringArray> save;
 
 	bool loop = true;
-	usleep(100000);
+	usleep(10000);
 	while (true) {
 		int i = 0;
 		_comm.lockMap();
@@ -127,12 +127,10 @@ void irc::ParseEnqueueMap::fillMap(Map &map, sf::Vector2f &mapSize)
 	}
 
 	end = false;
-	std::vector<CstringArray> save1;
 	_comm.writeOnServer("sgt");
 	usleep(10000);
 	while (!end) {
 		_comm.lockMap();
-		save1.clear();
 		for (const auto &it : _comm.getEnqueueMap()) {
 			//	window.clear(sf::Color::Black);
 			if (it.getCommandName() == "sgt") {
@@ -140,11 +138,8 @@ void irc::ParseEnqueueMap::fillMap(Map &map, sf::Vector2f &mapSize)
 				std::cout << "[" << GREEN << "MAP" << RESET << "] retrieved frequence number " << _comm.getFreq() << std::endl;
 				end = true;
 				break;
-			} else {
-				save1.push_back(it);
 			}
 		}
-		_comm.setEnqueueMap(save1);
 		_comm.unlockMap();
 		usleep(10000);
 	}
@@ -222,6 +217,9 @@ void irc::ParseEnqueueMap::parseNextCommand(irc::Map &map)
 			dropResourcePlayer(map, it);
 		} else if (it.getCommandName() == "sgr") {
 			addRandomResource(map, it);
+		} else if (it.getCommandName() == "pic") {
+			std::cout << "c une incantation" << std::endl;
+			incantPlayer(map, it);
 		}
 		_comm.getEnqueueMap().erase(_comm.getEnqueueMap().begin());
 
@@ -236,36 +234,36 @@ void irc::ParseEnqueueMap::parseNextCommand(irc::Map &map)
 
 void irc::ParseEnqueueMap::addPlayer(irc::Map &map, const CstringArray &command)
 {
-	std::cout << "Commande numero " << " [" << command.getCommandName() << "]" << std::endl;
-
 	std::vector<uint> tmpCommand = command.getCommand();
-
-
-
 	int tmpFreq = map.getComm().getFreq();
 
 	//std::cout << "Player number :" << tmpCommand[0] << " Position en X " << tmpCommand[1] << " Position en Y " << tmpCommand[2] << " Orientation "  << tmpCommand[3] << " level " << tmpCommand[4] << " team name " << command.getTeamName() << std::endl;
 	sf::Vector2f tmp = {tmpCommand[1] * 100, (tmpCommand[2] * 100)};
 	//tmp.y *= -1;
+	std::cout << "[" << GREEN << "MAP"<< RESET << "] adding player " << command.getCommand()[0] << " on X " << tmp.x << " Y " << tmp.y << ", on orientation " << tmpCommand[3] << " team [" << command.getTeamName() << "]" << std::endl;
 
-	std::cout << "Je vais placer mon joueur " << tmpCommand[0] << " en X " << tmp.x << " Y " << tmp.y << std::endl;
-	std::cout << "orientation "<< tmpCommand[3] << " team player " << command.getTeamName() << " player level " << tmpCommand[4] << std::endl;
-	if (tmpCommand[0] == 768 || tmpCommand[0] == 256|| tmpCommand[0] == 0 || tmpCommand[0] == 512)
-		return;
+//	if (tmpCommand[0] == 768 || tmpCommand[0] == 256|| tmpCommand[0] == 0 || tmpCommand[0] == 512)
+//		return;
+	if (command.getTeamName().empty() || map.getGrid().getTextureCharacter().empty() || tmpCommand[0] == 0) {
+		std::cout << "[" << RED << "MAP" << RESET << "] Empty textureMap, not creating character :( teamName [" << command.getTeamName() << "] and id [" << tmpCommand[0] << "]" << std::endl;
+
+	} else {
 	map.getCharacterMap().emplace(tmpCommand[0], Character(map.getGrid().getTextureCharacter()[command.getTeamName()], tmp, tmpCommand[0], tmpFreq));
 	for (auto &it : map.getCharacterMap()) {
 		if (it.second.getPlayerID() == tmpCommand[0]) {
-			it.second.setPlayerOrientation(static_cast<char>(tmpCommand[3]));
+			it.second.setPlayerOrientation(static_cast<char>(tmpCommand[3]), 7);
 			it.second.setPlayerTeam(command.getTeamName());
 			it.second.setPlayerLevel(tmpCommand[4]);
 			break;
 		}
+	}
 	}
 }
 
 void irc::ParseEnqueueMap::deletePlayer(irc::Map &map, const CstringArray &command)
 {
 	//std::cout << "je vais supprimer le joueur " << command.getCommand()[0] << std::endl;
+	std::cout << "[" << GREEN << "MAP"<< RESET << "] deleting player " << command.getCommand()[0] << std::endl;
 	std::map<uint, Character> &tmp = map.getCharacterMap();
 
 	for (auto vec_it = (tmp).begin(); vec_it != (tmp).end(); ) {
@@ -280,34 +278,31 @@ void irc::ParseEnqueueMap::deletePlayer(irc::Map &map, const CstringArray &comma
 
 bool irc::ParseEnqueueMap::movePlayerPosition(irc::Map &map, const CstringArray &command)
 {
-	std::cout << "je vais faire bouger " << command.getCommand()[0] << std::endl;
 	sf::Vector2f tmpPos = {command.getCommand()[1] * 100, command.getCommand()[2] * 100};
-	//tmpPos.y *= -1;
-	std::cout << "Mon joueur va bouger en X " << tmpPos.x << " Y " << tmpPos.y << std::endl;
-	if (command.getCommand()[0] == 768 || command.getCommand()[0] == 256|| command.getCommand()[0] == 0 || command.getCommand()[0] == 512)
-		return false;
+//	if (command.getCommand()[0] == 768 || command.getCommand()[0] == 256|| command.getCommand()[0] == 0 || command.getCommand()[0] == 512)
+//		return false;
 
-	//	if (!map.getCharacterMap().at(command.getCommand()[0]).getAction()) {
 	int tmpFreq = map.getComm().getFreq();
+	std::cout << "[" << GREEN << "MAP" << RESET << "] moving player " << command.getCommand()[0] << " on X " << tmpPos.x << " Y " << tmpPos.y << std::endl;
 
 	if (map.getCharacterMap().find((command.getCommand()[0])) == map.getCharacterMap().end()) {
-		std::cout << "jai pas trouve mon joueur, tu niques ta mere jme casse" << std::endl;
-		exit(1);
+		std::cout << "[" << RED << "MAP" << RESET << "] did not found player " << command.getCommand()[0] << ", exiting movePlayerPosition" << std::endl;
+		return false;
 	}
-	map.getCharacterMap().at(command.getCommand()[0]).setPlayerMovement(tmpPos, command.getCommand()[3], tmpFreq);
-		return true;
-//	} else {
-///		return false;
-//	}
-	//map.getCharacterMap()[0].setPlayerMovement(tmpPos, command.getCommand()[3]);
+	map.getCharacterMap().at(command.getCommand()[0]).setPlayerMovement(tmpPos, command.getCommand()[3], tmpFreq, 7);
+	return true;
 }
 
 void irc::ParseEnqueueMap::movePlayerOrientation(irc::Map &map, const CstringArray &command)
 {
 	if (command.getCommand()[0] == 768 || command.getCommand()[0] == 256|| command.getCommand()[0] == 0 || command.getCommand()[0] == 512)
 		return;
+	if (map.getCharacterMap().find((command.getCommand()[0])) == map.getCharacterMap().end()) {
+		std::cout << "[" << RED << "MAP"<< RESET << "] did not found player " << command.getCommand()[0] << ", exiting movePLayerOrientation"<< std::endl;
+		return;
+	}
 	std::cout << " je vais mettre l'orientation de mon gars en " << command.getCommand()[1] << std::endl;
-	map.getCharacterMap().at(command.getCommand()[0]).setPlayerOrientation(static_cast<char>(command.getCommand()[1]));
+	map.getCharacterMap().at(command.getCommand()[0]).setPlayerOrientation(static_cast<char>(command.getCommand()[1]), 7);
 }
 
 bool irc::ParseEnqueueMap::takeResourcePlayer(irc::Map &map, const CstringArray &command)
@@ -316,8 +311,26 @@ bool irc::ParseEnqueueMap::takeResourcePlayer(irc::Map &map, const CstringArray 
 	std::cout << "L'id de mon joueur " << map.getCharacterMap().at(command.getCommand()[0]).getPlayerID() << std::endl;
 	std::cout << "mon joueur est en " << map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().x << " Y " << map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().y << std::endl;
 	std::cout << "Sur la case X " << map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().x << " Y "<< map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().y  << " c'est la ressoucre " << command.getCommand()[1] << std::endl;*/
-	map.getCharacterMap().at(command.getCommand()[0]).setPlayerTake((char)command.getCommand()[1], command.getCommand()[1]);
-	map.getGrid().getCell(static_cast<int>(map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().x / 100), static_cast<int>(map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().y / 100))->delResources(command.getCommand()[1]);
+
+	if (map.getCharacterMap().find((command.getCommand()[0])) == map.getCharacterMap().end()) {
+		std::cout << "[" << RED << "MAP"<< RESET << "] did not found player " << command.getCommand()[0] << ", exiting takeResourcePlayer"<< std::endl;
+		return false;
+	}
+	int tmpFreq = map.getComm().getFreq();
+	map.getCharacterMap().at(command.getCommand()[0]).setPlayerTake(tmpFreq, 7);
+	auto tmpX = static_cast<int>(map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().x / 100);
+	if (tmpX > map.getMapSize().x - 1)
+		tmpX--;
+	else if (tmpX < 0)
+		tmpX = 0;
+
+	auto tmpY = static_cast<int>(map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().y / 100);
+	if (tmpY > map.getMapSize().y - 1)
+		tmpY--;
+	else if (tmpY < 0)
+		tmpY = 0;
+
+	map.getGrid().getCell(tmpX, tmpY)->delResources(command.getCommand()[1]);
 
 
 	// TODO enelever cette foret de if degueu xD
@@ -355,8 +368,25 @@ bool irc::ParseEnqueueMap::takeResourcePlayer(irc::Map &map, const CstringArray 
 
 bool irc::ParseEnqueueMap::dropResourcePlayer(irc::Map &map, const CstringArray &command)
 {
-	map.getCharacterMap().at(command.getCommand()[0]).setPlayerTake((char)command.getCommand()[1], command.getCommand()[1]);
-	map.getGrid().getCell(static_cast<int>(map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().x / 100), static_cast<int>(map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().y / 100))->addRessources(command.getCommand()[1]);
+	if (map.getCharacterMap().find((command.getCommand()[0])) == map.getCharacterMap().end()) {
+		std::cout << "[" << RED << "MAP"<< RESET << "] did not found player " << command.getCommand()[0] << ", exiting dropResourcePlayer"<< std::endl;
+		return false;
+	}
+	int tmpFreq = map.getComm().getFreq();
+	map.getCharacterMap().at(command.getCommand()[0]).setPlayerTake(tmpFreq, 7);
+	auto tmpX = static_cast<int>(map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().x / 100);
+	if (tmpX > map.getMapSize().x - 1)
+		tmpX = static_cast<int>(map.getMapSize().x - 1);
+	else if (tmpX < 0)
+		tmpX = 0;
+	auto tmpY = static_cast<int>(map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().y / 100);
+	if (tmpY > map.getMapSize().y - 1)
+		tmpY = static_cast<int>(map.getMapSize().y - 1);
+	else if (tmpY < 0)
+		tmpY = 0;
+	std::cout << "[" << GREEN << "PLAYER " << command.getCommand()[0] << RESET << "] dropped 1 resource on cell " << tmpX << " " << tmpY << std::endl;
+
+	map.getGrid().getCell(tmpX, tmpY)->addRessources(command.getCommand()[1]);
 
 	if (command.getCommand()[1] == 6) {
 		_comm._server.ressources.q0++;
@@ -391,9 +421,6 @@ bool irc::ParseEnqueueMap::dropResourcePlayer(irc::Map &map, const CstringArray 
 
 bool irc::ParseEnqueueMap::addRandomResource(irc::Map &map, const CstringArray &command)
 {
-	std::cout << "size " << command.getCommand().size() << std::endl;
-	std::cout << "ma celle est cencee etre en " << command.getCommand()[0] << " " << command.getCommand()[1] << std::endl;
-	std::cout << "je vais add une random ressource " << command.getCommand()[2] << std::endl;
 	map.getGrid().getCell(command.getCommand()[0], command.getCommand()[1])->addRessources(command.getCommand()[2]);
 
 	if (command.getCommand()[1] == 6) {
@@ -433,7 +460,7 @@ std::vector<std::string> &irc::ParseEnqueueMap::getTeam()
 	std::vector<CstringArray> save;
 	_comm.writeOnServer("tna");
 
-	usleep(100000);
+	usleep(10000);
 	std::cout << "coudzedzedcou" << std::endl;
 	int i = 1;
 	while (i != 0) {
@@ -454,7 +481,26 @@ std::vector<std::string> &irc::ParseEnqueueMap::getTeam()
 		}
 		_comm.setEnqueueMap(save);
 		_comm.unlockMap();
-		usleep(100000);
+		usleep(10000);
 	}
 	return tmpTeam;
+}
+
+void irc::ParseEnqueueMap::incantPlayer(irc::Map &map, const CstringArray &command)
+{
+	sf::Vector2f tmpPos = {command.getCommand()[0], command.getCommand()[1]};
+	std::cout << "[" << GREEN << "MAP" << RESET << "] incantation on X " << tmpPos.x << " Y " << tmpPos.y << std::endl;
+	int i = 2;
+	int tmpFreq = map.getComm().getFreq();
+	while (command.getCommand()[i] != 0 && i < 10) {
+		std::cout << "je boucle" << std::endl;
+		if (map.getCharacterMap().find((command.getCommand()[i])) == map.getCharacterMap().end()) {
+			std::cout << "[" << RED << "MAP"<< RESET << "] did not found player " << command.getCommand()[i] << ", next on incantPLayer"<< std::endl;
+			++i;
+			continue;
+		}
+		map.getCharacterMap().at(command.getCommand()[i]).setPlayerIncant(tmpFreq, 300);
+		++i;
+	}
+
 }

@@ -20,7 +20,8 @@ class Character : public AMotionShape {
 		WALK_RIGHT = 2,
 		WALK_DOWN = 3,
 		WALK_LEFT = 4,
-		TAKE = 5
+		TAKE = 5,
+		INCANT = 6
 	};
 	public:
 	Character(std::map<char, std::vector<sf::Texture>> &_texturePack, sf::Vector2f &position, uint id, int freq);
@@ -28,7 +29,7 @@ class Character : public AMotionShape {
 	void setPlayerTeam(const std::string &teamName);
 	const std::string &getPlayerTeam() const;
 
-	void setPlayerOrientation(char orientation);
+	void setPlayerOrientation(char orientation, int duration);
 	const char getPlayerOrientation() const;
 
 	const uint &getPlayerID() const;
@@ -36,8 +37,9 @@ class Character : public AMotionShape {
 	void setPlayerLevel(uint level);
 	const uint &getPlayerLevel() const;
 
-	void setPlayerMovement(sf::Vector2f &finalPos, const uint &orientation, int freq);
-	void setPlayerTake(char orientation, uint resourceNumber);
+	void setPlayerMovement(sf::Vector2f &finalPos, const uint &orientation, int freq, int duration);
+	void setPlayerTake(int freq, int duration);
+	void setPlayerIncant(int freq, int duration);
 	static bool playerLoop(sf::RenderWindow &window);
 
 	const sf::Vector2f &getPlayerPosition() const;
@@ -57,6 +59,8 @@ class Character : public AMotionShape {
 	uint _level;
 	int _freq = 1;
 	double _totalDist = 0;
+	int _duration = 7;
+	int _nextFrameTime = 0;
 
 	bool oneTime = false;
 

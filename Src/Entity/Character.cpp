@@ -15,6 +15,7 @@ Character::Character(std::map<char, std::vector<sf::Texture>> &_texturePack, sf:
 		_sprite[WALK_UP].emplace_back(sf::Sprite());
 		_sprite[WALK_DOWN].emplace_back(sf::Sprite());
 		_sprite[TAKE].emplace_back(sf::Sprite());
+		_sprite[INCANT].emplace_back(sf::Sprite());
 	}
 	for (int i = 0; i < 9; i++) {
 		_sprite[WALK_LEFT][i].setTexture(_texturePack[WALK_LEFT][i]);
@@ -22,6 +23,7 @@ Character::Character(std::map<char, std::vector<sf::Texture>> &_texturePack, sf:
 		_sprite[WALK_UP][i].setTexture(_texturePack[WALK_UP][i]);
 		_sprite[WALK_DOWN][i].setTexture(_texturePack[WALK_DOWN][i]);
 		_sprite[TAKE][i].setTexture(_texturePack[TAKE][i]);
+		_sprite[INCANT][i].setTexture(_texturePack[INCANT][i]);
 	}
 	usleep(100);
 	srand(time(NULL));
@@ -39,7 +41,7 @@ sf::Sprite &Character::getCharacter()
 	if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - _beginTime).count() > (100 / _freq)) {
 	//	//std::cout << "il c passé une dixieme de seconde" << std::endl;
 
-		double savetime = (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - _beginTime).count()) / 7;
+		double savetime = (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - _beginTime).count()) / _duration;
 
 		// TODO A DEGAGER
 		if (_action) {
@@ -61,7 +63,12 @@ sf::Sprite &Character::getCharacter()
 			else if (_orientation == WALK_DOWN)
 				_position.y += savetime;
 
-			_actualSprite++;
+			if (_nextFrameTime == _freq) {
+				_actualSprite++;
+				_nextFrameTime = 0;
+			} else {
+				_nextFrameTime++;
+			}
 			if (_actualSprite == 8)
 				_actualSprite = 0;
 
@@ -116,10 +123,14 @@ const std::string &Character::getPlayerTeam() const
 	return _teamName;
 }
 
-void Character::setPlayerOrientation(char orientation)
+void Character::setPlayerOrientation(char orientation, int duration)
 {
+	_duration = duration;
 	_orientation = orientation;
-//	_sprite[orientation][_actualSprite].setPosition(_position.x, _position.y);
+	_totalDist = 0;
+	_actualSprite = 0;
+
+	//	_sprite[orientation][_actualSprite].setPosition(_position.x, _position.y);
 }
 
 const char Character::getPlayerOrientation() const
@@ -142,14 +153,13 @@ const uint &Character::getPlayerLevel() const
 	return _level;
 }
 
-void Character::setPlayerMovement(sf::Vector2f &finalPos, const uint &orientation, int freq)
+void Character::setPlayerMovement(sf::Vector2f &finalPos, const uint &orientation, int freq, int duration)
 {
-	std::cout << "Le joueur " << _id << "a un ontTime aui vaut "  << oneTime << std::endl;
-
+	_duration = duration;
 	_freq = freq;
 	if (oneTime) {
 		_position = _nextPos;
-		std::cout << "nextpos = " << _nextPos.x << " " << _nextPos.y << std::endl;
+		//std::cout << "nextpos = " << _nextPos.x << " " << _nextPos.y << std::endl;
 	}
 	oneTime = true;
 	_testTmp = 0;
@@ -164,11 +174,12 @@ const bool Character::getAction() const
 	return _action;
 }
 
-void Character::setPlayerTake(char orientation, uint resourceNumber)
+void Character::setPlayerTake(int freq, int duration)
 {
+	_duration = duration;
+	_freq = freq;
 	if (_nextPos.x != 0 && _nextPos.y != 0)
 		_position = _nextPos;
-	std::cout << "je dis au joueur" << _id << " de prendre un truc par terre, c'est la ressource " << resourceNumber << std::endl;
 	_actualSprite = 0;
 	_testTmp = 0;
 	_totalDist = 0;
@@ -180,4 +191,18 @@ void Character::setPlayerTake(char orientation, uint resourceNumber)
 const sf::Vector2f &Character::getPlayerPosition() const
 {
 	return _position;
+}
+
+void Character::setPlayerIncant(int freq, int duration)
+{
+	std::cout << "je vais incanter" << std::endl;
+	_duration = duration;
+	_freq = freq;
+	if (_nextPos.x != 0 && _nextPos.y != 0)
+		_position = _nextPos;
+	_actualSprite = 0;
+	_testTmp = 0;
+	_totalDist = 0;
+	_orientation = INCANT;
+	_action = true;
 }

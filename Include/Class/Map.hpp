@@ -38,6 +38,7 @@ namespace irc {
 		std::map<uint, Character> &getCharacterMap();
 		Grid &getGrid();
 		irc::Communication &getComm();
+		const sf::Vector2f &getMapSize() const;
 
 		private:
 		irc::Communication &_comm;

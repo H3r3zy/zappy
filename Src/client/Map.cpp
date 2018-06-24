@@ -285,3 +285,8 @@ irc::Communication &irc::Map::getComm()
 {
 	return _comm;
 }
+
+const sf::Vector2f &irc::Map::getMapSize() const
+{
+	return _mapSize;
+}

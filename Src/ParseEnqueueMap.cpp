@@ -308,6 +308,14 @@ void irc::ParseEnqueueMap::deletePlayer(irc::Map &map, const CstringArray &comma
 			++vec_it;
 		}
 	}
+	int idx = 0;
+	for (auto &&it : _comm._listId) {
+		if (it == command.getCommand()[0]) {
+			_comm._listId.erase(_comm._listId.begin() + idx);
+			break;
+		}
+		idx++;
+	}
 }
 
 bool irc::ParseEnqueueMap::movePlayerPosition(irc::Map &map, const CstringArray &command)

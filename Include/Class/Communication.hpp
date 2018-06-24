@@ -27,7 +27,7 @@ namespace irc {
 	} ressources_t;
 
 	typedef struct {
-		int id = 1;
+		ulong id = 1;
 		std::string team = "Unknown";
 		int level = 0;
 		ressources_t ressources = {0, 0, 0, 0, 0, 0, 0};

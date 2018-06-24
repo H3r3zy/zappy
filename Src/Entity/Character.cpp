@@ -6,10 +6,10 @@
 #include "Character.hpp"
 #include <unistd.h>
 
-Character::Character(std::map<char, std::vector<sf::Texture>> &_texturePack, sf::Vector2f &position, uint id, int freq, const sf::Vector2f &mapSize) : AMotionShape(position), _id(id), _freq(freq), _mapSize(mapSize)
+Character::Character(std::map<char, std::vector<sf::Texture>> &_texturePack, sf::Vector2f &position, uint id, int freq, const sf::Vector2f &mapSize) : AMotionShape(position), _mapSize(mapSize), _id(id), _freq(freq)
 {
 	 _beginTime = std::chrono::system_clock::now();
-	for (int i = 0; i < _texturePack[WALK_LEFT].size(); i++) {
+	for (ulong i = 0; i < _texturePack[WALK_LEFT].size(); i++) {
 		_sprite[WALK_LEFT].emplace_back(sf::Sprite());
 		_sprite[WALK_RIGHT].emplace_back(sf::Sprite());
 		_sprite[WALK_UP].emplace_back(sf::Sprite());
@@ -18,7 +18,7 @@ Character::Character(std::map<char, std::vector<sf::Texture>> &_texturePack, sf:
 		_sprite[INCANT].emplace_back(sf::Sprite());
 		_sprite[BROADCAST].emplace_back(sf::Sprite());
 	}
-	for (int i = 0; i < 9; i++) {
+	for (ulong i = 0; i < 9; i++) {
 		_sprite[WALK_LEFT][i].setTexture(_texturePack[WALK_LEFT][i]);
 		_sprite[WALK_RIGHT][i].setTexture(_texturePack[WALK_RIGHT][i]);
 		_sprite[WALK_UP][i].setTexture(_texturePack[WALK_UP][i]);
@@ -121,7 +121,7 @@ void Character::setPlayerOrientation(char orientation, int duration)
 	//	_sprite[orientation][_actualSprite].setPosition(_position.x, _position.y);
 }
 
-const char Character::getPlayerOrientation() const
+char Character::getPlayerOrientation() const
 {
 	return _orientation;
 }
@@ -156,7 +156,7 @@ void Character::setPlayerMovement(sf::Vector2f &finalPos, const uint &orientatio
 	_action = true;
 }
 
-const bool Character::getAction() const
+bool Character::getAction() const
 {
 	return _action;
 }

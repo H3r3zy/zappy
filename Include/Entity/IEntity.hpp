@@ -16,7 +16,7 @@ class IEntity {
 	virtual ~IEntity() = default;
 	virtual void setPosition(sf::Vector2f &position) = 0;
 	virtual void setPosition(float x, float y) = 0;
-	virtual const sf::Vector2f &getPosition() const = 0;
+		virtual const sf::Vector2f &getPosition() const = 0;
 
 	protected:
 

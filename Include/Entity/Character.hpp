@@ -31,7 +31,7 @@ class Character : public AMotionShape {
 	const std::string &getPlayerTeam() const;
 
 	void setPlayerOrientation(char orientation, int duration);
-	const char getPlayerOrientation() const;
+	char getPlayerOrientation() const;
 
 	const uint &getPlayerID() const;
 
@@ -47,7 +47,7 @@ class Character : public AMotionShape {
 	const sf::Vector2f &getPlayerPosition() const;
 
 	sf::Sprite &getCharacter();
-	const bool getAction() const;
+	bool getAction() const;
 
 	~Character();
 

@@ -141,14 +141,14 @@ bool irc::Map::getEvent()
 	while (_gameWindow.pollEvent(event))
 	{
 		// check the type of the event...
-		switch (event.type)
-		{
+		switch (event.type) {
 			// window closed
-		case sf::Event::Closed:
+		case sf::Event::Closed: {
 			_gameWindow.close();
 			return false;
 			// key pressed
-		case sf::Event::KeyPressed:
+		}
+		case sf::Event::KeyPressed: {
 			switch (event.key.code) {
 			case sf::Keyboard::F:
 				_displayGui = true;
@@ -199,44 +199,70 @@ bool irc::Map::getEvent()
 				break;
 			}
 			break;
-		case sf::Event::MouseButtonReleased:
-//			//std::cout << "the right button was pressed" << std::endl;
+		}
+		case sf::Event::MouseButtonReleased: {
+			//			//std::cout << "the right button was pressed" << std::endl;
 
 
-			sf::Vector2i pixelPos = sf::Vector2i(sf::Mouse::getPosition(_gameWindow));
+			sf::Vector2i pixelPos = sf::Vector2i(
+				sf::Mouse::getPosition(_gameWindow));
 
 			// convert it to world coordinates
-			sf::Vector2f worldPos = _gameWindow.mapPixelToCoords(pixelPos, _camera[MAP]);
-/*
-			//std::cout << "mouse x: " << event.mouseButton.x << std::endl;
-			//std::cout << "mouse y: " << event.mouseButton.y << std::endl;
+			sf::Vector2f worldPos = _gameWindow.mapPixelToCoords(
+				pixelPos, _camera[MAP]);
+			/*
+						//std::cout << "mouse x: " << event.mouseButton.x << std::endl;
+						//std::cout << "mouse y: " << event.mouseButton.y << std::endl;
 
-			//std::cout << "position map" << worldPos.x << " " << worldPos.y << std::endl;
+						//std::cout << "position map" << worldPos.x << " " << worldPos.y << std::endl;
 
 
 
-			//std::cout << "=-=-=-==-=-=-==-=-=--=-==-=-" << std::endl;
-			//std::cout << "Je regarde si la cellule X: " << (static_cast<int>(worldPos.x / 100)) << " Y: " << static_cast<int>((worldPos.y + 100)* -1 / 100) << "est valide" << std::endl;
-			//std::cout << "=-=-=-==-=-=-==-=-=--=-==-=-" << std::endl;
+						//std::cout << "=-=-=-==-=-=-==-=-=--=-==-=-" << std::endl;
+						//std::cout << "Je regarde si la cellule X: " << (static_cast<int>(worldPos.x / 100)) << " Y: " << static_cast<int>((worldPos.y + 100)* -1 / 100) << "est valide" << std::endl;
+						//std::cout << "=-=-=-==-=-=-==-=-=--=-==-=-" << std::endl;
 
-*/
-			if (_grid.checkvalid(static_cast<int>(worldPos.x / 100), static_cast<int>((worldPos.y) / 100))) {
-				if (_comm._shack._pos.first != -1 && _comm._shack._pos.second != -1)
-					_grid.getCell(_comm._shack._pos.first, _comm._shack._pos.second)->removeTarget();
+			*/
+			if (_grid.checkvalid(static_cast<int>(worldPos.x / 100),
+				static_cast<int>((worldPos.y) / 100))) {
+				if (_comm._shack._pos.first != -1 &&
+					_comm._shack._pos.second != -1)
+					_grid.getCell(_comm._shack._pos.first,
+						_comm._shack._pos.second)->removeTarget();
 
 				_comm._listId.clear();
-				if (_comm._shack._pos.first != static_cast<int>(worldPos.x / 100) || _comm._shack._pos.second != static_cast<int>((worldPos.y) / 100)) {
-					_grid.getCell(static_cast<int>(worldPos.x / 100), static_cast<int>((worldPos.y) / 100))->makeTarget();
+				if (_comm._shack._pos.first !=
+					static_cast<int>(worldPos.x / 100) ||
+					_comm._shack._pos.second !=
+						static_cast<int>((worldPos.y) /
+							100)) {
+					_grid.getCell(
+						static_cast<int>(worldPos.x /
+							100),
+						static_cast<int>((worldPos.y) /
+							100))->makeTarget();
 					_comm._listId.push_back(-1);
 					_displayGui = true;
-					_comm._shack._pos.first = static_cast<int>(worldPos.x / 100);
-					_comm._shack._pos.second = static_cast<int>((worldPos.y) / 100);
-					for (auto && it : _character) {
+					_comm._shack._pos.first = static_cast<int>(
+						worldPos.x / 100);
+					_comm._shack._pos.second = static_cast<int>(
+						(worldPos.y) / 100);
+					for (auto &&it : _character) {
 						auto pos = it.second.getPosition();
-						if (pos.x > (_comm._shack._pos.first * 100) - 30 && pos.x < (_comm._shack._pos.first * 100) + 70 && pos.y > (_comm._shack._pos.second * 100) - 50 && pos.y < (_comm._shack._pos.second * 100) + 50)
-							_comm._listId.push_back(it.second.getPlayerID());
+						if (pos.x >
+							(_comm._shack._pos.first *
+								100) - 30 &&
+							pos.x<(_comm._shack._pos.first *
+								100) + 70 &&
+								pos.y>(
+								_comm._shack._pos.second *
+									100) -
+								50 && pos.y <
+							(_comm._shack._pos.second *
+								100) + 50)
+							_comm._listId.push_back(
+								it.second.getPlayerID());
 					}
-
 				} else {
 					_comm._shack._pos.first = -1;
 					_comm._shack._pos.second = -1;
@@ -248,9 +274,10 @@ bool irc::Map::getEvent()
 
 				//std::cout << "jai reussit" << std::endl;
 			}
-
 			break;
-
+		}
+		default:
+			break;
 		}
 		return true;
 

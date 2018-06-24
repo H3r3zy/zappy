@@ -14,7 +14,7 @@ CC		=	gcc
 SERVER		=	server
 SERVER_NAME	=	zappy_server
 
-CFLAGS		=	-W -Wall -Wextra
+CFLAGS		=	-W -Wall -Wextra -Wno-unused-result
 
 SERVER_DIR	=	src/server
 

@@ -1,3 +1,5 @@
+cmake*
+.idea*
 *.o
 #*#
 *~
@@ -11,6 +13,10 @@ my_cat
 *.so
 [a-zA-Z0-9]
 toto
+CMakeCache.txt
+CMakeFiles
+cmake_install.cmake
+*.cbp
 bomberman
 CMakeCache.txt
 CMakeFiles

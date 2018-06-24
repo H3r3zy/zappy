@@ -1,9 +1,9 @@
-/*
-** EPITECH PROJECT, 2018
-** Created by wisenoa on 17/06/18.
-** File description:
-** Copyright (c) 2018 EPITECH. All rights reserved.
-*/
+//
+// EPITECH PROJECT, 2018
+// IEntity.hpp
+// File description:
+// IEntity.hpp
+//
 
 #ifndef PSU_ZAPPY_2017_IENTITY_HPP
 #define PSU_ZAPPY_2017_IENTITY_HPP

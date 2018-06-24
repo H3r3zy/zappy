@@ -1,7 +1,9 @@
 //
-// Created by wisenoa on 20/06/18.
+// EPITECH PROJECT, 2018
+// ParseEnqueueMap
+// File description:
+// ParseEnqueMap
 //
-
 
 #ifndef CLIENT_PARSEENQUEUEMAP_HPP
 #define CLIENT_PARSEENQUEUEMAP_HPP

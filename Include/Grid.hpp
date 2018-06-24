@@ -1,7 +1,9 @@
 //
-// Created by wisenoa on 13/06/18.
+// EPITECH PROJECT, 2018
+// Grid.hpp
+// File description:
+// Grid
 //
-
 
 #ifndef PSU_ZAPPY_2017_GRID_HPP
 #define PSU_ZAPPY_2017_GRID_HPP

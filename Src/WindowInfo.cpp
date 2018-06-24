@@ -1,7 +1,9 @@
 //
-// Created by wisenoa on 13/06/18.
+// EPITECH PROJECT, 2018
+// WindowInfo.cpp
+// File description:
+// WindowInfo
 //
-
 
 #include <unistd.h>
 #include "WindowInfo.hpp"

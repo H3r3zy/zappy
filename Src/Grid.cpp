@@ -1,10 +1,9 @@
-/*
-** EPITECH PROJECT, 2018
-** PSU_zappy_2017
-** File description:
-** Created by martin.januario@epitech.eu,
-*/
-
+//
+// EPITECH PROJECT, 2018
+// Grid.cpp
+// File description:
+// Grid
+//
 
 #include <SFML/Graphics/Sprite.hpp>
 #include <thread>

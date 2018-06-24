@@ -1,7 +1,9 @@
 //
-// Created by wisenoa on 19/06/18.
+// EPITECH PROJECT, 2018
+// Water.hpp
+// File description:
+// Water
 //
-
 
 #ifndef CLIENT_WATER_HPP
 #define CLIENT_WATER_HPP

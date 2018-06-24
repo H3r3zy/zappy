@@ -1,7 +1,9 @@
 //
-// Created by wisenoa on 17/06/18.
+// EPITECH PROJECT, 2018
+// ARectangleShape.hpp
+// File description:
+// ARectangleShape
 //
-
 
 #ifndef PSU_ZAPPY_2017_ARECTANGLESHAPE_HPP
 #define PSU_ZAPPY_2017_ARECTANGLESHAPE_HPP

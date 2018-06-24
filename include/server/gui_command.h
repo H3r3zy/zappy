@@ -39,7 +39,7 @@ void gui_pnw(server_t *server, client_t *client);
 void gui_pex(server_t *server, client_t *client);
 void gui_pbc(server_t *server, client_t *client, char *arg);
 void gui_pic(server_t *server, client_t *client, entity_t *entity);
-void gui_pfk(server_t *server, client_t *client);
+void gui_pfk(server_t *server, client_t *client, egg_t *egg);
 void gui_pie(server_t *server, entity_t *entity);
 void gui_pdr(server_t *server, client_t *client, entity_type_t type);
 void gui_pgt(server_t *server, client_t *client, entity_type_t type);

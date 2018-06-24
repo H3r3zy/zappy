@@ -27,7 +27,7 @@ static void init_egg(server_t *server, egg_t *egg, client_t *client, ms_t now)
 	egg->prev = NULL;
 	egg->id = id;
 	client->team->eggs = egg;
-	gui_pfk(server, client);
+	gui_pfk(server, client, egg);
 	id++;
 }
 

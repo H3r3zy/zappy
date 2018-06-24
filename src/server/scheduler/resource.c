@@ -21,8 +21,8 @@ static void generate_resource(server_t *server)
 	pos_t pos;
 	entity_type_t id;
 
-	if (density > 100000)
-		density = 100000;
+	if (density > 10000)
+		density = 10000;
 	debug_if(density != 0, GINFO "I'll drop %u resource(s)\n", density);
 	while (density > 0) {
 		pos = (pos_t){rand() % server->map.size.x,

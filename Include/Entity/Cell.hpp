@@ -36,6 +36,7 @@ class Cell : public ARectangleShape {
 	void setRessources(unsigned int resourceName, unsigned int number);
 	void addRessources(unsigned int resourceName);
 	void delResources(unsigned int resourceName);
+	void dellAllResources();
 	void printAllResources(sf::RenderWindow &window) const;
 	void makeTarget();
 	void removeTarget();

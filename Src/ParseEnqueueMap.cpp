@@ -552,6 +552,7 @@ void irc::ParseEnqueueMap::broadcastPlayer(irc::Map &map, const CstringArray &co
 void irc::ParseEnqueueMap::endIncantation(irc::Map &map, const CstringArray &command)
 {
 	int i = 0;
+	bool oneTime = false;
 	while (command.getCommand()[i] != 0 && i < 9) {
 		std::cout << "je boucle dans end incantation " << std::endl;
 		if (map.getCharacterMap().find((command.getCommand()[i])) == map.getCharacterMap().end()) {
@@ -560,7 +561,25 @@ void irc::ParseEnqueueMap::endIncantation(irc::Map &map, const CstringArray &com
 			continue;
 		}
 		map.getCharacterMap().at(command.getCommand()[i]).levelUp();
-		std::cout << "[" << RED << "PLAYER" << command.getCommand()[i] << RESET << "] leveled up !!!"<< std::endl;
+		std::cout << "[" << GREEN << "PLAYER" << command.getCommand()[i] << RESET << "] leveled up !!!"<< std::endl;
+
+		if (!oneTime) {
+			auto tmpX = static_cast<int>(map.getCharacterMap().at(
+				command.getCommand()[i]).getPlayerPosition().x / 100);
+			if (tmpX > map.getMapSize().x - 1)
+				tmpX = static_cast<int>(map.getMapSize().x - 1);
+			else if (tmpX < 0)
+				tmpX = 0;
+			auto tmpY = static_cast<int>(map.getCharacterMap().at(
+				command.getCommand()[i]).getPlayerPosition().y / 100);
+			if (tmpY > map.getMapSize().y - 1)
+				tmpY = static_cast<int>(map.getMapSize().y - 1);
+			else if (tmpY < 0)
+				tmpY = 0;
+			map.getGrid().getCell(tmpX, tmpY)->dellAllResources();
+			std::cout << "[" << GREEN << "MAP" << RESET << "] deleted all resorces on cell " << tmpX << " " << tmpY << std::endl;
+			oneTime = true;
+		}
 		++i;
 	}
 }

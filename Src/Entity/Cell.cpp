@@ -130,3 +130,10 @@ void Cell::delResources(unsigned int resourceName)
 		}
 	}
 }
+
+void Cell::dellAllResources()
+{
+	for (auto &&it : _ressources) {
+		it.second = 0;
+	}
+}

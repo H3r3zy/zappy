@@ -1,7 +1,7 @@
 from Ai_Client.Ai import Tile
 from Ai_Client.Ai import PathFinding
 from Ai_Client.Enum.Direction import *
-import sys
+import sys, os, random
 
 
 class Ai:
@@ -15,6 +15,7 @@ class Ai:
         self.dir = Direction.SOUTH
         self.__pathFind = PathFinding.PathFinding(x, y)
         self.__level = 1
+        self.__id = os.getpid() * random.randint(1, 3000)
 
         self.elevation_array = {1: [("linemate", 1)],
                                 2: [("linemate", 1), ("deraumere", 1), ("sibur", 1)],
@@ -48,10 +49,10 @@ class Ai:
 
     def getCoord(self) -> list:
         coord = []
-        coord.append(self.__coord[0] %\
-                   self.__mapSize[0])
-        coord.append(self.__coord[1] %\
-                   self.__mapSize[1])
+        coord.append(self.__coord[0] % \
+                     self.__mapSize[0])
+        coord.append(self.__coord[1] % \
+                     self.__mapSize[1])
         return coord
 
     def getInventory(self):
@@ -91,3 +92,6 @@ class Ai:
         elif player_coord[1] > self.__mapSize[1]:
             player_coord[1] = 0
         return player_coord
+
+    def getId(self) -> int:
+        return self.__id

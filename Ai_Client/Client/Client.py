@@ -5,8 +5,9 @@ import socket
 import select
 from Ai_Client.Client import CmdParser
 from collections import deque
-from Ai_Client.Ai.ActionNode import *
-from Ai_Client.Ai.Ai import *
+from Ai_Client.Ai.FindRessourcesNode import *
+from Ai_Client.Ai.GoToBroadCaster import *
+from Ai_Client.Ai.MakeFoodStock import *
 
 
 class ZappyException(Exception):
@@ -27,26 +28,30 @@ class Client:
         self.mapSize = (0, 0)
         self.wait = 0
         self.__currentNode = Actions.LOOK
+        self.__nodes = {
+            Actions.LOOK: ActionNode(look),
+            Actions.CHECK_FOOD: ActionNode(CheckingFood),
+            Actions.FIND_FOOD: ActionNode(FindFood),
+            Actions.FIND_CRYSTALS: ActionNode(FindCrystals),
+            Actions.FORWARD: ActionNode(Forward),
+            Actions.CHECK_LVL_UP: ActionNode(CheckLvlUp),
+            Actions.TAKE_ALL: ActionNode(TakeAll),
+            Actions.LVL_UP: ActionNode(LvlUp),
+            Actions.CHECK_PLAYER: ActionNode(CheckPlayer),
+            Actions.NEED_PEOPLE: ActionNode(IncantBroadCast),
+            Actions.DROP: ActionNode(Drop),
+            Actions.WAIT_LVL_UP: ActionNode(WaitLvlUp),
+            Actions.GO_TO_BROADCASTER: ActionNode(GoToBroadCaster),
+            Actions.FIND_IF_BROADCASTER: ActionNode(FindIfBroadCaster),
+            Actions.SYNCHRO: ActionNode(Synchronise),
+            Actions.MAKE_FOOD_STOCK: ActionNode(MakeFoodStock),
+            Actions.FIND_FOOD_STOCK: ActionNode(FindFoodStock),
+            Actions.FORWARD_STOCK: ActionNode(ForwardStock),
+            Actions.SYNCHRO_INVENTORY: ActionNode(Synchronise_inventory),
+            Actions.SYNCHRO_BROADCAST: ActionNode(Synchronise_broadcast),
+            Actions.AM_I_FIRST: ActionNode(AmIFirst)
+        }
         self.msgQueue = deque()
-        self.__nodes = [
-            ActionNode(Actions.LOOK, look),
-            ActionNode(Actions.CHECK_FOOD, CheckingFood),
-            ActionNode(Actions.FIND_FOOD, FindFood),
-            ActionNode(Actions.FIND_CRYSTALS, FindCrystals),
-            ActionNode(Actions.FORWARD, Forward),
-            ActionNode(Actions.CHECK_LVL_UP, CheckLvlUp),
-            ActionNode(Actions.TAKE_ALL, TakeAll),
-            ActionNode(Actions.LVL_UP, LvlUp),
-            ActionNode(Actions.CHECK_PLAYER, CheckPlayer),
-            ActionNode(Actions.NEED_PEOPLE, IncantBroadCast),
-            ActionNode(Actions.DROP, Drop),
-            ActionNode(Actions.WAIT_ALL_DROPS, WaitDrop),
-            ActionNode(Actions.WAIT_LVL_UP, WaitLvlUp),
-            ActionNode(Actions.GO_TO_BROADCASTER, GoToBroadCaster),
-            ActionNode(Actions.FIND_IF_BROADCASTER, FindIfBroadCaster),
-            ActionNode(Actions.WAIT_TO_DROP, WaitToDrop),
-            ActionNode(Actions.SYNCHRO, Synchronise),
-        ]
         self.__outId = 0
         self.last = 0
 

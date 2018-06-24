@@ -60,6 +60,7 @@ sf::Vector2f irc::ParseEnqueueMap::ParseMapSize()
 
 void irc::ParseEnqueueMap::fillMap(Map &map, sf::Vector2f &mapSize)
 {
+	_comm.writeOnServer("bct 0 0");
 	_comm.writeOnServer("mct");
 	std::vector<CstringArray> save;
 	bool end = false;
@@ -83,7 +84,7 @@ void irc::ParseEnqueueMap::fillMap(Map &map, sf::Vector2f &mapSize)
 //				if (tmpPrint.size() == 9)
 					//std::cout << "Et son message est :" << tmpPrint[0] << " " << tmpPrint[1] << " " << tmpPrint[2] << " " << tmpPrint[3] << " " << tmpPrint[4] << " " << tmpPrint[5] << " " << tmpPrint[6] << " " << tmpPrint[7]<< " " << tmpPrint[8] << std::endl;
 				//std::cout << "Ma cellule est en X " << _grid.getCell(tmpPrint[0], tmpPrint[1])->getPosition().x << " Y " << _grid.getCell(tmpPrint[0], tmpPrint[1])->getPosition().y << std::endl;
-
+				std::cout << "tmpPrint: " << tmpPrint[0] << ", " << tmpPrint[1] << std::endl;
 
 				/* Q1 => Q6 */
 				map.getGrid().getCell(tmpPrint[0], tmpPrint[1])->setRessources(0, tmpPrint[2]);
@@ -167,10 +168,10 @@ void irc::ParseEnqueueMap::loadingDisplay( sf::Vector2f &mapSize, sf::RenderWind
 	currentRect.setSize(sf::Vector2f(0, 50));
 	currentRect.setPosition(100, 540);
 
-	texture.loadFromFile("ronflex.png");
+	texture.loadFromFile("extra/game/ronflex.png");
 	sprite.setTexture(texture);
 
-	font.loadFromFile("pokemon.ttf");
+	font.loadFromFile("extra/pokemon.ttf");
 	text.setFont(font);
 	text.setCharacterSize(20);
 

@@ -14,7 +14,12 @@ Grid::Grid(const sf::Vector2f &mapSize, sf::RenderWindow &window, std::vector<st
 	//std::cout << "je suis dans Grid, la taille de ma map map X" << _mapSize.x << " Y " << _mapSize.y << std::endl;
 
 	window.setActive(false);
-	auto thread(new my::Thread([&]() {loadingDisplay(_mapSize, window);}));
+	auto thread(new my::Thread([&]() {
+		try {
+			loadingDisplay(_mapSize, window);
+		} catch (const std::exception &e){
+		};
+	}));
 	loadTextures();
 	loadMap();
 
@@ -51,14 +56,17 @@ void Grid::loadingDisplay( sf::Vector2f &mapSize, sf::RenderWindow &window)
 	currentRect.setSize(sf::Vector2f(0, 50));
 	currentRect.setPosition(290, 490);
 
-	texture.loadFromFile("extra/game/ronflex.png");
+	if (!texture.loadFromFile("extra/game/ronflex.png"))
+		throw std::exception();
 	sprite.setTexture(texture);
 
-	texture_bck.loadFromFile("extra/game/loading_bck.png");
+	if (!texture_bck.loadFromFile("extra/game/loading_bck.png"))
+		throw std::exception();
 	bck.setTexture(texture_bck);
 	bck.setScale(sf::Vector2f(1.5, 1.5));
 
-	font.loadFromFile("extra/pokemon.ttf");
+	if (!font.loadFromFile("extra/pokemon.ttf"))
+		throw std::exception();
 	text.setFont(font);
 	text.setCharacterSize(20);
 	text.setPosition(100, 0);
@@ -105,18 +113,16 @@ bool Grid::loadTextures()
 		_texturePack.emplace_back(new sf::Texture());
 	}
 	for (int i = 0; i < 5; i++) {
-		if (!_texturePack[i]->loadFromFile("extra/game/Grass" + std::to_string(i) + ".png")) {
-			return false;
-		}
+		if (!_texturePack[i]->loadFromFile("extra/game/Grass" + std::to_string(i) + ".png"))
+			throw std::exception();
 	}
 
 	for (int i = 0; i < 4; i++) {
 		_waterPack.emplace_back(sf::Texture());
 	}
 	for (int i = 0; i < 4; i++) {
-		if (!_waterPack[i].loadFromFile("extra/game/Water" + std::to_string(i) + ".png")) {
-			return false;
-		}
+		if (!_waterPack[i].loadFromFile("extra/game/Water" + std::to_string(i) + ".png"))
+			throw std::exception();
 	}
 
 	for (int i = 0; i < 14; i++) {
@@ -124,26 +130,24 @@ bool Grid::loadTextures()
 	}
 
 	/* Food */
-	_resourcesPack[0].loadFromFile("extra/gui/pokeball.png", sf::IntRect(0, 0, 60, 60));
+	if (!_resourcesPack[0].loadFromFile("extra/gui/pokeball.png", sf::IntRect(0, 0, 60, 60)))
+		throw std::exception();
 
 	/* Pokeball */
-	_resourcesPack[1].loadFromFile("extra/gui/pokeball.png", sf::IntRect(60, 0, 60, 60));
-	_resourcesPack[2].loadFromFile("extra/gui/pokeball.png", sf::IntRect(120, 0, 60, 60));
-	_resourcesPack[3].loadFromFile("extra/gui/pokeball.png", sf::IntRect(180, 0, 60, 60));
-	_resourcesPack[4].loadFromFile("extra/gui/pokeball.png", sf::IntRect(240, 0, 60, 60));
-	_resourcesPack[5].loadFromFile("extra/gui/pokeball.png", sf::IntRect(300, 0, 60, 60));
-	_resourcesPack[6].loadFromFile("extra/gui/pokeball.png", sf::IntRect(360, 0, 60, 60));
+	if (!_resourcesPack[1].loadFromFile("extra/gui/pokeball.png", sf::IntRect(60, 0, 60, 60)) || !_resourcesPack[2].loadFromFile("extra/gui/pokeball.png", sf::IntRect(120, 0, 60, 60)) ||
+		!_resourcesPack[3].loadFromFile("extra/gui/pokeball.png", sf::IntRect(180, 0, 60, 60)) || !_resourcesPack[4].loadFromFile("extra/gui/pokeball.png", sf::IntRect(240, 0, 60, 60)) ||
+		!_resourcesPack[5].loadFromFile("extra/gui/pokeball.png", sf::IntRect(300, 0, 60, 60)) || !_resourcesPack[6].loadFromFile("extra/gui/pokeball.png", sf::IntRect(360, 0, 60, 60)))
+		throw std::exception();
 
 	/* Multi Food */
-	_resourcesPack[7].loadFromFile("extra/gui/pokeball2.png", sf::IntRect(0, 0, 50, 50));
+	if (!_resourcesPack[7].loadFromFile("extra/gui/pokeball2.png", sf::IntRect(0, 0, 50, 50)))
+		throw std::exception();
 
 	/* Multi Pokeball */
-	_resourcesPack[8].loadFromFile("extra/gui/pokeball2.png", sf::IntRect(60, 0, 50, 50));
-	_resourcesPack[9].loadFromFile("extra/gui/pokeball2.png", sf::IntRect(120, 0, 50, 50));
-	_resourcesPack[10].loadFromFile("extra/gui/pokeball2.png", sf::IntRect(180, 0, 50, 50));
-	_resourcesPack[11].loadFromFile("extra/gui/pokeball2.png", sf::IntRect(240, 0, 50, 50));
-	_resourcesPack[12].loadFromFile("extra/gui/pokeball2.png", sf::IntRect(300, 0, 50, 50));
-	_resourcesPack[13].loadFromFile("extra/gui/pokeball2.png", sf::IntRect(360, 0, 50, 50));
+	if (!_resourcesPack[8].loadFromFile("extra/gui/pokeball2.png", sf::IntRect(60, 0, 50, 50)) || !_resourcesPack[9].loadFromFile("extra/gui/pokeball2.png", sf::IntRect(120, 0, 50, 50)) ||
+		!_resourcesPack[10].loadFromFile("extra/gui/pokeball2.png", sf::IntRect(180, 0, 50, 50)) || !_resourcesPack[11].loadFromFile("extra/gui/pokeball2.png", sf::IntRect(240, 0, 50, 50)) ||
+		!_resourcesPack[12].loadFromFile("extra/gui/pokeball2.png", sf::IntRect(300, 0, 50, 50)) || !_resourcesPack[13].loadFromFile("extra/gui/pokeball2.png", sf::IntRect(360, 0, 50, 50)))
+		throw std::exception();
 
 	int textureFiles = 1;
 	for (const auto &it : _teamName) {
@@ -158,13 +162,14 @@ bool Grid::loadTextures()
 		}
 
 		for (int i = 0; i < 9; i++) {
-			_textureCharacterPack[it][WALK_UP][i].loadFromFile("extra/game/Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 512, 64, 64));
-			_textureCharacterPack[it][WALK_LEFT][i].loadFromFile("extra/game/Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 576, 64, 64));
-			_textureCharacterPack[it][WALK_DOWN][i].loadFromFile("extra/game/Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 640, 64, 64));
-			_textureCharacterPack[it][WALK_RIGHT][i].loadFromFile("extra/game/Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 704, 64, 64));
-			_textureCharacterPack[it][TAKE][i].loadFromFile("extra/game/Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 1344, 64, 64));
-			_textureCharacterPack[it][INCANT][i].loadFromFile("extra/game/Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 128, 64, 64));
-			_textureCharacterPack[it][BROADCAST][i].loadFromFile("extra/game/Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 896, 64, 64));
+			if (!_textureCharacterPack[it][WALK_UP][i].loadFromFile("extra/game/Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 512, 64, 64)) ||
+				!_textureCharacterPack[it][WALK_LEFT][i].loadFromFile("extra/game/Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 576, 64, 64)) ||
+				!_textureCharacterPack[it][WALK_DOWN][i].loadFromFile("extra/game/Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 640, 64, 64)) ||
+				!_textureCharacterPack[it][WALK_RIGHT][i].loadFromFile("extra/game/Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 704, 64, 64)) ||
+				!_textureCharacterPack[it][TAKE][i].loadFromFile("extra/game/Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 1344, 64, 64)) ||
+				!_textureCharacterPack[it][INCANT][i].loadFromFile("extra/game/Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 128, 64, 64)) ||
+				!_textureCharacterPack[it][BROADCAST][i].loadFromFile("extra/game/Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 896, 64, 64)))
+				throw std::exception();
 		}
 		textureFiles++;
 		if (textureFiles > 3)

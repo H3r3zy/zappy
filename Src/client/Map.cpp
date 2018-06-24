@@ -26,7 +26,12 @@ irc::Map::Map(irc::Communication &comm, bool &displayGui, bool &endClient) : _co
 
 	/* Updating all cells + creating thread for loadingScreen */
 	_gameWindow.setActive(false);
-	auto thread(new my::Thread([&]() {_enqueueMap.loadingDisplay(_mapSize, _gameWindow);}));
+	auto thread(new my::Thread([&]() {
+		try {
+			_enqueueMap.loadingDisplay(_mapSize, _gameWindow);
+		} catch (const std::exception &e) {
+		}
+	}));
 	_enqueueMap.fillMap(*this, _mapSize);
 	thread->join();
 	_gameWindow.setActive(true);
@@ -77,7 +82,7 @@ void irc::Map::updateGuiData()
 
 void irc::Map::loopDisplay()
 {
-	while (_gameWindow.isOpen()) {
+	while (_gameWindow.isOpen() && !_endClient) {
 		_comm.lockDisplay();
 		updateGuiData();
 		//std::cout << "je boucle " << std::endl;

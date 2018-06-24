@@ -279,7 +279,7 @@ def LvlUp(client: Client, player: Ai):
     LvlUp.Synchro = -1
     print("Incantation /!\\")
     client.build_command("Incantation")
-    client.build_command("Incantation", "", (), True)
+    client.build_command("Incantation2", "", (), True)
     return Actions.LOOK
 
 

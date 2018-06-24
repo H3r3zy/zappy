@@ -19,7 +19,8 @@ class CmdParser:
             'Look': re.compile("\[( ?\w+)*(,( \w+)*)* ?\]", re.ASCII),
             'Inventory': re.compile("\[( ?(\w+ \d+)(,( \w+ \d+)?)* ?)\]", re.ASCII),
             'Connect_nbr': re.compile("%d+", re.ASCII),
-            'Incantation': re.compile("(Elevation underway)|(Current level: \d)|(ko)", re.ASCII),
+            'Incantation': re.compile("(Elevation underway)|(ko)", re.ASCII),
+            'Incantation2': re.compile("(Current level: \d)|(ko)", re.ASCII),
             'Forward': re.compile("ok", re.ASCII),
             'Right': re.compile("ok", re.ASCII),
             'Left': re.compile("ok", re.ASCII),
@@ -46,7 +47,7 @@ class CmdParser:
             'Inventory': self.parse_inv,
             'Take': self.take,
             'Set': self.set,
-            'Incantation': self.lvl_up
+            'Incantation2': self.lvl_up
         }
         self.__handledId = 0
         self.__deltas = {
@@ -165,7 +166,8 @@ class CmdParser:
                 self.__actions[last[0]](match.group(0), last[1], last[2])
         except AttributeError:
             if cmd == "ko":
-                self.__player.egg = True
+                self.__handledId -= 1
+                self.__queue.appendleft(last)
             else:
-                print("Could not link '" + cmd + "' to '" + last[0] + "'")
+                raise ZappyException("Could not link '" + cmd + "' to '" + last[0] + "'")
         return True

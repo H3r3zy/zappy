@@ -25,7 +25,6 @@ class Ai:
                                 7: [("linemate", 2), ("deraumere", 2), ("sibur", 2), ("mendiane", 2), ("phyras", 2),
                                     ("thystame", 1)]}
         self.elevation_player = [0, 1, 2, 2, 4, 4, 6, 6]
-        self.egg = False
         self.__Broadcaster = False
         self.__listenDir = {
             Direction.NORTH: [(0, -1), (-1, -1), (-1, 0), (-1, 1), (0, 1), (1, 1), (1, 0), (1, -1)],

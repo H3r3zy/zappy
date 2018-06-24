@@ -96,7 +96,7 @@ void incantation_cmd(server_t *server, client_t *client,
 	for (entity_t *cl = cell->players; cl; cl = cl->next) {
 		((client_t *)cl->ptr)->status = NORMAL;
 		add_to_queue(cl->ptr, buffer);
-		gui_pie(server, cl->ptr);
 	}
+	gui_pie(server, client);
 	is_ended(server);
 }

@@ -11,22 +11,22 @@
 #include "ManageServer.hpp"
 #include "Communication.hpp"
 
-irc::Communication::Communication(int socket, bool &endClient) : _socket(socket), _read(endClient)
+zap::Communication::Communication(int socket, bool &endClient) : _socket(socket), _read(endClient)
 {
 	writeOnServer("sgt");
 }
 
-int irc::Communication::getSocket() const
+int zap::Communication::getSocket() const
 {
 	return _socket;
 }
 
-void irc::Communication::setSocket(int socket)
+void zap::Communication::setSocket(int socket)
 {
 	_socket = socket;
 }
 
-void irc::Communication::enqueueGui(const CstringArray &msg)
+void zap::Communication::enqueueGui(const CstringArray &msg)
 {
 	lockGui();
 	_enqueueGui.emplace_back(msg);
@@ -34,107 +34,95 @@ void irc::Communication::enqueueGui(const CstringArray &msg)
 }
 
 
-void irc::Communication::enqueueMap(const CstringArray &command)
+void zap::Communication::enqueueMap(const CstringArray &command)
 {
 	lockMap();
 	_enqueueMap.emplace_back(command);
 	unlockMap();
 }
 
-std::vector<CstringArray> &irc::Communication::getEnqueueGui()
+std::vector<CstringArray> &zap::Communication::getEnqueueGui()
 {
 	return _enqueueGui;
 }
 
-std::vector<CstringArray> &irc::Communication::getEnqueueMap()
+std::vector<CstringArray> &zap::Communication::getEnqueueMap()
 {
 	return _enqueueMap;
 }
 
-int irc::Communication::writeOnServer(const std::string &msg)
+int zap::Communication::writeOnServer(const std::string &msg)
 {
 	_write.lock();
-	//std::cout << "jecris ["  << msg << "] au serveur" << std::endl;
-	int ret = irc::ManageServer::writeOnServer(_socket, msg + "\n");
+	int ret = zap::ManageServer::writeOnServer(_socket, msg + "\n");
 	_write.unlock();
 	return ret;
 }
 
-void irc::Communication::loopRead()
+void zap::Communication::loopRead()
 {
 	while (!_read) {
-		addMsgToQueue(irc::ManageServer::readGameServer(_socket, true));
+		addMsgToQueue(zap::ManageServer::readGameServer(_socket, true));
 	}
 }
 
-void irc::Communication::addMsgToQueue(const CstringArray command)
+void zap::Communication::addMsgToQueue(const CstringArray command)
 {
-/*	if (tmpPrint.size() == 9) {
-		//std::cout << "J'arrive à la fin du parsing, le nom de la commande est [" << command.getCommandName() << "]" << std::endl;
-		//std::cout << "Et son message est :" << tmpPrint[0] << " "
-			<< tmpPrint[1] << " " << tmpPrint[2] << " "
-			<< tmpPrint[3] << " " << tmpPrint[4] << " "
-			<< tmpPrint[5] << " " << tmpPrint[6] << " "
-			<< tmpPrint[7] << std::endl;
-	}
- */
-
 	if (!command.getCommandName().empty()) {
 		for (auto &&comm : _forWho) {
 			if (comm.first == command.getCommandName()) {
-				if (comm.second == irc::TYPE_ENQUEUE::T_MAP || comm.second == irc::TYPE_ENQUEUE::T_BOTH) {
+				if (comm.second == zap::TYPE_ENQUEUE::T_MAP || comm.second == zap::TYPE_ENQUEUE::T_BOTH) {
 					enqueueMap(command);
 				}
-				if (comm.second == irc::TYPE_ENQUEUE::T_GUI || comm.second == irc::TYPE_ENQUEUE::T_BOTH)
+				if (comm.second == zap::TYPE_ENQUEUE::T_GUI || comm.second == zap::TYPE_ENQUEUE::T_BOTH)
 					enqueueGui(command);
 				return;
 			}
 		}
 	}
-	// Todo: Create a parser for msg needed by gui and map, don't forget to lock / unlock
 }
 
-void irc::Communication::lockGui()
+void zap::Communication::lockGui()
 {
 	_mutexGui.lock();
 }
 
-void irc::Communication::unlockGui()
+void zap::Communication::unlockGui()
 {
 	_mutexGui.unlock();
 }
 
-void irc::Communication::lockMap()
+void zap::Communication::lockMap()
 {
 	_mutexMap.lock();
 }
 
-void irc::Communication::unlockMap()
+void zap::Communication::unlockMap()
 {
 	_mutexMap.unlock();
 }
 
-void irc::Communication::lockDisplay()
+void zap::Communication::lockDisplay()
 {
 	_display.lock();
 }
 
-void irc::Communication::unlockDisplay()
+void zap::Communication::unlockDisplay()
 {
 	_display.unlock();
 }
 
-void irc::Communication::setEnqueueMap(std::vector<CstringArray> &newEnqueue)
+void zap::Communication::setEnqueueMap(std::vector<CstringArray> &newEnqueue)
 {
 	_enqueueMap = newEnqueue;
 }
 
-void irc::Communication::setFreq(int freq)
+void zap::Communication::setFreq(int freq)
 {
 	_freq = freq;
 }
 
-int irc::Communication::getFreq() const
+int zap::Communication::getFreq() const
 {
 	return _freq;
 }

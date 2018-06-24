@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2018
-** cpp_plazza
+** PSU_ZAPPY_2017
 ** File description:
 ** Created by sahel.lucas-saoudi@epitech.eu,
 */

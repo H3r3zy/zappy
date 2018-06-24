@@ -1,12 +1,12 @@
 /*
 ** EPITECH PROJECT, 2018
-** cpp_plazza
+** PSU_ZAPPY_2017
 ** File description:
 ** Created by martin.januario@epitech.eu,
 */
 
-#ifndef CPP_PLAZZA_IOBJECTSFML_HPP
-# define CPP_PLAZZA_IOBJECTSFML_HPP
+#ifndef PSU_ZAPPY_2017_IOBJECTSFML_HPP
+# define PSU_ZAPPY_2017_IOBJECTSFML_HPP
 
 # include <SFML/Graphics.hpp>
 # include <vector>
@@ -14,7 +14,7 @@
 # include <memory>
 # include <functional>
 
-namespace irc {
+namespace zap {
 
 	enum MouseEvent {
 		CLICK,
@@ -52,7 +52,7 @@ namespace irc {
 		virtual bool drawObject(sf::RenderWindow &window) = 0;
 
 		template<class Callable, class... Args>
-		void addFuncMouseEvent(irc::MouseEvent type, Callable &&func, Args &&... args) {
+		void addFuncMouseEvent(zap::MouseEvent type, Callable &&func, Args &&... args) {
 			auto f = std::bind(
 				std::forward<Callable>(func),
 				std::forward<Args>(args)...);
@@ -75,9 +75,9 @@ namespace irc {
 
 		protected:
 		std::map<sf::Keyboard::Key, std::function<void(void)>> _keyBinding;
-		std::map<irc::MouseEvent, std::function<void(void)>> _funcMouseEvent;
+		std::map<zap::MouseEvent, std::function<void(void)>> _funcMouseEvent;
 		sf::Vector2i _limitScroll; // x = top, y = bot
 	};
 }
 
-#endif //CPP_PLAZZA_IOBJECTSFML_HPP
+#endif //PSU_ZAPPY_2017_IOBJECTSFML_HPP

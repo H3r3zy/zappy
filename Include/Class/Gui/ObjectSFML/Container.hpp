@@ -1,18 +1,18 @@
 /*
 ** EPITECH PROJECT, 2018
-** PSU_myirc_2017
+** PSU_zappy_2017
 ** File description:
 ** Created by martin.januario@epitech.eu,
 */
 
-#ifndef PSU_MYIRC_2017_CONTAINER_HPP
-# define PSU_MYIRC_2017_CONTAINER_HPP
+#ifndef PSU_zappy_2017_CONTAINER_HPP
+# define PSU_zappy_2017_CONTAINER_HPP
 
 # include <string>
 # include <map>
 # include "AbsractObjectSFML.hpp"
 
-namespace irc {
+namespace zap {
 	class Container : public AbstractObjectSFML {
 		public:
 		Container(sf::IntRect pos);
@@ -29,9 +29,9 @@ namespace irc {
 		void setColor(sf::Color color);
 
 		private:
-		std::map<std::string, irc::IObjectSFML *> _listObject;
+		std::map<std::string, zap::IObjectSFML *> _listObject;
 		bool _break;
 	};
 }
 
-#endif //PSU_MYIRC_2017_CONTAINER_HPP
+#endif //PSU_zappy_2017_CONTAINER_HPP

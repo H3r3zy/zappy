@@ -8,12 +8,12 @@
 #include "ParseEnqueueMap.hpp"
 #include "Map.hpp"
 
-irc::ParseEnqueueMap::ParseEnqueueMap(irc::Communication &comm) : _comm(comm)
+zap::ParseEnqueueMap::ParseEnqueueMap(zap::Communication &comm) : _comm(comm)
 {
 	_comm.writeOnServer("msz");
 }
 
-sf::Vector2f irc::ParseEnqueueMap::ParseMapSize()
+sf::Vector2f zap::ParseEnqueueMap::ParseMapSize()
 {
 	sf::Vector2f tmpMap = {0, 0};
 
@@ -27,23 +27,11 @@ sf::Vector2f irc::ParseEnqueueMap::ParseMapSize()
 		std::vector<CstringArray> &test = _comm.getEnqueueMap();
 		_comm.unlockMap();
 		save.clear();
-		//std::cerr << "size: " << test.size() << std::endl;
 		for (const auto &it : test) {
-			//std::cout << "Coammnde Name [" << it.getCommandName() << "]" << std::endl;
 			auto tmpPrint = it.getCommand();
-			if (tmpPrint.size() == 8) {
-/*				std::cout << "Et son message est :"
-					<< tmpPrint[0] << " " << tmpPrint[1]
-					<< " " << tmpPrint[2] << " "
-					<< tmpPrint[3] << " " << tmpPrint[4]
-					<< " " << tmpPrint[5] << " "
-					<< tmpPrint[6] << " " << tmpPrint[7]
-					<< std::endl;*/
-			}
 			if (it.getCommandName() == "msz") {
 				tmpMap.x = tmpPrint[0];
 				tmpMap.y = tmpPrint[1];
-				//std::cout << "je vais return un vector X" << tmpMap.x << " Y " << tmpMap.y << std::endl;
 				_comm.lockMap();
 				_comm.setEnqueueMap(save);
 				_comm.unlockMap();
@@ -51,13 +39,12 @@ sf::Vector2f irc::ParseEnqueueMap::ParseMapSize()
 			} else {
 				save.push_back(it);
 			}
-			//std::cout << "je boucle dedans pour la " << i << " fois" << std::endl;
 			i++;
 		}
 	}
 }
 
-void irc::ParseEnqueueMap::fillMap(Map &map, sf::Vector2f &mapSize)
+void zap::ParseEnqueueMap::fillMap(Map &map, sf::Vector2f &mapSize)
 {
 	_comm.writeOnServer("bct 0 0");
 	_comm.writeOnServer("mct");
@@ -77,14 +64,9 @@ void irc::ParseEnqueueMap::fillMap(Map &map, sf::Vector2f &mapSize)
 		_comm.lockMap();
 		for (const auto &it : test) {
 
-			//	window.clear(sf::Color::Black);
 			if (it.getCommandName() == "bct") {
-				//std::cout << "Coammnde Name [" << it.getCommandName() << "]" << std::endl;
 				auto tmpPrint = it.getCommand();
 				if (tmpPrint[0] < mapSize.x && tmpPrint[1] < mapSize.y) {
-//				if (tmpPrint.size() == 9)
-					//std::cout << "Et son message est :" << tmpPrint[0] << " " << tmpPrint[1] << " " << tmpPrint[2] << " " << tmpPrint[3] << " " << tmpPrint[4] << " " << tmpPrint[5] << " " << tmpPrint[6] << " " << tmpPrint[7]<< " " << tmpPrint[8] << std::endl;
-				//std::cout << "Ma cellule est en X " << _grid.getCell(tmpPrint[0], tmpPrint[1])->getPosition().x << " Y " << _grid.getCell(tmpPrint[0], tmpPrint[1])->getPosition().y << std::endl;
 
 				/* Q1 => Q6 */
 				map.getGrid().getCell(tmpPrint[0], tmpPrint[1])->setRessources(0, tmpPrint[2]);
@@ -108,7 +90,7 @@ void irc::ParseEnqueueMap::fillMap(Map &map, sf::Vector2f &mapSize)
 
 				/* Food */
 				_blocNumber++;
-				//std::cout << "je vaic check si " << tmpPrint[0]<< "estegal a " << mapSize.x - 1 << " et " << tmpPrint[1] << " est egal a " << mapSize.y - 1 << std::endl;
+				//
 				if (tmpPrint[0] == mapSize.x - 1 && tmpPrint[1] == mapSize.y - 1) {
 					_ready = true;
 					_comm.setEnqueueMap(save);
@@ -121,25 +103,19 @@ void irc::ParseEnqueueMap::fillMap(Map &map, sf::Vector2f &mapSize)
 				save.push_back(it);
 			}
 		}
-		std::cout << "[" << GREEN << "MAP" << RESET << "] read all the queue, did not found last cell, retrying" << std::endl;
 		stillCell = false;
 		for (const auto &it : save) {
 			if (it.getCommandName() == "bct")
 				stillCell = true;
-			std::cout << "il reste ça dans ma queue [" << it.getCommandName() << "]" << std::endl;
 		}
 		if (!stillCell) {
 			_blocNumber = 0;
 			_comm.writeOnServer("mct");
-			std::cout << "je redemande la map" << std::endl;
 		}
 		_comm.setEnqueueMap(save);
 		_comm.unlockMap();
 		usleep(400000);
-		//sleep(1);
-		std::cout << "c reparti pour un tour" << std::endl;
 	}
-	std::cout << "je suis sorti" << std::endl;
 	end = false;
 	_comm.writeOnServer("sgt");
 	usleep(10000);
@@ -149,7 +125,7 @@ void irc::ParseEnqueueMap::fillMap(Map &map, sf::Vector2f &mapSize)
 			//	window.clear(sf::Color::Black);
 			if (it.getCommandName() == "sgt") {
 				_comm.setFreq(it.getCommand()[0]);
-				std::cout << "[" << GREEN << "MAP" << RESET << "] retrieved frequence number " << _comm.getFreq() << std::endl;
+
 				end = true;
 				break;
 			}
@@ -161,7 +137,7 @@ void irc::ParseEnqueueMap::fillMap(Map &map, sf::Vector2f &mapSize)
 }
 
 
-void irc::ParseEnqueueMap::loadingDisplay( sf::Vector2f &mapSize, sf::RenderWindow &window)
+void zap::ParseEnqueueMap::loadingDisplay( sf::Vector2f &mapSize, sf::RenderWindow &window)
 {
 	window.setActive(true);
 	sf::Text text;
@@ -216,23 +192,16 @@ void irc::ParseEnqueueMap::loadingDisplay( sf::Vector2f &mapSize, sf::RenderWind
 	}
 }
 
-void irc::ParseEnqueueMap::parseNextCommand(irc::Map &map)
+void zap::ParseEnqueueMap::parseNextCommand(zap::Map &map)
 {
 	int i = 0;
 	_comm.lockMap();
 	for (const auto &it : _comm.getEnqueueMap()) {
 		if (it.getCommand().empty()) {
-			std::cout << "[" << RED << "MAP" << RESET << "] received empty command (command name [" << it.getCommandName() << "]" << std::endl;
+
 			_comm.getEnqueueMap().erase(_comm.getEnqueueMap().begin());
 			break;
 		}
-		/*std::cout << "Commande numero " << " [" << it.getCommandName() << "]" << std::endl;
-
-
-		std::vector<uint> tmpCommand = it.getCommand();
-
-		std::cout << "Player number :" << tmpCommand[0] << " Position en X " << tmpCommand[1] << " Position en Y " << tmpCommand[2] << " Orientation "  << tmpCommand[3] << " level " << tmpCommand[4] << " team name " << it.getTeamName() << std::endl;*/
-
 		if (it.getCommandName() == "pnw") {
 			addPlayer(map, it);
 		} else if (it.getCommandName() == "pdi") {
@@ -258,7 +227,7 @@ void irc::ParseEnqueueMap::parseNextCommand(irc::Map &map)
 		} else if (it.getCommandName() == "ebo") {
 			eggHatching(map, it);
 		} else if (it.getCommandName() == "eht") {
-			std::cout << "JE VAIS ECLORE" << std::endl;
+
 			eggHatching2(map, it);
 		}
 		_comm.getEnqueueMap().erase(_comm.getEnqueueMap().begin());
@@ -266,26 +235,19 @@ void irc::ParseEnqueueMap::parseNextCommand(irc::Map &map)
 		i++;
 		break;
 	}
-	//sleep(1);
-	//	//std::cout << "il y a " << i << "messages dans ma queue "<< std::endl;
-
 	_comm.unlockMap();
 }
 
-void irc::ParseEnqueueMap::addPlayer(irc::Map &map, const CstringArray &command)
+void zap::ParseEnqueueMap::addPlayer(zap::Map &map, const CstringArray &command)
 {
 	std::vector<uint> tmpCommand = command.getCommand();
 	int tmpFreq = map.getComm().getFreq();
 
-	//std::cout << "Player number :" << tmpCommand[0] << " Position en X " << tmpCommand[1] << " Position en Y " << tmpCommand[2] << " Orientation "  << tmpCommand[3] << " level " << tmpCommand[4] << " team name " << command.getTeamName() << std::endl;
 	sf::Vector2f tmp = {static_cast<float>(tmpCommand[1]) * 100.f, (static_cast<float>(tmpCommand[2]) * 100.f)};
-	//tmp.y *= -1;
-	std::cout << "[" << GREEN << "MAP"<< RESET << "] adding player " << command.getCommand()[0] << " on X " << tmp.x << " Y " << tmp.y << ", on orientation " << tmpCommand[3] << " team [" << command.getTeamName() << "]" << std::endl;
 
-//	if (tmpCommand[0] == 768 || tmpCommand[0] == 256|| tmpCommand[0] == 0 || tmpCommand[0] == 512)
-//		return;
+
 	if (command.getTeamName().empty() || map.getGrid().getTextureCharacter().empty() || tmpCommand[0] == 0) {
-		std::cout << "[" << RED << "MAP" << RESET << "] Empty textureMap, not creating character :( teamName [" << command.getTeamName() << "] and id [" << tmpCommand[0] << "]" << std::endl;
+
 
 	} else {
 	map.getCharacterMap().emplace(tmpCommand[0], Character(map.getGrid().getTextureCharacter()[command.getTeamName()], tmp, tmpCommand[0], tmpFreq, map.getMapSize(), command.getTeamName()));
@@ -300,10 +262,9 @@ void irc::ParseEnqueueMap::addPlayer(irc::Map &map, const CstringArray &command)
 	}
 }
 
-void irc::ParseEnqueueMap::deletePlayer(irc::Map &map, const CstringArray &command)
+void zap::ParseEnqueueMap::deletePlayer(zap::Map &map, const CstringArray &command)
 {
-	//std::cout << "je vais supprimer le joueur " << command.getCommand()[0] << std::endl;
-	std::cout << "[" << GREEN << "MAP"<< RESET << "] deleting player " << command.getCommand()[0] << std::endl;
+
 	std::map<uint, Character> &tmp = map.getCharacterMap();
 
 	for (auto vec_it = (tmp).begin(); vec_it != (tmp).end(); ) {
@@ -324,44 +285,32 @@ void irc::ParseEnqueueMap::deletePlayer(irc::Map &map, const CstringArray &comma
 	}
 }
 
-bool irc::ParseEnqueueMap::movePlayerPosition(irc::Map &map, const CstringArray &command)
+bool zap::ParseEnqueueMap::movePlayerPosition(zap::Map &map, const CstringArray &command)
 {
 	sf::Vector2f tmpPos = {static_cast<float>(command.getCommand()[1]) * 100.f, static_cast<float>(command.getCommand()[2]) * 100.f};
-//	if (command.getCommand()[0] == 768 || command.getCommand()[0] == 256|| command.getCommand()[0] == 0 || command.getCommand()[0] == 512)
-//		return false;
 
 	int tmpFreq = map.getComm().getFreq();
-	std::cout << "[" << GREEN << "MAP" << RESET << "] moving player " << command.getCommand()[0] << " on X " << tmpPos.x << " Y " << tmpPos.y << std::endl;
 
 	if (map.getCharacterMap().find((command.getCommand()[0])) == map.getCharacterMap().end()) {
-		std::cout << "[" << RED << "MAP" << RESET << "] did not found player " << command.getCommand()[0] << ", exiting movePlayerPosition" << std::endl;
 		return false;
 	}
 	map.getCharacterMap().at(command.getCommand()[0]).setPlayerMovement(tmpPos, command.getCommand()[3], tmpFreq, 7);
 	return true;
 }
 
-void irc::ParseEnqueueMap::movePlayerOrientation(irc::Map &map, const CstringArray &command)
+void zap::ParseEnqueueMap::movePlayerOrientation(zap::Map &map, const CstringArray &command)
 {
 	if (command.getCommand()[0] == 768 || command.getCommand()[0] == 256|| command.getCommand()[0] == 0 || command.getCommand()[0] == 512)
 		return;
 	if (map.getCharacterMap().find((command.getCommand()[0])) == map.getCharacterMap().end()) {
-		std::cout << "[" << RED << "MAP"<< RESET << "] did not found player " << command.getCommand()[0] << ", exiting movePLayerOrientation"<< std::endl;
 		return;
 	}
-	std::cout << " je vais mettre l'orientation de mon gars en " << command.getCommand()[1] << std::endl;
 	map.getCharacterMap().at(command.getCommand()[0]).setPlayerOrientation(static_cast<char>(command.getCommand()[1]), 7);
 }
 
-bool irc::ParseEnqueueMap::takeResourcePlayer(irc::Map &map, const CstringArray &command)
+bool zap::ParseEnqueueMap::takeResourcePlayer(zap::Map &map, const CstringArray &command)
 {
-	/*std::cout << "Je vais chercher la cellule qui est en X " << command.getCommand()[0] << " X " << command.getCommand()[1] << " Y " << command.getCommand()[2] << std::endl;
-	std::cout << "L'id de mon joueur " << map.getCharacterMap().at(command.getCommand()[0]).getPlayerID() << std::endl;
-	std::cout << "mon joueur est en " << map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().x << " Y " << map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().y << std::endl;
-	std::cout << "Sur la case X " << map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().x << " Y "<< map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().y  << " c'est la ressoucre " << command.getCommand()[1] << std::endl;*/
-
 	if (map.getCharacterMap().find((command.getCommand()[0])) == map.getCharacterMap().end()) {
-		std::cout << "[" << RED << "MAP"<< RESET << "] did not found player " << command.getCommand()[0] << ", exiting takeResourcePlayer"<< std::endl;
 		return false;
 	}
 	int tmpFreq = map.getComm().getFreq();
@@ -380,44 +329,34 @@ bool irc::ParseEnqueueMap::takeResourcePlayer(irc::Map &map, const CstringArray 
 
 	map.getGrid().getCell(tmpX, tmpY)->delResources(command.getCommand()[1]);
 
-
-	// TODO enelever cette foret de if degueu xD
-
 	if (command.getCommand()[1] == 6) {
 		_comm._server.ressources.q0--;
-		std::cout << "[" << GREEN << "PLAYER " << command.getCommand()[0] << RESET << "] took 1 resource 6" << std::endl;
 	}
 	else if (command.getCommand()[1] == 1) {
 		_comm._server.ressources.q1--;
-		std::cout << "[" << GREEN << "PLAYER " << command.getCommand()[0] << RESET << "] took 1 resource 1" << std::endl;
 	}
 	else if (command.getCommand()[1] == 2) {
 		_comm._server.ressources.q2--;
-		std::cout << "[" << GREEN << "PLAYER " << command.getCommand()[0] << RESET << "] took 1 resource 2" << std::endl;
 	}
 	else if (command.getCommand()[1] == 3) {
 		_comm._server.ressources.q3--;
-		std::cout << "[" << GREEN << "PLAYER " << command.getCommand()[0] << RESET << "] took 1 resource 3" << std::endl;
 	}
 	else if (command.getCommand()[1] == 4) {
 		_comm._server.ressources.q4--;
-		std::cout << "[" << GREEN << "PLAYER " << command.getCommand()[0] << RESET << "] took 1 resource 4" << std::endl;
 	}
 	else if (command.getCommand()[1] == 5) {
 		_comm._server.ressources.q5--;
-		std::cout << "[" << GREEN << "PLAYER " << command.getCommand()[0] << RESET << "] took 1 resource 5" << std::endl;
 	}
 	else if (command.getCommand()[1] == 0) {
 		_comm._server.ressources.q6--;
-		std::cout << "[" << GREEN << "PLAYER " << command.getCommand()[0] << RESET << "] took 1 resource 6" << std::endl;
 	}
 	return true;
 }
 
-bool irc::ParseEnqueueMap::dropResourcePlayer(irc::Map &map, const CstringArray &command)
+bool zap::ParseEnqueueMap::dropResourcePlayer(zap::Map &map, const CstringArray &command)
 {
 	if (map.getCharacterMap().find((command.getCommand()[0])) == map.getCharacterMap().end()) {
-		std::cout << "[" << RED << "MAP"<< RESET << "] did not found player " << command.getCommand()[0] << ", exiting dropResourcePlayer"<< std::endl;
+
 		return false;
 	}
 	int tmpFreq = map.getComm().getFreq();
@@ -432,84 +371,84 @@ bool irc::ParseEnqueueMap::dropResourcePlayer(irc::Map &map, const CstringArray 
 		tmpY = static_cast<int>(map.getMapSize().y - 1);
 	else if (tmpY < 0)
 		tmpY = 0;
-	std::cout << "[" << GREEN << "PLAYER " << command.getCommand()[0] << RESET << "] dropped 1 resource on cell " << tmpX << " " << tmpY << std::endl;
+
 
 	map.getGrid().getCell(tmpX, tmpY)->addRessources(command.getCommand()[1]);
 
 	if (command.getCommand()[1] == 6) {
 		_comm._server.ressources.q0++;
-		std::cout << "[" << GREEN << "PLAYER " << command.getCommand()[0] << RESET << "] dropped 1 resource 6" << std::endl;
+
 	}
 	else if (command.getCommand()[1] == 1) {
 		_comm._server.ressources.q1++;
-		std::cout << "[" << GREEN << "PLAYER " << command.getCommand()[0] << RESET << "] dropped 1 resource 1" << std::endl;
+
 	}
 	else if (command.getCommand()[1] == 2) {
 		_comm._server.ressources.q2++;
-		std::cout << "[" << GREEN << "PLAYER " << command.getCommand()[0] << RESET << "] dropped 1 resource 2" << std::endl;
+
 	}
 	else if (command.getCommand()[1] == 3) {
 		_comm._server.ressources.q3++;
-		std::cout << "[" << GREEN << "PLAYER " << command.getCommand()[0] << RESET << "] dropped 1 resource 3" << std::endl;
+
 	}
 	else if (command.getCommand()[1] == 4) {
 		_comm._server.ressources.q4++;
-		std::cout << "[" << GREEN << "PLAYER " << command.getCommand()[0] << RESET << "] dropped 1 resource 4" << std::endl;
+
 	}
 	else if (command.getCommand()[1] == 5) {
 		_comm._server.ressources.q5++;
-		std::cout << "[" << GREEN << "PLAYER " << command.getCommand()[0] << RESET << "] dropped 1 resource 5" << std::endl;
+
 	}
 	else if (command.getCommand()[1] == 0) {
 		_comm._server.ressources.q6++;
-		std::cout << "[" << GREEN << "PLAYER " << command.getCommand()[0] << RESET << "] dropped 1 resource 0" << std::endl;
+
 	}
 	return true;
 }
 
-bool irc::ParseEnqueueMap::addRandomResource(irc::Map &map, const CstringArray &command)
+bool zap::ParseEnqueueMap::addRandomResource(zap::Map &map, const CstringArray &command)
 {
 	map.getGrid().getCell(command.getCommand()[0], command.getCommand()[1])->addRessources(command.getCommand()[2]);
 
 	if (command.getCommand()[1] == 6) {
 		_comm._server.ressources.q0++;
-		std::cout << "[" << GREEN << "SERVER " << RESET << "] generated 1 resource 6" << std::endl;
+
 	}
 	else if (command.getCommand()[1] == 1) {
 		_comm._server.ressources.q1++;
-		std::cout << "[" << GREEN << "SERVER " << RESET << "] generated 1 resource 1" << std::endl;
+
 	}
 	else if (command.getCommand()[1] == 2) {
 		_comm._server.ressources.q2++;
-		std::cout << "[" << GREEN << "SERVER " << RESET << "] generated 1 resource 2" << std::endl;
+
 	}
 	else if (command.getCommand()[1] == 3) {
 		_comm._server.ressources.q3++;
-		std::cout << "[" << GREEN << "SERVER " << RESET << "] generated 1 resource 3" << std::endl;
+
 	}
 	else if (command.getCommand()[1] == 4) {
 		_comm._server.ressources.q4++;
-		std::cout << "[" << GREEN << "PLAYER " << RESET << "] generated 1 resource 4" << std::endl;
+
 	}
 	else if (command.getCommand()[1] == 5) {
 		_comm._server.ressources.q5++;
-		std::cout << "[" << GREEN << "PLAYER " << RESET << "] generated 1 resource 5" << std::endl;
+
 	}
 	else if (command.getCommand()[1] == 0) {
 		_comm._server.ressources.q6++;
-		std::cout << "[" << GREEN << "PLAYER " << RESET << "] generated 1 resource 0" << std::endl;
+
 	}
 
 	return true;
 }
 
-std::vector<std::string> &irc::ParseEnqueueMap::getTeam()
+std::vector<std::string> &zap::ParseEnqueueMap::getTeam()
 {
 	std::vector<CstringArray> save;
 	_comm.writeOnServer("tna");
 
 	usleep(10000);
-	std::cout << "coudzedzedcou" << std::endl;
+
 	int i = 1;
 	while (i != 0) {
 		_comm.lockMap();
@@ -519,13 +458,13 @@ std::vector<std::string> &irc::ParseEnqueueMap::getTeam()
 
 			//	window.clear(sf::Color::Black);
 			if (it.getCommandName() == "tna") {
-				std::cout<< it.getTeamName() << std::endl;
+
 				tmpTeam.push_back(it.getTeamName());
 				i++;
 			} else {
 				save.push_back(it);
 			}
-			std::cout << "i vaut " << i << std::endl;
+
 		}
 		_comm.setEnqueueMap(save);
 		_comm.unlockMap();
@@ -534,49 +473,49 @@ std::vector<std::string> &irc::ParseEnqueueMap::getTeam()
 	return tmpTeam;
 }
 
-void irc::ParseEnqueueMap::incantPlayer(irc::Map &map, const CstringArray &command)
+void zap::ParseEnqueueMap::incantPlayer(zap::Map &map, const CstringArray &command)
 {
 	sf::Vector2f tmpPos = {static_cast<float>(command.getCommand()[0]), static_cast<float>(command.getCommand()[1])};
 	int i = 2;
 	int tmpFreq = map.getComm().getFreq();
 	while (command.getCommand()[i] != 0 && i < 10) {
-		std::cout << "je boucle" << std::endl;
+
 		if (map.getCharacterMap().find((command.getCommand()[i])) == map.getCharacterMap().end()) {
-			std::cout << "[" << RED << "MAP"<< RESET << "] did not found player " << command.getCommand()[i] << ", next on incantPLayer"<< std::endl;
+
 			++i;
 			continue;
 		}
-		std::cout << "[" << GREEN << "MAP" << RESET << "] incantation on X " << tmpPos.x << " Y " << tmpPos.y << " on player " << command.getCommand()[i] << std::endl;
+
 		map.getCharacterMap().at(command.getCommand()[i]).setPlayerIncant(tmpFreq, 300, tmpPos);
 		++i;
 	}
 }
 
-void irc::ParseEnqueueMap::broadcastPlayer(irc::Map &map, const CstringArray &command)
+void zap::ParseEnqueueMap::broadcastPlayer(zap::Map &map, const CstringArray &command)
 {
 	int tmpFreq = map.getComm().getFreq();
-	std::cout << "je boucle" << std::endl;
+
 	if (map.getCharacterMap().find((command.getCommand()[0])) != map.getCharacterMap().end()) {
-		std::cout << "[" << GREEN << "MAP" << RESET << "] broadcast of player [" << command.getCommand()[0] << "]" << std::endl;
+
 		map.getCharacterMap().at(command.getCommand()[0]).setPlayerBroadcast(tmpFreq, 7);
 	} else {
-		std::cout << "[" << RED << "MAP"<< RESET << "] did not found player " << command.getCommand()[0] << ", exit broadcastPLayer"<< std::endl;
+
 	}
 }
 
-void irc::ParseEnqueueMap::endIncantation(irc::Map &map, const CstringArray &command)
+void zap::ParseEnqueueMap::endIncantation(zap::Map &map, const CstringArray &command)
 {
 	int i = 0;
 	bool oneTime = false;
 	while (command.getCommand()[i] != 0 && i < 9) {
-		std::cout << "je boucle dans end incantation " << std::endl;
+
 		if (map.getCharacterMap().find((command.getCommand()[i])) == map.getCharacterMap().end()) {
-			std::cout << "[" << RED << "MAP"<< RESET << "] did not found player " << command.getCommand()[i] << ", next on incantPLayer"<< std::endl;
+
 			++i;
 			continue;
 		}
 		map.getCharacterMap().at(command.getCommand()[i]).levelUp();
-		std::cout << "[" << GREEN << "PLAYER" << command.getCommand()[i] << RESET << "] leveled up !!!"<< std::endl;
+
 
 		if (!oneTime) {
 			auto tmpX = static_cast<int>(map.getCharacterMap().at(
@@ -592,14 +531,14 @@ void irc::ParseEnqueueMap::endIncantation(irc::Map &map, const CstringArray &com
 			else if (tmpY < 0)
 				tmpY = 0;
 			map.getGrid().getCell(tmpX, tmpY)->dellAllResources();
-			std::cout << "[" << GREEN << "MAP" << RESET << "] deleted all resorces on cell " << tmpX << " " << tmpY << std::endl;
+
 			oneTime = true;
 		}
 		++i;
 	}
 }
 
-void irc::ParseEnqueueMap::eggDropped(irc::Map &map, const CstringArray &command)
+void zap::ParseEnqueueMap::eggDropped(zap::Map &map, const CstringArray &command)
 {
 	if (map.getCharacterMap().find((command.getCommand()[0])) != map.getCharacterMap().end()) {
 		sf::Vector2i tmp;
@@ -607,20 +546,16 @@ void irc::ParseEnqueueMap::eggDropped(irc::Map &map, const CstringArray &command
 		tmp.y = static_cast<int>(map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().y / 100);
 		map.getEggMap()[command.getCommand()[1]].second = tmp;
 		map.getEggMap()[command.getCommand()[1]].first = map.getCharacterMap().at(command.getCommand()[0]).getPlayerTeam();
-		std::cout << "[" << GREEN << "MAP" << RESET << "] added EGG on cell " << tmp.x << " " << tmp.y  << " ID: " << command.getCommand()[1] << std::endl;
-		std::cout << "player team [" << map.getEggMap()[command.getCommand()[1]].first << "]" << std::endl;
+
+
 	} else {
-		std::cout << "[" << RED << "MAP"<< RESET << "] did not found cell to add egg"<< std::endl;
+
 	}
 }
 
-void irc::ParseEnqueueMap::eggHatching(irc::Map &map, const CstringArray &command)
+void zap::ParseEnqueueMap::eggHatching(zap::Map &map, const CstringArray &command)
 {
 	if (map.getEggMap().find(command.getCommand()[0]) != map.getEggMap().end()) {
-
-		std::cout << "[" << GREEN << "MAP" << RESET
-			<< "] jai fait eclore mon oeuf ID"
-			<< command.getCommand()[0] << std::endl;
 		std::vector<uint> tmp;
 		for (int i = 0; i < 9; i++) {
 			tmp.emplace_back(0);
@@ -634,19 +569,19 @@ void irc::ParseEnqueueMap::eggHatching(irc::Map &map, const CstringArray &comman
 		CstringArray tmp2;
 		tmp2.setCommand(tmp);
 		tmp2.setTeamName(map.getEggMap()[command.getCommand()[0]].first);
-		std::cout << "pour faire eclore mon oeuf, le joueur a une team " << map.getEggMap()[command.getCommand()[0]].first << std::endl;
 
-		std::cout << "jai recup ID:" << tmp[0] << " X " << tmp[1] << " Y " << tmp[2] << " orientation " << tmp[3] << "level" << tmp[4] << " team [" << tmp2.getCommandName() << "]" << std::endl;
-		std::cout << "je vais creer un joueur , jle renvoie vers la focntion de creation" << std::endl;
+
+
+
 		addPlayer(map, tmp2);
 	}
 }
 
-void irc::ParseEnqueueMap::eggHatching2(irc::Map &map, const CstringArray &command)
+void zap::ParseEnqueueMap::eggHatching2(zap::Map &map, const CstringArray &command)
 {
-	std::cout << "je vais faire eclore le joeuur " << command.getCommand()[1] << std::endl;
+
 	if (map.getCharacterMap().find((command.getCommand()[1])) != map.getCharacterMap().end()) {
-		std::cout << "jai trouve mon joueur" << std::endl;
+
 		map.getCharacterMap().at(command.getCommand()[1]).setPlayerOrientation(1, 7);
 		map.getEggMap().erase(command.getTeamName()[0]);
 	}

@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2018
-** cpp_plazza
+** PSU_ZAPPY_2017
 ** File description:
 ** Created by martin.januario@epitech.eu,
 */
@@ -9,23 +9,23 @@
 #include <iostream>
 #include "Modal.hpp"
 
-irc::Modal::Modal(irc::IObjectSFML *object, sf::Vector2i to, std::size_t timeElapsed)
+zap::Modal::Modal(zap::IObjectSFML *object, sf::Vector2i to, std::size_t timeElapsed)
 	: AbstractObjectSFML(object->getPos()), _obj(object), _to(to), _timeElapsed(timeElapsed)
 {
 	this->_alreadyReached = false;
 }
 
-irc::Modal::~Modal()
+zap::Modal::~Modal()
 {
 	delete this->_obj;
 }
 
-bool irc::Modal::updateEvent(sf::Event &event, sf::RenderWindow &window, sf::Vector2f &windowSize)
+bool zap::Modal::updateEvent(sf::Event &event, sf::RenderWindow &window, sf::Vector2f &windowSize)
 {
 	return this->_obj->updateEvent(event, window, windowSize);
 }
 
-void irc::Modal::moveObjectToEnd(void)
+void zap::Modal::moveObjectToEnd(void)
 {
 	sf::IntRect pos = this->_obj->getPos();
 
@@ -39,7 +39,7 @@ void irc::Modal::moveObjectToEnd(void)
 		this->_alreadyReached = true;
 }
 
-bool irc::Modal::drawObject(sf::RenderWindow &window)
+bool zap::Modal::drawObject(sf::RenderWindow &window)
 {
 	static auto begin = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 
@@ -54,40 +54,40 @@ bool irc::Modal::drawObject(sf::RenderWindow &window)
 	return this->_obj->drawObject(window);
 }
 
-void irc::Modal::setPosObj(sf::IntRect pos)
+void zap::Modal::setPosObj(sf::IntRect pos)
 {
 	if (pos != this->_obj->getPos())
 		this->_alreadyReached = false;
 	this->_obj->setPos(pos);
 }
 
-void irc::Modal::setPos(sf::IntRect pos)
+void zap::Modal::setPos(sf::IntRect pos)
 {
 	this->_alreadyReached = false;
 	this->_to = sf::Vector2i(pos.left, pos.top);
 }
 
-sf::Vector2i irc::Modal::getToModal() const
+sf::Vector2i zap::Modal::getToModal() const
 {
 	return this->_to;
 }
 
-sf::IntRect irc::Modal::getPos() const
+sf::IntRect zap::Modal::getPos() const
 {
 	return this->_obj->getPos();
 }
 
-void irc::Modal::setColor(sf::Color color)
+void zap::Modal::setColor(sf::Color color)
 {
 	this->_obj->setColor(color);
 }
 
-bool irc::Modal::getReached() const
+bool zap::Modal::getReached() const
 {
 	return this->_alreadyReached;
 }
 
-irc::IObjectSFML *irc::Modal::getObj()
+zap::IObjectSFML *zap::Modal::getObj()
 {
 	return this->_obj;
 }

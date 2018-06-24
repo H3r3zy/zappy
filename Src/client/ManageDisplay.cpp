@@ -8,7 +8,7 @@
 #include <unistd.h>
 #include "ManageDisplay.hpp"
 
-irc::ManageDisplay::ManageDisplay(int socketServer, const std::string &nick, const std::string &ip, sf::Music &music) : _socketServer(socketServer), _music(music), _comm(socketServer, _endClient),
+zap::ManageDisplay::ManageDisplay(int socketServer, const std::string &nick, const std::string &ip, sf::Music &music) : _socketServer(socketServer), _music(music), _comm(socketServer, _endClient),
 	_threadRead(new my::Thread([&]() {try {_comm.loopRead();}catch(const std::exception &e){_endClient = true;};})), _map(_comm, _displayGui, _endClient), _gui(_comm, nick, ip, _displayGui, _endClient, _music), _nick(nick)
 {
 	bool check = true;
@@ -43,7 +43,7 @@ irc::ManageDisplay::ManageDisplay(int socketServer, const std::string &nick, con
 	_thread->join();
 }
 
-irc::ManageDisplay::~ManageDisplay()
+zap::ManageDisplay::~ManageDisplay()
 {
 	_music.stop();
 	close(_socketServer);

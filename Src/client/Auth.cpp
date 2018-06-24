@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2018
-** PSU_myirc_2017
+** PSU_zappy_2017
 ** File description:
 ** Created by martin.januario@epitech.eu,
 */
@@ -16,14 +16,14 @@
 #include "Auth.hpp"
 #include "IncludeGui.hpp"
 
-irc::Auth::Auth(int width, int height) : _base("Authentication", (ulong)width, (ulong)height), _height(height), _width(width)
+zap::Auth::Auth(int width, int height) : _base("Authentication", (ulong)width, (ulong)height), _height(height), _width(width)
 {
 	initBck();
 	initSubmit();
 	initTextInput();
 	initPlaceHolder();
 	initSounds();
-	_base.addFuncLoop(0, &irc::Auth::loopErrorDisplay, this);
+	_base.addFuncLoop(0, &zap::Auth::loopErrorDisplay, this);
 
 	if (!_music.openFromFile("extra/gui/menu.ogg"))
 		throw std::exception();
@@ -32,23 +32,23 @@ irc::Auth::Auth(int width, int height) : _base("Authentication", (ulong)width, (
 	_base.loopWindow(nullptr);
 }
 
-irc::Auth::~Auth()
+zap::Auth::~Auth()
 {
 	_music.stop();
 }
 
-void irc::Auth::initSounds()
+void zap::Auth::initSounds()
 {
-	irc::Sprite *sounds = new irc::Sprite("extra/gui/sounds.png", sf::IntRect(1100, 50, 50, 50));
-	irc::Sprite *sounds_off = new irc::Sprite("extra/gui/sounds_off.png", sf::IntRect(1100, 50, 50, 50));
-	irc::Square *hit_box = new irc::Square(sf::IntRect(1100, 50, 50, 50));
+	zap::Sprite *sounds = new zap::Sprite("extra/gui/sounds.png", sf::IntRect(1100, 50, 50, 50));
+	zap::Sprite *sounds_off = new zap::Sprite("extra/gui/sounds_off.png", sf::IntRect(1100, 50, 50, 50));
+	zap::Square *hit_box = new zap::Square(sf::IntRect(1100, 50, 50, 50));
 	sounds_off->setBoolDisplay(false);
 
 	_base.addObjectToDraw("sounds_off", sounds_off, 0, 5);
 	_base.addObjectToDraw("sounds", sounds, 0, 5);
 	_base.addObjectToDraw("hit_box", hit_box, 0, 0);
 
-	hit_box->addFuncMouseEvent(irc::MouseEvent::CLICK, [this, sounds, sounds_off] {
+	hit_box->addFuncMouseEvent(zap::MouseEvent::CLICK, [this, sounds, sounds_off] {
 		if (!sounds->getBoolDisplay()) {
 			_music.play();
 			sounds->setBoolDisplay(true);
@@ -61,58 +61,58 @@ void irc::Auth::initSounds()
 	});
 }
 
-void irc::Auth::initBck()
+void zap::Auth::initBck()
 {
-	irc::Sprite *background = new irc::Sprite("extra/gui/background_menu.png", sf::IntRect(0, 0, _width, _height));
-	background->addFuncKeyEvent(sf::Keyboard::Escape, &irc::SFML_monitor::closeWindow, std::ref(_base));
+	zap::Sprite *background = new zap::Sprite("extra/gui/background_menu.png", sf::IntRect(0, 0, _width, _height));
+	background->addFuncKeyEvent(sf::Keyboard::Escape, &zap::SFML_monitor::closeWindow, std::ref(_base));
 
-	irc::Square *bck_input_nick_border = new irc::Square(sf::IntRect(400, 250, 400, 60));
-	irc::Square *bck_input_ip_border = new irc::Square(sf::IntRect(400, 380, 250, 60));
-	irc::Square *bck_input_port_border = new irc::Square(sf::IntRect(700, 380, 100, 60));
+	zap::Square *bck_input_nick_border = new zap::Square(sf::IntRect(400, 250, 400, 60));
+	zap::Square *bck_input_ip_border = new zap::Square(sf::IntRect(400, 380, 250, 60));
+	zap::Square *bck_input_port_border = new zap::Square(sf::IntRect(700, 380, 100, 60));
 
 	_base.addObjectToDraw("background", background);
-	_base.addObjectToDraw("title_auth", new irc::Text("extra/Gobold.otf", sf::IntRect(330, 100, 280, 70), "Zappy Zappy Rouge"));
+	_base.addObjectToDraw("title_auth", new zap::Text("extra/Gobold.otf", sf::IntRect(330, 100, 280, 70), "Zappy Zappy Rouge"));
 
-	_base.addObjectToDraw("title_input_nick", new irc::Text("extra/arial.ttf", sf::IntRect(400, 220, 400, 20), "Nickname:"));
+	_base.addObjectToDraw("title_input_nick", new zap::Text("extra/arial.ttf", sf::IntRect(400, 220, 400, 20), "Nickname:"));
 	_base.addObjectToDraw("bck_input_nick_border", bck_input_nick_border);
 
-	_base.addObjectToDraw("title_input_ip", new irc::Text("extra/arial.ttf", sf::IntRect(400, 350, 400, 20), "Server address:"));
+	_base.addObjectToDraw("title_input_ip", new zap::Text("extra/arial.ttf", sf::IntRect(400, 350, 400, 20), "Server address:"));
 	_base.addObjectToDraw("bck_input_ip_border", bck_input_ip_border);
 
-	_base.addObjectToDraw("title_input_port", new irc::Text("extra/arial.ttf", sf::IntRect(700, 350, 400, 20), "Port:"));
+	_base.addObjectToDraw("title_input_port", new zap::Text("extra/arial.ttf", sf::IntRect(700, 350, 400, 20), "Port:"));
 	_base.addObjectToDraw("bck_input_port_border", bck_input_port_border);
 
 }
 
-void irc::Auth::initSubmit()
+void zap::Auth::initSubmit()
 {
-	irc::Square *button_submit = new irc::Square(sf::IntRect(500, 490, 200, 60));
+	zap::Square *button_submit = new zap::Square(sf::IntRect(500, 490, 200, 60));
 	button_submit->setColor(sf::Color(130, 204, 221));
-	button_submit->addFuncMouseEvent(CLICK, &irc::Auth::sendForm, this);
+	button_submit->addFuncMouseEvent(CLICK, &zap::Auth::sendForm, this);
 
-	irc::Text *text_submit = new irc::Text("extra/Gobold.otf", sf::IntRect(555, 502, 170, 30), "submit");
+	zap::Text *text_submit = new zap::Text("extra/Gobold.otf", sf::IntRect(555, 502, 170, 30), "submit");
 	text_submit->setLayer(2);
 
-	irc::Square *submit_hover = new irc::Square(sf::IntRect(500, 490, 200, 60));
+	zap::Square *submit_hover = new zap::Square(sf::IntRect(500, 490, 200, 60));
 	submit_hover->setColor(sf::Color(0, 0, 0, 50));
 	submit_hover->setLayer(0);
-	dynamic_cast<AbstractObjectSFML *>(submit_hover)->addFuncMouseEvent(HOVEROUT, &irc::Auth::setLayer, this, submit_hover, 0);
-	dynamic_cast<AbstractObjectSFML *>(submit_hover)->addFuncMouseEvent(HOVER, &irc::Auth::setLayer, this, submit_hover, 1);
+	dynamic_cast<AbstractObjectSFML *>(submit_hover)->addFuncMouseEvent(HOVEROUT, &zap::Auth::setLayer, this, submit_hover, 0);
+	dynamic_cast<AbstractObjectSFML *>(submit_hover)->addFuncMouseEvent(HOVER, &zap::Auth::setLayer, this, submit_hover, 1);
 
 	_base.addObjectToDraw("submit_text", text_submit);
 	_base.addObjectToDraw("submit", button_submit);
 	_base.addObjectToDraw("submit_hover", submit_hover);
 }
 
-void irc::Auth::initPlaceHolder()
+void zap::Auth::initPlaceHolder()
 {
-	irc::Text *nick_placeholder = new irc::Text("extra/arial.ttf", sf::IntRect(410, 260, 380, 30), "Your nickname");
+	zap::Text *nick_placeholder = new zap::Text("extra/arial.ttf", sf::IntRect(410, 260, 380, 30), "Your nickname");
 	nick_placeholder->setColor(sf::Color(150, 150, 150));
 
-	irc::Text *ip_placeholder = new irc::Text("extra/arial.ttf", sf::IntRect(410, 390, 230, 30), "IP address");
+	zap::Text *ip_placeholder = new zap::Text("extra/arial.ttf", sf::IntRect(410, 390, 230, 30), "IP address");
 	ip_placeholder->setColor(sf::Color(150, 150, 150));
 
-	irc::Text *port_placeholder = new irc::Text("extra/arial.ttf", sf::IntRect(710, 390, 90, 30), "Port");
+	zap::Text *port_placeholder = new zap::Text("extra/arial.ttf", sf::IntRect(710, 390, 90, 30), "Port");
 	port_placeholder->setColor(sf::Color(150, 150, 150));
 	port_placeholder->setLayer(0);
 
@@ -123,51 +123,47 @@ void irc::Auth::initPlaceHolder()
 	inputTextWrite(port_placeholder, _base.getObjectByName("input_port"), 0);
 	inputTextWrite(port_placeholder, _base.getObjectByName("input_port"), 1);
 
-	_base.getObjectByName("bck_input_nick_border")->addFuncMouseEvent(CLICK, &irc::Auth::inputTextWrite, this, nick_placeholder, _base.getObjectByName("input_nick"), 0);
-	_base.getObjectByName("bck_input_nick_border")->addFuncMouseEvent(CLICKOUT, &irc::Auth::inputTextWrite, this, nick_placeholder, _base.getObjectByName("input_nick"), 1);
+	_base.getObjectByName("bck_input_nick_border")->addFuncMouseEvent(CLICK, &zap::Auth::inputTextWrite, this, nick_placeholder, _base.getObjectByName("input_nick"), 0);
+	_base.getObjectByName("bck_input_nick_border")->addFuncMouseEvent(CLICKOUT, &zap::Auth::inputTextWrite, this, nick_placeholder, _base.getObjectByName("input_nick"), 1);
 
-	_base.getObjectByName("bck_input_ip_border")->addFuncMouseEvent(CLICK, &irc::Auth::inputTextWrite, this, ip_placeholder, _base.getObjectByName("input_ip"), 0);
-	_base.getObjectByName("bck_input_ip_border")->addFuncMouseEvent(CLICKOUT, &irc::Auth::inputTextWrite, this, ip_placeholder, _base.getObjectByName("input_ip"), 1);
+	_base.getObjectByName("bck_input_ip_border")->addFuncMouseEvent(CLICK, &zap::Auth::inputTextWrite, this, ip_placeholder, _base.getObjectByName("input_ip"), 0);
+	_base.getObjectByName("bck_input_ip_border")->addFuncMouseEvent(CLICKOUT, &zap::Auth::inputTextWrite, this, ip_placeholder, _base.getObjectByName("input_ip"), 1);
 
-	_base.getObjectByName("bck_input_port_border")->addFuncMouseEvent(CLICK, &irc::Auth::inputTextWrite, this, port_placeholder, _base.getObjectByName("input_port"), false);
-	_base.getObjectByName("bck_input_port_border")->addFuncMouseEvent(CLICKOUT, &irc::Auth::inputTextWrite, this, port_placeholder, _base.getObjectByName("input_port"), true);
+	_base.getObjectByName("bck_input_port_border")->addFuncMouseEvent(CLICK, &zap::Auth::inputTextWrite, this, port_placeholder, _base.getObjectByName("input_port"), false);
+	_base.getObjectByName("bck_input_port_border")->addFuncMouseEvent(CLICKOUT, &zap::Auth::inputTextWrite, this, port_placeholder, _base.getObjectByName("input_port"), true);
 }
 
-void irc::Auth::initTextInput()
+void zap::Auth::initTextInput()
 {
-	irc::TextInput *nick_input = new irc::TextInput("extra/arial.ttf", sf::IntRect(410, 260, 380, 30));
+	zap::TextInput *nick_input = new zap::TextInput("extra/arial.ttf", sf::IntRect(410, 260, 380, 30));
 	nick_input->setColor(sf::Color::Black);
 	nick_input->setLayer(0);
 	nick_input->setBoolUsed(false);
 
-	irc::TextInput *ip_input = new irc::TextInput("extra/arial.ttf", sf::IntRect(410, 390, 230, 30));
+	zap::TextInput *ip_input = new zap::TextInput("extra/arial.ttf", sf::IntRect(410, 390, 230, 30));
 	ip_input->setColor(sf::Color::Black);
 	ip_input->setLayer(0);
 	ip_input->setBoolUsed(false);
 
-	irc::TextInput *port_input = new irc::TextInput("extra/arial.ttf", sf::IntRect(710, 390, 90, 30));
+	zap::TextInput *port_input = new zap::TextInput("extra/arial.ttf", sf::IntRect(710, 390, 90, 30));
 	port_input->setColor(sf::Color::Black);
 	port_input->setPrompt("8888");
 	port_input->setBoolUsed(false);
 
-	// Todo: delete this
-	ip_input->setPrompt("0.0.0.0");
-	nick_input->setPrompt("PipiCacaPopo");
+	nick_input->addFuncKeyEvent(sf::Keyboard::Tab, &zap::Auth::GoToTheNextInput, this, nick_input, ip_input, 0);
+	ip_input->addFuncKeyEvent(sf::Keyboard::Tab, &zap::Auth::GoToTheNextInput, this, ip_input, port_input, 1);
+	port_input->addFuncKeyEvent(sf::Keyboard::Tab, &zap::Auth::GoToTheNextInput, this, port_input, nick_input, 2);
 
-	nick_input->addFuncKeyEvent(sf::Keyboard::Tab, &irc::Auth::GoToTheNextInput, this, nick_input, ip_input, 0);
-	ip_input->addFuncKeyEvent(sf::Keyboard::Tab, &irc::Auth::GoToTheNextInput, this, ip_input, port_input, 1);
-	port_input->addFuncKeyEvent(sf::Keyboard::Tab, &irc::Auth::GoToTheNextInput, this, port_input, nick_input, 2);
-
-	nick_input->addFuncKeyEvent(sf::Keyboard::Return, &irc::Auth::sendForm, this);
-	ip_input->addFuncKeyEvent(sf::Keyboard::Return, &irc::Auth::sendForm, this);
-	port_input->addFuncKeyEvent(sf::Keyboard::Return, &irc::Auth::sendForm, this);
+	nick_input->addFuncKeyEvent(sf::Keyboard::Return, &zap::Auth::sendForm, this);
+	ip_input->addFuncKeyEvent(sf::Keyboard::Return, &zap::Auth::sendForm, this);
+	port_input->addFuncKeyEvent(sf::Keyboard::Return, &zap::Auth::sendForm, this);
 
 	_base.addObjectToDraw("input_port", port_input);
 	_base.addObjectToDraw("input_ip", ip_input);
 	_base.addObjectToDraw("input_nick", nick_input);
 }
 
-void irc::Auth::inputTextWrite(irc::IObjectSFML *placeholder, irc::IObjectSFML *input_obj, bool layer)
+void zap::Auth::inputTextWrite(zap::IObjectSFML *placeholder, zap::IObjectSFML *input_obj, bool layer)
 {
 	auto input = dynamic_cast<TextInput *>(input_obj);
 
@@ -186,12 +182,12 @@ void irc::Auth::inputTextWrite(irc::IObjectSFML *placeholder, irc::IObjectSFML *
 	}
 }
 
-void irc::Auth::setLayer(irc::IObjectSFML *placeholder, const std::size_t &layer)
+void zap::Auth::setLayer(zap::IObjectSFML *placeholder, const std::size_t &layer)
 {
 	placeholder->setLayer(layer);
 }
 
-void irc::Auth::sendForm()
+void zap::Auth::sendForm()
 {
 	bool error = false;
 	_nick = dynamic_cast<TextInput *>(_base.getObjectByName("input_nick"))->getPrompt();
@@ -215,32 +211,32 @@ void irc::Auth::sendForm()
 	tryToConnect(error);
 }
 
-bool irc::Auth::checkConnection()
+bool zap::Auth::checkConnection()
 {
-	_socketServer = irc::ManageServer::getFileDescriptorSocket();
+	_socketServer = zap::ManageServer::getFileDescriptorSocket();
 	if (_socketServer < 0) {
 		modalError("Can't create the socket");
 		return true;
 	}
-	if (!irc::ManageServer::connectServer(_socketServer, _ip, _port).empty()) {
+	if (!zap::ManageServer::connectServer(_socketServer, _ip, _port).empty()) {
 		modalError("Can't connect to the server");
 		return true;
 	}
-	if (irc::ManageServer::readServer(_socketServer, true) != "WELCOME\n") {
+	if (zap::ManageServer::readServer(_socketServer, true) != "WELCOME\n") {
 		modalError("Not a zappy server");
 		return true;
 	}
-	if (irc::ManageServer::writeOnServer(_socketServer, "gui\n") == -1) {
+	if (zap::ManageServer::writeOnServer(_socketServer, "gui\n") == -1) {
 		modalError("Can't write on server");
 		return true;
 	}
-	if (irc::ManageServer::readServer(_socketServer, true) != "ok\n") {
+	if (zap::ManageServer::readServer(_socketServer, true) != "ok\n") {
 		modalError("Can't login");
 	}
 	return false;
 }
 
-void irc::Auth::tryToConnect(bool error)
+void zap::Auth::tryToConnect(bool error)
 {
 	if (error)
 		modalError("One or more inputs are wrong or missing");
@@ -250,7 +246,7 @@ void irc::Auth::tryToConnect(bool error)
 	}
 }
 
-void irc::Auth::GoToTheNextInput(irc::IObjectSFML *from, irc::IObjectSFML *to, int step)
+void zap::Auth::GoToTheNextInput(zap::IObjectSFML *from, zap::IObjectSFML *to, int step)
 {
 	static auto begin = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 	static bool check = false;
@@ -278,20 +274,20 @@ void irc::Auth::GoToTheNextInput(irc::IObjectSFML *from, irc::IObjectSFML *to, i
 }
 
 
-void irc::Auth::loopErrorDisplay()
+void zap::Auth::loopErrorDisplay()
 {
 	static auto begin = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
-	static irc::Container *error = nullptr;
+	static zap::Container *error = nullptr;
 
 	auto end = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 	long int ms = end - begin;
 	if (error == nullptr && _listError.empty())
 		return;
 	else if (error == nullptr && !_listError.empty()) {
-		error = new irc::Container(sf::IntRect(0, 800, 1200, 30));
-		irc::Modal *error_modal = new irc::Modal(error, sf::Vector2i(0, 750), 16);
-		irc::Square *bck_error = new irc::Square(sf::IntRect(0, 0, 1200, 50));
-		irc::Text *text_error = new irc::Text("extra/arial.ttf", sf::IntRect(10, 5, 1130, 30), _listError[0]);
+		error = new zap::Container(sf::IntRect(0, 800, 1200, 30));
+		zap::Modal *error_modal = new zap::Modal(error, sf::Vector2i(0, 750), 16);
+		zap::Square *bck_error = new zap::Square(sf::IntRect(0, 0, 1200, 50));
+		zap::Text *text_error = new zap::Text("extra/arial.ttf", sf::IntRect(10, 5, 1130, 30), _listError[0]);
 		bck_error->setColor(sf::Color(229, 80, 57, 200));
 		error->addObjectList("bck_error", bck_error, _base.getCurrentScene());
 		error->addObjectList("text_error", text_error, _base.getCurrentScene());
@@ -304,7 +300,7 @@ void irc::Auth::loopErrorDisplay()
 	}
 }
 
-void irc::Auth::modalError(std::string error)
+void zap::Auth::modalError(std::string error)
 {
 	std::chrono::system_clock::time_point now = std::chrono::system_clock::now();
 	std::time_t now_c = std::chrono::system_clock::to_time_t(now - std::chrono::hours(24));

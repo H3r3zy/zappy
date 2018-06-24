@@ -16,7 +16,7 @@
 # include "Thread.hpp"
 # include "Communication.hpp"
 
-namespace irc {
+namespace zap {
 
 	class ManageDisplay {
 		public:
@@ -32,13 +32,13 @@ namespace irc {
 
 		sf::Music &_music;
 
-		irc::Communication _comm;
+		zap::Communication _comm;
 
 		my::Thread *_thread = nullptr;
 		my::Thread *_threadRead = nullptr;
 
-		irc::Map _map;
-		irc::Gui _gui;
+		zap::Map _map;
+		zap::Gui _gui;
 
 		std::string _nick;
 	};

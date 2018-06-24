@@ -11,13 +11,13 @@
 # include "SFML_monitor.hpp"
 # include "IncludeGui.hpp"
 
-namespace irc {
+namespace zap {
 
 	class Gui;
 
 	class GuiTexture {
 		public:
-		GuiTexture(irc::Gui &base);
+		GuiTexture(zap::Gui &base);
 		virtual ~GuiTexture() = default;
 
 		void initTexture();
@@ -25,7 +25,7 @@ namespace irc {
 		protected:
 		void updateServerData();
 
-		irc::Gui &_base;
+		zap::Gui &_base;
 
 		std::string _nick = "Unknown";
 		std::string _ip = "0.0.0.0";
@@ -33,9 +33,9 @@ namespace irc {
 		int _socketServer = 0;
 
 		// OBJ with update
-		irc::Text *_nb_teams = nullptr;
-		irc::Text *_user_connected = nullptr;
-		irc::Text *_actual_frequency = nullptr;
+		zap::Text *_nb_teams = nullptr;
+		zap::Text *_user_connected = nullptr;
+		zap::Text *_actual_frequency = nullptr;
 
 		private:
 		void initBck();
@@ -45,14 +45,14 @@ namespace irc {
 		void initDataGame();
 		void initSounds();
 
-		irc::Text *_nb_egg = nullptr;
-		irc::Text *_nb_q0 = nullptr;
-		irc::Text *_nb_q1 = nullptr;
-		irc::Text *_nb_q2 = nullptr;
-		irc::Text *_nb_q3 = nullptr;
-		irc::Text *_nb_q4 = nullptr;
-		irc::Text *_nb_q5 = nullptr;
-		irc::Text *_nb_q6 = nullptr;
+		zap::Text *_nb_egg = nullptr;
+		zap::Text *_nb_q0 = nullptr;
+		zap::Text *_nb_q1 = nullptr;
+		zap::Text *_nb_q2 = nullptr;
+		zap::Text *_nb_q3 = nullptr;
+		zap::Text *_nb_q4 = nullptr;
+		zap::Text *_nb_q5 = nullptr;
+		zap::Text *_nb_q6 = nullptr;
 
 	};
 

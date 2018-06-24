@@ -1,17 +1,17 @@
 /*
 ** EPITECH PROJECT, 2018
-** cpp_plazza
+** PSU_ZAPPY_2017
 ** File description:
 ** Created by martin.januario@epitech.eu,
 */
 
-#ifndef CPP_PLAZZA_SQUARE_HPP
-# define CPP_PLAZZA_SQUARE_HPP
+#ifndef PSU_ZAPPY_2017_SQUARE_HPP
+# define PSU_ZAPPY_2017_SQUARE_HPP
 
 # include <string>
 # include "AbsractObjectSFML.hpp"
 
-namespace irc {
+namespace zap {
 	class Square : public AbstractObjectSFML {
 		public:
 		Square(sf::IntRect pos);
@@ -27,4 +27,4 @@ namespace irc {
 	};
 }
 
-#endif //CPP_PLAZZA_SQUARE_HPP
+#endif //PSU_ZAPPY_2017_SQUARE_HPP

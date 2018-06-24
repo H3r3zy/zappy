@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2018
-** cpp_plazza
+** PSU_ZAPPY_2017
 ** File description:
 ** Created by martin.januario@epitech.eu,
 */
@@ -8,11 +8,11 @@
 #include <iostream>
 #include "Container.hpp"
 
-irc::Container::Container(sf::IntRect pos) : AbstractObjectSFML(pos)
+zap::Container::Container(sf::IntRect pos) : AbstractObjectSFML(pos)
 {
 }
 
-irc::Container::~Container()
+zap::Container::~Container()
 {
 	for (auto it = _listObject.begin(); it != _listObject.end() ; ++it) {
 		delete it->second;
@@ -20,7 +20,7 @@ irc::Container::~Container()
 	_listObject.clear();
 }
 
-void irc::Container::setLayer(std::size_t layer)
+void zap::Container::setLayer(std::size_t layer)
 {
 	for (auto it = this->_listObject.begin(); it != this->_listObject.end() ; ++it) {
 		it->second->setLayer(it->second->getLayer() - _layer + layer);
@@ -28,7 +28,7 @@ void irc::Container::setLayer(std::size_t layer)
 	_layer = layer;
 }
 
-void irc::Container::addObjectList(std::string name, irc::IObjectSFML *obj, int layer)
+void zap::Container::addObjectList(std::string name, zap::IObjectSFML *obj, int layer)
 {
 	sf::IntRect tmp = obj->getPos();
 	tmp.top += this->_pos.top;
@@ -39,7 +39,7 @@ void irc::Container::addObjectList(std::string name, irc::IObjectSFML *obj, int 
 	this->_listObject.insert({name, obj});
 }
 
-bool irc::Container::drawObject(sf::RenderWindow &window)
+bool zap::Container::drawObject(sf::RenderWindow &window)
 {
 	int obj_draw = 0;
 
@@ -56,7 +56,7 @@ bool irc::Container::drawObject(sf::RenderWindow &window)
 	return false;
 }
 
-bool irc::Container::updateEvent(sf::Event &event, sf::RenderWindow &window, sf::Vector2f &windowSize)
+bool zap::Container::updateEvent(sf::Event &event, sf::RenderWindow &window, sf::Vector2f &windowSize)
 {
 	std::size_t obj_send = 0;
 	std::size_t nb_obj = this->_listObject.size();
@@ -82,7 +82,7 @@ bool irc::Container::updateEvent(sf::Event &event, sf::RenderWindow &window, sf:
 	return false;
 }
 
-irc::IObjectSFML *irc::Container::getObjectByName(std::string name)
+zap::IObjectSFML *zap::Container::getObjectByName(std::string name)
 {
 	auto result = this->_listObject.find(name);
 
@@ -91,11 +91,11 @@ irc::IObjectSFML *irc::Container::getObjectByName(std::string name)
 	return result->second;
 }
 
-void irc::Container::setColor(sf::Color color __attribute__((unused)))
+void zap::Container::setColor(sf::Color color __attribute__((unused)))
 {
 }
 
-void irc::Container::setPos(sf::IntRect pos)
+void zap::Container::setPos(sf::IntRect pos)
 {
 	sf::IntRect tmp;
 
@@ -108,7 +108,7 @@ void irc::Container::setPos(sf::IntRect pos)
 	this->_pos = pos;
 }
 
-void irc::Container::breakEvent()
+void zap::Container::breakEvent()
 {
 	_break = true;
 }

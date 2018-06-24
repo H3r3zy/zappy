@@ -1,12 +1,12 @@
 /*
 ** EPITECH PROJECT, 2018
-** cpp_plazza
+** PSU_ZAPPY_2017
 ** File description:
 ** Created by martin.januario@epitech.eu,
 */
 
-#ifndef CPP_PLAZZA_SFML_MONITOR_HPP
-# define CPP_PLAZZA_SFML_MONITOR_HPP
+#ifndef PSU_ZAPPY_2017_SFML_MONITOR_HPP
+# define PSU_ZAPPY_2017_SFML_MONITOR_HPP
 
 # include <string>
 # include <vector>
@@ -15,7 +15,7 @@
 # include <functional>
 # include "Communication.hpp"
 
-namespace irc {
+namespace zap {
 
 	class IObjectSFML;
 	class Gui;
@@ -25,7 +25,7 @@ namespace irc {
 		SFML_monitor(const std::string &window_name, std::size_t width, std::size_t height);
 		~SFML_monitor();
 
-		void loopWindow(irc::Communication *comm);
+		void loopWindow(zap::Communication *comm);
 		void closeWindow();
 
 		void addObjectToDraw(const std::string &name, IObjectSFML *object, int scene = 0, int layer = 1);
@@ -58,7 +58,7 @@ namespace irc {
 		std::string _windowName;
 		sf::Vector2f _windowSize;
 
-		std::map<int, std::map<std::string, irc::IObjectSFML *>> _listObject;
+		std::map<int, std::map<std::string, zap::IObjectSFML *>> _listObject;
 		std::map<int, std::vector<std::function<void(void)>>> _listFunc;
 
 		private:
@@ -72,4 +72,4 @@ namespace irc {
 	};
 }
 
-#endif //CPP_PLAZZA_SFML_MONITOR_HPP
+#endif //PSU_ZAPPY_2017_SFML_MONITOR_HPP

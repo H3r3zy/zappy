@@ -1,18 +1,18 @@
 /*
 ** EPITECH PROJECT, 2018
-** cpp_plazza
+** PSU_ZAPPY_2017
 ** File description:
 ** Created by martin.januario@epitech.eu,
 */
 
-#ifndef CPP_PLAZZA_ABSRACTOBJECTSFML_HPP
-# define CPP_PLAZZA_ABSRACTOBJECTSFML_HPP
+#ifndef PSU_ZAPPY_2017_ABSRACTOBJECTSFML_HPP
+# define PSU_ZAPPY_2017_ABSRACTOBJECTSFML_HPP
 
 # include <map>
 # include <vector>
 # include "IObjectSFML.hpp"
 
-namespace irc {
+namespace zap {
 
 	class AbstractObjectSFML : public IObjectSFML {
 		public:
@@ -54,4 +54,4 @@ namespace irc {
 	};
 }
 
-#endif //CPP_PLAZZA_ABSRACTOBJECTSFML_HPP
+#endif //PSU_ZAPPY_2017_ABSRACTOBJECTSFML_HPP

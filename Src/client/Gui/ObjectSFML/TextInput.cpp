@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2018
-** cpp_plazza
+** PSU_ZAPPY_2017
 ** File description:
 ** Created by martin.januario@epitech.eu,
 */
@@ -9,7 +9,7 @@
 #include <chrono>
 #include "TextInput.hpp"
 
-irc::TextInput::TextInput(const std::string &pathFont, sf::IntRect pos)
+zap::TextInput::TextInput(const std::string &pathFont, sf::IntRect pos)
 	: AbstractObjectSFML(pos), _index(0)
 {
 	this->_block = true;
@@ -23,26 +23,26 @@ irc::TextInput::TextInput(const std::string &pathFont, sf::IntRect pos)
 	}
 }
 
-void irc::TextInput::leftKey(void)
+void zap::TextInput::leftKey(void)
 {
 	if (this->_index > 0) {
 		this->_index--;
 	}
 }
 
-void irc::TextInput::rightKey(void)
+void zap::TextInput::rightKey(void)
 {
 	if ((unsigned int)this->_index < this->_prompt.length()) {
 		this->_index++;
 	}
 }
 
-void irc::TextInput::deleteKey(void)
+void zap::TextInput::deleteKey(void)
 {
 	this->_prompt.erase(this->_index, 1);
 }
 
-void irc::TextInput::backspaceKey(void)
+void zap::TextInput::backspaceKey(void)
 {
 	if (this->_index > 0) {
 		this->_prompt.erase(this->_index - 1, 1);
@@ -50,7 +50,7 @@ void irc::TextInput::backspaceKey(void)
 	}
 }
 
-void irc::TextInput::textKey(sf::Event event)
+void zap::TextInput::textKey(sf::Event event)
 {
 	if (event.type == sf::Event::TextEntered && event.text.unicode < 128 && event.text.unicode > 31) {
 		this->_prompt.insert(this->_index, 1, event.text.unicode);
@@ -58,7 +58,7 @@ void irc::TextInput::textKey(sf::Event event)
 	}
 }
 
-void irc::TextInput::updateString(sf::Event event)
+void zap::TextInput::updateString(sf::Event event)
 {
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
@@ -73,7 +73,7 @@ void irc::TextInput::updateString(sf::Event event)
 		this->textKey(event);
 }
 
-bool irc::TextInput::updateEvent(sf::Event &event, sf::RenderWindow &window, sf::Vector2f &windowSize)
+bool zap::TextInput::updateEvent(sf::Event &event, sf::RenderWindow &window, sf::Vector2f &windowSize)
 {
 	bool check = false;
 
@@ -94,25 +94,25 @@ bool irc::TextInput::updateEvent(sf::Event &event, sf::RenderWindow &window, sf:
 	return false;
 }
 
-void irc::TextInput::clearPrompt(void)
+void zap::TextInput::clearPrompt(void)
 {
 	this->_prompt.clear();
 	this->_index = 0;
 }
 
-void irc::TextInput::setPrompt(std::string newPrompt)
+void zap::TextInput::setPrompt(std::string newPrompt)
 {
 	this->clearPrompt();
 	this->_prompt = newPrompt;
 	this->_index = this->_prompt.length();
 }
 
-std::string irc::TextInput::getPrompt() const
+std::string zap::TextInput::getPrompt() const
 {
 	return this->_prompt;
 }
 
-void irc::TextInput::initStringThenDraw(std::string &result)
+void zap::TextInput::initStringThenDraw(std::string &result)
 {
 	static auto begin = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 
@@ -130,7 +130,7 @@ void irc::TextInput::initStringThenDraw(std::string &result)
 	this->_text.setString(result);
 }
 
-bool irc::TextInput::drawObject(sf::RenderWindow &window)
+bool zap::TextInput::drawObject(sf::RenderWindow &window)
 {
 	static std::string last_string = "";
 	std::string result = this->_prompt;
@@ -158,24 +158,24 @@ bool irc::TextInput::drawObject(sf::RenderWindow &window)
 	return false;
 }
 
-void irc::TextInput::setColor(sf::Color color)
+void zap::TextInput::setColor(sf::Color color)
 {
 	this->_text.setFillColor(color);
 }
 
-void irc::TextInput::setPos(sf::IntRect pos)
+void zap::TextInput::setPos(sf::IntRect pos)
 {
 	this->_pos = pos;
 	this->_text.setPosition(this->_pos.left, this->_pos.top);
 	this->_text.setCharacterSize(this->_pos.height);
 }
 
-bool irc::TextInput::getBlockPrompt() const
+bool zap::TextInput::getBlockPrompt() const
 {
 	return this->_block;
 }
 
-void irc::TextInput::setBlockPrompt(bool block)
+void zap::TextInput::setBlockPrompt(bool block)
 {
 	this->_block = block;
 }

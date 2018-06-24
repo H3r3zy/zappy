@@ -13,7 +13,7 @@
 #include "SfmlTool.hpp"
 #include "Map.hpp"
 
-irc::Map::Map(irc::Communication &comm, bool &displayGui, bool &endClient) : _comm(comm), _displayGui(displayGui), _endClient(endClient), _gameWindow(sf::VideoMode(1200, 800), "Zappy"), _enqueueMap(_comm), _mapSize(_enqueueMap.ParseMapSize()), _teamName(_enqueueMap.getTeam()), _grid(_mapSize, _gameWindow, _teamName)
+zap::Map::Map(zap::Communication &comm, bool &displayGui, bool &endClient) : _comm(comm), _displayGui(displayGui), _endClient(endClient), _gameWindow(sf::VideoMode(1200, 800), "Zappy"), _enqueueMap(_comm), _mapSize(_enqueueMap.ParseMapSize()), _teamName(_enqueueMap.getTeam()), _grid(_mapSize, _gameWindow, _teamName)
 {
 	_comm._teamName = _teamName;
 	SfmlTool::InitAllFont();
@@ -45,7 +45,7 @@ irc::Map::Map(irc::Communication &comm, bool &displayGui, bool &endClient) : _co
 	initColorTeam();
 }
 
-void irc::Map::initCamera()
+void zap::Map::initCamera()
 {
 	_camera.emplace_back();
 	_camera.emplace_back();
@@ -59,7 +59,7 @@ void irc::Map::initCamera()
 	_camera[MAP].setCenter(600, 400);
 }
 
-void irc::Map::updateGuiData()
+void zap::Map::updateGuiData()
 {
 	if ((!_displayGui || _comm._listId.empty()) && _comm._shack._pos.first != -1 && _comm._shack._pos.second != -1) {
 		_grid.getCell(_comm._shack._pos.first, _comm._shack._pos.second)->removeTarget();
@@ -80,28 +80,13 @@ void irc::Map::updateGuiData()
 	}
 }
 
-void irc::Map::loopDisplay()
+void zap::Map::loopDisplay()
 {
 	while (_gameWindow.isOpen() && !_endClient) {
 		_comm.lockDisplay();
 		updateGuiData();
-		//std::cout << "je boucle " << std::endl;
 		_enqueueMap.parseNextCommand(*this);
-
-	/*	for (const auto &it : _comm.getEnqueueMap()) {
-			std::cout << "Nom de la commande [" << it.getCommandName() << "]" << std::endl;
-			auto tmp = it.getCommand();
-			for (const auto &it2 : tmp) {
-				std::cout << "[" << it2 << "] ";
-			}
-			std::cout << std::endl;
-			std::cout << std::endl;
-		}*/
-		//for (auto &it : _teamName) {
-		//	std::cout << it << std::endl;
-		//}
 		getEvent();
-		/* Global Display */
 		_gameWindow.setView(_camera[MAP]);
 		_grid.displayGlobalGrid(_gameWindow, _camera[MAP]);
 		_comm.lockMap();
@@ -131,7 +116,7 @@ void irc::Map::loopDisplay()
 	//caca.std::thread::~thread(); MAYBE
 }
 
-bool irc::Map::getEvent()
+bool zap::Map::getEvent()
 {
 	sf::Event event{};
 
@@ -201,26 +186,8 @@ bool irc::Map::getEvent()
 			break;
 		}
 		case sf::Event::MouseButtonReleased: {
-//			//std::cout << "the right button was pressed" << std::endl;
-
-
 			sf::Vector2i pixelPos = sf::Vector2i(sf::Mouse::getPosition(_gameWindow));
-
-			// convert it to world coordinates
 			sf::Vector2f worldPos = _gameWindow.mapPixelToCoords(pixelPos, _camera[MAP]);
-/*
-			//std::cout << "mouse x: " << event.mouseButton.x << std::endl;
-			//std::cout << "mouse y: " << event.mouseButton.y << std::endl;
-
-			//std::cout << "position map" << worldPos.x << " " << worldPos.y << std::endl;
-
-
-
-			//std::cout << "=-=-=-==-=-=-==-=-=--=-==-=-" << std::endl;
-			//std::cout << "Je regarde si la cellule X: " << (static_cast<int>(worldPos.x / 100)) << " Y: " << static_cast<int>((worldPos.y + 100)* -1 / 100) << "est valide" << std::endl;
-			//std::cout << "=-=-=-==-=-=-==-=-=--=-==-=-" << std::endl;
-
-*/
 			if (_grid.checkvalid(static_cast<int>(worldPos.x / 100), static_cast<int>((worldPos.y) / 100))) {
 				if (_comm._shack._pos.first != -1 && _comm._shack._pos.second != -1)
 					_grid.getCell(_comm._shack._pos.first, _comm._shack._pos.second)->removeTarget();
@@ -242,12 +209,6 @@ bool irc::Map::getEvent()
 					_comm._shack._pos.first = -1;
 					_comm._shack._pos.second = -1;
 				}
-				// Todo: Add list player on it
-
-				//std::cout << "je creer un perso en" << worldPos.x << " " << worldPos.y << std::endl;
-				//_character.emplace_back(_grid.getTextureCharacter(), worldPos);
-
-				//std::cout << "jai reussit" << std::endl;
 			}
 			break;
 		}
@@ -259,34 +220,19 @@ bool irc::Map::getEvent()
 
 	}
 	return true;
-
-
-
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z)) {
-		while (sf::Keyboard::isKeyPressed(sf::Keyboard::Z));
-		//std::cout << " jai appuyé sur Z"<< std::endl;
-
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-		while (sf::Keyboard::isKeyPressed(sf::Keyboard::A));
-		//std::cout << " jai appuyé sur Z"<< std::endl;
-		_camera[MAP].zoom(1.2f);
-		_windowInfo->updateZoom(1.2);
-	}
-	return true;
 }
 
-std::map<uint, Character> &irc::Map::getCharacterMap()
+std::map<uint, Character> &zap::Map::getCharacterMap()
 {
 	return _character;
 }
 
-Grid &irc::Map::getGrid()
+Grid &zap::Map::getGrid()
 {
 	return _grid;
 }
 
-void irc::Map::initColorTeam()
+void zap::Map::initColorTeam()
 {
 	std::mt19937 rng;
 	rng.seed(std::random_device()());
@@ -301,22 +247,22 @@ void irc::Map::initColorTeam()
 	}
 }
 
-irc::Communication &irc::Map::getComm()
+zap::Communication &zap::Map::getComm()
 {
 	return _comm;
 }
 
-const sf::Vector2f &irc::Map::getMapSize() const
+const sf::Vector2f &zap::Map::getMapSize() const
 {
 	return _mapSize;
 }
 
-const std::vector<std::string> &irc::Map::getTeamName() const
+const std::vector<std::string> &zap::Map::getTeamName() const
 {
 	return _teamName;
 }
 
-std::map<int, std::pair<std::string, sf::Vector2i>> &irc::Map::getEggMap()
+std::map<int, std::pair<std::string, sf::Vector2i>> &zap::Map::getEggMap()
 {
 	return _egg;
 }

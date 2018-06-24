@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2018
-** cpp_plazza
+** PSU_ZAPPY_2017
 ** File description:
 ** Created by martin.januario@epitech.eu,
 */
@@ -9,21 +9,21 @@
 #include <chrono>
 #include "AbsractObjectSFML.hpp"
 
-irc::AbstractObjectSFML::AbstractObjectSFML(sf::IntRect pos) : irc::IObjectSFML(), _pos(pos), _scrollUsed(false)
+zap::AbstractObjectSFML::AbstractObjectSFML(sf::IntRect pos) : zap::IObjectSFML(), _pos(pos), _scrollUsed(false)
 {
-	this->_funcMouseEvent.insert({irc::MouseEvent::CLICK, nullptr});
-	this->_funcMouseEvent.insert({irc::MouseEvent::CLICKOUT, nullptr});
-	this->_funcMouseEvent.insert({irc::MouseEvent::HOVER, nullptr});
-	this->_funcMouseEvent.insert({irc::MouseEvent::HOVEROUT, nullptr});
-	this->_funcMouseEvent.insert({irc::MouseEvent::SCROLLUP, nullptr});
-	this->_funcMouseEvent.insert({irc::MouseEvent::SCROLLDOWN, nullptr});
+	this->_funcMouseEvent.insert({zap::MouseEvent::CLICK, nullptr});
+	this->_funcMouseEvent.insert({zap::MouseEvent::CLICKOUT, nullptr});
+	this->_funcMouseEvent.insert({zap::MouseEvent::HOVER, nullptr});
+	this->_funcMouseEvent.insert({zap::MouseEvent::HOVEROUT, nullptr});
+	this->_funcMouseEvent.insert({zap::MouseEvent::SCROLLUP, nullptr});
+	this->_funcMouseEvent.insert({zap::MouseEvent::SCROLLDOWN, nullptr});
 	this->_isUsed = true;
 	this->_layer = 1;
 	_limitScroll.x = _pos.top;
 	_limitScroll.y = _pos.top;
 }
 
-void irc::AbstractObjectSFML::managePosMouse(sf::Event &event, sf::RenderWindow &window, sf::Vector2f &windowSize)
+void zap::AbstractObjectSFML::managePosMouse(sf::Event &event, sf::RenderWindow &window, sf::Vector2f &windowSize)
 {
 	sf::Vector2i tmp = sf::Mouse::getPosition(window);
 	sf::Vector2f position = {(float)tmp.x / window.getSize().x * windowSize.x, (float)tmp.y / window.getSize().y * windowSize.y};
@@ -40,7 +40,7 @@ void irc::AbstractObjectSFML::managePosMouse(sf::Event &event, sf::RenderWindow 
 		_funcMouseEvent[HOVEROUT]();
 }
 
-void irc::AbstractObjectSFML::manageKeyBinding(sf::Event &event)
+void zap::AbstractObjectSFML::manageKeyBinding(sf::Event &event)
 {
 	for (auto it = this->_keyBinding.begin() ; it != this->_keyBinding.end() ; ++it) {
 		if (event.type == sf::Event::KeyPressed && event.key.code == it->first)
@@ -48,7 +48,7 @@ void irc::AbstractObjectSFML::manageKeyBinding(sf::Event &event)
 	}
 }
 
-void irc::AbstractObjectSFML::manageScroll(sf::Event &event)
+void zap::AbstractObjectSFML::manageScroll(sf::Event &event)
 {
 	int dist = 50;
 	auto tmp = getPos();
@@ -72,7 +72,7 @@ void irc::AbstractObjectSFML::manageScroll(sf::Event &event)
 	}
 }
 
-bool irc::AbstractObjectSFML::updateEvent(sf::Event &event, sf::RenderWindow &window, sf::Vector2f &windowSize)
+bool zap::AbstractObjectSFML::updateEvent(sf::Event &event, sf::RenderWindow &window, sf::Vector2f &windowSize)
 {
 	if (!this->_isUsed)
 		return false;
@@ -82,54 +82,54 @@ bool irc::AbstractObjectSFML::updateEvent(sf::Event &event, sf::RenderWindow &wi
 	return false;
 }
 
-void irc::AbstractObjectSFML::setBoolUsed(bool used)
+void zap::AbstractObjectSFML::setBoolUsed(bool used)
 {
 	this->_isUsed = used;
 }
 
-bool irc::AbstractObjectSFML::getBoolUsed() const
+bool zap::AbstractObjectSFML::getBoolUsed() const
 {
 	return this->_isUsed;
 }
 
-void irc::AbstractObjectSFML::setScrollUsed(bool opt)
+void zap::AbstractObjectSFML::setScrollUsed(bool opt)
 {
 	this->_scrollUsed = opt;
 }
 
-std::size_t irc::AbstractObjectSFML::getLayer() const
+std::size_t zap::AbstractObjectSFML::getLayer() const
 {
 	return this->_layer;
 }
 
-void irc::AbstractObjectSFML::setLayer(std::size_t layer)
+void zap::AbstractObjectSFML::setLayer(std::size_t layer)
 {
 	if (layer > 1000)
 		throw std::exception();
 	this->_layer = layer;
 }
 
-sf::IntRect irc::AbstractObjectSFML::getPos() const
+sf::IntRect zap::AbstractObjectSFML::getPos() const
 {
 	return this->_pos;
 }
 
-void irc::AbstractObjectSFML::setScrollLimitDown(int max)
+void zap::AbstractObjectSFML::setScrollLimitDown(int max)
 {
 	_limitScroll.y = max;
 }
 
-void irc::AbstractObjectSFML::setScrollLimitTop(int max)
+void zap::AbstractObjectSFML::setScrollLimitTop(int max)
 {
 	_limitScroll.x = max;
 }
 
-bool irc::AbstractObjectSFML::getBoolDisplay() const
+bool zap::AbstractObjectSFML::getBoolDisplay() const
 {
 	return _display;
 }
 
-void irc::AbstractObjectSFML::setBoolDisplay(bool display)
+void zap::AbstractObjectSFML::setBoolDisplay(bool display)
 {
 	_display = display;
 }

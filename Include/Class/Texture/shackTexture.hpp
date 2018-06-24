@@ -11,13 +11,13 @@
 # include "CstringArray.hpp"
 # include "IncludeGui.hpp"
 
-namespace irc {
+namespace zap {
 
 	class Gui;
 
 	class shackTexture {
 		public:
-		shackTexture(irc::Gui &base);
+		shackTexture(zap::Gui &base);
 		~shackTexture() = default;
 
 		void initTexture();
@@ -32,18 +32,18 @@ namespace irc {
 		void initArrow();
 		void initClose();
 
-		irc::Gui &_base;
+		zap::Gui &_base;
 
-		irc::Text *_nb_q0 = nullptr;
-		irc::Text *_nb_q1 = nullptr;
-		irc::Text *_nb_q2 = nullptr;
-		irc::Text *_nb_q3 = nullptr;
-		irc::Text *_nb_q4 = nullptr;
-		irc::Text *_nb_q5 = nullptr;
-		irc::Text *_nb_q6 = nullptr;
+		zap::Text *_nb_q0 = nullptr;
+		zap::Text *_nb_q1 = nullptr;
+		zap::Text *_nb_q2 = nullptr;
+		zap::Text *_nb_q3 = nullptr;
+		zap::Text *_nb_q4 = nullptr;
+		zap::Text *_nb_q5 = nullptr;
+		zap::Text *_nb_q6 = nullptr;
 
-		irc::Text *_nb_player = nullptr;
-		irc::Text *_nickShack = nullptr;
+		zap::Text *_nb_player = nullptr;
+		zap::Text *_nickShack = nullptr;
 
 	};
 

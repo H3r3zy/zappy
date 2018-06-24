@@ -9,7 +9,7 @@
 #include <thread>
 #include "Gui.hpp"
 
-irc::Gui::Gui(irc::Communication &comm, const std::string &nick,
+zap::Gui::Gui(zap::Communication &comm, const std::string &nick,
 	const std::string &ip, bool &displayGui, bool &endClient, sf::Music &music
 ) : GuiTexture(*this), shackTexture(*this), IATexture(*this), _comm(comm), _music(music),
 	_displayGui(displayGui), _endClient(endClient)
@@ -18,7 +18,7 @@ irc::Gui::Gui(irc::Communication &comm, const std::string &nick,
 	_ip = ip;
 }
 
-irc::Gui::~Gui()
+zap::Gui::~Gui()
 {
 	if (_monitor) {
 		if (_monitor->isWindowOpen())
@@ -27,7 +27,7 @@ irc::Gui::~Gui()
 	}
 }
 
-void irc::Gui::addGenericFunction(int scene)
+void zap::Gui::addGenericFunction(int scene)
 {
 	_monitor->addFuncLoop(scene, [this] {
 		if (!_comm._listId.empty() && !_monitor->getCurrentScene()) {
@@ -43,25 +43,25 @@ void irc::Gui::addGenericFunction(int scene)
 	});
 }
 
-int irc::Gui::initDisplayGui()
+int zap::Gui::initDisplayGui()
 {
 	_comm.lockDisplay();
-	_monitor = new irc::SFML_monitor("Interface User", WIDTH, HEIGHT);
+	_monitor = new zap::SFML_monitor("Interface User", WIDTH, HEIGHT);
 	_monitor->setPostionWindow(sf::Vector2i(1400, 50));
 
 	addGenericFunction(0);
 	addGenericFunction(-1);
 	addGenericFunction(1);
 
-	irc::GuiTexture::initTexture();
-	irc::shackTexture::initTexture();
-	irc::IATexture::initTexture();
+	zap::GuiTexture::initTexture();
+	zap::shackTexture::initTexture();
+	zap::IATexture::initTexture();
 	_comm.unlockDisplay();
 	std::this_thread::sleep_for(std::chrono::milliseconds(2));
 	return 0;
 }
 
-void irc::Gui::loopDisplay()
+void zap::Gui::loopDisplay()
 {
 	while (!_endClient) {
 		if (_displayGui) {

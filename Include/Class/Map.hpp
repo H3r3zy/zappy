@@ -20,7 +20,7 @@
 # include "Character.hpp"
 # include "Communication.hpp"
 
-namespace irc {
+namespace zap {
 
 	enum {
 		MAP,
@@ -30,20 +30,20 @@ namespace irc {
 
 	class Map {
 		public:
-		Map(irc::Communication &comm, bool &displayGui, bool &endClient);
+		Map(zap::Communication &comm, bool &displayGui, bool &endClient);
 		~Map() = default;
 
 		void loopDisplay();
 		void updateGuiData();
 		std::map<uint, Character> &getCharacterMap();
 		Grid &getGrid();
-		irc::Communication &getComm();
+		zap::Communication &getComm();
 		const sf::Vector2f &getMapSize() const;
 		const std::vector<std::string> &getTeamName() const;
 		std::map<int, std::pair<std::string, sf::Vector2i>> &getEggMap();
 
 		private:
-		irc::Communication &_comm;
+		zap::Communication &_comm;
 
 		bool &_displayGui; // Check if the gui is displayed
 		bool &_endClient;

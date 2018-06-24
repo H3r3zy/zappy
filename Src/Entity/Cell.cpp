@@ -58,10 +58,7 @@ Cell::Cell(std::pair<sf::Vector2f, sf::Vector2f> squareDimension, sf::Texture *&
 		_sprite[i + 7].setPosition(_position.x + tmp.x, _position.y + tmp.y);
 
 		_sprite[i].setScale(0.3, 0.3);
-
-		//std::cout << std::endl;
-	}
-//	//std::cout << "Je suis une Cell, en [" << _position.x << "," << _position.y << "] et de taille [" << _size.x << "," << _size.y << "]" << std::endl;
+		}
 	_rectangle.setOutlineThickness(1);
 	_rectangle.setOutlineColor(sf::Color::Black);
 	_rectangle.setTexture(texture);
@@ -95,7 +92,6 @@ void Cell::addRessources(unsigned int resourceName)
 
 sf::Text &Cell::getCellPos()
 {
-//	//std::cout << "Ma cll est en :" << _cellPos.getPosition().x << " " << _cellPos.getPosition().y << std::endl;
 	return const_cast<sf::Text &>(_cellPos.getText());
 }
 
@@ -117,7 +113,6 @@ void Cell::printAllResources(sf::RenderWindow &window) const
 		} else if (it.second > 1) {
 			window.draw(_sprite[it.first + 7]);
 		}
-//		//std::cout << "Il y a dans ma cellule la ressource " << it.first << " et sa quantité " << it.second << std::endl;
 	}
 }
 

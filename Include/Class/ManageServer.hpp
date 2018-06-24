@@ -21,7 +21,7 @@
 # include <map>
 # include "CstringArray.hpp"
 
-namespace irc {
+namespace zap {
 
 	class ManageServer {
 		public:
@@ -43,30 +43,30 @@ namespace irc {
 	};
 
 	const std::map<std::string, std::function<void(char *, CstringArray &)>> _pattern = {
-		{"msz", &irc::ManageServer::parseLine8Input},
-		{"pnw", &irc::ManageServer::parseLine8Input},
-		{"tna", &irc::ManageServer::parseLine8Input}, // team number
-		{"endtna", &irc::ManageServer::parseLine8Input}, // team finish
-		{"bct", &irc::ManageServer::parseLine8Input},
-		{"enw", &irc::ManageServer::parseLine8Input},
-		{"eht", &irc::ManageServer::parseLine8Input},
-		{"pic", &irc::ManageServer::parseLine8Input}, // start incantation
-		{"pie", &irc::ManageServer::parseLine8Input}, // end incantation
-		{"pbc", &irc::ManageServer::parseLine8Input}, // broadcast
-		{"pfk", &irc::ManageServer::parseLine8Input}, // egg dropped
-		{"ebo", &irc::ManageServer::parseLine8Input}, // egg eclosion
-		{"eht", &irc::ManageServer::parseLine8Input}, // egg eclosion
-		{"pdi", &irc::ManageServer::parseLine8Input},
-		{"edi", &irc::ManageServer::parseLine8Input},
-		{"pin", &irc::ManageServer::parseLine8Input},
-		{"nbt", &irc::ManageServer::parseLine1Input},
-		{"nbu", &irc::ManageServer::parseLine1Input},
-		{"pmv", &irc::ManageServer::parseLine8Input}, // move
-		{"sgt", &irc::ManageServer::parseLine1Input},
-		{"ptu", &irc::ManageServer::parseLine8Input}, // move 2 ?
-		{"pdr", &irc::ManageServer::parseLine8Input}, // resource dropping
-		{"pgt", &irc::ManageServer::parseLine8Input}, // resource collecting
-		{"sgr", &irc::ManageServer::parseLine8Input}, // resource random generate
+		{"msz", &zap::ManageServer::parseLine8Input},
+		{"pnw", &zap::ManageServer::parseLine8Input},
+		{"tna", &zap::ManageServer::parseLine8Input}, // team number
+		{"endtna", &zap::ManageServer::parseLine8Input}, // team finish
+		{"bct", &zap::ManageServer::parseLine8Input},
+		{"enw", &zap::ManageServer::parseLine8Input},
+		{"eht", &zap::ManageServer::parseLine8Input},
+		{"pic", &zap::ManageServer::parseLine8Input}, // start incantation
+		{"pie", &zap::ManageServer::parseLine8Input}, // end incantation
+		{"pbc", &zap::ManageServer::parseLine8Input}, // broadcast
+		{"pfk", &zap::ManageServer::parseLine8Input}, // egg dropped
+		{"ebo", &zap::ManageServer::parseLine8Input}, // egg eclosion
+		{"eht", &zap::ManageServer::parseLine8Input}, // egg eclosion
+		{"pdi", &zap::ManageServer::parseLine8Input},
+		{"edi", &zap::ManageServer::parseLine8Input},
+		{"pin", &zap::ManageServer::parseLine8Input},
+		{"nbt", &zap::ManageServer::parseLine1Input},
+		{"nbu", &zap::ManageServer::parseLine1Input},
+		{"pmv", &zap::ManageServer::parseLine8Input}, // move
+		{"sgt", &zap::ManageServer::parseLine1Input},
+		{"ptu", &zap::ManageServer::parseLine8Input}, // move 2 ?
+		{"pdr", &zap::ManageServer::parseLine8Input}, // resource dropping
+		{"pgt", &zap::ManageServer::parseLine8Input}, // resource collecting
+		{"sgr", &zap::ManageServer::parseLine8Input}, // resource random generate
 	};
 
 }

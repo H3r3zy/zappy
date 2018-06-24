@@ -14,7 +14,7 @@
 # include <map>
 # include "CstringArray.hpp"
 
-namespace irc {
+namespace zap {
 
 	typedef struct {
 		int q0;
@@ -109,32 +109,32 @@ namespace irc {
 		std::vector<CstringArray> _enqueueMap = {};
 		std::vector<CstringArray> _enqueueGui = {};
 
-		const std::map<std::string, irc::TYPE_ENQUEUE> _forWho = {
-			{"msz", irc::TYPE_ENQUEUE::T_MAP},
-			{"bct", irc::TYPE_ENQUEUE::T_BOTH},
-			{"pdi", irc::TYPE_ENQUEUE::T_MAP},
-			{"pnw", irc::TYPE_ENQUEUE::T_MAP},
-			{"pbc", irc::TYPE_ENQUEUE::T_MAP}, // broadcast
-			{"tna", irc::TYPE_ENQUEUE::T_MAP}, // team number
-			{"pfk", irc::TYPE_ENQUEUE::T_BOTH}, // egg dropped
-			{"ebo", irc::TYPE_ENQUEUE::T_MAP}, // egg eclosion
-			{"eht", irc::TYPE_ENQUEUE::T_MAP}, // egg eclosion
-			{"endtna", irc::TYPE_ENQUEUE::T_MAP}, // team finish
-			{"pie", irc::TYPE_ENQUEUE::T_MAP}, // end incantation
-			{"pin", irc::TYPE_ENQUEUE::T_GUI},
-			{"nbu", irc::TYPE_ENQUEUE::T_GUI},
-			{"edi", irc::TYPE_ENQUEUE::T_GUI},
-			{"nbt", irc::TYPE_ENQUEUE::T_GUI},
-			{"enw", irc::TYPE_ENQUEUE::T_GUI},
-			{"eht", irc::TYPE_ENQUEUE::T_GUI},
-			{"pmv", irc::TYPE_ENQUEUE::T_MAP}, // move joueur
-			{"pic", irc::TYPE_ENQUEUE::T_MAP}, // incantation
-			{"sgt", irc::TYPE_ENQUEUE::T_MAP},
-			{"ptu", irc::TYPE_ENQUEUE::T_MAP}, // change orientation joueur
-			{"pdr", irc::TYPE_ENQUEUE::T_MAP}, // resource droppping
-			{"pgt", irc::TYPE_ENQUEUE::T_MAP}, // resource collecting
-			{"sgr", irc::TYPE_ENQUEUE::T_MAP}, // resource random generate
-			{"", irc::TYPE_ENQUEUE::T_UNKNOWN}
+		const std::map<std::string, zap::TYPE_ENQUEUE> _forWho = {
+			{"msz", zap::TYPE_ENQUEUE::T_MAP},
+			{"bct", zap::TYPE_ENQUEUE::T_BOTH},
+			{"pdi", zap::TYPE_ENQUEUE::T_MAP},
+			{"pnw", zap::TYPE_ENQUEUE::T_MAP},
+			{"pbc", zap::TYPE_ENQUEUE::T_MAP}, // broadcast
+			{"tna", zap::TYPE_ENQUEUE::T_MAP}, // team number
+			{"pfk", zap::TYPE_ENQUEUE::T_BOTH}, // egg dropped
+			{"ebo", zap::TYPE_ENQUEUE::T_MAP}, // egg eclosion
+			{"eht", zap::TYPE_ENQUEUE::T_MAP}, // egg eclosion
+			{"endtna", zap::TYPE_ENQUEUE::T_MAP}, // team finish
+			{"pie", zap::TYPE_ENQUEUE::T_MAP}, // end incantation
+			{"pin", zap::TYPE_ENQUEUE::T_GUI},
+			{"nbu", zap::TYPE_ENQUEUE::T_GUI},
+			{"edi", zap::TYPE_ENQUEUE::T_GUI},
+			{"nbt", zap::TYPE_ENQUEUE::T_GUI},
+			{"enw", zap::TYPE_ENQUEUE::T_GUI},
+			{"eht", zap::TYPE_ENQUEUE::T_GUI},
+			{"pmv", zap::TYPE_ENQUEUE::T_MAP}, // move joueur
+			{"pic", zap::TYPE_ENQUEUE::T_MAP}, // incantation
+			{"sgt", zap::TYPE_ENQUEUE::T_MAP},
+			{"ptu", zap::TYPE_ENQUEUE::T_MAP}, // change orientation joueur
+			{"pdr", zap::TYPE_ENQUEUE::T_MAP}, // resource droppping
+			{"pgt", zap::TYPE_ENQUEUE::T_MAP}, // resource collecting
+			{"sgr", zap::TYPE_ENQUEUE::T_MAP}, // resource random generate
+			{"", zap::TYPE_ENQUEUE::T_UNKNOWN}
 		};
 	};
 }

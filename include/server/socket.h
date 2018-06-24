@@ -5,8 +5,8 @@
 ** Created by sahel.lucas-saoudi@epitech.eu,
 */
 
-#ifndef PSU_MYIRC_2017_SOCKET_H
-#define PSU_MYIRC_2017_SOCKET_H
+#ifndef PSU_zappy_2017_SOCKET_H
+#define PSU_zappy_2017_SOCKET_H
 
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -24,4 +24,4 @@ typedef int socket_t;
 socket_t i_socket(uint16_t port);
 socket_t i_socket_accept(socket_t server);
 
-#endif //PSU_MYIRC_2017_SOCKET_H
+#endif //PSU_zappy_2017_SOCKET_H

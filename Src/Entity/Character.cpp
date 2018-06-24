@@ -41,24 +41,11 @@ Character::~Character()
 
 sf::Sprite &Character::getCharacter()
 {
-	// 0 => 100 => 7 sec
-	//_freq = 100;
 	if (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - _beginTime).count() > (100 / _freq)) {
-	//	//std::cout << "il c passé une dixieme de seconde" << std::endl;
-
 		double savetime = (std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - _beginTime).count()) / _duration;
-
-		// TODO A DEGAGER
 		if (_action) {
-			//std::cout << "il c passé " << std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - _beginTime).count() << "millisecondes (normal = 10)" <<std::endl;
-			//printf("avant le calucl, savetime vaut %f  \n", savetime);
-
 			savetime *= _freq;
 			savetime /= 10;
-			//printf("je suis supposé avancer de %f pixels \n", savetime);
-
-			//std::cout << "Le joueur " << _id << " est en action" << std::endl;
-			//double dist = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now() - _beginTime).count() * (500 / 7);
 			if (_orientation == WALK_LEFT)
 				_position.x -= savetime;
 			else if (_orientation == WALK_RIGHT)
@@ -77,14 +64,10 @@ sf::Sprite &Character::getCharacter()
 			if (_actualSprite == 8)
 				_actualSprite = 0;
 			_totalDist += savetime;
-			//std::cout << "j'ai parcourur une distance total de " << _totalDist << std::endl;
-			//std::cout << " le tmp = " << _testTmp << std::endl;
 			if (_totalDist >= 100) {
 				_action = false;
 				_totalDist = 0;
 			}
-			//std::cout << "je veux le mettre en pos" << _position.x << " " << _position.y << " et son orientation ";
-			//printf("%d\n", _orientation);
 			checkOutMap();
 
 		}
@@ -92,10 +75,6 @@ sf::Sprite &Character::getCharacter()
 			_beginTime = std::chrono::system_clock::now();
 		_sprite[_orientation][_actualSprite].setPosition(_position.x, _position.y);
 	}
-
-
-//	//std::cout << "il est en "<< _position.x << " " <<  _position.y << std::endl;
-
 	return _sprite[_orientation][_actualSprite];
 }
 

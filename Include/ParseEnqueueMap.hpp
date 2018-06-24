@@ -11,7 +11,7 @@
 #include <unistd.h>
 #include "Grid.hpp"
 
-namespace irc {
+namespace zap {
 	class Map;
 class ParseEnqueueMap {
 	#define RED     "\x1b[31m"
@@ -23,30 +23,30 @@ class ParseEnqueueMap {
 	#define RESET   "\x1b[0m"
 
 	public:
-	ParseEnqueueMap(irc::Communication &comm);
+	ParseEnqueueMap(zap::Communication &comm);
 	sf::Vector2f ParseMapSize();
 	std::vector<std::string> &getTeam();
 	void fillMap(Map &map, sf::Vector2f &mapSize);
-	void parseNextCommand(irc::Map &map);
+	void parseNextCommand(zap::Map &map);
 	void loadingDisplay(sf::Vector2f &mapSize, sf::RenderWindow &window);
 
 	/* Managa Game */
-	void addPlayer(irc::Map &map, const CstringArray &command);
-	void deletePlayer(irc::Map &map, const CstringArray &command);
-	bool movePlayerPosition(irc::Map &map, const CstringArray &command);
-	bool takeResourcePlayer(irc::Map &map, const CstringArray &command);
-	bool dropResourcePlayer(irc::Map &map, const CstringArray &command);
-	bool addRandomResource(irc::Map &map, const CstringArray &command);
-	void movePlayerOrientation(irc::Map &map, const CstringArray &command);
-	void incantPlayer(irc::Map &map, const CstringArray &command);
-	void broadcastPlayer(irc::Map &map, const CstringArray &command);
-	void endIncantation(irc::Map &map, const CstringArray &command);
-	void eggDropped(irc::Map &map, const CstringArray &command);
-	void eggHatching(irc::Map &map, const CstringArray &command);
-	void eggHatching2(irc::Map &map, const CstringArray &command);
+	void addPlayer(zap::Map &map, const CstringArray &command);
+	void deletePlayer(zap::Map &map, const CstringArray &command);
+	bool movePlayerPosition(zap::Map &map, const CstringArray &command);
+	bool takeResourcePlayer(zap::Map &map, const CstringArray &command);
+	bool dropResourcePlayer(zap::Map &map, const CstringArray &command);
+	bool addRandomResource(zap::Map &map, const CstringArray &command);
+	void movePlayerOrientation(zap::Map &map, const CstringArray &command);
+	void incantPlayer(zap::Map &map, const CstringArray &command);
+	void broadcastPlayer(zap::Map &map, const CstringArray &command);
+	void endIncantation(zap::Map &map, const CstringArray &command);
+	void eggDropped(zap::Map &map, const CstringArray &command);
+	void eggHatching(zap::Map &map, const CstringArray &command);
+	void eggHatching2(zap::Map &map, const CstringArray &command);
 
 	private:
-	irc::Communication &_comm;
+	zap::Communication &_comm;
 	std::vector<std::string> tmpTeam;
 	bool _ready = false;
 	int _blocNumber = 0;

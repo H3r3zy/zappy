@@ -1,18 +1,18 @@
 /*
 ** EPITECH PROJECT, 2018
-** PSU_myirc_2017
+** PSU_zappy_2017
 ** File description:
 ** Created by martin.januario@epitech.eu,
 */
 
-#ifndef PSU_MYIRC_2017_AUTH_HPP
-# define PSU_MYIRC_2017_AUTH_HPP
+#ifndef PSU_zappy_2017_AUTH_HPP
+# define PSU_zappy_2017_AUTH_HPP
 
 # include <vector>
 # include <SFML/Audio.hpp>
 # include "SFML_monitor.hpp"
 
-namespace irc {
+namespace zap {
 
 	class Gui;
 
@@ -41,7 +41,7 @@ namespace irc {
 		bool checkConnection();
 
 
-		irc::SFML_monitor _base;
+		zap::SFML_monitor _base;
 		int _height = 800;
 		int _width = 1200;
 
@@ -56,4 +56,4 @@ namespace irc {
 	};
 }
 
-#endif //PSU_MYIRC_2017_AUTH_HPP
+#endif //PSU_zappy_2017_AUTH_HPP

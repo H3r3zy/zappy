@@ -12,9 +12,8 @@
 #include "CstringArray.hpp"
 #include "ManageServer.hpp"
 
-std::string irc::ManageServer::readServer(int socket, bool blockRead)
+std::string zap::ManageServer::readServer(int socket, bool blockRead)
 {
-	std::cout << "je vais read sur mon serveur" << std::endl;
 	std::string result;
 	fd_set readfds;
 	struct timeval t = {0, 1000};
@@ -30,25 +29,19 @@ std::string irc::ManageServer::readServer(int socket, bool blockRead)
 		do {
 			len = (int)read(socket, buffer, 1);
 			if (len <= 0) {
-				std::cout << "Manage server" << "je throw"
-					<< std::endl;
 				throw std::exception();
 			}
 			buffer[1] = '\0';
-			std::cout << "buffer: " << buffer << std::endl;
 			result += buffer;
 		} while (buffer[0] != -5 && buffer[0] != '\n');
 	}
 	std::stringstream ss(result);
 	std::string command;
 	ss >> command;
-
-	std::cout << "COMMAND: " << command << std::endl;
-	std::cout << "result: " << result << std::endl;
 	return result;
 }
 
-CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
+CstringArray zap::ManageServer::readGameServer(int socket, bool blockRead)
 {
 	std::string result;
 	fd_set readfds;
@@ -97,7 +90,6 @@ CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 					teamName.pop_back();
 
 			}
-			std::cout << "[" << teamName << "]" << std::endl;
 			finalCommand.setTeamName(teamName);
 		}
 
@@ -122,7 +114,7 @@ CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 	return finalCommand;
 }
 
-std::string irc::ManageServer::connectServer(int socket, std::string ip,
+std::string zap::ManageServer::connectServer(int socket, std::string ip,
 	std::string port
 )
 {
@@ -142,8 +134,6 @@ std::string irc::ManageServer::connectServer(int socket, std::string ip,
 		return "Can't resolve ip address";
 	ip = inet_ntoa(*addr_list[0]);
 
-	std::cout << "ip: " << ip << std::endl;
-
 	if (socket < 0)
 		return "Can't create the socket";
 	s_in.sin_family = AF_INET;
@@ -157,7 +147,7 @@ std::string irc::ManageServer::connectServer(int socket, std::string ip,
 	return "";
 }
 
-int irc::ManageServer::getFileDescriptorSocket()
+int zap::ManageServer::getFileDescriptorSocket()
 {
 	struct protoent *pe;
 
@@ -167,32 +157,27 @@ int irc::ManageServer::getFileDescriptorSocket()
 	return socket(AF_INET, SOCK_STREAM, pe->p_proto);
 }
 
-int irc::ManageServer::writeOnServer(int socket, std::string msg)
+int zap::ManageServer::writeOnServer(int socket, std::string msg)
 {
-	//std::cout << "J'envoie [" << msg << "] a la socket " << socket
-		//<< std::endl;
 	if (write(socket, msg.c_str(), msg.size()) == -1) {
-		std::cout << "excpetion ici" << std::endl;
 		throw std::exception();
 	}
 	return 0;
 }
-void irc::ManageServer::parseLine8Input(char *buffer, CstringArray &command)
+void zap::ManageServer::parseLine8Input(char *buffer, CstringArray &command)
 {
-	std::cout << "[" << GREEN << "READ" << RESET << "] on ManageServer, go new command, name[" << command.getCommandName() << "] ";
 	std::vector<uint> bag;
 	for (int i = 0; i < 10; i++)
 		bag.emplace_back(0);
 	for (size_t i = 0; i < 10; i++) {
 		bag[i] = 0;
 		memcpy(&bag[i], buffer + 4 + i * (sizeof(uint) + 1), sizeof(uint));
-		std::cout << bag[i] << " ";
 	}
 	std::cout << std::endl;
 	command.setCommand(bag);
 }
 
-void irc::ManageServer::parseLine1Input(char *buffer, CstringArray &command)
+void zap::ManageServer::parseLine1Input(char *buffer, CstringArray &command)
 {
 	std::vector<uint> bag;
 	bag.emplace_back(0);

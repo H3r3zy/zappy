@@ -10,18 +10,18 @@
 
 #include "IncludeGui.hpp"
 
-namespace irc {
+namespace zap {
 
 	class TextInputBckPlaceHorder {
 		public:
 
-		static irc::Container *createInput(const sf::IntRect &pos, const std::string &placeholder, const std::string &font, int fontSize = 10);
+		static zap::Container *createInput(const sf::IntRect &pos, const std::string &placeholder, const std::string &font, int fontSize = 10);
 
 		private:
 		TextInputBckPlaceHorder() = default;
 
 		// method
-		static void inputTextWrite(irc::IObjectSFML *placeholder, irc::IObjectSFML *input_obj, bool layer);
+		static void inputTextWrite(zap::IObjectSFML *placeholder, zap::IObjectSFML *input_obj, bool layer);
 	};
 
 }

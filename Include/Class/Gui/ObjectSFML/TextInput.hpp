@@ -1,17 +1,17 @@
 /*
 ** EPITECH PROJECT, 2018
-** cpp_plazza
+** PSU_ZAPPY_2017
 ** File description:
 ** Created by martin.januario@epitech.eu,
 */
 
-#ifndef CPP_PLAZZA_TEXTINPUT_HPP
-# define CPP_PLAZZA_TEXTINPUT_HPP
+#ifndef PSU_ZAPPY_2017_TEXTINPUT_HPP
+# define PSU_ZAPPY_2017_TEXTINPUT_HPP
 
 # include <string>
 # include "AbsractObjectSFML.hpp"
 
-namespace irc {
+namespace zap {
 	class TextInput : public AbstractObjectSFML {
 		public:
 		TextInput(const std::string &pathFont, sf::IntRect pos);
@@ -49,4 +49,4 @@ namespace irc {
 	};
 }
 
-#endif //CPP_PLAZZA_TEXTINPUT_HPP
+#endif //PSU_ZAPPY_2017_TEXTINPUT_HPP

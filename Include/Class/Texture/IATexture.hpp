@@ -10,13 +10,13 @@
 
 # include "IncludeGui.hpp"
 
-namespace irc {
+namespace zap {
 
 	class Gui;
 
 	class IATexture {
 		public:
-		IATexture(irc::Gui &base);
+		IATexture(zap::Gui &base);
 		~IATexture() = default;
 
 		void initTexture();
@@ -32,22 +32,22 @@ namespace irc {
 		void initArrow();
 		void initClose();
 
-		irc::Gui &_base;
+		zap::Gui &_base;
 
-		irc::Text *_nb_q0 = nullptr;
-		irc::Text *_nb_q1 = nullptr;
-		irc::Text *_nb_q2 = nullptr;
-		irc::Text *_nb_q3 = nullptr;
-		irc::Text *_nb_q4 = nullptr;
-		irc::Text *_nb_q5 = nullptr;
-		irc::Text *_nb_q6 = nullptr;
+		zap::Text *_nb_q0 = nullptr;
+		zap::Text *_nb_q1 = nullptr;
+		zap::Text *_nb_q2 = nullptr;
+		zap::Text *_nb_q3 = nullptr;
+		zap::Text *_nb_q4 = nullptr;
+		zap::Text *_nb_q5 = nullptr;
+		zap::Text *_nb_q6 = nullptr;
 
-		irc::Text *_nickIA = nullptr;
-		irc::Text *_status = nullptr;
-		irc::Text *_pos = nullptr;
-		irc::Text *_team = nullptr;
+		zap::Text *_nickIA = nullptr;
+		zap::Text *_status = nullptr;
+		zap::Text *_pos = nullptr;
+		zap::Text *_team = nullptr;
 
-		std::vector<irc::Sprite *> _icon_team;
+		std::vector<zap::Sprite *> _icon_team;
 
 	};
 

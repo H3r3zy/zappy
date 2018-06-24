@@ -15,21 +15,21 @@
 # include "IATexture.hpp"
 # include "Communication.hpp"
 
-namespace irc {
+namespace zap {
 
-	class Gui : public irc::GuiTexture, public irc::shackTexture, public irc::IATexture {
+	class Gui : public zap::GuiTexture, public zap::shackTexture, public zap::IATexture {
 		public:
-		Gui(irc::Communication &comm, const std::string &nick, const std::string &ip, bool &displayGui, bool &endClient, sf::Music &music);
+		Gui(zap::Communication &comm, const std::string &nick, const std::string &ip, bool &displayGui, bool &endClient, sf::Music &music);
 		~Gui();
 
 		int initDisplayGui();
 		void loopDisplay();
 		void addGenericFunction(int scene);
 
-		irc::Communication &_comm;
+		zap::Communication &_comm;
 		sf::Music &_music;
 
-		irc::SFML_monitor *_monitor = nullptr;
+		zap::SFML_monitor *_monitor = nullptr;
 
 		bool &_displayGui; // Check if the gui is displayed
 		bool &_endClient;

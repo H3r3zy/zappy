@@ -1,7 +1,9 @@
-//
-// Created by wisenoa on 19/06/18.
-//
-
+/*
+** EPITECH PROJECT, 2018
+** client
+** File description:
+** Created by vincent.roye@epitech.eu,
+*/
 
 #include "CstringArray.hpp"
 

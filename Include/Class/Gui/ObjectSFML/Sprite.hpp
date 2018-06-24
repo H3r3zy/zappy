@@ -1,17 +1,17 @@
 /*
 ** EPITECH PROJECT, 2018
-** cpp_plazza
+** PSU_ZAPPY_2017
 ** File description:
 ** Created by martin.januario@epitech.eu,
 */
 
-#ifndef CPP_PLAZZA_SPRITE_HPP
-# define CPP_PLAZZA_SPRITE_HPP
+#ifndef PSU_ZAPPY_2017_SPRITE_HPP
+# define PSU_ZAPPY_2017_SPRITE_HPP
 
 # include <string>
 # include "AbsractObjectSFML.hpp"
 
-namespace irc {
+namespace zap {
 	class Sprite : public AbstractObjectSFML {
 		public:
 		Sprite(const std::string &filePath, sf::IntRect pos, const sf::IntRect &rect = {0, 0, 0, 0});
@@ -29,4 +29,4 @@ namespace irc {
 	};
 }
 
-#endif //CPP_PLAZZA_SPRITE_HPP
+#endif //PSU_ZAPPY_2017_SPRITE_HPP

@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2018
-** cpp_plazza
+** PSU_ZAPPY_2017
 ** File description:
 ** Created by martin.januario@epitech.eu,
 */
@@ -10,29 +10,29 @@
 #include "SFML_monitor.hpp"
 #include "IObjectSFML.hpp"
 
-irc::SFML_monitor::SFML_monitor(const std::string &windowName, std::size_t width,
+zap::SFML_monitor::SFML_monitor(const std::string &windowName, std::size_t width,
 	std::size_t height) : _windowName(windowName), _windowSize({(float)width, (float)height}),
 	_window(sf::VideoMode(width, height), windowName), _scene(0)
 {
 }
 
-irc::SFML_monitor::~SFML_monitor()
+zap::SFML_monitor::~SFML_monitor()
 {
 	deleteObjects();
 }
 
-void irc::SFML_monitor::addObjectToDraw(const std::string &name, irc::IObjectSFML *object, int scene, int layer)
+void zap::SFML_monitor::addObjectToDraw(const std::string &name, zap::IObjectSFML *object, int scene, int layer)
 {
 	object->setLayer(layer);
 	this->_listObject[scene].insert({name, object});
 }
 
-void irc::SFML_monitor::closeWindow()
+void zap::SFML_monitor::closeWindow()
 {
 	this->_window.close();
 }
 
-void irc::SFML_monitor::manageEvent(sf::Event &event)
+void zap::SFML_monitor::manageEvent(sf::Event &event)
 {
 	bool ret = false;
 	std::size_t obj_send = 0;
@@ -57,7 +57,7 @@ void irc::SFML_monitor::manageEvent(sf::Event &event)
 		closeWindow();
 }
 
-void irc::SFML_monitor::drawObject()
+void zap::SFML_monitor::drawObject()
 {
 	std::size_t obj_draw = 0;
 
@@ -73,7 +73,7 @@ void irc::SFML_monitor::drawObject()
 	}
 }
 
-void irc::SFML_monitor::callFuncLoop()
+void zap::SFML_monitor::callFuncLoop()
 {
 	int save = _scene;
 
@@ -84,7 +84,7 @@ void irc::SFML_monitor::callFuncLoop()
 	}
 }
 
-void irc::SFML_monitor::loopWindow(irc::Communication *comm)
+void zap::SFML_monitor::loopWindow(zap::Communication *comm)
 {
 	sf::Event event;
 
@@ -106,7 +106,7 @@ void irc::SFML_monitor::loopWindow(irc::Communication *comm)
 	}
 }
 
-void irc::SFML_monitor::deleteObjects()
+void zap::SFML_monitor::deleteObjects()
 {
 	for (auto it = this->_listObject.begin(); it != this->_listObject.end() ; ++it) {
 		for (auto idx = it->second.begin(); idx != it->second.end() ; ++idx) {
@@ -117,22 +117,22 @@ void irc::SFML_monitor::deleteObjects()
 	this->_listObject.clear();
 }
 
-int irc::SFML_monitor::getCurrentScene() const
+int zap::SFML_monitor::getCurrentScene() const
 {
 	return this->_scene;
 }
 
-void irc::SFML_monitor::setScene(int scene)
+void zap::SFML_monitor::setScene(int scene)
 {
 	this->_scene = scene;
 }
 
-sf::Vector2f irc::SFML_monitor::getWindowSize() const
+sf::Vector2f zap::SFML_monitor::getWindowSize() const
 {
 	return this->_windowSize;
 }
 
-irc::IObjectSFML *irc::SFML_monitor::getObjectByName(std::string name, int scene)
+zap::IObjectSFML *zap::SFML_monitor::getObjectByName(std::string name, int scene)
 {
 	auto result = this->_listObject[scene].find(name);
 
@@ -141,7 +141,7 @@ irc::IObjectSFML *irc::SFML_monitor::getObjectByName(std::string name, int scene
 	return result->second;
 }
 
-void irc::SFML_monitor::deleteObjectByName(std::string name, int scene)
+void zap::SFML_monitor::deleteObjectByName(std::string name, int scene)
 {
 	auto result = this->_listObject[scene].find(name);
 
@@ -151,13 +151,13 @@ void irc::SFML_monitor::deleteObjectByName(std::string name, int scene)
 	}
 }
 
-void irc::SFML_monitor::setNameWindow(std::string name)
+void zap::SFML_monitor::setNameWindow(std::string name)
 {
 	_window.setTitle(name);
 	_windowName = name;
 }
 
-void irc::SFML_monitor::deleteObjectByScene(int scene)
+void zap::SFML_monitor::deleteObjectByScene(int scene)
 {
 	for (auto it = _listObject[scene].begin(); it != _listObject[scene].end() ; ++it) {
 		delete it->second;
@@ -165,17 +165,17 @@ void irc::SFML_monitor::deleteObjectByScene(int scene)
 	_listObject[scene].clear();
 }
 
-bool irc::SFML_monitor::isWindowOpen()
+bool zap::SFML_monitor::isWindowOpen()
 {
 	return this->_window.isOpen();
 }
 
-void irc::SFML_monitor::setPostionWindow(const sf::Vector2i &pos)
+void zap::SFML_monitor::setPostionWindow(const sf::Vector2i &pos)
 {
 	_window.setPosition(pos);
 }
 
-bool irc::SFML_monitor::isSceneCreated(int scene)
+bool zap::SFML_monitor::isSceneCreated(int scene)
 {
 	return _listObject.find(scene) != _listObject.end();
 }

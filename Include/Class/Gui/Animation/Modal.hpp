@@ -1,16 +1,16 @@
 /*
 ** EPITECH PROJECT, 2018
-** cpp_plazza
+** PSU_ZAPPY_2017
 ** File description:
 ** Created by martin.januario@epitech.eu,
 */
 
-#ifndef CPP_PLAZZA_MODAL_HPP
-# define CPP_PLAZZA_MODAL_HPP
+#ifndef PSU_ZAPPY_2017_MODAL_HPP
+# define PSU_ZAPPY_2017_MODAL_HPP
 
 # include "AbsractObjectSFML.hpp"
 
-namespace irc {
+namespace zap {
 	class Modal : public AbstractObjectSFML {
 		public:
 		Modal(IObjectSFML *, sf::Vector2i to, std::size_t timeElapsed);
@@ -42,4 +42,4 @@ namespace irc {
 
 }
 
-#endif //CPP_PLAZZA_MODAL_HPP
+#endif //PSU_ZAPPY_2017_MODAL_HPP

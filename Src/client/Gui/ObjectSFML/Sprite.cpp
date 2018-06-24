@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2018
-** cpp_plazza
+** PSU_ZAPPY_2017
 ** File description:
 ** Created by martin.januario@epitech.eu,
 */
@@ -8,7 +8,7 @@
 #include <iostream>
 #include "Class/Gui/ObjectSFML/Sprite.hpp"
 
-irc::Sprite::Sprite(const std::string &filePath, sf::IntRect pos, const sf::IntRect &rect) : AbstractObjectSFML(pos), _object()
+zap::Sprite::Sprite(const std::string &filePath, sf::IntRect pos, const sf::IntRect &rect) : AbstractObjectSFML(pos), _object()
 {
 	if (this->_texture.loadFromFile(filePath)) {
 		this->_object.setTexture(this->_texture);
@@ -23,7 +23,7 @@ irc::Sprite::Sprite(const std::string &filePath, sf::IntRect pos, const sf::IntR
 	}
 }
 
-bool irc::Sprite::drawObject(sf::RenderWindow &window)
+bool zap::Sprite::drawObject(sf::RenderWindow &window)
 {
 	this->_object.setPosition(this->_pos.left, this->_pos.top);
 	this->_object.setTexture(this->_texture);
@@ -32,11 +32,11 @@ bool irc::Sprite::drawObject(sf::RenderWindow &window)
 	return false;
 }
 
-void irc::Sprite::setColor(sf::Color color __attribute__((unused)))
+void zap::Sprite::setColor(sf::Color color __attribute__((unused)))
 {
 }
 
-void irc::Sprite::setPos(sf::IntRect pos)
+void zap::Sprite::setPos(sf::IntRect pos)
 {
 	bool check = false;
 
@@ -51,7 +51,7 @@ void irc::Sprite::setPos(sf::IntRect pos)
 	this->_object.setPosition(this->_pos.left, this->_pos.top);
 }
 
-void irc::Sprite::setMirror(sf::Vector2f val)
+void zap::Sprite::setMirror(sf::Vector2f val)
 {
 	sf::FloatRect size = this->_object.getLocalBounds();
 

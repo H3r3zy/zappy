@@ -1,6 +1,9 @@
-//
-// Created by wisenoa on 13/06/18.
-//
+/*
+** EPITECH PROJECT, 2018
+** PSU_zappy_2017
+** File description:
+** Created by martin.januario@epitech.eu,
+*/
 
 
 #include <SFML/Graphics/Sprite.hpp>
@@ -10,9 +13,6 @@
 
 Grid::Grid(const sf::Vector2f &mapSize, sf::RenderWindow &window, std::vector<std::string> &teamName) : _mapSize(mapSize), _nbActive(0), _teamName(teamName)
 {
-	//std::cout << "nnike ta grosse chienne" << std::endl;
-	//std::cout << "je suis dans Grid, la taille de ma map map X" << _mapSize.x << " Y " << _mapSize.y << std::endl;
-
 	window.setActive(false);
 	auto thread(new my::Thread([&]() {
 		try {
@@ -29,7 +29,6 @@ Grid::Grid(const sf::Vector2f &mapSize, sf::RenderWindow &window, std::vector<st
 
 Grid::~Grid()
 {
-	// TODO DELETE
 }
 
 
@@ -186,11 +185,6 @@ void Grid::updateGrid3D(sf::View &view)
 	sf::Vector2f chunk;
 	chunk.x = (view.getCenter().x) / 100 - 7 >= 0? (view.getCenter().x) / 100 - 7 : -1;
 	chunk.y = ((view.getCenter().y) / 100) - 10;
-/*	//std::cout << "Je suis en [" << view.getCenter().x << "][" << view.getCenter().y << "]" << std::endl;
-	//std::cout << "Mon chunk est en [" << chunk.x << "][" << chunk.y << "]" << std::endl;
-	//std::cout << "L calcul que je fais X:" << (view.getCenter().x) / 100 - 10 << std::endl;
-	//std::cout << "L calcul que je fais Y:" << (view.getCenter().y * - 1) / 100 - 10 << std::endl;*/
-	// TODO dont push entities when left or e dessous
 	sf::Vector2f to = chunk;
 	to.x += 17;
 	to.y += 17;
@@ -262,7 +256,6 @@ Cell *&Grid::getCell(int x, int y)
 
 bool Grid::checkvalid(int x, int y)
 {
-	//std::cout << "je recoit" << x << " " << y << std::endl;
 	if (x < 0 || y < 0)
 		return false;
 	return _gameMap.find(POSITION(static_cast<const uint &>(x), static_cast<const uint &>(y))) != _gameMap.end();

@@ -9,6 +9,15 @@
 #include <string.h>
 #include "server.h"
 
+static void shift_client_buff(client_t *client, size_t off)
+{
+	if (client->buff[off]) {
+		memmove(client->buff, client->buff + off,
+			client->buff_len - off + 1);
+		client->buff_len -= off;
+	}
+}
+
 int pollin_client(server_t *server, client_t *client)
 {
 	int status = read_client(client);
@@ -28,11 +37,7 @@ int pollin_client(server_t *server, client_t *client)
 		cmdend = strchr(cmd, '\n');
 	}
 	*client->buff = 0;
-	if (client->buff[off]) {
-		memmove(client->buff, client->buff + off,
-			client->buff_len - off + 1);
-		client->buff_len -= off;
-	}
+	shift_client_buff(client, off);
 	return 0;
 }
 

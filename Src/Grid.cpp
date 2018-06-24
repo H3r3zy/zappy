@@ -49,10 +49,10 @@ void Grid::loadingDisplay( sf::Vector2f &mapSize, sf::RenderWindow &window)
 	currentRect.setSize(sf::Vector2f(0, 50));
 	currentRect.setPosition(100, 540);
 
-	texture.loadFromFile("ronflex.png");
+	texture.loadFromFile("extra/game/ronflex.png");
 	sprite.setTexture(texture);
 
-	font.loadFromFile("pokemon.ttf");
+	font.loadFromFile("extra/pokemon.ttf");
 	text.setFont(font);
 	text.setCharacterSize(20);
 	text.setPosition(100, 0);
@@ -98,7 +98,7 @@ bool Grid::loadTextures()
 		_texturePack.emplace_back(new sf::Texture());
 	}
 	for (int i = 0; i < 5; i++) {
-		if (!_texturePack[i]->loadFromFile("Grass" + std::to_string(i) + ".png")) {
+		if (!_texturePack[i]->loadFromFile("extra/game/Grass" + std::to_string(i) + ".png")) {
 			return false;
 		}
 	}
@@ -107,7 +107,7 @@ bool Grid::loadTextures()
 		_waterPack.emplace_back(sf::Texture());
 	}
 	for (int i = 0; i < 4; i++) {
-		if (!_waterPack[i].loadFromFile("Water" + std::to_string(i) + ".png")) {
+		if (!_waterPack[i].loadFromFile("extra/game/Water" + std::to_string(i) + ".png")) {
 			return false;
 		}
 	}
@@ -150,12 +150,12 @@ bool Grid::loadTextures()
 		}
 
 		for (int i = 0; i < 9; i++) {
-			_textureCharacterPack[it][WALK_UP][i].loadFromFile("Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 512, 64, 64));
-			_textureCharacterPack[it][WALK_LEFT][i].loadFromFile("Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 576, 64, 64));
-			_textureCharacterPack[it][WALK_DOWN][i].loadFromFile("Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 640, 64, 64));
-			_textureCharacterPack[it][WALK_RIGHT][i].loadFromFile("Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 704, 64, 64));
-			_textureCharacterPack[it][TAKE][i].loadFromFile("Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 1344, 64, 64));
-			_textureCharacterPack[it][INCANT][i].loadFromFile("Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 128, 64, 64));
+			_textureCharacterPack[it][WALK_UP][i].loadFromFile("extra/game/Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 512, 64, 64));
+			_textureCharacterPack[it][WALK_LEFT][i].loadFromFile("extra/game/Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 576, 64, 64));
+			_textureCharacterPack[it][WALK_DOWN][i].loadFromFile("extra/game/Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 640, 64, 64));
+			_textureCharacterPack[it][WALK_RIGHT][i].loadFromFile("extra/game/Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 704, 64, 64));
+			_textureCharacterPack[it][TAKE][i].loadFromFile("extra/game/Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 1344, 64, 64));
+			_textureCharacterPack[it][INCANT][i].loadFromFile("extra/game/Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 128, 64, 64));
 		}
 		textureFiles++;
 		if (textureFiles > 3)

@@ -121,6 +121,9 @@ const std::string &Character::getPlayerTeam() const
 
 void Character::setPlayerOrientation(char orientation, int duration)
 {
+	if (oneTime) {
+		_position = _nextPos;
+	}
 	_duration = duration;
 	_orientation = orientation;
 	_totalDist = 0;

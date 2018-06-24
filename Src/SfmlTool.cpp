@@ -15,7 +15,7 @@ const sf::Font &SfmlTool::getArialFont()
 bool SfmlTool::InitAllFont()
 {
 	//std::cout << "jinit tt mes font" << std::endl;
-	if (!arialFont.loadFromFile("arial.ttf"))
+	if (!arialFont.loadFromFile("extra/arial.ttf"))
 		return false;
 	return true;
 }

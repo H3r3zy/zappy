@@ -226,3 +226,8 @@ void Character::checkOutMap()
 		_totalDist = 0;
 	}
 }
+
+void Character::levelUp()
+{
+	_level++;
+}

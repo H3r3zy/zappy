@@ -42,6 +42,7 @@ class Character : public AMotionShape {
 	void setPlayerTake(int freq, int duration);
 	void setPlayerIncant(int freq, int duration, sf::Vector2f &newPos);
 	void setPlayerBroadcast(int freq, int duration);
+	void levelUp();
 
 	const sf::Vector2f &getPlayerPosition() const;
 

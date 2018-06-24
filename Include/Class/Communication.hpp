@@ -117,6 +117,7 @@ namespace irc {
 			{"pbc", irc::TYPE_ENQUEUE::T_MAP}, // broadcast
 			{"tna", irc::TYPE_ENQUEUE::T_MAP}, // team number
 			{"endtna", irc::TYPE_ENQUEUE::T_MAP}, // team finish
+			{"pie", irc::TYPE_ENQUEUE::T_MAP}, // end incantation
 			{"pin", irc::TYPE_ENQUEUE::T_GUI},
 			{"nbu", irc::TYPE_ENQUEUE::T_GUI},
 			{"nbt", irc::TYPE_ENQUEUE::T_GUI},

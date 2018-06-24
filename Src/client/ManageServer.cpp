@@ -154,14 +154,16 @@ int irc::ManageServer::writeOnServer(int socket, std::string msg)
 }
 void irc::ManageServer::parseLine8Input(char *buffer, CstringArray &command)
 {
-	//std::cout << "[" << GREEN << "READ" << RESET << "] on ManageServer, go new command, name[" << command.getCommandName() << "] ";
+	std::cout << "[" << GREEN << "READ" << RESET << "] on ManageServer, go new command, name[" << command.getCommandName() << "] ";
 	std::vector<uint> bag;
 	for (int i = 0; i < 10; i++)
 		bag.emplace_back(0);
 	for (size_t i = 0; i < 10; i++) {
 		bag[i] = 0;
 		memcpy(&bag[i], buffer + 4 + i * (sizeof(uint) + 1), sizeof(uint));
+		std::cout << bag[i] << " ";
 	}
+	std::cout << std::endl;
 	command.setCommand(bag);
 }
 

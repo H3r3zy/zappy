@@ -250,11 +250,12 @@ void irc::ParseEnqueueMap::parseNextCommand(irc::Map &map)
 		} else if (it.getCommandName() == "sgr") {
 			addRandomResource(map, it);
 		} else if (it.getCommandName() == "pic") {
-			std::cout << "c une incantation" << std::endl;
 			incantPlayer(map, it);
 		} else if (it.getCommandName() == "pbc") {
-			std::cout << "c un broadcast" << std::endl;
 			broadcastPlayer(map, it);
+		} else if (it.getCommandName() == "pie") {
+			std::cout << "end BROADCAST" << std::endl;
+			endIncantation(map, it);
 		}
 		_comm.getEnqueueMap().erase(_comm.getEnqueueMap().begin());
 
@@ -537,7 +538,6 @@ void irc::ParseEnqueueMap::incantPlayer(irc::Map &map, const CstringArray &comma
 		map.getCharacterMap().at(command.getCommand()[i]).setPlayerIncant(tmpFreq, 300, tmpPos);
 		++i;
 	}
-
 }
 
 void irc::ParseEnqueueMap::broadcastPlayer(irc::Map &map, const CstringArray &command)
@@ -548,5 +548,22 @@ void irc::ParseEnqueueMap::broadcastPlayer(irc::Map &map, const CstringArray &co
 		std::cout << "[" << RED << "MAP"<< RESET << "] did not found player " << command.getCommand()[0] << ", exit broadcastPLayer"<< std::endl;
 		std::cout << "[" << GREEN << "MAP" << RESET << "] broadcast of player [" << command.getCommand()[0] << "]" << std::endl;
 		map.getCharacterMap().at(command.getCommand()[0]).setPlayerBroadcast(tmpFreq, 7);
+	}
+}
+
+void irc::ParseEnqueueMap::endIncantation(irc::Map &map, const CstringArray &command)
+{
+	int i = 0;
+	while (command.getCommand()[i] != 0 && i < 9) {
+		std::cout << "je boucle dans end incantation " << std::endl;
+		if (map.getCharacterMap().find((command.getCommand()[i])) == map.getCharacterMap().end()) {
+			std::cout << "[" << RED << "MAP"<< RESET << "] did not found player " << command.getCommand()[i] << ", next on incantPLayer"<< std::endl;
+			++i;
+			continue;
+		}
+		map.getCharacterMap().at(command.getCommand()[i]).levelUp();
+		std::cout << "[" << RED << "PLAYER" << command.getCommand()[i] << RESET << "] leveled up !!!"<< std::endl;
+		sleep(1);
+		++i;
 	}
 }

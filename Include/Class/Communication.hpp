@@ -119,7 +119,10 @@ namespace irc {
 			{"endtna", irc::TYPE_ENQUEUE::T_MAP}, // team finish
 			{"pin", irc::TYPE_ENQUEUE::T_GUI},
 			{"nbu", irc::TYPE_ENQUEUE::T_GUI},
+			{"edi", irc::TYPE_ENQUEUE::T_GUI},
 			{"nbt", irc::TYPE_ENQUEUE::T_GUI},
+			{"enw", irc::TYPE_ENQUEUE::T_GUI},
+			{"eht", irc::TYPE_ENQUEUE::T_GUI},
 			{"pmv", irc::TYPE_ENQUEUE::T_MAP}, // move joueur
 			{"pic", irc::TYPE_ENQUEUE::T_MAP}, // incantation
 			{"sgt", irc::TYPE_ENQUEUE::T_MAP},

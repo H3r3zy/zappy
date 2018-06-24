@@ -197,7 +197,7 @@ void irc::Auth::sendForm()
 	_nick = dynamic_cast<TextInput *>(_base.getObjectByName("input_nick"))->getPrompt();
 	_ip = dynamic_cast<TextInput *>(_base.getObjectByName("input_ip"))->getPrompt();
 	_port = dynamic_cast<TextInput *>(_base.getObjectByName("input_port"))->getPrompt();
-	if (!std::regex_match(_ip, std::regex("((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)"))) {
+	if (_ip.empty()) {
 		error = true;
 		_base.getObjectByName("bck_input_ip_border")->setColor(sf::Color(222, 170, 170));
 	} else

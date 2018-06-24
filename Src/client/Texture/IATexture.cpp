@@ -91,7 +91,10 @@ void irc::IATexture::updateIAData()
 			_base._comm._player.ressources.q4 = it.getCommand()[7];
 			_base._comm._player.ressources.q5 = it.getCommand()[8];
 			_base._comm._player.ressources.q6 = it.getCommand()[9];
-		}
+		} else if (it.getCommandName() == "eht" || it.getCommandName() == "edi")
+			_base._comm._server.eggs--;
+		else if (it.getCommandName() == "enw")
+			_base._comm._server.eggs++;
 	}
 	_base._comm.getEnqueueGui().clear();
 	_base._comm.unlockGui();

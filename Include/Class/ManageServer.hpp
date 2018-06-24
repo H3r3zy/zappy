@@ -48,9 +48,12 @@ namespace irc {
 		{"tna", &irc::ManageServer::parseLine8Input}, // team number
 		{"endtna", &irc::ManageServer::parseLine8Input}, // team finish
 		{"bct", &irc::ManageServer::parseLine8Input},
+		{"enw", &irc::ManageServer::parseLine8Input},
+		{"eht", &irc::ManageServer::parseLine8Input},
 		{"pic", &irc::ManageServer::parseLine8Input}, // start incantation
 		{"pbc", &irc::ManageServer::parseLine8Input}, // broadcast
 		{"pdi", &irc::ManageServer::parseLine8Input},
+		{"edi", &irc::ManageServer::parseLine8Input},
 		{"pin", &irc::ManageServer::parseLine8Input},
 		{"nbt", &irc::ManageServer::parseLine1Input},
 		{"nbu", &irc::ManageServer::parseLine1Input},

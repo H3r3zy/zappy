@@ -253,7 +253,6 @@ void irc::ParseEnqueueMap::parseNextCommand(irc::Map &map)
 		} else if (it.getCommandName() == "pbc") {
 			broadcastPlayer(map, it);
 		} else if (it.getCommandName() == "pie") {
-			std::cout << "end BROADCAST" << std::endl;
 			endIncantation(map, it);
 		}
 		_comm.getEnqueueMap().erase(_comm.getEnqueueMap().begin());
@@ -555,14 +554,13 @@ void irc::ParseEnqueueMap::endIncantation(irc::Map &map, const CstringArray &com
 	int i = 0;
 	while (command.getCommand()[i] != 0 && i < 9) {
 		std::cout << "je boucle dans end incantation " << std::endl;
-		if (map.getCharacterMap().find((command.getCommand()[i])) != map.getCharacterMap().end()) {
+		if (map.getCharacterMap().find((command.getCommand()[i])) == map.getCharacterMap().end()) {
 			std::cout << "[" << RED << "MAP"<< RESET << "] did not found player " << command.getCommand()[i] << ", next on incantPLayer"<< std::endl;
 			++i;
 			continue;
 		}
 		map.getCharacterMap().at(command.getCommand()[i]).levelUp();
 		std::cout << "[" << RED << "PLAYER" << command.getCommand()[i] << RESET << "] leveled up !!!"<< std::endl;
-		sleep(1);
 		++i;
 	}
 }

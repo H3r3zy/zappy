@@ -1,7 +1,9 @@
 //
-// Created by wisenoa on 15/06/18.
+// EPITECH PROJECT, 2018
+// Character.hpp
+// File description:
+// Character.hpp
 //
-
 
 #ifndef PSU_ZAPPY_2017_CHARACTER_HPP
 #define PSU_ZAPPY_2017_CHARACTER_HPP

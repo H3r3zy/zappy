@@ -1,7 +1,9 @@
 //
-// Created by wisenoa on 17/06/18.
+// EPITECH PROJECT, 2018
+// AText.cpp
+// File description:
+// AText
 //
-
 
 #include "Text/AText.hpp"
 

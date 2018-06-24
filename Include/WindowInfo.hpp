@@ -1,7 +1,9 @@
 //
-// Created by wisenoa on 13/06/18.
+// EPITECH PROJECT, 2018
+// WindowInfo.hpp
+// File description:
+// WindowInfo
 //
-
 
 #ifndef PSU_ZAPPY_2017_WINDOWINFO_HPP
 #define PSU_ZAPPY_2017_WINDOWINFO_HPP

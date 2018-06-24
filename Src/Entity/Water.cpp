@@ -1,7 +1,9 @@
 //
-// Created by wisenoa on 19/06/18.
+// EPITECH PROJECT, 2018
+// Water.cpp
+// File description:
+// Water
 //
-
 
 #include "Water.hpp"
 

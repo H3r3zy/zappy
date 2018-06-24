@@ -1,7 +1,9 @@
 //
-// Created by wisenoa on 19/06/18.
+// EPITECH PROJECT, 2018
+// CstringArray
+// File description:
+// CstringArray
 //
-
 
 #ifndef CLIENT_CSTRING_HPP
 #define CLIENT_CSTRING_HPP

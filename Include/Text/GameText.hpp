@@ -1,7 +1,9 @@
 //
-// Created by wisenoa on 17/06/18.
+// EPITECH PROJECT, 2018
+// GameTex.hpp
+// File description:
+// GameText
 //
-
 
 #ifndef PSU_ZAPPY_2017_GAMETEXT_HPP
 #define PSU_ZAPPY_2017_GAMETEXT_HPP

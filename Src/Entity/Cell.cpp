@@ -1,5 +1,8 @@
 //
-// Created by wisenoa on 12/06/18.
+// EPITECH PROJECT, 2018
+// Cell.cpp
+// File description:
+// Cell
 //
 
 #include <SFML/Graphics/RenderWindow.hpp>
@@ -36,8 +39,6 @@ Cell::Cell(std::pair<sf::Vector2f, sf::Vector2f> squareDimension, sf::Texture *&
 	for (int i = 0; i < 9; i++) {
 		_takenPos[i] = false;
 	}
-	//sleep(1);
-
 	for (int i = 0; i < 7; i++) {
 		auto tmpPos = dist6(rng);
 

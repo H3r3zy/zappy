@@ -1,7 +1,9 @@
 //
-// Created by wisenoa on 12/06/18.
+// EPITECH PROJECT, 2018
+// Cell.hpp
+// File description:
+// Cell
 //
-
 
 #ifndef PSU_ZAPPY_2017_CELL_HPP
 #define PSU_ZAPPY_2017_CELL_HPP

@@ -1,7 +1,9 @@
 //
-// Created by wisenoa on 17/06/18.
+// EPITECH PROJECT, 2018
+// AMotionShape.hpp
+// File description:
+// AMotionShape
 //
-
 
 #ifndef PSU_ZAPPY_2017_AMOTIONSHAPE_HPP
 #define PSU_ZAPPY_2017_AMOTIONSHAPE_HPP

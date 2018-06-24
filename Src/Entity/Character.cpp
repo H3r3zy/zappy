@@ -1,5 +1,8 @@
 //
-// Created by wisenoa on 15/06/18.
+// EPITECH PROJECT, 2018
+// Character.cpp
+// File description:
+// Character
 //
 
 #include <SFML/Graphics/RenderWindow.hpp>
@@ -32,7 +35,6 @@ Character::Character(std::map<char, std::vector<sf::Texture>> &_texturePack, sf:
 	}
 	usleep(100);
 	srand(time(NULL));
-//	_sprite[WALK_LEFT][0]->setTexture(_texturePack[WALK_LEFT][0]);
 }
 
 Character::~Character()
@@ -97,8 +99,6 @@ void Character::setPlayerOrientation(char orientation, int duration)
 	_orientation = orientation;
 	_totalDist = 0;
 	_actualSprite = 0;
-
-	//	_sprite[orientation][_actualSprite].setPosition(_position.x, _position.y);
 }
 
 char Character::getPlayerOrientation() const
@@ -127,7 +127,6 @@ void Character::setPlayerMovement(sf::Vector2f &finalPos, const uint &orientatio
 	_freq = freq;
 	if (oneTime) {
 		_position = _nextPos;
-		//std::cout << "nextpos = " << _nextPos.x << " " << _nextPos.y << std::endl;
 	}
 	oneTime = true;
 	_totalDist = 0;

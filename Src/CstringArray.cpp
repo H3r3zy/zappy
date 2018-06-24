@@ -1,9 +1,9 @@
-/*
-** EPITECH PROJECT, 2018
-** client
-** File description:
-** Created by vincent.roye@epitech.eu,
-*/
+//
+// EPITECH PROJECT, 2018
+// CstringArray.cpp
+// File description:
+// CstringArray
+//
 
 #include "CstringArray.hpp"
 

@@ -1,5 +1,8 @@
 //
-// Created by wisenoa on 17/06/18.
+// EPITECH PROJECT, 2018
+// SfmlTool.cpp
+// File description:
+// SfmlTool
 //
 
 #include <iostream>

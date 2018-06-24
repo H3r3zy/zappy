@@ -1,7 +1,9 @@
 //
-// Created by wisenoa on 20/06/18.
+// EPITECH PROJECT, 2018
+// ParseEnqueMap
+// File description:
+// ParseEnqueueMap
 //
-
 
 #include <SFML/System.hpp>
 #include <Class/Communication.hpp>

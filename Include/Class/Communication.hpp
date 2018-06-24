@@ -114,6 +114,7 @@ namespace irc {
 			{"bct", irc::TYPE_ENQUEUE::T_BOTH},
 			{"pdi", irc::TYPE_ENQUEUE::T_MAP},
 			{"pnw", irc::TYPE_ENQUEUE::T_MAP},
+			{"pbc", irc::TYPE_ENQUEUE::T_MAP}, // broadcast
 			{"tna", irc::TYPE_ENQUEUE::T_MAP}, // team number
 			{"endtna", irc::TYPE_ENQUEUE::T_MAP}, // team finish
 			{"pin", irc::TYPE_ENQUEUE::T_GUI},

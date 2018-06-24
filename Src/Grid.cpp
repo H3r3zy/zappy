@@ -147,6 +147,7 @@ bool Grid::loadTextures()
 			_textureCharacterPack[it][WALK_DOWN].emplace_back(sf::Texture());
 			_textureCharacterPack[it][TAKE].emplace_back(sf::Texture());
 			_textureCharacterPack[it][INCANT].emplace_back(sf::Texture());
+			_textureCharacterPack[it][BROADCAST].emplace_back(sf::Texture());
 		}
 
 		for (int i = 0; i < 9; i++) {
@@ -156,6 +157,7 @@ bool Grid::loadTextures()
 			_textureCharacterPack[it][WALK_RIGHT][i].loadFromFile("extra/game/Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 704, 64, 64));
 			_textureCharacterPack[it][TAKE][i].loadFromFile("extra/game/Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 1344, 64, 64));
 			_textureCharacterPack[it][INCANT][i].loadFromFile("extra/game/Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 128, 64, 64));
+			_textureCharacterPack[it][BROADCAST][i].loadFromFile("extra/game/Character" + std::to_string(textureFiles) + ".png", sf::IntRect(i * 64, 896, 64, 64));
 		}
 		textureFiles++;
 		if (textureFiles > 3)

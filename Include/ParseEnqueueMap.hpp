@@ -39,6 +39,7 @@ class ParseEnqueueMap {
 	bool addRandomResource(irc::Map &map, const CstringArray &command);
 	void movePlayerOrientation(irc::Map &map, const CstringArray &command);
 	void incantPlayer(irc::Map &map, const CstringArray &command);
+	void broadcastPlayer(irc::Map &map, const CstringArray &command);
 
 	private:
 	irc::Communication &_comm;

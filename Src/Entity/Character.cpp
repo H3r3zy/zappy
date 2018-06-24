@@ -16,6 +16,7 @@ Character::Character(std::map<char, std::vector<sf::Texture>> &_texturePack, sf:
 		_sprite[WALK_DOWN].emplace_back(sf::Sprite());
 		_sprite[TAKE].emplace_back(sf::Sprite());
 		_sprite[INCANT].emplace_back(sf::Sprite());
+		_sprite[BROADCAST].emplace_back(sf::Sprite());
 	}
 	for (int i = 0; i < 9; i++) {
 		_sprite[WALK_LEFT][i].setTexture(_texturePack[WALK_LEFT][i]);
@@ -24,6 +25,7 @@ Character::Character(std::map<char, std::vector<sf::Texture>> &_texturePack, sf:
 		_sprite[WALK_DOWN][i].setTexture(_texturePack[WALK_DOWN][i]);
 		_sprite[TAKE][i].setTexture(_texturePack[TAKE][i]);
 		_sprite[INCANT][i].setTexture(_texturePack[INCANT][i]);
+		_sprite[BROADCAST][i].setTexture(_texturePack[BROADCAST][i]);
 	}
 	usleep(100);
 	srand(time(NULL));
@@ -199,5 +201,15 @@ void Character::setPlayerIncant(int freq, int duration, sf::Vector2f &newPos)
 	_actualSprite = 0;
 	_totalDist = 0;
 	_orientation = INCANT;
+	_action = true;
+}
+
+void Character::setPlayerBroadcast(int freq, int duration)
+{
+	_duration = duration;
+	_freq = freq;
+	_orientation = BROADCAST;
+	_actualSprite = 0;
+	_totalDist = 0;
 	_action = true;
 }

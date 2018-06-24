@@ -21,7 +21,8 @@ class Character : public AMotionShape {
 		WALK_DOWN = 3,
 		WALK_LEFT = 4,
 		TAKE = 5,
-		INCANT = 6
+		INCANT = 6,
+		BROADCAST = 7
 	};
 	public:
 	Character(std::map<char, std::vector<sf::Texture>> &_texturePack, sf::Vector2f &position, uint id, int freq);
@@ -40,6 +41,7 @@ class Character : public AMotionShape {
 	void setPlayerMovement(sf::Vector2f &finalPos, const uint &orientation, int freq, int duration);
 	void setPlayerTake(int freq, int duration);
 	void setPlayerIncant(int freq, int duration, sf::Vector2f &newPos);
+	void setPlayerBroadcast(int freq, int duration);
 	static bool playerLoop(sf::RenderWindow &window);
 
 	const sf::Vector2f &getPlayerPosition() const;

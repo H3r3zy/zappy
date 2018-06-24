@@ -90,7 +90,8 @@ void add_to_team(server_t *server, client_t *client, char *name)
 
 void add_slot_in_team(teams_t *teams)
 {
-	teams->clients = realloc(teams->clients, teams->client_max + 1);
+	teams->clients = realloc(teams->clients,
+		(teams->client_max + 1) * sizeof(client_t *));
 	if (!teams->clients)
 		return;
 	teams->clients[teams->client_max] = NULL;

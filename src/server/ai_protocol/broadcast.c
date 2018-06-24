@@ -89,7 +89,7 @@ void broadcast_cmd(server_t *server, client_t *client, char *arg)
 
 	sprintf(response, "message 0, %s\n", arg);
 	for (client_t *clt = server->clients; clt; clt = clt->next) {
-		if (clt != client) {
+		if (clt != client && clt->team) {
 			d.x = MAP_SHORTEST_PATH(POS(clt).x - pos->x,
 				server->map.size.x);
 			d.y = MAP_SHORTEST_PATH(POS(clt).y - pos->y,

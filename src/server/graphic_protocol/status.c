@@ -60,7 +60,7 @@ void gui_pic(server_t *server, client_t *client, entity_t *entity)
 void gui_pie(server_t *server, entity_t *entity)
 {
 	static char buffer[1024] = "pie clID\n";
-	int idx = 4;
+	int idx = 3;
 
 	for (entity_t *en = entity; en && idx + 5 < 1022; en = en->next) {
 		buffer[idx++] = ' ';

@@ -86,6 +86,7 @@ static void handle_gui_poll(server_t *server, struct pollfd *fd)
 		status += pollin_gui(server);
 	if (status) {
 		server->gui.logged = 0;
+		close(server->gui.fd);
 		server->gui.fd = -1;
 		*server->gui.queue = 0;
 		server->gui.len = 0;

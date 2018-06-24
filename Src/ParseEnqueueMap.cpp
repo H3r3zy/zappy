@@ -157,19 +157,25 @@ void irc::ParseEnqueueMap::loadingDisplay( sf::Vector2f &mapSize, sf::RenderWind
 	float totalNb = (mapSize.x * mapSize.y);
 	sf::Texture texture;
 	sf::Sprite sprite;
+	sf::Texture texture_bck;
+	sf::Sprite bck;
 
 	sf::RectangleShape totalRect;
 	totalRect.setFillColor(sf::Color(0, 80, 0, 122));
 	totalRect.setSize(sf::Vector2f(500, 50));
-	totalRect.setPosition(100, 540);
+	totalRect.setPosition(290, 490);
 
 	sf::RectangleShape currentRect;
 	currentRect.setFillColor(sf::Color::Green);
 	currentRect.setSize(sf::Vector2f(0, 50));
-	currentRect.setPosition(100, 540);
+	currentRect.setPosition(290, 490);
 
 	texture.loadFromFile("extra/game/ronflex.png");
 	sprite.setTexture(texture);
+
+	texture_bck.loadFromFile("extra/game/loading_bck.png");
+	bck.setTexture(texture_bck);
+	bck.setScale(sf::Vector2f(1.5, 1.5));
 
 	font.loadFromFile("extra/pokemon.ttf");
 	text.setFont(font);
@@ -183,6 +189,7 @@ void irc::ParseEnqueueMap::loadingDisplay( sf::Vector2f &mapSize, sf::RenderWind
 
 		}
 		currentRect.setSize(sf::Vector2f((_blocNumber / totalNb) * 500, 50));
+		window.draw(bck);
 		window.draw(sprite);
 		window.draw(totalRect);
 		window.draw(currentRect);
@@ -226,9 +233,6 @@ void irc::ParseEnqueueMap::parseNextCommand(irc::Map &map)
 		} else if (it.getCommandName() == "pic") {
 			std::cout << "c une incantation" << std::endl;
 			incantPlayer(map, it);
-		} else if (it.getCommandName() == "pbc") {
-			std::cout << "c un broadcast" << std::endl;
-			broadcastPlayer(map, it);
 		}
 		_comm.getEnqueueMap().erase(_comm.getEnqueueMap().begin());
 
@@ -253,15 +257,6 @@ void irc::ParseEnqueueMap::addPlayer(irc::Map &map, const CstringArray &command)
 
 //	if (tmpCommand[0] == 768 || tmpCommand[0] == 256|| tmpCommand[0] == 0 || tmpCommand[0] == 512)
 //		return;
-	bool validTeam = false;
-	for (const auto &it : map.getTeamName()) {
-		if (command.getTeamName() == it)
-			validTeam = true;
-	}
-	if (!validTeam) {
-		std::cout << "[" << RED << "MAP" << RESET << "] invalid teamName [" << command.getTeamName() << "] to create player  [" << tmpCommand[0] << "]" << std::endl;
-		return;
-	}
 	if (command.getTeamName().empty() || map.getGrid().getTextureCharacter().empty() || tmpCommand[0] == 0) {
 		std::cout << "[" << RED << "MAP" << RESET << "] Empty textureMap, not creating character :( teamName [" << command.getTeamName() << "] and id [" << tmpCommand[0] << "]" << std::endl;
 
@@ -479,6 +474,7 @@ std::vector<std::string> &irc::ParseEnqueueMap::getTeam()
 	_comm.writeOnServer("tna");
 
 	usleep(10000);
+	std::cout << "coudzedzedcou" << std::endl;
 	int i = 1;
 	while (i != 0) {
 		_comm.lockMap();
@@ -519,15 +515,5 @@ void irc::ParseEnqueueMap::incantPlayer(irc::Map &map, const CstringArray &comma
 		map.getCharacterMap().at(command.getCommand()[i]).setPlayerIncant(tmpFreq, 300, tmpPos);
 		++i;
 	}
-}
 
-void irc::ParseEnqueueMap::broadcastPlayer(irc::Map &map, const CstringArray &command)
-{
-	int tmpFreq = map.getComm().getFreq();
-		std::cout << "je boucle" << std::endl;
-		if (map.getCharacterMap().find((command.getCommand()[0])) == map.getCharacterMap().end()) {
-			std::cout << "[" << RED << "MAP"<< RESET << "] did not found player " << command.getCommand()[0] << ", exit broadcastPLayer"<< std::endl;
-		std::cout << "[" << GREEN << "MAP" << RESET << "] broadcast of player [" << command.getCommand()[0] << "]" << std::endl;
-		map.getCharacterMap().at(command.getCommand()[0]).setPlayerBroadcast(tmpFreq, 7);
-	}
 }

@@ -38,19 +38,25 @@ void Grid::loadingDisplay( sf::Vector2f &mapSize, sf::RenderWindow &window)
 	float totalNb = (mapSize.x * mapSize.y);
 	sf::Texture texture;
 	sf::Sprite sprite;
+	sf::Texture texture_bck;
+	sf::Sprite bck;
 
 	sf::RectangleShape totalRect;
 	totalRect.setFillColor(sf::Color(0, 80, 0, 122));
 	totalRect.setSize(sf::Vector2f(500, 50));
-	totalRect.setPosition(100, 540);
+	totalRect.setPosition(290, 490);
 
 	sf::RectangleShape currentRect;
 	currentRect.setFillColor(sf::Color::Green);
 	currentRect.setSize(sf::Vector2f(0, 50));
-	currentRect.setPosition(100, 540);
+	currentRect.setPosition(290, 490);
 
 	texture.loadFromFile("extra/game/ronflex.png");
 	sprite.setTexture(texture);
+
+	texture_bck.loadFromFile("extra/game/loading_bck.png");
+	bck.setTexture(texture_bck);
+	bck.setScale(sf::Vector2f(1.5, 1.5));
 
 	font.loadFromFile("extra/pokemon.ttf");
 	text.setFont(font);
@@ -60,6 +66,7 @@ void Grid::loadingDisplay( sf::Vector2f &mapSize, sf::RenderWindow &window)
 	while (!_ready) {
 		text.setString("Creating cells : " + std::to_string(_blocNumber) + " / " + total);
 		currentRect.setSize(sf::Vector2f((_blocNumber / totalNb) * 500, 50));
+		window.draw(bck);
 		window.draw(sprite);
 		window.draw(totalRect);
 		window.draw(currentRect);

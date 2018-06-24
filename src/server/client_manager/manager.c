@@ -17,105 +17,88 @@
 
 static const command_t COMMAND[] = {
 	{
-		name: "Forward",
-		function: &forward_cmd,
-		verify: NULL,
-		time_unit: 7,
-		argument: false
+		.name = "Forward",
+		.function = &forward_cmd,
+		.verify = NULL,
+		.time_unit = 7,
+		.argument = false
 	}, {
-		name: "Right",
-		function: &right_cmd,
-		verify: NULL,
-		time_unit: 7,
-		argument: false
+		.name = "Right",
+		.function = &right_cmd,
+		.verify = NULL,
+		.time_unit = 7,
+		.argument = false
 	}, {
-		name: "Left",
-		function: &left_cmd,
-		verify: NULL,
-		time_unit: 7,
-		argument: false
+		.name = "Left",
+		.function = &left_cmd,
+		.verify = NULL,
+		.time_unit = 7,
+		.argument = false
 	}, {
-		name: "Look",
-		function: &look_cmd,
-		verify: NULL,
-		time_unit: 7,
-		argument: false
+		.name = "Look",
+		.function = &look_cmd,
+		.verify = NULL,
+		.time_unit = 7,
+		.argument = false
 	}, {
-		name: "Inventory",
-		function: &inventory_cmd,
-		verify: NULL,
-		time_unit: 1,
-		argument: false
+		.name = "Inventory",
+		.function = &inventory_cmd,
+		.verify = NULL,
+		.time_unit = 1,
+		.argument = false
 	}, {
-		name: "Broadcast",
-		function: &broadcast_cmd,
-		verify: NULL,
-		time_unit: 7,
-		argument: true
+		.name = "Broadcast",
+		.function = &broadcast_cmd,
+		.verify = NULL,
+		.time_unit = 7,
+		.argument = true
 	}, {
-		name: "Connect_nbr",
-		function: &connect_nbr_cmd,
-		verify: NULL,
-		time_unit: 0,
-		argument: false
+		.name = "Connect_nbr",
+		.function = &connect_nbr_cmd,
+		.verify = NULL,
+		.time_unit = 0,
+		.argument = false
 	}, {
-		name: "Fork",
-		function: &fork_cmd,
-		verify: NULL,
-		time_unit: 42,
-		argument: false
+		.name = "Fork",
+		.function = &fork_cmd,
+		.verify = NULL,
+		.time_unit = 42,
+		.argument = false
 	}, {
-		name: "Eject",
-		function: &eject_cmd,
-		verify: NULL,
-		time_unit: 7,
-		argument: false
+		.name = "Eject",
+		.function = &eject_cmd,
+		.verify = NULL,
+		.time_unit = 7,
+		.argument = false
 	}, {
-		name: "Take",
-		function: &take_cmd,
-		verify: NULL,
-		time_unit: 7,
-		argument: true
+		.name = "Take",
+		.function = &take_cmd,
+		.verify = NULL,
+		.time_unit = 7,
+		.argument = true
 	}, {
-		name: "Set",
-		function: &set_cmd,
-		verify: NULL,
-		time_unit: 7,
-		argument: true
+		.name = "Set",
+		.function = &set_cmd,
+		.verify = NULL,
+		.time_unit = 7,
+		.argument = true
 	}, {
-		name: "Incantation",
-		function: &incantation_cmd,
-		verify: &incantation_verify,
-		time_unit: 300,
-		argument: false
-	},
-#ifdef DEBUG
-	{
-		name: "Pos",
-		function: &pos,
-		verify: NULL,
-		time_unit: 1,
-		argument: false
+		.name = "Incantation",
+		.function = &incantation_cmd,
+		.verify = &incantation_verify,
+		.time_unit = 300,
+		.argument = false
 	}, {
-		name: "Setpos",
-		function: &setpos_cmd,
-		verify: NULL,
-		time_unit: 1,
-		argument: false
-	},
-#endif
-	{
-		name: NULL,
-		function: NULL,
-		verify: NULL,
-		time_unit: 0,
-		argument: false
+		.name = NULL,
+		.function = NULL,
+		.verify = NULL,
+		.time_unit = 0,
+		.argument = false
 	}
 };
 
-static void check_command(server_t *server, client_t *client, uint32_t i,
-	char *arg
-)
+void check_command(server_t *server, client_t *client, uint32_t i,
+	char *arg)
 {
 	if (client->status == EGG) {
 		debug(INFO "'%i' is an EGG, can't do action\n", client->fd);
@@ -134,7 +117,7 @@ static void check_command(server_t *server, client_t *client, uint32_t i,
 		COMMAND[i].function);
 }
 
-static void add_gui_client(server_t *server, client_t *client)
+void add_gui_client(server_t *server, client_t *client)
 {
 	client_t **list = &server->clients;
 
@@ -155,7 +138,7 @@ static void add_gui_client(server_t *server, client_t *client)
 	}
 }
 
-static int set_client_team(server_t *server, client_t *client, char *command)
+int set_client_team(server_t *server, client_t *client, char *command)
 {
 	if (!strcmp(command, "gui"))
 		add_gui_client(server, client);
@@ -167,7 +150,7 @@ static int set_client_team(server_t *server, client_t *client, char *command)
 	return 0;
 }
 
-static int command_manager(server_t *server, client_t *client, char *command)
+int command_manager(server_t *server, client_t *client, char *command)
 {
 	size_t tmp_len = strlen(command);
 	char *name = strtok(command, " \t");
@@ -187,48 +170,4 @@ static int command_manager(server_t *server, client_t *client, char *command)
 	}
 	add_to_queue(client, "ko\n");
 	return 1;
-}
-
-static int read_client(client_t *client)
-{
-	char buff[READ_SIZE + 1];
-	ssize_t status = read(client->fd, buff, READ_SIZE);
-
-	if (status < 1)
-		return 1;
-	buff[status] = 0;
-	if (client->buff_len + status >= READ_SIZE) {
-		client->buff_size += READ_SIZE;
-		client->buff = realloc(client->buff, client->buff_size + 1);
-	}
-	strcat(client->buff, buff);
-	client->buff_len += status;
-	return 0;
-}
-
-int pollin_client(server_t *server, client_t *client)
-{
-	int status = read_client(client);
-	char *end;
-	char *cmd;
-	size_t off = 0;
-
-	if (status != 0)
-		return 1;
-	cmd = client->buff;
-	end = strchr(cmd, '\n');
-	while (end) {
-		*end = 0;
-		command_manager(server, client, cmd);
-		off += end - cmd + 1;
-		cmd = end + 1;
-		end = strchr(cmd, '\n');
-	}
-	*client->buff = 0;
-	if (client->buff[off]) {
-		memmove(client->buff, client->buff + off,
-			client->buff_len - off + 1);
-		client->buff_len -= off;
-	}
-	return 0;
 }

@@ -41,8 +41,7 @@ static void update_look_pos(int dx, int dy, pos_t *pos, pos_t *size)
 }
 
 static char *look_horizontal(map_t *map, pos_t pos, look_opt_t opt,
-	uint32_t currv
-)
+	uint32_t currv)
 {
 	char *response = strdup("");
 	char *tmp = NULL;
@@ -75,8 +74,7 @@ static char *look_horizontal(map_t *map, pos_t pos, look_opt_t opt,
 * @return
 */
 static char *look_vertical(map_t *map, pos_t pos, look_opt_t opt,
-	uint32_t currv
-)
+	uint32_t currv)
 {
 	char *response = strdup("");
 	char *tmp = NULL;
@@ -106,32 +104,27 @@ static char *look_vertical(map_t *map, pos_t pos, look_opt_t opt,
 * @param client
 * @param arg
 */
-void look_cmd(server_t *server, client_t *client,
-	__attribute__((unused)) char *arg
-)
+void look_cmd(server_t *server, client_t *clt,
+	__attribute__((unused)) char *arg)
 {
 	char *response = strdup("[");
 	char *tmp = NULL;
-	int dx = (client->user.orientation % 2 != 0) ?
-		-(client->user.orientation - 2) : 0;
-	int dy = (client->user.orientation % 2 == 0) ?
-		client->user.orientation - 1 : 0;
-	look_opt_t opt = {client->user.vision, 0};
+	int dx = (clt->user.orientation % 2 != 0) ?
+		-(clt->user.orientation - 2) : 0;
+	int dy = (clt->user.orientation % 2 == 0) ?
+		clt->user.orientation - 1 : 0;
+	look_opt_t opt = {clt->user.vision, (dx) ? dx : dy};
 
-	response = add_objects(response,
-		&server->map.map[client->entity->pos.y][client->entity->pos.x]);
+	response = add_objects(response, &server->map.
+		map[clt->entity->pos.y][clt->entity->pos.x]);
 	response = concat(response, ",");
-	if (dx) {
-		opt.d = dx;
-		tmp = look_horizontal(&server->map, client->entity->pos, opt,
-			1);
-	} else if (dy) {
-		opt.d = dy;
-		tmp = look_vertical(&server->map, client->entity->pos, opt, 1);
-	}
+	if (dx)
+		tmp = look_horizontal(&server->map, clt->entity->pos, opt, 1);
+	else if (dy)
+		tmp = look_vertical(&server->map, clt->entity->pos, opt, 1);
 	response = concat(response, tmp);
 	free(tmp);
 	response = concat(response, " ]\n");
-	add_to_queue(client, response);
+	add_to_queue(clt, response);
 	free(response);
 }

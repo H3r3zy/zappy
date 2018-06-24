@@ -201,6 +201,9 @@ uint32_t read_uint32(char *buffer, int *idx);
 size_t char_nb(const char *str, char c);
 char *concat(char *s1, char *s2);
 
+int read_client(client_t *client);
+int command_manager(server_t *server, client_t *client, char *command);
+
 #define POS(c) (c)->entity->pos
 #define OR(c) (c)->user.orientation
 

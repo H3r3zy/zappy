@@ -34,6 +34,7 @@ SERVER_SRC	=	$(SERVER_DIR)/ai_protocol/broadcast.c		\
 			$(SERVER_DIR)/client_manager/leave.c		\
 			$(SERVER_DIR)/client_manager/manager.c		\
 			$(SERVER_DIR)/client_manager/msg_queue.c	\
+			$(SERVER_DIR)/client_manager/read.c		\
 			$(SERVER_DIR)/client_manager/orientation.c	\
 			$(SERVER_DIR)/client_manager/teams.c		\
 			$(SERVER_DIR)/debug.c				\

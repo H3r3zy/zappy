@@ -16,13 +16,11 @@
 static void generate_resource(server_t *server)
 {
 	uint32_t density = server->map.size.x * server->map.size.y /
-		(sqrt(server->map.size.x * server->map.size.y) * 7) *
+		(sqrt(server->map.size.x * server->map.size.y) * RESOURCE_NB) *
 		server->client_nb;
 	pos_t pos;
 	entity_type_t id;
 
-	if (density < 0 && server->client_nb)
-		density = 1;
 	if (density > 100000)
 		density = 100000;
 	debug_if(density != 0, GINFO "I'll drop %u resource(s)\n", density);

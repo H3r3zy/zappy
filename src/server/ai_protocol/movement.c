@@ -11,6 +11,28 @@
 #include <server.h>
 #include <gui_command.h>
 
+static void process_movement(server_t *srv, client_t *clt)
+{
+	switch (clt->user.orientation) {
+	case TOP:
+		clt->entity->pos.y = (!clt->entity->pos.y) ?
+			srv->map.size.y - 1 : clt->entity->pos.y - 1;
+		break;
+	case RIGHT:
+		clt->entity->pos.x = (clt->entity->pos.x ==
+			srv->map.size.x - 1) ? 0 : clt->entity->pos.x + 1;
+		break;
+	case BOTTOM:
+		clt->entity->pos.y = (clt->entity->pos.y ==
+			srv->map.size.y - 1) ? 0 : clt->entity->pos.y + 1;
+		break;
+	case LEFT:
+		clt->entity->pos.x = (!clt->entity->pos.x)
+			? srv->map.size.x - 1 : clt->entity->pos.x - 1;
+		break;
+	}
+}
+
 /**
 * Move up one tile
 * @param server
@@ -18,32 +40,10 @@
 * @param arg
 */
 void forward_cmd(server_t *server, client_t *client,
-	__attribute__((unused)) char *arg
-)
+	__attribute__((unused)) char *arg)
 {
 	remove_player_from_map(&server->map, client->entity);
-	switch (client->user.orientation) {
-	case TOP:
-		client->entity->pos.y =
-			(!client->entity->pos.y) ? server->map.size.y - 1 :
-				client->entity->pos.y - 1;
-		break;
-	case RIGHT:
-		client->entity->pos.x =
-			(client->entity->pos.x == server->map.size.x - 1) ? 0 :
-				client->entity->pos.x + 1;
-		break;
-	case BOTTOM:
-		client->entity->pos.y =
-			(client->entity->pos.y == server->map.size.y - 1) ? 0 :
-				client->entity->pos.y + 1;
-		break;
-	case LEFT:
-		client->entity->pos.x =
-			(!client->entity->pos.x) ? server->map.size.x - 1 :
-				client->entity->pos.x - 1;
-		break;
-	}
+	process_movement(server, client);
 	add_player_to_map(&server->map, client->entity);
 	gui_pmv(server, client);
 	add_to_queue(client, "ok\n");
@@ -56,8 +56,7 @@ void forward_cmd(server_t *server, client_t *client,
 * @param arg
 */
 void left_cmd(server_t *server, client_t *client,
-	__attribute__((unused)) char *arg
-)
+	__attribute__((unused)) char *arg)
 {
 	if (client->user.orientation != TOP)
 		--client->user.orientation;
@@ -74,8 +73,7 @@ void left_cmd(server_t *server, client_t *client,
 * @param arg
 */
 void right_cmd(server_t *server, client_t *client,
-	__attribute__((unused)) char *arg
-)
+	__attribute__((unused)) char *arg)
 {
 	if (client->user.orientation != LEFT)
 		++client->user.orientation;
@@ -86,23 +84,11 @@ void right_cmd(server_t *server, client_t *client,
 }
 
 void pos(__attribute__((unused)) server_t *server, client_t *client,
-	__attribute__((unused)) char *arg
-)
+	__attribute__((unused)) char *arg)
 {
 	char response[13] = {0};
 
 	snprintf(response, 13, "%d;%d (%d)\n", client->entity->pos.x,
 		client->entity->pos.y, client->user.orientation);
 	add_to_queue(client, response);
-}
-
-void setpos_cmd(server_t *server, client_t *client, char *arg)
-{
-	uint32_t dx = atoi(arg);
-	uint32_t dy = atoi(strchr(arg, ';') + 1);
-
-	remove_player_from_map(&server->map, client->entity);
-	client->entity->pos.x = dx;
-	client->entity->pos.y = dy;
-	add_player_to_map(&server->map, client->entity);
 }

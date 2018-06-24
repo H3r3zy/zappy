@@ -43,7 +43,8 @@ static void lvlup(cell_t *cell)
 		client = ((client_t *)cl->ptr);
 		++client->user.level;
 		++client->user.vision;
-		debug(GINFO "'%i' lvlup: %i\n", client->fd, client->user.level);
+		debug(GINFO "'%i' lvlup: %i\n", client->fd,
+			client->user.level);
 	}
 }
 
@@ -55,8 +56,7 @@ static void remove_stones(map_t *map, pos_t *pos, uint32_t level)
 }
 
 bool incantation_verify(server_t *server, client_t *client,
-	__attribute__((unused)) char *arg
-)
+	__attribute__((unused)) char *arg)
 {
 	cell_t *cell = &server->map.map[client->entity->pos.y]
 		[client->entity->pos.x];
@@ -78,8 +78,7 @@ bool incantation_verify(server_t *server, client_t *client,
 }
 
 void incantation_cmd(server_t *server, client_t *client,
-	__attribute__((unused)) char *arg
-)
+	__attribute__((unused)) char *arg)
 {
 	cell_t *cell = &server->map.map[client->entity->pos.y]
 		[client->entity->pos.x];

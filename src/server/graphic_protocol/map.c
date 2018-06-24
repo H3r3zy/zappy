@@ -63,7 +63,7 @@ static void print_map_cell(server_t *server, uint32_t x, uint32_t y)
 */
 void gui_bct(server_t *server, char *arg, __attribute__((unused)) bool *status)
 {
-	char *err;
+	char *err = 0;
 	long x = (arg) ? strtol(arg, &err, 10) : -1;
 	long y = ((!*err || *err == ' ') && x > -1 && strchr(arg, ' ')) ?
 		strtol(strchr(arg, ' ') + 1, &err, 10) : -1;

@@ -51,9 +51,4 @@ void eject_cmd(server_t *server, client_t *client, char *arg);
 
 bool incantation_verify(server_t *server, client_t *client, char *arg);
 
-#ifdef DEBUG
-void setpos_cmd(server_t *server, client_t *client, char *arg);
-void pos(server_t *server, client_t *client, char *arg);
-#endif
-
 #endif //PSU_ZAPPY_2017_COMMAND_H

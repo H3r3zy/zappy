@@ -56,37 +56,34 @@ static int read_gui(gui_t *gui)
 	return 0;
 }
 
+static void shift_gui_buff(server_t *server, size_t off)
+{
+	if (server->gui.buff[off]) {
+		memmove(server->gui.buff, server->gui.buff + off,
+			server->gui.buff_len - off + 1);
+		server->gui.buff_len -= off;
+	}
+}
+
 int pollin_gui(server_t *server)
 {
 	int status = read_gui(&server->gui);
-	char *end;
+	char *cmdend;
 	char *cmd;
 	size_t off = 0;
 
 	if (status != 0)
 		return 1;
 	cmd = server->gui.buff;
-	end = strchr(cmd, '\n');
-	while (end) {
-		*end = 0;
+	cmdend = strchr(cmd, '\n');
+	while (cmdend) {
+		*cmdend = 0;
 		gui_command_manager(server, cmd);
-		off += end - cmd + 1;
-		cmd = end + 1;
-		end = strchr(cmd, '\n');
+		off += cmdend - cmd + 1;
+		cmd = cmdend + 1;
+		cmdend = strchr(cmd, '\n');
 	}
 	*server->gui.buff = 0;
-	if (server->gui.buff[off]) {
-		memmove(server->gui.buff, server->gui.buff + off,
-			server->gui.buff_len - off + 1);
-		server->gui.buff_len -= off;
-	}
+	shift_gui_buff(server, off);
 	return 0;
-}
-
-void gui_continue_commands(server_t *server)
-{
-	for (gui_command_t *cmd = get_commands(); cmd->name; cmd++) {
-		if (cmd->status)
-			(*cmd->function)(server, cmd->arg, &cmd->status);
-	}
 }

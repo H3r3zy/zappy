@@ -29,7 +29,7 @@ static client_t *get_client_by_id(server_t *server, size_t id)
 */
 void gui_ppo(server_t *server, char *arg, __attribute__((unused)) bool *status)
 {
-	char *err;
+	char *err = NULL;
 	long id = (arg) ? strtol(arg, &err, 10) : 0;
 	static char buff[22] = "ppo clID posX posY\n";
 	int idx = 4;
@@ -57,7 +57,7 @@ void gui_ppo(server_t *server, char *arg, __attribute__((unused)) bool *status)
 */
 void gui_plv(server_t *server, char *arg, __attribute__((unused)) bool *status)
 {
-	char *err;
+	char *err = NULL;
 	long id = (arg) ? strtol(arg, &err, 10) : 0;
 	static char buff[16] = "plv clID plvl\n";
 	client_t *clt = (!*err && id > 0)
@@ -98,7 +98,7 @@ static void write_pin_clt_infos(client_t *clt, char buff[55],
 */
 void gui_pin(server_t *server, char *arg, __attribute__((unused)) bool *status)
 {
-	char *err;
+	char *err = NULL;
 	long id = (arg) ? strtol(arg, &err, 10) : 0;
 	static char buff[55] = "pin clid posx posy food line dera sibu mend "
 		"phir thys\n";

@@ -63,6 +63,8 @@ static void shift_gui_buff(server_t *server, size_t off)
 			server->gui.buff_len - off + 1);
 		server->gui.buff_len -= off;
 	}
+	else
+		server->gui.buff_len = 0;
 }
 
 int pollin_gui(server_t *server)

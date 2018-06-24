@@ -6,6 +6,7 @@
 */
 
 #include <string.h>
+#include <debug.h>
 #include "server.h"
 
 /**

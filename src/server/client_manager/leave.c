@@ -7,6 +7,7 @@
 
 #include <unistd.h>
 #include <stdlib.h>
+#include "server.h"
 #include "gui_command.h"
 #include "debug.h"
 #include "egg.h"
@@ -14,11 +15,14 @@
 static void drop_player_ressource(server_t *server, client_t *client)
 {
 	for (uint i = 0; i < RESOURCE_NB; ++i) {
+		if (client->user.bag[i] > 100)
+			client->user.bag[i] = 100;
 		while (client->user.bag[i]) {
 			update_resource(&server->map, &client->entity->pos, i,
 				1);
 			gui_pdr(server, client, i);
 			client->user.bag[i]--;
+			server->map.stock[i]++;
 		}
 	}
 }

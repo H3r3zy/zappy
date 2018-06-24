@@ -204,6 +204,7 @@ void irc::ParseEnqueueMap::parseNextCommand(irc::Map &map)
 		std::cout << "Player number :" << tmpCommand[0] << " Position en X " << tmpCommand[1] << " Position en Y " << tmpCommand[2] << " Orientation "  << tmpCommand[3] << " level " << tmpCommand[4] << " team name " << it.getTeamName() << std::endl;*/
 
 		if (it.getCommandName() == "pnw") {
+			std::cout << "je vais creer un joueur" << std::endl;
 			addPlayer(map, it);
 		} else if (it.getCommandName() == "pdi") {
 			deletePlayer(map, it);

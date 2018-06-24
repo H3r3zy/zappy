@@ -82,6 +82,15 @@ void irc::Map::loopDisplay()
 		//std::cout << "je boucle " << std::endl;
 		_enqueueMap.parseNextCommand(*this);
 
+	/*	for (const auto &it : _comm.getEnqueueMap()) {
+			std::cout << "Nom de la commande [" << it.getCommandName() << "]" << std::endl;
+			auto tmp = it.getCommand();
+			for (const auto &it2 : tmp) {
+				std::cout << "[" << it2 << "] ";
+			}
+			std::cout << std::endl;
+			std::cout << std::endl;
+		}*/
 		//for (auto &it : _teamName) {
 		//	std::cout << it << std::endl;
 		//}
@@ -89,9 +98,11 @@ void irc::Map::loopDisplay()
 		/* Global Display */
 		_gameWindow.setView(_camera[MAP]);
 		_grid.displayGlobalGrid(_gameWindow, _camera[MAP]);
+		_comm.lockMap();
 		for (auto &it : _character) {
 			_gameWindow.draw(it.second.getCharacter());
 		}
+		_comm.unlockMap();
 
 		/* HUD DISPLAY */
 		_gameWindow.setView(_camera[HUD]);

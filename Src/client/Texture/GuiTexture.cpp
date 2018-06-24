@@ -52,8 +52,8 @@ void irc::GuiTexture::updateServerData()
 	int ms = end - begin;
 	if (ms > 700) {
 		begin = end;
-		_base._comm.writeOnServer("nbu");
-		_base._comm.writeOnServer("nbt");
+	//	_base._comm.writeOnServer("nbu");
+	//	_base._comm.writeOnServer("nbt");
 
 	}
 	_base._comm.lockGui();

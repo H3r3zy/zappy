@@ -14,7 +14,7 @@
   <component name="ChangeListManager">
     <list default="true" id="2c4cfc34-0a8a-4123-83de-91ed4979ab16" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/extra/game/ronflex.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/Src/ParseEnqueueMap.cpp" afterPath="$PROJECT_DIR$/Src/ParseEnqueueMap.cpp" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/CMakeFiles/" />
@@ -31,8 +31,8 @@
       <file leaf-file-name="ParseEnqueueMap.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Src/ParseEnqueueMap.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="579">
-              <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+            <state relative-caret-position="676">
+              <caret line="546" column="67" lean-forward="false" selection-start-line="546" selection-start-column="67" selection-end-line="546" selection-end-column="67" />
               <folding />
             </state>
           </provider>
@@ -186,7 +186,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-44" />
     <option name="width" value="1272" />
     <option name="height" value="692" />
@@ -315,15 +315,15 @@
       <workItem from="1529809321657" duration="257000" />
       <workItem from="1529809959459" duration="4852000" />
       <workItem from="1529840721638" duration="11370000" />
-      <workItem from="1529853403809" duration="441000" />
+      <workItem from="1529853403809" duration="1003000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="147790000" />
+    <option name="totallyTimeSpent" value="148352000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-44" y="0" width="1920" height="1044" extended-state="7" />
+    <frame x="-44" y="0" width="1920" height="1044" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.10448549" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -704,8 +704,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Src/ParseEnqueueMap.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="579">
-          <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+        <state relative-caret-position="676">
+          <caret line="546" column="67" lean-forward="false" selection-start-line="546" selection-start-column="67" selection-end-line="546" selection-end-column="67" />
           <folding />
         </state>
       </provider>

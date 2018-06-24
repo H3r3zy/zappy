@@ -544,7 +544,7 @@ void irc::ParseEnqueueMap::broadcastPlayer(irc::Map &map, const CstringArray &co
 {
 	int tmpFreq = map.getComm().getFreq();
 	std::cout << "je boucle" << std::endl;
-	if (map.getCharacterMap().find((command.getCommand()[0])) == map.getCharacterMap().end()) {
+	if (map.getCharacterMap().find((command.getCommand()[0])) != map.getCharacterMap().end()) {
 		std::cout << "[" << RED << "MAP"<< RESET << "] did not found player " << command.getCommand()[0] << ", exit broadcastPLayer"<< std::endl;
 		std::cout << "[" << GREEN << "MAP" << RESET << "] broadcast of player [" << command.getCommand()[0] << "]" << std::endl;
 		map.getCharacterMap().at(command.getCommand()[0]).setPlayerBroadcast(tmpFreq, 7);

@@ -81,6 +81,7 @@ void irc::ParseEnqueueMap::fillMap(Map &map, sf::Vector2f &mapSize)
 			if (it.getCommandName() == "bct") {
 				//std::cout << "Coammnde Name [" << it.getCommandName() << "]" << std::endl;
 				auto tmpPrint = it.getCommand();
+				if (tmpPrint[0] < mapSize.x && tmpPrint[1] < mapSize.y) {
 //				if (tmpPrint.size() == 9)
 					//std::cout << "Et son message est :" << tmpPrint[0] << " " << tmpPrint[1] << " " << tmpPrint[2] << " " << tmpPrint[3] << " " << tmpPrint[4] << " " << tmpPrint[5] << " " << tmpPrint[6] << " " << tmpPrint[7]<< " " << tmpPrint[8] << std::endl;
 				//std::cout << "Ma cellule est en X " << _grid.getCell(tmpPrint[0], tmpPrint[1])->getPosition().x << " Y " << _grid.getCell(tmpPrint[0], tmpPrint[1])->getPosition().y << std::endl;
@@ -115,6 +116,7 @@ void irc::ParseEnqueueMap::fillMap(Map &map, sf::Vector2f &mapSize)
 					_comm.unlockMap();
 					end = true;
 					break;
+				}
 				}
 			} else {
 				save.push_back(it);

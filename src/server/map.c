@@ -19,9 +19,9 @@
 * @param t
 * @param n
 */
-void update_resource(map_t *map, pos_t pos, entity_type_t t, int n)
+void update_resource(map_t *map, pos_t *pos, entity_type_t t, int n)
 {
-	map->map[pos.y][pos.x].items[t] += n;
+	map->map[pos->y][pos->x].items[t] += n;
 	map->stock[t] += n;
 }
 
@@ -32,7 +32,7 @@ void update_resource(map_t *map, pos_t pos, entity_type_t t, int n)
 */
 void init_map(map_t *map)
 {
-	float density = 100.0f;
+	float density = 5.0f;
 	uint32_t elements = (uint32_t)(map->size.x * map->size.y * density);
 	pos_t pos;
 
@@ -45,7 +45,7 @@ void init_map(map_t *map)
 	srand(time(NULL));
 	while (elements--) {
 		pos = (pos_t){rand() % map->size.x, rand() % map->size.y};
-		update_resource(map, pos, rand() % RESOURCE_NB, 1);
+		update_resource(map, &pos, rand() % RESOURCE_NB, 1);
 	}
 }
 
@@ -58,19 +58,18 @@ void add_player_to_map(map_t *map, entity_t *entity)
 {
 	entity_t **front = &map->map[entity->pos.y][entity->pos.x].players;
 
-	debug(INFO "Add entity id %d on map\n", entity->id);
 	entity->prev = NULL;
 	entity->next = *front;
 	if (*front)
 		entity->next->prev = entity;
 	*front = entity;
-
-	/*new->prev = NULL;
-	new->next = server->clients;
-	if (new->next)
-		new->next->prev = new;
-	server->clients = new;*/
 }
+/* LINE 65 ?
+new->prev = NULL;
+new->next = server->clients;
+if (new->next)
+	new->next->prev = new;
+server->clients = new;*/
 
 /**
 * Remove a player from the cell at the pos of the entity
@@ -81,16 +80,13 @@ void remove_player_from_map(map_t *map, entity_t *entity)
 {
 	entity_t **front = &map->map[entity->pos.y][entity->pos.x].players;
 
-	debug(INFO "Remove entity : id = %d\n", entity->id);
 	if (*front == entity) {
 		*front = (*front)->next;
 		if (*front)
 			(*front)->prev = NULL;
 	} else {
-		debug(INFO "entity->prev : %p\n", entity->prev);
 		if ((entity)->prev)
 			(entity)->prev->next = (entity)->next;
-		debug(INFO "entity->next : %p\n", entity->next);
 		if ((entity)->next)
 			(entity)->next->prev = (entity)->prev;
 	}

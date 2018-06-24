@@ -28,8 +28,8 @@ static bool eject_client(server_t *server, client_t *client, pos_t *ejected_to,
 	client_t *tmp;
 	bool found = false;
 
-	for (entity_t *en = server->map.map[POS(client).y][POS(
-		client).x].players; en;) {
+	for (entity_t *en =
+		server->map.map[POS(client).y][POS(client).x].players; en;) {
 		next = en->next;
 		tmp = en->ptr;
 		if (tmp != client) {
@@ -53,7 +53,7 @@ static bool eject_client(server_t *server, client_t *client, pos_t *ejected_to,
 * @param arg
 */
 void eject_cmd(server_t *server, client_t *client,
-	char *__attribute__((unused))arg
+	__attribute__((unused)) char *arg
 )
 {
 	pos_t ejected_to;

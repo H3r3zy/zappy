@@ -8,8 +8,8 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdbool.h>
-#include <server.h>
-#include <gui_command.h>
+#include "server.h"
+#include "gui_command.h"
 #include "debug.h"
 #include "egg.h"
 #include "scheduler.h"
@@ -27,13 +27,14 @@ static bool check_task(server_t *server, client_t *client, task_t *task,
 {
 	if (!task)
 		return false;
-	if (UNITTOMS(task->time_unit, server->freq) <= now - task->started_time) {
-		//debug("Execute command of %i\n", client->fd);
-		if (task->function) {
-		debug("PLAYER %d executes at pos %d;%d\n", client->entity->id, client->entity->pos.x, client->entity->pos.y);
+	if (UNITTOMS(task->time_unit, server->freq) <=
+		now - task->started_time) {
+		debug("Execute command of %i at %d;%d (%d)\n", client->fd,
+			client->entity->pos.x, client->entity->pos.y,
+			client->user.orientation);
+		if (task->function)
 			task->function(server, client, task->command);
-			}
-		free(task->command);
+	      	free(task->command);
 		free(task);
 		return true;
 	}
@@ -90,7 +91,7 @@ static void schedule_egg(server_t *server, client_t *client, ms_t now)
 	egg_t *egg = get_egg_of(client);
 
 	if (now > egg->started_time + UNITTOMS(EGG_UNIT_TIME, server->freq)) {
-		debug(GINFO "'%i' hatched (%i,%i:%i)\n", client->fd,
+		debug(GINFO "'%i' hatched (%i, %i:%i)\n", client->fd,
 			client->entity->pos.x, client->entity->pos.y,
 			client->user.orientation);
 		remove_egg(egg);
@@ -112,6 +113,7 @@ void scheduler(server_t *server)
 
 	clock_gettime(CLOCK_REALTIME, &spec);
 	now = spec.tv_sec * STOMS + spec.tv_nsec / NTOMS;
+	schedule_resource_generator(server, now);
 	while (client) {
 		if (client->status == EGG) {
 			schedule_egg(server, client, now);

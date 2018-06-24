@@ -35,7 +35,7 @@ void set_cmd(server_t *server, client_t *client, char *arg)
 	debug(INFO "'%i' call Set '%s'\n", client->fd, arg);
 	for (uint32_t i = 0; TYPENAME[i]; i++) {
 		if (!strcasecmp(TYPENAME[i], arg) && client->user.bag[i]) {
-			update_resource(&server->map, client->entity->pos,
+			update_resource(&server->map, &client->entity->pos,
 				i, 1);
 			client->user.bag[i]--;
 			gui_pdr(server, client, i);

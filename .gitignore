@@ -1,17 +1,3 @@
-# Source #
-*.o
-
-# CLION INFOS #
-*.xml
-*.iml
-*.txt
-cmake-build-debug/*
-.idea/fileTemplates/*
-# PYCHARM STUFF #
-__pycache__
-venv
-
-
 *.o
 #*#
 *~
@@ -30,7 +16,6 @@ CMakeCache.txt
 CMakeFiles
 cmake_install.cmake
 *.cbp
-Makefile
 .gui_*
 .save.indie./.ntmcs.filelist
 ./.ntmcs.tmp
@@ -38,8 +23,19 @@ reference
 test?
 test
 build/
-ia.sh
-sh.sh
+# Source #
+*.o
+
+# CLION INFOS #
+*.xml
+*.iml
+*.txt
+cmake-build-debug/*
+.idea/fileTemplates/*
+# PYCHARM STUFF #
+__pycache__
+venv
 callgrind*
 file
-
+urandom_*
+vgcore*

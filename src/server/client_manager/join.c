@@ -48,11 +48,14 @@ static void init_client_data(server_t *server, client_t *client)
 	client->team = NULL;
 	client->user.bag[Food] = START_FOOD;
 	#ifdef DEBUG
-	client->user.bag[Food] = 999999;
+	client->user.bag[Food] = 10;
 	#endif
 	client->user.orientation = (orientation_t)(rand() % 4);
 	client->started_time = 0;
 	client->status = NORMAL;
+	client->buff = calloc(READ_SIZE + 1, 1);
+	client->buff_len = 0;
+	client->buff_size = READ_SIZE + 1;
 }
 
 /**

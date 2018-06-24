@@ -10,11 +10,21 @@
 #include <string.h>
 #include <stdio.h>
 #include <math.h>
-#include <server.h>
-#include <gui_command.h>
-#include "command.h"
-#include "debug.h"
 #include "server.h"
+#include "gui_command.h"
+#include "debug.h"
+#include "command.h"
+
+const char angles[] = {
+	'1',
+	'8',
+	'7',
+	'6',
+	'5',
+	'4',
+	'3',
+	'2',
+};
 
 /**
 * Determine from which tile comes the broadcast message,
@@ -25,22 +35,24 @@
 * @param vf_y
 * @return
 */
-static char calcul_broadcast_tile(orientation_t orientation,
-	int vf_x, int vf_y)
+static char calcul_broadcast_tile(orientation_t orientation, int vf_x,
+	int vf_y
+)
 {
 	int vt_x = (orientation % 2 != 0) ? -(orientation - 2) : 0;
 	int vt_y = (orientation % 2 == 0) ? orientation - 1 : 0;
 	double angle = atan2(vt_y, vt_x) - atan2(vf_y, vf_x);
+	double m;
 
 	if (angle < 0)
 		angle += 2 * M_PI;
 	angle = (angle <= M_PI) ? M_PI - angle : 3 * M_PI - angle;
 	if (angle >= 2 * M_PI - M_PI_8 || angle < M_PI_8)
 		return '1';
-	for (char i = 1; i < 8; i++) {
-		double m = i * M_PI_4;
+	for (short i = 1; i < 8; i++) {
+		m = i * M_PI_4;
 		if (angle >= m - M_PI_8 && angle < m + M_PI_8)
-			return i + '1';
+			return angles[i];
 	}
 	return '1';
 }
@@ -55,8 +67,7 @@ static char calcul_broadcast_tile(orientation_t orientation,
 * @param vf_y
 * @return
 */
-static char get_broadcast_tile(pos_t *from, client_t *clt,
-	int vf_x, int vf_y)
+static char get_broadcast_tile(pos_t *from, client_t *clt, int vf_x, int vf_y)
 {
 	if (from->x == clt->entity->pos.x && from->y == clt->entity->pos.y)
 		return '0';
@@ -78,11 +89,11 @@ void broadcast_cmd(server_t *server, client_t *client, char *arg)
 
 	sprintf(response, "message 0, %s\n", arg);
 	for (client_t *clt = server->clients; clt; clt = clt->next) {
-		if (clt != client) {
-			d.x = MAP_SHORTEST_PATH(
-				POS(clt).x - POS(clt).x, server->map.size.x);
-			d.y = MAP_SHORTEST_PATH(
-				POS(clt).y - POS(clt).y, server->map.size.y);
+		if (clt != client && clt->team) {
+			d.x = MAP_SHORTEST_PATH(POS(clt).x - pos->x,
+				server->map.size.x);
+			d.y = MAP_SHORTEST_PATH(POS(clt).y - pos->y,
+				server->map.size.y);
 			tile = get_broadcast_tile(pos, clt, d.x, d.y);
 			response[8] = tile;
 			add_to_queue(clt, response);

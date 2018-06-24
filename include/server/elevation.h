@@ -12,7 +12,4 @@ typedef u_char elevation_t[8];
 
 extern const elevation_t ELEVATIONS[];
 
-
-
-
-#endif /* ! ELEVATION_H_ */
+#endif /* !ELEVATION_H_ */

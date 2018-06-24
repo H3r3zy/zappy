@@ -10,21 +10,21 @@
 #include "debug.h"
 #include "server.h"
 
-gui_command_t *get_commands()
+gui_command_t *get_commands(void)
 {
 	static gui_command_t commands[] = {
-		{"msz", &gui_msz, has_arg: false, status: false, arg: NULL},
-		{"bct", &gui_bct, has_arg: true, status: false, arg: NULL},
-		{"mct", &gui_mct, has_arg: false, status: false, arg: NULL},
-		{"ppo", &gui_ppo, has_arg: true, status: false, arg: NULL},
-		{"plv", &gui_plv, has_arg: true, status: false, arg: NULL},
-		{"pin", &gui_pin, has_arg: true, status: false, arg: NULL},
-		{"nbu", &gui_nbu, has_arg: false, status: false, arg: NULL},
-		{"nbt", &gui_nbt, has_arg: false, status: false, arg: NULL},
-		{"nbr", &gui_nbr, has_arg: false, status: false, arg: NULL},
-		{"sgt", &gui_sgt, has_arg: false, status: false, arg: NULL},
-		{"sst", &gui_sst, has_arg: true, status: false, arg: NULL},
-		{"tna", &gui_tna, has_arg: false, status: false, arg: NULL},
+		{"msz", &gui_msz, false, false, NULL},
+		{"bct", &gui_bct, true, false, NULL},
+		{"mct", &gui_mct, false, false, NULL},
+		{"ppo", &gui_ppo, true, false, NULL},
+		{"plv", &gui_plv, true, false, NULL},
+		{"pin", &gui_pin, true, false, NULL},
+		{"nbu", &gui_nbu, false, false, NULL},
+		{"nbt", &gui_nbt, false, false, NULL},
+		{"nbr", &gui_nbr, false, false, NULL},
+		{"sgt", &gui_sgt, false, false, NULL},
+		{"sst", &gui_sst, true, false, NULL},
+		{"tna", &gui_tna, false, false, NULL},
 		{NULL, NULL, false, false, NULL}
 	};
 
@@ -36,7 +36,7 @@ static void check_gui_command(server_t *server, gui_command_t *command,
 {
 	if (command->has_arg && !arg) {
 		debug(INFO "%s need argument\n", command->name);
-		add_to_gui_queue(&server->gui, "ko" -5, 3);
+		add_to_gui_queue(&server->gui, GUI_KO, 3);
 		return;
 	}
 	(*command->function)(server, arg, &command->status);
@@ -58,5 +58,13 @@ void gui_command_manager(server_t *server, char *command)
 			return;
 		}
 	}
-	add_to_gui_queue(&server->gui, "ko" -5, 3);
+	add_to_gui_queue(&server->gui, GUI_KO, 3);
+}
+
+void gui_continue_commands(server_t *server)
+{
+	for (gui_command_t *cmd = get_commands(); cmd->name; cmd++) {
+		if (cmd->status)
+			(*cmd->function)(server, cmd->arg, &cmd->status);
+	}
 }

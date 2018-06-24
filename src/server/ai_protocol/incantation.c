@@ -24,7 +24,6 @@ static bool can_do_incantation(client_t *client, cell_t *cell)
 
 	for (uint32_t i = 0; i < RESOURCE_NB; i++) {
 		if (cell->items[i] != ELEVATIONS[client->user.level - 1][i]) {
-			debug(INFO "%i failed: %i instead of %i\n", i, cell->items[i], ELEVATIONS[client->user.level - 1][i]);
 			return false;
 		}
 	}
@@ -44,20 +43,20 @@ static void lvlup(cell_t *cell)
 		client = ((client_t *)cl->ptr);
 		++client->user.level;
 		++client->user.vision;
-		debug(GINFO "'%i' lvlup: %i\n", client->fd, client->user.level);
+		debug(GINFO "'%i' lvlup: %i\n", client->fd,
+			client->user.level);
 	}
 }
 
 static void remove_stones(map_t *map, pos_t *pos, uint32_t level)
 {
 	for (uint32_t i = 0; i < RESOURCE_NB; i++) {
-		update_resource(map, *pos, i, ELEVATIONS[level - 1][i] * -1);
+		update_resource(map, pos, i, ELEVATIONS[level - 1][i] * -1);
 	}
 }
 
 bool incantation_verify(server_t *server, client_t *client,
-	char *__attribute__((unused)) arg
-)
+	__attribute__((unused)) char *arg)
 {
 	cell_t *cell = &server->map.map[client->entity->pos.y]
 		[client->entity->pos.x];
@@ -79,8 +78,7 @@ bool incantation_verify(server_t *server, client_t *client,
 }
 
 void incantation_cmd(server_t *server, client_t *client,
-	char *__attribute__((unused))arg
-)
+	__attribute__((unused)) char *arg)
 {
 	cell_t *cell = &server->map.map[client->entity->pos.y]
 		[client->entity->pos.x];
@@ -95,9 +93,10 @@ void incantation_cmd(server_t *server, client_t *client,
 	remove_stones(&server->map, &client->entity->pos, client->user.level);
 	lvlup(cell);
 	snprintf(buffer, 126, "Current level: %i\n", client->user.level);
+	gui_pie(server, cell->players);
 	for (entity_t *cl = cell->players; cl; cl = cl->next) {
 		((client_t *)cl->ptr)->status = NORMAL;
 		add_to_queue(cl->ptr, buffer);
-		gui_pie(server, cl->ptr);
 	}
+	is_ended(server);
 }

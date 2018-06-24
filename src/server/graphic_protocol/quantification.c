@@ -43,6 +43,7 @@ void gui_nbt(server_t *server, __attribute__((unused)) char *arg)
 	for (teams_t *team = server->teams; team; team = team->next)
 		++n;
 	write_uint32(buff, &idx, n);
+	buff[idx] = -5;
 	add_to_gui_queue(&server->gui, buff, idx + 1);
 }
 
@@ -62,5 +63,6 @@ void gui_nbr(server_t *server, __attribute__((unused)) char *arg)
 		write_uint32(buff, &idx, server->map.stock[i]);
 		idx++;
 	}
+	buff[idx] = -5;
 	add_to_gui_queue(&server->gui, buff, idx);
 }

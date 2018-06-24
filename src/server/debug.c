@@ -62,6 +62,8 @@ void debug(char *format, ...)
 	va_start(ap, format);
 	vdebug(format, ap);
 	va_end(ap);
+	#else
+	(void)format;
 	#endif
 }
 
@@ -79,5 +81,8 @@ void debug_if(bool status, char *format, ...)
 	va_start(ap, format);
 	vdebug_if(status, format, ap);
 	va_end(ap);
+	#else
+	(void)status;
+	(void)format;
 	#endif
 }

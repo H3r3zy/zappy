@@ -37,25 +37,55 @@ void add_to_gui_queue(gui_t *gui, char *str, int len)
 
 	memcpy(gui->queue + gui->len, str, len);
 	gui->len += len;
-	debug(GINFO "Queue len: %i\n", gui->len);
 }
 
-int read_gui(server_t *server)
+static int read_gui(gui_t *gui)
 {
-	char *request = gnl(server->gui.fd, "\n");
+	char buff[READ_SIZE + 1];
+	ssize_t status = read(gui->fd, buff, READ_SIZE);
 
-	if (!request)
+	if (status < 1)
 		return 1;
-	debug(INFO "GUI request : %s\n", request);
-	gui_command_manager(server, request);
-	free(request);
+	buff[status] = 0;
+	if (strlen(gui->buff) + status >= READ_SIZE) {
+		gui->buff_size += READ_SIZE;
+		gui->buff = realloc(gui->buff, gui->buff_size + 1);
+	}
+	strcat(gui->buff, buff);
+	gui->buff_len += status;
 	return 0;
 }
 
-void gui_continue_commands(server_t *server)
+static void shift_gui_buff(server_t *server, size_t off)
 {
-	for (gui_command_t *cmd = get_commands(); cmd->name; cmd++) {
-		if (cmd->status)
-			(*cmd->function)(server, cmd->arg, &cmd->status);
+	if (server->gui.buff[off]) {
+		memmove(server->gui.buff, server->gui.buff + off,
+			server->gui.buff_len - off + 1);
+		server->gui.buff_len -= off;
 	}
+	else
+		server->gui.buff_len = 0;
+}
+
+int pollin_gui(server_t *server)
+{
+	int status = read_gui(&server->gui);
+	char *cmdend;
+	char *cmd;
+	size_t off = 0;
+
+	if (status != 0)
+		return 1;
+	cmd = server->gui.buff;
+	cmdend = strchr(cmd, '\n');
+	while (cmdend) {
+		*cmdend = 0;
+		gui_command_manager(server, cmd);
+		off += cmdend - cmd + 1;
+		cmd = cmdend + 1;
+		cmdend = strchr(cmd, '\n');
+	}
+	*server->gui.buff = 0;
+	shift_gui_buff(server, off);
+	return 0;
 }

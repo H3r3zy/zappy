@@ -37,19 +37,19 @@ static void spawn(server_t *server, client_t *client, teams_t *team)
 {
 	for (egg_t *egg = team->eggs; egg; egg = egg->next) {
 		if (egg->client == NULL) {
-			debug(INFO "Pop in an egg (%i,%i)\n", egg->pos.x,
+			debug(INFO "Pop in an egg (%i, %i)\n", egg->pos.x,
 				egg->pos.y);
 			egg->client = client;
 			client->entity->pos.x = egg->pos.x;
 			client->entity->pos.y = egg->pos.y;
 			client->status = EGG;
-			gui_ebo(server, egg);
+			gui_ebo(server, egg, client);
 			return;
 		}
 	}
-	gui_pnw(server, client);
 	client->entity->pos.x = rand() % server->map.size.x;
 	client->entity->pos.y = rand() % server->map.size.y;
+	gui_pnw(server, client);
 }
 
 static void add_client_to_team(server_t *server, client_t *client,
@@ -90,7 +90,8 @@ void add_to_team(server_t *server, client_t *client, char *name)
 
 void add_slot_in_team(teams_t *teams)
 {
-	teams->clients = realloc(teams->clients, teams->client_max + 1);
+	teams->clients = realloc(teams->clients,
+		(teams->client_max + 1) * sizeof(client_t *));
 	if (!teams->clients)
 		return;
 	teams->clients[teams->client_max] = NULL;

@@ -29,17 +29,19 @@ static client_t *get_client_by_id(server_t *server, size_t id)
 */
 void gui_ppo(server_t *server, char *arg, __attribute__((unused)) bool *status)
 {
-	uint32_t id = atoi(arg);
+	char *err = NULL;
+	long id = (arg) ? strtol(arg, &err, 10) : 0;
 	static char buff[22] = "ppo clID posX posY\n";
 	int idx = 4;
-	client_t *player = get_client_by_id(server, id);
+	client_t *clt = (!*err && id > 0)
+		? get_client_by_id(server, (size_t)id) : NULL;
 
-	if (player) {
+	if (clt) {
 		write_uint32(buff, &idx, id);
 		idx++;
-		write_uint32(buff, &idx, (uint32_t) POS(player).x);
+		write_uint32(buff, &idx, (uint32_t) POS(clt).x);
 		idx++;
-		write_uint32(buff, &idx, (uint32_t) POS(player).y);
+		write_uint32(buff, &idx, (uint32_t) POS(clt).y);
 		buff[idx] = -5;
 		add_to_gui_queue(&server->gui, buff, idx + 1);
 	} else
@@ -55,15 +57,17 @@ void gui_ppo(server_t *server, char *arg, __attribute__((unused)) bool *status)
 */
 void gui_plv(server_t *server, char *arg, __attribute__((unused)) bool *status)
 {
-	uint32_t id = atoi(arg);
+	char *err = NULL;
+	long id = (arg) ? strtol(arg, &err, 10) : 0;
 	static char buff[16] = "plv clID plvl\n";
-	client_t *player = get_client_by_id(server, id);
+	client_t *clt = (!*err && id > 0)
+		? get_client_by_id(server, (size_t)id) : NULL;
 	int idx = 4;
 
-	if (player) {
+	if (clt) {
 		write_uint32(buff, &idx, id);
 		idx++;
-		write_uint32(buff, &idx, player->user.level);
+		write_uint32(buff, &idx, clt->user.level);
 		buff[idx] = -5;
 		add_to_gui_queue(&server->gui, buff, idx + 1);
 	} else
@@ -94,20 +98,22 @@ static void write_pin_clt_infos(client_t *clt, char buff[55],
 */
 void gui_pin(server_t *server, char *arg, __attribute__((unused)) bool *status)
 {
-	uint32_t id = atoi(arg);
+	char *err = NULL;
+	long id = (arg) ? strtol(arg, &err, 10) : 0;
 	static char buff[55] = "pin clid posx posy food line dera sibu mend "
 		"phir thys\n";
 	int idx = 4;
-	client_t *clt = get_client_by_id(server, id);
+	client_t *clt = (!*err && id > 0)
+		? get_client_by_id(server, (size_t)id) : NULL;
 
 	if (clt) {
-		write_pin_clt_infos(clt, buff, &idx, id);
-		for (uint i = 1; i <= Thystame; i++) {
+		write_pin_clt_infos(clt, buff, &idx, (uint32_t)id);
+		for (uint i = 0; i <= Thystame; i++) {
 			write_uint32(buff, &idx, clt->user.bag[i]);
 			idx++;
 		}
-		buff[idx] = -5;
-		add_to_gui_queue(&server->gui, buff, idx + 1);
+		buff[idx - 1] = -5;
+		add_to_gui_queue(&server->gui, buff, idx);
 	} else
 		add_to_gui_queue(&server->gui, GUI_KO, 3);
 }

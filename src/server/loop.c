@@ -61,7 +61,7 @@ static void handle_poll(struct pollfd *fds, server_t *server)
 		if (*clt->queue && (fds[i].revents & POLLOUT))
 			status = send_responses(clt);
 		if ((fds[i].revents & POLLIN))
-			status += read_client(server, clt);
+			status += pollin_client(server, clt);
 		if (status)
 			disconnect(server, clt);
 		++i;
@@ -75,21 +75,21 @@ static void handle_gui_poll(server_t *server, struct pollfd *fd)
 
 	if ((fd->revents & POLLOUT)) {
 		if (server->gui.len) {
-			debug(ERROR "%i\n", server->gui.len);
-			status = try_write_gui(server->gui.fd, server->gui.queue, (uint32_t) server->gui.len);
+			status = try_write_gui(server->gui.fd,
+				server->gui.queue, (uint32_t) server->gui.len);
 			*server->gui.queue = -5;
 			server->gui.len = 0;
 		}
 		gui_continue_commands(server);
 	}
 	if ((fd->revents & POLLIN))
-		status += read_gui(server);
+		status += pollin_gui(server);
 	if (status) {
 		server->gui.logged = 0;
+		close(server->gui.fd);
 		server->gui.fd = -1;
 		*server->gui.queue = 0;
 		server->gui.len = 0;
-		debug(GINFO "GUI Client disconnected\n");
 	}
 }
 

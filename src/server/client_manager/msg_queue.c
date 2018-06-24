@@ -34,7 +34,7 @@ int try_write(const int fd, char *msg)
 		}
 		wrote += status;
 	}
-	debug(GINFO "Send to %i => %s", fd, msg);
+	debug(GINFO "Send to %i = > %s", fd, msg);
 	return 0;
 }
 
@@ -52,7 +52,7 @@ int try_write_gui(const int fd, char *msg, uint32_t len)
 		}
 		wrote += status;
 	}
-	debug(GINFO "Send to %i => %s", fd, msg);
+	debug(GINFO "Send to %i = > %s", fd, msg);
 	return 0;
 }
 

@@ -55,12 +55,14 @@ void gui_eht(server_t *server, egg_t *egg)
 *
 * @response ebo eggID
 */
-void gui_ebo(server_t *server, egg_t *egg)
+void gui_ebo(server_t *server, egg_t *egg, client_t *client)
 {
-	char buffer[1024] = "ebo egID\n";
+	char buffer[1024] = "ebo egID clID\n";
 	int idx = 4;
 
 	write_uint32(buffer, &idx, egg->id);
+	++idx;
+	write_uint32(buffer, &idx, client->entity->id);
 	buffer[idx] = -5;
 	add_to_gui_queue(&server->gui, buffer, idx + 1);
 }

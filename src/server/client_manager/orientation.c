@@ -42,27 +42,19 @@ void fill_delta(pos_t *size, pos_t *pos1, pos_t *pos2, pos_t *delta)
 */
 int get_o_w_dlt(pos_t *delta, orientation_t orientation)
 {
-	int o;
+	int or = 0;
 
 	if (delta->x == 0 && delta->y == 0)
 		return 0;
 	if (delta->x == 0 && delta->y < 0)
-		o = 5;
-	else if (delta->x == 0)
-		o = 1;
-	else if (delta->y == 0 && delta->x < 0)
-		o = 3;
-	else if (delta->y == 0)
-		o = 7;
-	else if (delta->x > 0 && delta->y > 0)
-		o = 6;
-	else if (delta->x < 0 && delta->y < 0)
-		o = 2;
-	else if (delta->x > 0)
-		o = 4;
-	else
-		o = 8;
-	o += 8 - (8 - (orientation * 2));
-	o = (o - 1) % 8 + 1;
-	return o;
+		or = 5;
+	if (delta->x == 0 && delta->y > 0)
+		or = 1;
+	if (delta->y == 0 && delta->x < 0)
+		or = 3;
+	if (delta->y == 0 && delta->x > 0)
+		or = 7;
+	or += 8 - (8 - (orientation * 2));
+	or = (or - 1) % 8 + 1;
+	return or;
 }

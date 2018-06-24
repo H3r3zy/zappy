@@ -57,12 +57,14 @@ void gui_pgt(server_t *server, client_t *client, entity_type_t type)
 *
 * @response pfk clientID
 */
-void gui_pfk(server_t *server, client_t *client)
+void gui_pfk(server_t *server, client_t *client, egg_t *egg)
 {
-	static char buffer[1024] = "pfk clID\n";
+	static char buffer[1024] = "pfk clID eggID\n";
 	int idx = 4;
 
 	write_uint32(buffer, &idx, client->entity->id);
+	++idx;
+	write_uint32(buffer, &idx, egg->id);
 	buffer[idx] = -5;
 	add_to_gui_queue(&server->gui, buffer, idx + 1);
 }

@@ -247,10 +247,10 @@ void zap::ParseEnqueueMap::addPlayer(zap::Map &map, const CstringArray &command)
 
 	sf::Vector2f tmp = {static_cast<float>(tmpCommand[1]) * 100.f, (static_cast<float>(tmpCommand[2]) * 100.f)};
 
-
+	std::cout << command.getCommand()[0] << " " << command.getCommand()[1] << " " << command.getCommand()[2] << " " << command.getCommand()[3] << std::endl;
+	std::cout << "team [" << command.getTeamName() << "]" << std::endl;
 	if (command.getTeamName().empty() || map.getGrid().getTextureCharacter().empty() || tmpCommand[0] == 0) {
-
-
+		return;
 	} else {
 	map.getCharacterMap().emplace(tmpCommand[0], Character(map.getGrid().getTextureCharacter()[command.getTeamName()], tmp, tmpCommand[0], tmpFreq, map.getMapSize(), command.getTeamName()));
 	for (auto &it : map.getCharacterMap()) {

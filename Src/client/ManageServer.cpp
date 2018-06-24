@@ -75,20 +75,14 @@ CstringArray zap::ManageServer::readGameServer(int socket, bool blockRead)
 		if (buffer[0] == '\0' && i > 0) {
 			memmove(buffer, &buffer[1], i);
 		}
+		i--;
 		if (!strncmp("pnw", buffer, 3) || !strncmp("tna", buffer, 3)) {
 			std::string teamName;
-			while (i > 0 && buffer[i] != ' ') {
+			while (i > 0 && ((buffer[i] >= 'a' && buffer[i] <= 'z') ||
+				(buffer[i] >= 'A' && buffer[i] <= 'Z') ||
+				(buffer[i] >= '0' && buffer[i] <= '9'))) {
 				teamName.insert(teamName.begin(), buffer[i]);
 				i--;
-			}
-			for (long int i = teamName.size() - 1; i >= 0; --i) {
-				if ((teamName[i] >= 'a' && teamName[i] <= 'z') ||
-					(teamName[i] >= 'A' && teamName[i] <= 'Z')) {
-					break;
-				}
-				else
-					teamName.pop_back();
-
 			}
 			finalCommand.setTeamName(teamName);
 		}
@@ -172,8 +166,9 @@ void zap::ManageServer::parseLine8Input(char *buffer, CstringArray &command)
 	for (size_t i = 0; i < 10; i++) {
 		bag[i] = 0;
 		memcpy(&bag[i], buffer + 4 + i * (sizeof(uint) + 1), sizeof(uint));
+		if (command.getCommandName() == "pnw")
+		std::cout << bag[i] << std::endl;
 	}
-	std::cout << std::endl;
 	command.setCommand(bag);
 }
 

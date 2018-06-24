@@ -15,22 +15,22 @@
 
 static void generate_resource(server_t *server)
 {
-	uint32_t density = server->map.size.x * server->map.size.y /
-		(sqrt(server->map.size.x * server->map.size.y) * RESOURCE_NB) *
-		server->client_nb;
 	pos_t pos;
 	entity_type_t id;
 
-	if (density > 10000)
-		density = 10000;
-	debug_if(density != 0, GINFO "I'll drop %u resource(s)\n", density);
-	while (density > 0) {
+	for (uint i = 0; i < server->client_nb * 2; ++i) {
+		pos = (pos_t){rand() % server->map.size.x,
+			rand() % server->map.size.y};
+		id = Food;
+		update_resource(&server->map, &pos, id, 1);
+		gui_sgr(server, &pos, id);
+	}
+	for (uint i = 0; i < server->client_nb * 2; ++i) {
 		pos = (pos_t){rand() % server->map.size.x,
 			rand() % server->map.size.y};
 		id = rand() % RESOURCE_NB;
 		update_resource(&server->map, &pos, id, 1);
 		gui_sgr(server, &pos, id);
-		density--;
 	}
 }
 
@@ -40,7 +40,7 @@ void schedule_resource_generator(server_t *server, ms_t now)
 
 	if (started_time == -1)
 		started_time = now;
-	if (now > (started_time + UNITTOMS(28, server->freq))) {
+	if (now > (started_time + UNITTOMS(126, server->freq))) {
 		generate_resource(server);
 		started_time = now;
 	}

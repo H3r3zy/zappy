@@ -25,7 +25,7 @@ class Character : public AMotionShape {
 		BROADCAST = 7
 	};
 	public:
-	Character(std::map<char, std::vector<sf::Texture>> &_texturePack, sf::Vector2f &position, uint id, int freq);
+	Character(std::map<char, std::vector<sf::Texture>> &_texturePack, sf::Vector2f &position, uint id, int freq, const sf::Vector2f &mapSize);
 
 	void setPlayerTeam(const std::string &teamName);
 	const std::string &getPlayerTeam() const;
@@ -52,6 +52,8 @@ class Character : public AMotionShape {
 	~Character();
 
 	private:
+	void checkOutMap();
+	sf::Vector2f _mapSize;
 	chrono_t _beginTime;
 	std::string _teamName;
 	sf::Vector2f _nextPos;

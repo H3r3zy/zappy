@@ -6,7 +6,7 @@
 #include "Character.hpp"
 #include <unistd.h>
 
-Character::Character(std::map<char, std::vector<sf::Texture>> &_texturePack, sf::Vector2f &position, uint id, int freq) : AMotionShape(position), _id(id), _freq(freq)
+Character::Character(std::map<char, std::vector<sf::Texture>> &_texturePack, sf::Vector2f &position, uint id, int freq, const sf::Vector2f &mapSize) : AMotionShape(position), _id(id), _freq(freq), _mapSize(mapSize)
 {
 	 _beginTime = std::chrono::system_clock::now();
 	for (int i = 0; i < _texturePack[WALK_LEFT].size(); i++) {
@@ -84,7 +84,7 @@ sf::Sprite &Character::getCharacter()
 			}
 			//std::cout << "je veux le mettre en pos" << _position.x << " " << _position.y << " et son orientation ";
 			//printf("%d\n", _orientation);
-
+			checkOutMap();
 
 		}
 		if (savetime != 0)
@@ -212,4 +212,30 @@ void Character::setPlayerBroadcast(int freq, int duration)
 	_actualSprite = 0;
 	_totalDist = 0;
 	_action = true;
+}
+
+void Character::checkOutMap()
+{
+	bool outOfMap = false;
+	if (_position.x / 100 > _mapSize.x - 1) {
+		_position.x = 0;
+		outOfMap = true;
+	}
+	else if (_position.x / 100 < 0) {
+		_position.x = (_mapSize.x - 1) * 100;
+		outOfMap = true;
+	}
+
+	if (_position.y / 100 > _mapSize.y - 1) {
+		_position.y = 0;
+		outOfMap = true;
+	}
+	else if (_position.y / 100 < 0) {
+		_position.y = (_mapSize.y - 1) * 100;
+		outOfMap = true;
+	}
+	if (outOfMap) {
+		_action = false;
+		_totalDist = 0;
+	}
 }

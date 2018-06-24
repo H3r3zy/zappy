@@ -14,10 +14,10 @@
   <component name="ChangeListManager">
     <list default="true" id="2c4cfc34-0a8a-4123-83de-91ed4979ab16" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Include/Class/Map.hpp" afterPath="$PROJECT_DIR$/Include/Class/Map.hpp" />
+      <change beforePath="$PROJECT_DIR$/Include/Entity/Character.hpp" afterPath="$PROJECT_DIR$/Include/Entity/Character.hpp" />
+      <change beforePath="$PROJECT_DIR$/Src/Entity/Character.cpp" afterPath="$PROJECT_DIR$/Src/Entity/Character.cpp" />
+      <change beforePath="$PROJECT_DIR$/Src/Main.cpp" afterPath="$PROJECT_DIR$/Src/Main.cpp" />
       <change beforePath="$PROJECT_DIR$/Src/ParseEnqueueMap.cpp" afterPath="$PROJECT_DIR$/Src/ParseEnqueueMap.cpp" />
-      <change beforePath="$PROJECT_DIR$/Src/client/Map.cpp" afterPath="$PROJECT_DIR$/Src/client/Map.cpp" />
-      <change beforePath="$PROJECT_DIR$/Src/client/Texture/GuiTexture.cpp" afterPath="$PROJECT_DIR$/Src/client/Texture/GuiTexture.cpp" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/CMakeFiles/" />
@@ -31,61 +31,11 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Default" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ARectangleShape.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Src/Entity/ARectangleShape.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ParseEnqueueMap.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ParseEnqueueMap.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Src/ParseEnqueueMap.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="258" column="41" lean-forward="false" selection-start-line="258" selection-start-column="41" selection-end-line="258" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Map.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Src/client/Map.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="624">
-              <caret line="307" column="24" lean-forward="false" selection-start-line="307" selection-start-column="24" selection-end-line="307" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Map.hpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Include/Class/Map.hpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="233">
-              <caret line="41" column="57" lean-forward="false" selection-start-line="41" selection-start-column="57" selection-end-line="41" selection-end-column="57" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Gui.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Src/client/Gui.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="11" column="10" lean-forward="false" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ParseEnqueueMap.hpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Include/ParseEnqueueMap.hpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="488">
-              <caret line="41" column="22" lean-forward="false" selection-start-line="41" selection-start-column="22" selection-end-line="41" selection-end-column="22" />
+            <state relative-caret-position="206">
+              <caret line="381" column="27" lean-forward="false" selection-start-line="381" selection-start-column="27" selection-end-line="381" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -104,28 +54,78 @@
       <file leaf-file-name="Cell.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Src/Entity/Cell.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="726">
-              <caret line="77" column="0" lean-forward="false" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+            <state relative-caret-position="380">
+              <caret line="124" column="1" lean-forward="false" selection-start-line="124" selection-start-column="1" selection-end-line="124" selection-end-column="1" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Character.cpp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Grid.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Src/Grid.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1037">
+              <caret line="149" column="45" lean-forward="false" selection-start-line="149" selection-start-column="45" selection-end-line="149" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Character.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Src/Entity/Character.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="23" column="71" lean-forward="false" selection-start-line="23" selection-start-column="71" selection-end-line="23" selection-end-column="71" />
+            <state relative-caret-position="-2594">
+              <caret line="48" column="30" lean-forward="true" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="30" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GuiTexture.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Src/client/Texture/GuiTexture.cpp">
+      <file leaf-file-name="AMotionShape.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Src/Entity/AMotionShape.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="54" column="8" lean-forward="false" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="8" />
+            <state relative-caret-position="-28">
+              <caret line="7" column="14" lean-forward="false" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ManageServer.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Src/client/ManageServer.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="273">
+              <caret line="152" column="0" lean-forward="false" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="stl_tree.h" pinned="false" current-in-tab="false">
+        <entry file="file:///usr/include/c++/7/bits/stl_tree.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="190">
+              <caret line="960" column="0" lean-forward="false" selection-start-line="960" selection-start-column="0" selection-end-line="960" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="stl_map.h" pinned="false" current-in-tab="false">
+        <entry file="file:///usr/include/c++/7/bits/stl_map.h">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="206">
+              <caret line="348" column="0" lean-forward="false" selection-start-line="348" selection-start-column="0" selection-end-line="348" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Main.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Src/Main.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="15" column="42" lean-forward="false" selection-start-line="15" selection-start-column="42" selection-end-line="15" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -171,7 +171,6 @@
         <option value="$PROJECT_DIR$/Src/client/Gui.cpp" />
         <option value="$PROJECT_DIR$/Include/Entity/Cell.hpp" />
         <option value="$PROJECT_DIR$/Src/Entity/Cell.cpp" />
-        <option value="$PROJECT_DIR$/Src/Main.cpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
         <option value="$PROJECT_DIR$/Include/CstringArray.hpp" />
         <option value="$PROJECT_DIR$/Src/CstringArray.cpp" />
@@ -183,12 +182,13 @@
         <option value="$PROJECT_DIR$/Include/Class/ManageServer.hpp" />
         <option value="$PROJECT_DIR$/Include/Class/Communication.hpp" />
         <option value="$PROJECT_DIR$/Include/ParseEnqueueMap.hpp" />
-        <option value="$PROJECT_DIR$/Include/Entity/Character.hpp" />
-        <option value="$PROJECT_DIR$/Src/Entity/Character.cpp" />
         <option value="$PROJECT_DIR$/Src/client/Texture/GuiTexture.cpp" />
         <option value="$PROJECT_DIR$/Include/Class/Map.hpp" />
         <option value="$PROJECT_DIR$/Src/client/Map.cpp" />
         <option value="$PROJECT_DIR$/Src/ParseEnqueueMap.cpp" />
+        <option value="$PROJECT_DIR$/Include/Entity/Character.hpp" />
+        <option value="$PROJECT_DIR$/Src/Main.cpp" />
+        <option value="$PROJECT_DIR$/Src/Entity/Character.cpp" />
       </list>
     </option>
   </component>
@@ -327,12 +327,12 @@
       <workItem from="1529801455359" duration="6361000" />
       <workItem from="1529809321657" duration="257000" />
       <workItem from="1529809959459" duration="4852000" />
-      <workItem from="1529840721638" duration="1491000" />
+      <workItem from="1529840721638" duration="5639000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="137470000" />
+    <option name="totallyTimeSpent" value="141618000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="432" y="0" width="1920" height="1044" extended-state="6" />
@@ -348,7 +348,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4244763" sideWeight="0.49815303" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.08158765" sideWeight="0.49815303" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -488,13 +488,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Src/Main.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Include/Interface/IObjectSFML.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="571">
@@ -547,32 +540,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/include/c++/7/bits/stl_map.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="348" column="0" lean-forward="false" selection-start-line="348" selection-start-column="0" selection-end-line="348" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/include/c++/7/bits/stl_tree.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="960" column="0" lean-forward="false" selection-start-line="960" selection-start-column="0" selection-end-line="960" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Src/CstringArray.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="724">
           <caret line="49" column="26" lean-forward="false" selection-start-line="49" selection-start-column="26" selection-end-line="49" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Src/Grid.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="149" column="59" lean-forward="false" selection-start-line="149" selection-start-column="59" selection-end-line="149" selection-end-column="59" />
           <folding />
         </state>
       </provider>
@@ -599,13 +570,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Src/Entity/AMotionShape.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Src/Text/GameText.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -621,26 +585,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Src/client/ManageServer.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1020">
-          <caret line="38" column="41" lean-forward="false" selection-start-line="38" selection-start-column="41" selection-end-line="38" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Include/Entity/Character.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="43" column="31" lean-forward="false" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Include/Class/ManageServer.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="765">
           <caret line="45" column="55" lean-forward="false" selection-start-line="45" selection-start-column="55" selection-end-line="45" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Include/ParseEnqueueMap.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="547">
+          <caret line="41" column="22" lean-forward="false" selection-start-line="41" selection-start-column="22" selection-end-line="41" selection-end-column="22" />
           <folding />
         </state>
       </provider>
@@ -655,48 +611,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Src/client/Texture/GuiTexture.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
+        <state relative-caret-position="799">
           <caret line="54" column="8" lean-forward="false" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Src/Entity/Character.cpp">
+    <entry file="file://$PROJECT_DIR$/Include/Entity/Character.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="23" column="71" lean-forward="false" selection-start-line="23" selection-start-column="71" selection-end-line="23" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Src/Entity/Cell.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="726">
-          <caret line="77" column="0" lean-forward="false" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Include/Class/Communication.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="639">
-          <caret line="126" column="64" lean-forward="false" selection-start-line="126" selection-start-column="64" selection-end-line="126" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Include/ParseEnqueueMap.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="488">
-          <caret line="41" column="22" lean-forward="false" selection-start-line="41" selection-start-column="22" selection-end-line="41" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Src/client/Gui.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="11" column="10" lean-forward="false" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
+        <state relative-caret-position="-48">
+          <caret line="27" column="123" lean-forward="false" selection-start-line="27" selection-start-column="123" selection-end-line="27" selection-end-column="123" />
           <folding />
         </state>
       </provider>
@@ -709,9 +633,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Src/client/Gui.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="11" column="10" lean-forward="false" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Src/client/Map.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="624">
+        <state relative-caret-position="683">
           <caret line="307" column="24" lean-forward="false" selection-start-line="307" selection-start-column="24" selection-end-line="307" selection-end-column="24" />
           <folding />
         </state>
@@ -719,8 +651,80 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Src/ParseEnqueueMap.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="258" column="41" lean-forward="false" selection-start-line="258" selection-start-column="41" selection-end-line="258" selection-end-column="41" />
+        <state relative-caret-position="206">
+          <caret line="381" column="27" lean-forward="false" selection-start-line="381" selection-start-column="27" selection-end-line="381" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Src/Main.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="15" column="42" lean-forward="false" selection-start-line="15" selection-start-column="42" selection-end-line="15" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/c++/7/bits/stl_map.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="348" column="0" lean-forward="false" selection-start-line="348" selection-start-column="0" selection-end-line="348" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/include/c++/7/bits/stl_tree.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="960" column="0" lean-forward="false" selection-start-line="960" selection-start-column="0" selection-end-line="960" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Src/client/ManageServer.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="152" column="0" lean-forward="false" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Include/Class/Communication.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="639">
+          <caret line="126" column="64" lean-forward="false" selection-start-line="126" selection-start-column="64" selection-end-line="126" selection-end-column="64" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Src/Entity/Cell.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="124" column="1" lean-forward="false" selection-start-line="124" selection-start-column="1" selection-end-line="124" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Src/Grid.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1037">
+          <caret line="149" column="45" lean-forward="false" selection-start-line="149" selection-start-column="45" selection-end-line="149" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Src/Entity/AMotionShape.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-28">
+          <caret line="7" column="14" lean-forward="false" selection-start-line="7" selection-start-column="14" selection-end-line="7" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Src/Entity/Character.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2594">
+          <caret line="48" column="30" lean-forward="true" selection-start-line="48" selection-start-column="30" selection-end-line="48" selection-end-column="30" />
           <folding />
         </state>
       </provider>

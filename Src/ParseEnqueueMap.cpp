@@ -261,7 +261,7 @@ void irc::ParseEnqueueMap::addPlayer(irc::Map &map, const CstringArray &command)
 		std::cout << "[" << RED << "MAP" << RESET << "] Empty textureMap, not creating character :( teamName [" << command.getTeamName() << "] and id [" << tmpCommand[0] << "]" << std::endl;
 
 	} else {
-	map.getCharacterMap().emplace(tmpCommand[0], Character(map.getGrid().getTextureCharacter()[command.getTeamName()], tmp, tmpCommand[0], tmpFreq));
+	map.getCharacterMap().emplace(tmpCommand[0], Character(map.getGrid().getTextureCharacter()[command.getTeamName()], tmp, tmpCommand[0], tmpFreq, map.getMapSize()));
 	for (auto &it : map.getCharacterMap()) {
 		if (it.second.getPlayerID() == tmpCommand[0]) {
 			it.second.setPlayerOrientation(static_cast<char>(tmpCommand[3]), 7);

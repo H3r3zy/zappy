@@ -80,14 +80,6 @@ void irc::Communication::addMsgToQueue(const CstringArray command)
  */
 
 	if (!command.getCommandName().empty()) {
-		std::cout << "addMsgQueue: Nom de la commande [" << command.getCommandName() << "] ";
-		auto tmp = command.getCommand();
-		for (const auto &it2 : tmp) {
-			std::cout << "[" << it2 << "] ";
-		}
-		std::cout << std::endl;
-	}
-	if (!command.getCommandName().empty()) {
 		for (auto &&comm : _forWho) {
 			if (comm.first == command.getCommandName()) {
 				if (comm.second == irc::TYPE_ENQUEUE::T_MAP || comm.second == irc::TYPE_ENQUEUE::T_BOTH) {

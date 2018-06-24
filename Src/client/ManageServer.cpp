@@ -91,16 +91,14 @@ CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 			finalCommand.setTeamName(teamName);
 		}
 
-		std::string commandName = "";
+		std::string commandName("");
 		for (const auto &it : buffer) {
 			if (it == ' ')
 				break;
 			if (it >= 'a' && it <= 'z') {
-				std::cout << "add character: " << it << std::endl;
 				commandName.push_back(it);
 			}
 		}
-		std::cout << "COMMAND NAME: " << commandName << std::endl;
 		finalCommand.setCommandName(commandName);
 
 		for (auto &&item : _pattern) {
@@ -156,25 +154,15 @@ int irc::ManageServer::writeOnServer(int socket, std::string msg)
 }
 void irc::ManageServer::parseLine8Input(char *buffer, CstringArray &command)
 {
-	std::cout << "[" << GREEN << "READ" << RESET << "] on ManageServer, go new command, name[" << command.getCommandName() << "] ";
+	//std::cout << "[" << GREEN << "READ" << RESET << "] on ManageServer, go new command, name[" << command.getCommandName() << "] ";
 	std::vector<uint> bag;
 	for (int i = 0; i < 10; i++)
 		bag.emplace_back(0);
 	for (size_t i = 0; i < 10; i++) {
 		bag[i] = 0;
 		memcpy(&bag[i], buffer + 4 + i * (sizeof(uint) + 1), sizeof(uint));
-		std::cout << bag[i] << " ";
 	}
-	std::cout << std::endl;
 	command.setCommand(bag);
-	if (!command.getCommandName().empty()) {
-		std::cout << "fin du READ: Nom de la commande [" << command.getCommandName() << "] ";
-		auto tmp = command.getCommand();
-		for (const auto &it2 : tmp) {
-			std::cout << "[" << it2 << "] ";
-		}
-		std::cout << std::endl;
-	}
 }
 
 void irc::ManageServer::parseLine1Input(char *buffer, CstringArray &command)

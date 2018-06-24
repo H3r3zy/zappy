@@ -64,6 +64,7 @@ void irc::ParseEnqueueMap::fillMap(Map &map, sf::Vector2f &mapSize)
 	_comm.writeOnServer("mct");
 	std::vector<CstringArray> save;
 	bool end = false;
+	bool stillCell = false;
 	while (!end) {
 		_comm.lockMap();
 		std::vector<CstringArray> &test = _comm.getEnqueueMap();
@@ -123,11 +124,24 @@ void irc::ParseEnqueueMap::fillMap(Map &map, sf::Vector2f &mapSize)
 			}
 		}
 		std::cout << "[" << GREEN << "MAP" << RESET << "] read all the queue, did not found last cell, retrying" << std::endl;
-
+		stillCell = false;
+		for (const auto &it : save) {
+			if (it.getCommandName() == "bct")
+				stillCell = true;
+			std::cout << "il reste ça dans ma queue [" << it.getCommandName() << "]" << std::endl;
+		}
+		if (!stillCell) {
+			_blocNumber = 0;
+			_comm.writeOnServer("mct");
+			std::cout << "je redemande la map" << std::endl;
+		}
+		_comm.setEnqueueMap(save);
 		_comm.unlockMap();
+		usleep(400000);
 		//sleep(1);
+		std::cout << "c reparti pour un tour" << std::endl;
 	}
-
+	std::cout << "je suis sorti" << std::endl;
 	end = false;
 	_comm.writeOnServer("sgt");
 	usleep(10000);

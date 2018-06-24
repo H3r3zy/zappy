@@ -217,7 +217,7 @@ def LvlUp(client: Client, player: Ai):
 
     print("Incantation /!\\")
     client.build_command("Incantation")
-    client.build_command("Incantation", "", (), True)
+    client.build_command("Incantation2", "", (), True)
     return Actions.LOOK
 
 

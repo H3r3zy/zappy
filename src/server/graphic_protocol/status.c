@@ -57,16 +57,15 @@ void gui_pic(server_t *server, client_t *client, entity_t *entity)
 *
 * @response pie clientX clientY IncantationResponse
 */
-void gui_pie(server_t *server, client_t *client)
+void gui_pie(server_t *server, entity_t *entity)
 {
-	static char buffer[1024] = "pie posX posY clvl\n";
+	static char buffer[1024] = "pie clID\n";
 	int idx = 4;
 
-	write_uint32(buffer, &idx, (uint32_t)POS(client).x);
-	++idx;
-	write_uint32(buffer, &idx, (uint32_t)POS(client).y);
-	++idx;
-	write_uint32(buffer, &idx, client->user.level);
+	for (entity_t *en = entity; en && idx + 5 < 1022; en = en->next) {
+		buffer[idx++] = ' ';
+		write_uint32(buffer, &idx, en->id);
+	}
 	buffer[idx] = -5;
 	add_to_gui_queue(&server->gui, buffer, idx + 1);
 }

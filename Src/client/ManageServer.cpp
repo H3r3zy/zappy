@@ -119,6 +119,21 @@ std::string irc::ManageServer::connectServer(int socket, std::string ip,
 	struct sockaddr_in s_in;
 	struct timeval t = {10, 0};
 
+	struct hostent *he;
+	struct in_addr **addr_list;
+
+	if ((he = gethostbyname(ip.c_str())) == NULL)
+		return "Can't get hostname";
+
+	addr_list = (struct in_addr **) he->h_addr_list;
+	ip.clear();
+
+	if (!addr_list || !addr_list[0])
+		return "Can't resolve ip address";
+	ip = inet_ntoa(*addr_list[0]);
+
+	std::cout << "ip: " << ip << std::endl;
+
 	if (socket < 0)
 		return "Can't create the socket";
 	s_in.sin_family = AF_INET;

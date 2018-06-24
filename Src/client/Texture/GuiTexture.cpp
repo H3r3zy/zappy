@@ -60,12 +60,14 @@ void irc::GuiTexture::updateServerData()
 	auto list_msg = _base._comm.getEnqueueGui();
 
 	for (auto &&it : list_msg) {
-		if (it.getCommandName() == "nbt") {
+		if (it.getCommandName() == "nbt")
 			_base._comm._server.team_number = it.getCommand()[0];
-		}
-		if (it.getCommandName() == "nbu") {
+		else if (it.getCommandName() == "nbu")
 			_base._comm._server.user = it.getCommand()[0];
-		}
+		else if (it.getCommandName() == "eht" || it.getCommandName() == "edi")
+			_base._comm._server.eggs--;
+		else if (it.getCommandName() == "enw")
+			_base._comm._server.eggs++;
 	}
 	_base._comm.getEnqueueGui().clear();
 	_base._comm.unlockGui();

@@ -71,7 +71,10 @@ void irc::shackTexture::updateShack()
 			_base._comm._shack.ressources.q5 = it.getCommand()[6];
 			_base._comm._shack.ressources.q6 = it.getCommand()[7];
 			break;
-		}
+		} else if (it.getCommandName() == "eht" || it.getCommandName() == "edi")
+			_base._comm._server.eggs--;
+		else if (it.getCommandName() == "enw")
+			_base._comm._server.eggs++;
 	}
 	_base._comm.getEnqueueGui().clear();
 	_base._comm.unlockGui();

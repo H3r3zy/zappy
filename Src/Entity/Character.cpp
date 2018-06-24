@@ -6,11 +6,11 @@
 #include "Character.hpp"
 #include <unistd.h>
 
-Character::Character(std::map<char, std::vector<sf::Texture>> &_texturePack, sf::Vector2f &position, uint id, int freq, const sf::Vector2f &mapSize, const std::string &teamName) : AMotionShape(position), _id(id), _freq(freq), _mapSize(mapSize)
+Character::Character(std::map<char, std::vector<sf::Texture>> &_texturePack, sf::Vector2f &position, uint id, int freq, const sf::Vector2f &mapSize, const std::string &teamName) : AMotionShape(position), _mapSize(mapSize), _id(id), _freq(freq)
 {
 	_teamName = teamName;
 	 _beginTime = std::chrono::system_clock::now();
-	for (int i = 0; i < _texturePack[WALK_LEFT].size(); i++) {
+	for (int i = 0; i < 9; i++) {
 		_sprite[WALK_LEFT].emplace_back(sf::Sprite());
 		_sprite[WALK_RIGHT].emplace_back(sf::Sprite());
 		_sprite[WALK_UP].emplace_back(sf::Sprite());
@@ -76,8 +76,6 @@ sf::Sprite &Character::getCharacter()
 			}
 			if (_actualSprite == 8)
 				_actualSprite = 0;
-
-
 			_totalDist += savetime;
 			//std::cout << "j'ai parcourur une distance total de " << _totalDist << std::endl;
 			//std::cout << " le tmp = " << _testTmp << std::endl;
@@ -124,7 +122,7 @@ void Character::setPlayerOrientation(char orientation, int duration)
 	//	_sprite[orientation][_actualSprite].setPosition(_position.x, _position.y);
 }
 
-const char Character::getPlayerOrientation() const
+char Character::getPlayerOrientation() const
 {
 	return _orientation;
 }
@@ -159,7 +157,7 @@ void Character::setPlayerMovement(sf::Vector2f &finalPos, const uint &orientatio
 	_action = true;
 }
 
-const bool Character::getAction() const
+bool Character::getAction() const
 {
 	return _action;
 }

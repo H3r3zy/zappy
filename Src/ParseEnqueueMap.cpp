@@ -20,7 +20,6 @@ sf::Vector2f irc::ParseEnqueueMap::ParseMapSize()
 
 	std::vector<CstringArray> save;
 
-	bool loop = true;
 	usleep(10000);
 	while (true) {
 		int i = 0;
@@ -279,7 +278,7 @@ void irc::ParseEnqueueMap::addPlayer(irc::Map &map, const CstringArray &command)
 	int tmpFreq = map.getComm().getFreq();
 
 	//std::cout << "Player number :" << tmpCommand[0] << " Position en X " << tmpCommand[1] << " Position en Y " << tmpCommand[2] << " Orientation "  << tmpCommand[3] << " level " << tmpCommand[4] << " team name " << command.getTeamName() << std::endl;
-	sf::Vector2f tmp = {tmpCommand[1] * 100, (tmpCommand[2] * 100)};
+	sf::Vector2f tmp = {static_cast<float>(tmpCommand[1]) * 100.f, (static_cast<float>(tmpCommand[2]) * 100.f)};
 	//tmp.y *= -1;
 	std::cout << "[" << GREEN << "MAP"<< RESET << "] adding player " << command.getCommand()[0] << " on X " << tmp.x << " Y " << tmp.y << ", on orientation " << tmpCommand[3] << " team [" << command.getTeamName() << "]" << std::endl;
 
@@ -315,11 +314,19 @@ void irc::ParseEnqueueMap::deletePlayer(irc::Map &map, const CstringArray &comma
 			++vec_it;
 		}
 	}
+	int idx = 0;
+	for (auto &&it  : _comm._listId ) {
+		if (static_cast<ulong>(it) == command.getCommand()[0]) {
+			_comm._listId.erase(_comm._listId.begin() + idx);
+			break;
+		}
+		idx++;
+	}
 }
 
 bool irc::ParseEnqueueMap::movePlayerPosition(irc::Map &map, const CstringArray &command)
 {
-	sf::Vector2f tmpPos = {command.getCommand()[1] * 100, command.getCommand()[2] * 100};
+	sf::Vector2f tmpPos = {static_cast<float>(command.getCommand()[1]) * 100.f, static_cast<float>(command.getCommand()[2]) * 100.f};
 //	if (command.getCommand()[0] == 768 || command.getCommand()[0] == 256|| command.getCommand()[0] == 0 || command.getCommand()[0] == 512)
 //		return false;
 
@@ -529,7 +536,7 @@ std::vector<std::string> &irc::ParseEnqueueMap::getTeam()
 
 void irc::ParseEnqueueMap::incantPlayer(irc::Map &map, const CstringArray &command)
 {
-	sf::Vector2f tmpPos = {command.getCommand()[0], command.getCommand()[1]};
+	sf::Vector2f tmpPos = {static_cast<float>(command.getCommand()[0]), static_cast<float>(command.getCommand()[1])};
 	int i = 2;
 	int tmpFreq = map.getComm().getFreq();
 	while (command.getCommand()[i] != 0 && i < 10) {
@@ -594,7 +601,6 @@ void irc::ParseEnqueueMap::endIncantation(irc::Map &map, const CstringArray &com
 
 void irc::ParseEnqueueMap::eggDropped(irc::Map &map, const CstringArray &command)
 {
-	static int eggID = 0;
 	if (map.getCharacterMap().find((command.getCommand()[0])) != map.getCharacterMap().end()) {
 		sf::Vector2i tmp;
 		tmp.x = static_cast<int>(map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().x / 100);

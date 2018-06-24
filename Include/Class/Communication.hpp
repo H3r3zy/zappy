@@ -116,7 +116,7 @@ namespace irc {
 			{"pnw", irc::TYPE_ENQUEUE::T_MAP},
 			{"pbc", irc::TYPE_ENQUEUE::T_MAP}, // broadcast
 			{"tna", irc::TYPE_ENQUEUE::T_MAP}, // team number
-			{"pfk", irc::TYPE_ENQUEUE::T_MAP}, // egg dropped
+			{"pfk", irc::TYPE_ENQUEUE::T_BOTH}, // egg dropped
 			{"ebo", irc::TYPE_ENQUEUE::T_MAP}, // egg eclosion
 			{"eht", irc::TYPE_ENQUEUE::T_MAP}, // egg eclosion
 			{"endtna", irc::TYPE_ENQUEUE::T_MAP}, // team finish

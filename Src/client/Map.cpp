@@ -71,7 +71,7 @@ void irc::Map::updateGuiData()
 		auto pos = it.second.getPosition();
 		if (pos.x > (_comm._shack._pos.first * 100) - 30 && pos.x < (_comm._shack._pos.first * 100) + 70 && pos.y > (_comm._shack._pos.second * 100) - 50 && pos.y < (_comm._shack._pos.second * 100) + 50)
 			_comm._shack.player_on++;
-		if (it.second.getPlayerID() == _comm._player.id) {
+		if (it.second.getPlayerID() == static_cast<ulong>(_comm._player.id)) {
 			_comm._player.level = it.second.getPlayerLevel();
 			_comm._player.team = it.second.getPlayerTeam();
 			_comm._player._pos.first = pos.x;
@@ -141,14 +141,14 @@ bool irc::Map::getEvent()
 	while (_gameWindow.pollEvent(event))
 	{
 		// check the type of the event...
-		switch (event.type)
-		{
+		switch (event.type) {
 			// window closed
-		case sf::Event::Closed:
+		case sf::Event::Closed: {
 			_gameWindow.close();
 			return false;
 			// key pressed
-		case sf::Event::KeyPressed:
+		}
+		case sf::Event::KeyPressed: {
 			switch (event.key.code) {
 			case sf::Keyboard::F:
 				_displayGui = true;
@@ -199,7 +199,8 @@ bool irc::Map::getEvent()
 				break;
 			}
 			break;
-		case sf::Event::MouseButtonReleased:
+		}
+		case sf::Event::MouseButtonReleased: {
 //			//std::cout << "the right button was pressed" << std::endl;
 
 
@@ -248,7 +249,9 @@ bool irc::Map::getEvent()
 
 				//std::cout << "jai reussit" << std::endl;
 			}
-
+			break;
+		}
+		default:
 			break;
 
 		}

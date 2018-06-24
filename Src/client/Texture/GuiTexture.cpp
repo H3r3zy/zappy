@@ -66,7 +66,7 @@ void irc::GuiTexture::updateServerData()
 			_base._comm._server.user = it.getCommand()[0];
 		else if (it.getCommandName() == "eht" || it.getCommandName() == "edi")
 			_base._comm._server.eggs--;
-		else if (it.getCommandName() == "enw")
+		else if (it.getCommandName() == "bfk")
 			_base._comm._server.eggs++;
 	}
 	_base._comm.getEnqueueGui().clear();

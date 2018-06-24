@@ -33,7 +33,7 @@ class Character : public AMotionShape {
 
 	void setPlayerOrientation(char orientation, int duration);
 	void setEgg();
-	const char getPlayerOrientation() const;
+	char getPlayerOrientation() const;
 
 	const uint &getPlayerID() const;
 
@@ -49,7 +49,7 @@ class Character : public AMotionShape {
 	const sf::Vector2f &getPlayerPosition() const;
 
 	sf::Sprite &getCharacter();
-	const bool getAction() const;
+	bool getAction() const;
 
 	~Character();
 

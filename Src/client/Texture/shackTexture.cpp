@@ -62,7 +62,7 @@ void irc::shackTexture::updateShack()
 	auto list_msg = _base._comm.getEnqueueGui();
 
 	for (auto &&it : list_msg) {
-		if (it.getCommandName() == "bct" && _base._comm._shack._pos.first == it.getCommand()[0] && _base._comm._shack._pos.second == it.getCommand()[1]) {
+		if (it.getCommandName() == "bct" && _base._comm._shack._pos.first == static_cast<int>(it.getCommand()[0]) && _base._comm._shack._pos.second == static_cast<int>(it.getCommand()[1])) {
 			_base._comm._shack.ressources.q0 = it.getCommand()[8];
 			_base._comm._shack.ressources.q1 = it.getCommand()[2];
 			_base._comm._shack.ressources.q2 = it.getCommand()[3];
@@ -73,7 +73,7 @@ void irc::shackTexture::updateShack()
 			break;
 		} else if (it.getCommandName() == "eht" || it.getCommandName() == "edi")
 			_base._comm._server.eggs--;
-		else if (it.getCommandName() == "enw")
+		else if (it.getCommandName() == "bfk")
 			_base._comm._server.eggs++;
 	}
 	_base._comm.getEnqueueGui().clear();

@@ -56,7 +56,16 @@ void irc::IATexture::initTexture()
 
 void irc::IATexture::updateIAData()
 {
-	_base._comm.writeOnServer("pin " + std::to_string(_base._comm._listId[0]));
+	static auto begin = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+
+	auto end = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+
+	int ms = end - begin;
+	if (ms > 700) {
+		begin = end;
+		_base._comm.writeOnServer("pin " + std::to_string(_base._comm._listId[0]));
+	}
+
 	_base._comm.lockGui();
 	auto list_msg = _base._comm.getEnqueueGui();
 

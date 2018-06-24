@@ -8,6 +8,7 @@
 #include <regex>
 #include <iostream>
 #include <Class/Communication.hpp>
+#include <chrono>
 #include "ManageServer.hpp"
 #include "Gui.hpp"
 #include "TextInputBckPlaceHolder.hpp"
@@ -24,6 +25,7 @@ void irc::GuiTexture::initTexture()
 	initSettingsGame();
 	initDataServer();
 	initDataGame();
+	initSounds();
 
 	_base._monitor->addFuncLoop(0, [this] {
 		_nb_egg->setText("x "+ std::to_string(_base._comm._server.eggs));
@@ -36,14 +38,24 @@ void irc::GuiTexture::initTexture()
 		_nb_q6->setText("x "+ std::to_string(_base._comm._server.ressources.q6));
 		_nb_teams->setText("Number of teams: "+ std::to_string(_base._comm._server.team_number));
 		_user_connected->setText("User connected: "+ std::to_string(_base._comm._server.user));
+		_actual_frequency->setText("Actual frequency: "+ std::to_string(_base._comm.getFreq()));
 	});
 	_base._monitor->addFuncLoop(0, &irc::GuiTexture::updateServerData, this);
 }
 
 void irc::GuiTexture::updateServerData()
 {
-//	_base._comm.writeOnServer("nbu");
-//	_base._comm.writeOnServer("nbt");
+	static auto begin = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+
+	auto end = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+
+	int ms = end - begin;
+	if (ms > 700) {
+		begin = end;
+		_base._comm.writeOnServer("nbu");
+		_base._comm.writeOnServer("nbt");
+
+	}
 	_base._comm.lockGui();
 	auto list_msg = _base._comm.getEnqueueGui();
 
@@ -60,9 +72,42 @@ void irc::GuiTexture::updateServerData()
 
 }
 
+void irc::GuiTexture::initSounds()
+{
+	auto container = new irc::Container(sf::IntRect(10, 10, 30, 30));
+
+	irc::Sprite *sounds = new irc::Sprite("extra/gui/sounds.png", sf::IntRect(0, 0, 30, 30));
+	irc::Sprite *sounds_off = new irc::Sprite("extra/gui/sounds_off.png", sf::IntRect(0, 0, 30, 30));
+	irc::Square *hit_box = new irc::Square(sf::IntRect(10, 10, 30, 30));
+
+	if (_base._music.getStatus() == sf::SoundSource::Stopped)
+		sounds->setBoolDisplay(false);
+	else
+		sounds_off->setBoolDisplay(false);
+
+	container->addObjectList("sounds_off", sounds_off, 5);
+	container->addObjectList("sounds", sounds, 5);
+
+	hit_box->addFuncMouseEvent(irc::MouseEvent::CLICK, [this, sounds, sounds_off] {
+		if (!sounds->getBoolDisplay()) {
+			_base._music.play();
+			sounds->setBoolDisplay(true);
+			sounds_off->setBoolDisplay(false);
+		} else {
+			_base._music.pause();
+			sounds->setBoolDisplay(false);
+			sounds_off->setBoolDisplay(true);
+		}
+	});
+
+
+	_base._monitor->addObjectToDraw("sounds_settings", container, 0, 2);
+	_base._monitor->addObjectToDraw("hit_box_sounds", hit_box, 0, 0);
+}
+
 void irc::GuiTexture::initDataGame()
 {
-	auto container = new irc::Container(sf::IntRect(10, 480, WIDTH - 10, HEIGHT - 480));
+	auto container = new irc::Container(sf::IntRect(10, 495, WIDTH - 10, HEIGHT - 495));
 	container->setBoolUsed(false);
 
 	auto title = new irc::Text("extra/Gobold.otf", sf::IntRect(0, 0, 100, 20), "Data Games:");
@@ -133,6 +178,10 @@ void irc::GuiTexture::initDataServer()
 	_nb_teams->setColor(sf::Color::Black);
 	container->addObjectList("nb_teams", _nb_teams);
 
+	_actual_frequency = new irc::Text("extra/arial.ttf", sf::IntRect(0, 100, 100, 20), "Actual frequency: ???");
+	_actual_frequency->setColor(sf::Color::Black);
+	container->addObjectList("actual_frequency", _actual_frequency);
+
 	_base._monitor->addObjectToDraw("data_server", container);
 }
 
@@ -154,7 +203,7 @@ void irc::GuiTexture::initSettingsGame()
 
 	auto setFreq = [this, input]{
 		std::string freq = dynamic_cast<irc::TextInput *>(input->getObjectByName("input"))->getPrompt();
-		if (!std::regex_match(freq, std::regex("\\d+")) || std::stoi(freq) <= 0) {
+		if (!std::regex_match(freq, std::regex("\\d+")) || std::stoi(freq) <= 0 || std::stoi(freq) >= 200) {
 			input->getObjectByName("bck")->setColor(sf::Color(222, 170, 170));
 			return;
 		}

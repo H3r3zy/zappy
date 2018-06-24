@@ -35,6 +35,7 @@ namespace irc {
 		// OBJ with update
 		irc::Text *_nb_teams = nullptr;
 		irc::Text *_user_connected = nullptr;
+		irc::Text *_actual_frequency = nullptr;
 
 		private:
 		void initBck();
@@ -42,6 +43,7 @@ namespace irc {
 		void initSettingsGame();
 		void initDataServer();
 		void initDataGame();
+		void initSounds();
 
 		irc::Text *_nb_egg = nullptr;
 		irc::Text *_nb_q0 = nullptr;

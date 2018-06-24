@@ -10,8 +10,8 @@
 #include "Gui.hpp"
 
 irc::Gui::Gui(irc::Communication &comm, const std::string &nick,
-	const std::string &ip, bool &displayGui, bool &endClient
-) : GuiTexture(*this), shackTexture(*this), IATexture(*this), _comm(comm),
+	const std::string &ip, bool &displayGui, bool &endClient, sf::Music &music
+) : _music(music), GuiTexture(*this), shackTexture(*this), IATexture(*this), _comm(comm),
 	_displayGui(displayGui), _endClient(endClient)
 {
 	_nick = nick;

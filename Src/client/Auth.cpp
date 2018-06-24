@@ -246,7 +246,7 @@ void irc::Auth::tryToConnect(bool error)
 		modalError("One or more inputs are wrong or missing");
 	else if (!checkConnection()) {
 		_base.closeWindow();
-		ManageDisplay(_socketServer, _nick, _ip);
+		ManageDisplay(_socketServer, _nick, _ip, _music);
 	}
 }
 

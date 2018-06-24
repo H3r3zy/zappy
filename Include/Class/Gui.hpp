@@ -9,6 +9,7 @@
 
 # include <vector>
 # include <mutex>
+# include <SFML/Audio.hpp>
 # include "GuiTexture.hpp"
 # include "shackTexture.hpp"
 # include "IATexture.hpp"
@@ -18,7 +19,7 @@ namespace irc {
 
 	class Gui : public irc::GuiTexture, public irc::shackTexture, public irc::IATexture {
 		public:
-		Gui(irc::Communication &comm, const std::string &nick, const std::string &ip, bool &displayGui, bool &endClient);
+		Gui(irc::Communication &comm, const std::string &nick, const std::string &ip, bool &displayGui, bool &endClient, sf::Music &music);
 		~Gui();
 
 		int initDisplayGui();
@@ -26,6 +27,8 @@ namespace irc {
 		void addGenericFunction(int scene);
 
 		irc::Communication &_comm;
+		sf::Music &_music;
+
 		irc::SFML_monitor *_monitor = nullptr;
 
 		bool &_displayGui; // Check if the gui is displayed

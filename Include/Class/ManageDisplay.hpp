@@ -10,6 +10,7 @@
 
 # include <vector>
 # include <string>
+# include <SFML/Audio.hpp>
 # include "Map.hpp"
 # include "Gui.hpp"
 # include "Thread.hpp"
@@ -19,7 +20,7 @@ namespace irc {
 
 	class ManageDisplay {
 		public:
-		ManageDisplay(int socketServer, const std::string &nick = "Unknown", const std::string &ip = "0.0.0.0");
+		ManageDisplay(int socketServer, const std::string &nick, const std::string &ip, sf::Music &music);
 		~ManageDisplay();
 
 		protected:
@@ -28,6 +29,8 @@ namespace irc {
 		private:
 		bool _displayGui = true; // Check if the gui is displayed
 		bool _endClient = false;
+
+		sf::Music &_music;
 
 		irc::Communication _comm;
 

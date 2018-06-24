@@ -48,7 +48,16 @@ void irc::shackTexture::initTexture()
 
 void irc::shackTexture::updateShack()
 {
-	_base._comm.writeOnServer("bct " + std::to_string(_base._comm._shack._pos.first) + " " + std::to_string(_base._comm._shack._pos.second));
+	static auto begin = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+
+	auto end = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
+
+	int ms = end - begin;
+	if (ms > 700) {
+		begin = end;
+		_base._comm.writeOnServer("bct " + std::to_string(_base._comm._shack._pos.first) + " " + std::to_string(_base._comm._shack._pos.second));
+	}
+
 	_base._comm.lockGui();
 	auto list_msg = _base._comm.getEnqueueGui();
 

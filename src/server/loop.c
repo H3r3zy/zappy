@@ -90,7 +90,6 @@ static void handle_gui_poll(server_t *server, struct pollfd *fd)
 		server->gui.fd = -1;
 		*server->gui.queue = 0;
 		server->gui.len = 0;
-		debug(GINFO "GUI Client disconnected\n");
 	}
 }
 

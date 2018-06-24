@@ -9,8 +9,11 @@
 #define PSU_ZAPPY_2017_COMMAND_H
 
 #include <stdbool.h>
+#include <stdint.h>
 #include <math.h>
-#include "server.h"
+
+typedef struct client_s client_t;
+typedef struct server_s server_t;
 
 #define M_PI_8 (M_PI_4 / 2)
 
@@ -26,6 +29,9 @@ typedef struct {
 
 typedef struct look_opt_s {
 	uint32_t vision;
+	size_t *size;
+	size_t *len;
+	char **str;
 	int d;
 } look_opt_t;
 
@@ -34,13 +40,11 @@ typedef struct look_type_s {
 	size_t len;
 } look_type_t;
 
-extern look_type_t ENTITY_NAMES[ENTITY_NB];
-
 void inventory_cmd(server_t *server, client_t *client, char *arg);
 void forward_cmd(server_t *server, client_t *client, char *arg);
 void left_cmd(server_t *server, client_t *client, char *arg);
 void right_cmd(server_t *server, client_t *client, char *arg);
-void look_cmd(server_t *server, client_t *client, char *arg);
+void look_cmd(server_t *srv, client_t *client, char *arg);
 void connect_nbr_cmd(server_t *server, client_t *client, char *arg);
 void take_cmd(server_t *server, client_t *client, char *arg);
 void set_cmd(server_t *server, client_t *client, char *arg);

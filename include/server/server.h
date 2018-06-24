@@ -8,15 +8,22 @@
 #ifndef PSU_ZAPPY_2017_SERVER_H
 #define PSU_ZAPPY_2017_SERVER_H
 
+
+typedef struct teams_s teams_t;
+typedef struct look_opt_s look_opt_t;
+typedef struct look_type_s look_type_t;
+
 #include <unistd.h>
 #include <poll.h>
-#include <inttypes.h>
+#include <stdint.h>
 #include "socket.h"
+#include "command.h"
 
-#define READ_SIZE ((1 << 8))
+#define READ_SIZE (1 << 8)
 #define LIMIT_TASK_NUMBER (10)
 
 #define RESOURCE_NB (7)
+
 #define ENTITY_NB ((RESOURCE_NB) + 1)
 #define START_FOOD (10)
 
@@ -25,8 +32,9 @@
 #define FOOD_UNIT_TIME (126)
 #define EGG_UNIT_TIME (600)
 
-#define GUI_QUEUE_SIZE (1 << 12)
+#define LOOK_STR_SIZE (1 << 9)
 
+#define GUI_QUEUE_SIZE (1 << 12)
 #define GUI_OK ((char []){'o', 'k', -5})
 #define GUI_KO ((char []){'k', 'o', -5})
 
@@ -73,10 +81,6 @@ typedef struct {
 	uint32_t vision;
 	orientation_t orientation;
 } user_t;
-
-typedef struct client_s client_t;
-typedef struct server_s server_t;
-typedef struct teams_s teams_t;
 
 typedef struct task_s {
 	long long int started_time;
@@ -157,7 +161,6 @@ struct server_s {
 	gui_t gui;
 };
 
-
 char *gnl(int fd, char *delim);
 
 int server(server_t *serv);
@@ -199,10 +202,12 @@ void write_uint32(char *buffer, int *idx, uint32_t nb);
 uint32_t read_uint32(char *buffer, int *idx);
 
 size_t char_nb(const char *str, char c);
-char *concat(char *s1, char *s2);
+void concat(char *toadd, size_t len, look_opt_t *opt);
 
 int read_client(client_t *client);
 int command_manager(server_t *server, client_t *client, char *command);
+
+extern look_type_t ENTITY_NAMES[ENTITY_NB];
 
 #define POS(c) (c)->entity->pos
 #define OR(c) (c)->user.orientation

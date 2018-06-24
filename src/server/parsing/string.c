@@ -7,6 +7,9 @@
 
 #include <stdlib.h>
 #include <string.h>
+#include <debug.h>
+#include "server.h"
+#include "command.h"
 
 size_t char_nb(const char *str, char c)
 {
@@ -18,17 +21,23 @@ size_t char_nb(const char *str, char c)
 	return n;
 }
 
-char *concat(char *s1, char *s2)
-{
-	char *str;
 
-	if (!s1)
-		return s2;
-	if (!s2)
-		return s1;
-	str = realloc(s1, strlen(s1) + strlen(s2) + 1);
-	if (!str)
-		return s1;
-	str = strcat(str, s2);
-	return str;
+/**
+* @param str
+* @param toadd
+* @param len
+* @param opt
+* @return str
+*/
+void concat(char *toadd, size_t len, look_opt_t *opt)
+{
+	size_t len_after = *opt->len + len;
+	while (len_after >= *opt->size) {
+		*opt->size += LOOK_STR_SIZE;
+		*opt->str = realloc(*opt->str, *opt->size);
+		if (!*opt->str)
+			return;
+	}
+	strcpy(*opt->str + *opt->len, toadd);
+	*opt->len = len_after;
 }

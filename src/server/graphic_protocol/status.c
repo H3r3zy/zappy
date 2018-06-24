@@ -81,7 +81,7 @@ void gui_pie(server_t *server, entity_t *entity)
 void gui_pnw(server_t *server, client_t *client)
 {
 	static char buff[281] = "pnw clID POSX POSY CLOR CLVL \n";
-	int idx = 5;
+	int idx = 4;
 
 	write_uint32(buff, &idx, client->entity->id);
 	idx++;

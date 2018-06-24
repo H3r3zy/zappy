@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
 import re
 from Ai_Client.Ai.Ai import *
 from collections import deque
@@ -68,7 +65,7 @@ class CmdParser:
         match = re.match("message (\d), (.*)", msg)
         self.__msgQueue.append((int(match.group(1)), match.group(2)))
 
-    def lvl_up(self, ans: str, _1:str ="", _2:str =""):
+    def lvl_up(self, ans: str, _1: str = "", _2: str = ""):
         match = re.search("(\d)", ans)
         if match:
             self.__player.levelUp(int(match.group(1)))
@@ -133,7 +130,7 @@ class CmdParser:
                     currentTile.setPlayer(currentTile.getPlayer() + 1)
                     continue
                 if len(elem) > 0:
-                    currentTile.getStones()[elem] += 1 #Changer
+                    currentTile.getStones()[elem] += 1  # Changer
             i += 1
 
     def parse_inv(self, inv: str, _1, _2):
@@ -149,7 +146,6 @@ class CmdParser:
         return self.__handledId
 
     def parse(self, cmd: str) -> bool:
-        print("(" + cmd + ":" + (self.__queue[0][0] if len(self.__queue) else "NULL") + ")")
         if len(self.__queue) == 0 or self.__patterns[self.__queue[0][0]].match(cmd) is None:
             for reg, func in self.__unexpected:
                 if reg.match(cmd):

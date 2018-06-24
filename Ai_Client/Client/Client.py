@@ -1,12 +1,8 @@
-#!/usr/bin/env python3
-# coding: utf-8
-
 import socket
 import select
 from Ai_Client.Client import CmdParser
 from collections import deque
 from Ai_Client.Ai.FindRessourcesNode import *
-from Ai_Client.Ai.GoToBroadCaster import *
 from Ai_Client.Ai.MakeFoodStock import *
 
 
@@ -134,7 +130,6 @@ class Client:
                     raise ZappyException('Unexpected response')
                 break
             if "ko" in self.__inQueue:
-                print(self.__inQueue.pop())
                 raise ZappyException('Unexpected response')
         self.__outQueue.clear()
         self.__outId = 0

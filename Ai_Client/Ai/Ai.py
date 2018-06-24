@@ -1,7 +1,7 @@
 from Ai_Client.Ai import Tile
 from Ai_Client.Ai import PathFinding
 from Ai_Client.Enum.Direction import *
-import sys, os, random
+import os, random
 
 
 class Ai:
@@ -34,15 +34,6 @@ class Ai:
             Direction.WEST: [(-1, 0), (-1, 1), (0, 1), (1, 1), (1, 0), (1, -1), (0, -1), (-1, -1)]
         }
 
-    def think(self):
-        toto, self.dir = self.__pathFind.goToTile(self.__coord, (1, 1), self.dir)
-        print(self.dir)
-        print(toto)
-        print(self.__coord)
-        toto, self.dir = self.__pathFind.goToTile(self.__coord, (2, 2), self.dir)
-        print(self.dir)
-        print(toto)
-
     def getMap(self):
         return self.__map
 
@@ -68,7 +59,6 @@ class Ai:
         self.__coord[1] = y
 
     def levelUp(self, lvl: int):
-        sys.stderr.write(str(lvl) + '\n')
         self.__level = lvl
 
     def getBroadcaster(self):

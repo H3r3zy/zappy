@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
 from Ai_Client.Enum.Actions import Actions
 from Ai_Client.Client import Client
 from Ai_Client.Ai.Ai import Ai
@@ -10,14 +7,9 @@ from Ai_Client.Ai.PathFinding import PathFinding
 def Synchronise(client: Client, player: Ai):
     if Synchronise.look_id == -1:
         Synchronise.look_id = client.build_command("Look", "", (player.getCoord(), player.getDir()))
-        #if Synchronise.return_func == Actions.LOOK:
-            #client.msgQueue.clear()
     if Synchronise.look_id != client.last:
-        #if Synchronise.return_func != Actions.LOOK:
-        #    client.msgQueue.clear()
         return Actions.SYNCHRO
     Synchronise.look_id = -1
-    print(Synchronise.return_func)
     return Synchronise.return_func
 
 
@@ -31,7 +23,6 @@ def Synchronise_inventory(client: Client, player: Ai):
     if Synchronise_inventory.id != client.last:
         return Actions.SYNCHRO_INVENTORY
     Synchronise_inventory.id = -1
-    print(Synchronise_inventory.return_func)
     return Synchronise_inventory.return_func
 
 
@@ -45,7 +36,6 @@ def Synchronise_broadcast(client: Client, player: Ai):
     if Synchronise_broadcast.id != client.last:
         return Actions.SYNCHRO_INVENTORY
     Synchronise_broadcast.id = -1
-    print(Synchronise_broadcast.return_func)
     return Synchronise_broadcast.return_func
 
 
@@ -61,7 +51,6 @@ def Synchronise_incant(client: Client, player: Ai):
     if Synchronise_incant.id != client.last:
         return Actions.SYNCHRO_INCANT
     Synchronise_incant.id = -1
-    print(Synchronise_incant.return_func)
     return Synchronise_incant.return_func
 
 
@@ -142,17 +131,13 @@ def Drop(client: Client, player: Ai):
         for drop in range(nb):
             client.build_command("Set", stone)
     if player.getBroadcaster():
-        print("maiiiis :(")
         take_all_resources(client, player)
         return Actions.LVL_UP
-    else:
-        print("Comme je suis pas bro bah go lv up")
-        return Actions.WAIT_LVL_UP
+    # else:
+    #    return Actions.WAIT_LVL_UP
 
 
 def IncantBroadCast(client: Client, player: Ai):
-    print("Je suis broadcaster")
-
     if IncantBroadCast.Synchro == -1:
         client.build_command("Look", "", (player.getCoord(), player.getDir()))
         IncantBroadCast.Synchro = 1
@@ -167,8 +152,6 @@ def IncantBroadCast(client: Client, player: Ai):
     str = "{}: Incantation Lvl {}".format(player.getId(), int(player.getLevel()))
     client.build_command("Broadcast", str)
     if nb_player == player.getMap()[y][x].getPlayer():
-        # client.clean()
-        print("Je vais drop !!")
         return Actions.DROP
     player.setBroadcaster(True)
     return Actions.NEED_PEOPLE
@@ -185,10 +168,8 @@ def AmIFirst(client: Client, player: Ai):
         return Actions.SYNCHRO_BROADCAST
     AmIFirst.synchro = -1
     if len(client.msgQueue) < 0:
-        print("Someone before me :O")
         return Actions.FIND_IF_BROADCASTER
     else:
-        print("MOUAHAHA I'm the first")
         return Actions.NEED_PEOPLE
 
 
@@ -221,21 +202,20 @@ def TakeAll(client: Client, player: Ai):
 
 import sys
 
+
 def LvlUp(client: Client, player: Ai):
     needed_stones = player.elevation_array[player.getLevel()]
 
     if LvlUp.Synchro == -1:
-        #client.build_command("Look", "", (player.getCoord(), player.getDir()))
+        # client.build_command("Look", "", (player.getCoord(), player.getDir()))
         Synchronise_incant.return_func = Actions.LVL_UP
         LvlUp.Synchro = 1
         LvlUp.OldLvl = player.getLevel()
         return Actions.SYNCHRO_INCANT
     LvlUp.Synchro = -1
     if LvlUp.OldLvl == player.getLevel():
-        print("Je n'ai pas lvl UP")
         client.build_command("Broadcast", "Fail Incant")
     return Actions.LOOK
-
 
 
 LvlUp.OldLvl = 0

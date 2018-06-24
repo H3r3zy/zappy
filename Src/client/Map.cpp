@@ -302,3 +302,8 @@ const sf::Vector2f &irc::Map::getMapSize() const
 {
 	return _mapSize;
 }
+
+const std::vector<std::string> &irc::Map::getTeamName() const
+{
+	return _teamName;
+}

@@ -39,6 +39,7 @@ namespace irc {
 		Grid &getGrid();
 		irc::Communication &getComm();
 		const sf::Vector2f &getMapSize() const;
+		const std::vector<std::string> &getTeamName() const;
 
 		private:
 		irc::Communication &_comm;

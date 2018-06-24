@@ -253,6 +253,15 @@ void irc::ParseEnqueueMap::addPlayer(irc::Map &map, const CstringArray &command)
 
 //	if (tmpCommand[0] == 768 || tmpCommand[0] == 256|| tmpCommand[0] == 0 || tmpCommand[0] == 512)
 //		return;
+	bool validTeam = false;
+	for (const auto &it : map.getTeamName()) {
+		if (command.getTeamName() == it)
+			validTeam = true;
+	}
+	if (!validTeam) {
+		std::cout << "[" << RED << "MAP" << RESET << "] invalid teamName [" << command.getTeamName() << "] to create player  [" << tmpCommand[0] << "]" << std::endl;
+		return;
+	}
 	if (command.getTeamName().empty() || map.getGrid().getTextureCharacter().empty() || tmpCommand[0] == 0) {
 		std::cout << "[" << RED << "MAP" << RESET << "] Empty textureMap, not creating character :( teamName [" << command.getTeamName() << "] and id [" << tmpCommand[0] << "]" << std::endl;
 
@@ -470,7 +479,6 @@ std::vector<std::string> &irc::ParseEnqueueMap::getTeam()
 	_comm.writeOnServer("tna");
 
 	usleep(10000);
-	std::cout << "coudzedzedcou" << std::endl;
 	int i = 1;
 	while (i != 0) {
 		_comm.lockMap();

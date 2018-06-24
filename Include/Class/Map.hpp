@@ -40,6 +40,7 @@ namespace irc {
 		irc::Communication &getComm();
 		const sf::Vector2f &getMapSize() const;
 		const std::vector<std::string> &getTeamName() const;
+		std::map<int, std::pair<std::string, sf::Vector2i>> &getEggMap();
 
 		private:
 		irc::Communication &_comm;
@@ -66,7 +67,7 @@ namespace irc {
 		std::vector<std::string> _teamName;
 		std::map<std::string, sf::Color> _teamColor;
 		Grid _grid;
-
+		std::map<int, std::pair<std::string, sf::Vector2i>> _egg;
 	};
 }
 

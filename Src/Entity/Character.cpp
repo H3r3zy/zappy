@@ -6,10 +6,11 @@
 #include "Character.hpp"
 #include <unistd.h>
 
-Character::Character(std::map<char, std::vector<sf::Texture>> &_texturePack, sf::Vector2f &position, uint id, int freq, const sf::Vector2f &mapSize) : AMotionShape(position), _mapSize(mapSize), _id(id), _freq(freq)
+Character::Character(std::map<char, std::vector<sf::Texture>> &_texturePack, sf::Vector2f &position, uint id, int freq, const sf::Vector2f &mapSize, const std::string &teamName) : AMotionShape(position), _id(id), _freq(freq), _mapSize(mapSize)
 {
+	_teamName = teamName;
 	 _beginTime = std::chrono::system_clock::now();
-	for (ulong i = 0; i < _texturePack[WALK_LEFT].size(); i++) {
+	for (int i = 0; i < _texturePack[WALK_LEFT].size(); i++) {
 		_sprite[WALK_LEFT].emplace_back(sf::Sprite());
 		_sprite[WALK_RIGHT].emplace_back(sf::Sprite());
 		_sprite[WALK_UP].emplace_back(sf::Sprite());
@@ -17,8 +18,9 @@ Character::Character(std::map<char, std::vector<sf::Texture>> &_texturePack, sf:
 		_sprite[TAKE].emplace_back(sf::Sprite());
 		_sprite[INCANT].emplace_back(sf::Sprite());
 		_sprite[BROADCAST].emplace_back(sf::Sprite());
+		_sprite[EGG].emplace_back(sf::Sprite());
 	}
-	for (ulong i = 0; i < 9; i++) {
+	for (int i = 0; i < 9; i++) {
 		_sprite[WALK_LEFT][i].setTexture(_texturePack[WALK_LEFT][i]);
 		_sprite[WALK_RIGHT][i].setTexture(_texturePack[WALK_RIGHT][i]);
 		_sprite[WALK_UP][i].setTexture(_texturePack[WALK_UP][i]);
@@ -26,6 +28,7 @@ Character::Character(std::map<char, std::vector<sf::Texture>> &_texturePack, sf:
 		_sprite[TAKE][i].setTexture(_texturePack[TAKE][i]);
 		_sprite[INCANT][i].setTexture(_texturePack[INCANT][i]);
 		_sprite[BROADCAST][i].setTexture(_texturePack[BROADCAST][i]);
+		_sprite[EGG][i].setTexture(_texturePack[EGG][i]);
 	}
 	usleep(100);
 	srand(time(NULL));
@@ -121,7 +124,7 @@ void Character::setPlayerOrientation(char orientation, int duration)
 	//	_sprite[orientation][_actualSprite].setPosition(_position.x, _position.y);
 }
 
-char Character::getPlayerOrientation() const
+const char Character::getPlayerOrientation() const
 {
 	return _orientation;
 }
@@ -156,7 +159,7 @@ void Character::setPlayerMovement(sf::Vector2f &finalPos, const uint &orientatio
 	_action = true;
 }
 
-bool Character::getAction() const
+const bool Character::getAction() const
 {
 	return _action;
 }
@@ -230,4 +233,9 @@ void Character::checkOutMap()
 void Character::levelUp()
 {
 	_level++;
+}
+
+void Character::setEgg()
+{
+	_orientation = EGG;
 }

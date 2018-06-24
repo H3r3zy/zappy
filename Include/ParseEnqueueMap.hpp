@@ -41,6 +41,9 @@ class ParseEnqueueMap {
 	void incantPlayer(irc::Map &map, const CstringArray &command);
 	void broadcastPlayer(irc::Map &map, const CstringArray &command);
 	void endIncantation(irc::Map &map, const CstringArray &command);
+	void eggDropped(irc::Map &map, const CstringArray &command);
+	void eggHatching(irc::Map &map, const CstringArray &command);
+	void eggHatching2(irc::Map &map, const CstringArray &command);
 
 	private:
 	irc::Communication &_comm;

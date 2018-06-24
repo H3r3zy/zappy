@@ -74,7 +74,6 @@ CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 		char buffer[8192];
 		int i = 0;
 		for (const auto &it : test) {
-			(void)it;
 			buffer[i] = test[i];
 			i++;
 		}

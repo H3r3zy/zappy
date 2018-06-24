@@ -33,7 +33,7 @@ AMotionShape::AMotionShape()
 {
 }
 
-uint AMotionShape::getActualSprite() const
+const uint AMotionShape::getActualSprite() const
 {
 	return _actualSprite;
 }

@@ -20,6 +20,7 @@ sf::Vector2f irc::ParseEnqueueMap::ParseMapSize()
 
 	std::vector<CstringArray> save;
 
+	bool loop = true;
 	usleep(10000);
 	while (true) {
 		int i = 0;
@@ -253,6 +254,13 @@ void irc::ParseEnqueueMap::parseNextCommand(irc::Map &map)
 			broadcastPlayer(map, it);
 		} else if (it.getCommandName() == "pie") {
 			endIncantation(map, it);
+		} else if (it.getCommandName() == "pfk") {
+			eggDropped(map, it);
+		} else if (it.getCommandName() == "ebo") {
+			eggHatching(map, it);
+		} else if (it.getCommandName() == "eht") {
+			std::cout << "JE VAIS ECLORE" << std::endl;
+			eggHatching2(map, it);
 		}
 		_comm.getEnqueueMap().erase(_comm.getEnqueueMap().begin());
 
@@ -271,7 +279,7 @@ void irc::ParseEnqueueMap::addPlayer(irc::Map &map, const CstringArray &command)
 	int tmpFreq = map.getComm().getFreq();
 
 	//std::cout << "Player number :" << tmpCommand[0] << " Position en X " << tmpCommand[1] << " Position en Y " << tmpCommand[2] << " Orientation "  << tmpCommand[3] << " level " << tmpCommand[4] << " team name " << command.getTeamName() << std::endl;
-	sf::Vector2f tmp = {static_cast<float>(tmpCommand[1]) * 100.f, (static_cast<float>(tmpCommand[2]) * 100.f)};
+	sf::Vector2f tmp = {tmpCommand[1] * 100, (tmpCommand[2] * 100)};
 	//tmp.y *= -1;
 	std::cout << "[" << GREEN << "MAP"<< RESET << "] adding player " << command.getCommand()[0] << " on X " << tmp.x << " Y " << tmp.y << ", on orientation " << tmpCommand[3] << " team [" << command.getTeamName() << "]" << std::endl;
 
@@ -281,7 +289,7 @@ void irc::ParseEnqueueMap::addPlayer(irc::Map &map, const CstringArray &command)
 		std::cout << "[" << RED << "MAP" << RESET << "] Empty textureMap, not creating character :( teamName [" << command.getTeamName() << "] and id [" << tmpCommand[0] << "]" << std::endl;
 
 	} else {
-	map.getCharacterMap().emplace(tmpCommand[0], Character(map.getGrid().getTextureCharacter()[command.getTeamName()], tmp, tmpCommand[0], tmpFreq, map.getMapSize()));
+	map.getCharacterMap().emplace(tmpCommand[0], Character(map.getGrid().getTextureCharacter()[command.getTeamName()], tmp, tmpCommand[0], tmpFreq, map.getMapSize(), command.getTeamName()));
 	for (auto &it : map.getCharacterMap()) {
 		if (it.second.getPlayerID() == tmpCommand[0]) {
 			it.second.setPlayerOrientation(static_cast<char>(tmpCommand[3]), 7);
@@ -307,19 +315,11 @@ void irc::ParseEnqueueMap::deletePlayer(irc::Map &map, const CstringArray &comma
 			++vec_it;
 		}
 	}
-	int idx = 0;
-	for (auto &&it : _comm._listId) {
-		if ((ulong)it == command.getCommand()[0]) {
-			_comm._listId.erase(_comm._listId.begin() + idx);
-			break;
-		}
-		idx++;
-	}
 }
 
 bool irc::ParseEnqueueMap::movePlayerPosition(irc::Map &map, const CstringArray &command)
 {
-	sf::Vector2f tmpPos = {static_cast<float>(command.getCommand()[1]) * 100.f, static_cast<float>(command.getCommand()[2]) * 100.f};
+	sf::Vector2f tmpPos = {command.getCommand()[1] * 100, command.getCommand()[2] * 100};
 //	if (command.getCommand()[0] == 768 || command.getCommand()[0] == 256|| command.getCommand()[0] == 0 || command.getCommand()[0] == 512)
 //		return false;
 
@@ -529,7 +529,7 @@ std::vector<std::string> &irc::ParseEnqueueMap::getTeam()
 
 void irc::ParseEnqueueMap::incantPlayer(irc::Map &map, const CstringArray &command)
 {
-	sf::Vector2f tmpPos = {static_cast<float>(command.getCommand()[0]), static_cast<float>(command.getCommand()[1])};
+	sf::Vector2f tmpPos = {command.getCommand()[0], command.getCommand()[1]};
 	int i = 2;
 	int tmpFreq = map.getComm().getFreq();
 	while (command.getCommand()[i] != 0 && i < 10) {
@@ -550,9 +550,10 @@ void irc::ParseEnqueueMap::broadcastPlayer(irc::Map &map, const CstringArray &co
 	int tmpFreq = map.getComm().getFreq();
 	std::cout << "je boucle" << std::endl;
 	if (map.getCharacterMap().find((command.getCommand()[0])) != map.getCharacterMap().end()) {
-		std::cout << "[" << RED << "MAP"<< RESET << "] did not found player " << command.getCommand()[0] << ", exit broadcastPLayer"<< std::endl;
 		std::cout << "[" << GREEN << "MAP" << RESET << "] broadcast of player [" << command.getCommand()[0] << "]" << std::endl;
 		map.getCharacterMap().at(command.getCommand()[0]).setPlayerBroadcast(tmpFreq, 7);
+	} else {
+		std::cout << "[" << RED << "MAP"<< RESET << "] did not found player " << command.getCommand()[0] << ", exit broadcastPLayer"<< std::endl;
 	}
 }
 
@@ -588,5 +589,59 @@ void irc::ParseEnqueueMap::endIncantation(irc::Map &map, const CstringArray &com
 			oneTime = true;
 		}
 		++i;
+	}
+}
+
+void irc::ParseEnqueueMap::eggDropped(irc::Map &map, const CstringArray &command)
+{
+	static int eggID = 0;
+	if (map.getCharacterMap().find((command.getCommand()[0])) != map.getCharacterMap().end()) {
+		sf::Vector2i tmp;
+		tmp.x = static_cast<int>(map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().x / 100);
+		tmp.y = static_cast<int>(map.getCharacterMap().at(command.getCommand()[0]).getPlayerPosition().y / 100);
+		map.getEggMap()[command.getCommand()[1]].second = tmp;
+		map.getEggMap()[command.getCommand()[1]].first = map.getCharacterMap().at(command.getCommand()[0]).getPlayerTeam();
+		std::cout << "[" << GREEN << "MAP" << RESET << "] added EGG on cell " << tmp.x << " " << tmp.y  << " ID: " << command.getCommand()[1] << std::endl;
+		std::cout << "player team [" << map.getEggMap()[command.getCommand()[1]].first << "]" << std::endl;
+	} else {
+		std::cout << "[" << RED << "MAP"<< RESET << "] did not found cell to add egg"<< std::endl;
+	}
+}
+
+void irc::ParseEnqueueMap::eggHatching(irc::Map &map, const CstringArray &command)
+{
+	if (map.getEggMap().find(command.getCommand()[0]) != map.getEggMap().end()) {
+
+		std::cout << "[" << GREEN << "MAP" << RESET
+			<< "] jai fait eclore mon oeuf ID"
+			<< command.getCommand()[0] << std::endl;
+		std::vector<uint> tmp;
+		for (int i = 0; i < 9; i++) {
+			tmp.emplace_back(0);
+		}
+		tmp[0] = command.getCommand()[1];
+		tmp[1] = static_cast<unsigned int>(map.getEggMap()[command.getCommand()[0]].second.x);
+		tmp[2] = static_cast<unsigned int>(map.getEggMap()[command.getCommand()[0]].second.y);
+
+		tmp[3] = 8;
+		tmp[4] = 1;
+		CstringArray tmp2;
+		tmp2.setCommand(tmp);
+		tmp2.setTeamName(map.getEggMap()[command.getCommand()[0]].first);
+		std::cout << "pour faire eclore mon oeuf, le joueur a une team " << map.getEggMap()[command.getCommand()[0]].first << std::endl;
+
+		std::cout << "jai recup ID:" << tmp[0] << " X " << tmp[1] << " Y " << tmp[2] << " orientation " << tmp[3] << "level" << tmp[4] << " team [" << tmp2.getCommandName() << "]" << std::endl;
+		std::cout << "je vais creer un joueur , jle renvoie vers la focntion de creation" << std::endl;
+		addPlayer(map, tmp2);
+	}
+}
+
+void irc::ParseEnqueueMap::eggHatching2(irc::Map &map, const CstringArray &command)
+{
+	std::cout << "je vais faire eclore le joeuur " << command.getCommand()[1] << std::endl;
+	if (map.getCharacterMap().find((command.getCommand()[1])) != map.getCharacterMap().end()) {
+		std::cout << "jai trouve mon joueur" << std::endl;
+		map.getCharacterMap().at(command.getCommand()[1]).setPlayerOrientation(1, 7);
+		map.getEggMap().erase(command.getTeamName()[0]);
 	}
 }

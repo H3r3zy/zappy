@@ -62,8 +62,7 @@ void irc::shackTexture::updateShack()
 	auto list_msg = _base._comm.getEnqueueGui();
 
 	for (auto &&it : list_msg) {
-		if (it.getCommandName() == "bct" && static_cast<ulong>(_base._comm._shack._pos.first) == it.getCommand()[0] &&
-			static_cast<ulong>(_base._comm._shack._pos.second) == it.getCommand()[1]) {
+		if (it.getCommandName() == "bct" && _base._comm._shack._pos.first == it.getCommand()[0] && _base._comm._shack._pos.second == it.getCommand()[1]) {
 			_base._comm._shack.ressources.q0 = it.getCommand()[8];
 			_base._comm._shack.ressources.q1 = it.getCommand()[2];
 			_base._comm._shack.ressources.q2 = it.getCommand()[3];

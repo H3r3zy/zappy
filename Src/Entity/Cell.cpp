@@ -137,3 +137,4 @@ void Cell::dellAllResources()
 		it.second = 0;
 	}
 }
+

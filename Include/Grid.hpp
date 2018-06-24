@@ -34,7 +34,8 @@ class Grid {
 		WALK_LEFT = 4,
 		TAKE = 5,
 		INCANT = 6,
-		BROADCAST = 7
+		BROADCAST = 7,
+		EGG = 8
 	};
 
 	typedef std::pair<uint, uint> 				POSITION;

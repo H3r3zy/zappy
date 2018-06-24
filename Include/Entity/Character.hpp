@@ -22,16 +22,18 @@ class Character : public AMotionShape {
 		WALK_LEFT = 4,
 		TAKE = 5,
 		INCANT = 6,
-		BROADCAST = 7
+		BROADCAST = 7,
+		EGG = 8
 	};
 	public:
-	Character(std::map<char, std::vector<sf::Texture>> &_texturePack, sf::Vector2f &position, uint id, int freq, const sf::Vector2f &mapSize);
+	Character(std::map<char, std::vector<sf::Texture>> &_texturePack, sf::Vector2f &position, uint id, int freq, const sf::Vector2f &mapSize, const std::string &teamName);
 
 	void setPlayerTeam(const std::string &teamName);
 	const std::string &getPlayerTeam() const;
 
 	void setPlayerOrientation(char orientation, int duration);
-	char getPlayerOrientation() const;
+	void setEgg();
+	const char getPlayerOrientation() const;
 
 	const uint &getPlayerID() const;
 
@@ -47,7 +49,7 @@ class Character : public AMotionShape {
 	const sf::Vector2f &getPlayerPosition() const;
 
 	sf::Sprite &getCharacter();
-	bool getAction() const;
+	const bool getAction() const;
 
 	~Character();
 

@@ -27,7 +27,7 @@ namespace irc {
 	} ressources_t;
 
 	typedef struct {
-		ulong id = 1;
+		int id = 1;
 		std::string team = "Unknown";
 		int level = 0;
 		ressources_t ressources = {0, 0, 0, 0, 0, 0, 0};
@@ -116,6 +116,9 @@ namespace irc {
 			{"pnw", irc::TYPE_ENQUEUE::T_MAP},
 			{"pbc", irc::TYPE_ENQUEUE::T_MAP}, // broadcast
 			{"tna", irc::TYPE_ENQUEUE::T_MAP}, // team number
+			{"pfk", irc::TYPE_ENQUEUE::T_MAP}, // egg dropped
+			{"ebo", irc::TYPE_ENQUEUE::T_MAP}, // egg eclosion
+			{"eht", irc::TYPE_ENQUEUE::T_MAP}, // egg eclosion
 			{"endtna", irc::TYPE_ENQUEUE::T_MAP}, // team finish
 			{"pie", irc::TYPE_ENQUEUE::T_MAP}, // end incantation
 			{"pin", irc::TYPE_ENQUEUE::T_GUI},

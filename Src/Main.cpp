@@ -16,5 +16,5 @@ int main(void)
 		std::cout << "Error occured" << std::endl;
 		return 84;
 	}
-	return 0;
+	return 32;
 }

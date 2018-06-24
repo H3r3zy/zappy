@@ -31,7 +31,7 @@ sf::Text &WindowInfo::getFPS()
 	++fps;
 	if (_clock.getElapsedTime().asMilliseconds() >= 1000) {
 		_text[FPS].setString("FPS: " + std::to_string(fps));
-		_clock.restart();
+		sf::Time frameTime = _clock.restart();
 		fps = 0;
 	}
 	return _text[FPS];

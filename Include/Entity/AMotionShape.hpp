@@ -20,7 +20,7 @@ class AMotionShape : public IEntity {
 
 	void setPosition(sf::Vector2f &position) override;
 	void setPosition(float x, float y) override;
-	uint getActualSprite() const;
+	const uint getActualSprite() const;
 	const sf::Vector2f &getPosition() const override;
 
 	protected:

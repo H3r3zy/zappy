@@ -53,6 +53,9 @@ namespace irc {
 		{"pic", &irc::ManageServer::parseLine8Input}, // start incantation
 		{"pie", &irc::ManageServer::parseLine8Input}, // end incantation
 		{"pbc", &irc::ManageServer::parseLine8Input}, // broadcast
+		{"pfk", &irc::ManageServer::parseLine8Input}, // egg dropped
+		{"ebo", &irc::ManageServer::parseLine8Input}, // egg eclosion
+		{"eht", &irc::ManageServer::parseLine8Input}, // egg eclosion
 		{"pdi", &irc::ManageServer::parseLine8Input},
 		{"edi", &irc::ManageServer::parseLine8Input},
 		{"pin", &irc::ManageServer::parseLine8Input},

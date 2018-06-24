@@ -88,7 +88,16 @@ CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 				teamName.insert(teamName.begin(), buffer[i]);
 				i--;
 			}
-			teamName.pop_back();
+			for (long int i = teamName.size() - 1; i >= 0; --i) {
+				if ((teamName[i] >= 'a' && teamName[i] <= 'z') ||
+					(teamName[i] >= 'A' && teamName[i] <= 'Z')) {
+					break;
+				}
+				else
+					teamName.pop_back();
+
+			}
+			std::cout << "[" << teamName << "]" << std::endl;
 			finalCommand.setTeamName(teamName);
 		}
 

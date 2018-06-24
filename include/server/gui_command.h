@@ -23,15 +23,15 @@ gui_command_t *get_commands();
 void gui_command_manager(server_t *server, char *command);
 
 /**
- * GUI Map requests
- */
+* GUI Map requests
+*/
 void gui_msz(server_t *server, char *arg, bool *status);
 void gui_bct(server_t *server, char *arg, bool *status);
 void gui_mct(server_t *server, char *arg, bool *status);
 
 /**
- * GUI Player requests
- */
+* GUI Player requests
+*/
 void gui_ppo(server_t *server, char *arg, bool *status);
 void gui_plv(server_t *server, char *arg, bool *status);
 void gui_pin(server_t *server, char *arg, bool *status);
@@ -52,8 +52,8 @@ void gui_ptu(server_t *server, client_t *client);
 void gui_pmv(server_t *server, client_t *client);
 
 /**
- * GUI Server requests
- */
+* GUI Server requests
+*/
 void gui_nbu(server_t *server, char *arg, bool *status);
 void gui_nbt(server_t *server, char *arg, bool *status);
 void gui_nbr(server_t *server, char *arg, bool *status);

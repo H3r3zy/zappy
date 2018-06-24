@@ -37,7 +37,7 @@ static void spawn(server_t *server, client_t *client, teams_t *team)
 {
 	for (egg_t *egg = team->eggs; egg; egg = egg->next) {
 		if (egg->client == NULL) {
-			debug(INFO "Pop in an egg (%i,%i)\n", egg->pos.x,
+			debug(INFO "Pop in an egg (%i, %i)\n", egg->pos.x,
 				egg->pos.y);
 			egg->client = client;
 			client->entity->pos.x = egg->pos.x;

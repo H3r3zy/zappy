@@ -8,8 +8,8 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdbool.h>
-#include <server.h>
-#include <gui_command.h>
+#include "server.h"
+#include "gui_command.h"
 #include "debug.h"
 #include "egg.h"
 #include "scheduler.h"
@@ -29,7 +29,9 @@ static bool check_task(server_t *server, client_t *client, task_t *task,
 		return false;
 	if (UNITTOMS(task->time_unit, server->freq) <=
 		now - task->started_time) {
-		debug("Execute command of %i at %d;%d (%d)\n", client->fd, client->entity->pos.x, client->entity->pos.y, client->user.orientation);
+		debug("Execute command of %i at %d;%d (%d)\n", client->fd,
+			client->entity->pos.x, client->entity->pos.y,
+			client->user.orientation);
 		if (task->function)
 			task->function(server, client, task->command);
 		free(task->command);

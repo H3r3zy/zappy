@@ -24,7 +24,6 @@ static bool can_do_incantation(client_t *client, cell_t *cell)
 
 	for (uint32_t i = 0; i < RESOURCE_NB; i++) {
 		if (cell->items[i] != ELEVATIONS[client->user.level - 1][i]) {
-			//debug(INFO "%i failed: %i instead of %i\n", i, cell->items[i], ELEVATIONS[client->user.level - 1][i]);
 			return false;
 		}
 	}

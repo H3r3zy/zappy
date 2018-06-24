@@ -9,20 +9,11 @@
 #include <server.h>
 #include <stdlib.h>
 #include <string.h>
-#include "debug.h"
-#include "server.h"
 #include "command.h"
 
-look_type_t ENTITY_TYPES[ENTITY_NB] = {
-	{" linemate", 9},
-	{" deraumere", 10},
-	{" sibur", 6},
-	{" mendiane", 9},
-	{" phiras", 7},
-	{" thystame", 9},
-	{" food", 5},
-	{" player", 7}
-};
+look_type_t ENTITY_TYPES[ENTITY_NB] = {{" linemate", 9}, {" deraumere", 10},
+	{" sibur", 6}, {" mendiane", 9}, {" phiras", 7}, {" thystame", 9},
+	{" food", 5}, {" player", 7}};
 
 static char *add_objects(char *response, cell_t *cell)
 {
@@ -49,7 +40,9 @@ static void update_look_pos(int dx, int dy, pos_t *pos, pos_t *size)
 		pos->y = (pos->y < size->y - 1) ? pos->y + dy : 0;
 }
 
-static char *look_horizontal(map_t *map, pos_t pos, look_opt_t opt, uint32_t currv)
+static char *look_horizontal(map_t *map, pos_t pos, look_opt_t opt,
+	uint32_t currv
+)
 {
 	char *response = strdup("");
 	char *tmp = NULL;
@@ -71,7 +64,6 @@ static char *look_horizontal(map_t *map, pos_t pos, look_opt_t opt, uint32_t cur
 		free(tmp);
 	}
 	return response;
-
 }
 
 /**
@@ -82,7 +74,9 @@ static char *look_horizontal(map_t *map, pos_t pos, look_opt_t opt, uint32_t cur
 * @param currv
 * @return
 */
-static char *look_vertical(map_t *map, pos_t pos, look_opt_t opt, uint32_t currv)
+static char *look_vertical(map_t *map, pos_t pos, look_opt_t opt,
+	uint32_t currv
+)
 {
 	char *response = strdup("");
 	char *tmp = NULL;
@@ -113,7 +107,8 @@ static char *look_vertical(map_t *map, pos_t pos, look_opt_t opt, uint32_t currv
 * @param arg
 */
 void look_cmd(server_t *server, client_t *client,
-	__attribute__((unused)) char *arg)
+	__attribute__((unused)) char *arg
+)
 {
 	char *response = strdup("[");
 	char *tmp = NULL;
@@ -123,11 +118,13 @@ void look_cmd(server_t *server, client_t *client,
 		client->user.orientation - 1 : 0;
 	look_opt_t opt = {client->user.vision, 0};
 
-	response = add_objects(response, &server->map.map[client->entity->pos.y][client->entity->pos.x]);
+	response = add_objects(response,
+		&server->map.map[client->entity->pos.y][client->entity->pos.x]);
 	response = concat(response, ",");
 	if (dx) {
 		opt.d = dx;
-		tmp = look_horizontal(&server->map, client->entity->pos, opt, 1);
+		tmp = look_horizontal(&server->map, client->entity->pos, opt,
+			1);
 	} else if (dy) {
 		opt.d = dy;
 		tmp = look_vertical(&server->map, client->entity->pos, opt, 1);

@@ -1,5 +1,5 @@
 #!/bin/bash
 
 for ((i=0;i<$1;++i)); do
-    ./zappy_ai -p 8888 -n caca -h $2 &
+    ./zappy_ai -p 4242 -n mdr -h $2 > /dev/null &
 done

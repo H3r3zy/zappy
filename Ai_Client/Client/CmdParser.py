@@ -149,6 +149,7 @@ class CmdParser:
         return self.__handledId
 
     def parse(self, cmd: str) -> bool:
+        print("(" + cmd + ":" + (self.__queue[0][0] if len(self.__queue) else "NULL") + ")")
         if len(self.__queue) == 0 or self.__patterns[self.__queue[0][0]].match(cmd) is None:
             for reg, func in self.__unexpected:
                 if reg.match(cmd):
@@ -156,9 +157,8 @@ class CmdParser:
                     return True
         try:
             last = self.__queue.popleft()
-            print("(" + cmd + ":" + last[0] + ")")
         except IndexError:
-            raise ZappyException('Unexpected response')
+            raise ZappyException('Unexpected response:' + cmd)
         match = self.__patterns[last[0]].match(cmd)
         self.__handledId += 1
         try:

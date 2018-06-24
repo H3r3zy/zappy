@@ -100,13 +100,12 @@ class Client:
 
     def build_command(self, cmd: str, arg: str = "", pos: tuple = (0, 0), fake: bool = False) -> int:
         self.__topQueue.append((cmd, arg, pos, fake))
-        print("BUILDING(%s %s)" % (cmd, arg))
         self.__outId += 1
         self.refresh_queue()
         return self.__outId
 
     def refresh(self, mode: bool = False):
-        rcons, wcons, _ = select.select([self.__socket], [self.__socket] if len(self.__outBuff) > 0 else [], [], 0.01)
+        rcons, wcons, _ = select.select([self.__socket], [self.__socket] if len(self.__outBuff) > 0 else [], [], 0.1)
         for con in rcons:
             self.update_inbuff(con)
         for con in wcons:
@@ -124,14 +123,14 @@ class Client:
             if len(self.__inQueue) >= 1 and welcome is False:
                 resp = self.__inQueue.popleft()
                 if resp != "WELCOME":
-                    raise ZappyException('Unexpected response')
+                    raise ZappyException('Unexpected response:' + resp)
                 self.build_command(self.__name)
                 welcome = True
             if len(self.__inQueue) == 2 and welcome is True:
                 try:
-                    int(self.__inQueue.popleft())
+                    nbr = int(self.__inQueue.popleft())
                     self.mapSize = tuple(map(int, self.__inQueue.popleft().split(" ")))
-                except ValueError:
+                except ValueError as err:
                     raise ZappyException('Unexpected response')
                 break
             if "ko" in self.__inQueue:
@@ -139,6 +138,8 @@ class Client:
                 raise ZappyException('Unexpected response')
         self.__outQueue.clear()
         self.__outId = 0
+        if nbr == 0:
+            self.build_command("Fork")
 
     def run(self):
         self.auth()

@@ -225,7 +225,7 @@ def LvlUp(client: Client, player: Ai):
     needed_stones = player.elevation_array[player.getLevel()]
 
     if LvlUp.Synchro == -1:
-        client.build_command("Look", "", (player.getCoord(), player.getDir()))
+        #client.build_command("Look", "", (player.getCoord(), player.getDir()))
         Synchronise_incant.return_func = Actions.LVL_UP
         LvlUp.Synchro = 1
         LvlUp.OldLvl = player.getLevel()

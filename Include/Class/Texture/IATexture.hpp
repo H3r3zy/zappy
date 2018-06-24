@@ -47,6 +47,8 @@ namespace irc {
 		irc::Text *_pos = nullptr;
 		irc::Text *_team = nullptr;
 
+		std::vector<irc::Sprite *> _icon_team;
+
 	};
 
 }

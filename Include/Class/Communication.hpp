@@ -89,6 +89,8 @@ namespace irc {
 		server_data_t _server;
 		shack_data_t _shack;
 
+		std::vector<std::string> _teamName;
+
 		protected:
 		void addMsgToQueue(const CstringArray command);
 

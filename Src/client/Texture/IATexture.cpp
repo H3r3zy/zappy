@@ -35,6 +35,18 @@ void irc::IATexture::initTexture()
 
 		_base._comm._player.id = _base._comm._listId[0];
 
+		ulong idx = 0;
+		for (auto &&iconTeam : _base._comm._teamName) {
+			if (iconTeam == _base._comm._player.team) {
+				for (auto &&it : _icon_team) {
+					it->setBoolDisplay(false);
+				}
+				_icon_team[idx % 3]->setBoolDisplay(true);
+				break;
+			}
+			++idx;
+		}
+
 		_base._monitor->getObjectByName("arrow_change", 1)->setBoolDisplay(_base._comm._listId.size() != 1);
 		_nb_q0->setText("x "+ std::to_string(_base._comm._player.ressources.q0));
 		_nb_q1->setText("x "+ std::to_string(_base._comm._player.ressources.q1));
@@ -221,12 +233,20 @@ void irc::IATexture::initUser()
 	container->setBoolUsed(false);
 	std::string id = std::to_string(1/* Todo: put id IA*/);
 
-	auto user = new irc::Sprite("extra/gui/ia.png", sf::IntRect(70, 20, 160, 160));
+	_icon_team.push_back(new irc::Sprite("extra/gui/team_1.png", sf::IntRect(70, 20, 160, 160)));
+	_icon_team.push_back(new irc::Sprite("extra/gui/team_2.png", sf::IntRect(70, 20, 160, 160)));
+	_icon_team.push_back(new irc::Sprite("extra/gui/team_3.png", sf::IntRect(70, 20, 160, 160)));
+
 	_nickIA = new irc::Text("extra/arial.ttf", sf::IntRect(145 - (int)(id.size() / 2 * 13), 180, (int)(id.size() / 2 * 13), 26), id);
 	auto sep = new irc::Sprite("extra/gui/separator.png", sf::IntRect(0, 220, WIDTH, 15));
 	_nickIA->setColor(sf::Color(50, 50, 50));
 
-	container->addObjectList("ia_picture", user);
+	int idx = 1;
+	for (auto &&item : _icon_team) {
+		container->addObjectList("ia_picture" + idx, item);
+		++idx;
+	}
+
 	container->addObjectList("ia_nick", _nickIA);
 	container->addObjectList("ia_sep", sep);
 	_base._monitor->addObjectToDraw("ia_header", container, 1);

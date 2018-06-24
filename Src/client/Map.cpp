@@ -15,6 +15,7 @@
 
 irc::Map::Map(irc::Communication &comm, bool &displayGui, bool &endClient) : _comm(comm), _displayGui(displayGui), _endClient(endClient), _gameWindow(sf::VideoMode(1200, 800), "Zappy"), _enqueueMap(_comm), _mapSize(_enqueueMap.ParseMapSize()), _teamName(_enqueueMap.getTeam()), _grid(_mapSize, _gameWindow, _teamName)
 {
+	_comm._teamName = _teamName;
 	SfmlTool::InitAllFont();
 	//_gameWindow.setFramerateLimit(60);
 	_windowInfo = new WindowInfo();

@@ -39,7 +39,7 @@ class Character : public AMotionShape {
 
 	void setPlayerMovement(sf::Vector2f &finalPos, const uint &orientation, int freq, int duration);
 	void setPlayerTake(int freq, int duration);
-	void setPlayerIncant(int freq, int duration);
+	void setPlayerIncant(int freq, int duration, sf::Vector2f &newPos);
 	static bool playerLoop(sf::RenderWindow &window);
 
 	const sf::Vector2f &getPlayerPosition() const;
@@ -63,10 +63,6 @@ class Character : public AMotionShape {
 	int _nextFrameTime = 0;
 
 	bool oneTime = false;
-
-	// TODO LE DEGAGER
-	int _testTmp = 0;
-
 };
 
 #endif //PSU_ZAPPY_2017_CHARACTER_HPP

@@ -197,14 +197,19 @@ void irc::ParseEnqueueMap::parseNextCommand(irc::Map &map)
 	int i = 0;
 	_comm.lockMap();
 	for (const auto &it : _comm.getEnqueueMap()) {
+		if (it.getCommand().empty()) {
+			std::cout << "[" << RED << "MAP" << RESET << "] received empty command (command name [" << it.getCommandName() << "]" << std::endl;
+			_comm.getEnqueueMap().erase(_comm.getEnqueueMap().begin());
+			break;
+		}
 		/*std::cout << "Commande numero " << " [" << it.getCommandName() << "]" << std::endl;
+
 
 		std::vector<uint> tmpCommand = it.getCommand();
 
 		std::cout << "Player number :" << tmpCommand[0] << " Position en X " << tmpCommand[1] << " Position en Y " << tmpCommand[2] << " Orientation "  << tmpCommand[3] << " level " << tmpCommand[4] << " team name " << it.getTeamName() << std::endl;*/
 
 		if (it.getCommandName() == "pnw") {
-			std::cout << "je vais creer un joueur" << std::endl;
 			addPlayer(map, it);
 		} else if (it.getCommandName() == "pdi") {
 			deletePlayer(map, it);
@@ -490,7 +495,6 @@ std::vector<std::string> &irc::ParseEnqueueMap::getTeam()
 void irc::ParseEnqueueMap::incantPlayer(irc::Map &map, const CstringArray &command)
 {
 	sf::Vector2f tmpPos = {command.getCommand()[0], command.getCommand()[1]};
-	std::cout << "[" << GREEN << "MAP" << RESET << "] incantation on X " << tmpPos.x << " Y " << tmpPos.y << std::endl;
 	int i = 2;
 	int tmpFreq = map.getComm().getFreq();
 	while (command.getCommand()[i] != 0 && i < 10) {
@@ -500,7 +504,8 @@ void irc::ParseEnqueueMap::incantPlayer(irc::Map &map, const CstringArray &comma
 			++i;
 			continue;
 		}
-		map.getCharacterMap().at(command.getCommand()[i]).setPlayerIncant(tmpFreq, 300);
+		std::cout << "[" << GREEN << "MAP" << RESET << "] incantation on X " << tmpPos.x << " Y " << tmpPos.y << " on player " << command.getCommand()[i] << std::endl;
+		map.getCharacterMap().at(command.getCommand()[i]).setPlayerIncant(tmpFreq, 300, tmpPos);
 		++i;
 	}
 

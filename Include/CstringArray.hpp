@@ -18,6 +18,7 @@ class CstringArray {
 	void setCommandName(const std::string &command);
 	void setTeamName(const std::string &command);
 	void setCommand(const std::vector<uint> &commandInfo);
+	void clearAll();
 
 	const std::string &getCommandName() const;
 	const std::string &getTeamName() const;

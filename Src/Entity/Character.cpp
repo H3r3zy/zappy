@@ -73,15 +73,11 @@ sf::Sprite &Character::getCharacter()
 				_actualSprite = 0;
 
 
-			_testTmp++;
-
-
 			_totalDist += savetime;
 			//std::cout << "j'ai parcourur une distance total de " << _totalDist << std::endl;
 			//std::cout << " le tmp = " << _testTmp << std::endl;
 			if (_totalDist >= 100) {
 				_action = false;
-				_testTmp = 0;
 				_totalDist = 0;
 			}
 			//std::cout << "je veux le mettre en pos" << _position.x << " " << _position.y << " et son orientation ";
@@ -162,7 +158,6 @@ void Character::setPlayerMovement(sf::Vector2f &finalPos, const uint &orientatio
 		//std::cout << "nextpos = " << _nextPos.x << " " << _nextPos.y << std::endl;
 	}
 	oneTime = true;
-	_testTmp = 0;
 	_totalDist = 0;
 	_orientation = static_cast<char>(orientation);
 	_nextPos = finalPos;
@@ -181,7 +176,6 @@ void Character::setPlayerTake(int freq, int duration)
 	if (_nextPos.x != 0 && _nextPos.y != 0)
 		_position = _nextPos;
 	_actualSprite = 0;
-	_testTmp = 0;
 	_totalDist = 0;
 
 	_orientation = TAKE;
@@ -193,15 +187,13 @@ const sf::Vector2f &Character::getPlayerPosition() const
 	return _position;
 }
 
-void Character::setPlayerIncant(int freq, int duration)
+void Character::setPlayerIncant(int freq, int duration, sf::Vector2f &newPos)
 {
-	std::cout << "je vais incanter" << std::endl;
 	_duration = duration;
 	_freq = freq;
-	if (_nextPos.x != 0 && _nextPos.y != 0)
-		_position = _nextPos;
+	_position.x = newPos.x * 100;
+	_position.y = newPos.y * 100;
 	_actualSprite = 0;
-	_testTmp = 0;
 	_totalDist = 0;
 	_orientation = INCANT;
 	_action = true;

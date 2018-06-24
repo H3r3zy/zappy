@@ -62,17 +62,13 @@ int irc::Communication::writeOnServer(const std::string &msg)
 
 void irc::Communication::loopRead()
 {
-	CstringArray msg;
-
 	while (!_read) {
-		msg = irc::ManageServer::readGameServer(_socket, true);
-		addMsgToQueue(msg);
+		addMsgToQueue(irc::ManageServer::readGameServer(_socket, true));
 	}
 }
 
-void irc::Communication::addMsgToQueue(const CstringArray &command)
+void irc::Communication::addMsgToQueue(const CstringArray command)
 {
-	auto tmpPrint = command.getCommand();
 /*	if (tmpPrint.size() == 9) {
 		//std::cout << "J'arrive à la fin du parsing, le nom de la commande est [" << command.getCommandName() << "]" << std::endl;
 		//std::cout << "Et son message est :" << tmpPrint[0] << " "
@@ -82,11 +78,21 @@ void irc::Communication::addMsgToQueue(const CstringArray &command)
 			<< tmpPrint[7] << std::endl;
 	}
  */
+
+	if (!command.getCommandName().empty()) {
+		std::cout << "addMsgQueue: Nom de la commande [" << command.getCommandName() << "] ";
+		auto tmp = command.getCommand();
+		for (const auto &it2 : tmp) {
+			std::cout << "[" << it2 << "] ";
+		}
+		std::cout << std::endl;
+	}
 	if (!command.getCommandName().empty()) {
 		for (auto &&comm : _forWho) {
 			if (comm.first == command.getCommandName()) {
-				if (comm.second == irc::TYPE_ENQUEUE::T_MAP || comm.second == irc::TYPE_ENQUEUE::T_BOTH)
+				if (comm.second == irc::TYPE_ENQUEUE::T_MAP || comm.second == irc::TYPE_ENQUEUE::T_BOTH) {
 					enqueueMap(command);
+				}
 				if (comm.second == irc::TYPE_ENQUEUE::T_GUI || comm.second == irc::TYPE_ENQUEUE::T_BOTH)
 					enqueueGui(command);
 				return;

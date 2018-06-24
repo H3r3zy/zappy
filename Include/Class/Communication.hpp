@@ -90,7 +90,7 @@ namespace irc {
 		shack_data_t _shack;
 
 		protected:
-		void addMsgToQueue(const CstringArray &command);
+		void addMsgToQueue(const CstringArray command);
 
 		private:
 		int _socket = 0;

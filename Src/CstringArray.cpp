@@ -43,3 +43,10 @@ void CstringArray::setTeamName(const std::string &command)
 {
 	_teamName = command;
 }
+
+void CstringArray::clearAll()
+{
+	_command.clear();
+	_teamName.clear();
+	_commandName.clear();
+}

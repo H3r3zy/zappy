@@ -8,6 +8,7 @@
 #include <iostream>
 #include <cstring>
 #include <sstream>
+#include <ParseEnqueueMap.hpp>
 #include "CstringArray.hpp"
 #include "ManageServer.hpp"
 
@@ -50,8 +51,8 @@ std::string irc::ManageServer::readServer(int socket, bool blockRead)
 CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 {
 	std::string result;
-	CstringArray finalCommand;
 	fd_set readfds;
+	CstringArray finalCommand;
 	struct timeval t = {0, 300};
 
 	//	FD_ZERO(&readfds);
@@ -77,17 +78,31 @@ CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 			i++;
 		}
 		buffer[i] = '\0';
-		if (buffer[0] != '\0')
-			std::cout << "Buffer :" << buffer << std::endl;
+		if (buffer[0] == '\0' && i > 0) {
+			memmove(buffer, &buffer[1], i);
+		}
 		if (!strncmp("pnw", buffer, 3) || !strncmp("tna", buffer, 3)) {
 			std::string teamName;
-			while (buffer[i] != ' ' && i > 0) {
+			while (i > 0 && buffer[i] != ' ') {
 				teamName.insert(teamName.begin(), buffer[i]);
 				i--;
 			}
 			teamName.pop_back();
 			finalCommand.setTeamName(teamName);
 		}
+
+		std::string commandName = "";
+		for (const auto &it : buffer) {
+			if (it == ' ')
+				break;
+			if (it >= 'a' && it <= 'z') {
+				std::cout << "add character: " << it << std::endl;
+				commandName.push_back(it);
+			}
+		}
+		std::cout << "COMMAND NAME: " << commandName << std::endl;
+		finalCommand.setCommandName(commandName);
+
 		for (auto &&item : _pattern) {
 			if (!strncmp(item.first.c_str(), buffer, 3)) {
 				item.second(buffer, finalCommand);
@@ -95,15 +110,6 @@ CstringArray irc::ManageServer::readGameServer(int socket, bool blockRead)
 			}
 		}
 
-		std::string commandName;
-		for (const auto &it : buffer) {
-			if (it == ' ')
-				break;
-			if (it >= 'a' && it <= 'z')
-				commandName.push_back(it);
-		}
-		std::cout << "commande [" << commandName << "]" << std::endl;
-		finalCommand.setCommandName(commandName);
 	}
 	return finalCommand;
 }
@@ -150,15 +156,25 @@ int irc::ManageServer::writeOnServer(int socket, std::string msg)
 }
 void irc::ManageServer::parseLine8Input(char *buffer, CstringArray &command)
 {
+	std::cout << "[" << GREEN << "READ" << RESET << "] on ManageServer, go new command, name[" << command.getCommandName() << "] ";
 	std::vector<uint> bag;
 	for (int i = 0; i < 10; i++)
 		bag.emplace_back(0);
 	for (size_t i = 0; i < 10; i++) {
 		bag[i] = 0;
 		memcpy(&bag[i], buffer + 4 + i * (sizeof(uint) + 1), sizeof(uint));
-		//std::cout << bag[i] << std::endl;
+		std::cout << bag[i] << " ";
 	}
+	std::cout << std::endl;
 	command.setCommand(bag);
+	if (!command.getCommandName().empty()) {
+		std::cout << "fin du READ: Nom de la commande [" << command.getCommandName() << "] ";
+		auto tmp = command.getCommand();
+		for (const auto &it2 : tmp) {
+			std::cout << "[" << it2 << "] ";
+		}
+		std::cout << std::endl;
+	}
 }
 
 void irc::ManageServer::parseLine1Input(char *buffer, CstringArray &command)

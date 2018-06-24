@@ -1,9 +1,4 @@
-#!/usr/bin/env python
-# coding: utf-8
-
 import re
-from os import system
-from sys import argv
 from Ai_Client.Ai.Ai import *
 from collections import deque
 from Ai_Client.Enum.Direction import *
@@ -21,7 +16,8 @@ class CmdParser:
             'Look': re.compile("\[( ?\w+)*(,( \w+)*)* ?\]", re.ASCII),
             'Inventory': re.compile("\[( ?(\w+ \d+)(,( \w+ \d+)?)* ?)\]", re.ASCII),
             'Connect_nbr': re.compile("%d+", re.ASCII),
-            'Incantation': re.compile("(Elevation underway)|(Current level: \d)|(ko)", re.ASCII),
+            'Incantation': re.compile("(Elevation underway)|(ko)", re.ASCII),
+            'Incantation2': re.compile("(Current level: \d)|(ko)", re.ASCII),
             'Forward': re.compile("ok", re.ASCII),
             'Right': re.compile("ok", re.ASCII),
             'Left': re.compile("ok", re.ASCII),
@@ -31,6 +27,12 @@ class CmdParser:
             'Take': re.compile("(ok)|(ko)", re.ASCII),
             'Set': re.compile("(ok)|(ko)", re.ASCII)
         }
+        self.__unexpected = (
+            (re.compile("message (\d), (.*)", re.ASCII), self.message),
+            (re.compile("Elevation underway"), self.nothing),
+            (re.compile("Current level: (\d)"), self.lvl_up),
+            (re.compile("eject: (\d)"), self.eject)
+        )
         self.__dirs = {
             Direction.SOUTH: CmdParser.viewSouth,
             Direction.NORTH: CmdParser.viewNorth,
@@ -40,10 +42,9 @@ class CmdParser:
         self.__actions = {
             'Look': self.parse_map,
             'Inventory': self.parse_inv,
-            'Fork': self.fork,
             'Take': self.take,
             'Set': self.set,
-            'Incantation': self.lvl_up
+            'Incantation2': self.lvl_up
         }
         self.__handledId = 0
         self.__deltas = {
@@ -57,10 +58,16 @@ class CmdParser:
             8: (-1, -1)
         }
 
-    def lvl_up(self, ans: str, _1, _2):
+    def nothing(self, _):
+        pass
+
+    def message(self, msg):
+        match = re.match("message (\d), (.*)", msg)
+        self.__msgQueue.append((int(match.group(1)), match.group(2)))
+
+    def lvl_up(self, ans: str, _1: str = "", _2: str = ""):
         match = re.search("(\d)", ans)
         if match:
-            print("LVL UP")
             self.__player.levelUp(int(match.group(1)))
 
     def set(self, ans: str, obj: str, pos: tuple):
@@ -77,10 +84,8 @@ class CmdParser:
         else:
             self.__map[pos[1]][pos[0]].getStones()[obj] = 0
 
-    def fork(self):
-        system(argv[0] + " -p " + str(self.__info[0]) + " -n " + self.__info[1] + " -h " + self.__info[2])
-
-    def eject(self, key: int):
+    def eject(self, ans):
+        key = int(ans)
         delta = self.__deltas[key]
         pos = self.__player.getCoord()
         self.__player.setCoord(pos[0] + delta[0], pos[1] + delta[1])
@@ -117,7 +122,6 @@ class CmdParser:
         map = map.replace("[", "").replace("]", "")
         tiles = map.split(",")
         i = 0
-        print("Je vais parse la map")
         for x, y in self.__dirs[pos[1]](pos[0][0], pos[0][1], self.__player.getLevel()):
             currentTile = self.__map[y % len(self.__player.getMap())][x % len(self.__player.getMap()[0])]
             currentTile.reset()
@@ -126,7 +130,7 @@ class CmdParser:
                     currentTile.setPlayer(currentTile.getPlayer() + 1)
                     continue
                 if len(elem) > 0:
-                    currentTile.getStones()[elem] += 1 #Changer
+                    currentTile.getStones()[elem] += 1  # Changer
             i += 1
 
     def parse_inv(self, inv: str, _1, _2):
@@ -142,25 +146,24 @@ class CmdParser:
         return self.__handledId
 
     def parse(self, cmd: str) -> bool:
-        print("(" + cmd + ":" + cmd + ")")
-        if cmd == "dead":
-            return False
-        last = self.__queue.popleft()
+        if len(self.__queue) == 0 or self.__patterns[self.__queue[0][0]].match(cmd) is None:
+            for reg, func in self.__unexpected:
+                if reg.match(cmd):
+                    func(cmd)
+                    return True
+        try:
+            last = self.__queue.popleft()
+        except IndexError:
+            raise ZappyException('Unexpected response:' + cmd)
         match = self.__patterns[last[0]].match(cmd)
         self.__handledId += 1
         try:
             if last[0] in self.__actions.keys() and match is not None:
                 self.__actions[last[0]](match.group(0), last[1], last[2])
-            else:
-                match = re.match("message (\d), (.+)", cmd)
-                match1 = re.match("eject: (\d)", cmd)
-                if match:
-                    self.__msgQueue.append(match.group(2))
-                elif match1:
-                    self.eject(int(match1.group(1)))
         except AttributeError:
             if cmd == "ko":
-                self.__player.egg = True
+                self.__handledId -= 1
+                self.__queue.appendleft(last)
             else:
-                print("Could not link '" + cmd + "' to '" + last[0] + "'")
+                raise ZappyException("Could not link '" + cmd + "' to '" + last[0] + "'")
         return True

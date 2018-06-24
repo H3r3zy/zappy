@@ -34,7 +34,7 @@ static bool check_task(server_t *server, client_t *client, task_t *task,
 			client->user.orientation);
 		if (task->function)
 			task->function(server, client, task->command);
-		free(task->command);
+	      	free(task->command);
 		free(task);
 		return true;
 	}
